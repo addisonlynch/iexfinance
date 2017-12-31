@@ -7,31 +7,49 @@ __all__ = ['Share', 'Batch']
 
 
 def IexFinance(symbol, **kwargs):
-	if type(symbol) is str:
-		if not symbol:
-			raise ValueError("Please input a symbol or list of symbols")
-		else:
-			inst = Share(symbol, **kwargs)
-	elif type(symbol) is list:
-		if not symbol:
-			raise ValueError("Please input a symbol or list of symbols")
-		if len(symbol) == 1:
-			inst = Share(symbol, **kwargs)
-		if len(symbol) > 50:
-			raise ValueError("Invalid symbol list. Maximum 50 symbols.")
-		else:
-			inst = Batch(symbol, **kwargs)
-		return inst
-	else:
-		raise TypeError("Please input a symbol or list of symbols")
-	return inst
-		
+    """ 
+    Top level function to create Share or Batch instance depending on number of symbols given
+
+    Keyword arguments:
+        symbol: A string or list of strings that are valid symbols
+        options: A valid list of parameters to pass to the api. See IEXRetriever base class, where these parameters are checked
+
+    """
+    if type(symbol) is str:
+        if not symbol:
+            raise ValueError("Please input a symbol or list of symbols")
+        else:
+            inst = Share(symbol, **kwargs)
+    elif type(symbol) is list:
+        if not symbol:
+            raise ValueError("Please input a symbol or list of symbols")
+        if len(symbol) == 1:
+            inst = Share(symbol, **kwargs)
+        if len(symbol) > 50:
+            raise ValueError("Invalid symbol list. Maximum 50 symbols.")
+        else:
+            inst = Batch(symbol, **kwargs)
+        return inst
+    else:
+        raise TypeError("Please input a symbol or list of symbols")
+    return inst
+        
 class Share(IEXRetriever):
+    """
+    Class to handle individual shares. Inherits IEXRetriever, which will conduct the API queries
+    """
 
     key="Share"
 
     def __init__(self,symbol, **kwargs):
+        """
+        Initializes the class.
 
+        Positional arguments:
+            symbol: A valid ticker symbol
+        Keyword arguments:
+            options: Again a pass through to the IEXRetriever class, which will be supered here. Options checked in the parent class.
+        """
         self.symbol = symbol.upper()
         self.symbolList = [self.symbol]
         self.IEX_ENDPOINT_NAME = 'stock/{0}/batch'.format(self.symbol)
@@ -40,11 +58,20 @@ class Share(IEXRetriever):
 
 
     def refresh(self):
+        """
+        Refreshes market data with latest information.
+        """
         data = super(Share, self)._fetch()
         self.data_set = data[self.symbol]
         return data[self.symbol]
     # universal selectors
     def get_select_endpoints(self, endpointList=[]):
+        """
+        Universal selector method to obtain custom endpoints from the data set. Will throw a IEXEndpointError if an invalid endpoint is specified and an IEXQueryError if the endpoint cannot be retrieved.
+
+        Postional arguments:
+            endpointList: A string or list of strings that specifies the endpoints desired
+        """
         if type(endpointList) is str:
             endpointList = [endpointList]
         result = {}
@@ -59,6 +86,13 @@ class Share(IEXRetriever):
         return result
 
     def get_select_datapoints(self, endpoint, attrList= []):
+        """
+        Universal selector method to obtain custom datapoints from an individual endpoint. If an invalid endpoint is specified, throws an IEXEndpointError. If an invalid datapoint is specified, throws an IEXDatapointError. If there are issues with the query, throws an IEXQueryError.
+
+        Positional Arguments:
+            endpoint: A valid endpoint (string)
+            attrList: A valid list of datapoints desired from the given endpoint
+        """
         if type(attrList) is str:
             attrList = [attrList]
         result = {}
@@ -165,12 +199,22 @@ class Share(IEXRetriever):
 
 
 class Batch(IEXRetriever):
+    """
+    Class to handle multiple shares. Inherits IEXRetriever, which will conduct the API queries. 
+    """
 
     IEX_ENDPOINT_NAME = 'stock/market/batch'
     key = 'Batch'
     
     def __init__(self,symbolList=[], **kwargs):
+        """
+        Initializes the class.
 
+        Positional arguments:
+            symbolList: A valid list of ticker symbols
+        Keyword arguments:
+            options: Again a pass through to the IEXRetriever class, which will be supered here. Options checked in the parent class.
+        """
         super(Batch, self).__init__(self.key, symbolList, **kwargs)
         
         self.data_set = self.refresh()
@@ -185,28 +229,40 @@ class Batch(IEXRetriever):
 
     #universal selectors
     def get_select_endpoints(self, endpoints=[]):
-        
-            if type(endpoints) is str:
-                endpoints = [endpoints]
-            elif not endpoints:
-                raise ValueError("Please provide a valid list of endpoints")
-            result = {}
-            for symbol in self.symbolList:
-                temp = {}
+        """
+        Universal selector method to obtain custom endpoints from the data set. Will throw a IEXEndpointError if an invalid endpoint is specified and an IEXQueryError if the endpoint cannot be retrieved.
+
+        Postional arguments:
+            endpointList: A string or list of strings that specifies the endpoints desired
+        """        
+        if type(endpoints) is str:
+            endpoints = [endpoints]
+        elif not endpoints:
+            raise ValueError("Please provide a valid list of endpoints")
+        result = {}
+        for symbol in self.symbolList:
+            temp = {}
+            try:
+                ds = self.data_set[symbol]
+            except:
+                IEXSymbolError(symbol)
+            for endpoint in endpoints:
                 try:
-                    ds = self.data_set[symbol]
+                    query = ds[endpoint]
                 except:
-                    IEXSymbolError(symbol)
-                for endpoint in endpoints:
-                    try:
-                        query = ds[endpoint]
-                    except:
-                        raise IEXEndpointError(endpoint)
-                    temp.update({endpoint: query})
-                result.update({symbol:temp})
-            return result
+                    raise IEXEndpointError(endpoint)
+                temp.update({endpoint: query})
+            result.update({symbol:temp})
+        return result
 
     def get_select_datapoints(self, endpoint, attrList= []):
+        """
+        Universal selector method to obtain custom datapoints from an individual endpoint. If an invalid endpoint is specified, throws an IEXEndpointError. If an invalid datapoint is specified, throws an IEXDatapointError. If there are issues with the query, throws an IEXQueryError.
+
+        Positional Arguments:
+            endpoint: A valid endpoint (string)
+            attrList: A valid list of datapoints desired from the given endpoint
+        """
         if type(attrList) is str:
             attrList = [attrList]
         result = {}
