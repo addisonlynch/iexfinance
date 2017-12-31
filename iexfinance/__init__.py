@@ -25,8 +25,8 @@ def IexFinance(symbol, **kwargs):
             raise ValueError("Please input a symbol or list of symbols")
         if len(symbol) == 1:
             inst = Share(symbol, **kwargs)
-        if len(symbol) > 50:
-            raise ValueError("Invalid symbol list. Maximum 50 symbols.")
+        if len(symbol) > 100:
+            raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
             inst = Batch(symbol, **kwargs)
         return inst
