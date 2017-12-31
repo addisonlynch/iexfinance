@@ -1,16 +1,18 @@
 import sys
 from urllib.parse import urlencode
-try: import simplejson as json
-except ImportError: import json
-
+try: 
+    import simplejson as json
+except ImportError: 
+    import json
 import pandas as pd
 import requests
 from functools import wraps
 
 
-
 class IEXSymbolError(Exception):
-
+    """
+    This error is thrown when an invalid symbol is given.
+    """
     def __init__(self, symbol):
         self.symbol = symbol
 
@@ -18,7 +20,9 @@ class IEXSymbolError(Exception):
         return "Symbol " + self.symbol + " not found."
 
 class IEXEndpointError(Exception):
-
+    """
+    This error is thrown when an invalid endpoint is specified in the custom endpoint lookup method
+    """
     def __init__(self, endpoint):
         self.endpoint = endpoint
 
@@ -26,7 +30,9 @@ class IEXEndpointError(Exception):
         return "Endpoint " + self.endpoint + " not found."
 
 class IEXDatapointError(Exception):
-
+    """
+    This error is thrown when an invalid datapoint is specified in the custom endpoint lookup method
+    """
     def __init__(self, endpoint, datapoint):
         self.datapoint = datapoint
         self.endpoint = endpoint
@@ -35,12 +41,17 @@ class IEXDatapointError(Exception):
         return "Datapoint " + self.datapoint + " not found in Endpoint " + self.endpoint
 
 class IEXQueryError(Exception):
+    """
+    This error is thrown when an error occurs with the query to IEX, be it a network problem or an invalid query.
+    """
     def __init__(self):
         return "An error occurred while making the query." 
 
 
 class IEXRetriever(object):
-
+    """
+    Base class for retrieving equities information from the IEX Finance API. Inherited by Share and Batch classes, and conducts query operations including preparing and executing queries from the API.
+    """
     _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0//ref-data/symbols"
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
     
@@ -51,7 +62,20 @@ class IEXRetriever(object):
     _OUTPUT_FORMAT_VALUES = ['json', 'dataframe']
   
     def __init__(self, key, symbolList, **kwargs):
+        """ Initialize the class
 
+        Positional Arguments:
+            key: Subclass identifier ("Share" or "Batch")
+            symbolList: A nonempty list of symbols
+
+        Keyword Arguments:
+            displayPercent: boolean 
+            chartRange: The range to use for the chart endpoint. Must be contained in _CHART_RANGE_VALUES 
+            dividendsRange: Range to use for the dividends endpoint. Must be contained in _DIVIDENDS_RANGE_VALUES
+            splitsRange: Range to use for the splits endpoint. Must be contained in _SPLITS_RANGE_VALUES
+            last: Range to use for the "last" attribute of the news endpoint.
+            outputFormat: Desired output format for batch requests. Currently only supports JSON
+        """
         self.symbolList = list(map(lambda x:x.upper(), symbolList))
         self.displayPercent = kwargs.pop('displayPercent', False)
         self.chartRange = kwargs.pop('chartRange', '1m')
@@ -61,7 +85,7 @@ class IEXRetriever(object):
         self.outputFormat = kwargs.pop('outputFormat', 'json')
         self._key = key
 
-        # Options testing
+        # Parameter checking
         if type(self.displayPercent) is not bool:
             raise TypeError("displayPercent must be a boolean value")
         if self.outputFormat not in self._OUTPUT_FORMAT_VALUES:
@@ -99,11 +123,17 @@ class IEXRetriever(object):
                  }
 
     def _default_options(self):
-        return self.displayPercent == False and self.dividendsRange == '1m' and self.splitsRange == '1m' and self.chartRange == '1m' and self.last == 10
-            
+     """ Returns true if all parameters are set to default values (as specified in IEX docs), false otherwise"""
+     return self.displayPercent == False and self.dividendsRange == '1m' and self.splitsRange == '1m' and self.chartRange == '1m' and self.last == 10
 
     @staticmethod
     def _validate_response(response):
+        """ Ensures response from IEX server is valid. 
+
+        Positional Parameters:
+            response: A request object
+
+        """
         if response.text == "Unknown symbol":
             raise IEXSymbolError(self.symbolList[0])
 
@@ -114,7 +144,13 @@ class IEXRetriever(object):
             raise IEXQueryError()
         return json_response
 
+    """ 
+    Given a URL, execute HTTP request from IEX server using helper function _api_call()
 
+    Positional Arguments:
+        url: A properly-formatted url
+
+    """
     @classmethod
     def _executeIEXQuery(cls, url):
         def _api_call(cls, url):
@@ -132,6 +168,12 @@ class IEXRetriever(object):
 
     @classmethod
     def _output_format(cls, func):
+        """ A decorator function which formats the output based on the output_format attribute which is selected at instantiation of the class. 
+
+        Positional Arguments:
+            func: A function to be wrapped
+
+        """
         @wraps(func)
         def _format_wrapper(self, *args, **kwargs):
             response = func( 
@@ -150,6 +192,13 @@ class IEXRetriever(object):
         return _format_wrapper
 
     def _prepare_query(self, endpoints, options=""):
+        """ Creates a url for a Share or a Batch object to use as a query string to the IEX API. Takes the endpoints specified and converts them to a URL.
+
+        Positional Arguments:
+            endpoints: The list of endpoints desired
+            options: Any and all options values to be specified
+
+        """
         if self._key == "Batch" :
             endpoints = ','.join(endpoints)
             symbols = ','.join(self.symbolList)
@@ -160,6 +209,9 @@ class IEXRetriever(object):
         return url
 
     def _fetch_default_options(self):
+        """
+        Conducts the IEX query when default options are specified. Returns IEXQueryError if problems arise.
+        """
         data_set = dict.fromkeys(self.symbolList, {})
         eps = list(self._ENDPOINTS.keys())
         query = self._prepare_query(eps)
@@ -176,6 +228,9 @@ class IEXRetriever(object):
         return response 
 
     def _fetch(self):
+        """
+        Conducts the IEX query when custom options are specified. This function msut conduct the query using individual endpoints, one at a time, as the IEX API has colliding parameters between the ranges for chart, dividends, and splits. We have contacted them about this issue. Will return IEXQueryError if problems arise.
+        """
         if self._default_options():
             return self._fetch_default_options()
         else:
