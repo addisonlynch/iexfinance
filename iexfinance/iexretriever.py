@@ -4,7 +4,6 @@ try:
     import simplejson as json
 except ImportError: 
     import json
-import pandas as pd
 import requests
 from functools import wraps
 
