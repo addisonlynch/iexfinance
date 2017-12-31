@@ -101,8 +101,8 @@ class IEXRetriever(object):
 
 
         self._ENDPOINTS = {
-                    "quote" : { "options" : [("displayPercent",self.displayPercent)]},
                     "chart" : {"options" : [("range", self.chartRange)]},
+                    "quote" : { "options" : [("displayPercent",self.displayPercent)]},
                     "book" : {"options" : None},
                     "open-close" : {"options" : None},
                     "previous" : {"options" : None},
@@ -266,6 +266,9 @@ class IEXRetriever(object):
                         data_set[symbol].update(oresponse)
                 except:
                     raise IEXSymbolError(symbol)
+                diff = set(self._ENDPOINTS) - set(data_set[symbol])
+                for item in diff:
+                    data_set[symbol].update({item: []})
                 if set(data_set[symbol]) != set(self._ENDPOINTS):
                     raise ValueError("Not all endpoints downloaded")
         return data_set
