@@ -57,7 +57,7 @@ class BaseTester(unittest.TestCase):
 
 	def test_symbol_list_too_long(self):
 		with self.assertRaises(ValueError):
-			x = ["tsla"] * 52
+			x = ["tsla"] * 102
 			iex(x)	
 
 	def test_wrong_option_values(self):
