@@ -1,11 +1,6 @@
-import sys
-from urllib.parse import urlencode
-try: 
-    import simplejson as json
-except ImportError: 
-    import json
-import requests
 from functools import wraps
+from urllib.parse import urlencode
+import requests
 
 
 class IEXSymbolError(Exception):
@@ -19,9 +14,7 @@ class IEXSymbolError(Exception):
         return "Symbol " + self.symbol + " not found."
 
 class IEXEndpointError(Exception):
-    """
-    This error is thrown when an invalid endpoint is specified in the custom endpoint lookup method
-    """
+    """This error is thrown when an invalid endpoint is specified in the custom endpoint lookup method"""
     def __init__(self, endpoint):
         self.endpoint = endpoint
 
@@ -44,7 +37,7 @@ class IEXQueryError(Exception):
     This error is thrown when an error occurs with the query to IEX, be it a network problem or an invalid query.
     """
     def __init__(self):
-        return "An error occurred while making the query." 
+        return "An error occurred while making the query."
 
 
 class IEXRetriever(object):
@@ -53,9 +46,8 @@ class IEXRetriever(object):
     """
     _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0//ref-data/symbols"
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
-    
     # Possible option values (first is default)
-    _CHART_RANGE_VALUES = ['1m', '5y', '2y', '1y', 'ytd', '6m', '3m',  '1d', 'date', 'dynamic']
+    _CHART_RANGE_VALUES = ['1m', '5y', '2y', '1y', 'ytd', '6m', '3m', '1d', 'date', 'dynamic']
     _DIVIDENDS_RANGE_VALUES = ['1m', '5y', '2y', '1y', 'ytd', '6m', '3m']
     _SPLITS_RANGE_VALUES = ['1m', '5y', '2y', '1y', 'ytd', '6m', '3m']
     _OUTPUT_FORMAT_VALUES = ['json', 'dataframe']
@@ -75,7 +67,7 @@ class IEXRetriever(object):
             last: Range to use for the "last" attribute of the news endpoint.
             outputFormat: Desired output format for batch requests. Currently only supports JSON
         """
-        self.symbolList = list(map(lambda x:x.upper(), symbolList))
+        self.symbolList = list(map(lambda x: x.upper(), symbolList))
         self.displayPercent = kwargs.pop('displayPercent', False)
         self.chartRange = kwargs.pop('chartRange', '1m')
         self.dividendsRange = kwargs.pop('dividendsRange', '1m')
@@ -98,33 +90,31 @@ class IEXRetriever(object):
         elif self.dividendsRange not in self._DIVIDENDS_RANGE_VALUES:
             raise ValueError("Invalid dividends range.")
 
-
         self._ENDPOINTS = {
-                    "chart" : {"options" : [("range", self.chartRange)]},
-                    "quote" : { "options" : [("displayPercent",self.displayPercent)]},
-                    "book" : {"options" : None},
-                    "open-close" : {"options" : None},
-                    "previous" : {"options" : None},
-                    "company" : {"options" : None},
-                    "stats" : {"options" : None},
-                    "peers" : {"options" : None},
-                    "relevant" : {"options" : None},
-                    "news" : {"options" : [("last", self.last)] },
-                    "financials" : {"options" : None},
-                    "earnings" : {"options" : None},
-                    "dividends" : {"options" : [("range", self.dividendsRange)]},
-                    "splits" : {"options" : [("range", self.splitsRange)]},
-                    "logo" : {"options" : None},
-                    "price" : {"options" : None},
-                    "delayed-quote" : {"options" : None},
-                    "effective-spread" : {"options" : None},
-                    "volume-by-venue" : {"options" : None}
-                 }
+            "chart" : {"options" : [("range", self.chartRange)]},
+            "quote" : {"options" : [("displayPercent", self.displayPercent)]},
+            "book" : {"options" : None},
+            "open-close" : {"options" : None},
+            "previous" : {"options" : None},
+            "company" : {"options" : None},
+            "stats" : {"options" : None},
+            "peers" : {"options" : None},
+            "relevant" : {"options" : None},
+            "news" : {"options" : [("last", self.last)]},
+            "financials" : {"options" : None},
+            "earnings" : {"options" : None},
+            "dividends" : {"options" : [("range", self.dividendsRange)]},
+            "splits" : {"options" : [("range", self.splitsRange)]},
+            "logo" : {"options" : None},
+            "price" : {"options" : None},
+            "delayed-quote" : {"options" : None},
+            "effective-spread" : {"options" : None},
+            "volume-by-venue" : {"options" : None}
+        }
 
     def _default_options(self):
      """ Returns true if all parameters are set to default values (as specified in IEX docs), false otherwise"""
      return self.displayPercent == False and self.dividendsRange == '1m' and self.splitsRange == '1m' and self.chartRange == '1m' and self.last == 10
-
     @staticmethod
     def _validate_response(response):
         """ Ensures response from IEX server is valid. 
@@ -181,10 +171,8 @@ class IEXRetriever(object):
             if outform == 'json':
                 return response
             elif outform == 'pandas':
-                data_pandas = pandas.DataFrame.from_dict(data,
-                                                         orient='index',
-                                                         dtype=float)
-                return data_pandas
+                raise ValueError("Pandas format not supported at this time.")
+                return response
             else:
                 raise ValueError('Format: {} is not supported'.format(
                     outform))
