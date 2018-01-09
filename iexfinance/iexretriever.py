@@ -198,12 +198,14 @@ class IEXRetriever(object):
             options: Any and all options values to be specified
 
         """
-        if self._key == "Batch" :
-            endpoints = ','.join(endpoints)
+        if "chart" in endpoints:
+            endpoints.remove("chart")
+            endpoints.insert(0, "chart")
+        endpoints = ','.join(endpoints)
+        if self._key == "Batch":
             symbols = ','.join(self.symbolList)
             url = ("{0}{1}?symbols={2}&types={3}&{4}".format(self._IEX_API_URL, self.IEX_ENDPOINT_NAME, symbols, endpoints, options))
-        elif self._key == "Share" :
-            endpoints = ','.join(endpoints)
+        elif self._key == "Share":
             url = ("{0}{1}?&types={2}&{3}".format(self._IEX_API_URL, self.IEX_ENDPOINT_NAME, endpoints, options))
         return url
 
