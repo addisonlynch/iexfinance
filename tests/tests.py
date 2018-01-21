@@ -1,14 +1,17 @@
 import sys
 import os
+from datetime import datetime
 
 import unittest
 import mock
 
 import simplejson as json
 
-from iexfinance import Share, Batch 
+import pandas as pd
+
+from iexfinance import Share, Batch, get_available_symbols, get_historical_data
 from iexfinance import IexFinance as iex
-from iexfinance.utils.symbols import get_available_symbols#, IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
+from iexfinance.utils import IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
 
 
 class mocker(object):
@@ -42,6 +45,7 @@ class mocker(object):
 		mock_method.return_value = cls.get_sample_batch_data()
 		inst = Batch(["lol"])
 		return inst
+
 
 class BaseTester(unittest.TestCase):
 
@@ -120,7 +124,6 @@ class ShareIntegrityTester(unittest.TestCase):
 		self.assertListEqual(mdatapoints, cdatapoints)
 
 
-
 class BatchIntegrityTester(unittest.TestCase):
 
 	def setUp(self):
@@ -131,7 +134,6 @@ class BatchIntegrityTester(unittest.TestCase):
 	#def test_symbols(self):
 		#print("ran test_symbols!")
 		#self.assertListEqual(list(self.mbatch.get_all().keys()).sort(), list(self.cbatch.get_all().keys()).sort())
-
 
 
 class Sharetester(unittest.TestCase):
@@ -205,13 +207,11 @@ class Sharetester(unittest.TestCase):
 		self.assertIsInstance(data, list, "Result expected list")
 
 
-
 class BatchTester(unittest.TestCase):
 
 	def setUp(self):
 		self.cbatch = Batch(["aapl", "tsla"])
 
-		
 	def test_invalid_symbol_or_symbols(self):
 		with self.assertRaises(IEXSymbolError):
 			iex(["TSLA", "AAAPLPL", "fwoeiwf"])
@@ -279,6 +279,126 @@ class BatchTester(unittest.TestCase):
 	def test_get_volume_by_venue_format(self):
 		data = self.cbatch.get_volume_by_venue()
 		self.assertIsInstance(data, dict, "Result expected dictionary")
+
+
+class HistoricalTester(unittest.TestCase):
+
+	def setUp(self):
+		self.good_start = datetime(2017, 2, 9)
+		self.good_end = datetime(2017, 5, 24)
+
+	def test_single_historical_json(self):
+
+		f = get_historical_data("AAPL", self.good_start, self.good_end)
+		self.assertIsInstance(f, dict, "Result expected dictionary")
+		self.assertEqual(len(f["AAPL"]), 73)
+
+		expected1 = f["AAPL"]["2017-02-09"]
+		self.assertEqual(expected1["close"], 132.42)
+		self.assertEqual(expected1["high"], 132.445)
+		
+		expected2 = f["AAPL"]["2017-05-24"]
+		self.assertEqual(expected2["close"], 153.34)
+		self.assertEqual(expected2["high"], 154.17)
+
+	def test_single_historical_pandas(self):
+
+		f = get_historical_data("AAPL", self.good_start, self.good_end, outputFormat="pandas")
+
+		self.assertIsInstance(f, pd.DataFrame, "Result expected DataFrame")
+		self.assertEqual(len(f), 73)
+
+		expected1 = f.ix["2017-02-09"]
+		self.assertEqual(expected1["close"], 132.42)
+		self.assertEqual(expected1["high"], 132.445)
+		
+		expected2 = f.ix["2017-05-24"]
+		self.assertEqual(expected2["close"], 153.34)
+		self.assertEqual(expected2["high"], 154.17)
+
+	def test_batch_historical_json(self):
+
+		f = get_historical_data(["AAPL", "TSLA"], self.good_start, self.good_end, outputFormat="json")
+
+		self.assertIsInstance(f, dict)
+		self.assertEqual(len(f), 2)
+		self.assertEqual(list(f), ["AAPL", "TSLA"])
+
+		a = f["AAPL"]
+		t = f["TSLA"]
+
+		self.assertEqual(len(a), 73)
+		self.assertEqual(len(t), 73)
+
+		expected1 = a["2017-02-09"]
+		self.assertEqual(expected1["close"], 132.42)
+		self.assertEqual(expected1["high"], 132.445)
+		
+		expected2 = a["2017-05-24"]
+		self.assertEqual(expected2["close"], 153.34)
+		self.assertEqual(expected2["high"], 154.17)
+
+		expected1 = t["2017-02-09"]
+		self.assertEqual(expected1["close"], 269.20)
+		self.assertEqual(expected1["high"], 271.18)
+		
+		expected2 = t["2017-05-24"]
+		self.assertEqual(expected2["close"], 310.22)
+		self.assertEqual(expected2["high"], 311.0)
+
+	def test_batch_historical_pandas(self):
+
+		f = get_historical_data(["AAPL", "TSLA"], self.good_start, self.good_end, outputFormat="pandas")
+
+		self.assertIsInstance(f, pd.Panel)
+		self.assertEqual(len(f), 2)
+		self.assertEqual(list(f), ["AAPL", "TSLA"])
+
+		a = f["AAPL"]
+		t = f["TSLA"]
+
+		self.assertEqual(len(a), 73)
+		self.assertEqual(len(t), 73)
+
+		expected1 = a.ix["2017-02-09"]
+		self.assertEqual(expected1["close"], 132.42)
+		self.assertEqual(expected1["high"], 132.445)
+		
+		expected2 = a.ix["2017-05-24"]
+		self.assertEqual(expected2["close"], 153.34)
+		self.assertEqual(expected2["high"], 154.17)
+
+		expected1 = t.ix["2017-02-09"]
+		self.assertEqual(expected1["close"], 269.20)
+		self.assertEqual(expected1["high"], 271.18)
+		
+		expected2 = t.ix["2017-05-24"]
+		self.assertEqual(expected2["close"], 310.22)
+		self.assertEqual(expected2["high"], 311.0)
+
+	def test_invalid_dates(self):
+		start = datetime(2010, 5, 9)
+		end = datetime(2017, 5, 9)
+		with self.assertRaises(ValueError):
+			f = get_historical_data("AAPL", start, end)
+
+	def test_invalid_dates_batch(self):
+		start = datetime(2010, 5, 9)
+		end = datetime(2017, 5, 9)
+		with self.assertRaises(ValueError):
+			f = get_historical_data(["AAPL","TSLA"], start, end)
+
+	def test_invalid_symbol_single(self):
+		start = datetime(2017, 2, 9)
+		end = datetime(2017, 5, 24)
+		with self.assertRaises(IEXQueryError):
+			f = get_historical_data("BADSYMBOL", start, end)
+
+	def test_invalid_symbol_batch(self):
+		start = datetime(2017, 2, 9)
+		end = datetime(2017, 5, 24)
+		with self.assertRaises(IEXQueryError):
+			f = get_historical_data(["BADSYMBOL", "TSLA"], start, end)
 
 
 class UtilsTester(unittest.TestCase):

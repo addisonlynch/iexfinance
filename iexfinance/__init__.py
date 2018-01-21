@@ -1,5 +1,7 @@
-from .iexbase import _IEXBase
+from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
+
+import pandas
 
 import datetime
 from dateutil.relativedelta import relativedelta
@@ -38,19 +40,43 @@ def IexFinance(symbol, **kwargs):
     return inst
 
 
+
+def get_available_symbols():
+    """
+    Utility function to obtain all available symbols.
+    """
+    _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0/ref-data/symbols"
+    response = _IEXBase._execute_iex_query(_ALL_SYMBOLS_URL)
+    if not response:
+        raise ValueError("Could not download all symbols")
+    else:
+        return [d["symbol"] for d in response]
+
+
+
 def get_historical_data(symbol, start, end, outputFormat='json'):
     return HistoricalReader(symbol, start, end, outputFormat=outputFormat).fetch()
 
 
 class HistoricalReader(_IEXBase):
+    """
+    A class to download historical data from the chart endpoint
 
+    Positional Arguments:
+        symbol: A symbol or list of symbols
+        start: A datetime object
+        end: A datetime object
+
+    Keyword Arguments:
+        outputFormat: Desired output format (json by default)
+    """
     def __init__(self, symbol, start, end, outputFormat='json'):
-        if not symbol:
-            raise TypeError("Please input a symbol or list of symbols")
-        if type(symbol) is list and len(symbol) > 1:
-            self.type = "multi"
+        if isinstance(symbol, list) and len(symbol) > 1:
+            self.type = "Batch"
+        elif isinstance(symbol, str):
+            self.type = "Share"
         else:
-            self.type = "single"
+            raise TypeError("Please input a symbol or list of symbols")
         self.symbols = symbol
         self.start = start
         self.end = end
@@ -58,25 +84,14 @@ class HistoricalReader(_IEXBase):
 
     @property
     def url(self):
-        return "https://api.iextrading.com/1.0/stock/market/batch"
+        return "stock/market/batch"
 
-    def _prepare_query(self, symbol, range):
-        if self.type == "multi":
-            symstring = ','.join(self.symbols)
-        else:
-            symstring = self.symbols
-        url = self.url + \
-            "?symbols={}&types=chart&range={}".format(symstring, range)
-        return url
+    @property
+    def key(self):
+        return self.type
 
-    def _fetch(self):
-        query = self._prepare_query(self.symbols, self.chart_range)
-        response = self._execute_iex_query(query)
-        return response
-
-    def fetch(self):
-        return self._fetch()
-
+    """ Calculates the chart range from start and end. Downloads larger datasets (5y and 2y) when necessary, but defaults to 1y for performance reasons
+    """
     @property
     def chart_range(self):
         delta = relativedelta(self.start, datetime.datetime.now())
@@ -89,6 +104,56 @@ class HistoricalReader(_IEXBase):
         else:
             raise ValueError(
                 "Invalid date specified. Must be within past 5 years.")
+
+    @property
+    def params(self):
+        if self.type is "Batch":
+            syms = ",".join(self.symbols)
+        else:
+            syms = self.symbols
+        params = {
+        "symbols" : syms,
+        "range" : self.chart_range
+        }
+        return params
+
+    def fetch(self):
+    #Overrides base class method, fetches chart endpoint
+        query = self._prepare_query(["chart"])
+        response = self._execute_iex_query(query)
+        if self.key is "Share":
+            syms = [self.symbols]
+        else:
+            syms = self.symbols
+        for sym in syms:
+            if sym not in list(response):
+                raise IEXQueryError("Query not completed as requested. Invalid symbol possible.")
+        return self._output_format(response)
+
+    def _output_format(self, out):
+        result = {}
+        if self.key is "Share":
+            syms = [self.symbols]
+        else:
+            syms = self.symbols
+        for symbol in syms:
+            d = out.pop(symbol)["chart"]
+            df = pandas.DataFrame(d)
+            df.set_index("date", inplace=True)
+            values = ["open", "high", "low", "close", "volume"]
+            df = df[values]
+            sstart = self.start.strftime('%Y-%m-%d')
+            send = self.end.strftime('%Y-%m-%d')
+            df= df.loc[sstart:send]
+            result.update({symbol:df})
+        if self.outputFormat is "pandas":
+            if len(result) > 1:
+                return pandas.Panel(result)
+            return result[self.symbols]
+        else:
+            for sym in list(result):
+                result[sym] = result[sym].to_dict('index') 
+            return result
 
 
 class Share(_IEXBase):
@@ -122,7 +187,7 @@ class Share(_IEXBase):
         """
         Refreshes market data with latest information.
         """
-        data = super(Share, self)._fetch()
+        data = self.fetch()
         self.data_set = data[self.symbol]
         return data[self.symbol]
     # universal selectors
@@ -314,7 +379,7 @@ class Batch(_IEXBase):
         self.data_set = self.refresh()
 
     def refresh(self):
-        data = super(Batch, self)._fetch()
+        data = self.fetch()
         diff = set(self.symbolList) - set(data)
         if diff:
             raise IEXSymbolError(diff[0])

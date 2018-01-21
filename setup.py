@@ -45,7 +45,7 @@ setup(
     test_suite='nose2.collector.collector',
 
     # Choose your license
-    license='MIT',
+    license='Apache',
 
     classifiers=[
         # How mature is this project? Common values are
@@ -62,7 +62,7 @@ setup(
         'Operating System :: OS Independent',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
@@ -85,7 +85,7 @@ setup(
 
     # List run-time dependencies here. These will be installed by pip when your
     # project is installed.
-    install_requires=['requests', 'simplejson', 'nose2'],
+    install_requires=['requests', 'simplejson', 'nose2', 'pandas'],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here. If using Python 2.6 or less, then these

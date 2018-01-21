@@ -8,14 +8,14 @@ From the [IEX API Docs](https://iextrading.com/developer/docs/#stocks):
 
 > Use the /ref-data/symbols endpoint to find the symbols that we support.
 
-In ```iexfinance.utils``` we provide the method ```get_available_symbols``` which accesses this endpoint. This method returns a list of dictionary objects for each symbol, indexed by the key "symbol".
+In ```iexfinance``` we provide the method ```get_available_symbols``` which accesses this endpoint. This method returns a list of dictionary objects for each symbol, indexed by the key "symbol".
 
 
 #### Example
 
 
 ```python
-from iexfinance.utils import get_available_symbols
+from iexfinance import get_available_symbols
 
 data = get_available_symbols()
 

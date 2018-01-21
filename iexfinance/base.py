@@ -34,7 +34,7 @@ class _IEXBase(object):
             dividendsRange: Range to use for the dividends endpoint. Must be contained in _DIVIDENDS_RANGE_VALUES
             splitsRange: Range to use for the splits endpoint. Must be contained in _SPLITS_RANGE_VALUES
             last: Range to use for the "last" attribute of the news endpoint.
-            outputFormat: Desiredr output format for batch requests. Currently only supports JSON
+            outputFormat: Desired output format for batch requests. Currently only supports JSON
         """
         self.symbolList = list(map(lambda x: x.upper(), symbolList))
         self.displayPercent = kwargs.pop('displayPercent', False)
@@ -115,7 +115,7 @@ class _IEXBase(object):
         return json_response
 
     """
-    Given a URL, execute HTTP request from IEX server using helper function _api_call()
+    Given a URL, execute HTTP request from IEX server using helper method _api_call()
 
     Positional Arguments:
         url: A properly-formatted url
@@ -138,10 +138,10 @@ class _IEXBase(object):
 
     @classmethod
     def _output_format(cls, func):
-        """ A decorator function which formats the output based on the output_format attribute which is selected at instantiation of the class.
+        """ A decorator method which formats the output based on the output_format attribute which is selected at instantiation of the class.
 
         Positional Arguments:
-            func: A function to be wrapped
+            func: A method to be wrapped
 
         """
         @wraps(func)
@@ -176,7 +176,7 @@ class _IEXBase(object):
                     outform))
         return _format_wrapper
 
-    def _prepare_query(self, endpoints, options=""):
+    def _prepare_query(self, endpoints):
         """ Creates a url for a Share or a Batch object to use as a query string to the IEX API. Takes the endpoints specified and converts them to a URL.
 
         Positional Arguments:
@@ -212,9 +212,9 @@ class _IEXBase(object):
                 raise ValueError("Not all endpoints downloaded")
         return response
 
-    def _fetch(self):
+    def fetch(self):
         """
-        Conducts the IEX query when custom options are specified. This function msut conduct the query using individual endpoints, one at a time, as the IEX API has colliding parameters between the ranges for chart, dividends, and splits. We have contacted them about this issue. Will return IEXQueryError if problems arise.
+        Conducts the IEX query when custom options are specified. This method must conduct the query using individual endpoints, one at a time, as the IEX API has colliding parameters between the ranges for chart, dividends, and splits. We have contacted them about this issue. Will return IEXQueryError if problems arise.
         """
         if self._default_options():
             return self._fetch_default_options()
