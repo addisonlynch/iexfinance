@@ -8,8 +8,7 @@ import simplejson as json
 
 from iexfinance import Share, Batch 
 from iexfinance import IexFinance as iex
-from iexfinance.iexretriever import IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
-from iexfinance.utils import get_available_symbols
+from iexfinance.utils.symbols import get_available_symbols#, IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
 
 
 class mocker(object):
