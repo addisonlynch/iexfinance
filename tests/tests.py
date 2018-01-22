@@ -11,8 +11,8 @@ import pandas as pd
 
 from iexfinance import Share, Batch, get_available_symbols, get_historical_data
 from iexfinance import IexFinance as iex
-from iexfinance.utils import IEXSymbolError, IEXDatapointError, IEXEndpointError, IEXQueryError
-
+from iexfinance.utils.exceptions import (IEXSymbolError, IEXDatapointError,
+IEXEndpointError, IEXQueryError)
 
 class mocker(object):
 
@@ -21,7 +21,8 @@ class mocker(object):
 		with open("tests/sample_data_share.json") as json_data:
 			x = json.load(json_data)
 			if not x:
-				raise ValueError("sample_data_share.json is not properly formatted or is empty")
+				raise ValueError("sample_data_share.json is not properly "
+								 "formatted or is empty")
 			return x
 
 	@classmethod
@@ -29,7 +30,8 @@ class mocker(object):
 		with open("tests/sample_data_batch.json") as json_data:
 			x = json.load(json_data)
 			if not x:
-				raise ValueError("sample_data_batch.json is not properly formatted or is empty")
+				raise ValueError("sample_data_batch.json is not properly "
+								 "formatted or is empty")
 			return x
 
 	@classmethod
@@ -71,13 +73,7 @@ class BaseTester(unittest.TestCase):
 			iex("aapl", displayPercent=4)
 
 		with self.assertRaises(ValueError):
-			iex("aapl", dividendsRange='6y')
-
-		with self.assertRaises(ValueError):
-			iex("aapl", splitsRange='9a')
-
-		with self.assertRaises(ValueError):
-			iex("aapl", chartRange='1yy')
+			iex("aapl", range='1yy')
 
 	# def test_invalid_option_values(self):
 	# 	with self.assertRaises(TypeError):
@@ -90,38 +86,36 @@ class BaseTester(unittest.TestCase):
 	# 		iex("aapl", )
 
 
-class ShareIntegrityTester(unittest.TestCase):
+# class ShareIntegrityTester(unittest.TestCase):
 
-	def setUp(self):
-		self.mshare = mocker.get_mock_share()
-		self.cshare = Share(self.mshare.get_symbol())
+# 	def setUp(self):
+# 		self.mshare = mocker.get_mock_share()
+# 		self.cshare = Share(self.mshare.get_symbol())
 
-	def test_endpoints(self):
-		mendpoints = list(self.mshare.get_all().keys())
-		cendpoints = list(self.cshare.get_all().keys())
-		mendpoints.sort()
-		cendpoints.sort()
-		self.assertListEqual(mendpoints, cendpoints)
+# 	def test_endpoints(self):
+# 		mendpoints = list(self.mshare.get_all().keys())
+# 		cendpoints = list(self.cshare.get_all().keys())
+# 		mendpoints.sort()
+# 		cendpoints.sort()
+# 		self.assertListEqual(mendpoints, cendpoints)
 
 
 
-	def test_datapoints(self):
-		table = self.mshare.get_all()
-		for endpoint in table.keys():
-			mmod = self.mshare.get_select_endpoints(endpoint)
-			cmod = self.cshare.get_select_endpoints(endpoint)
-			self.assertEqual(type(mmod), type(cmod))
-			if type(mmod) is dict:
-				print("testing endpoint: " + endpoint +"...", end=" ")
-				mdatapoints = list(mmod.keys())
-				cdatapoints = list(cmod.keys())
-				mdatapoints.sort()
-				cdatapoints.sort()
-				self.assertListEqual(mdatapoints, cdatapoints)
-				print("...PASSED")
-			else:
-				print("Skipping endpoint " + endpoint)
-		self.assertListEqual(mdatapoints, cdatapoints)
+# 	def test_datapoints(self):
+# 		table = self.mshare.get_all()
+# 		for endpoint in table.keys():
+# 			mmod = self.mshare.get_select_endpoints(endpoint)
+# 			cmod = self.cshare.get_select_endpoints(endpoint)
+# 			self.assertEqual(type(mmod), type(cmod))
+# 			if type(mmod) is dict:
+# 				mdatapoints = list(mmod.keys())
+# 				cdatapoints = list(cmod.keys())
+# 				mdatapoints.sort()
+# 				cdatapoints.sort()
+# 				self.assertListEqual(mdatapoints, cdatapoints)
+# 			else:
+# 				print("Skipping endpoint " + endpoint)
+# 		self.assertListEqual(mdatapoints, cdatapoints)
 
 
 class BatchIntegrityTester(unittest.TestCase):
@@ -133,7 +127,8 @@ class BatchIntegrityTester(unittest.TestCase):
 		
 	#def test_symbols(self):
 		#print("ran test_symbols!")
-		#self.assertListEqual(list(self.mbatch.get_all().keys()).sort(), list(self.cbatch.get_all().keys()).sort())
+		#self.assertListEqual(list(self.mbatch.get_all().keys()).sort(), 
+		#list(self.cbatch.get_all().keys()).sort())
 
 
 class Sharetester(unittest.TestCase):
@@ -303,26 +298,28 @@ class HistoricalTester(unittest.TestCase):
 
 	def test_single_historical_pandas(self):
 
-		f = get_historical_data("AAPL", self.good_start, self.good_end, outputFormat="pandas")
+		f = get_historical_data("AAPL", self.good_start, self.good_end, 
+								outputFormat="pandas")
 
 		self.assertIsInstance(f, pd.DataFrame, "Result expected DataFrame")
 		self.assertEqual(len(f), 73)
 
-		expected1 = f.ix["2017-02-09"]
+		expected1 = f.loc["2017-02-09"]
 		self.assertEqual(expected1["close"], 132.42)
 		self.assertEqual(expected1["high"], 132.445)
 		
-		expected2 = f.ix["2017-05-24"]
+		expected2 = f.loc["2017-05-24"]
 		self.assertEqual(expected2["close"], 153.34)
 		self.assertEqual(expected2["high"], 154.17)
 
 	def test_batch_historical_json(self):
 
-		f = get_historical_data(["AAPL", "TSLA"], self.good_start, self.good_end, outputFormat="json")
+		f = get_historical_data(["AAPL", "TSLA"], self.good_start, 
+								self.good_end, outputFormat="json")
 
 		self.assertIsInstance(f, dict)
 		self.assertEqual(len(f), 2)
-		self.assertEqual(list(f), ["AAPL", "TSLA"])
+		self.assertEqual(sorted(list(f)), ["AAPL", "TSLA"])
 
 		a = f["AAPL"]
 		t = f["TSLA"]
@@ -348,11 +345,12 @@ class HistoricalTester(unittest.TestCase):
 
 	def test_batch_historical_pandas(self):
 
-		f = get_historical_data(["AAPL", "TSLA"], self.good_start, self.good_end, outputFormat="pandas")
+		f = get_historical_data(["AAPL", "TSLA"], self.good_start, 
+								self.good_end, outputFormat="pandas")
 
-		self.assertIsInstance(f, pd.Panel)
+		self.assertIsInstance(f, dict)
 		self.assertEqual(len(f), 2)
-		self.assertEqual(list(f), ["AAPL", "TSLA"])
+		self.assertEqual(sorted(list(f)), ["AAPL", "TSLA"])
 
 		a = f["AAPL"]
 		t = f["TSLA"]
@@ -360,19 +358,19 @@ class HistoricalTester(unittest.TestCase):
 		self.assertEqual(len(a), 73)
 		self.assertEqual(len(t), 73)
 
-		expected1 = a.ix["2017-02-09"]
+		expected1 = a.loc["2017-02-09"]
 		self.assertEqual(expected1["close"], 132.42)
 		self.assertEqual(expected1["high"], 132.445)
 		
-		expected2 = a.ix["2017-05-24"]
+		expected2 = a.loc["2017-05-24"]
 		self.assertEqual(expected2["close"], 153.34)
 		self.assertEqual(expected2["high"], 154.17)
 
-		expected1 = t.ix["2017-02-09"]
+		expected1 = t.loc["2017-02-09"]
 		self.assertEqual(expected1["close"], 269.20)
 		self.assertEqual(expected1["high"], 271.18)
 		
-		expected2 = t.ix["2017-05-24"]
+		expected2 = t.loc["2017-05-24"]
 		self.assertEqual(expected2["close"], 310.22)
 		self.assertEqual(expected2["high"], 311.0)
 
@@ -397,7 +395,7 @@ class HistoricalTester(unittest.TestCase):
 	def test_invalid_symbol_batch(self):
 		start = datetime(2017, 2, 9)
 		end = datetime(2017, 5, 24)
-		with self.assertRaises(IEXQueryError):
+		with self.assertRaises(IEXSymbolError):
 			f = get_historical_data(["BADSYMBOL", "TSLA"], start, end)
 
 

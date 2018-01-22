@@ -1,3 +1,5 @@
+# Usage
+
 *Note: for a thorough, step-by-step walkthrough, see [tutorial](tutorial.md).*
 
 The simplest way to obtain data using the iexfinance wrapper is by calling the `IexFinance` function with a symbol (*str*) or list of symbols (*list*). `IexFinance` will return a [```Share```](share.md) object instance if given a single symbol and a [```Batch```](batch.md) object instance if given a list. 

@@ -1,3 +1,5 @@
+# Install
+
 ## Dependencies
 
 iexfinance relies on:

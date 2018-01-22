@@ -3,7 +3,7 @@
 `Batch` acts the same as `Share`, except it allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
 
 ```python
-Batch(symbolList=[], output_format='json', displayPercent=False, chartRange='1m', last='10', dividendsRange='1m', splitsRange='1m'):
+Batch(symbolList=[], displayPercent=False, chartRange='1m', last='10', dividendsRange='1m', splitsRange='1m'):
 ```
 
 

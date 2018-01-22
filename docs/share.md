@@ -2,7 +2,7 @@
 
 
 ```python
-Share(symbol, output_format='json', displayPercent=False, chartRange='1m', last='10', dividendsRange='1m', splitsRange='1m'):
+Share(symbol, displayPercent=False, chartRange='1m', last='10', dividendsRange='1m', splitsRange='1m'):
 ```
 
 

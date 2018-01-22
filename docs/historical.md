@@ -1,9 +1,25 @@
 # Historical Date
 
 
+Historical time series data is available through the ```get_historical_data``` method, which sources the [chart](https://iextrading.com/developer/docs/#chart) endpoint.
+
+```python
+get_historical_data(symbol, start, end, outputFormat='json')
+```
+
+Data can be retrieved from up to 5 years before the current date.
+
+## Usage
 
 
+```python
+from iexfinance import get_historical_data
+from datetime import datetime
 
+start = datetime(2017, 2, 9)
+end = datetime(2017, 5, 24)
+
+```
 
 ## Plotting
 
