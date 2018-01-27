@@ -1,5 +1,9 @@
 from .stock import Share, Batch, HistoricalReader
 from .base import _IEXBase
+from .market import TOPS, Last, DEEP, Book
+from .stats import (IntradayReader, RecentReader, RecordsReader,
+                    DailySummaryReader, MonthlySummaryReader)
+
 __author__ = 'Addison Lynch'
 __version__ = '0.3.0'
 __all__ = ['Share', 'Batch']
@@ -11,7 +15,8 @@ __all__ = ['Share', 'Batch']
 # and conditions of use
 
 
-def IexFinance(symbol, **kwargs):
+def IexFinance(symbol=None, displayPercent=False, _range="1m",
+               last=10, retry_count=3, pause=0.001, session=None):
     """
     Top level function to create Share or Batch instance depending on number
     of symbols given
@@ -26,16 +31,19 @@ def IexFinance(symbol, **kwargs):
         if not symbol:
             raise ValueError("Please input a symbol or list of symbols")
         else:
-            inst = Share(symbol, **kwargs)
+            inst = Share(symbol, displayPercent, _range, last, retry_count,
+                         pause, session)
     elif type(symbol) is list:
         if not symbol:
             raise ValueError("Please input a symbol or list of symbols")
         if len(symbol) == 1:
-            inst = Share(symbol, **kwargs)
+            inst = Share(symbol[0], displayPercent, _range, last, retry_count,
+                         pause, session)
         if len(symbol) > 100:
             raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
-            inst = Batch(symbol, **kwargs)
+            inst = Batch(symbol, displayPercent, _range, last, retry_count,
+                         pause, session)
         return inst
     else:
         raise TypeError("Please input a symbol or list of symbols")
@@ -55,10 +63,88 @@ def get_available_symbols():
         return [d["symbol"] for d in response]
 
 
-def get_historical_data(symbol, start, end, outputFormat='json'):
+def get_historical_data(symbolList, start, end, outputFormat='json',
+                        retry_count=3, pause=0.001, session=None):
     """
     Top-level function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
     """
-    return HistoricalReader(symbol, start,
-                            end, outputFormat=outputFormat).fetch()
+    return HistoricalReader(symbolList, start,
+                            end, outputFormat, retry_count, pause,
+                            session).fetch()
+
+
+def get_TOPS(symbolList=None, outputFormat='json', retry_count=3, pause=0.001,
+             session=None):
+    """
+    Top-level function to obtain TOPS data for a symbol or list of symbols
+    """
+    return TOPS(symbolList, outputFormat, retry_count, pause, session).fetch()
+
+
+def get_Last(symbolList=None, outputFormat='json', retry_count=3, pause=0.001,
+             session=None):
+    """
+    Top-level function to obtain Last data for a symbol or list of symbols
+    """
+    return Last(symbolList, outputFormat, retry_count, pause, session).fetch()
+
+
+def get_DEEP(symbolList=None, outputFormat='json', retry_count=3, pause=0.001,
+             session=None):
+    """
+    Top-level function to obtain TOPS data for a symbol or list of symbols
+    """
+    return DEEP(symbolList, outputFormat, retry_count, pause, session).fetch()
+
+
+def get_Book(symbolList=None, outputFormat='json', retry_count=3, pause=0.001,
+             session=None):
+    """
+    Returns a list of all equity symbols available for trading on IEX. Accepts
+    no additional parameters.
+
+    Reference: https://www.iextrading.com/developer/docs/#symbols
+
+    :return: DataFrame
+    """
+    return Book(symbolList, outputFormat, retry_count, pause, session).fetch()
+
+
+def get_stats_intraday(outputFormat='json', retry_count=3, pause=0.001,
+                       session=None):
+
+    return IntradayReader(outputFormat=outputFormat, retry_count=retry_count,
+                          pause=pause, session=session).fetch()
+
+
+def get_stats_recent(outputFormat='json', retry_count=3, pause=0.001,
+                     session=None):
+
+    return RecentReader(outputFormat=outputFormat, retry_count=retry_count,
+                        pause=pause, session=session).fetch()
+
+
+def get_stats_records(outputFormat='json', retry_count=3, pause=0.001,
+                      session=None):
+
+    return RecordsReader(outputFormat=outputFormat, retry_count=retry_count,
+                         pause=pause, session=session).fetch()
+
+
+def get_stats_daily(start=None, end=None, outputFormat='json', last=None,
+                    retry_count=3, pause=0.001, session=None):
+
+    return DailySummaryReader(start=start, end=end, last=last,
+                              outputFormat=outputFormat,
+                              retry_count=retry_count, pause=pause,
+                              session=session).fetch()
+
+
+def get_stats_monthly(start=None, end=None, outputFormat='json', retry_count=3,
+                      pause=0.001, session=None):
+
+    return MonthlySummaryReader(start=start, end=end,
+                                outputFormat=outputFormat,
+                                retry_count=retry_count, pause=pause,
+                                session=session).fetch()

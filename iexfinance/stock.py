@@ -15,7 +15,10 @@ from dateutil.relativedelta import relativedelta
 
 
 class StockReader(_IEXBase):
-
+    """
+    Base class for obtaining data from the Stock endpoints of IEX. Subclass of
+    _IEXBase, subclassed by Share, Batch, and HistoricalReader
+    """
     # Possible option values (first is default)
     _RANGE_VALUES = ['1m', '5y', '2y', '1y', 'ytd', '6m', '3m', '1d']
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
@@ -25,7 +28,8 @@ class StockReader(_IEXBase):
                   "volume-by-venue"]
     _ALL_ENDPOINTS_STR = ",".join(_ENDPOINTS)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, symbolList=None, displayPercent=False, _range="1m",
+                 last=10, retry_count=3, pause=0.001, session=None):
         """ Initialize the class
 
         Positional Arguments:
@@ -33,19 +37,16 @@ class StockReader(_IEXBase):
 
         Keyword Arguments:
             displayPercent: boolean
-            chartRange: The range to use for the chart endpoint. Must be
-            contained in _CHART_RANGE_VALUES
-            dividendsRange: Range to use for the dividends endpoint. Must be
-            contained in _DIVIDENDS_RANGE_VALUES
-            splitsRange: Range to use for the splits endpoint. Must be
-            contained in _SPLITS_RANGE_VALUES
+            range: The range to use for the chart endpoint. Must be
+            contained in _RANGE_VALUES
             last: Range to use for the "last" attribute of the news endpoint.
         """
-        self.symbolList = list(map(lambda x: x.upper(), args[0]))
-        super(StockReader, self).__init__(*args, **kwargs)
-        self.displayPercent = kwargs.pop('displayPercent', False)
-        self.range = kwargs.pop('range', '1m')
-        self.last = kwargs.pop('last', 10)
+        self.symbolList = list(map(lambda x: x.upper(), symbolList))
+        super(StockReader, self).__init__(self.symbolList, retry_count, pause,
+                                          session)
+        self.displayPercent = displayPercent
+        self.range = _range
+        self.last = last
 
         # Parameter checking
         if not isinstance(self.displayPercent, bool):
@@ -58,6 +59,7 @@ class StockReader(_IEXBase):
 
     @property
     def key(self):
+        # Must be implemented by subclass
         raise NotImplementedError
 
     @property
@@ -136,6 +138,9 @@ class StockReader(_IEXBase):
         return result
 
     def refresh(self):
+        """
+        Downloads latest data from all Stock endpoints
+        """
         try:
             self.data_set = self.fetch()
             if self.key == "Share":
@@ -147,7 +152,7 @@ class StockReader(_IEXBase):
             raise IEXQueryError()
 
 
-class HistoricalReader(StockReader):
+class HistoricalReader(_IEXBase):
     """
     A class to download historical data from the chart endpoint
 
@@ -160,20 +165,22 @@ class HistoricalReader(StockReader):
         outputFormat: Desired output format (json by default)
     """
 
-    def __init__(self, symbol, start, end, **kwargs):
-        if isinstance(symbol, list) and len(symbol) > 1:
+    def __init__(self, symbolList, start, end, outputFormat='json',
+                 retry_count=3, pause=0.001, session=None):
+        if isinstance(symbolList, list) and len(symbolList) > 1:
             self.type = "Batch"
-            self.symlist = symbol
-        elif isinstance(symbol, str):
+            self.symlist = symbolList
+        elif isinstance(symbolList, str):
             self.type = "Share"
-            self.symlist = [symbol]
+            self.symlist = [symbolList]
         else:
             raise TypeError("Please input a symbol or list of symbols")
-        self.symbols = symbol
+        self.symbols = symbolList
         self.start = start
         self.end = end
-        self.outputFormat = kwargs.pop("outputFormat", "json")
-        super(HistoricalReader, self).__init__(self.symlist, **kwargs)
+        self.outputFormat = outputFormat
+        super(HistoricalReader, self).__init__(self.symlist, retry_count,
+                                               pause, session)
 
     @property
     def url(self):
@@ -183,12 +190,12 @@ class HistoricalReader(StockReader):
     def key(self):
         return self.type
 
-    """ Calculates the chart range from start and end. Downloads larger
-    datasets (5y and 2y) when necessary, but defaults to 1y for performance
-    reasons
-    """
     @property
     def chart_range(self):
+        """ Calculates the chart range from start and end. Downloads larger
+        datasets (5y and 2y) when necessary, but defaults to 1y for performance
+        reasons
+        """
         delta = relativedelta(self.start, datetime.datetime.now())
         if 2 <= (delta.years * -1) <= 5:
             return "5y"
@@ -252,7 +259,8 @@ class Share(StockReader):
     the API queries
     """
 
-    def __init__(self, symbol, **kwargs):
+    def __init__(self, symbol, displayPercent=False, _range="1m",
+                 last=10, retry_count=3, pause=0.001, session=None):
         """
         Initializes the class.
 
@@ -264,7 +272,8 @@ class Share(StockReader):
         """
         self.symbol = symbol.upper()
         self.symbolList = [self.symbol]
-        super(Share, self).__init__(self.symbolList, **kwargs)
+        super(Share, self).__init__(self.symbolList, displayPercent, _range,
+                                    last, retry_count, pause, session)
         self.refresh()
 
     @property
@@ -441,7 +450,8 @@ class Batch(StockReader):
     the API queries.
     """
 
-    def __init__(self, symbolList, **kwargs):
+    def __init__(self, symbolList, displayPercent=False, _range="1m",
+                 last=10, retry_count=3, pause=0.001, session=None):
         """
         Initializes the class.
 
@@ -451,7 +461,8 @@ class Batch(StockReader):
             options: Again a pass through to the _IEXBase class, which will
             be supered here. Options checked in the parent class.
         """
-        super(Batch, self).__init__(symbolList, **kwargs)
+        super(Batch, self).__init__(symbolList, displayPercent, _range, last,
+                                    retry_count, pause, session)
         self.refresh()
 
     def refresh(self):

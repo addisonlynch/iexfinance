@@ -3,12 +3,14 @@ pages:
 - Home: index.md
 - Installation: install.md
 - Usage: usage.md
-- Share: share.md
-- Batch: batch.md
+- Stocks: stocks.md
 - Historical Data: historical.md
-- Utilities : utilities.md
+- Reference Data : ref.md
+- IEX Market Data: market.md
+- IEX Stats: stats.md
+- Caching Queries: caching.md
 - Testing: testing.md
-- Change Log: changes.md
+- What's New: whatsnew.md
 - About: about.md
 - Tutorial: tutorial.md
 theme: readthedocs

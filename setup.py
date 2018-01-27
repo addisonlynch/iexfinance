@@ -42,7 +42,7 @@ setup(
     # Author details
     author='Addison Lynch',
     author_email='ahljunk@gmail.com',
-    test_suite='nose2.collector.collector',
+    test_suite='pytest',
 
     # Choose your license
     license='Apache',
@@ -85,8 +85,9 @@ setup(
 
     # List run-time dependencies here. These will be installed by pip when your
     # project is installed.
-    install_requires=['requests', 'simplejson', 'nose2', 'pandas'],
-
+    install_requires=['requests', 'pytest', 'pandas'],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest', 'mock'],
     # If there are data files included in your packages that need to be
     # installed, specify them here. If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.

@@ -5,13 +5,13 @@
 The simplest way to obtain data using the iexfinance wrapper is by calling the `IexFinance` function with a symbol (*str*) or list of symbols (*list*). `IexFinance` will return a [```Share```](share.md) object instance if given a single symbol and a [```Batch```](batch.md) object instance if given a list. 
 
 ```python
-from iexfinance import IexFinance as iex
-aapl = iex("aapl")
+>>> from iexfinance import IexFinance as iex
+>>> aapl = iex("aapl")
 >>> aapl.get_price()
 #171.32
 ```
 
-IEX provides a list of symbols that are available for access, and as such, we provide a utility function ```utils.get_available_symbols``` to obtain this list (see [Utilities](https://addisonlynch/github.io/iexfinance/utilities)). Invalid symbols will be met with a ```IEXSymbolError```, and duplicate symbols will be kept intact without alteration.
+IEX provides a list of symbols that are available for access, and as such, we provide a function ```get_available_symbols``` to obtain this list. Invalid symbols will be met with a ```IEXSymbolError```, and duplicate symbols will be kept intact without alteration.
 
 ### Endpoints
 
