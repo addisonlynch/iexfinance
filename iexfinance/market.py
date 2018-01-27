@@ -17,6 +17,15 @@ class Market(_IEXBase):
     """
     def __init__(self, symbolList=None, outputFormat='json', retry_count=3,
                  pause=0.001, session=None):
+        """ Initializes the class
+
+        Keyword Arguments:
+            symbolList: A symbol or list of symbols
+            outputFormat: Desired output format (json or pandas)
+            retry_count: see base class
+            pause: see base class
+            session: see base class
+        """
         if symbolList is None:
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
@@ -57,10 +66,16 @@ class Market(_IEXBase):
 
     @property
     def acc_pandas(self):
+        """Property to determine if given endpoint can be formatted as a
+        dataframe
+        """
         return True
 
     @property
     def symbol_required(self):
+        """Property to determine if given endpoint requires a symbol list as
+        a parameter
+        """
         return False
 
 

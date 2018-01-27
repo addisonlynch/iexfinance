@@ -17,11 +17,17 @@ Highlights:
 
 ### New Features
 
+- Added support for [IEX Market Data](https://iextrading.com/developer/docs/#iex-market-data)
+- Added support for [IEX Stats](https://iextrading.com/developer/docs/#iex-stats)
+- Added support for Historical data through the Stocks [chart](https://iextrading.com/developer/docs/#chart) endpoint
+- Added [Pandas](https://pandas.pydata.org) as an output format for the [Market](market.md) and [Stats](stats.md) endpoints as well as for [Historical Data](historical.md).
 
 
 ### Improvements
 
-- PEP8 formatting [GH9](https://github.com/addisonlynch/iexfinance/issues/9)
+- PEP8 formatting [GH9](https://github.com/addisonlynch/iexfinance/issues/9), managed by [flake8](https://flake8.pycqa.org/en/latest)
+- Migrated to [pytest](https://docs.pytest.org/en/latest/#documentation) for testing
+
 
 ### Bug Fixes
 

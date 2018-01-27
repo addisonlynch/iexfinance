@@ -2,7 +2,7 @@ import requests
 
 from iexfinance.utils import _init_session
 from iexfinance.utils.exceptions import IEXQueryError
-
+import time
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
 # API terms of service and manual
@@ -29,6 +29,8 @@ class _IEXBase(object):
             retry_count: Desired number of retries if a request fails
             pause: Pause time in between retry attempts
         """
+        self.retry_count = retry_count
+        self.pause = pause
         self.session = _init_session(session)
 
     @property
@@ -59,29 +61,22 @@ class _IEXBase(object):
 
     def _execute_iex_query(self, url):
         """
-        Given a URL, execute HTTP request from IEX server. Raises
-        various exceptions if problems arise
+        Given a URL, execute HTTP request from IEX server. If request is
+        unsuccessful, attempt is made self.retry_count times with pause of
+        self.pause in between.
 
         Positional Arguments:
             url: A properly-formatted url
 
         """
-        try:
-            r = self.session.get(url=url)
-            r.raise_for_status()
-        except requests.exceptions.Timeout:
-            # setup for retry loop
-            pass
-        except requests.exceptions.TooManyRedirects:
-            # tell user bad url
-            pass
-        except requests.exceptions.ConnectionError:
-            raise IEXQueryError()
-        except requests.exceptions.RequestException:
-            raise IEXQueryError()
-        except requests.exceptions.HTTPError:
-            raise IEXQueryError()
-        return self._validate_response(r)
+        pause = self.pause
+        for i in range(self.retry_count+1):
+
+            response = self.session.get(url=url)
+            if response.status_code == requests.codes.ok:
+                return self._validate_response(response)
+            time.sleep(pause)
+        raise IEXQueryError()
 
     def _prepare_query(self):
         """

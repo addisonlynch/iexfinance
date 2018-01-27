@@ -25,6 +25,13 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
+def parse_requirements(filename):
+
+    with open(filename) as f:
+        required = f.read().splitlines()
+        return required
+
+
 # Get the long description from the relevant file
 with codecs.open('README.rst', encoding='utf-8') as f:
     long_description = f.read()
@@ -85,9 +92,9 @@ setup(
 
     # List run-time dependencies here. These will be installed by pip when your
     # project is installed.
-    install_requires=['requests', 'pytest', 'pandas'],
+    install_requires=parse_requirements("requirements.txt"),
     setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'mock'],
+    tests_require=parse_requirements("requirements-test.txt"),
     # If there are data files included in your packages that need to be
     # installed, specify them here. If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
