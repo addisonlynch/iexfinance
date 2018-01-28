@@ -31,7 +31,7 @@ class Stats(_IEXBase):
             try:
                 df = pd.DataFrame(response)
                 return df
-            except ValueError as e:
+            except ValueError:
                 raise IEXQueryError()
         elif self.acc_pandas is False:
             raise ValueError("Pandas not accepted for this function.")
