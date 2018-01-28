@@ -11,23 +11,41 @@ import time
 
 
 class _IEXBase(object):
-    """
+    """ IEX Base Class
     Base class for retrieving equities information from the IEX Finance API.
     Inherited by Stock and Market Readers, and conducts query operations
     including preparing and executing queries from the API.
+
+    Attributes
+    ----------
+    retry_count: int
+        Desired number of retries if a request fails
+    pause: float
+        Pause time between retry attempts
+    session: requests.session
+        A cached requests-cache session
+
+    Methods
+    -------
+    fetch()
+        Retrieve data from IEX API
     """
     # Base URL
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
 
-    def __init__(self, symbolList=None, retry_count=3, pause=0.001,
+    def __init__(self, retry_count=3, pause=0.001,
                  session=None):
         """ Initialize the class
 
-        Keyword Arguments:
-            symbolList: A symbol or list of symbols
-            session: A cached requests session
-            retry_count: Desired number of retries if a request fails
-            pause: Pause time in between retry attempts
+        Parameters
+        ----------
+        retry_count: int
+            Desired number of retries if a request fails
+        pause: float
+            Pause time between retry attempts
+        session: requests.session
+            A cached requests-cache session
+
         """
         self.retry_count = retry_count
         self.pause = pause
@@ -46,8 +64,22 @@ class _IEXBase(object):
     def _validate_response(response):
         """ Ensures response from IEX server is valid.
 
-        Positional Arguments:
-            response: A request object
+        Parameters
+        ----------
+        response: requests.response
+            A requests.response object
+
+        Returns
+        -------
+        response: JSON
+            A json-formatted response
+
+        Raises
+        ------
+        ValueError
+            If a single Share symbol is invalid
+        IEXQueryError
+            If the JSON response is empty or throws an error
 
         """
         if response.text == "Unknown symbol":
@@ -60,14 +92,25 @@ class _IEXBase(object):
         return json_response
 
     def _execute_iex_query(self, url):
-        """
+        """ Executes HTTP Request
         Given a URL, execute HTTP request from IEX server. If request is
         unsuccessful, attempt is made self.retry_count times with pause of
         self.pause in between.
 
-        Positional Arguments:
-            url: A properly-formatted url
+        Parameters
+        ----------
+        url: str
+            A properly-formatted url
 
+        Returns
+        -------
+        response: requests.response
+            Sends requests.response object to validator
+
+        Raises
+        ------
+        IEXQueryError
+            If problems arise when making the query
         """
         pause = self.pause
         for i in range(self.retry_count+1):
@@ -79,8 +122,12 @@ class _IEXBase(object):
         raise IEXQueryError()
 
     def _prepare_query(self):
-        """
-        Prepares the query URL
+        """ Prepares the query URL
+
+        Returns
+        -------
+        url: str
+            A formatted URL
         """
         params = "?" + "&".join(
             "{}={}".format(*i) for i in self.params.items())
@@ -88,8 +135,14 @@ class _IEXBase(object):
         return url
 
     def fetch(self):
-        """
-        Fetches latest data
+        """Fetches latest data
+
+        Prepares the query URL based on self.params and executes the request
+
+        Returns
+        -------
+        response: requests.response
+            A response object
         """
         url = self._prepare_query()
         response = self._execute_iex_query(url)

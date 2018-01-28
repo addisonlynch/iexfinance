@@ -1,6 +1,0 @@
-# .coveragerc to control coverage.py
-
-[run]
-source = iexfinance
-branch = True
-include = */iexfinance/*

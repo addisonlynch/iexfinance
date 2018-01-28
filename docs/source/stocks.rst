@@ -7,146 +7,69 @@ Stocks
 
 .. _stocks.Share:
 
-
 Share
 =====
 
-.. code:: python
+.. autoclass:: iexfinance.stock.Share
 
-    Share(symbolList=None, displayPercent=False, last=10, range='1m', retry_count=3,
-    	  pause=0.001, session=None):
+.. _share-utility-methods:
 
+Utility Methods
+---------------
+
+.. _share-endpoint-methods:
 
 Endpoint Methods
-^^^^^^^^^^^^^^^^
+----------------
 
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| Method                     | Options           | Return Type   | Description / Endpoint                                                           |
-+============================+===================+===============+==================================================================================+
-| ``refresh``                | -                 | -             | Updates market data                                                              |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| **Universal Selectors**    |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_all``                | -                 | json          | Returns JSON of all endpoints                                                    |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_select_endpoints``   | module (string)   | varies        | Returns selected endpoint                                                        |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| **Individual Endpoints**   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_quote``              | displayPercent    | json          | `Quote <https://iextrading.com/developer/docs/#quote>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_chart``              | -                 | list          | `Chart <https://iextrading.com/developer/docs/#chart>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_book``               | -                 | json          | `Book <https://iextrading.com/developer/docs/#book>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_open_close``         | -                 | json          | `Open / Close <https://iextrading.com/developer/docs/#open-close>`__             |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_previous``           | -                 | json          | `Previous <https://iextrading.com/developer/docs/#previous>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_company``            | -                 | json          | `Company <https://iextrading.com/developer/docs/#company>`__                     |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_key_stats``          | -                 | json          | `Key Stats <https://iextrading.com/developer/docs/#key-stats>`__                 |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_relevant``           | -                 | json          | `Relevant <https://iextrading.com/developer/docs/#relevant>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_news``               | last              | list          | `News <https://iextrading.com/developer/docs/#news>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_financials``         | -                 | json          | `Financials <https://iextrading.com/developer/docs/#financials>`__               |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_earnings``           | -                 | json          | `Earnings <https://iextrading.com/developer/docs/#earnings>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_dividends``          | range             | json          | `Dividends <https://iextrading.com/developer/docs/#dividends>`__                 |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_splits``             | range             | json          | `Splits <https://iextrading.com/developer/docs/#splits>`__                       |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_logo``               | -                 | json          | `Logo <https://iextrading.com/developer/docs/#logo>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_price``              | -                 | float         | `Price <https://iextrading.com/developer/docs/#price>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_delayed_quote``      | -                 | json          | `Delayed Quote <https://iextrading.com/developer/docs/#delayed-quote>`__         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_effective_spread``   | -                 | list          | `Effective Spread <https://iextrading.com/developer/docs/#effective-spread>`__   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_volume_by_venue``    | -                 | list          | `Volume by Venue <https://iextrading.com/developer/docs/#volume-by-venue>`__     |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
+.. automethod:: iexfinance.stock.Share.get_quote
+.. automethod:: iexfinance.stock.Share.get_chart
+.. automethod:: iexfinance.stock.Share.get_book
+.. automethod:: iexfinance.stock.Share.get_open_close
+.. automethod:: iexfinance.stock.Share.get_previous
+.. automethod:: iexfinance.stock.Share.get_company
+.. automethod:: iexfinance.stock.Share.get_key_stats
+.. automethod:: iexfinance.stock.Share.get_relevant
+.. automethod:: iexfinance.stock.Share.get_news
+.. automethod:: iexfinance.stock.Share.get_financials
+.. automethod:: iexfinance.stock.Share.get_earnings
+.. automethod:: iexfinance.stock.Share.get_dividends
+.. automethod:: iexfinance.stock.Share.get_splits
+.. automethod:: iexfinance.stock.Share.get_logo
+.. automethod:: iexfinance.stock.Share.get_price
+.. automethod:: iexfinance.stock.Share.get_delayed_quote
+.. automethod:: iexfinance.stock.Share.get_effective_spread
+.. automethod:: iexfinance.stock.Share.get_volume_by_venue
 
-Note: there is no support for the
-`list <https://iextrading.com/developer/docs/#list>`__ endpoint at this
-time.
 
+.. note:: There is no support for the `list <https://iextrading.com/developer/docs/#list>`__ endpoint at this time.
+
+.. _share-datapoint-methods:
 
 Datapoint Methods
-^^^^^^^^^^^^^^^^^
+-----------------
 
-+----------------+------------------+----------+-----------+
-| Method         | Options          | Return   | Descripti |
-|                |                  | Type     | on        |
-+================+==================+==========+===========+
-| **Universal    |
-| Selectors**    |
-+----------------+------------------+----------+-----------+
-| ``get_select_d | endpoint         | json     | Returns   |
-| atapoints``    | (string),        |          | selected  |
-|                | datapoints       |          | data      |
-|                | (list)           |          | point     |
-|                |                  |          | from      |
-|                |                  |          | selected  |
-|                |                  |          | endpoint  |
-+----------------+------------------+----------+-----------+
-|                |
-+----------------+------------------+----------+-----------+
-| **Individual   |
-| Datapoints**   |
-+----------------+------------------+----------+-----------+
-| ``get_company_ | -                | string   |           |
-| name``         |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_primary_ | -                | string   |           |
-| exchange``     |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_sector`` | -                | string   |           |
-+----------------+------------------+----------+-----------+
-| ``get_open``   | -                | float    |           |
-+----------------+------------------+----------+-----------+
-| ``get_close``  | -                | float    |           |
-+----------------+------------------+----------+-----------+
-| ``get_years_hi | -                | float    |           |
-| gh``           |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_years_lo | -                | float    |           |
-| w``            |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_ytd_chan | -                | float    |           |
-| ge``           |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_volume`` | -                | int      |           |
-+----------------+------------------+----------+-----------+
-| ``get_market_c | -                | int      |           |
-| ap``           |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_beta``   | -                | float    |           |
-+----------------+------------------+----------+-----------+
-| ``get_short_in | -                | int      |           |
-| terest``       |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_short_ra | -                | float    |           |
-| tio``          |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_latest_e | -                | float    |           |
-| ps``           |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_shares_o | -                | int      |           |
-| utstanding``   |                  |          |           |
-+----------------+------------------+----------+-----------+
-| ``get_float``  | -                | int      |           |
-+----------------+------------------+----------+-----------+
-| ``get_eps_cons | -                | float    |           |
-| ensus``        |                  |          |           |
-+----------------+------------------+----------+-----------+
+.. automethod:: iexfinance.stock.Share.get_company_name
+.. automethod:: iexfinance.stock.Share.get_sector
+.. automethod:: iexfinance.stock.Share.get_open
+.. automethod:: iexfinance.stock.Share.get_close
+.. automethod:: iexfinance.stock.Share.get_years_high
+.. automethod:: iexfinance.stock.Share.get_years_low
+.. automethod:: iexfinance.stock.Share.get_ytd_change
+.. automethod:: iexfinance.stock.Share.get_volume
+.. automethod:: iexfinance.stock.Share.get_market_cap
+.. automethod:: iexfinance.stock.Share.get_beta
+.. automethod:: iexfinance.stock.Share.get_short_interest
+.. automethod:: iexfinance.stock.Share.get_short_ratio
+.. automethod:: iexfinance.stock.Share.get_latest_eps
+.. automethod:: iexfinance.stock.Share.get_shares_outstanding
+.. automethod:: iexfinance.stock.Share.get_float
+.. automethod:: iexfinance.stock.Share.get_eps_consensus
 
+.. _share-parameters:
 
 Parameters
-^^^^^^^^^^
+----------
 
 Certain endpoints (such as quote and chart) allow customizable
 parameters. To specify one of these parameters, merely pass it as a
@@ -161,14 +84,18 @@ keyword argument.
 +======================+============================================================+=============+
 | ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
 +----------------------+------------------------------------------------------------+-------------+
-| ``range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
+| ``_range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
 +----------------------+------------------------------------------------------------+-------------+
 | ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
 +----------------------+------------------------------------------------------------+-------------+
 
+.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
 
-Usage
-^^^^^
+
+.. _share-examples:
+
+Examples
+-----
 
 .. ipython:: python
 
@@ -183,151 +110,73 @@ Usage
 Batch
 =====
 
+.. autoclass:: iexfinance.stock.Batch
+
 ``Batch`` acts the same as ``Share``, except it allows us to access data
 for up to 100 symbols at once, returning a dictionary of the results
 indexed by each symbol.
 
-.. code:: python
 
-    Batch(symbolList=[], displayPercent=False, range='1m', last='10', 
-    	  retry_count=3, pause=0.001, session=None):
-
+.. _batch-utility-methods:
 
 Utility Methods
-^^^^^^^^^^^^^^^
+---------------
 
-+---------------+-----------+---------------+----------------------+
-| Method        | Options   | Return Type   | Description          |
-+===============+===========+===============+======================+
-| ``refresh``   | -         | -             | Update market data   |
-+---------------+-----------+---------------+----------------------+
-
+.. _batch-endpoint-methods:
 
 Endpoint Methods
-^^^^^^^^^^^^^^^^^
+----------------
 
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| Method                     | Options           | Return Type   | Endpoint Name                                                                    |
-+============================+===================+===============+==================================================================================+
-| **Universal Selectors**    |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_all``                | -                 | json          | Returns JSON of all endpoints                                                    |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_select_endpoints``   | module (string)   | json          | Returns selected endpoint                                                        |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| **Individual Endpoints**   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_quote``              | displayPercent    | json          | `Quote <https://iextrading.com/developer/docs/#quote>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_chart``              | -                 | json          | `Chart <https://iextrading.com/developer/docs/#chart>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_book``               | -                 | json          | `Book <https://iextrading.com/developer/docs/#book>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_open_close``         | -                 | json          | `Open / Close <https://iextrading.com/developer/docs/#open-close>`__             |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_previous``           | -                 | json          | `Previous <https://iextrading.com/developer/docs/#previous>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_company``            | -                 | json          | `Company <https://iextrading.com/developer/docs/#company>`__                     |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_key_stats``          | -                 | json          | `Key Stats <https://iextrading.com/developer/docs/#key-stats>`__                 |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_relevant``           | -                 | json          | `Relevant <https://iextrading.com/developer/docs/#relevant>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_news``               | last              | json          | `News <https://iextrading.com/developer/docs/#news>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_financials``         | -                 | json          | `Financials <https://iextrading.com/developer/docs/#financials>`__               |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_earnings``           | -                 | json          | `Earnings <https://iextrading.com/developer/docs/#earnings>`__                   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_dividends``          | range             | json          | `Dividends <https://iextrading.com/developer/docs/#dividends>`__                 |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_splits``             | range             | json          | `Splits <https://iextrading.com/developer/docs/#splits>`__                       |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_logo``               | -                 | json          | `Logo <https://iextrading.com/developer/docs/#logo>`__                           |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_price``              | -                 | json          | `Price <https://iextrading.com/developer/docs/#price>`__                         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_delayed_quote``      | -                 | json          | `Delayed Quote <https://iextrading.com/developer/docs/#delayed-quote>`__         |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_effective_spread``   | -                 | json          | `Effective Spread <https://iextrading.com/developer/docs/#effective-spread>`__   |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
-| ``get_volume_by_venue``    | -                 | json          | `Volume by Venue <https://iextrading.com/developer/docs/#volume-by-venue>`__     |
-+----------------------------+-------------------+---------------+----------------------------------------------------------------------------------+
+.. automethod:: iexfinance.stock.Batch.get_quote
+.. automethod:: iexfinance.stock.Batch.get_chart
+.. automethod:: iexfinance.stock.Batch.get_book
+.. automethod:: iexfinance.stock.Batch.get_open_close
+.. automethod:: iexfinance.stock.Batch.get_previous
+.. automethod:: iexfinance.stock.Batch.get_company
+.. automethod:: iexfinance.stock.Batch.get_key_stats
+.. automethod:: iexfinance.stock.Batch.get_relevant
+.. automethod:: iexfinance.stock.Batch.get_news
+.. automethod:: iexfinance.stock.Batch.get_financials
+.. automethod:: iexfinance.stock.Batch.get_earnings
+.. automethod:: iexfinance.stock.Batch.get_dividends
+.. automethod:: iexfinance.stock.Batch.get_splits
+.. automethod:: iexfinance.stock.Batch.get_logo
+.. automethod:: iexfinance.stock.Batch.get_price
+.. automethod:: iexfinance.stock.Batch.get_delayed_quote
+.. automethod:: iexfinance.stock.Batch.get_effective_spread
+.. automethod:: iexfinance.stock.Batch.get_volume_by_venue
+
 
 note: there is no support for the
 `list <https://iextrading.com/developer/docs/#list>`__ endpoint at this
 time.
 
+.. _batch-datapoint-methods:
 
 Datapoint Methods
-^^^^^^^^^^^^^^^^^
+-----------------
 
-+----------------+------------------+----------+-------------+
-| Method         | Options          | Return   | Description |
-|                |                  | Type     |             |
-+================+==================+==========+=============+
-| **Universal    |
-| Selectors**    |
-+----------------+------------------+----------+-------------+
-| ``get_select_d | endpoint         | json     | Returns     |
-| atapoints``    | (string),        |          | selected    |
-|                | datapoints       |          | datapoint   |
-|                | (list)           |          | from        |
-|                |                  |          | selected    |
-|                |                  |          | endpoint    |
-+----------------+------------------+----------+-------------+
-| **Individual   |
-| Datapoints**   |
-+----------------+------------------+----------+-------------+
-| ``get_company_ | -                | json     | -           |
-| name``         |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_primary_ | -                | json     | -           |
-| exchange``     |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_sector`` | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_open``   | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_close``  | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_years_hi | -                | json     | -           |
-| gh``           |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_years_lo | -                | json     | -           |
-| w``            |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_ytd_chan | -                | json     | -           |
-| ge``           |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_volume`` | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_market_c | -                | json     | -           |
-| ap``           |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_beta``   | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_short_in | -                | json     | -           |
-| terest``       |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_short_ra | -                | json     | -           |
-| tio``          |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_latest_e | -                | json     | -           |
-| ps``           |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_shares_o | -                | json     | -           |
-| utstanding``   |                  |          |             |
-+----------------+------------------+----------+-------------+
-| ``get_float``  | -                | json     | -           |
-+----------------+------------------+----------+-------------+
-| ``get_eps_cons | -                | json     | -           |
-| ensus``        |                  |          |             |
-+----------------+------------------+----------+-------------+
+.. automethod:: iexfinance.stock.Batch.get_company_name
+.. automethod:: iexfinance.stock.Batch.get_sector
+.. automethod:: iexfinance.stock.Batch.get_open
+.. automethod:: iexfinance.stock.Batch.get_close
+.. automethod:: iexfinance.stock.Batch.get_years_high
+.. automethod:: iexfinance.stock.Batch.get_years_low
+.. automethod:: iexfinance.stock.Batch.get_ytd_change
+.. automethod:: iexfinance.stock.Batch.get_volume
+.. automethod:: iexfinance.stock.Batch.get_market_cap
+.. automethod:: iexfinance.stock.Batch.get_beta
+.. automethod:: iexfinance.stock.Batch.get_short_interest
+.. automethod:: iexfinance.stock.Batch.get_short_ratio
+.. automethod:: iexfinance.stock.Batch.get_latest_eps
+.. automethod:: iexfinance.stock.Batch.get_shares_outstanding
+.. automethod:: iexfinance.stock.Batch.get_float
+.. automethod:: iexfinance.stock.Batch.get_eps_consensus
 
+.. _batch-parameters:
 
 Parameters
-^^^^^^^^^^
+----------
 
 Certain endpoints (such as quote and chart) allow customizable
 parameters. To specify one of these parameters, merely pass it as a
@@ -342,18 +191,22 @@ keyword argument.
 +======================+============================================================+=============+
 | ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
 +----------------------+------------------------------------------------------------+-------------+
-| ``range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
+| ``_range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
 +----------------------+------------------------------------------------------------+-------------+
 | ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
 +----------------------+------------------------------------------------------------+-------------+
 
+.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
+
+
+.. _batch-examples:
 
 Examples
-^^^^^^^^
+--------
 
 .. ipython:: python
 
     from iexfinance import Stock as iex
     air_transport = Stock(['AAL', 'DAL', 'LUV'])
-    print(air_transport.get_open())
-    print(air_transport.get_price())
+    air_transport.get_open()
+    air_transport.get_price()

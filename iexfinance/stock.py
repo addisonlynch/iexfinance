@@ -32,17 +32,19 @@ class StockReader(_IEXBase):
                  last=10, retry_count=3, pause=0.001, session=None):
         """ Initialize the class
 
-        Positional Arguments:
-            symbolList: A nonempty list of symbols
-
-        Keyword Arguments:
-            displayPercent: boolean
-            range: The range to use for the chart endpoint. Must be
+        Parameters
+        ----------
+        symbolList: str or list
+            A nonempty list of symbols
+        displayPercent: boolean
+        range: str
+            The range to use for the chart endpoint. Must be
             contained in _RANGE_VALUES
-            last: Range to use for the "last" attribute of the news endpoint.
+        last: int
+            Range to use for the "last" attribute of the news endpoint.
         """
         self.symbolList = list(map(lambda x: x.upper(), symbolList))
-        super(StockReader, self).__init__(self.symbolList, retry_count, pause,
+        super(StockReader, self).__init__(retry_count, pause,
                                           session)
         self.displayPercent = displayPercent
         self.range = _range
@@ -181,7 +183,7 @@ class HistoricalReader(_IEXBase):
         self.start = start
         self.end = end
         self.outputFormat = outputFormat
-        super(HistoricalReader, self).__init__(self.symlist, retry_count,
+        super(HistoricalReader, self).__init__(retry_count,
                                                pause, session)
 
     @property
@@ -266,11 +268,13 @@ class Share(StockReader):
         """
         Initializes the class.
 
-        Positional arguments:
-            symbol: A valid ticker symbol
-        Keyword arguments:
-            options: Again a pass through to the _IEXBase class, which will
-            be supered here. Options checked in the parent class.
+        Parameters
+        ----------
+        symbol: str
+            A valid ticker symbol
+        displayPercent: bool
+        _range : str
+        last: int
         """
         self.symbol = symbol.upper()
         self.symbolList = [self.symbol]
@@ -302,9 +306,10 @@ class Share(StockReader):
         set. Will throw a IEXEndpointError if an invalid endpoint is specified
         and an IEXQueryError if the endpoint cannot be retrieved.
 
-        Postional arguments:
-            endpointList: A string or list of strings that specifies the
-            endpoints desired
+        Parameters
+        ----------
+        endpointList: str or list
+            A string or list of strings that specifies the endpoints desired
         """
         result = super(Share, self).get_select_endpoints(endpointList)
         return result[self.symbol]
@@ -317,10 +322,12 @@ class Share(StockReader):
         IEXDatapointError. If there are issues with the query, throws an
         IEXQueryError.
 
-        Positional Arguments:
-            endpoint: A valid endpoint (string)
-            attrList: A valid list of datapoints desired from the given
-            endpoint
+        Parameters
+        ----------
+        endpoint: str
+            A valid endpoint (string)
+        attrList: list
+            A valid list of datapoints desired from the given endpoint
         """
         result = super(Share, self).get_select_endpoints(endpoint, attrList)
         return result[self.symbol]
@@ -330,121 +337,155 @@ class Share(StockReader):
     def get_quote(self):
         """Returns the Stocks Quote endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#quote
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#quote
         """
         return self.data_set["quote"]
 
     def get_chart(self):
         """Returns the Stocks Chart endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#chart
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#chart
         """
         return self.data_set["chart"]
 
     def get_book(self):
         """Returns the Stocks Book endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#book
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#book
         """
         return self.data_set["book"]
 
     def get_open_close(self):
         """Returns the Stocks Open/Close endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#open-close
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#open-close
         """
         return self.data_set["open-close"]  # fix
 
     def get_previous(self):
         """Returns the Stocks Previous endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#previous
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#previous
         """
         return self.data_set["previous"]
 
     def get_company(self):
         """Returns the Stocks Company endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#company
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#company
         """
         return self.data_set["company"]
 
     def get_key_stats(self):
         """Returns the Stocks Key Stats endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#key-stats
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#key-stats
         """
         return self.data_set["stats"]
 
     def get_peers(self):
         """Returns the Stocks Peers endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#peers
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#peers
         """
         return self.data_set["peers"]
 
     def get_relevant(self):
         """Returns the Stocks Relevant endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#relevant
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#relevant
         """
         return self.data_set["relevant"]
 
     def get_news(self):
         """Returns the Stocks News endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#news
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#news
         """
         return self.data_set["news"]
 
     def get_financials(self):
         """Returns the Stocks Financials endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#financials
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#financials
         """
         return self.data_set["financials"]
 
     def get_earnings(self):
         """Returns the Stocks Earnings endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#earnings
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#earnings
         """
         return self.data_set["earnings"]
 
     def get_logo(self):
         """Returns the Stocks Logo endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#logo
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#logo
         """
         return self.data_set["logo"]
 
     def get_price(self):
         """Returns the Stocks Price endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#price
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#price
         """
         return self.data_set["price"]
 
     def get_delayed_quote(self):
-        return self.data_set["delayed-quote"]
         """Returns the Stocks Delayed Quote endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#delayed-quote
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#delayed-quote
         """
+        return self.data_set["delayed-quote"]
 
     def get_effective_spread(self):
-        return self.data_set["effective-spread"]
         """Returns the Stocks Effective Spread endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#effective-spread
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#effective-spread
         """
+        return self.data_set["effective-spread"]
 
     def get_volume_by_venue(self):
-        return self.data_set["volume-by-venue"]  # fix
         """Returns the Stocks Volume by Venue endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#volume-by-venue
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#volume-by-venue
         """
+        return self.data_set["volume-by-venue"]  # fix
 
     def get_all(self):
         return self.data_set
@@ -452,21 +493,27 @@ class Share(StockReader):
     def get_yesterdays_close(self):
         """Returns the Stocks Previous Close endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#previous-close
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#previous-close
         """
         return self.data_set["previousClose"]
 
     def get_dividends(self):
         """Returns the Stocks Dividends endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#dividends
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#dividends
         """
         return self.data_set["dividends"]
 
     def get_splits(self):
         """Returns the Stocks Splits endpoint in JSON format
 
-        Reference: https://iextrading.com/developer/docs/#splits
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#splits
         """
         return self.data_set["splits"]
 
@@ -537,11 +584,13 @@ class Batch(StockReader):
         """
         Initializes the class.
 
-        Positional arguments:
-            symbol: A valid ticker symbol
-        Keyword arguments:
-            options: Again a pass through to the _IEXBase class, which will
-            be supered here. Options checked in the parent class.
+        Parameters
+        ----------
+        symbol: list
+            A valid list of symbols
+        displayPercent: bool
+        _range : str
+        last: int
         """
         super(Batch, self).__init__(symbolList, displayPercent, _range, last,
                                     retry_count, pause, session)
@@ -575,78 +624,192 @@ class Batch(StockReader):
 
     # endpoint methods
     def get_quote(self):
+        """Returns the Stocks Quote endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#quote
+        """
         return {symbol: self.data_set[symbol]["quote"] for symbol in
                 self.data_set.keys()}
 
     def get_book(self):
+        """Returns the Stocks Book endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#book
+        """
         return {symbol: self.data_set[symbol]["book"] for symbol in
                 self.data_set.keys()}
 
     def get_chart(self):
+        """Returns the Stocks Chart endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#chart
+        """
         return {symbol: self.data_set[symbol]["chart"] for symbol in
                 self.data_set.keys()}
 
     def get_open_close(self):
+        """Returns the Stocks Open/Close endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#open-close
+        """
         return {symbol: self.data_set[symbol]["open-close"] for symbol in
                 self.data_set.keys()}
 
     def get_previous(self):
+        """Returns the Stocks Previous endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#previous
+        """
         return {symbol: self.data_set[symbol]["previous"] for symbol in
                 self.data_set.keys()}
 
     def get_company(self):
+        """Returns the Stocks Company endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#company
+        """
         return {symbol: self.data_set[symbol]["company"] for symbol in
                 self.data_set.keys()}
 
     def get_key_stats(self):
+        """Returns the Stocks Key Stats endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#key-stats
+        """
         return {symbol: self.data_set[symbol]["stats"] for symbol in
                 self.data_set.keys()}
 
     def get_peers(self):
+        """Returns the Stocks Peers endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#peers
+        """
         return {symbol: self.data_set[symbol]["peers"] for symbol in
                 self.data_set.keys()}
 
     def get_relevant(self):
+        """Returns the Stocks Relevant endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#relevant
+        """
         return {symbol: self.data_set[symbol]["relevant"] for symbol in
                 self.data_set.keys()}
 
     def get_news(self):
+        """Returns the Stocks News endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#news
+        """
         return {symbol: self.data_set[symbol]["news"] for symbol in
                 self.data_set.keys()}
 
     def get_financials(self):
+        """Returns the Stocks Financials endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#financials
+        """
         return {symbol: self.data_set[symbol]["financials"] for symbol in
                 self.data_set.keys()}
 
     def get_earnings(self):
+        """Returns the Stocks Earnings endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#earnings
+        """
         return {symbol: self.data_set[symbol]["earnings"] for symbol in
                 self.data_set.keys()}
 
     def get_dividends(self):
+        """Returns the Stocks Dividends endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#dividends
+        """
         return {symbol: self.data_set[symbol]["dividends"] for symbol in
                 self.data_set.keys()}
 
     def get_splits(self):
+        """Returns the Stocks Splits endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#splits
+        """
         return {symbol: self.data_set[symbol]["splits"] for symbol in
                 self.data_set.keys()}
 
     def get_logo(self):
+        """Returns the Stocks Logo endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#logo
+        """
         return {symbol: self.data_set[symbol]["logo"] for symbol in
                 self.data_set.keys()}
 
     def get_price(self):
+        """Returns the Stocks Price endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#price
+        """
         return {symbol: self.data_set[symbol]["price"] for symbol in
                 self.data_set.keys()}
 
     def get_delayed_quote(self):
+        """Returns the Stocks Delayed Quote endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#delayed-quote
+        """
         return {symbol: self.data_set[symbol]["delayed-quote"] for symbol in
                 self.data_set.keys()}
 
     def get_effective_spread(self):
+        """Returns the Stocks Effective Spread endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#effective-spread
+        """
         return {symbol: self.data_set[symbol]["effective-spread"] for symbol
                 in self.data_set.keys()}
 
     def get_volume_by_venue(self):
+        """Returns the Stocks Volume by Venue endpoint in JSON format
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#volume-by-venue
+        """
         return {symbol: self.data_set[symbol]["volume-by-venue"] for symbol
                 in self.data_set.keys()}
 

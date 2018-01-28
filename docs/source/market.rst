@@ -23,12 +23,9 @@ TOPS
 `TOPS <https://iextrading.com/developer/docs/#tops>`__ is IEX's
 aggregated best quoted bid and offer position in near real time.
 
-Access is available through the top-level function ``get_tops()``:
+Access is available through the top-level function ``get_TOPS()``:
 
-.. code:: python
-
-    get_tops(symbolList=None, outputFormat='json', retry_count=3,
-             pause=0.001, session=None)
+.. autofunction:: get_TOPS
 
 Usage
 ^^^^^
@@ -39,22 +36,6 @@ Usage
 
     get_TOPS('AAPL')
 
-Parameters
-^^^^^^^^^^
-
-+--------------------+-----------------------------------------+-------------+
-| Option             | Description                             | Optional?   |
-+====================+=========================================+=============+
-| ``symbolList``     | A symbol or list of symbols             | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``outputFormat``   | Output format (json or pandas)          | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``retry_count``    | Retry count if request fails            | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``pause``          | Pause duration between retry attempts   | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``session``        | A requests-cache session                | Yes         |
-+--------------------+-----------------------------------------+-------------+
 
 .. _market.Last:
 
@@ -62,14 +43,13 @@ Parameters
 Last
 ====
 
-`Last <https://iextrading.com/developer/docs/#last>`__ retrieves
+`Last <https://iextrading.com/developer/docs/#last>`__ is IEX
 real-time trade data from the IEX book. This endpoint allows retrieval
 of a real-time quote.
 
-.. code:: python
+Access is available through the top-level function ``get_Last()``:
 
-    get_Last(symbol, outputFormat='json', retry_count=3, pause=0.001,
-             session=None)
+.. autofunction:: get_Last
 
 Usage
 ^^^^^
@@ -80,24 +60,9 @@ Usage
     import pandas as pd
 
     df = get_Last(symbolList="AAPL", outputFormat='pandas')
+    df['price']
 
 
-Parameters
-^^^^^^^^^^
-
-+--------------------+-----------------------------------------+-------------+
-| Option             | Description                             | Optional?   |
-+====================+=========================================+=============+
-| ``symbolList``     | A symbol or list of symbols             | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``outputFormat``   | Output format (json or pandas)          | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``retry_count``    | Retry count if request fails            | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``pause``          | Pause duration between retry attempts   | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``session``        | A requests-cache session                | Yes         |
-+--------------------+-----------------------------------------+-------------+
 
 .. _market.DEEP:
 
@@ -105,38 +70,23 @@ Parameters
 DEEP
 ====
 
-.. code:: python
+`DEEP <https://iextrading.com/developer/docs/#DEEP>`__  is IEX's aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.
 
-    get_DEEP(symbol, outputFormat='json', session=None)
+Access is available through the top-level function ``get_DEEP()``:
 
-DEEP is IEX's aggregated real-time depth of book quotes. DEEP also
-provides last trade price and size information
+.. autofunction:: get_DEEP
+
+.. note:: DEEP may return an error outside of market hours.
 
 Usage
 ^^^^^
 
 .. ipython:: python
 
-    from iexfinance import get_TOPS
-    import pandas as pd
+    from iexfinance import get_DEEP
 
+    get_DEEP("AAPL")
 
-Parameters
-^^^^^^^^^^
-
-+--------------------+-----------------------------------------+-------------+
-| Option             | Description                             | Optional?   |
-+====================+=========================================+=============+
-| ``symbolList``     | A symbol or list of symbols             | No          |
-+--------------------+-----------------------------------------+-------------+
-| ``outputFormat``   | Output format (**json only**)           | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``retry_count``    | Retry count if request fails            | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``pause``          | Pause duration between retry attempts   | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``session``        | A requests-cache session                | Yes         |
-+--------------------+-----------------------------------------+-------------+
 
 .. _market.Book:
 
@@ -144,31 +94,21 @@ Parameters
 Book
 ====
 
-.. code:: python
+`Book <https://iextrading.com/developer/docs/#Book>`__ shows IEX's bids and asks
+for given symbols.
 
-    get_Book(symbol, outputFormat='json', session=None)
+Access is available through the top-level function ``get_Book()``:
+
+.. autofunction:: get_Book
+
+.. note:: Book may return an error outside of market hours.
 
 Usage
 ^^^^^
 
 .. ipython:: python
 
-    from iexfinance import get_TOPS
-    import pandas as pd
+    from iexfinance import get_Book
 
-Parameters
-^^^^^^^^^^
+    get_Book("AAPL")
 
-+--------------------+-----------------------------------------+-------------+
-| Option             | Description                             | Optional?   |
-+====================+=========================================+=============+
-| ``symbolList``     | A symbol or list of symbols             | No          |
-+--------------------+-----------------------------------------+-------------+
-| ``outputFormat``   | Output format (json or pandas)          | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``retry_count``    | Retry count if request fails            | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``pause``          | Pause duration between retry attempts   | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``session``        | A requests-cache session                | Yes         |
-+--------------------+-----------------------------------------+-------------+

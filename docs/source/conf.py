@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
 
 #
@@ -33,10 +34,13 @@ sys.path.insert(0, os.path.abspath('../..'))
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.githubpages',
               'IPython.sphinxext.ipython_console_highlighting',
-              'IPython.sphinxext.ipython_directive']
+              'IPython.sphinxext.ipython_directive',
+              'sphinxcontrib.napoleon']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+autoclass_content = 'both'
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

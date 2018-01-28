@@ -1,5 +1,6 @@
 .. _usage:
 
+.. role:: strike
 
 *****
 Usage
@@ -11,18 +12,17 @@ Usage
 Stocks
 ------
 
-*Note: for a thorough, step-by-step walkthrough, see
-`tutorial <tutorial.md>`__.*
+.. note:: For a thorough, step-by-step walkthrough, see `tutorial <tutorial.html>`__
 
 The simplest way to obtain data using the iexfinance wrapper is by
 calling the ``Stock`` function with a symbol (*str*) or list of
-symbols (*list*). ``Stock`` will return a ```Share`` <share.md>`__
-object instance if given a single symbol and a ```Batch`` <batch.md>`__
+symbols (*list*). ``Stock`` will return a `Share <stocks.html#share>`__
+object instance if given a single symbol and a `Batch <stocks.html#batch>`__
 object instance if given a list.
 
 .. ipython:: python
 
-    from iexfinance import IexFinance as iex
+    from iexfinance import Stock
     aapl = Stock("aapl")
     aapl.get_price()
 
@@ -37,12 +37,12 @@ duplicate symbols will be kept intact without alteration.
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
 contains data regarding a different aspect of the security/securities.
-Both the ```Share`` <share.md>`__ and ```Batch`` <batch.md>`__ objects
-contain identically-signatured functions which can obtain each of these
-endpoints. Requests for single symbols (```Share`` <share.md>`__) will
-return the *exact* results from that endpoint as shown in the IEX API
+Both the `Share <stocks.html#share>`__ and `Batch <stocks.html#batch>`__
+objects contain identically-signatured functions which can obtain each
+of these endpoints. Requests for single symbols (`Share <stocks.html#share>`__)
+will return the *exact* results from that endpoint as shown in the IEX API
 documentation (see below). Requests for multiple symbols
-(```Batch`` <batch.md>`__) will return a symbol-indexed dictionary of
+(`Batch <stocks.html#batch>`__) will return a symbol-indexed dictionary of
 the endpoint requested.
 
 -  `Quote <https://iextrading.com/developer/docs/#quote>`__
@@ -62,7 +62,7 @@ the endpoint requested.
 -  `Price <https://iextrading.com/developer/docs/#price>`__
 -  `Delayed
    Quote <https://iextrading.com/developer/docs/#delayed-quote>`__
--  [STRIKEOUT:List] (*not supported*)
+-   List (*not supported*)
 -  `Effective
    Spread <https://iextrading.com/developer/docs/#effective-spread>`__
 -  `Volume by
@@ -78,7 +78,7 @@ the endpoint requested.
 
 
 For a detailed list of the *endpoint methods*, see
-```Share`` <share.md>`__ or ```Batch`` <batch.md>`__.
+`Share <stocks.html#share>`__ or `Batch <stocks.html#batch>`__.
 
 **Datapoints**
 
@@ -92,7 +92,7 @@ Examples ``get_open()``, ``get_name()``
 .. ipython:: python
 
     aapl.get_open()
-    aapl.get_name()
+    aapl.get_price()
 
 **Batch (multiple symbols)**
 
@@ -102,8 +102,8 @@ Examples ``get_open()``, ``get_name()``
     b.get_open()
 
 
-For a detailed list of these functions, see ```Share`` <share.md>`__ or
-```Batch`` <batch.md>`__.
+For a detailed list of these functions, see `Share <stocks.html#share>`__ or
+`Batch <stocks.html#batch>`__.
 
 **Parameters**
 
@@ -129,10 +129,7 @@ keyword argument.
 | ``splitsRange``      | `splits <https://iextrading.com/developer/docs/#splits>`__         | ``1m``      |
 +----------------------+--------------------------------------------------------------------+-------------+
 
-*Note: specifying options other than the defaults will **significantly**
-impact performance due to collision between the dividends and splits
-range options that require separate requests and merging. We have
-contacted IEX about this issue and hope to resolve it soon.*
+.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
 
 IEX Market Data
 ---------------

@@ -1,5 +1,7 @@
 .. _historical:
 
+.. currentmodule:: iexfinance
+
 ***************
 Historical Data
 ***************
@@ -8,10 +10,7 @@ Historical time series data is available through the
 ``get_historical_data`` method, which sources the
 `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
 
-.. code:: python
-
-    get_historical_data(symbol, start, end, outputFormat='json'
-                        retry_count=3, pause=0.001, session=None)
+.. autofunction:: get_historical_data
 
 Data can be retrieved from up to 5 years before the current date.
 

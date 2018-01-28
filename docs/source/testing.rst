@@ -20,3 +20,9 @@ Local Testing
 We've provided the BASH script ``test.sh`` which is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.
+
+Exceptions
+----------
+
+.. automodule:: iexfinance.utils.exceptions
+	:members:

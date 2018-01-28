@@ -6,7 +6,7 @@ from .stats import (IntradayReader, RecentReader, RecordsReader,
 
 __author__ = 'Addison Lynch'
 __version__ = '0.3.0'
-__all__ = ['Share', 'Batch']
+__all__ = ['Share', 'Batch', 'get_historical_data']
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -68,6 +68,23 @@ def get_historical_data(symbolList, start, end, outputFormat='json',
     """
     Top-level function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
+
+    Parameters
+    ----------
+    symbolList: int or list
+        A symbol or list of symbols
+    start: datetime.datetime
+        Beginning of desired date range
+    end: datetime.datetime
+        End of required date range
+    outputFormat: str
+        Desired output format (json or pandas)
+    retry_count: int
+        Desired number of retries if a request fails
+    pause: float
+        Pause time between retry attempts
+    session: requests.session
+        A cached requests-cache session
     """
     return HistoricalReader(symbolList, start,
                             end, outputFormat, retry_count, pause,

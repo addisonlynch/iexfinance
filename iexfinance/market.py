@@ -17,14 +17,21 @@ class Market(_IEXBase):
     """
     def __init__(self, symbolList=None, outputFormat='json', retry_count=3,
                  pause=0.001, session=None):
-        """ Initializes the class
+        """ Initialize the class
 
-        Args:
-            symbolList (list): A symbol or list of symbols
-            outputFormat (str): Desired output format (json or pandas)
-            retry_count (int): see base class
-            pause (float): see base class
-            session (requests.session): see base class
+        Parameters
+        ----------
+        symbolList: str or list
+            A symbol or list of symbols
+        outputformat: str
+            Desired output format (json or pandas)
+        retry_count: int
+            Desired number of retries if a request fails
+        pause: float
+            Pause time between retry attempts
+        session: requests.session
+            A cached requests-cache session
+
         """
         if symbolList is None:
             if self.symbol_required:
@@ -37,7 +44,7 @@ class Market(_IEXBase):
             elif len(symbolList) in range(0, 10):
                 self.symbolList = symbolList
         self.outputFormat = outputFormat
-        super(Market, self).__init__(symbolList, retry_count, pause, session)
+        super(Market, self).__init__(retry_count, pause, session)
 
     @property
     def params(self):
@@ -47,6 +54,10 @@ class Market(_IEXBase):
             return {}
 
     def _output_format(self, response):
+        """ Output formatting
+
+        Formats output as either json or pandas, if allowed
+        """
         if self.outputFormat == 'json':
             return response
         elif self.outputFormat == 'pandas' and self.acc_pandas:
@@ -61,6 +72,21 @@ class Market(_IEXBase):
             raise ValueError("Please input valid output format")
 
     def fetch(self):
+        """ Fetch market data
+
+        Returns result of base class fetch() with formatted output
+
+        Returns
+        -------
+        response: dict or DataFrame
+            Type based on self.outputFormat
+
+        Raises
+        ------
+        ValueError
+            If an invalid output format has been selected, or the request
+            fails
+        """
         response = super(Market, self).fetch()
         return self._output_format(response)
 
@@ -80,13 +106,15 @@ class Market(_IEXBase):
 
 
 class TOPS(Market):
-    """
-    Near-real time aggregated bid and offer positions
+    """ Class to retrieve IEX TOPS data
 
-    Notes
-    -----
-    IEX's aggregated best quoted bid and offer position for all securities
-    on IEX's displayed limit order book.
+    Near-real time aggregated bid and offer positions. IEX's aggregated best
+    quoted bid and offer position for all securities on IEX's displayed limit
+    order book.
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#TOPS
     """
     @property
     def url(self):
@@ -94,13 +122,14 @@ class TOPS(Market):
 
 
 class Last(Market):
-    """
-    Information of executions on IEX
+    """ Class to retrieve Last quote data
 
-    Notes
-    -----
     Last provides trade data for executions on IEX. Provides last sale price,
     size and time.
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#Last
     """
     @property
     def url(self):
@@ -108,17 +137,19 @@ class Last(Market):
 
 
 class DEEP(Market):
-    """
-    Retrieve order book data from IEX
+    """ Class to retrieve DEEP order book data
 
-    Notes
-    -----
+
     Real-time depth of book quotations direct from IEX. Returns aggregated
     size of resting displayed orders at a price and side. Does not indicate
     the size or number of individual orders at any price level. Non-displayed
     orders and non-displayed portions of reserve orders are not counted.
     Also provides last trade price and size information. Routed executions
     are not reported.
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#DEEP
     """
     @property
     def url(self):
@@ -134,8 +165,13 @@ class DEEP(Market):
 
 
 class Book(Market):
-    """
+    """ Class to retrieve IEX DEEP Book data
+
     Retrieve IEX's bids and asks for given symbols
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#Book
 
     Notes
     -----

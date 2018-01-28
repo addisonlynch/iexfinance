@@ -20,8 +20,8 @@ class Stats(_IEXBase):
 
     def __init__(self, outputFormat='json', retry_count=3, pause=0.001,
                  session=None):
-        super(Stats, self).__init__(symbolList=None, retry_count=retry_count,
-                                    pause=pause, session=session)
+        super(Stats, self).__init__(retry_count=retry_count, pause=pause,
+                                    session=session)
         self.outputFormat = outputFormat
 
     def _output_format(self, response):
@@ -89,9 +89,30 @@ class DailySummaryReader(Stats):
     """
     Class for obtaining data from the Historical Daily endpoint of IEX Stats
 
-    Reference: https://iextrading.com/developer/docs/#historical-daily
-    """
+    Attributes
+    ----------
+    start: datetime.datetime
+        Desired start of summary period
+    end: datetime.datetime
+        Desired end of summary period (if omitted, start
+        month will be returned)
+    last: int
+        Period between 1 and 90 days, overrides dates
+    outputformat: str
+        Desired output format (json or pandas)
+    retry_count: int
+        Desired number of retries if a request fails
+    pause: float
+        Pause time between retry attempts
+    session: requests.session
+        A cached requests-cache session
 
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#historical-daily
+
+    """
     def __init__(self, start=None, end=None, last=None,
                  outputFormat='json', retry_count=3, pause=0.001,
                  session=None):
@@ -168,7 +189,27 @@ class MonthlySummaryReader(Stats):
     """
     Class for obtaining data from the Historical Summary endpoint of IEX Stats
 
-    Reference: https://iextrading.com/developer/docs/#historical-summary
+    Attributes
+    ----------
+    start: datetime.datetime
+        Desired start of summary period
+    end: datetime.datetime
+        Desired end of summary period (if omitted, start
+        month will be returned)
+    outputformat: str
+        Desired output format (json or pandas)
+    retry_count: int
+        Desired number of retries if a request fails
+    pause: float
+        Pause time between retry attempts
+    session: requests.session
+        A cached requests-cache session
+
+
+    Reference
+    ---------
+    https://iextrading.com/developer/docs/#historical-summary
+
     """
 
     def __init__(self, start=None, end=None,
