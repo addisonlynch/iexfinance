@@ -1,8 +1,12 @@
-IEX Finance API
+iexfinance
 ===============
 
 .. image:: https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master
     :target: https://travis-ci.org/addisonlynch/iexfinance
+
+.. image:: https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master
+	:target: https://codecov.io/gh/addisonlynch/iexfinance
+
 
 Python module to get stock data from the Investors Exchange (IEX) Developer API platform. iexfinance provides real-time financial data from the various IEX Stock endpoints. 
 
@@ -11,7 +15,7 @@ Documentation
 -------------
 
 See `IEX Finance
-Documentation <https://addisonlynch.github.io/iexfinance>`__
+Documentation <https://addisonlynch.github.io/iexfinance/index.html#Documentation>`__
 
 Install
 -------
@@ -31,14 +35,12 @@ From development repository (dev version):
 Usage Examples
 --------------
 
-.. code:: python
+.. ipython:: python
 
-    >>> from iexfinance import Share
-    >>> tsla = Share('TSLA')
-    >>> print(tsla.get_open())
-    '299.64'
-    >>> print(tsla.get_price())
-    '301.84'
+    from iexfinance import Stock
+    tsla = Stock('TSLA')
+    tsla.get_open()
+    tsla.get_price()
 
 Contact
 -------

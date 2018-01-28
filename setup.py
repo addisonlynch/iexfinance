@@ -25,6 +25,13 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
+def parse_requirements(filename):
+
+    with open(filename) as f:
+        required = f.read().splitlines()
+        return required
+
+
 # Get the long description from the relevant file
 with codecs.open('README.rst', encoding='utf-8') as f:
     long_description = f.read()
@@ -42,10 +49,10 @@ setup(
     # Author details
     author='Addison Lynch',
     author_email='ahljunk@gmail.com',
-    test_suite='nose2.collector.collector',
+    test_suite='pytest',
 
     # Choose your license
-    license='MIT',
+    license='Apache',
 
     classifiers=[
         # How mature is this project? Common values are
@@ -62,7 +69,7 @@ setup(
         'Operating System :: OS Independent',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
@@ -85,8 +92,9 @@ setup(
 
     # List run-time dependencies here. These will be installed by pip when your
     # project is installed.
-    install_requires=['requests', 'simplejson', 'nose2'],
-
+    install_requires=parse_requirements("requirements.txt"),
+    setup_requires=['pytest-runner'],
+    tests_require=parse_requirements("requirements-test.txt"),
     # If there are data files included in your packages that need to be
     # installed, specify them here. If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.

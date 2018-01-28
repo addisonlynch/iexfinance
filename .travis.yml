@@ -3,6 +3,15 @@ language: python
 python:
 - "3.5"
 
-install: python setup.py install
+install: 
+  - pip install -qq flake8
+  - pip install codecov
+  - python setup.py install
 
-script: python setup.py test
+script: 
+  - python setup.py pytest
+  - flake8 --version
+  - flake8 iexfinance
+
+after_success:
+  - codecov
