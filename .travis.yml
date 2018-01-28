@@ -5,9 +5,13 @@ python:
 
 install: 
   - pip install -qq flake8
+  - pip install --user codecov
   - python setup.py install
 
 script: 
   - python setup.py pytest
   - flake8 --version
   - flake8 iexfinance
+
+after_success:
+  - codecov

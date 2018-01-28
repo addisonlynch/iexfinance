@@ -8,7 +8,7 @@ import json
 import pandas as pd
 
 from iexfinance import Share, Batch, get_available_symbols, get_historical_data
-from iexfinance import IexFinance as iex
+from iexfinance import Stock
 from iexfinance.utils.exceptions import (IEXSymbolError, IEXQueryError)
 
 
@@ -51,37 +51,37 @@ class TestBase(object):
 
     def test_wrong_iex_input_type(self):
         with pytest.raises(TypeError):
-            iex(34)
+            Stock(34)
         with pytest.raises(ValueError):
-            iex("")
+            Stock("")
         with pytest.raises(ValueError):
             ls = []
-            iex(ls)
+            Stock(ls)
 
     def test_symbol_list_too_long(self):
         with pytest.raises(ValueError):
             x = ["tsla"] * 102
-            iex(x)
+            Stock(x)
 
     def test_wrong_option_values(self):
         with pytest.raises(ValueError):
-            iex("aapl", last=555)
+            Stock("aapl", last=555)
 
         with pytest.raises(TypeError):
-            iex("aapl", displayPercent=4)
+            Stock("aapl", displayPercent=4)
 
         with pytest.raises(ValueError):
-            iex("aapl", _range='1yy')
+            Stock("aapl", _range='1yy')
 
     # def test_invalid_option_values(self):
     #   with pytest.raises(TypeError):
-    #       iex("aapl", displayPercent=4)
+    #       Stock("aapl", displayPercent=4)
     #   with pytest.raises(ValueError):
-    #       iex("aapl", last=68)
+    #       Stock("aapl", last=68)
     #   with pytest.raises(ValueError):
-    #       iex("aapl", chartRange='6y')
+    #       Stock("aapl", chartRange='6y')
     #   with pytest.raises(ValueError):
-    #       iex("aapl", )
+    #       Stock("aapl", )
 
 
 # class ShareIntegrityTester(object):
@@ -191,7 +191,7 @@ class TestBatch(object):
 
     def test_invalid_symbol_or_symbols(self):
         with pytest.raises(IEXSymbolError):
-            iex(["TSLA", "AAAPLPL", "fwoeiwf"])
+            Stock(["TSLA", "AAAPLPL", "fwoeiwf"])
 
     def test_get_all_format(self):
         data = self.cbatch.get_all()

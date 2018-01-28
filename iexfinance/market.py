@@ -19,12 +19,12 @@ class Market(_IEXBase):
                  pause=0.001, session=None):
         """ Initializes the class
 
-        Keyword Arguments:
-            symbolList: A symbol or list of symbols
-            outputFormat: Desired output format (json or pandas)
-            retry_count: see base class
-            pause: see base class
-            session: see base class
+        Args:
+            symbolList (list): A symbol or list of symbols
+            outputFormat (str): Desired output format (json or pandas)
+            retry_count (int): see base class
+            pause (float): see base class
+            session (requests.session): see base class
         """
         if symbolList is None:
             if self.symbol_required:

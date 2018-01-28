@@ -15,8 +15,8 @@ __all__ = ['Share', 'Batch']
 # and conditions of use
 
 
-def IexFinance(symbol=None, displayPercent=False, _range="1m",
-               last=10, retry_count=3, pause=0.001, session=None):
+def Stock(symbol=None, displayPercent=False, _range="1m",
+          last=10, retry_count=3, pause=0.001, session=None):
     """
     Top level function to create Share or Batch instance depending on number
     of symbols given
