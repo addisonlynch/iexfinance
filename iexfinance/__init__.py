@@ -18,7 +18,8 @@ __all__ = ['Batch', 'get_historical_data']
 
 
 def Stock(symbolList=None, displayPercent=False, _range="1m",
-          last=10, retry_count=3, pause=0.001, session=None):
+          last=10, output_format='json', retry_count=3, pause=0.001,
+          session=None):
     """
     Top level function to create Share or Batch instance depending on number
     of symbols given
@@ -34,7 +35,7 @@ def Stock(symbolList=None, displayPercent=False, _range="1m",
             raise ValueError("Please input a symbol or list of symbols")
         else:
             inst = StockReader([symbolList], displayPercent, _range, last,
-                               retry_count, pause, session)
+                               output_format, retry_count, pause, session)
     elif type(symbolList) is list:
         if not symbolList:
             raise ValueError("Please input a symbol or list of symbols")
@@ -42,7 +43,7 @@ def Stock(symbolList=None, displayPercent=False, _range="1m",
             raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
             inst = StockReader(symbolList, displayPercent, _range, last,
-                               retry_count, pause, session)
+                               output_format, retry_count, pause, session)
         return inst
     else:
         raise ValueError("Please input a symbol or list of symbols")
@@ -80,7 +81,7 @@ def get_available_symbols():
 
 
 def get_historical_data(symbolList=None, start=None, end=None,
-                        outputFormat='json', retry_count=3, pause=0.001,
+                        output_format='json', retry_count=3, pause=0.001,
                         session=None):
     """
     Top-level function to obtain historical date for a symbol or list of
@@ -94,7 +95,7 @@ def get_historical_data(symbolList=None, start=None, end=None,
         Beginning of desired date range
     end: datetime.datetime, default None
         End of required date range
-    outputFormat: str, (defaults to json)
+    output_format: str, (defaults to json)
         Desired output format (json or pandas)
     retry_count: int, default 3
         Desired number of retries if a request fails
@@ -109,35 +110,35 @@ def get_historical_data(symbolList=None, start=None, end=None,
         Historical stock prices over date range, start to end
     """
     return HistoricalReader(symbolList, start,
-                            end, outputFormat, retry_count, pause,
+                            end, output_format, retry_count, pause,
                             session).fetch()
 
 
-def get_market_tops(symbolList=None, outputFormat='json', retry_count=3,
+def get_market_tops(symbolList=None, output_format='json', retry_count=3,
                     pause=0.001, session=None):
     """
     Top-level function to obtain TOPS data for a symbol or list of symbols
     """
-    return TOPS(symbolList, outputFormat, retry_count, pause, session).fetch()
+    return TOPS(symbolList, output_format, retry_count, pause, session).fetch()
 
 
-def get_market_last(symbolList=None, outputFormat='json', retry_count=3,
+def get_market_last(symbolList=None, output_format='json', retry_count=3,
                     pause=0.001, session=None):
     """
     Top-level function to obtain Last data for a symbol or list of symbols
     """
-    return Last(symbolList, outputFormat, retry_count, pause, session).fetch()
+    return Last(symbolList, output_format, retry_count, pause, session).fetch()
 
 
-def get_market_deep(symbolList=None, outputFormat='json', retry_count=3,
+def get_market_deep(symbolList=None, output_format='json', retry_count=3,
                     pause=0.001, session=None):
     """
     Top-level function to obtain DEEP data for a symbol or list of symbols
     """
-    return DEEP(symbolList, outputFormat, retry_count, pause, session).fetch()
+    return DEEP(symbolList, output_format, retry_count, pause, session).fetch()
 
 
-def get_market_book(symbolList=None, outputFormat='json', retry_count=3,
+def get_market_book(symbolList=None, output_format='json', retry_count=3,
                     pause=0.001, session=None):
     """
     Returns a list of all equity symbols available for trading on IEX. Accepts
@@ -147,43 +148,43 @@ def get_market_book(symbolList=None, outputFormat='json', retry_count=3,
 
     :return: DataFrame
     """
-    return Book(symbolList, outputFormat, retry_count, pause, session).fetch()
+    return Book(symbolList, output_format, retry_count, pause, session).fetch()
 
 
-def get_stats_intraday(outputFormat='json', retry_count=3, pause=0.001,
+def get_stats_intraday(output_format='json', retry_count=3, pause=0.001,
                        session=None):
 
-    return IntradayReader(outputFormat=outputFormat, retry_count=retry_count,
+    return IntradayReader(output_format=output_format, retry_count=retry_count,
                           pause=pause, session=session).fetch()
 
 
-def get_stats_recent(outputFormat='json', retry_count=3, pause=0.001,
+def get_stats_recent(output_format='json', retry_count=3, pause=0.001,
                      session=None):
 
-    return RecentReader(outputFormat=outputFormat, retry_count=retry_count,
+    return RecentReader(output_format=output_format, retry_count=retry_count,
                         pause=pause, session=session).fetch()
 
 
-def get_stats_records(outputFormat='json', retry_count=3, pause=0.001,
+def get_stats_records(output_format='json', retry_count=3, pause=0.001,
                       session=None):
 
-    return RecordsReader(outputFormat=outputFormat, retry_count=retry_count,
+    return RecordsReader(output_format=output_format, retry_count=retry_count,
                          pause=pause, session=session).fetch()
 
 
-def get_stats_daily(start=None, end=None, outputFormat='json', last=None,
+def get_stats_daily(start=None, end=None, output_format='json', last=None,
                     retry_count=3, pause=0.001, session=None):
 
     return DailySummaryReader(start=start, end=end, last=last,
-                              outputFormat=outputFormat,
+                              output_format=output_format,
                               retry_count=retry_count, pause=pause,
                               session=session).fetch()
 
 
-def get_stats_monthly(start=None, end=None, outputFormat='json', retry_count=3,
-                      pause=0.001, session=None):
+def get_stats_monthly(start=None, end=None, output_format='json',
+                      retry_count=3, pause=0.001, session=None):
 
     return MonthlySummaryReader(start=start, end=end,
-                                outputFormat=outputFormat,
+                                output_format=output_format,
                                 retry_count=retry_count, pause=pause,
                                 session=session).fetch()

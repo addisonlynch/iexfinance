@@ -243,7 +243,7 @@ class TestHistorical(object):
     def test_single_historical_pandas(self):
 
         f = get_historical_data("AAPL", self.good_start, self.good_end,
-                                outputFormat="pandas")
+                                output_format="pandas")
 
         assert isinstance(f, pd.DataFrame)
         assert len(f) == 73
@@ -259,7 +259,7 @@ class TestHistorical(object):
     def test_batch_historical_json(self):
 
         f = get_historical_data(["AAPL", "TSLA"], self.good_start,
-                                self.good_end, outputFormat="json")
+                                self.good_end, output_format="json")
 
         assert isinstance(f, dict)
         assert len(f) == 2
@@ -290,7 +290,7 @@ class TestHistorical(object):
     def test_batch_historical_pandas(self):
 
         f = get_historical_data(["AAPL", "TSLA"], self.good_start,
-                                self.good_end, outputFormat="pandas")
+                                self.good_end, output_format="pandas")
 
         assert isinstance(f, dict)
         assert len(f) == 2

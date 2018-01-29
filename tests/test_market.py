@@ -23,9 +23,9 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_pandas(self):
-        df = get_market_last(outputFormat='pandas')
-        df2 = get_market_last("AAPL", outputFormat='pandas')
-        df3 = get_market_last(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_last(output_format='pandas')
+        df2 = get_market_last("AAPL", output_format='pandas')
+        df3 = get_market_last(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -49,8 +49,8 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_TOPS_pandas(self):
-        df = get_market_tops("AAPL", outputFormat='pandas')
-        df2 = get_market_tops(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_tops("AAPL", output_format='pandas')
+        df2 = get_market_tops(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -71,9 +71,9 @@ class TestMarket(object):
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_pandas(self):
         with pytest.raises(ValueError):
-            get_market_deep("AAPL", outputFormat='pandas')
+            get_market_deep("AAPL", output_format='pandas')
         with pytest.raises(ValueError):
-            get_market_deep(["AAPL", "TSLA"], outputFormat='pandas')
+            get_market_deep(["AAPL", "TSLA"], output_format='pandas')
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_json_default(self):
@@ -90,8 +90,8 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_pandas(self):
-        df = get_market_book("AAPL", outputFormat='pandas')
-        df2 = get_market_book(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_book("AAPL", output_format='pandas')
+        df2 = get_market_book(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)

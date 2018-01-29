@@ -61,7 +61,7 @@ Usage
     from iexfinance import get_market_last
     import pandas as pd
 
-    df = get_market_last(symbolList="AAPL", outputFormat='pandas')
+    df = get_market_last(symbolList="AAPL", output_format='pandas')
     df['price']
 
 .. note:: The /tops/last endpoint without any parameters will return all symbols.

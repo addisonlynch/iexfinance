@@ -1,8 +1,9 @@
 import datetime
+from functools import wraps
 
 from dateutil.relativedelta import relativedelta
 
-import pandas
+import pandas as pd
 
 from .base import _IEXBase
 from iexfinance.utils.exceptions import (IEXSymbolError, IEXFieldError,
@@ -15,103 +16,35 @@ from iexfinance.utils.exceptions import (IEXSymbolError, IEXFieldError,
 # and conditions of use
 
 
-class HistoricalReader(_IEXBase):
-    """
-    A class to download historical data from the chart endpoint
+def output_format(override=None):
 
-    Positional Arguments:
-        symbol: A symbol or list of symbols
-        start: A datetime object
-        end: A datetime object
-
-    Keyword Arguments:
-        outputFormat: Desired output format (json by default)
-
-    Reference: https://iextrading.com/developer/docs/#chart
-    """
-
-    def __init__(self, symbolList, start, end, outputFormat='json',
-                 retry_count=3, pause=0.001, session=None):
-        if isinstance(symbolList, list) and len(symbolList) > 1:
-            self.type = "Batch"
-            self.symlist = symbolList
-        elif isinstance(symbolList, str):
-            self.type = "Share"
-            self.symlist = [symbolList]
-        else:
-            raise ValueError("Please input a symbol or list of symbols")
-        self.symbols = symbolList
-        self.start = start
-        self.end = end
-        self.outputFormat = outputFormat
-        super(HistoricalReader, self).__init__(retry_count,
-                                               pause, session)
-
-    @property
-    def url(self):
-        return "stock/market/batch"
-
-    @property
-    def key(self):
-        return self.type
-
-    @property
-    def chart_range(self):
-        """ Calculates the chart range from start and end. Downloads larger
-        datasets (5y and 2y) when necessary, but defaults to 1y for performance
-        reasons
+    def _output_format(func):
         """
-        delta = relativedelta(self.start, datetime.datetime.now())
-        if 2 <= (delta.years * -1) <= 5:
-            return "5y"
-        elif 1 <= (delta.years * -1) <= 2:
-            return "2y"
-        elif 0 <= (delta.years * -1) < 1:
-            return "1y"
-        else:
-            raise ValueError(
-                "Invalid date specified. Must be within past 5 years.")
+        Decorator in charge of giving the output its correct format, either
+        json or pandas
 
-    @property
-    def params(self):
-        if self.type is "Batch":
-            syms = ",".join(self.symbols)
-        else:
-            syms = self.symbols
-        params = {
-            "symbols": syms,
-            "types": "chart",
-            "range": self.chart_range
-        }
-        return params
-
-    def fetch(self):
-        response = super(HistoricalReader, self).fetch()
-        for sym in self.symlist:
-            if sym not in list(response):
-                raise IEXSymbolError(sym)
-        return self._output_format(response)
-
-    def _output_format(self, out):
-        result = {}
-        for symbol in self.symlist:
-            d = out.pop(symbol)["chart"]
-            df = pandas.DataFrame(d)
-            df.set_index("date", inplace=True)
-            values = ["open", "high", "low", "close", "volume"]
-            df = df[values]
-            sstart = self.start.strftime('%Y-%m-%d')
-            send = self.end.strftime('%Y-%m-%d')
-            df = df.loc[sstart:send]
-            result.update({symbol: df})
-        if self.outputFormat is "pandas":
-            if len(result) > 1:
-                return result
-            return result[self.symbols]
-        else:
-            for sym in list(result):
-                result[sym] = result[sym].to_dict('index')
-            return result
+        Parameters
+        ----------
+        func: function
+            The function to be decorated
+        override: str
+            Override the internal format of the call, default none
+        """
+        @wraps(func)
+        def _format_wrapper(self, *args, **kwargs):
+            response = func(self, *args, **kwargs)
+            if self.output_format is 'json':
+                return response
+            if self.output_format is 'pandas' and override is 'json':
+                import warnings
+                warnings.warn("Pandas output not supported for this endpoint."
+                              " Defaulting to JSON.")
+                return response
+            else:
+                df = pd.DataFrame(response)
+                return df
+        return _format_wrapper
+    return _output_format
 
 
 class StockReader(_IEXBase):
@@ -126,10 +59,12 @@ class StockReader(_IEXBase):
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
                   "volume-by-venue"]
+    _PANDAS_BLACKLIST = ['chart', 'price']
     _ALL_ENDPOINTS_STR = ",".join(_ENDPOINTS)
 
     def __init__(self, symbolList=None, displayPercent=False, _range="1m",
-                 last=10, retry_count=3, pause=0.001, session=None):
+                 last=10, output_format='json', retry_count=3, pause=0.001,
+                 session=None):
         """ Initialize the class
 
         Parameters
@@ -142,17 +77,20 @@ class StockReader(_IEXBase):
             contained in _RANGE_VALUES
         last: int
             Range to use for the "last" attribute of the news endpoint.
+        output_format: str
+            Desired output format
         """
         self.symbolList = list(map(lambda x: x.upper(), symbolList))
         if len(symbolList) == 1:
             self.key = "share"
         else:
             self.key = "batch"
-        super(StockReader, self).__init__(retry_count, pause,
-                                          session)
+        self.output_format = output_format
         self.displayPercent = displayPercent
         self.range = _range
         self.last = last
+        super(StockReader, self).__init__(retry_count, pause,
+                                          session)
 
         # Parameter checking
         if not isinstance(self.displayPercent, bool):
@@ -253,8 +191,9 @@ class StockReader(_IEXBase):
         return result
 
     # endpoint methods
+    @output_format(override=None)
     def get_quote(self):
-        """Returns the Stocks Quote endpoint in JSON format
+        """Retrieves Stocks Quote endpoint
 
         Reference
         ---------
@@ -263,6 +202,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["quote"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_book(self):
         """Returns the Stocks Book endpoint in JSON format
 
@@ -273,8 +213,13 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["book"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
     def get_chart(self):
         """Returns the Stocks Chart endpoint in JSON format
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
 
         Reference
         ---------
@@ -283,6 +228,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["chart"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_open_close(self):
         """Returns the Stocks Open/Close endpoint in JSON format
 
@@ -293,6 +239,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["open-close"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_previous(self):
         """Returns the Stocks Previous endpoint in JSON format
 
@@ -303,6 +250,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["previous"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_company(self):
         """Returns the Stocks Company endpoint in JSON format
 
@@ -313,6 +261,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["company"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_key_stats(self):
         """Returns the Stocks Key Stats endpoint in JSON format
 
@@ -323,6 +272,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["stats"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_peers(self):
         """Returns the Stocks Peers endpoint in JSON format
 
@@ -333,6 +283,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["peers"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_relevant(self):
         """Returns the Stocks Relevant endpoint in JSON format
 
@@ -343,6 +294,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["relevant"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_news(self):
         """Returns the Stocks News endpoint in JSON format
 
@@ -353,6 +305,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["news"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_financials(self):
         """Returns the Stocks Financials endpoint in JSON format
 
@@ -363,6 +316,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["financials"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_earnings(self):
         """Returns the Stocks Earnings endpoint in JSON format
 
@@ -373,6 +327,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["earnings"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_dividends(self):
         """Returns the Stocks Dividends endpoint in JSON format
 
@@ -383,6 +338,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["dividends"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_splits(self):
         """Returns the Stocks Splits endpoint in JSON format
 
@@ -393,6 +349,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["splits"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_logo(self):
         """Returns the Stocks Logo endpoint in JSON format
 
@@ -403,8 +360,13 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["logo"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
     def get_price(self):
         """Returns the Stocks Price endpoint in JSON format
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
 
         Reference
         ---------
@@ -413,6 +375,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["price"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_delayed_quote(self):
         """Returns the Stocks Delayed Quote endpoint in JSON format
 
@@ -423,6 +386,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["delayed-quote"] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override=None)
     def get_effective_spread(self):
         """Returns the Stocks Effective Spread endpoint in JSON format
 
@@ -433,6 +397,7 @@ class StockReader(_IEXBase):
         return {symbol: self.data_set[symbol]["effective-spread"] for symbol
                 in self.data_set.keys()}
 
+    @output_format(override=None)
     def get_volume_by_venue(self):
         """Returns the Stocks Volume by Venue endpoint in JSON format
 
@@ -511,3 +476,102 @@ class StockReader(_IEXBase):
     def get_eps_consensus(self):
         return {symbol: self.get_key_stats()[symbol]["consensusEPS"] for
                 symbol in self.data_set.keys()}
+
+
+class HistoricalReader(_IEXBase):
+    """
+    A class to download historical data from the chart endpoint
+
+    Positional Arguments:
+        symbol: A symbol or list of symbols
+        start: A datetime object
+        end: A datetime object
+
+    Keyword Arguments:
+        output_format: Desired output format (json by default)
+
+    Reference: https://iextrading.com/developer/docs/#chart
+    """
+
+    def __init__(self, symbolList, start, end, output_format='json',
+                 retry_count=3, pause=0.001, session=None):
+        if isinstance(symbolList, list) and len(symbolList) > 1:
+            self.type = "Batch"
+            self.symlist = symbolList
+        elif isinstance(symbolList, str):
+            self.type = "Share"
+            self.symlist = [symbolList]
+        else:
+            raise ValueError("Please input a symbol or list of symbols")
+        self.symbols = symbolList
+        self.start = start
+        self.end = end
+        self.output_format = output_format
+        super(HistoricalReader, self).__init__(retry_count,
+                                               pause, session)
+
+    @property
+    def url(self):
+        return "stock/market/batch"
+
+    @property
+    def key(self):
+        return self.type
+
+    @property
+    def chart_range(self):
+        """ Calculates the chart range from start and end. Downloads larger
+        datasets (5y and 2y) when necessary, but defaults to 1y for performance
+        reasons
+        """
+        delta = relativedelta(self.start, datetime.datetime.now())
+        if 2 <= (delta.years * -1) <= 5:
+            return "5y"
+        elif 1 <= (delta.years * -1) <= 2:
+            return "2y"
+        elif 0 <= (delta.years * -1) < 1:
+            return "1y"
+        else:
+            raise ValueError(
+                "Invalid date specified. Must be within past 5 years.")
+
+    @property
+    def params(self):
+        if self.type is "Batch":
+            syms = ",".join(self.symbols)
+        else:
+            syms = self.symbols
+        params = {
+            "symbols": syms,
+            "types": "chart",
+            "range": self.chart_range
+        }
+        return params
+
+    def fetch(self):
+        response = super(HistoricalReader, self).fetch()
+        for sym in self.symlist:
+            if sym not in list(response):
+                raise IEXSymbolError(sym)
+        return self._output_format(response)
+
+    def _output_format(self, out):
+        result = {}
+        for symbol in self.symlist:
+            d = out.pop(symbol)["chart"]
+            df = pd.DataFrame(d)
+            df.set_index("date", inplace=True)
+            values = ["open", "high", "low", "close", "volume"]
+            df = df[values]
+            sstart = self.start.strftime('%Y-%m-%d')
+            send = self.end.strftime('%Y-%m-%d')
+            df = df.loc[sstart:send]
+            result.update({symbol: df})
+        if self.output_format is "pandas":
+            if len(result) > 1:
+                return result
+            return result[self.symbols]
+        else:
+            for sym in list(result):
+                result[sym] = result[sym].to_dict('index')
+            return result

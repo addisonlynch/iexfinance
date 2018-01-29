@@ -14,7 +14,7 @@ class TestStats(object):
         assert isinstance(js, dict)
 
     def test_intraday_pandas(self):
-        df = get_stats_intraday(outputFormat='pandas')
+        df = get_stats_intraday(output_format='pandas')
         assert isinstance(df, DataFrame)
 
     @pytest.mark.xfail(reason='IEX recent API endpoint unstable.')
@@ -23,7 +23,7 @@ class TestStats(object):
         assert isinstance(ls, list)
 
     def test_recent_pandas(self):
-        df = get_stats_recent(outputFormat='pandas')
+        df = get_stats_recent(output_format='pandas')
         assert isinstance(df, DataFrame)
 
     def test_records_json(self):
@@ -31,7 +31,7 @@ class TestStats(object):
         assert isinstance(js, dict)
 
     def test_records_pandas(self):
-        df = get_stats_records(outputFormat='pandas')
+        df = get_stats_records(output_format='pandas')
         assert isinstance(df, DataFrame)
 
     def test_daily_last_json(self):
@@ -39,7 +39,7 @@ class TestStats(object):
         assert isinstance(ls, list)
 
     def test_daily_last_pandas(self):
-        df = get_stats_daily(last=5, outputFormat='pandas')
+        df = get_stats_daily(last=5, output_format='pandas')
         assert isinstance(df, DataFrame)
 
     def test_daily_dates_json(self):
@@ -49,7 +49,7 @@ class TestStats(object):
 
     def test_daily_dates_pandas(self):
         df = get_stats_daily(start=datetime(2017, 5, 4),
-                             end=datetime(2017, 8, 7), outputFormat='pandas')
+                             end=datetime(2017, 8, 7), output_format='pandas')
         assert isinstance(df, DataFrame)
 
     def test_monthly_json(self):
@@ -59,5 +59,6 @@ class TestStats(object):
 
     def test_monthly_pandas(self):
         df = get_stats_monthly(start=datetime(2017, 5, 4),
-                               end=datetime(2017, 8, 7), outputFormat='pandas')
+                               end=datetime(2017, 8, 7),
+                               output_format='pandas')
         assert isinstance(df, DataFrame)

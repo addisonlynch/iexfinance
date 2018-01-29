@@ -19,16 +19,16 @@ class Stats(_IEXBase):
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """
 
-    def __init__(self, outputFormat='json', retry_count=3, pause=0.001,
+    def __init__(self, output_format='json', retry_count=3, pause=0.001,
                  session=None):
         super(Stats, self).__init__(retry_count=retry_count, pause=pause,
                                     session=session)
-        self.outputFormat = outputFormat
+        self.output_format = output_format
 
     def _output_format(self, response):
-        if self.outputFormat == 'json':
+        if self.output_format == 'json':
             return response
-        elif self.outputFormat == 'pandas' and self.acc_pandas:
+        elif self.output_format == 'pandas' and self.acc_pandas:
             try:
                 df = pd.DataFrame(response)
                 return df
@@ -99,7 +99,7 @@ class DailySummaryReader(Stats):
         month will be returned)
     last: int
         Period between 1 and 90 days, overrides dates
-    outputformat: str
+    output_format: str
         Desired output format (json or pandas)
     retry_count: int
         Desired number of retries if a request fails
@@ -115,7 +115,7 @@ class DailySummaryReader(Stats):
 
     """
     def __init__(self, start=None, end=None, last=None,
-                 outputFormat='json', retry_count=3, pause=0.001,
+                 output_format='json', retry_count=3, pause=0.001,
                  session=None):
         import warnings
         warnings.warn('Daily statistics is not working due to issues with the '
@@ -124,7 +124,7 @@ class DailySummaryReader(Stats):
         self.last = last
         self.start = start
         self.end = end
-        super(DailySummaryReader, self).__init__(outputFormat=outputFormat,
+        super(DailySummaryReader, self).__init__(output_format=output_format,
                                                  retry_count=retry_count,
                                                  pause=pause, session=session)
 
@@ -167,7 +167,7 @@ class DailySummaryReader(Stats):
             data = super(DailySummaryReader, self).fetch()
         else:
             data = self._fetch_dates()
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             data.set_index('date', inplace=True)
             return data
         else:
@@ -180,7 +180,7 @@ class DailySummaryReader(Stats):
             self.curr_date = date
             tdf = super(DailySummaryReader, self).fetch()
             dfs.append(tdf)
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             return pd.concat(dfs)
         else:
             return dfs
@@ -197,7 +197,7 @@ class MonthlySummaryReader(Stats):
     end: datetime.datetime
         Desired end of summary period (if omitted, start
         month will be returned)
-    outputformat: str
+    output_format: str
         Desired output format (json or pandas)
     retry_count: int
         Desired number of retries if a request fails
@@ -214,14 +214,14 @@ class MonthlySummaryReader(Stats):
     """
 
     def __init__(self, start=None, end=None,
-                 outputFormat='json', retry_count=3, pause=0.001,
+                 output_format='json', retry_count=3, pause=0.001,
                  session=None):
         self.curr_date = start
         self.date_format = '%Y%m'
         self.start = start
         self.end = end
 
-        super(MonthlySummaryReader, self).__init__(outputFormat=outputFormat,
+        super(MonthlySummaryReader, self).__init__(output_format=output_format,
                                                    retry_count=retry_count,
                                                    pause=pause,
                                                    session=session)
@@ -262,13 +262,13 @@ class MonthlySummaryReader(Stats):
             tdf = super(MonthlySummaryReader, self).fetch()
 
             # We may not return data if this was a weekend/holiday:
-            if self.outputFormat == 'pandas':
+            if self.output_format == 'pandas':
                 if not tdf.empty:
                     tdf['date'] = date.strftime(self.date_format)
             dfs.append(tdf)
 
         # We may not return any data if we failed to specify useful parameters:
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             result = pd.concat(dfs) if len(dfs) > 0 else pd.DataFrame()
             return result.set_index('date')
         else:

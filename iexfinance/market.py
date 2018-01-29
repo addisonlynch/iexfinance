@@ -15,7 +15,7 @@ class Market(_IEXBase):
     Base class for obtaining date from the market endpoints
     of IEX. Subclass of _IEXBase, subclassed by various.
     """
-    def __init__(self, symbolList=None, outputFormat='json', retry_count=3,
+    def __init__(self, symbolList=None, output_format='json', retry_count=3,
                  pause=0.001, session=None):
         """ Initialize the class
 
@@ -23,7 +23,7 @@ class Market(_IEXBase):
         ----------
         symbolList: str or list
             A symbol or list of symbols
-        outputformat: str
+        output_format: str
             Desired output format (json or pandas)
         retry_count: int
             Desired number of retries if a request fails
@@ -45,7 +45,7 @@ class Market(_IEXBase):
                 self.symbolList = [symbolList]
             elif len(symbolList) in range(0, 10):
                 self.symbolList = symbolList
-        self.outputFormat = outputFormat
+        self.output_format = output_format
         super(Market, self).__init__(retry_count, pause, session)
 
     @property
@@ -60,9 +60,9 @@ class Market(_IEXBase):
 
         Formats output as either json or pandas, if allowed
         """
-        if self.outputFormat == 'json':
+        if self.output_format == 'json':
             return response
-        elif self.outputFormat == 'pandas' and self.acc_pandas:
+        elif self.output_format == 'pandas' and self.acc_pandas:
             try:
                 df = pd.DataFrame(response)
                 return df
@@ -81,7 +81,7 @@ class Market(_IEXBase):
         Returns
         -------
         response: dict or DataFrame
-            Type based on self.outputFormat
+            Type based on self.output_format
 
         Raises
         ------
