@@ -1,7 +1,7 @@
+import pandas as pd
+
 from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXQueryError
-
-import pandas as pd
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -39,6 +39,8 @@ class Market(_IEXBase):
             self.syms = False
         else:
             self.syms = True
+            if not symbolList:
+                raise ValueError("Please input a symbol or list of symbols.")
             if isinstance(symbolList, str):
                 self.symbolList = [symbolList]
             elif len(symbolList) in range(0, 10):

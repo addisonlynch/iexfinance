@@ -23,18 +23,20 @@ TOPS
 `TOPS <https://iextrading.com/developer/docs/#tops>`__ is IEX's
 aggregated best quoted bid and offer position in near real time.
 
-Access is available through the top-level function ``get_TOPS()``:
+Access is available through the top-level function ``get_market_tops()``:
 
-.. autofunction:: get_TOPS
+.. autofunction:: get_market_tops
 
 Usage
-^^^^^
+-----
 
 .. ipython:: python
 
-    from iexfinance import get_TOPS
+    from iexfinance import get_market_tops
 
-    get_TOPS('AAPL')
+    get_market_tops('AAPL')
+
+.. note:: The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per `IEX docs <https://iextrading.com/developer/docs/#tops>`__
 
 
 .. _market.Last:
@@ -47,22 +49,22 @@ Last
 real-time trade data from the IEX book. This endpoint allows retrieval
 of a real-time quote.
 
-Access is available through the top-level function ``get_Last()``:
+Access is available through the top-level function ``get_market_last()``:
 
-.. autofunction:: get_Last
+.. autofunction:: get_market_last
 
 Usage
-^^^^^
+-----
 
 .. ipython:: python
 
-    from iexfinance import get_Last
+    from iexfinance import get_market_last
     import pandas as pd
 
-    df = get_Last(symbolList="AAPL", outputFormat='pandas')
+    df = get_market_last(symbolList="AAPL", outputFormat='pandas')
     df['price']
 
-
+.. note:: The /tops/last endpoint without any parameters will return all symbols.
 
 .. _market.DEEP:
 
@@ -72,20 +74,20 @@ DEEP
 
 `DEEP <https://iextrading.com/developer/docs/#DEEP>`__  is IEX's aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.
 
-Access is available through the top-level function ``get_DEEP()``:
+Access is available through the top-level function ``get_market_deep()``:
 
-.. autofunction:: get_DEEP
+.. autofunction:: get_market_deep
 
-.. note:: DEEP may return an error outside of market hours.
+.. note:: Per IEX, DEEP only accepts one symbol at this time. May return an error outside of market hours.
 
 Usage
-^^^^^
+-----
 
 .. ipython:: python
 
-    from iexfinance import get_DEEP
+    from iexfinance import get_market_deep
 
-    get_DEEP("AAPL")
+    get_market_deep("AAPL")
 
 
 .. _market.Book:
@@ -97,18 +99,20 @@ Book
 `Book <https://iextrading.com/developer/docs/#Book>`__ shows IEX's bids and asks
 for given symbols.
 
-Access is available through the top-level function ``get_Book()``:
+Access is available through the top-level function ``get_market_book()``:
 
-.. autofunction:: get_Book
+.. autofunction:: get_market_book
 
 .. note:: Book may return an error outside of market hours.
 
 Usage
-^^^^^
+-----
 
 .. ipython:: python
 
-    from iexfinance import get_Book
+    from iexfinance import get_market_book
 
-    get_Book("AAPL")
+    get_market_book("AAPL")
 
+
+.. todo:: Integrate WebSocket support for all IEX Market Data services.

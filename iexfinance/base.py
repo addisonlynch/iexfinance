@@ -1,8 +1,9 @@
+import time
 import requests
 
 from iexfinance.utils import _init_session
 from iexfinance.utils.exceptions import IEXQueryError
-import time
+
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
 # API terms of service and manual
@@ -83,11 +84,9 @@ class _IEXBase(object):
 
         """
         if response.text == "Unknown symbol":
-            raise ValueError("Invalid Symbol")
-        json_response = response.json()
-        if not json_response:
             raise IEXQueryError()
-        elif "Error Message" in json_response:
+        json_response = response.json()
+        if "Error Message" in json_response:
             raise IEXQueryError()
         return json_response
 

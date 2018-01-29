@@ -21,17 +21,17 @@ class IEXEndpointError(Exception):
         return "Endpoint " + self.endpoint + " not found."
 
 
-class IEXDatapointError(Exception):
+class IEXFieldError(Exception):
     """
-    This error is thrown when an invalid datapoint is specified in the custom
+    This error is thrown when an invalid field is specified in the custom
     endpoint lookup method
     """
-    def __init__(self, endpoint, datapoint):
-        self.datapoint = datapoint
+    def __init__(self, endpoint, field):
+        self.field = field
         self.endpoint = endpoint
 
     def __str__(self):
-        return ("Datapoint " + self.datapoint + " not found in Endpoint " +
+        return ("Field " + self.field + " not found in Endpoint " +
                 self.endpoint)
 
 
