@@ -1,56 +1,18 @@
 from datetime import datetime
 
 import pytest
-import mock
-
-import json
 
 import pandas as pd
 
-from iexfinance import Share, Batch, get_available_symbols, get_historical_data
+from iexfinance import get_available_symbols, get_historical_data
 from iexfinance import Stock
-from iexfinance.utils.exceptions import (IEXSymbolError, IEXQueryError)
-
-
-class mocker(object):
-
-    @classmethod
-    def get_sample_share_data(cls):
-        with open("tests/sample_data_share.json") as json_data:
-            x = json.load(json_data)
-            if not x:
-                raise ValueError("sample_data_share.json is not properly "
-                                 "formatted or is empty")
-            return x
-
-    @classmethod
-    def get_sample_batch_data(cls):
-        with open("tests/sample_data_batch.json") as json_data:
-            x = json.load(json_data)
-            if not x:
-                raise ValueError("sample_data_batch.json is not properly "
-                                 "formatted or is empty")
-            return x
-
-    @classmethod
-    @mock.patch.object(Share, 'refresh')
-    def get_mock_share(cls, mock_method):
-        mock_method.return_value = cls.get_sample_share_data()
-        inst = Share("luv")
-        return inst
-
-    @classmethod
-    @mock.patch.object(Batch, 'refresh')
-    def get_mock_batch(cls, mock_method):
-        mock_method.return_value = cls.get_sample_batch_data()
-        inst = Batch(["lol"])
-        return inst
+from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
 class TestBase(object):
 
     def test_wrong_iex_input_type(self):
-        with pytest.raises(TypeError):
+        with pytest.raises(ValueError):
             Stock(34)
         with pytest.raises(ValueError):
             Stock("")
@@ -117,7 +79,7 @@ class TestBase(object):
 class TestShare(object):
 
     def setup_class(self):
-        self.cshare = Share("aapl")
+        self.cshare = Stock("aapl")
 
     def test_get_all_format(self):
         data = self.cshare.get_all()
@@ -125,7 +87,7 @@ class TestShare(object):
 
     def test_get_chart_format(self):
         data = self.cshare.get_chart()
-        assert isinstance(data, list)
+        assert isinstance(data, dict)
 
     def test_get_book_format(self):
         data = self.cshare.get_book()
@@ -153,7 +115,7 @@ class TestShare(object):
 
     def test_get_news_format(self):
         data = self.cshare.get_news()
-        assert isinstance(data, list)
+        assert isinstance(data, dict)
 
     def test_get_financials_format(self):
         data = self.cshare.get_financials()
@@ -169,7 +131,7 @@ class TestShare(object):
 
     def test_get_price_format(self):
         data = self.cshare.get_price()
-        assert isinstance(data, float)
+        assert isinstance(data, dict)
 
     def test_get_delayed_quote_format(self):
         data = self.cshare.get_delayed_quote()
@@ -177,17 +139,17 @@ class TestShare(object):
 
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
-        assert isinstance(data, list)
+        assert isinstance(data, dict)
 
     def test_get_volume_by_venue_format(self):
         data = self.cshare.get_volume_by_venue()
-        assert isinstance(data, list)
+        assert isinstance(data, dict)
 
 
 class TestBatch(object):
 
     def setup_class(self):
-        self.cbatch = Batch(["aapl", "tsla"])
+        self.cbatch = Stock(["aapl", "tsla"])
 
     def test_invalid_symbol_or_symbols(self):
         with pytest.raises(IEXSymbolError):
@@ -257,6 +219,13 @@ class TestBatch(object):
         data = self.cbatch.get_volume_by_venue()
         assert isinstance(data, dict)
 
+    def test_get_select_ep_bad_params(self):
+        with pytest.raises(ValueError):
+            self.cbatch.get_select_endpoints()
+
+        with pytest.raises(IEXEndpointError):
+            self.cbatch.get_select_endpoints("BADENDPOINT")
+
 
 class TestHistorical(object):
 
@@ -281,7 +250,7 @@ class TestHistorical(object):
     def test_single_historical_pandas(self):
 
         f = get_historical_data("AAPL", self.good_start, self.good_end,
-                                outputFormat="pandas")
+                                output_format="pandas")
 
         assert isinstance(f, pd.DataFrame)
         assert len(f) == 73
@@ -297,7 +266,7 @@ class TestHistorical(object):
     def test_batch_historical_json(self):
 
         f = get_historical_data(["AAPL", "TSLA"], self.good_start,
-                                self.good_end, outputFormat="json")
+                                self.good_end, output_format="json")
 
         assert isinstance(f, dict)
         assert len(f) == 2
@@ -328,7 +297,7 @@ class TestHistorical(object):
     def test_batch_historical_pandas(self):
 
         f = get_historical_data(["AAPL", "TSLA"], self.good_start,
-                                self.good_end, outputFormat="pandas")
+                                self.good_end, output_format="pandas")
 
         assert isinstance(f, dict)
         assert len(f) == 2
@@ -371,7 +340,7 @@ class TestHistorical(object):
     def test_invalid_symbol_single(self):
         start = datetime(2017, 2, 9)
         end = datetime(2017, 5, 24)
-        with pytest.raises(IEXQueryError):
+        with pytest.raises(IEXSymbolError):
             get_historical_data("BADSYMBOL", start, end)
 
     def test_invalid_symbol_batch(self):

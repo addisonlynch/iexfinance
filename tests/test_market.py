@@ -1,4 +1,5 @@
-from iexfinance import (get_TOPS, get_Last, get_DEEP, get_Book)
+from iexfinance import (get_market_tops, get_market_last, get_market_deep,
+                        get_market_book)
 
 import pytest
 from pandas import DataFrame
@@ -8,23 +9,23 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_json_default(self):
-        ls = get_Last()
+        ls = get_market_last()
 
         assert isinstance(ls, list)
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_json_syms(self):
-        ls = get_Last("AAPL")
-        ls2 = get_Last(["AAPL", "TSLA"])
+        ls = get_market_last("AAPL")
+        ls2 = get_market_last(["AAPL", "TSLA"])
 
         assert isinstance(ls, list)
         assert isinstance(ls2, list)
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_pandas(self):
-        df = get_Last(outputFormat='pandas')
-        df2 = get_Last("AAPL", outputFormat='pandas')
-        df3 = get_Last(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_last(output_format='pandas')
+        df2 = get_market_last("AAPL", output_format='pandas')
+        df3 = get_market_last(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -32,14 +33,14 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_TOPS_json_default(self):
-        ls = get_TOPS()
+        ls = get_market_tops()
 
         assert isinstance(ls, list)
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_TOPS_json_syms(self):
-        ls = get_TOPS("AAPL")
-        ls2 = get_TOPS(["AAPL", "TSLA"])
+        ls = get_market_tops("AAPL")
+        ls2 = get_market_tops(["AAPL", "TSLA"])
 
         assert isinstance(ls, list)
         assert isinstance(ls2, list)
@@ -48,8 +49,8 @@ class TestMarket(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_TOPS_pandas(self):
-        df = get_TOPS("AAPL", outputFormat='pandas')
-        df2 = get_TOPS(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_tops("AAPL", output_format='pandas')
+        df2 = get_market_tops(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -57,12 +58,12 @@ class TestMarket(object):
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_json_default(self):
         with pytest.raises(ValueError):
-            get_DEEP()
+            get_market_deep()
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_json_syms(self):
-        js = get_DEEP("AAPL")
-        js2 = get_DEEP(["AAPL", "TSLA"])
+        js = get_market_deep("AAPL")
+        js2 = get_market_deep(["AAPL", "TSLA"])
 
         assert isinstance(js, dict)
         assert isinstance(js2, dict)
@@ -70,27 +71,27 @@ class TestMarket(object):
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_pandas(self):
         with pytest.raises(ValueError):
-            get_DEEP("AAPL", outputFormat='pandas')
+            get_market_deep("AAPL", output_format='pandas')
         with pytest.raises(ValueError):
-            get_DEEP(["AAPL", "TSLA"], outputFormat='pandas')
+            get_market_deep(["AAPL", "TSLA"], output_format='pandas')
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_json_default(self):
         with pytest.raises(ValueError):
-            get_Book()
+            get_market_book()
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_json_syms(self):
-        js = get_Book("AAPL")
-        js2 = get_Book(["AAPL", "TSLA"])
+        js = get_market_book("AAPL")
+        js2 = get_market_book(["AAPL", "TSLA"])
 
         assert isinstance(js, dict)
         assert isinstance(js2, dict)
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_pandas(self):
-        df = get_Book("AAPL", outputFormat='pandas')
-        df2 = get_Book(["AAPL", "TSLA"], outputFormat='pandas')
+        df = get_market_book("AAPL", output_format='pandas')
+        df2 = get_market_book(["AAPL", "TSLA"], output_format='pandas')
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)

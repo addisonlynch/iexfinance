@@ -25,7 +25,7 @@ Usage
     start = datetime(2017, 2, 9)
     end = datetime(2017, 5, 24)
 
-    f = get_historical_data('AAPL', start, end, outputFormat='pandas')
+    f = get_historical_data('AAPL', start, end, output_format='pandas')
     f.loc["2017-02-09"]
 
 Plotting
@@ -43,7 +43,7 @@ movements using matplotlib.
     start = datetime(2017, 2, 9)
     end = datetime(2017, 5, 24)
 
-    f = get_historical_data("AAPL", start, end, outputFormat='pandas')
+    f = get_historical_data("AAPL", start, end, output_format='pandas')
     plt.plot(f["close"])
     plt.title('Time series chart for AAPL')
     plt.show()

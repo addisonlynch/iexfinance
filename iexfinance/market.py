@@ -1,7 +1,7 @@
+import pandas as pd
+
 from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXQueryError
-
-import pandas as pd
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -15,41 +15,38 @@ class Market(_IEXBase):
     Base class for obtaining date from the market endpoints
     of IEX. Subclass of _IEXBase, subclassed by various.
     """
-    def __init__(self, symbolList=None, outputFormat='json', retry_count=3,
-                 pause=0.001, session=None):
+    def __init__(self, symbols=None, output_format='json', **kwargs):
         """ Initialize the class
 
         Parameters
         ----------
-        symbolList: str or list
+        symbols: str or list
             A symbol or list of symbols
-        outputformat: str
+        output_format: str
             Desired output format (json or pandas)
-        retry_count: int
-            Desired number of retries if a request fails
-        pause: float
-            Pause time between retry attempts
-        session: requests.session
-            A cached requests-cache session
+        kwargs:
+            Additional request options
 
         """
-        if symbolList is None:
+        if symbols is None:
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
             self.syms = False
         else:
             self.syms = True
-            if isinstance(symbolList, str):
-                self.symbolList = [symbolList]
-            elif len(symbolList) in range(0, 10):
-                self.symbolList = symbolList
-        self.outputFormat = outputFormat
-        super(Market, self).__init__(retry_count, pause, session)
+            if not symbols:
+                raise ValueError("Please input a symbol or list of symbols.")
+            if isinstance(symbols, str):
+                self.symbols = [symbols]
+            elif len(symbols) in range(0, 10):
+                self.symbols = symbols
+        self.output_format = output_format
+        super(Market, self).__init__(**kwargs)
 
     @property
     def params(self):
         if self.syms is True:
-            return {"symbols": ",".join(self.symbolList)}
+            return {"symbols": ",".join(self.symbols)}
         else:
             return {}
 
@@ -58,9 +55,9 @@ class Market(_IEXBase):
 
         Formats output as either json or pandas, if allowed
         """
-        if self.outputFormat == 'json':
+        if self.output_format == 'json':
             return response
-        elif self.outputFormat == 'pandas' and self.acc_pandas:
+        elif self.output_format == 'pandas' and self.acc_pandas:
             try:
                 df = pd.DataFrame(response)
                 return df
@@ -72,20 +69,18 @@ class Market(_IEXBase):
             raise ValueError("Please input valid output format")
 
     def fetch(self):
-        """ Fetch market data
-
-        Returns result of base class fetch() with formatted output
-
+        """ Fetch latest market data
         Returns
         -------
         response: dict or DataFrame
-            Type based on self.outputFormat
+            Type based on self.output_format
 
         Raises
         ------
         ValueError
-            If an invalid output format has been selected, or the request
-            fails
+            If an invalid output format has been selected
+        IEXQueryError
+            If issues arise while making the request
         """
         response = super(Market, self).fetch()
         return self._output_format(response)

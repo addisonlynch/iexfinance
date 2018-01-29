@@ -14,18 +14,6 @@ Stocks
 
 .. note:: For a thorough, step-by-step walkthrough, see `tutorial <tutorial.html>`__
 
-The simplest way to obtain data using the iexfinance wrapper is by
-calling the ``Stock`` function with a symbol (*str*) or list of
-symbols (*list*). ``Stock`` will return a `Share <stocks.html#share>`__
-object instance if given a single symbol and a `Batch <stocks.html#batch>`__
-object instance if given a list.
-
-.. ipython:: python
-
-    from iexfinance import Stock
-    aapl = Stock("aapl")
-    aapl.get_price()
-
 
 IEX provides a list of symbols that are available for access, and as
 such, we provide a function ``get_available_symbols`` to obtain this
@@ -74,6 +62,8 @@ the endpoint requested.
 
 .. ipython:: python
 
+	from iexfinance import Stock
+	aapl = Stock("AAPL")
     aapl.get_previous()
 
 

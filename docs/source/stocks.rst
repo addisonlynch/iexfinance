@@ -5,178 +5,233 @@
 Stocks
 ******
 
-.. _stocks.Share:
 
-Share
-=====
-
-.. autoclass:: iexfinance.stock.Share
-
-.. _share-utility-methods:
-
-Utility Methods
----------------
-
-.. _share-endpoint-methods:
-
-Endpoint Methods
-----------------
-
-.. automethod:: iexfinance.stock.Share.get_quote
-.. automethod:: iexfinance.stock.Share.get_chart
-.. automethod:: iexfinance.stock.Share.get_book
-.. automethod:: iexfinance.stock.Share.get_open_close
-.. automethod:: iexfinance.stock.Share.get_previous
-.. automethod:: iexfinance.stock.Share.get_company
-.. automethod:: iexfinance.stock.Share.get_key_stats
-.. automethod:: iexfinance.stock.Share.get_relevant
-.. automethod:: iexfinance.stock.Share.get_news
-.. automethod:: iexfinance.stock.Share.get_financials
-.. automethod:: iexfinance.stock.Share.get_earnings
-.. automethod:: iexfinance.stock.Share.get_dividends
-.. automethod:: iexfinance.stock.Share.get_splits
-.. automethod:: iexfinance.stock.Share.get_logo
-.. automethod:: iexfinance.stock.Share.get_price
-.. automethod:: iexfinance.stock.Share.get_delayed_quote
-.. automethod:: iexfinance.stock.Share.get_effective_spread
-.. automethod:: iexfinance.stock.Share.get_volume_by_venue
-
-
-.. note:: There is no support for the `list <https://iextrading.com/developer/docs/#list>`__ endpoint at this time.
-
-.. _share-datapoint-methods:
-
-Datapoint Methods
------------------
-
-.. automethod:: iexfinance.stock.Share.get_company_name
-.. automethod:: iexfinance.stock.Share.get_sector
-.. automethod:: iexfinance.stock.Share.get_open
-.. automethod:: iexfinance.stock.Share.get_close
-.. automethod:: iexfinance.stock.Share.get_years_high
-.. automethod:: iexfinance.stock.Share.get_years_low
-.. automethod:: iexfinance.stock.Share.get_ytd_change
-.. automethod:: iexfinance.stock.Share.get_volume
-.. automethod:: iexfinance.stock.Share.get_market_cap
-.. automethod:: iexfinance.stock.Share.get_beta
-.. automethod:: iexfinance.stock.Share.get_short_interest
-.. automethod:: iexfinance.stock.Share.get_short_ratio
-.. automethod:: iexfinance.stock.Share.get_latest_eps
-.. automethod:: iexfinance.stock.Share.get_shares_outstanding
-.. automethod:: iexfinance.stock.Share.get_float
-.. automethod:: iexfinance.stock.Share.get_eps_consensus
-
-.. _share-parameters:
-
-Parameters
-----------
-
-Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument.
+The simplest way to obtain data using the `Stocks <https://iextrading.com/developer/docs/#stocks>`__ endpoint is by calling the ``Stock`` function with a symbol (*str*) or list of
+symbols (*list*). ``Stock`` will return a :ref:`StockReader<stocks.StockReader>` instance.
 
 .. ipython:: python
 
-    aapl = Stock("AAPL", displayPercent=True)
+    from iexfinance import Stock
+    aapl = Stock("aapl")
+    aapl.get_price()
 
-+----------------------+------------------------------------------------------------+-------------+
-| Option               | Endpoint                                                   | Default     |
-+======================+============================================================+=============+
-| ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
-+----------------------+------------------------------------------------------------+-------------+
-| ``_range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
-+----------------------+------------------------------------------------------------+-------------+
-| ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
-+----------------------+------------------------------------------------------------+-------------+
+The Stock endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ are below, each of which contains data regarding a different aspect of the security/securities.
+Requests (:ref:`StockReader<stocks.StockReader>`) will return a symbol-indexed dictionary of
+the endpoint requested.
 
-.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
+.. autoclass:: iexfinance.stock.StockReader
 
+```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
 
-.. _share-examples:
+Endpoints
+=========
 
-Examples
+.. _stocks.quote
+
+Quote
 -----
 
-.. ipython:: python
+.. automethod:: iexfinance.stock.StockReader.get_quote
 
-    from iexfinance import Stock as iex
-    tsla = Stock('TSLA')
-    print(tsla.get_open())
-    print(tsla.get_price())
+.. _stocks.quote-field-methods
+
+Field methods
+^^^^^^^^^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_company_name
+.. automethod:: iexfinance.stock.StockReader.get_sector
+.. automethod:: iexfinance.stock.StockReader.get_open
+.. automethod:: iexfinance.stock.StockReader.get_close
+.. automethod:: iexfinance.stock.StockReader.get_years_high
+.. automethod:: iexfinance.stock.StockReader.get_years_low
+.. automethod:: iexfinance.stock.StockReader.get_ytd_change
+.. automethod:: iexfinance.stock.StockReader.get_volume
+.. automethod:: iexfinance.stock.StockReader.get_market_cap
+
+.. _stocks.chart
 
 
-.. _stocks.Batch:
+Chart
+-----
 
-Batch
-=====
-
-.. autoclass:: iexfinance.stock.Batch
-
-``Batch`` acts the same as ``Share``, except it allows us to access data
-for up to 100 symbols at once, returning a dictionary of the results
-indexed by each symbol.
+.. automethod:: iexfinance.stock.StockReader.get_chart
 
 
-.. _batch-utility-methods:
+.. _stocks.book
 
-Utility Methods
----------------
+Book
+----
 
-.. _batch-endpoint-methods:
+.. automethod:: iexfinance.stock.StockReader.get_book
 
-Endpoint Methods
+
+.. _stocks.open-close
+
+Open/Close
+----------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_open_close
+
+
+.. _stocks.previous
+
+Previous
+--------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_previous
+
+
+.. _stocks.company
+
+Company
+-------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_company
+
+
+.. _stocks.key-stats
+
+Key Stats
+---------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_key_stats
+
+.. _stocks.key-stats-field-methods
+
+Field methods
+^^^^^^^^^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_beta
+.. automethod:: iexfinance.stock.StockReader.get_short_interest
+.. automethod:: iexfinance.stock.StockReader.get_short_ratio
+.. automethod:: iexfinance.stock.StockReader.get_latest_eps
+.. automethod:: iexfinance.stock.StockReader.get_shares_outstanding
+.. automethod:: iexfinance.stock.StockReader.get_float
+.. automethod:: iexfinance.stock.StockReader.get_eps_consensus
+
+
+.. _stocks.peers
+
+Peers
+-----
+
+.. automethod:: iexfinance.stock.StockReader.get_peers
+
+
+.. _stocks.relevant
+
+Relevant
+--------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_relevant
+
+
+.. _stocks.news
+
+News
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_news
+
+
+.. _stocks.financials
+
+Financials
+----------
+
+.. automethod:: iexfinance.stock.StockReader.get_financials
+
+
+.. _stocks.earnings
+
+Earnings
+--------
+
+.. automethod:: iexfinance.stock.StockReader.get_earnings
+
+
+.. _stocks.dividends
+
+Dividends
+---------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_dividends
+
+
+.. _stocks.splits
+
+Splits
+------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_splits
+
+
+.. _stocks.logo
+
+Logo
+----
+
+
+
+.. automethod:: iexfinance.stock.StockReader.get_logo
+
+
+.. _stocks.price
+
+Price
+-----
+
+
+.. automethod:: iexfinance.stock.StockReader.get_price
+
+
+.. _stocks.delayed-quote
+
+Delayed Quote
+-------------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_delayed_quote
+
+
+.. _stocks.list
+
+List
+----
+
+.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
+
+
+.. _stocks.effective-spread
+
+Effective Spread
 ----------------
 
-.. automethod:: iexfinance.stock.Batch.get_quote
-.. automethod:: iexfinance.stock.Batch.get_chart
-.. automethod:: iexfinance.stock.Batch.get_book
-.. automethod:: iexfinance.stock.Batch.get_open_close
-.. automethod:: iexfinance.stock.Batch.get_previous
-.. automethod:: iexfinance.stock.Batch.get_company
-.. automethod:: iexfinance.stock.Batch.get_key_stats
-.. automethod:: iexfinance.stock.Batch.get_relevant
-.. automethod:: iexfinance.stock.Batch.get_news
-.. automethod:: iexfinance.stock.Batch.get_financials
-.. automethod:: iexfinance.stock.Batch.get_earnings
-.. automethod:: iexfinance.stock.Batch.get_dividends
-.. automethod:: iexfinance.stock.Batch.get_splits
-.. automethod:: iexfinance.stock.Batch.get_logo
-.. automethod:: iexfinance.stock.Batch.get_price
-.. automethod:: iexfinance.stock.Batch.get_delayed_quote
-.. automethod:: iexfinance.stock.Batch.get_effective_spread
-.. automethod:: iexfinance.stock.Batch.get_volume_by_venue
+
+.. automethod:: iexfinance.stock.StockReader.get_effective_spread
 
 
-note: there is no support for the
-`list <https://iextrading.com/developer/docs/#list>`__ endpoint at this
-time.
+.. _stocks.volume-by-venue
 
-.. _batch-datapoint-methods:
+Volume by Venue
+---------------
 
-Datapoint Methods
------------------
 
-.. automethod:: iexfinance.stock.Batch.get_company_name
-.. automethod:: iexfinance.stock.Batch.get_sector
-.. automethod:: iexfinance.stock.Batch.get_open
-.. automethod:: iexfinance.stock.Batch.get_close
-.. automethod:: iexfinance.stock.Batch.get_years_high
-.. automethod:: iexfinance.stock.Batch.get_years_low
-.. automethod:: iexfinance.stock.Batch.get_ytd_change
-.. automethod:: iexfinance.stock.Batch.get_volume
-.. automethod:: iexfinance.stock.Batch.get_market_cap
-.. automethod:: iexfinance.stock.Batch.get_beta
-.. automethod:: iexfinance.stock.Batch.get_short_interest
-.. automethod:: iexfinance.stock.Batch.get_short_ratio
-.. automethod:: iexfinance.stock.Batch.get_latest_eps
-.. automethod:: iexfinance.stock.Batch.get_shares_outstanding
-.. automethod:: iexfinance.stock.Batch.get_float
-.. automethod:: iexfinance.stock.Batch.get_eps_consensus
+.. automethod:: iexfinance.stock.StockReader.get_volume_by_venue
 
-.. _batch-parameters:
+
+
+.. _stocks.parameters:
 
 Parameters
-----------
+==========
 
 Certain endpoints (such as quote and chart) allow customizable
 parameters. To specify one of these parameters, merely pass it as a
@@ -199,14 +254,49 @@ keyword argument.
 .. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
 
 
-.. _batch-examples:
+.. _stocks.utility-methods:
+
+Utility Methods
+===============
+
+.. automethod:: iexfinance.stock.StockReader.refresh
+
+
+.. _stocks.examples:
 
 Examples
---------
+========
+
+.. _stocks.examples-endpoint-methods
+
+Endpoint Methods
+----------------
 
 .. ipython:: python
 
     from iexfinance import Stock as iex
-    air_transport = Stock(['AAL', 'DAL', 'LUV'])
-    air_transport.get_open()
-    air_transport.get_price()
+    air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
+    air_transport.get_quote().head()
+
+.. _stocks.examples-field-methods
+
+Field Methods
+-----------------
+
+
+``get_open()``, ``get_company_name()``
+
+Single symbol
+
+.. ipython:: python
+
+    aapl.get_open()
+    aapl.get_company_name()
+
+Multiple symbols
+
+.. ipython:: python
+
+    b = Stock(["AAPL", "TSLA"])
+    b.get_open()
+    b.get_company_name()

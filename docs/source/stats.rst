@@ -17,7 +17,7 @@ The following functions retrieve data from the IEX Stats endpoints
 
 
 
-.. stats.intraday:
+.. _stats.intraday:
 
 
 Intraday
@@ -30,6 +30,8 @@ Access is available through the top-level function ``get_stats_intraday()``:
 
 .. autofunction:: get_stats_intraday
 
+.. _stats.intraday.usage:
+
 Usage
 ^^^^^
 
@@ -39,7 +41,7 @@ Usage
 
     get_stats_intraday()
 
-.. stats.recent:
+.. _stats.recent:
 
 
 Recent
@@ -52,6 +54,8 @@ Access is available through the top-level function ``get_stats_recent()``:
 
 .. autofunction:: get_stats_recent
 
+.. _stats.recent.usage:
+
 Usage
 ^^^^^
 
@@ -62,7 +66,7 @@ Usage
     get_stats_recent()[0]
 
 
-.. stats.records:
+.. _stats.records:
 
 Records
 ====
@@ -74,6 +78,8 @@ Access is available through the top-level function ``get_stats_records()``:
 
 .. autofunction:: get_stats_records
 
+.. _stats.records.usage:
+
 Usage
 ^^^^^
 
@@ -84,7 +90,7 @@ Usage
     get_stats_records()
 
 
-.. stats.monthly:
+.. _stats.monthly:
 
 Historical Summary
 ==================
@@ -100,6 +106,7 @@ Access is available through the top-level function ``get_stats_monthly()``:
 			if specifying a long date range, a query will be made for each
 			month in the range, significantly impacting
 
+.. _stats.monthly.usage:
 
 Usage
 ^^^^^
@@ -120,7 +127,7 @@ Parameters
 +--------------------+-----------------------------------------+-------------+
 | ``end``	         | End of desired retrieval period         | Yes         |
 +--------------------+-----------------------------------------+-------------+
-| ``outputFormat``   | Output format (json or pandas)          | Yes         |
+| ``output_format``   | Output format (json or pandas)          | Yes         |
 +--------------------+-----------------------------------------+-------------+
 | ``retry_count``    | Retry count if request fails            | Yes         |
 +--------------------+-----------------------------------------+-------------+
@@ -132,7 +139,7 @@ Parameters
 
 
 
-.. stats.daily:
+.. _stats.daily:
 
 
 Historical Daily
@@ -144,6 +151,8 @@ is IEX's trading statstics from the previous trading sessions.
 Access is available through the top-level function ``get_stats_daily()``:
 
 .. autofunction:: get_stats_daily
+
+.. _stats.daily.usage:
 
 Usage
 ^^^^^

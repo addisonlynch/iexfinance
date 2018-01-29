@@ -1,8 +1,9 @@
-from .base import _IEXBase
-from iexfinance.utils.exceptions import IEXQueryError
-import pandas as pd
 from datetime import datetime, timedelta
 
+import pandas as pd
+
+from .base import _IEXBase
+from iexfinance.utils.exceptions import IEXQueryError
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
 # API terms of service and manual
@@ -18,16 +19,14 @@ class Stats(_IEXBase):
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """
 
-    def __init__(self, outputFormat='json', retry_count=3, pause=0.001,
-                 session=None):
-        super(Stats, self).__init__(retry_count=retry_count, pause=pause,
-                                    session=session)
-        self.outputFormat = outputFormat
+    def __init__(self, output_format='json', **kwargs):
+        self.output_format = output_format
+        super(Stats, self).__init__(**kwargs)
 
     def _output_format(self, response):
-        if self.outputFormat == 'json':
+        if self.output_format == 'json':
             return response
-        elif self.outputFormat == 'pandas' and self.acc_pandas:
+        elif self.output_format == 'pandas' and self.acc_pandas:
             try:
                 df = pd.DataFrame(response)
                 return df
@@ -37,6 +36,26 @@ class Stats(_IEXBase):
             raise ValueError("Pandas not accepted for this function.")
         else:
             raise ValueError("Please input valid output format")
+
+    @staticmethod
+    def _validate_dates(start, end):
+        now = datetime.now()
+        if isinstance(start, datetime):
+            # Ensure start range is within 4 years
+            if start.year < (now.year - 4) or start > now:
+                raise ValueError("start: retrieval period must begin from "
+                                 + str(now.year - 4) + " until now")
+            # Ensure end date (if specified is between start and now)
+            if isinstance(end, datetime):
+                if end > now or end < start:
+                    raise ValueError("end: retrieval period must end"
+                                     "between start and the current date")
+
+                return
+            else:
+                raise ValueError("end: Please enter a valid end date")
+        else:
+            raise ValueError("Please specify a valid date range")
 
     @property
     def acc_pandas(self):
@@ -98,14 +117,10 @@ class DailySummaryReader(Stats):
         month will be returned)
     last: int
         Period between 1 and 90 days, overrides dates
-    outputformat: str
+    output_format: str
         Desired output format (json or pandas)
-    retry_count: int
-        Desired number of retries if a request fails
-    pause: float
-        Pause time between retry attempts
-    session: requests.session
-        A cached requests-cache session
+    kwargs:
+        Additional request parameters (see base class)
 
 
     Reference
@@ -113,9 +128,10 @@ class DailySummaryReader(Stats):
     https://iextrading.com/developer/docs/#historical-daily
 
     """
+    _LAST = True
+
     def __init__(self, start=None, end=None, last=None,
-                 outputFormat='json', retry_count=3, pause=0.001,
-                 session=None):
+                 output_format='json', **kwargs):
         import warnings
         warnings.warn('Daily statistics is not working due to issues with the '
                       'IEX API')
@@ -123,9 +139,21 @@ class DailySummaryReader(Stats):
         self.last = last
         self.start = start
         self.end = end
-        super(DailySummaryReader, self).__init__(outputFormat=outputFormat,
-                                                 retry_count=retry_count,
-                                                 pause=pause, session=session)
+        self._validate_params()
+        super(DailySummaryReader, self).__init__(output_format=output_format,
+                                                 **kwargs)
+
+    def _validate_params(self):
+        if self.last is not None:
+            if not isinstance(self.last, int) or not (0 < self.last < 90):
+                raise ValueError("last: lease enter an integer value from 1 to"
+                                 " 90")
+            return
+        else:
+            self._validate_dates(self.start, self.end)
+            return
+        raise ValueError("Please enter a date range or number of days for "
+                         "retrieval period.")
 
     @staticmethod
     def _validate_response(response):
@@ -142,18 +170,11 @@ class DailySummaryReader(Stats):
     @property
     def params(self):
         p = {}
-        if self.last is not None:
-            if self.last > 90:
-                raise ValueError("'last' must be an integer up to 90.")
-            else:
-                p['last'] = self.last
-                return p
-        elif self.curr_date is not None:
+        if not self._LAST:
             p['date'] = self.curr_date.strftime('%Y%m%d')
-            return p
         else:
-            raise ValueError("Must specify either a date range or number"
-                             " of days (last).")
+            p['last'] = self.last
+        return p
 
     def fetch(self):
         """Unfortunately, IEX's API can only retrieve data one day or one month
@@ -162,11 +183,12 @@ class DailySummaryReader(Stats):
 
         :return: DataFrame
         """
+        self._validate_params()
         if self.islast:
             data = super(DailySummaryReader, self).fetch()
         else:
             data = self._fetch_dates()
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             data.set_index('date', inplace=True)
             return data
         else:
@@ -179,7 +201,7 @@ class DailySummaryReader(Stats):
             self.curr_date = date
             tdf = super(DailySummaryReader, self).fetch()
             dfs.append(tdf)
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             return pd.concat(dfs)
         else:
             return dfs
@@ -196,14 +218,10 @@ class MonthlySummaryReader(Stats):
     end: datetime.datetime
         Desired end of summary period (if omitted, start
         month will be returned)
-    outputformat: str
+    output_format: str
         Desired output format (json or pandas)
-    retry_count: int
-        Desired number of retries if a request fails
-    pause: float
-        Pause time between retry attempts
-    session: requests.session
-        A cached requests-cache session
+    kwargs:
+        Additional request parameters (see base class)
 
 
     Reference
@@ -212,18 +230,14 @@ class MonthlySummaryReader(Stats):
 
     """
 
-    def __init__(self, start=None, end=None,
-                 outputFormat='json', retry_count=3, pause=0.001,
-                 session=None):
+    def __init__(self, start=None, end=None, output_format='json', **kwargs):
         self.curr_date = start
         self.date_format = '%Y%m'
         self.start = start
         self.end = end
-
-        super(MonthlySummaryReader, self).__init__(outputFormat=outputFormat,
-                                                   retry_count=retry_count,
-                                                   pause=pause,
-                                                   session=session)
+        self._validate_dates(self.start, self.end)
+        super(MonthlySummaryReader, self).__init__(output_format=output_format,
+                                                   **kwargs)
 
     @property
     def url(self):
@@ -261,13 +275,13 @@ class MonthlySummaryReader(Stats):
             tdf = super(MonthlySummaryReader, self).fetch()
 
             # We may not return data if this was a weekend/holiday:
-            if self.outputFormat == 'pandas':
+            if self.output_format == 'pandas':
                 if not tdf.empty:
                     tdf['date'] = date.strftime(self.date_format)
             dfs.append(tdf)
 
         # We may not return any data if we failed to specify useful parameters:
-        if self.outputFormat == 'pandas':
+        if self.output_format == 'pandas':
             result = pd.concat(dfs) if len(dfs) > 0 else pd.DataFrame()
             return result.set_index('date')
         else:
