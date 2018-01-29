@@ -19,8 +19,7 @@ __all__ = ['Batch', 'get_historical_data']
 
 def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
           output_format='json', **kwargs):
-    """
-    Top-level function to to retrieve data from the IEX Stocks endpoints
+    """Top-level function to to retrieve data from the IEX Stocks endpoints
 
     Parameters
     ----------
@@ -59,8 +58,12 @@ def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
 
 
 def get_reference_data(**kwargs):
-    """
-    Utility function to obtain IEX Reference Data
+    """Utility function to obtain IEX Reference Data
+
+    Parameters
+    ----------
+    kwargs:
+        Additional request options (see base class)
 
     Returns
     -------
@@ -77,8 +80,7 @@ def get_reference_data(**kwargs):
 
 
 def get_available_symbols(**kwargs):
-    """
-    Utility function to obtain all available symbols.
+    """Utility function to obtain all available symbols.
 
     Parameters
     ----------
@@ -124,8 +126,7 @@ def get_historical_data(symbols=None, start=None, end=None,
 
 
 def get_market_tops(symbols=None, output_format='json', **kwargs):
-    """
-    Top-level function to obtain TOPS data for a symbol or list of symbols
+    """Top-level function to obtain TOPS data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -140,8 +141,7 @@ def get_market_tops(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_last(symbols=None, output_format='json', **kwargs):
-    """
-    Top-level function to obtain Last data for a symbol or list of symbols
+    """Top-level function to obtain Last data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -156,8 +156,7 @@ def get_market_last(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_deep(symbols=None, output_format='json', **kwargs):
-    """
-    Top-level function to obtain DEEP data for a symbol or list of symbols
+    """Top-level function to obtain DEEP data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -176,8 +175,7 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_book(symbols=None, output_format='json', **kwargs):
-    """
-    Top-level function to obtain Book data for a symbol or list of symbols
+    """Top-level function to obtain Book data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -187,7 +185,6 @@ def get_market_book(symbols=None, output_format='json', **kwargs):
         Desired output format.
     kwargs:
         Additional request options
-
     """
     return Book(symbols, output_format, **kwargs).fetch()
 
@@ -203,7 +200,6 @@ def get_stats_intraday(output_format='json', **kwargs):
         Desired output format.
     kwargs:
         Additional request options
-
     """
     return IntradayReader(output_format=output_format, **kwargs).fetch()
 
@@ -225,7 +221,7 @@ def get_stats_recent(output_format='json', **kwargs):
 
 def get_stats_records(output_format='json', **kwargs):
     """
-    Top-level function for obtaining data from the records endpoint of IEX
+    Top-level function for obtaining data from the Records endpoint of IEX
     Stats
 
     Parameters
@@ -234,7 +230,6 @@ def get_stats_records(output_format='json', **kwargs):
         Desired output format.
     kwargs:
         Additional request options
-
     """
     return RecordsReader(output_format=output_format, **kwargs).fetch()
 
@@ -258,7 +253,6 @@ def get_stats_daily(start=None, end=None, last=None, output_format='json',
         Desired output format.
     kwargs:
         Additional request options
-
     """
     return DailySummaryReader(start=start, end=end, last=last,
                               output_format=output_format, **kwargs).fetch()
@@ -279,7 +273,6 @@ def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
         Desired output format.
     kwargs:
         Additional request options
-
     """
     return MonthlySummaryReader(start=start, end=end,
                                 output_format=output_format, **kwargs).fetch()

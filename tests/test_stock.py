@@ -6,7 +6,7 @@ import pandas as pd
 
 from iexfinance import get_available_symbols, get_historical_data
 from iexfinance import Stock
-from iexfinance.utils.exceptions import (IEXSymbolError)
+from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
 class TestBase(object):
@@ -218,6 +218,13 @@ class TestBatch(object):
     def test_get_volume_by_venue_format(self):
         data = self.cbatch.get_volume_by_venue()
         assert isinstance(data, dict)
+
+    def test_get_select_ep_bad_params(self):
+        with pytest.raises(ValueError):
+            self.cbatch.get_select_endpoints()
+
+        with pytest.raises(IEXEndpointError):
+            self.cbatch.get_select_endpoints("BADENDPOINT")
 
 
 class TestHistorical(object):

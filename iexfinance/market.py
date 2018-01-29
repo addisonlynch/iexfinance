@@ -69,10 +69,7 @@ class Market(_IEXBase):
             raise ValueError("Please input valid output format")
 
     def fetch(self):
-        """ Fetch market data
-
-        Returns result of base class fetch() with formatted output
-
+        """ Fetch latest market data
         Returns
         -------
         response: dict or DataFrame

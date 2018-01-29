@@ -6,8 +6,7 @@ from dateutil.relativedelta import relativedelta
 import pandas as pd
 
 from .base import _IEXBase
-from iexfinance.utils.exceptions import (IEXSymbolError, IEXFieldError,
-                                         IEXEndpointError)
+from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -170,53 +169,6 @@ class StockReader(_IEXBase):
                 except KeyError:
                     raise IEXEndpointError(endpoint)
                 temp[endpoint] = query
-            result[symbol] = temp
-        return result
-
-    @output_format(override='json')
-    def get_select_fields(self, endpoint, attrList=[]):
-        """
-        Universal selector method to obtain custom fields from an
-        individual endpoint.
-
-        Parameters
-        ----------
-        endpoint: str
-            A valid endpoint
-        attrList: list
-            A valid list of fields desired from the given
-            endpoint
-
-        Notes
-        -----
-        Only allows JSON format (pandas not supported).
-
-        Raises
-        ------
-        IEXEndpointError
-            If an invalid endpoint is specified
-        IEXFieldError
-            If an invalid field is specified
-        IEXQueryError
-            If issues arise during query
-        """
-        if isinstance(attrList, str):
-            attrList = [attrList]
-        result = {}
-        if not attrList:
-            raise ValueError("Please give a valid attribute list")
-        for symbol in self.symbols:
-            try:
-                ep = self.data_set[symbol][endpoint]
-            except KeyError:
-                raise IEXEndpointError(endpoint)
-            temp = {}
-            for attr in attrList:
-                try:
-                    query = ep[attr]
-                except KeyError:
-                    raise IEXFieldError(endpoint, attr)
-                temp[attr] = query
             result[symbol] = temp
         return result
 
