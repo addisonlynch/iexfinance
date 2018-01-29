@@ -32,16 +32,18 @@ def output_format(override=None):
         @wraps(func)
         def _format_wrapper(self, *args, **kwargs):
             response = func(self, *args, **kwargs)
-            if self.output_format is 'json':
-                return response
-            if self.output_format is 'pandas' and override is 'json':
-                import warnings
-                warnings.warn("Pandas output not supported for this endpoint."
-                              " Defaulting to JSON.")
-                return response
+            if self.output_format is 'pandas':
+                if override is None:
+                    df = pd.DataFrame(response)
+                    return df
+                else:
+                    import warnings
+                    warnings.warn("Pandas output not supported for this "
+                                  "endpoint. Defaulting to JSON.")
             else:
-                df = pd.DataFrame(response)
-                return df
+                if self.key is 'share':
+                    return response[self.symbols[0]]
+                return response
         return _format_wrapper
     return _output_format
 
@@ -58,7 +60,8 @@ class StockReader(_IEXBase):
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
                   "volume-by-venue"]
-    _ALL_ENDPOINTS_STR = ",".join(_ENDPOINTS)
+    ALL_ENDPOINTS_STR_1 = ",".join(_ENDPOINTS[:10])
+    ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:])
 
     def __init__(self, symbols=None, displayPercent=False, _range="1m",
                  last=10, output_format='json', **kwargs):
@@ -102,10 +105,15 @@ class StockReader(_IEXBase):
         """
         Downloads latest data from all Stock endpoints
         """
+        self.endpoints = self.ALL_ENDPOINTS_STR_1
         self.data_set = self.fetch()
+        self.endpoints = self.ALL_ENDPOINTS_STR_2
+        data2 = self.fetch()
+
         for symbol in self.symbols:
             if symbol not in self.data_set:
                 raise IEXSymbolError(symbol)
+            self.data_set[symbol].update(data2[symbol])
 
     @property
     def url(self):
@@ -115,7 +123,7 @@ class StockReader(_IEXBase):
     def params(self):
         params = {
             "symbols": ','.join(self.symbols),
-            "types": self._ALL_ENDPOINTS_STR
+            "types": self.endpoints
         }
         return params
 
@@ -391,73 +399,114 @@ class StockReader(_IEXBase):
                 in self.data_set.keys()}
 
     # field methods
+    @output_format(override='json')
     def get_company_name(self):
-        return {symbol: self.get_quote()[symbol]["companyName"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["companyName"]
+                if self.key == 'batch' else self.get_quote()['companyName']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_primary_exchange(self):
-        return {symbol: self.get_quote()[symbol]["primaryExchange"] for symbol
-                in self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["primaryExchange"]
+                if self.key == 'batch' else self.get_quote()['primaryExchange']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_sector(self):
-        return {symbol: self.get_quote()[symbol]["sector"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["sector"]
+                if self.key == 'batch' else self.get_quote()['sector']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_open(self):
-        return {symbol: self.get_quote()[symbol]["open"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["open"]
+                if self.key == 'batch' else self.get_quote()['open']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_close(self):
-        return {symbol: self.get_quote()[symbol]["close"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["close"]
+                if self.key == 'batch' else self.get_quote()['close']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_years_high(self):
-        return {symbol: self.get_quote()[symbol]["week52High"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["week52High"]
+                if self.key == 'batch' else self.get_quote()['week52High']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_years_low(self):
-        return {symbol: self.get_quote()[symbol]["week52Low"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["week52Low"]
+                if self.key == 'batch' else self.get_quote()['week52Low']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_ytd_change(self):
-        return {symbol: self.get_quote()[symbol]["ytdChange"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["ytdChange"]
+                if self.key == 'batch' else self.get_quote()['ytdChange']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_volume(self):
-        return {symbol: self.get_quote()[symbol]["latestVolume"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["latestVolume"]
+                if self.key == 'batch' else self.get_quote()['latestVolume']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_market_cap(self):
-        return {symbol: self.get_quote()[symbol]["marketCap"]for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["marketCap"]
+                if self.key == 'batch' else self.get_quote()['marketCap']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_beta(self):
-        return {symbol: self.get_key_stats()[symbol]["beta"] for symbol in
+        return {symbol: self.get_key_stats()[symbol]["beta"]
+                if self.key == 'batch' else
+                self.get_key_stats()['beta'] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
     def get_short_interest(self):
-        return {symbol: self.get_key_stats()[symbol]["shortInterest"] for
-                symbol in self.data_set.keys()}
-
-    def get_short_ratio(self):
-        return {symbol: self.get_key_stats()[symbol]["shortRatio"] for
-                symbol in self.data_set.keys()}
-
-    def get_latest_eps(self):
-        return {symbol: self.get_key_stats()[symbol]["latestEPS"] for symbol
-                in self.data_set.keys()}
-
-    def get_shares_outstanding(self):
-        return {symbol: self.get_key_stats()[symbol]["sharesOutstanding"] for
-                symbol in self.data_set.keys()}
-
-    def get_float(self):
-        return {symbol: self.get_key_stats()[symbol]["float"] for symbol in
+        return {symbol: self.get_key_stats()[symbol]["shortInterest"]
+                if self.key == 'batch' else
+                self.get_key_stats()['shortInterest'] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
+    def get_short_ratio(self):
+        return {symbol: self.get_key_stats()[symbol]["shortRatio"]
+                if self.key == 'batch' else
+                self.get_key_stats()['shortRatio'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_latest_eps(self):
+        return {symbol: self.get_key_stats()[symbol]["latestEPS"]
+                if self.key == 'batch' else
+                self.get_key_stats()['latestEPS'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_shares_outstanding(self):
+        return {symbol: self.get_key_stats()[symbol]["sharesOutstanding"]
+                if self.key == 'batch' else
+                self.get_key_stats()['sharesOutstanding'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_float(self):
+        return {symbol: self.get_key_stats()[symbol]["float"]
+                if self.key == 'batch' else
+                self.get_key_stats()['float'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
     def get_eps_consensus(self):
-        return {symbol: self.get_key_stats()[symbol]["consensusEPS"] for
-                symbol in self.data_set.keys()}
+        return {symbol: self.get_key_stats()[symbol]["consensusEPS"]
+                if self.key == 'batch' else
+                self.get_key_stats()['consensusEPS'] for symbol in
+                self.data_set.keys()}
 
 
 class HistoricalReader(_IEXBase):

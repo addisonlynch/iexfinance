@@ -87,7 +87,7 @@ class TestShare(object):
 
     def test_get_chart_format(self):
         data = self.cshare.get_chart()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_book_format(self):
         data = self.cshare.get_book()
@@ -115,7 +115,7 @@ class TestShare(object):
 
     def test_get_news_format(self):
         data = self.cshare.get_news()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_financials_format(self):
         data = self.cshare.get_financials()
@@ -131,7 +131,7 @@ class TestShare(object):
 
     def test_get_price_format(self):
         data = self.cshare.get_price()
-        assert isinstance(data, dict)
+        assert isinstance(data, float)
 
     def test_get_delayed_quote_format(self):
         data = self.cshare.get_delayed_quote()
@@ -139,11 +139,11 @@ class TestShare(object):
 
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_volume_by_venue_format(self):
         data = self.cshare.get_volume_by_venue()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
 
 class TestBatch(object):
