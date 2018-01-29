@@ -15,43 +15,38 @@ class Market(_IEXBase):
     Base class for obtaining date from the market endpoints
     of IEX. Subclass of _IEXBase, subclassed by various.
     """
-    def __init__(self, symbolList=None, output_format='json', retry_count=3,
-                 pause=0.001, session=None):
+    def __init__(self, symbols=None, output_format='json', **kwargs):
         """ Initialize the class
 
         Parameters
         ----------
-        symbolList: str or list
+        symbols: str or list
             A symbol or list of symbols
         output_format: str
             Desired output format (json or pandas)
-        retry_count: int
-            Desired number of retries if a request fails
-        pause: float
-            Pause time between retry attempts
-        session: requests.session
-            A cached requests-cache session
+        kwargs:
+            Additional request options
 
         """
-        if symbolList is None:
+        if symbols is None:
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
             self.syms = False
         else:
             self.syms = True
-            if not symbolList:
+            if not symbols:
                 raise ValueError("Please input a symbol or list of symbols.")
-            if isinstance(symbolList, str):
-                self.symbolList = [symbolList]
-            elif len(symbolList) in range(0, 10):
-                self.symbolList = symbolList
+            if isinstance(symbols, str):
+                self.symbols = [symbols]
+            elif len(symbols) in range(0, 10):
+                self.symbols = symbols
         self.output_format = output_format
-        super(Market, self).__init__(retry_count, pause, session)
+        super(Market, self).__init__(**kwargs)
 
     @property
     def params(self):
         if self.syms is True:
-            return {"symbols": ",".join(self.symbolList)}
+            return {"symbols": ",".join(self.symbols)}
         else:
             return {}
 
@@ -86,8 +81,9 @@ class Market(_IEXBase):
         Raises
         ------
         ValueError
-            If an invalid output format has been selected, or the request
-            fails
+            If an invalid output format has been selected
+        IEXQueryError
+            If issues arise while making the request
         """
         response = super(Market, self).fetch()
         return self._output_format(response)

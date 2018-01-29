@@ -7,12 +7,14 @@
 IEX Market Data
 ***************
 
-The following functions retrieve data from the IEX Market Data endpoints
+The following functions retrieve data from the `IEX Market Data <https://iextrading.com/developer/docs/#iex-market-data>`__ endpoints.
 
     - :ref:`TOPS<market.TOPS>`
     - :ref:`Last<market.Last>`
     - :ref:`DEEP<market.DEEP>`
     - :ref:`Book<market.Book>`
+
+.. warning:: IEX Market Data endpoints may return empty or raise an exception outside of market hours.
 
 .. _market.TOPS:
 
@@ -24,6 +26,7 @@ TOPS
 aggregated best quoted bid and offer position in near real time.
 
 Access is available through the top-level function ``get_market_tops()``:
+
 
 .. autofunction:: get_market_tops
 
@@ -61,7 +64,7 @@ Usage
     from iexfinance import get_market_last
     import pandas as pd
 
-    df = get_market_last(symbolList="AAPL", output_format='pandas')
+    df = get_market_last(symbols="AAPL", output_format='pandas')
     df['price']
 
 .. note:: The /tops/last endpoint without any parameters will return all symbols.
@@ -78,7 +81,7 @@ Access is available through the top-level function ``get_market_deep()``:
 
 .. autofunction:: get_market_deep
 
-.. note:: Per IEX, DEEP only accepts one symbol at this time. May return an error outside of market hours.
+.. note:: Per IEX, DEEP only accepts one symbol at this time.
 
 Usage
 -----
@@ -103,7 +106,6 @@ Access is available through the top-level function ``get_market_book()``:
 
 .. autofunction:: get_market_book
 
-.. note:: Book may return an error outside of market hours.
 
 Usage
 -----

@@ -17,19 +17,19 @@ from iexfinance.utils.exceptions import (IEXSymbolError, IEXFieldError,
 
 
 def output_format(override=None):
+    """
+    Decorator in charge of giving the output its correct format, either
+    json or pandas
 
+    Parameters
+    ----------
+    func: function
+        The function to be decorated
+    override: str
+        Override the internal format of the call, default none
+    """
     def _output_format(func):
-        """
-        Decorator in charge of giving the output its correct format, either
-        json or pandas
 
-        Parameters
-        ----------
-        func: function
-            The function to be decorated
-        override: str
-            Override the internal format of the call, default none
-        """
         @wraps(func)
         def _format_wrapper(self, *args, **kwargs):
             response = func(self, *args, **kwargs)
@@ -59,17 +59,15 @@ class StockReader(_IEXBase):
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
                   "volume-by-venue"]
-    _PANDAS_BLACKLIST = ['chart', 'price']
     _ALL_ENDPOINTS_STR = ",".join(_ENDPOINTS)
 
-    def __init__(self, symbolList=None, displayPercent=False, _range="1m",
-                 last=10, output_format='json', retry_count=3, pause=0.001,
-                 session=None):
+    def __init__(self, symbols=None, displayPercent=False, _range="1m",
+                 last=10, output_format='json', **kwargs):
         """ Initialize the class
 
         Parameters
         ----------
-        symbolList: str or list
+        symbols: str or list
             A nonempty list of symbols
         displayPercent: boolean
         range: str
@@ -80,8 +78,8 @@ class StockReader(_IEXBase):
         output_format: str
             Desired output format
         """
-        self.symbolList = list(map(lambda x: x.upper(), symbolList))
-        if len(symbolList) == 1:
+        self.symbols = list(map(lambda x: x.upper(), symbols))
+        if len(symbols) == 1:
             self.key = "share"
         else:
             self.key = "batch"
@@ -89,8 +87,7 @@ class StockReader(_IEXBase):
         self.displayPercent = displayPercent
         self.range = _range
         self.last = last
-        super(StockReader, self).__init__(retry_count, pause,
-                                          session)
+        super(StockReader, self).__init__(**kwargs)
 
         # Parameter checking
         if not isinstance(self.displayPercent, bool):
@@ -107,7 +104,7 @@ class StockReader(_IEXBase):
         Downloads latest data from all Stock endpoints
         """
         self.data_set = self.fetch()
-        for symbol in self.symbolList:
+        for symbol in self.symbols:
             if symbol not in self.data_set:
                 raise IEXSymbolError(symbol)
 
@@ -118,31 +115,50 @@ class StockReader(_IEXBase):
     @property
     def params(self):
         params = {
-            "symbols": ','.join(self.symbolList),
+            "symbols": ','.join(self.symbols),
             "types": self._ALL_ENDPOINTS_STR
         }
         return params
 
+    @output_format(override='json')
     def get_all(self):
+        """
+        Returns all endpoints, indexed by endpoint title for each symbol
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
+        """
         return self.data_set
 
-    # universal selectors
+    @output_format(override='json')
     def get_select_endpoints(self, endpoints=[]):
         """
-        Universal selector method to obtain custom endpoints from the data
-        set. Will throw a IEXEndpointError if an invalid endpoint is specified
-        and an IEXQueryError if the endpoint cannot be retrieved.
+        Universal selector method to obtain specific endpoints from the
+        data set.
 
-        Postional arguments:
-            endpointList: A string or list of strings that specifies the
-            endpoints desired
+        Parameters
+        ----------
+        endpoints: str or list
+            Desired valid endpoints for retrieval
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
+
+        Raises
+        ------
+        IEXEndpointError
+            If an invalid endpoint is specified
+        IEXQueryError
+            If issues arise during query
         """
-        if type(endpoints) is str:
+        if isinstance(endpoints, str):
             endpoints = [endpoints]
         elif not endpoints:
             raise ValueError("Please provide a valid list of endpoints")
         result = {}
-        for symbol in self.symbolList:
+        for symbol in self.symbols:
             temp = {}
             try:
                 ds = self.data_set[symbol]
@@ -153,29 +169,43 @@ class StockReader(_IEXBase):
                     query = ds[endpoint]
                 except KeyError:
                     raise IEXEndpointError(endpoint)
-                temp.update({endpoint: query})
-            result.update({symbol: temp})
+                temp[endpoint] = query
+            result[symbol] = temp
         return result
 
+    @output_format(override='json')
     def get_select_fields(self, endpoint, attrList=[]):
         """
         Universal selector method to obtain custom fields from an
-        individual endpoint. If an invalid endpoint is specified, throws an
-        IEXEndpointError. If an invalid field is specified, throws an
-        IEXFieldError. If there are issues with the query, throws an
-        IEXQueryError.
+        individual endpoint.
 
-        Positional Arguments:
-            endpoint: A valid endpoint (string)
-            attrList: A valid list of fields desired from the given
-             endpoint
+        Parameters
+        ----------
+        endpoint: str
+            A valid endpoint
+        attrList: list
+            A valid list of fields desired from the given
+            endpoint
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
+
+        Raises
+        ------
+        IEXEndpointError
+            If an invalid endpoint is specified
+        IEXFieldError
+            If an invalid field is specified
+        IEXQueryError
+            If issues arise during query
         """
-        if type(attrList) is str:
+        if isinstance(attrList, str):
             attrList = [attrList]
         result = {}
         if not attrList:
             raise ValueError("Please give a valid attribute list")
-        for symbol in self.symbolList:
+        for symbol in self.symbols:
             try:
                 ep = self.data_set[symbol][endpoint]
             except KeyError:
@@ -186,8 +216,8 @@ class StockReader(_IEXBase):
                     query = ep[attr]
                 except KeyError:
                     raise IEXFieldError(endpoint, attr)
-                temp.update({attr: query})
-            result.update({symbol: temp})
+                temp[attr] = query
+            result[symbol] = temp
         return result
 
     # endpoint methods
@@ -493,22 +523,20 @@ class HistoricalReader(_IEXBase):
     Reference: https://iextrading.com/developer/docs/#chart
     """
 
-    def __init__(self, symbolList, start, end, output_format='json',
-                 retry_count=3, pause=0.001, session=None):
-        if isinstance(symbolList, list) and len(symbolList) > 1:
+    def __init__(self, symbols, start, end, output_format='json', **kwargs):
+        if isinstance(symbols, list) and len(symbols) > 1:
             self.type = "Batch"
-            self.symlist = symbolList
-        elif isinstance(symbolList, str):
+            self.symlist = symbols
+        elif isinstance(symbols, str):
             self.type = "Share"
-            self.symlist = [symbolList]
+            self.symlist = [symbols]
         else:
             raise ValueError("Please input a symbol or list of symbols")
-        self.symbols = symbolList
+        self.symbols = symbols
         self.start = start
         self.end = end
         self.output_format = output_format
-        super(HistoricalReader, self).__init__(retry_count,
-                                               pause, session)
+        super(HistoricalReader, self).__init__(**kwargs)
 
     @property
     def url(self):

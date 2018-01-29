@@ -19,11 +19,9 @@ class Stats(_IEXBase):
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """
 
-    def __init__(self, output_format='json', retry_count=3, pause=0.001,
-                 session=None):
-        super(Stats, self).__init__(retry_count=retry_count, pause=pause,
-                                    session=session)
+    def __init__(self, output_format='json', **kwargs):
         self.output_format = output_format
+        super(Stats, self).__init__(**kwargs)
 
     def _output_format(self, response):
         if self.output_format == 'json':
@@ -38,6 +36,26 @@ class Stats(_IEXBase):
             raise ValueError("Pandas not accepted for this function.")
         else:
             raise ValueError("Please input valid output format")
+
+    @staticmethod
+    def _validate_dates(start, end):
+        now = datetime.now()
+        if isinstance(start, datetime):
+            # Ensure start range is within 4 years
+            if start.year < (now.year - 4) or start > now:
+                raise ValueError("start: retrieval period must begin from "
+                                 + str(now.year - 4) + " until now")
+            # Ensure end date (if specified is between start and now)
+            if isinstance(end, datetime):
+                if end > now or end < start:
+                    raise ValueError("end: retrieval period must end"
+                                     "between start and the current date")
+
+                return
+            else:
+                raise ValueError("end: Please enter a valid end date")
+        else:
+            raise ValueError("Please specify a valid date range")
 
     @property
     def acc_pandas(self):
@@ -101,12 +119,8 @@ class DailySummaryReader(Stats):
         Period between 1 and 90 days, overrides dates
     output_format: str
         Desired output format (json or pandas)
-    retry_count: int
-        Desired number of retries if a request fails
-    pause: float
-        Pause time between retry attempts
-    session: requests.session
-        A cached requests-cache session
+    kwargs:
+        Additional request parameters (see base class)
 
 
     Reference
@@ -114,9 +128,10 @@ class DailySummaryReader(Stats):
     https://iextrading.com/developer/docs/#historical-daily
 
     """
+    _LAST = True
+
     def __init__(self, start=None, end=None, last=None,
-                 output_format='json', retry_count=3, pause=0.001,
-                 session=None):
+                 output_format='json', **kwargs):
         import warnings
         warnings.warn('Daily statistics is not working due to issues with the '
                       'IEX API')
@@ -124,9 +139,21 @@ class DailySummaryReader(Stats):
         self.last = last
         self.start = start
         self.end = end
+        self._validate_params()
         super(DailySummaryReader, self).__init__(output_format=output_format,
-                                                 retry_count=retry_count,
-                                                 pause=pause, session=session)
+                                                 **kwargs)
+
+    def _validate_params(self):
+        if self.last is not None:
+            if not isinstance(self.last, int) or not (0 < self.last < 90):
+                raise ValueError("last: lease enter an integer value from 1 to"
+                                 " 90")
+            return
+        else:
+            self._validate_dates(self.start, self.end)
+            return
+        raise ValueError("Please enter a date range or number of days for "
+                         "retrieval period.")
 
     @staticmethod
     def _validate_response(response):
@@ -143,18 +170,11 @@ class DailySummaryReader(Stats):
     @property
     def params(self):
         p = {}
-        if self.last is not None:
-            if self.last > 90:
-                raise ValueError("'last' must be an integer up to 90.")
-            else:
-                p['last'] = self.last
-                return p
-        elif self.curr_date is not None:
+        if not self._LAST:
             p['date'] = self.curr_date.strftime('%Y%m%d')
-            return p
         else:
-            raise ValueError("Must specify either a date range or number"
-                             " of days (last).")
+            p['last'] = self.last
+        return p
 
     def fetch(self):
         """Unfortunately, IEX's API can only retrieve data one day or one month
@@ -163,6 +183,7 @@ class DailySummaryReader(Stats):
 
         :return: DataFrame
         """
+        self._validate_params()
         if self.islast:
             data = super(DailySummaryReader, self).fetch()
         else:
@@ -199,12 +220,8 @@ class MonthlySummaryReader(Stats):
         month will be returned)
     output_format: str
         Desired output format (json or pandas)
-    retry_count: int
-        Desired number of retries if a request fails
-    pause: float
-        Pause time between retry attempts
-    session: requests.session
-        A cached requests-cache session
+    kwargs:
+        Additional request parameters (see base class)
 
 
     Reference
@@ -213,18 +230,14 @@ class MonthlySummaryReader(Stats):
 
     """
 
-    def __init__(self, start=None, end=None,
-                 output_format='json', retry_count=3, pause=0.001,
-                 session=None):
+    def __init__(self, start=None, end=None, output_format='json', **kwargs):
         self.curr_date = start
         self.date_format = '%Y%m'
         self.start = start
         self.end = end
-
+        self._validate_dates(self.start, self.end)
         super(MonthlySummaryReader, self).__init__(output_format=output_format,
-                                                   retry_count=retry_count,
-                                                   pause=pause,
-                                                   session=session)
+                                                   **kwargs)
 
     @property
     def url(self):

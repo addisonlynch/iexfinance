@@ -19,11 +19,11 @@ class _IEXBase(object):
 
     Attributes
     ----------
-    retry_count: int
+    retry_count: int, default 3, optional
         Desired number of retries if a request fails
-    pause: float
+    pause: float, default 0.001, optional
         Pause time between retry attempts
-    session: requests.session
+    session: requests.session, default None, optional
         A cached requests-cache session
 
     Methods
@@ -34,8 +34,7 @@ class _IEXBase(object):
     # Base URL
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
 
-    def __init__(self, retry_count=3, pause=0.001,
-                 session=None):
+    def __init__(self, *args, **kwargs):
         """ Initialize the class
 
         Parameters
@@ -48,14 +47,9 @@ class _IEXBase(object):
             A cached requests-cache session
 
         """
-        self.retry_count = retry_count
-        self.pause = pause
-        self.session = _init_session(session)
-
-    @property
-    def url(self):
-        # Must be overridden in subclass
-        raise NotImplementedError
+        self.retry_count = kwargs.pop("retry_count", 3)
+        self.pause = kwargs.pop("pause", 0.001)
+        self.session = kwargs.pop("session", _init_session(None))
 
     @property
     def params(self):

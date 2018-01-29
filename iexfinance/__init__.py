@@ -17,50 +17,58 @@ __all__ = ['Batch', 'get_historical_data']
 # and conditions of use
 
 
-def Stock(symbolList=None, displayPercent=False, _range="1m",
-          last=10, output_format='json', retry_count=3, pause=0.001,
-          session=None):
+def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
+          output_format='json', **kwargs):
     """
-    Top level function to create Share or Batch instance depending on number
-    of symbols given
+    Top-level function to to retrieve data from the IEX Stocks endpoints
 
-    Keyword arguments:
-        symbol: A string or list of strings that are valid symbols
-        options: A valid list of parameters to pass to the api. See _IEXBase
-        base class, where these parameters are checked
+    Parameters
+    ----------
+    symbols: str or list
+        A string or list of strings that are valid symbols
+    displayPercent: bool
+    _range: str
+    last: int
+    output_format: str
+    kwargs:
+        Additional request options
 
+    Returns
+    -------
+    inst : stock.StockReader
+        A StockReader instance
     """
-    if type(symbolList) is str:
-        if not symbolList:
+    if type(symbols) is str:
+        if not symbols:
             raise ValueError("Please input a symbol or list of symbols")
         else:
-            inst = StockReader([symbolList], displayPercent, _range, last,
-                               output_format, retry_count, pause, session)
-    elif type(symbolList) is list:
-        if not symbolList:
+            inst = StockReader([symbols], displayPercent, _range, last,
+                               output_format, **kwargs)
+    elif type(symbols) is list:
+        if not symbols:
             raise ValueError("Please input a symbol or list of symbols")
-        if len(symbolList) > 100:
+        if len(symbols) > 100:
             raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
-            inst = StockReader(symbolList, displayPercent, _range, last,
-                               output_format, retry_count, pause, session)
+            inst = StockReader(symbols, displayPercent, _range, last,
+                               output_format, **kwargs)
         return inst
     else:
         raise ValueError("Please input a symbol or list of symbols")
     return inst
 
 
-def get_reference_data():
+def get_reference_data(**kwargs):
     """
-    Utility function to obtain all available symbols.
+    Utility function to obtain IEX Reference Data
 
     Returns
     -------
-    data: json
-        Dictionary of all reference data
+    data: list
+        List of dictionary reference items for each symbol
     """
     _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0/ref-data/symbols"
-    handler = _IEXBase()
+    handler = _IEXBase(**kwargs)
     response = handler._execute_iex_query(_ALL_SYMBOLS_URL)
     if not response:
         raise IEXQueryError("Could not download all symbols")
@@ -68,28 +76,34 @@ def get_reference_data():
         return response
 
 
-def get_available_symbols():
+def get_available_symbols(**kwargs):
     """
-    Utility function to obtain IEX Reference Data
+    Utility function to obtain all available symbols.
+
+    Parameters
+    ----------
+    kwargs:
+        Additional request options (see base class)
 
     Returns
     -------
     symbols: list
-        A list of all available symbols (no additional data)
+        List of all available symbols (no additional data)
     """
-    return [d["symbol"] for d in get_available_symbols()]
+    data = get_available_symbols()
+    result = [d["symbol"] for d in data]
+    return result
 
 
-def get_historical_data(symbolList=None, start=None, end=None,
-                        output_format='json', retry_count=3, pause=0.001,
-                        session=None):
+def get_historical_data(symbols=None, start=None, end=None,
+                        output_format='json', **kwargs):
     """
     Top-level function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
 
     Parameters
     ----------
-    symbolList: str or list, default None
+    symbols: str or list, default None
         A symbol or list of symbols
     start: datetime.datetime, default None
         Beginning of desired date range
@@ -97,94 +111,175 @@ def get_historical_data(symbolList=None, start=None, end=None,
         End of required date range
     output_format: str, (defaults to json)
         Desired output format (json or pandas)
-    retry_count: int, default 3
-        Desired number of retries if a request fails
-    pause: float, default 0.001
-        Pause time between retry attempts
-    session: requests.session, default None
-        A cached requests-cache session
+    kwargs:
+        Additional request options (see base class)
 
     Returns
     -------
     df: json or DataFrame
         Historical stock prices over date range, start to end
     """
-    return HistoricalReader(symbolList, start,
-                            end, output_format, retry_count, pause,
-                            session).fetch()
+    return HistoricalReader(symbols, start, end, output_format,
+                            **kwargs).fetch()
 
 
-def get_market_tops(symbolList=None, output_format='json', retry_count=3,
-                    pause=0.001, session=None):
+def get_market_tops(symbols=None, output_format='json', **kwargs):
     """
     Top-level function to obtain TOPS data for a symbol or list of symbols
+
+    Parameters
+    ----------
+    symbols: str or list, default None, optional
+        A symbol or list of symbols
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
     """
-    return TOPS(symbolList, output_format, retry_count, pause, session).fetch()
+    return TOPS(symbols, output_format, **kwargs).fetch()
 
 
-def get_market_last(symbolList=None, output_format='json', retry_count=3,
-                    pause=0.001, session=None):
+def get_market_last(symbols=None, output_format='json', **kwargs):
     """
     Top-level function to obtain Last data for a symbol or list of symbols
+
+    Parameters
+    ----------
+    symbols: str or list, default None, optional
+        A symbol or list of symbols
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
     """
-    return Last(symbolList, output_format, retry_count, pause, session).fetch()
+    return Last(symbols, output_format, **kwargs).fetch()
 
 
-def get_market_deep(symbolList=None, output_format='json', retry_count=3,
-                    pause=0.001, session=None):
+def get_market_deep(symbols=None, output_format='json', **kwargs):
     """
     Top-level function to obtain DEEP data for a symbol or list of symbols
+
+    Parameters
+    ----------
+    symbols: str or list, default None
+        A symbol or list of symbols
+    output_format: str, default 'json'
+        Desired output format. JSON required.
+    kwargs:
+        Additional request options
+
+    Notes
+    -----
+    Pandas not supported as an output format for the DEEP endpoint.
     """
-    return DEEP(symbolList, output_format, retry_count, pause, session).fetch()
+    return DEEP(symbols, output_format, **kwargs).fetch()
 
 
-def get_market_book(symbolList=None, output_format='json', retry_count=3,
-                    pause=0.001, session=None):
+def get_market_book(symbols=None, output_format='json', **kwargs):
     """
-    Returns a list of all equity symbols available for trading on IEX. Accepts
-    no additional parameters.
+    Top-level function to obtain Book data for a symbol or list of symbols
 
-    Reference: https://www.iextrading.com/developer/docs/#symbols
+    Parameters
+    ----------
+    symbols: str or list, default None
+        A symbol or list of symbols
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
 
-    :return: DataFrame
     """
-    return Book(symbolList, output_format, retry_count, pause, session).fetch()
+    return Book(symbols, output_format, **kwargs).fetch()
 
 
-def get_stats_intraday(output_format='json', retry_count=3, pause=0.001,
-                       session=None):
+def get_stats_intraday(output_format='json', **kwargs):
+    """
+    Top-level function for obtaining data from the Intraday endpoint of IEX
+    Stats
 
-    return IntradayReader(output_format=output_format, retry_count=retry_count,
-                          pause=pause, session=session).fetch()
+    Parameters
+    ----------
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
 
-
-def get_stats_recent(output_format='json', retry_count=3, pause=0.001,
-                     session=None):
-
-    return RecentReader(output_format=output_format, retry_count=retry_count,
-                        pause=pause, session=session).fetch()
-
-
-def get_stats_records(output_format='json', retry_count=3, pause=0.001,
-                      session=None):
-
-    return RecordsReader(output_format=output_format, retry_count=retry_count,
-                         pause=pause, session=session).fetch()
+    """
+    return IntradayReader(output_format=output_format, **kwargs).fetch()
 
 
-def get_stats_daily(start=None, end=None, output_format='json', last=None,
-                    retry_count=3, pause=0.001, session=None):
+def get_stats_recent(output_format='json', **kwargs):
+    """
+    Top-level function for obtaining data from the Recent endpoint of IEX Stats
 
+    Parameters
+    ----------
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
+
+    """
+    return RecentReader(output_format=output_format, **kwargs).fetch()
+
+
+def get_stats_records(output_format='json', **kwargs):
+    """
+    Top-level function for obtaining data from the records endpoint of IEX
+    Stats
+
+    Parameters
+    ----------
+    output_format: str, default 'json'
+        Desired output format.
+    kwargs:
+        Additional request options
+
+    """
+    return RecordsReader(output_format=output_format, **kwargs).fetch()
+
+
+def get_stats_daily(start=None, end=None, last=None, output_format='json',
+                    **kwargs):
+    """
+    Top-level function for obtaining data from the Historical Daily endpoint
+    of IEX Stats
+
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        Start of data retrieval period
+    end: datetime.datetime, default None, optional
+        End of data retrieval period
+    last: int, default None, optional
+        Used in place of date range to retrieve previous number of trading days
+        (up to 90)
+    output_format: str, default 'json', optional
+        Desired output format.
+    kwargs:
+        Additional request options
+
+    """
     return DailySummaryReader(start=start, end=end, last=last,
-                              output_format=output_format,
-                              retry_count=retry_count, pause=pause,
-                              session=session).fetch()
+                              output_format=output_format, **kwargs).fetch()
 
 
-def get_stats_monthly(start=None, end=None, output_format='json',
-                      retry_count=3, pause=0.001, session=None):
+def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
+    """
+    Top-level function for obtaining data from the Historical Summary endpoint
+    of IEX Stats
 
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        Start of data retrieval period
+    end: datetime.datetime, default None, optional
+        End of data retrieval period
+    output_format: str, default 'json', optional
+        Desired output format.
+    kwargs:
+        Additional request options
+
+    """
     return MonthlySummaryReader(start=start, end=end,
-                                output_format=output_format,
-                                retry_count=retry_count, pause=pause,
-                                session=session).fetch()
+                                output_format=output_format, **kwargs).fetch()

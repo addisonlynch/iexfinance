@@ -62,6 +62,8 @@ the endpoint requested.
 
 .. ipython:: python
 
+	from iexfinance import Stock
+	aapl = Stock("AAPL")
     aapl.get_previous()
 
 
