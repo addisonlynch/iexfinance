@@ -1,8 +1,9 @@
-from .stock import StockReader, HistoricalReader
 from .base import _IEXBase
+from .stock import StockReader, HistoricalReader
 from .market import TOPS, Last, DEEP, Book
 from .stats import (IntradayReader, RecentReader, RecordsReader,
                     DailySummaryReader, MonthlySummaryReader)
+from .ref import CorporateActions, Dividends, NextDay, ListedSymbolDir
 
 from .utils.exceptions import IEXQueryError
 
@@ -56,46 +57,6 @@ def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
     return inst
 
 
-def get_reference_data(**kwargs):
-    """Utility function to obtain IEX Reference Data
-
-    Parameters
-    ----------
-    kwargs:
-        Additional request options (see base class)
-
-    Returns
-    -------
-    data: list
-        List of dictionary reference items for each symbol
-    """
-    _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0/ref-data/symbols"
-    handler = _IEXBase(**kwargs)
-    response = handler._execute_iex_query(_ALL_SYMBOLS_URL)
-    if not response:
-        raise IEXQueryError("Could not download all symbols")
-    else:
-        return response
-
-
-def get_available_symbols(**kwargs):
-    """Utility function to obtain all available symbols.
-
-    Parameters
-    ----------
-    kwargs:
-        Additional request options (see base class)
-
-    Returns
-    -------
-    symbols: list
-        List of all available symbols (no additional data)
-    """
-    data = get_available_symbols()
-    result = [d["symbol"] for d in data]
-    return result
-
-
 def get_historical_data(symbols=None, start=None, end=None,
                         output_format='json', **kwargs):
     """
@@ -122,6 +83,80 @@ def get_historical_data(symbols=None, start=None, end=None,
     """
     return HistoricalReader(symbols, start, end, output_format,
                             **kwargs).fetch()
+
+
+def get_available_symbols(**kwargs):
+    """Top-level function to obtain IEX available symbols
+
+    Parameters
+    ----------
+    kwargs:
+        Additional request options (see base class)
+
+    Returns
+    -------
+    data: list
+        List of dictionary reference items for each symbol
+    """
+    _ALL_SYMBOLS_URL = "https://api.iextrading.com/1.0/ref-data/symbols"
+    handler = _IEXBase(**kwargs)
+    response = handler._execute_iex_query(_ALL_SYMBOLS_URL)
+    if not response:
+        raise IEXQueryError("Could not download all symbols")
+    else:
+        return response
+
+
+def get_iex_corporate_actions(start=None, **kwargs):
+    """ Top-level function to retrieve IEX Corporate Actions from the ref-data
+        endpoints
+
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        A month to use for retrieval (a datetime object)
+    kwargs: Additional request parameters
+    """
+    return CorporateActions(start=start, **kwargs).fetch()
+
+
+def get_iex_dividends(start=None, **kwargs):
+    """ Top-level function to retrieve IEX Dividends from the ref-data
+        endpoints
+
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        A month to use for retrieval (a datetime object)
+    kwargs: Additional request parameters
+    """
+    return Dividends(start=start, **kwargs).fetch()
+
+
+def get_iex_next_day_ex_date(start=None, **kwargs):
+    """ Top-level function to retrieve IEX Next Day Ex Date from the ref-data
+        endpoints
+
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        A month to use for retrieval (a datetime object)
+    kwargs: Additional request parameters
+    """
+    return NextDay(start=start, **kwargs).fetch()
+
+
+def get_iex_listed_symbol_dir(start=None, **kwargs):
+    """ Top-level function to retrieve IEX Listed Symbol Directory from the
+        ref-data endpoints
+
+    Parameters
+    ----------
+    start: datetime.datetime, default None, optional
+        A month to use for retrieval (a datetime object)
+    kwargs: Additional request parameters
+    """
+    return ListedSymbolDir(start=start, **kwargs)
 
 
 def get_market_tops(symbols=None, output_format='json', **kwargs):

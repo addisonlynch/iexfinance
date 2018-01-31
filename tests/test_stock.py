@@ -3,7 +3,7 @@ from datetime import datetime
 import pytest
 import pandas as pd
 
-from iexfinance import get_available_symbols, get_historical_data
+from iexfinance import get_historical_data
 from iexfinance import Stock
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
@@ -365,12 +365,3 @@ class TestHistorical(object):
         end = datetime(2017, 5, 24)
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
-
-
-class UtilsTester(object):
-
-    def test_available_symbols(self):
-        f = True
-        if not get_available_symbols():
-            f = False
-        assert f is True
