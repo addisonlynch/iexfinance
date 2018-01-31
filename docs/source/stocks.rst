@@ -22,16 +22,16 @@ the endpoint requested.
     - :ref:`Book<stocks.book>`
     - :ref:`Chart<stocks.chart>`
     - :ref:`Company<stocks.company>`
-    - :ref:`Delayed Quote<stocks.delayed_quote>`
+    - :ref:`Delayed Quote<stocks.delayed-quote>`
     - :ref:`Dividends<stocks.dividends>`
     - :ref:`Earnings<stocks.earnings>`
-    - :ref:`Effective Spread<stocks.effective_spread>`
+    - :ref:`Effective Spread<stocks.effective-spread>`
     - :ref:`Financials<stocks.financials>`
-    - :ref:`Key stocks<stocks.key_stocks>`
+    - :ref:`Key stocks<stocks.key-stocks>`
     - :ref:`Logo<stocks.logo>`
     - :ref:`News<stocks.news>`
     - :ref:`OHLC<stocks.ohlc>`
-    - :ref:`Open/Close<stocks.open_close>`
+    - :ref:`Open/Close<stocks.open-close>`
     - :ref:`Peers<stocks.peers>`
     - :ref:`Previous<stocks.previous>`
     - :ref:`Price<stocks.price>`
@@ -39,7 +39,7 @@ the endpoint requested.
     - :ref:`Relevant<stocks.relevant>`
     - :ref:`Splits<stocks.splits>`
     - :ref:`Time Series<stocks.time-series>`
-    - :ref:`Volume by Venue<stocks.volume_by_venue>`
+    - :ref:`Volume by Venue<stocks.volume-by-venue>`
 
 
 .. autoclass:: iexfinance.stock.StockReader
@@ -51,14 +51,14 @@ Endpoints
 
 
 
-.. _stocks.book
+.. _stocks.book:
 
 Book
 ----
 
 .. automethod:: iexfinance.stock.StockReader.get_book
 
-.. _stocks.chart
+.. _stocks.chart:
 
 Chart
 -----
@@ -66,7 +66,7 @@ Chart
 .. automethod:: iexfinance.stock.StockReader.get_chart
 
 
-.. _stocks.company
+.. _stocks.company:
 
 Company
 -------
@@ -75,7 +75,7 @@ Company
 .. automethod:: iexfinance.stock.StockReader.get_company
 
 
-.. _stocks.delayed-quote
+.. _stocks.delayed-quote:
 
 Delayed Quote
 -------------
@@ -85,7 +85,7 @@ Delayed Quote
 
 
 
-.. _stocks.dividends
+.. _stocks.dividends:
 
 Dividends
 ---------
@@ -95,7 +95,7 @@ Dividends
 
 
 
-.. _stocks.earnings
+.. _stocks.earnings:
 
 Earnings
 --------
@@ -104,7 +104,7 @@ Earnings
 
 
 
-.. _stocks.effective-spread
+.. _stocks.effective-spread:
 
 Effective Spread
 ----------------
@@ -113,7 +113,7 @@ Effective Spread
 .. automethod:: iexfinance.stock.StockReader.get_effective_spread
 
 
-.. _stocks.financials
+.. _stocks.financials:
 
 Financials
 ----------
@@ -121,7 +121,7 @@ Financials
 .. automethod:: iexfinance.stock.StockReader.get_financials
 
 
-.. _stocks.key-stats
+.. _stocks.key-stats:
 
 Key Stats
 ---------
@@ -129,7 +129,7 @@ Key Stats
 
 .. automethod:: iexfinance.stock.StockReader.get_key_stats
 
-.. _stocks.key-stats-field-methods
+.. _stocks.key-stats-field-methods:
 
 Field methods
 ^^^^^^^^^^^^^
@@ -144,7 +144,7 @@ Field methods
 
 
 
-.. _stocks.list
+.. _stocks.list:
 
 List
 ----
@@ -154,7 +154,7 @@ List
 
 
 
-.. _stocks.logo
+.. _stocks.logo:
 
 Logo
 ----
@@ -164,7 +164,7 @@ Logo
 .. automethod:: iexfinance.stock.StockReader.get_logo
 
 
-.. _stocks.news
+.. _stocks.news:
 
 News
 ----
@@ -172,7 +172,7 @@ News
 .. automethod:: iexfinance.stock.StockReader.get_news
 
 
-.. _stocks.ohlc
+.. _stocks.ohlc:
 
 OHLC
 ----
@@ -180,7 +180,7 @@ OHLC
 .. automethod:: iexfinance.stock.StockReader.get_ohlc
 
 
-.. _stocks.open-close
+.. _stocks.open-close:
 
 Open/Close
 ----------
@@ -189,7 +189,7 @@ Open/Close
 .. automethod:: iexfinance.stock.StockReader.get_open_close
 
 
-.. _stocks.peers
+.. _stocks.peers:
 
 Peers
 -----
@@ -197,10 +197,9 @@ Peers
 .. automethod:: iexfinance.stock.StockReader.get_peers
 
 
-.. _stocks.relevant
 
 
-.. _stocks.previous
+.. _stocks.previous:
 
 Previous
 --------
@@ -209,7 +208,7 @@ Previous
 .. automethod:: iexfinance.stock.StockReader.get_previous
 
 
-.. _stocks.price
+.. _stocks.price:
 
 Price
 -----
@@ -218,14 +217,14 @@ Price
 .. automethod:: iexfinance.stock.StockReader.get_price
 
 
-.. _stocks.quote
+.. _stocks.quote:
 
 Quote
 -----
 
 .. automethod:: iexfinance.stock.StockReader.get_quote
 
-.. _stocks.quote-field-methods
+.. _stocks.quote-field-methods:
 
 Field methods
 ^^^^^^^^^^^^^
@@ -241,6 +240,8 @@ Field methods
 .. automethod:: iexfinance.stock.StockReader.get_market_cap
 
 
+.. _stocks.relevant:
+
 
 Relevant
 --------
@@ -251,7 +252,7 @@ Relevant
 
 
 
-.. _stocks.splits
+.. _stocks.splits:
 
 Splits
 ------
@@ -260,7 +261,7 @@ Splits
 .. automethod:: iexfinance.stock.StockReader.get_splits
 
 
-.. _stocks.time-series
+.. _stocks.time-series:
 
 Time Series
 -----------
@@ -270,7 +271,7 @@ Time Series
 .. automethod:: iexfinance.stock.StockReader.get_time_series
 
 
-.. _stocks.volume-by-venue
+.. _stocks.volume-by-venue:
 
 Volume by Venue
 ---------------
@@ -319,7 +320,7 @@ Utility Methods
 Examples
 ========
 
-.. _stocks.examples-endpoint-methods
+.. _stocks.examples-endpoint-methods:
 
 Endpoint Methods
 ----------------
@@ -330,7 +331,7 @@ Endpoint Methods
     air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
     air_transport.get_quote().head()
 
-.. _stocks.examples-field-methods
+.. _stocks.examples-field-methods:
 
 Field Methods
 -----------------

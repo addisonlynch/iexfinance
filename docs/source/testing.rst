@@ -14,6 +14,14 @@ Dependencies
 -  pytest-runner
 -  flake8 (to pass TravisCI build)
 
+For docs:
+
+- sphinx
+- sphinx-autobuild
+- sphinx_rtd_theme
+- sphinxcontrib-napoleon
+- matplotlib
+
 Local Testing
 -------------
 
