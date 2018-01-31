@@ -144,6 +144,10 @@ class TestShare(object):
         data = self.cshare.get_volume_by_venue()
         assert isinstance(data, list)
 
+    def test_ohlc(self):
+        data = self.cshare.get_ohlc()
+        assert isinstance(data, dict)
+
 
 class TestBatch(object):
 
@@ -224,6 +228,10 @@ class TestBatch(object):
 
         with pytest.raises(IEXEndpointError):
             self.cbatch.get_select_endpoints("BADENDPOINT")
+
+    def test_ohlc(self):
+        data = self.cbatch.get_ohlc()
+        assert isinstance(data, dict)
 
 
 class TestHistorical(object):

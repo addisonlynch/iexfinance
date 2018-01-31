@@ -57,7 +57,7 @@ class StockReader(_IEXBase):
                   "company", "stats", "peers", "relevant", "news",
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
-                  "volume-by-venue"]
+                  "volume-by-venue", "ohlc"]
     ALL_ENDPOINTS_STR_1 = ",".join(_ENDPOINTS[:10])
     ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:])
 
@@ -394,6 +394,17 @@ class StockReader(_IEXBase):
         https://iextrading.com/developer/docs/#volume-by-venue
         """
         return {symbol: self.data_set[symbol]["volume-by-venue"] for symbol
+                in self.data_set.keys()}
+
+    @output_format(override=None)
+    def get_ohlc(self):
+        """Returns the Stocks OHLC endpoint
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#ohlc
+        """
+        return {symbol: self.data_set[symbol]["ohlc"] for symbol
                 in self.data_set.keys()}
 
     # field methods

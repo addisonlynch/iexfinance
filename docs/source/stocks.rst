@@ -30,6 +30,7 @@ the endpoint requested.
     - :ref:`Key Stats<stats.key_stats>`
     - :ref:`Logo<stats.logo>`
     - :ref:`News<stats.news>`
+    - :ref:`OHLC<stats.ohlc>`
     - :ref:`Open/Close<stats.open_close>`
     - :ref:`Peers<stats.peers>`
     - :ref:`Previous<stats.previous>`
@@ -170,6 +171,12 @@ News
 .. automethod:: iexfinance.stock.StockReader.get_news
 
 
+.. _stocks.ohlc
+
+OHLC
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_ohlc
 
 
 .. _stocks.open-close
