@@ -59,7 +59,7 @@ class StockReader(_IEXBase):
                   "price", "delayed-quote", "effective-spread",
                   "volume-by-venue", "ohlc"]
     ALL_ENDPOINTS_STR_1 = ",".join(_ENDPOINTS[:10])
-    ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:])
+    ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:20])
 
     def __init__(self, symbols=None, displayPercent=False, _range="1m",
                  last=10, output_format='json', **kwargs):
@@ -406,6 +406,20 @@ class StockReader(_IEXBase):
         """
         return {symbol: self.data_set[symbol]["ohlc"] for symbol
                 in self.data_set.keys()}
+
+    def get_time_series(self):
+        """Returns the Stocks Time Series endpoint
+
+        Notes
+        -----
+        Time Series is an alias for the Chart endpoint, and will return the
+        same
+
+        Reference
+        ---------
+        https://iextrading.com/developer/docs/#time-series
+        """
+        return self.get_chart()
 
     # field methods
     @output_format(override='json')

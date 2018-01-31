@@ -148,6 +148,11 @@ class TestShare(object):
         data = self.cshare.get_ohlc()
         assert isinstance(data, dict)
 
+    def test_time_series(self):
+        data = self.cshare.get_time_series()
+        data2 = self.cshare.get_chart()
+        assert data == data2
+
 
 class TestBatch(object):
 
@@ -232,6 +237,11 @@ class TestBatch(object):
     def test_ohlc(self):
         data = self.cbatch.get_ohlc()
         assert isinstance(data, dict)
+
+    def test_time_series(self):
+        data = self.cbatch.get_time_series()
+        data2 = self.cbatch.get_chart()
+        assert data == data2
 
 
 class TestHistorical(object):

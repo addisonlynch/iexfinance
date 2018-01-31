@@ -19,26 +19,27 @@ The Stock endpoints of the `IEX Developer API <https://iextrading.com/developer/
 Requests (:ref:`StockReader<stocks.StockReader>`) will return a symbol-indexed dictionary of
 the endpoint requested.
 
-    - :ref:`Book<stats.book>`
-    - :ref:`Chart<stats.chart>`
-    - :ref:`Company<stats.company>`
-    - :ref:`Delayed Quote<stats.delayed_quote>`
-    - :ref:`Dividends<stats.dividends>`
-    - :ref:`Earnings<stats.earnings>`
-    - :ref:`Effective Spread<stats.effective_spread>`
-    - :ref:`Financials<stats.financials>`
-    - :ref:`Key Stats<stats.key_stats>`
-    - :ref:`Logo<stats.logo>`
-    - :ref:`News<stats.news>`
-    - :ref:`OHLC<stats.ohlc>`
-    - :ref:`Open/Close<stats.open_close>`
-    - :ref:`Peers<stats.peers>`
-    - :ref:`Previous<stats.previous>`
-    - :ref:`Price<stats.price>`
-    - :ref:`Quote<stats.quote>`
-    - :ref:`Relevant<stats.relevant>`
-    - :ref:`Splits<stats.splits>`
-    - :ref:`Volume by Venue<stats.volume_by_venue>`
+    - :ref:`Book<stocks.book>`
+    - :ref:`Chart<stocks.chart>`
+    - :ref:`Company<stocks.company>`
+    - :ref:`Delayed Quote<stocks.delayed_quote>`
+    - :ref:`Dividends<stocks.dividends>`
+    - :ref:`Earnings<stocks.earnings>`
+    - :ref:`Effective Spread<stocks.effective_spread>`
+    - :ref:`Financials<stocks.financials>`
+    - :ref:`Key stocks<stocks.key_stocks>`
+    - :ref:`Logo<stocks.logo>`
+    - :ref:`News<stocks.news>`
+    - :ref:`OHLC<stocks.ohlc>`
+    - :ref:`Open/Close<stocks.open_close>`
+    - :ref:`Peers<stocks.peers>`
+    - :ref:`Previous<stocks.previous>`
+    - :ref:`Price<stocks.price>`
+    - :ref:`Quote<stocks.quote>`
+    - :ref:`Relevant<stocks.relevant>`
+    - :ref:`Splits<stocks.splits>`
+    - :ref:`Time Series<stocks.time-series>`
+    - :ref:`Volume by Venue<stocks.volume_by_venue>`
 
 
 .. autoclass:: iexfinance.stock.StockReader
@@ -258,6 +259,15 @@ Splits
 
 .. automethod:: iexfinance.stock.StockReader.get_splits
 
+
+.. _stocks.time-series
+
+Time Series
+-----------
+
+.. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
+
+.. automethod:: iexfinance.stock.StockReader.get_time_series
 
 
 .. _stocks.volume-by-venue
