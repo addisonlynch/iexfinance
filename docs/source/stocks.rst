@@ -19,6 +19,27 @@ The Stock endpoints of the `IEX Developer API <https://iextrading.com/developer/
 Requests (:ref:`StockReader<stocks.StockReader>`) will return a symbol-indexed dictionary of
 the endpoint requested.
 
+    - :ref:`Book<stats.book>`
+    - :ref:`Chart<stats.chart>`
+    - :ref:`Company<stats.company>`
+    - :ref:`Delayed Quote<stats.delayed_quote>`
+    - :ref:`Dividends<stats.dividends>`
+    - :ref:`Earnings<stats.earnings>`
+    - :ref:`Effective Spread<stats.effective_spread>`
+    - :ref:`Financials<stats.financials>`
+    - :ref:`Key Stats<stats.key_stats>`
+    - :ref:`Logo<stats.logo>`
+    - :ref:`News<stats.news>`
+    - :ref:`Open/Close<stats.open_close>`
+    - :ref:`Peers<stats.peers>`
+    - :ref:`Previous<stats.previous>`
+    - :ref:`Price<stats.price>`
+    - :ref:`Quote<stats.quote>`
+    - :ref:`Relevant<stats.relevant>`
+    - :ref:`Splits<stats.splits>`
+    - :ref:`Volume by Venue<stats.volume_by_venue>`
+
+
 .. autoclass:: iexfinance.stock.StockReader
 
 ```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
@@ -26,35 +47,6 @@ the endpoint requested.
 Endpoints
 =========
 
-.. _stocks.quote
-
-Quote
------
-
-.. automethod:: iexfinance.stock.StockReader.get_quote
-
-.. _stocks.quote-field-methods
-
-Field methods
-^^^^^^^^^^^^^
-
-.. automethod:: iexfinance.stock.StockReader.get_company_name
-.. automethod:: iexfinance.stock.StockReader.get_sector
-.. automethod:: iexfinance.stock.StockReader.get_open
-.. automethod:: iexfinance.stock.StockReader.get_close
-.. automethod:: iexfinance.stock.StockReader.get_years_high
-.. automethod:: iexfinance.stock.StockReader.get_years_low
-.. automethod:: iexfinance.stock.StockReader.get_ytd_change
-.. automethod:: iexfinance.stock.StockReader.get_volume
-.. automethod:: iexfinance.stock.StockReader.get_market_cap
-
-.. _stocks.chart
-
-
-Chart
------
-
-.. automethod:: iexfinance.stock.StockReader.get_chart
 
 
 .. _stocks.book
@@ -64,23 +56,12 @@ Book
 
 .. automethod:: iexfinance.stock.StockReader.get_book
 
+.. _stocks.chart
 
-.. _stocks.open-close
+Chart
+-----
 
-Open/Close
-----------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_open_close
-
-
-.. _stocks.previous
-
-Previous
---------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_previous
+.. automethod:: iexfinance.stock.StockReader.get_chart
 
 
 .. _stocks.company
@@ -90,6 +71,52 @@ Company
 
 
 .. automethod:: iexfinance.stock.StockReader.get_company
+
+
+.. _stocks.delayed-quote
+
+Delayed Quote
+-------------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_delayed_quote
+
+
+
+.. _stocks.dividends
+
+Dividends
+---------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_dividends
+
+
+
+.. _stocks.earnings
+
+Earnings
+--------
+
+.. automethod:: iexfinance.stock.StockReader.get_earnings
+
+
+
+.. _stocks.effective-spread
+
+Effective Spread
+----------------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_effective_spread
+
+
+.. _stocks.financials
+
+Financials
+----------
+
+.. automethod:: iexfinance.stock.StockReader.get_financials
 
 
 .. _stocks.key-stats
@@ -114,63 +141,15 @@ Field methods
 .. automethod:: iexfinance.stock.StockReader.get_eps_consensus
 
 
-.. _stocks.peers
 
-Peers
------
+.. _stocks.list
 
-.. automethod:: iexfinance.stock.StockReader.get_peers
-
-
-.. _stocks.relevant
-
-Relevant
---------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_relevant
-
-
-.. _stocks.news
-
-News
+List
 ----
 
-.. automethod:: iexfinance.stock.StockReader.get_news
+.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
 
 
-.. _stocks.financials
-
-Financials
-----------
-
-.. automethod:: iexfinance.stock.StockReader.get_financials
-
-
-.. _stocks.earnings
-
-Earnings
---------
-
-.. automethod:: iexfinance.stock.StockReader.get_earnings
-
-
-.. _stocks.dividends
-
-Dividends
----------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_dividends
-
-
-.. _stocks.splits
-
-Splits
-------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_splits
 
 
 .. _stocks.logo
@@ -183,6 +162,45 @@ Logo
 .. automethod:: iexfinance.stock.StockReader.get_logo
 
 
+.. _stocks.news
+
+News
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_news
+
+
+
+
+.. _stocks.open-close
+
+Open/Close
+----------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_open_close
+
+
+.. _stocks.peers
+
+Peers
+-----
+
+.. automethod:: iexfinance.stock.StockReader.get_peers
+
+
+.. _stocks.relevant
+
+
+.. _stocks.previous
+
+Previous
+--------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_previous
+
+
 .. _stocks.price
 
 Price
@@ -192,30 +210,47 @@ Price
 .. automethod:: iexfinance.stock.StockReader.get_price
 
 
-.. _stocks.delayed-quote
+.. _stocks.quote
 
-Delayed Quote
--------------
+Quote
+-----
+
+.. automethod:: iexfinance.stock.StockReader.get_quote
+
+.. _stocks.quote-field-methods
+
+Field methods
+^^^^^^^^^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_company_name
+.. automethod:: iexfinance.stock.StockReader.get_sector
+.. automethod:: iexfinance.stock.StockReader.get_open
+.. automethod:: iexfinance.stock.StockReader.get_close
+.. automethod:: iexfinance.stock.StockReader.get_years_high
+.. automethod:: iexfinance.stock.StockReader.get_years_low
+.. automethod:: iexfinance.stock.StockReader.get_ytd_change
+.. automethod:: iexfinance.stock.StockReader.get_volume
+.. automethod:: iexfinance.stock.StockReader.get_market_cap
 
 
-.. automethod:: iexfinance.stock.StockReader.get_delayed_quote
+
+Relevant
+--------
 
 
-.. _stocks.list
-
-List
-----
-
-.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
+.. automethod:: iexfinance.stock.StockReader.get_relevant
 
 
-.. _stocks.effective-spread
-
-Effective Spread
-----------------
 
 
-.. automethod:: iexfinance.stock.StockReader.get_effective_spread
+.. _stocks.splits
+
+Splits
+------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_splits
+
 
 
 .. _stocks.volume-by-venue
@@ -246,7 +281,7 @@ keyword argument.
 +======================+============================================================+=============+
 | ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
 +----------------------+------------------------------------------------------------+-------------+
-| ``_range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
+| ``_range``           | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
 +----------------------+------------------------------------------------------------+-------------+
 | ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
 +----------------------+------------------------------------------------------------+-------------+

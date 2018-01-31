@@ -9,7 +9,7 @@ IEX servers. ``iexfinance`` supports the caching of queries through
 ``requests_cache_``.
 
 Tutorial
---------
+========
 
 Install ``requests-cache`` using pip:
 

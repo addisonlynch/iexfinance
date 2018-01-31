@@ -102,9 +102,11 @@ Access is available through the top-level function ``get_stats_monthly()``:
 
 .. autofunction:: get_stats_monthly
 
+Data retrieval period must be between 1/2014 and today.
+
 .. warning:: The Historical Summary accepts requests of one month per request.
 			if specifying a long date range, a query will be made for each
-			month in the range, significantly impacting
+			month in the range, significantly impacting performance
 
 .. _stats.monthly.usage:
 
@@ -116,25 +118,6 @@ Usage
     from iexfinance import get_stats_monthly
 
     get_stats_monthly()
-
-Parameters
-^^^^^^^^^^
-
-+--------------------+-----------------------------------------+-------------+
-| Option             | Description                             | Optional?   |
-+====================+=========================================+=============+
-| ``start``          | Start of desired retrieval period       | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``end``	         | End of desired retrieval period         | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``output_format``   | Output format (json or pandas)          | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``retry_count``    | Retry count if request fails            | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``pause``          | Pause duration between retry attempts   | Yes         |
-+--------------------+-----------------------------------------+-------------+
-| ``session``        | A requests-cache session                | Yes         |
-+--------------------+-----------------------------------------+-------------+
 
 
 
@@ -151,6 +134,8 @@ is IEX's trading statstics from the previous trading sessions.
 Access is available through the top-level function ``get_stats_daily()``:
 
 .. autofunction:: get_stats_daily
+
+Data retrieval period must be between 1/2014 and today.
 
 .. _stats.daily.usage:
 

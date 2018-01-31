@@ -9,8 +9,12 @@
 
 .. _index.documentation:
 
+**************************************
 Welcome to iexfinance's documentation!
-======================================
+**************************************
+
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
@@ -29,6 +33,6 @@ Welcome to iexfinance's documentation!
    tutorial.rst
 
 Modules
--------
+=======
 
 * `Modules <modules.html>`__

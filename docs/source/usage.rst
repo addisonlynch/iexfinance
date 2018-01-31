@@ -7,10 +7,18 @@ Usage
 *****
 
 
+Request Parameters
+==================
+
+All classes and functions utilize the _IEXBASE class to make their requests:
+
+.. autoclass:: iexfinance.base._IEXBase
+
+
 .. _usage.stocks:
 
 Stocks
-------
+======
 
 .. note:: For a thorough, step-by-step walkthrough, see `tutorial <tutorial.html>`__
 
@@ -105,19 +113,6 @@ keyword argument.
 
     aapl = Stock("AAPL", displayPercent=True)
 
-+----------------------+--------------------------------------------------------------------+-------------+
-| Option               | Endpoint                                                           | Default     |
-+======================+====================================================================+=============+
-| ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__           | ``False``   |
-+----------------------+--------------------------------------------------------------------+-------------+
-| ``chartRange``       | `chart <https://iextrading.com/developer/docs/#chart>`__           | ``1m``      |
-+----------------------+--------------------------------------------------------------------+-------------+
-| ``last``             | `news <https://iextrading.com/developer/docs/#news>`__             | ``10``      |
-+----------------------+--------------------------------------------------------------------+-------------+
-| ``dividendsRange``   | `dividends <https://iextrading.com/developer/docs/#dividends>`__   | ``1m``      |
-+----------------------+--------------------------------------------------------------------+-------------+
-| ``splitsRange``      | `splits <https://iextrading.com/developer/docs/#splits>`__         | ``1m``      |
-+----------------------+--------------------------------------------------------------------+-------------+
 
 .. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
 

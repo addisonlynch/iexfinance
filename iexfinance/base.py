@@ -1,4 +1,5 @@
 import time
+
 import requests
 
 from iexfinance.utils import _init_session

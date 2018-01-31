@@ -8,7 +8,6 @@ from .utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
 __version__ = '0.3.0'
-__all__ = ['Batch', 'get_historical_data']
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX

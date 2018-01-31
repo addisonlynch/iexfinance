@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import pytest
-
 import pandas as pd
 
 from iexfinance import get_available_symbols, get_historical_data

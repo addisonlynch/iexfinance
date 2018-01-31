@@ -51,6 +51,7 @@ Changes
 
 - Merged Share and Batch classes into StockReader class
   - Changed top-level IexFinance function to Stock()
+- Removes simplejson, mock, and nose as dependencies. Adds pytest.
 
 Bug Fixes
 ~~~~~~~~~

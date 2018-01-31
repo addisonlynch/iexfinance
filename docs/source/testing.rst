@@ -10,9 +10,9 @@ Unit and integration tests for iexfinance are handled by the
 Dependencies
 ------------
 
--  mock
 -  pytest
 -  pytest-runner
+-  flake8 (to pass TravisCI build)
 
 Local Testing
 -------------
@@ -20,6 +20,10 @@ Local Testing
 We've provided the BASH script ``test.sh`` which is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.
+
+Docs can be tested wit sphinx (with extensions napoleon and sphinx_rtd_theme)
+using the Makefile. ``make livehtml`` will serve the dev documentation site locally
+on 127.0.0.1:8000.
 
 Exceptions
 ----------

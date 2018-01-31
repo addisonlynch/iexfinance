@@ -1,8 +1,6 @@
 import datetime
 from functools import wraps
 
-from dateutil.relativedelta import relativedelta
-
 import pandas as pd
 
 from .base import _IEXBase
@@ -553,12 +551,12 @@ class HistoricalReader(_IEXBase):
         datasets (5y and 2y) when necessary, but defaults to 1y for performance
         reasons
         """
-        delta = relativedelta(self.start, datetime.datetime.now())
-        if 2 <= (delta.years * -1) <= 5:
+        delta = datetime.datetime.now().year - self.start.year
+        if 2 <= delta <= 5:
             return "5y"
-        elif 1 <= (delta.years * -1) <= 2:
+        elif 1 <= delta <= 2:
             return "2y"
-        elif 0 <= (delta.years * -1) < 1:
+        elif 0 <= delta < 1:
             return "1y"
         else:
             raise ValueError(
