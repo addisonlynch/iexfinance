@@ -5,6 +5,13 @@ About
 *****
 
 
+IEX API Issues
+==============
+
+For issues the provider's API endpoints, see the IEX API `Github <https://github.com/iexg/IEX-API>`__. Further, the `IEX Status <https://twitter.com/iexstatus>`__ twitter account provides
+updates about issues and service interruptions.
+
+
 Filling a Void
 ==============
 
@@ -24,16 +31,10 @@ benchmarked the API's performance against that of the late Yahoo and
 Google services and found that, for daily and intraday information, the
 IEX service is actually quite comparable. And thus with a Python wrapper
 for IEX's [Stocks] (https://iextrading.com/developer/docs/#stocks) and
-[IEX Market Data]
-(https://iextrading.com/developer/docs/#iex-market-data) endpoints we
-can access this data in a similar way as past.
+`IEX Market Data <https://iextrading.com/developer/docs/#iex-market-data>`__
+endpoints we can access this data in a similar way as past.
 
 iexfinance, a wrapper for this service, is written in a similar fashion
 as both Lukasz Banasiak's Yahoo Finance wrapper and Hongtao Cai's Google
 Finance wrapper, allowing for lookup of both individual symbols as well
 as batch requests.
-
-I would like to thank `Lukasz
-Banasiak <https://github.com/lukaszbanasiak>`__ and `Hongtao
-Cai <https://github.com/hongtaocai>`__ for their inspiration on this
-project.

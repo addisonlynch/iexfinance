@@ -1,10 +1,9 @@
 from datetime import datetime
 
 import pytest
-
 import pandas as pd
 
-from iexfinance import get_available_symbols, get_historical_data
+from iexfinance import get_historical_data
 from iexfinance import Stock
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
@@ -87,7 +86,7 @@ class TestShare(object):
 
     def test_get_chart_format(self):
         data = self.cshare.get_chart()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_book_format(self):
         data = self.cshare.get_book()
@@ -115,7 +114,7 @@ class TestShare(object):
 
     def test_get_news_format(self):
         data = self.cshare.get_news()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_financials_format(self):
         data = self.cshare.get_financials()
@@ -131,7 +130,7 @@ class TestShare(object):
 
     def test_get_price_format(self):
         data = self.cshare.get_price()
-        assert isinstance(data, dict)
+        assert isinstance(data, float)
 
     def test_get_delayed_quote_format(self):
         data = self.cshare.get_delayed_quote()
@@ -139,11 +138,29 @@ class TestShare(object):
 
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
     def test_get_volume_by_venue_format(self):
         data = self.cshare.get_volume_by_venue()
+        assert isinstance(data, list)
+
+    def test_ohlc(self):
+        data = self.cshare.get_ohlc()
         assert isinstance(data, dict)
+
+    def test_time_series(self):
+        data = self.cshare.get_time_series()
+        data2 = self.cshare.get_chart()
+        assert data == data2
+
+    def test_nondefault_params_1(self):
+        aapl = Stock("AAPL", _range='5y')
+        aapl2 = Stock("AAPL")
+        assert len(aapl.get_chart()) > len(aapl2.get_chart())
+
+    def test_nondefault_params_2(self):
+        aapl = Stock("AAPL", last=37)
+        assert len(aapl.get_news()) == 37
 
 
 class TestBatch(object):
@@ -225,6 +242,26 @@ class TestBatch(object):
 
         with pytest.raises(IEXEndpointError):
             self.cbatch.get_select_endpoints("BADENDPOINT")
+
+    def test_ohlc(self):
+        data = self.cbatch.get_ohlc()
+        assert isinstance(data, dict)
+
+    def test_time_series(self):
+        data = self.cbatch.get_time_series()
+        data2 = self.cbatch.get_chart()
+        assert data == data2
+
+    def test_nondefault_params_1(self):
+        data = Stock(["AAPL", "TSLA"], _range='5y')
+        data2 = Stock(["AAPL", "TSLA"])
+        assert len(data.get_chart()["AAPL"]) > len(data2.get_chart()["AAPL"])
+        assert len(data.get_chart()["TSLA"]) > len(data2.get_chart()["TSLA"])
+
+    def test_nondefault_params_2(self):
+        data = Stock(["AAPL", "TSLA"], last=37)
+        assert len(data.get_news()["AAPL"]) == 37
+        assert len(data.get_news()["TSLA"]) == 37
 
 
 class TestHistorical(object):
@@ -348,12 +385,3 @@ class TestHistorical(object):
         end = datetime(2017, 5, 24)
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
-
-
-class UtilsTester(object):
-
-    def test_available_symbols(self):
-        f = True
-        if not get_available_symbols():
-            f = False
-        assert f is True

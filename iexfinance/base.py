@@ -1,4 +1,5 @@
 import time
+
 import requests
 
 from iexfinance.utils import _init_session
@@ -45,7 +46,6 @@ class _IEXBase(object):
             Pause time between retry attempts
         session: requests.session
             A cached requests-cache session
-
         """
         self.retry_count = kwargs.pop("retry_count", 3)
         self.pause = kwargs.pop("pause", 0.001)
@@ -66,7 +66,7 @@ class _IEXBase(object):
 
         Returns
         -------
-        response: JSON
+        response: Parsed JSON
             A json-formatted response
 
         Raises

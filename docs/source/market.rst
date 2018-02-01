@@ -79,7 +79,7 @@ DEEP
 
 Access is available through the top-level function ``get_market_deep()``:
 
-.. autofunction:: get_market_deep
+.. autofunction:: get_market_deep[:3]
 
 .. note:: Per IEX, DEEP only accepts one symbol at this time.
 
@@ -90,7 +90,7 @@ Usage
 
     from iexfinance import get_market_deep
 
-    get_market_deep("AAPL")
+    get_market_deep("AAPL")[:2]
 
 
 .. _market.Book:

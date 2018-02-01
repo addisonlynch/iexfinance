@@ -5,13 +5,13 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-  
-install: 
+
+install:
   - pip install -qq flake8
   - pip install codecov
   - python setup.py install
 
-script: 
+script:
   - python setup.py pytest
   - flake8 --version
   - flake8 iexfinance

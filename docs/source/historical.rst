@@ -6,7 +6,7 @@
 Historical Data
 ***************
 
-Historical time series data is available through the
+Historical time series data is available through the top-level
 ``get_historical_data`` method, which sources the
 `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
 
@@ -15,7 +15,7 @@ Historical time series data is available through the
 Data can be retrieved from up to 5 years before the current date.
 
 Usage
------
+=====
 
 .. ipython:: python
 
@@ -29,7 +29,7 @@ Usage
     f.loc["2017-02-09"]
 
 Plotting
---------
+========
 
 With Pandas output formatting, we are able to plot historical price
 movements using matplotlib.

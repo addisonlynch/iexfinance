@@ -6,19 +6,17 @@ Install
 *******
 
 Dependencies
-------------
+============
 
 iexfinance relies on:
 
 -  `pandas <http://pandas.pydata.org>`__
 -  `requests <http://docs.python-requests.org>`__
--  `mock <http://pypi.python.org/pypi/mock>`__
--  `pytest <http://docs.pytest.org>`__ (testing)
 
-See requirements.txt.
+For testing requirements, see `testing <testing.html>`__.
 
 Installation
-------------
+============
 
 Latest stable release via pip (recommended):
 
@@ -36,9 +34,9 @@ or
 
 .. code:: bash
 
-     $ git clone https://github.com/addisonlynch/iexfinance.git  
-     $ cd iexfinance  
-     $ pip install . 
+     $ git clone https://github.com/addisonlynch/iexfinance.git
+     $ cd iexfinance
+     $ pip install .
 
 **Note:**
 

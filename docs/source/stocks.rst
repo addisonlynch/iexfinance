@@ -5,9 +5,10 @@
 Stocks
 ******
 
+iexfinance takes an object-oriented approach to the `Stocks <https://iextrading.com/developer/#stocks>`__ endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__.
 
-The simplest way to obtain data using the `Stocks <https://iextrading.com/developer/docs/#stocks>`__ endpoint is by calling the ``Stock`` function with a symbol (*str*) or list of
-symbols (*list*). ``Stock`` will return a :ref:`StockReader<stocks.StockReader>` instance.
+The simplest way to obtain data from these endpoints is by calling the top-level ``Stock`` function with a symbol (*str*) or list of
+symbols (*list*). ``Stock`` will return a ``StockReader`` instance.
 
 .. ipython:: python
 
@@ -15,25 +16,243 @@ symbols (*list*). ``Stock`` will return a :ref:`StockReader<stocks.StockReader>`
     aapl = Stock("aapl")
     aapl.get_price()
 
-The Stock endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ are below, each of which contains data regarding a different aspect of the security/securities.
-Requests (:ref:`StockReader<stocks.StockReader>`) will return a symbol-indexed dictionary of
-the endpoint requested.
+
+```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
+
 
 .. autoclass:: iexfinance.stock.StockReader
 
-```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
+
+**Parameters**
+
+Certain endpoints (such as quote and chart) allow customizable
+parameters. To specify one of these parameters, merely pass it as a
+keyword argument to the Stock function at instantiation (see :ref:`example <stocks.passing-parameters>`). Further, iexfinance supports pandas DataFrame as an output format for most endpoints of 'pandas' is specified as the `output_format` parameter.
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", displayPercent=True)
+
++----------------------+------------------------------------------------------------+-------------+
+| Option               | Endpoint                                                   | Default     |
++======================+============================================================+=============+
+| ``displayPercent``   | `Quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
++----------------------+------------------------------------------------------------+-------------+
+| ``_range``           | `Chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
++----------------------+------------------------------------------------------------+-------------+
+| ``last``             | `News <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
++----------------------+------------------------------------------------------------+-------------+
+| ``output_format``    | All (some, such as Chart and Price, are JSON only)         | ``json``    |
++----------------------+------------------------------------------------------------+-------------+
+
+.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
+
+
 
 Endpoints
 =========
 
-.. _stocks.quote
+Endpoint methods will return a symbol-indexed dictionary of the endpoint requested. If :code:`Stock` is passed a single symbol, these methods will return the *data only* (verbatim from IEX docs examples). See examples :ref:`below <stocks.examples-endpoint-methods>` for clarification.
+
+    - :ref:`Book<stocks.book>`
+    - :ref:`Chart<stocks.chart>`
+    - :ref:`Company<stocks.company>`
+    - :ref:`Delayed Quote<stocks.delayed-quote>`
+    - :ref:`Dividends<stocks.dividends>`
+    - :ref:`Earnings<stocks.earnings>`
+    - :ref:`Effective Spread<stocks.effective-spread>`
+    - :ref:`Financials<stocks.financials>`
+    - :ref:`Key Stats<stocks.key-stats>`
+    - :ref:`Logo<stocks.logo>`
+    - :ref:`News<stocks.news>`
+    - :ref:`OHLC<stocks.ohlc>`
+    - :ref:`Open/Close<stocks.open-close>`
+    - :ref:`Peers<stocks.peers>`
+    - :ref:`Previous<stocks.previous>`
+    - :ref:`Price<stocks.price>`
+    - :ref:`Quote<stocks.quote>`
+    - :ref:`Relevant<stocks.relevant>`
+    - :ref:`Splits<stocks.splits>`
+    - :ref:`Time Series<stocks.time-series>`
+    - :ref:`Volume by Venue<stocks.volume-by-venue>`
+
+
+.. _stocks.book:
+
+Book
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_book
+
+.. _stocks.chart:
+
+Chart
+-----
+
+.. automethod:: iexfinance.stock.StockReader.get_chart
+
+
+.. _stocks.company:
+
+Company
+-------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_company
+
+
+.. _stocks.delayed-quote:
+
+Delayed Quote
+-------------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_delayed_quote
+
+
+
+.. _stocks.dividends:
+
+Dividends
+---------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_dividends
+
+
+
+.. _stocks.earnings:
+
+Earnings
+--------
+
+.. automethod:: iexfinance.stock.StockReader.get_earnings
+
+
+
+.. _stocks.effective-spread:
+
+Effective Spread
+----------------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_effective_spread
+
+
+.. _stocks.financials:
+
+Financials
+----------
+
+.. automethod:: iexfinance.stock.StockReader.get_financials
+
+
+.. _stocks.key-stats:
+
+Key Stats
+---------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_key_stats
+
+.. _stocks.key-stats-field-methods:
+
+Field methods
+^^^^^^^^^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_beta
+.. automethod:: iexfinance.stock.StockReader.get_short_interest
+.. automethod:: iexfinance.stock.StockReader.get_short_ratio
+.. automethod:: iexfinance.stock.StockReader.get_latest_eps
+.. automethod:: iexfinance.stock.StockReader.get_shares_outstanding
+.. automethod:: iexfinance.stock.StockReader.get_float
+.. automethod:: iexfinance.stock.StockReader.get_eps_consensus
+
+
+
+.. _stocks.list:
+
+List
+----
+
+.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
+
+
+
+
+.. _stocks.logo:
+
+Logo
+----
+
+
+
+.. automethod:: iexfinance.stock.StockReader.get_logo
+
+
+.. _stocks.news:
+
+News
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_news
+
+
+.. _stocks.ohlc:
+
+OHLC
+----
+
+.. automethod:: iexfinance.stock.StockReader.get_ohlc
+
+
+.. _stocks.open-close:
+
+Open/Close
+----------
+
+.. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
+
+
+.. automethod:: iexfinance.stock.StockReader.get_open_close
+
+
+.. _stocks.peers:
+
+Peers
+-----
+
+.. automethod:: iexfinance.stock.StockReader.get_peers
+
+
+
+
+.. _stocks.previous:
+
+Previous
+--------
+
+
+.. automethod:: iexfinance.stock.StockReader.get_previous
+
+
+.. _stocks.price:
+
+Price
+-----
+
+
+.. automethod:: iexfinance.stock.StockReader.get_price
+
+
+.. _stocks.quote:
 
 Quote
 -----
 
 .. automethod:: iexfinance.stock.StockReader.get_quote
 
-.. _stocks.quote-field-methods
+.. _stocks.quote-field-methods:
 
 Field methods
 ^^^^^^^^^^^^^
@@ -48,81 +267,9 @@ Field methods
 .. automethod:: iexfinance.stock.StockReader.get_volume
 .. automethod:: iexfinance.stock.StockReader.get_market_cap
 
-.. _stocks.chart
 
+.. _stocks.relevant:
 
-Chart
------
-
-.. automethod:: iexfinance.stock.StockReader.get_chart
-
-
-.. _stocks.book
-
-Book
-----
-
-.. automethod:: iexfinance.stock.StockReader.get_book
-
-
-.. _stocks.open-close
-
-Open/Close
-----------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_open_close
-
-
-.. _stocks.previous
-
-Previous
---------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_previous
-
-
-.. _stocks.company
-
-Company
--------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_company
-
-
-.. _stocks.key-stats
-
-Key Stats
----------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_key_stats
-
-.. _stocks.key-stats-field-methods
-
-Field methods
-^^^^^^^^^^^^^
-
-.. automethod:: iexfinance.stock.StockReader.get_beta
-.. automethod:: iexfinance.stock.StockReader.get_short_interest
-.. automethod:: iexfinance.stock.StockReader.get_short_ratio
-.. automethod:: iexfinance.stock.StockReader.get_latest_eps
-.. automethod:: iexfinance.stock.StockReader.get_shares_outstanding
-.. automethod:: iexfinance.stock.StockReader.get_float
-.. automethod:: iexfinance.stock.StockReader.get_eps_consensus
-
-
-.. _stocks.peers
-
-Peers
------
-
-.. automethod:: iexfinance.stock.StockReader.get_peers
-
-
-.. _stocks.relevant
 
 Relevant
 --------
@@ -131,40 +278,9 @@ Relevant
 .. automethod:: iexfinance.stock.StockReader.get_relevant
 
 
-.. _stocks.news
-
-News
-----
-
-.. automethod:: iexfinance.stock.StockReader.get_news
 
 
-.. _stocks.financials
-
-Financials
-----------
-
-.. automethod:: iexfinance.stock.StockReader.get_financials
-
-
-.. _stocks.earnings
-
-Earnings
---------
-
-.. automethod:: iexfinance.stock.StockReader.get_earnings
-
-
-.. _stocks.dividends
-
-Dividends
----------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_dividends
-
-
-.. _stocks.splits
+.. _stocks.splits:
 
 Splits
 ------
@@ -173,52 +289,17 @@ Splits
 .. automethod:: iexfinance.stock.StockReader.get_splits
 
 
-.. _stocks.logo
+.. _stocks.time-series:
 
-Logo
-----
+Time Series
+-----------
 
+.. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
 
-
-.. automethod:: iexfinance.stock.StockReader.get_logo
-
-
-.. _stocks.price
-
-Price
------
+.. automethod:: iexfinance.stock.StockReader.get_time_series
 
 
-.. automethod:: iexfinance.stock.StockReader.get_price
-
-
-.. _stocks.delayed-quote
-
-Delayed Quote
--------------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_delayed_quote
-
-
-.. _stocks.list
-
-List
-----
-
-.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
-
-
-.. _stocks.effective-spread
-
-Effective Spread
-----------------
-
-
-.. automethod:: iexfinance.stock.StockReader.get_effective_spread
-
-
-.. _stocks.volume-by-venue
+.. _stocks.volume-by-venue:
 
 Volume by Venue
 ---------------
@@ -226,32 +307,6 @@ Volume by Venue
 
 .. automethod:: iexfinance.stock.StockReader.get_volume_by_venue
 
-
-
-.. _stocks.parameters:
-
-Parameters
-==========
-
-Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument.
-
-.. ipython:: python
-
-    aapl = Stock("AAPL", displayPercent=True)
-
-+----------------------+------------------------------------------------------------+-------------+
-| Option               | Endpoint                                                   | Default     |
-+======================+============================================================+=============+
-| ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
-+----------------------+------------------------------------------------------------+-------------+
-| ``_range``            | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
-+----------------------+------------------------------------------------------------+-------------+
-| ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
-+----------------------+------------------------------------------------------------+-------------+
-
-.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
 
 
 .. _stocks.utility-methods:
@@ -267,18 +322,76 @@ Utility Methods
 Examples
 ========
 
-.. _stocks.examples-endpoint-methods
+.. _stocks.examples-endpoint-methods:
 
 Endpoint Methods
 ----------------
 
+A single symbol request will return data *exactly* as it appears in the IEX docs examples:
+
+.. ipython:: python
+
+    from iexfinance import Stock
+    aapl = Stock("AAPL")
+    a.get_price()
+
+While multi-symbol requests will return a symbol-indexed list of the endpoint's data
+
+.. ipython::python
+
+    batch = Stock(["AAPL", "TSLA"])
+    batch.get_price()
+
+Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests will concatenate the dataframes for each:
+
 .. ipython:: python
 
     from iexfinance import Stock as iex
-    air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
+    air_transport = Stock(['AAL', 'DAL', 'LUV'], outputFormat='pandas')
     air_transport.get_quote().head()
 
-.. _stocks.examples-field-methods
+.. _stocks.passing-parameters:
+
+Passing Parameters
+^^^^^^^^^^^^^^^^^^
+
+**Endpoint-specific**
+
+We show an example using the `last` parameter for the News endpoint:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL")
+
+    len(aapl.get_news())
+
+by default, News returns the last 10 items (`last is 10 by default`), but we can specify a custom value:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", last=35)
+
+    len(aapl.get_news())
+
+With a custom value specified, News now returns the previous 35 items.
+
+.. _stocks.output-formatting:
+
+Output Formatting
+^^^^^^^^^^^^^^^^^
+
+Most endpoints allow for pandas DataFrame-formatted output:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", output_format='pandas')
+
+    aapl.get_quote().head()
+
+
+
+
+.. _stocks.examples-field-methods:
 
 Field Methods
 -----------------

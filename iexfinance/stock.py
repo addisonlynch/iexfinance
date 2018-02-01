@@ -1,8 +1,6 @@
 import datetime
 from functools import wraps
 
-from dateutil.relativedelta import relativedelta
-
 import pandas as pd
 
 from .base import _IEXBase
@@ -32,16 +30,18 @@ def output_format(override=None):
         @wraps(func)
         def _format_wrapper(self, *args, **kwargs):
             response = func(self, *args, **kwargs)
-            if self.output_format is 'json':
-                return response
-            if self.output_format is 'pandas' and override is 'json':
-                import warnings
-                warnings.warn("Pandas output not supported for this endpoint."
-                              " Defaulting to JSON.")
-                return response
+            if self.output_format is 'pandas':
+                if override is None:
+                    df = pd.DataFrame(response)
+                    return df
+                else:
+                    import warnings
+                    warnings.warn("Pandas output not supported for this "
+                                  "endpoint. Defaulting to JSON.")
             else:
-                df = pd.DataFrame(response)
-                return df
+                if self.key is 'share':
+                    return response[self.symbols[0]]
+                return response
         return _format_wrapper
     return _output_format
 
@@ -57,8 +57,9 @@ class StockReader(_IEXBase):
                   "company", "stats", "peers", "relevant", "news",
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
-                  "volume-by-venue"]
-    _ALL_ENDPOINTS_STR = ",".join(_ENDPOINTS)
+                  "volume-by-venue", "ohlc"]
+    ALL_ENDPOINTS_STR_1 = ",".join(_ENDPOINTS[:10])
+    ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:20])
 
     def __init__(self, symbols=None, displayPercent=False, _range="1m",
                  last=10, output_format='json', **kwargs):
@@ -70,10 +71,10 @@ class StockReader(_IEXBase):
             A nonempty list of symbols
         displayPercent: boolean
         range: str
-            The range to use for the chart endpoint. Must be
-            contained in _RANGE_VALUES
-        last: int
-            Range to use for the "last" attribute of the news endpoint.
+            The range to use for the chart, dividends, and splits endpoints.
+            Must be contained in _RANGE_VALUES
+        last: int, default 10, optional
+            A desired news range between 1 and 50
         output_format: str
             Desired output format
         """
@@ -98,14 +99,23 @@ class StockReader(_IEXBase):
                 "Invalid news last range. Enter a value between 1 and 50.")
         self.refresh()
 
+    def _default_options(self):
+        return (self.range == '1m' and self.last == 10 and
+                self.displayPercent is False)
+
     def refresh(self):
         """
         Downloads latest data from all Stock endpoints
         """
+        self.endpoints = self.ALL_ENDPOINTS_STR_1
         self.data_set = self.fetch()
+        self.endpoints = self.ALL_ENDPOINTS_STR_2
+        data2 = self.fetch()
+
         for symbol in self.symbols:
             if symbol not in self.data_set:
                 raise IEXSymbolError(symbol)
+            self.data_set[symbol].update(data2[symbol])
 
     @property
     def url(self):
@@ -115,8 +125,12 @@ class StockReader(_IEXBase):
     def params(self):
         params = {
             "symbols": ','.join(self.symbols),
-            "types": self._ALL_ENDPOINTS_STR
+            "types": self.endpoints
         }
+        if not self._default_options():
+            params["range"] = self.range
+            params["last"] = self.last
+            params["displayPercent"] = self.displayPercent
         return params
 
     @output_format(override='json')
@@ -175,289 +189,401 @@ class StockReader(_IEXBase):
     # endpoint methods
     @output_format(override=None)
     def get_quote(self):
-        """Retrieves Stocks Quote endpoint
+        """
+        Reference: https://iextrading.com/developer/docs/#quote
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#quote
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Quote endpoint data
         """
         return {symbol: self.data_set[symbol]["quote"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_book(self):
-        """Returns the Stocks Book endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#book
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#book
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Book endpoint data
         """
         return {symbol: self.data_set[symbol]["book"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override='json')
     def get_chart(self):
-        """Returns the Stocks Chart endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#chart
 
         Notes
         -----
-        Only allows JSON format (pandas not supported).
+        Pandas not supported for this method. list will be returned.
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#chart
+        Returns
+        -------
+        list
+            Stocks Chart endpoint data
         """
         return {symbol: self.data_set[symbol]["chart"] for symbol in
                 self.data_set.keys()}
 
-    @output_format(override=None)
     def get_open_close(self):
-        """Returns the Stocks Open/Close endpoint in JSON format
-
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#open-close
         """
-        return {symbol: self.data_set[symbol]["open-close"] for symbol in
-                self.data_set.keys()}
+        Reference: https://iextrading.com/developer/docs/#open-close
+
+        Notes
+        -----
+        Open/Close is an alias for the OHLC endpoint, and will return the
+        same
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Open/Close (OHLC) endpoint data
+        """
+        return self.get_ohlc()
 
     @output_format(override=None)
     def get_previous(self):
-        """Returns the Stocks Previous endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#previous
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#previous
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Previous endpoint data
         """
         return {symbol: self.data_set[symbol]["previous"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_company(self):
-        """Returns the Stocks Company endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#company
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#company
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Company endpoint data
         """
         return {symbol: self.data_set[symbol]["company"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_key_stats(self):
-        """Returns the Stocks Key Stats endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#key-stats
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#key-stats
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Key Stats endpoint data
         """
         return {symbol: self.data_set[symbol]["stats"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_peers(self):
-        """Returns the Stocks Peers endpoint in JSON format
+        """
+        Reference:https://iextrading.com/developer/docs/#peers
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#peers
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Peers endpoint data
         """
         return {symbol: self.data_set[symbol]["peers"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_relevant(self):
-        """Returns the Stocks Relevant endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#relevant
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#relevant
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Relevant endpoint data
         """
         return {symbol: self.data_set[symbol]["relevant"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_news(self):
-        """Returns the Stocks News endpoint in JSON format
+        """Returns the Stocks News endpoint (list or pandas)
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#news
+        Reference: https://iextrading.com/developer/docs/#news
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks News endpoint data
         """
         return {symbol: self.data_set[symbol]["news"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_financials(self):
-        """Returns the Stocks Financials endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#financials
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#financials
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Financials endpoint data
         """
         return {symbol: self.data_set[symbol]["financials"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_earnings(self):
-        """Returns the Stocks Earnings endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#earnings
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#earnings
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Earnings endpoint data
         """
         return {symbol: self.data_set[symbol]["earnings"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_dividends(self):
-        """Returns the Stocks Dividends endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#dividends
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#dividends
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Dividends endpoint data
         """
         return {symbol: self.data_set[symbol]["dividends"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_splits(self):
-        """Returns the Stocks Splits endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#splits
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#splits
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Splits endpoint data
         """
         return {symbol: self.data_set[symbol]["splits"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_logo(self):
-        """Returns the Stocks Logo endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#logo
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#logo
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Logo endpoint data
         """
         return {symbol: self.data_set[symbol]["logo"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override='json')
     def get_price(self):
-        """Returns the Stocks Price endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#price
 
         Notes
         -----
         Only allows JSON format (pandas not supported).
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#price
+        Returns
+        -------
+        float
+            Stocks Price endpoint data
         """
         return {symbol: self.data_set[symbol]["price"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_delayed_quote(self):
-        """Returns the Stocks Delayed Quote endpoint in JSON format
+        """
+        Reference: https://iextrading.com/developer/docs/#delayed-quote
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#delayed-quote
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Delayed Quote endpoint data
         """
         return {symbol: self.data_set[symbol]["delayed-quote"] for symbol in
                 self.data_set.keys()}
 
     @output_format(override=None)
     def get_effective_spread(self):
-        """Returns the Stocks Effective Spread endpoint in JSON format
+        """
+        Reference:  https://iextrading.com/developer/docs/#effective-spread
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#effective-spread
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Effective Spread endpoint data
         """
         return {symbol: self.data_set[symbol]["effective-spread"] for symbol
                 in self.data_set.keys()}
 
     @output_format(override=None)
     def get_volume_by_venue(self):
-        """Returns the Stocks Volume by Venue endpoint in JSON format
+        """
+        Reference:  https://iextrading.com/developer/docs/#volume-by-venue
 
-        Reference
-        ---------
-        https://iextrading.com/developer/docs/#volume-by-venue
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Volume by Venue endpoint data
         """
         return {symbol: self.data_set[symbol]["volume-by-venue"] for symbol
                 in self.data_set.keys()}
 
+    @output_format(override=None)
+    def get_ohlc(self):
+        """
+        Reference:  https://iextrading.com/developer/docs/#ohlc
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks OHLC endpoint data
+        """
+        return {symbol: self.data_set[symbol]["ohlc"] for symbol
+                in self.data_set.keys()}
+
+    def get_time_series(self):
+        """
+        Reference: https://iextrading.com/developer/docs/#time-series
+
+        Notes
+        -----
+        Time Series is an alias for the Chart endpoint, and will return the
+        same
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Time Series (Chart) endpoint data
+        """
+        return self.get_chart()
+
     # field methods
+    @output_format(override='json')
     def get_company_name(self):
-        return {symbol: self.get_quote()[symbol]["companyName"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["companyName"]
+                if self.key == 'batch' else self.get_quote()['companyName']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_primary_exchange(self):
-        return {symbol: self.get_quote()[symbol]["primaryExchange"] for symbol
-                in self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["primaryExchange"]
+                if self.key == 'batch' else self.get_quote()['primaryExchange']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_sector(self):
-        return {symbol: self.get_quote()[symbol]["sector"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["sector"]
+                if self.key == 'batch' else self.get_quote()['sector']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_open(self):
-        return {symbol: self.get_quote()[symbol]["open"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["open"]
+                if self.key == 'batch' else self.get_quote()['open']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_close(self):
-        return {symbol: self.get_quote()[symbol]["close"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["close"]
+                if self.key == 'batch' else self.get_quote()['close']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_years_high(self):
-        return {symbol: self.get_quote()[symbol]["week52High"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["week52High"]
+                if self.key == 'batch' else self.get_quote()['week52High']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_years_low(self):
-        return {symbol: self.get_quote()[symbol]["week52Low"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["week52Low"]
+                if self.key == 'batch' else self.get_quote()['week52Low']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_ytd_change(self):
-        return {symbol: self.get_quote()[symbol]["ytdChange"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["ytdChange"]
+                if self.key == 'batch' else self.get_quote()['ytdChange']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_volume(self):
-        return {symbol: self.get_quote()[symbol]["latestVolume"] for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["latestVolume"]
+                if self.key == 'batch' else self.get_quote()['latestVolume']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_market_cap(self):
-        return {symbol: self.get_quote()[symbol]["marketCap"]for symbol in
-                self.data_set.keys()}
+        return {symbol: self.get_quote()[symbol]["marketCap"]
+                if self.key == 'batch' else self.get_quote()['marketCap']
+                for symbol in self.data_set.keys()}
 
+    @output_format(override='json')
     def get_beta(self):
-        return {symbol: self.get_key_stats()[symbol]["beta"] for symbol in
+        return {symbol: self.get_key_stats()[symbol]["beta"]
+                if self.key == 'batch' else
+                self.get_key_stats()['beta'] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
     def get_short_interest(self):
-        return {symbol: self.get_key_stats()[symbol]["shortInterest"] for
-                symbol in self.data_set.keys()}
-
-    def get_short_ratio(self):
-        return {symbol: self.get_key_stats()[symbol]["shortRatio"] for
-                symbol in self.data_set.keys()}
-
-    def get_latest_eps(self):
-        return {symbol: self.get_key_stats()[symbol]["latestEPS"] for symbol
-                in self.data_set.keys()}
-
-    def get_shares_outstanding(self):
-        return {symbol: self.get_key_stats()[symbol]["sharesOutstanding"] for
-                symbol in self.data_set.keys()}
-
-    def get_float(self):
-        return {symbol: self.get_key_stats()[symbol]["float"] for symbol in
+        return {symbol: self.get_key_stats()[symbol]["shortInterest"]
+                if self.key == 'batch' else
+                self.get_key_stats()['shortInterest'] for symbol in
                 self.data_set.keys()}
 
+    @output_format(override='json')
+    def get_short_ratio(self):
+        return {symbol: self.get_key_stats()[symbol]["shortRatio"]
+                if self.key == 'batch' else
+                self.get_key_stats()['shortRatio'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_latest_eps(self):
+        return {symbol: self.get_key_stats()[symbol]["latestEPS"]
+                if self.key == 'batch' else
+                self.get_key_stats()['latestEPS'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_shares_outstanding(self):
+        return {symbol: self.get_key_stats()[symbol]["sharesOutstanding"]
+                if self.key == 'batch' else
+                self.get_key_stats()['sharesOutstanding'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
+    def get_float(self):
+        return {symbol: self.get_key_stats()[symbol]["float"]
+                if self.key == 'batch' else
+                self.get_key_stats()['float'] for symbol in
+                self.data_set.keys()}
+
+    @output_format(override='json')
     def get_eps_consensus(self):
-        return {symbol: self.get_key_stats()[symbol]["consensusEPS"] for
-                symbol in self.data_set.keys()}
+        return {symbol: self.get_key_stats()[symbol]["consensusEPS"]
+                if self.key == 'batch' else
+                self.get_key_stats()['consensusEPS'] for symbol in
+                self.data_set.keys()}
 
 
 class HistoricalReader(_IEXBase):
@@ -504,12 +630,12 @@ class HistoricalReader(_IEXBase):
         datasets (5y and 2y) when necessary, but defaults to 1y for performance
         reasons
         """
-        delta = relativedelta(self.start, datetime.datetime.now())
-        if 2 <= (delta.years * -1) <= 5:
+        delta = datetime.datetime.now().year - self.start.year
+        if 2 <= delta <= 5:
             return "5y"
-        elif 1 <= (delta.years * -1) <= 2:
+        elif 1 <= delta <= 2:
             return "2y"
-        elif 0 <= (delta.years * -1) < 1:
+        elif 0 <= delta < 1:
             return "1y"
         else:
             raise ValueError(

@@ -55,7 +55,7 @@ class Stats(_IEXBase):
             else:
                 raise ValueError("end: Please enter a valid end date")
         else:
-            raise ValueError("Please specify a valid date range")
+            raise ValueError("Please specify a valid date range or last value")
 
     @property
     def acc_pandas(self):
