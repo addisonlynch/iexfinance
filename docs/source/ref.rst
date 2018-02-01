@@ -5,7 +5,7 @@
 Reference Data
 **************
 
-The following functions retrieve data from the `IEX Reference Data <https://iextrading.com/developer/docs/#reference-data>`__ endpoints.
+The following functions retrieve data from the `IEX Reference Data <https://iextrading.com/developer/docs/#reference-data>`__ endpoints:
 
     - :ref:`Symbols<ref.symbols>`
     - :ref:`IEX Corporate Actions<ref.iex-corporate-actions>`
@@ -40,23 +40,16 @@ extracts the symbols and returns a list of the symbols only:
 
 .. autofunction::iexfinance.get_available_symbols
 
-.. _ref.symbols-example:
+.. _ref.symbols-usage:
 
-Example
+Usage
 -------
-
-.. ipython:: python
-
-    from iexfinance import get_reference_data
-
-    get_reference_data()[:2]
-
 
 .. ipython:: python
 
     from iexfinance import get_available_symbols
 
-    get_available_symbols()[:5]
+    get_available_symbols()[:2]
 
 
 .. _ref.iex-corporate-actions:
@@ -64,7 +57,7 @@ Example
 IEX Corporate Actions
 =====================
 
-IEX provides a reference list which includes the following
+`IEX Corporate Actions <https://iextrading.com/developer/docs/#iex-corporate-actions>`__ is a reference list which includes the following:
 
 	- Issues (new, deleted)
 	- Symbol and name changes
@@ -74,9 +67,9 @@ Access is available through the top-level function ``get_iex_corporate_actions``
 
 .. autofunction:: iexfinance.get_iex_corporate_actions
 
-.. _ref.iex-corporate-actions-examples:
+.. _ref.iex-corporate-actions-usage:
 
-Examples
+Usage
 -------
 
 
@@ -92,7 +85,7 @@ Examples
 IEX Dividends
 =============
 
-The Dividends endpoint details upcoming dividend information and other corporate actions (splits, etc.)
+`IEX Dividends <https://iextrading.com/developer/docs/#iex-dividends>`__ details upcoming dividend information and other corporate actions (splits, etc.)
 
 Access is available through the top-level function ``get_iex_dividends``
 
@@ -100,11 +93,11 @@ Access is available through the top-level function ``get_iex_dividends``
 
 .. seealso:: The `Dividends <stock.html#dividends>`__ endpoint provides dividend information on individual or groups of ticker symbols
 
-Examples
+Usage
 -------
 
 
-.. _ref.iex-dividends-examples:
+.. _ref.iex-dividends-usage:
 
 .. ipython:: pyhton
 
@@ -119,7 +112,7 @@ Examples
 IEX Next Day Ex Date
 ====================
 
-The IEX Next Day Ex Date retrieves advance notifications of dividend declarations
+`IEX Next Day Ex Date <https://iextrading.com/developer/docs/#iex-next-day-ex-date>`__ retrieves advance notifications of dividend declarations
 
 Per the IEX `docs <https://iextrading.com/developer/docs/#iex-next-day-ex-date>`__, records are added at 8:00 a.m. ET one trading day before the specified ex-date, and updates are posted once per hour from 8:00 a.m to 6:00 p.m. EST daily.
 
@@ -128,10 +121,10 @@ Access is available through the top-level function ``get_iex_next_day_ex_date``
 .. autofunction:: iexfinance.get_next_day_ex_date
 
 
-Examples
+Usage
 -------
 
-.. _ref.iex-next-day-ex-date-examples:
+.. _ref.iex-next-day-ex-date-usage:
 
 
 .. ipython:: python
@@ -146,7 +139,7 @@ Examples
 IEX Listed Symbol Directory
 ===========================
 
-Similar to `Symbols <ref.symbols>`, IEX Listed Symbol Directory erturns an array of all IEX listed securities.
+Similar to `Symbols <ref.symbols>`, `IEX Listed Symbol Directory<https://iextrading.com/developer/docs/#iex-listed-symbol-directory>`__ returns an array of all IEX listed securities.
 
 Access is available through the top-level function ``get_iex_listed_symbol_dir``
 
@@ -154,10 +147,10 @@ Access is available through the top-level function ``get_iex_listed_symbol_dir``
 ..autofunction :: iexfinance.get_iex_listed_symbol_dir
 
 
-Examples
+Usage
 --------
 
-.. _ref.iex-listed-symbol-directory-examples:
+.. _ref.iex-listed-symbol-directory-usage:
 
 .. ipython:: python
 

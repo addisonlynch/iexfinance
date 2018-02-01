@@ -5,9 +5,10 @@
 Stocks
 ******
 
+iexfinance takes an object-oriented approach to the `Stocks <https://iextrading.com/developer/#stocks>`__ endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__.
 
-The simplest way to obtain data using the `Stocks <https://iextrading.com/developer/docs/#stocks>`__ endpoint is by calling the ``Stock`` function with a symbol (*str*) or list of
-symbols (*list*). ``Stock`` will return a :ref:`StockReader<stocks.StockReader>` instance.
+The simplest way to obtain data from these endpoints is by calling the top-level ``Stock`` function with a symbol (*str*) or list of
+symbols (*list*). ``Stock`` will return a ``StockReader`` instance.
 
 .. ipython:: python
 
@@ -15,9 +16,43 @@ symbols (*list*). ``Stock`` will return a :ref:`StockReader<stocks.StockReader>`
     aapl = Stock("aapl")
     aapl.get_price()
 
-The Stock endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ are below, each of which contains data regarding a different aspect of the security/securities.
-Requests (:ref:`StockReader<stocks.StockReader>`) will return a symbol-indexed dictionary of
-the endpoint requested.
+
+```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
+
+
+.. autoclass:: iexfinance.stock.StockReader
+
+
+**Parameters**
+
+Certain endpoints (such as quote and chart) allow customizable
+parameters. To specify one of these parameters, merely pass it as a
+keyword argument to the Stock function at instantiation (see :ref:`example <stocks.passing-parameters>`). Further, iexfinance supports pandas DataFrame as an output format for most endpoints of 'pandas' is specified as the `output_format` parameter.
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", displayPercent=True)
+
++----------------------+------------------------------------------------------------+-------------+
+| Option               | Endpoint                                                   | Default     |
++======================+============================================================+=============+
+| ``displayPercent``   | `Quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
++----------------------+------------------------------------------------------------+-------------+
+| ``_range``           | `Chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
++----------------------+------------------------------------------------------------+-------------+
+| ``last``             | `News <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
++----------------------+------------------------------------------------------------+-------------+
+| ``output_format``    | All (some, such as Chart and Price, are JSON only)         | ``json``    |
++----------------------+------------------------------------------------------------+-------------+
+
+.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
+
+
+
+Endpoints
+=========
+
+Endpoint methods will return a symbol-indexed dictionary of the endpoint requested. If :code:`Stock` is passed a single symbol, these methods will return the *data only* (verbatim from IEX docs examples). See examples :ref:`below <stocks.examples-endpoint-methods>` for clarification.
 
     - :ref:`Book<stocks.book>`
     - :ref:`Chart<stocks.chart>`
@@ -27,7 +62,7 @@ the endpoint requested.
     - :ref:`Earnings<stocks.earnings>`
     - :ref:`Effective Spread<stocks.effective-spread>`
     - :ref:`Financials<stocks.financials>`
-    - :ref:`Key stocks<stocks.key-stocks>`
+    - :ref:`Key Stats<stocks.key-stats>`
     - :ref:`Logo<stocks.logo>`
     - :ref:`News<stocks.news>`
     - :ref:`OHLC<stocks.ohlc>`
@@ -40,15 +75,6 @@ the endpoint requested.
     - :ref:`Splits<stocks.splits>`
     - :ref:`Time Series<stocks.time-series>`
     - :ref:`Volume by Venue<stocks.volume-by-venue>`
-
-
-.. autoclass:: iexfinance.stock.StockReader
-
-```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
-
-Endpoints
-=========
-
 
 
 .. _stocks.book:
@@ -185,6 +211,8 @@ OHLC
 Open/Close
 ----------
 
+.. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
+
 
 .. automethod:: iexfinance.stock.StockReader.get_open_close
 
@@ -281,32 +309,6 @@ Volume by Venue
 
 
 
-.. _stocks.parameters:
-
-Parameters
-==========
-
-Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument.
-
-.. ipython:: python
-
-    aapl = Stock("AAPL", displayPercent=True)
-
-+----------------------+------------------------------------------------------------+-------------+
-| Option               | Endpoint                                                   | Default     |
-+======================+============================================================+=============+
-| ``displayPercent``   | `quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
-+----------------------+------------------------------------------------------------+-------------+
-| ``_range``           | `chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
-+----------------------+------------------------------------------------------------+-------------+
-| ``last``             | `news <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
-+----------------------+------------------------------------------------------------+-------------+
-
-.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
-
-
 .. _stocks.utility-methods:
 
 Utility Methods
@@ -325,11 +327,69 @@ Examples
 Endpoint Methods
 ----------------
 
+A single symbol request will return data *exactly* as it appears in the IEX docs examples:
+
+.. ipython:: python
+
+    from iexfinance import Stock
+    aapl = Stock("AAPL")
+    a.get_price()
+
+While multi-symbol requests will return a symbol-indexed list of the endpoint's data
+
+.. ipython::python
+
+    batch = Stock(["AAPL", "TSLA"])
+    batch.get_price()
+
+Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests will concatenate the dataframes for each:
+
 .. ipython:: python
 
     from iexfinance import Stock as iex
-    air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
+    air_transport = Stock(['AAL', 'DAL', 'LUV'], outputFormat='pandas')
     air_transport.get_quote().head()
+
+.. _stocks.passing-parameters:
+
+Passing Parameters
+^^^^^^^^^^^^^^^^^^
+
+**Endpoint-specific**
+
+We show an example using the `last` parameter for the News endpoint:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL")
+
+    len(aapl.get_news())
+
+by default, News returns the last 10 items (`last is 10 by default`), but we can specify a custom value:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", last=35)
+
+    len(aapl.get_news())
+
+With a custom value specified, News now returns the previous 35 items.
+
+.. _stocks.output-formatting:
+
+Output Formatting
+^^^^^^^^^^^^^^^^^
+
+Most endpoints allow for pandas DataFrame-formatted output:
+
+.. ipython:: python
+
+    aapl = Stock("AAPL", output_format='pandas')
+
+    aapl.get_quote().head()
+
+
+
 
 .. _stocks.examples-field-methods:
 

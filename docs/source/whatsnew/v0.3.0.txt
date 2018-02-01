@@ -9,6 +9,8 @@ update.
 
 Highlights:
 
+- Added most IEX API endpoints (from Stocks, Reference Data, IEX Market
+ Data, and IEX Stats)
 - Added **get\_historical\_data** for the retrieval of
 time-series data from the `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
 
@@ -28,8 +30,8 @@ New Features
 -  Added support for Historical data through the Stocks
    `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint
 -  Added `Pandas <https://pandas.pydata.org>`__ as an output format for
-   the `Market <market.md>`__ and `Stats <stats.md>`__ endpoints as well
-   as for `Historical Data <historical.md>`__.
+   most endpoints (excluding IEX Reference Data).
+-  Added support for requests caching using requests-cache
 
 .. _whatsnew_030.improvements
 
@@ -51,7 +53,9 @@ Changes
 
 - Merged Share and Batch classes into StockReader class
   - Changed top-level IexFinance function to Stock()
-- Removes simplejson, mock, and nose as dependencies. Adds pytest.
+- Removes simplejson, mock, and nose as dependencies.
+- Splits requirements into install requirements (requirements.txt) and
+testing requirements (requirements-test.txt)
 
 Bug Fixes
 ~~~~~~~~~

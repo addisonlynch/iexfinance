@@ -12,9 +12,8 @@ iexfinance relies on:
 
 -  `pandas <http://pandas.pydata.org>`__
 -  `requests <http://docs.python-requests.org>`__
--  `pytest <http://docs.pytest.org>`__ (testing)
 
-See requirements.txt.
+For testing requirements, see `testing <testing.html>`__.
 
 Installation
 ============

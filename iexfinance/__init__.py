@@ -19,7 +19,8 @@ __version__ = '0.3.0'
 
 def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
           output_format='json', **kwargs):
-    """Top-level function to to retrieve data from the IEX Stocks endpoints
+    """
+    Top-level function to to retrieve data from the IEX Stocks endpoints
 
     Parameters
     ----------
@@ -34,7 +35,7 @@ def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
 
     Returns
     -------
-    inst : stock.StockReader
+    stock.StockReader
         A StockReader instance
     """
     if type(symbols) is str:
@@ -78,7 +79,7 @@ def get_historical_data(symbols=None, start=None, end=None,
 
     Returns
     -------
-    df: json or DataFrame
+    list or DataFrame
         Historical stock prices over date range, start to end
     """
     return HistoricalReader(symbols, start, end, output_format,
@@ -86,7 +87,8 @@ def get_historical_data(symbols=None, start=None, end=None,
 
 
 def get_available_symbols(**kwargs):
-    """Top-level function to obtain IEX available symbols
+    """
+    Top-level function to obtain IEX available symbols
 
     Parameters
     ----------
@@ -108,8 +110,9 @@ def get_available_symbols(**kwargs):
 
 
 def get_iex_corporate_actions(start=None, **kwargs):
-    """ Top-level function to retrieve IEX Corporate Actions from the ref-data
-        endpoints
+    """
+    Top-level function to retrieve IEX Corporate Actions from the ref-data
+    endpoints
 
     Parameters
     ----------
@@ -121,8 +124,9 @@ def get_iex_corporate_actions(start=None, **kwargs):
 
 
 def get_iex_dividends(start=None, **kwargs):
-    """ Top-level function to retrieve IEX Dividends from the ref-data
-        endpoints
+    """
+    Top-level function to retrieve IEX Dividends from the ref-data
+    endpoints
 
     Parameters
     ----------
@@ -134,8 +138,9 @@ def get_iex_dividends(start=None, **kwargs):
 
 
 def get_iex_next_day_ex_date(start=None, **kwargs):
-    """ Top-level function to retrieve IEX Next Day Ex Date from the ref-data
-        endpoints
+    """
+    Top-level function to retrieve IEX Next Day Ex Date from the ref-data
+    endpoints
 
     Parameters
     ----------
@@ -147,8 +152,9 @@ def get_iex_next_day_ex_date(start=None, **kwargs):
 
 
 def get_iex_listed_symbol_dir(start=None, **kwargs):
-    """ Top-level function to retrieve IEX Listed Symbol Directory from the
-        ref-data endpoints
+    """
+    Top-level function to retrieve IEX Listed Symbol Directory from the
+    ref-data endpoints
 
     Parameters
     ----------
@@ -160,7 +166,8 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
 
 
 def get_market_tops(symbols=None, output_format='json', **kwargs):
-    """Top-level function to obtain TOPS data for a symbol or list of symbols
+    """
+    Top-level function to obtain TOPS data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -175,7 +182,8 @@ def get_market_tops(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_last(symbols=None, output_format='json', **kwargs):
-    """Top-level function to obtain Last data for a symbol or list of symbols
+    """
+    Top-level function to obtain Last data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -190,7 +198,8 @@ def get_market_last(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_deep(symbols=None, output_format='json', **kwargs):
-    """Top-level function to obtain DEEP data for a symbol or list of symbols
+    """
+    Top-level function to obtain DEEP data for a symbol or list of symbols
 
     Parameters
     ----------
@@ -209,7 +218,8 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
 
 
 def get_market_book(symbols=None, output_format='json', **kwargs):
-    """Top-level function to obtain Book data for a symbol or list of symbols
+    """
+    Top-level function to obtain Book data for a symbol or list of symbols
 
     Parameters
     ----------

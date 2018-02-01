@@ -6,7 +6,7 @@
 Historical Data
 ***************
 
-Historical time series data is available through the
+Historical time series data is available through the top-level
 ``get_historical_data`` method, which sources the
 `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
 

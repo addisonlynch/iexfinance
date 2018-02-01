@@ -153,6 +153,15 @@ class TestShare(object):
         data2 = self.cshare.get_chart()
         assert data == data2
 
+    def test_nondefault_params_1(self):
+        aapl = Stock("AAPL", _range='5y')
+        aapl2 = Stock("AAPL")
+        assert len(aapl.get_chart()) > len(aapl2.get_chart())
+
+    def test_nondefault_params_2(self):
+        aapl = Stock("AAPL", last=37)
+        assert len(aapl.get_news()) == 37
+
 
 class TestBatch(object):
 
@@ -242,6 +251,17 @@ class TestBatch(object):
         data = self.cbatch.get_time_series()
         data2 = self.cbatch.get_chart()
         assert data == data2
+
+    def test_nondefault_params_1(self):
+        data = Stock(["AAPL", "TSLA"], _range='5y')
+        data2 = Stock(["AAPL", "TSLA"])
+        assert len(data.get_chart()["AAPL"]) > len(data2.get_chart()["AAPL"])
+        assert len(data.get_chart()["TSLA"]) > len(data2.get_chart()["TSLA"])
+
+    def test_nondefault_params_2(self):
+        data = Stock(["AAPL", "TSLA"], last=37)
+        assert len(data.get_news()["AAPL"]) == 37
+        assert len(data.get_news()["TSLA"]) == 37
 
 
 class TestHistorical(object):
