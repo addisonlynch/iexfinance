@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Improved code formatting to comply (loosely) with PEP8 standars
+- Improved code formatting to comply (loosely) with PEP8 standards
 - Renamed IEXRetriever to \_IEXBase
 
 ### Removed
