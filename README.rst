@@ -8,13 +8,15 @@ iexfinance
 	:target: https://codecov.io/gh/addisonlynch/iexfinance
 
 
+Python module to get stock data from the Investors Exchange (IEX) Developer API
+platform. iexfinance provides real-time financial data from the various IEX
+endpoints, as well as historical data.
 
-Python module to get stock data from the Investors Exchange (IEX) Developer API platform. iexfinance provides real-time financial data from the various IEX Stock endpoints. 
-
-
-NOTE
-----
-**The current release of iexfinance (0.2.0) is experiencing problems for many users due to changes in the iex API requirements. iexfinance has been extensively updated**   `(0.3.0) <https://github.com/addisonlynch/iexfinance/blob/master/docs/source/whatsnew/v0.3.0.txt>`__ to patch these problems and expand coverage to all of IEX's endpoint groups (including historical data). 0.3.0 will be released by the end of the week of 2/6/2018. Until then, it is recommended that users download the development version of iexfinance from the github repository (see below).
+- `Stocks <https://iextrading.com/developer/docs/#stocks>`__
+	- Historical Data
+- `Reference Data <https://iextrading.com/developer/docs/#reference-data>`__
+- `IEX Market Data <https://iextrading.com/developer/docs/#iex-market-data>`__
+- `IEX Stats <https://iextrading.com/developer/docs/#iex-stats>`__
 
 Documentation
 -------------
@@ -40,12 +42,60 @@ From development repository (dev version):
 Usage Examples
 --------------
 
+Stock Endpoints
+^^^^^^^^^^^^^^^
+
 .. code:: python
 
     from iexfinance import Stock
     tsla = Stock('TSLA')
     tsla.get_open()
     tsla.get_price()
+
+**Historical Data**
+
+.. code:: python
+	
+	from iexfinance import get_historical_data
+	from datetime import datetime
+
+	start = datetime(2017, 2, 9)
+	end = datetime(2017, 5, 24)
+
+	df = get_historical_data("AAPL", start=start, end=end, output_format='pandas')
+	df.head()
+
+
+IEX Reference Data
+^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+	from iexfinance import get_available_symbols
+
+	get_available_symbols()[:2]
+
+
+IEX Market Data
+^^^^^^^^^^^^^^^
+
+.. code:: python
+
+	from iexfinance import get_market_tops
+
+	get_market_tops()
+
+IEX Stats
+^^^^^^^^^
+
+.. code:: python
+
+	from iexfinance import get_stats_intraday
+
+	get_stats_intraday()
+
+
+
 
 Contact
 -------
