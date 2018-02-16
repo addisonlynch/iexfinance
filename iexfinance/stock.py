@@ -122,7 +122,7 @@ def field_output_format(override=None, field_name=None):
 class StockReader(_IEXBase):
     """
     Base class for obtaining data from the Stock endpoints of IEX. Subclass of
-    _IEXBase, subclassed by Share, Batch, and HistoricalReader
+    _IEXBase.
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
@@ -138,12 +138,6 @@ class StockReader(_IEXBase):
         ----------
         symbols: str or list
             A nonempty list of symbols
-        displayPercent: boolean
-        range_: str
-            The range to use for the chart, dividends, and splits endpoints.
-            Must be contained in _RANGE_VALUES
-        last: int, default 10, optional
-            A desired news range between 1 and 50
         output_format: str
             Desired output format
         """
@@ -247,6 +241,8 @@ class StockReader(_IEXBase):
             return self._get_endpoint(endpoints)
         elif not endpoints:
             raise ValueError("Please provide a valid list of endpoints")
+        elif len(endpoints) > 10:
+            raise ValueError("Please input up to 10 valid endpoints")
         self.optional_params = {}
         self.endpoints = endpoints
         json_data = self.fetch()
@@ -480,19 +476,14 @@ class StockReader(_IEXBase):
         """
         Reference: https://iextrading.com/developer/docs/#price
 
-        Notes
-        -----
-        Only allows JSON format (pandas not supported).
-
         Returns
         -------
-        float
+        float or pandas.DataFrame
             Stocks Price endpoint data
         """
         data = self._get_endpoint("price", kwargs)
         return {symbol: data[symbol]["price"] for symbol in list(data)}
 
-    # endpoint methods
     @output_format(override=None)
     def get_quote(self, **kwargs):
         """
