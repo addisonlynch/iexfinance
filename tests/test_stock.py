@@ -2,6 +2,7 @@ from datetime import datetime
 
 import pytest
 import pandas as pd
+from pandas.util.testing import assert_index_equal
 
 from iexfinance import get_historical_data
 from iexfinance import Stock
@@ -45,6 +46,17 @@ class TestShareDefault(object):
         data = self.cshare.get_all()
         assert len(data) == 20
 
+    def test_get_endpoints(self):
+        data = self.cshare.get_endpoints(["price"])
+        assert list(data) == ["price"]
+
+    def test_get_endpoints_bad_endpoint(self):
+        with pytest.raises(IEXEndpointError):
+            self.cshare.get_endpoints(["BAD ENDPOINT", "quote"])
+
+        with pytest.raises(IEXEndpointError):
+            self.cshare.get_endpoints("BAD ENDPOINT")
+
     def test_get_book_format(self):
         data = self.cshare.get_book()
         assert isinstance(data, dict)
@@ -62,7 +74,7 @@ class TestShareDefault(object):
     def test_get_chart_params(self):
         data = self.cshare.get_chart()
         # Test chart ranges
-        data2 = self.cshare.get_chart(range='1y')
+        data2 = self.cshare.get_chart(range_='1y')
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -70,14 +82,14 @@ class TestShareDefault(object):
         data4 = self.cshare.get_chart(chartSimplify=True)[0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cshare.get_chart(Range='1y', chartInterval=5)
+        data5 = self.cshare.get_chart(range_='1y', chartInterval=5)
         assert 45 < len(data5) < 55
 
     @pytest.mark.xfail(reason="This test only runs correctly between 00:00 and"
                        "09:30 EST")
     def test_get_chart_reset(self):
         # Test chartReset
-        data3 = self.cshare.get_chart(Range='1d', chartReset=True)
+        data3 = self.cshare.get_chart(range_='1d', chartReset=True)
         assert data3 == []
 
     def test_get_company_format(self):
@@ -103,8 +115,8 @@ class TestShareDefault(object):
 
     def test_get_dividends_params(self):
         data = self.cshare.get_dividends()
-        data2 = self.cshare.get_dividends(Range='2y')
-        data3 = self.cshare.get_dividends(Range='5y')
+        data2 = self.cshare.get_dividends(range_='2y')
+        data3 = self.cshare.get_dividends(range_='5y')
         assert len(data) < len(data2) < len(data3)
 
     def test_get_earnings_format(self):
@@ -186,7 +198,7 @@ class TestShareDefault(object):
         assert isinstance(data, float)
 
         data2 = self.cshare2.get_price()
-        assert isinstance(data2, float)
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_quote_format(self):
         data = self.cshare.get_quote()
@@ -212,12 +224,12 @@ class TestShareDefault(object):
         data = self.cshare3.get_splits()
         assert isinstance(data, list)
 
-        data2 = self.cshare3.get_splits(Range="1y")
+        data2 = self.cshare3.get_splits(range_="1y")
         assert isinstance(data2, list)
 
     def test_get_splits_params(self):
-        data = self.cshare3.get_splits(Range="2y")
-        data2 = self.cshare3.get_splits(Range="5y")
+        data = self.cshare3.get_splits(range_="2y")
+        data2 = self.cshare3.get_splits(range_="5y")
         assert len(data2) > len(data)
 
     def test_get_time_series(self):
@@ -244,6 +256,17 @@ class TestBatchDefault(object):
         with pytest.raises(IEXSymbolError):
             a = Stock(["TSLA", "BAD SYMBOL", "BAD SYMBOL"])
             a.get_price()
+
+    def test_get_endpoints(self):
+        data = self.cbatch.get_endpoints(["price"])["AAPL"]
+        assert list(data) == ["price"]
+
+    def test_get_endpoints_bad_endpoint(self):
+        with pytest.raises(IEXEndpointError):
+            self.cbatch.get_endpoints(["BAD ENDPOINT", "quote"])
+
+        with pytest.raises(IEXEndpointError):
+            self.cbatch.get_endpoints("BAD ENDPOINT")
 
     def test_get_all(self):
         data = self.cbatch.get_all()
@@ -273,8 +296,8 @@ class TestBatchDefault(object):
 
     def test_get_chart_params(self):
         data = self.cbatch.get_chart()["AAPL"]
-        # Test chart ranges
-        data2 = self.cbatch.get_chart(range='1y')["AAPL"]
+        # Test chart range_s
+        data2 = self.cbatch.get_chart(range_='1y')["AAPL"]
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -282,13 +305,13 @@ class TestBatchDefault(object):
         data4 = self.cbatch.get_chart(chartSimplify=True)["AAPL"][0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cbatch.get_chart(Range='1y', chartInterval=5)["AAPL"]
+        data5 = self.cbatch.get_chart(range_='1y', chartInterval=5)["AAPL"]
         assert 45 < len(data5) < 55
 
     @pytest.mark.xfail(reason="This test only works overnight")
     def test_get_chart_reset(self):
         # Test chartReset
-        data = self.cbatch.get_chart(Range='1d', chartReset=True)
+        data = self.cbatch.get_chart(range_='1d', chartReset=True)
         assert data == []
 
     def test_get_company_format(self):
@@ -314,8 +337,8 @@ class TestBatchDefault(object):
 
     def test_get_dividends_params(self):
         data = self.cbatch.get_dividends()["AAPL"]
-        data2 = self.cbatch.get_dividends(Range='2y')["AAPL"]
-        data3 = self.cbatch.get_dividends(Range='5y')["AAPL"]
+        data2 = self.cbatch.get_dividends(range_='2y')["AAPL"]
+        data3 = self.cbatch.get_dividends(range_='5y')["AAPL"]
         assert len(data) < len(data2) < len(data3)
 
     def test_get_earnings_format(self):
@@ -390,7 +413,7 @@ class TestBatchDefault(object):
         assert isinstance(data, dict)
 
         data2 = self.cbatch2.get_price()
-        assert isinstance(data2["AAPL"], float)
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_quote_format(self):
         data = self.cbatch.get_quote()
@@ -418,8 +441,8 @@ class TestBatchDefault(object):
         assert isinstance(data2, pd.DataFrame)
 
     def test_get_splits_params(self):
-        data = self.cbatch3.get_splits(Range="2y")["SVXY"]
-        data2 = self.cbatch3.get_splits(Range="5y")["SVXY"]
+        data = self.cbatch3.get_splits(range_="2y")["SVXY"]
+        data2 = self.cbatch3.get_splits(range_="5y")["SVXY"]
         assert len(data2) > len(data)
 
     def test_time_series(self):
@@ -440,6 +463,327 @@ class TestBatchDefault(object):
 
         with pytest.raises(IEXEndpointError):
             self.cbatch.get_endpoints("BADENDPOINT")
+
+
+class TestFieldMethodsShare(object):
+
+    def setup_class(self):
+        self.share = Stock("AAPL")
+        self.share2 = Stock("AAPL", output_format='pandas')
+
+    def test_get_company_name(self):
+        data = self.share.get_company_name()
+        assert isinstance(data, str)
+        assert data == "Apple Inc."
+
+        data2 = self.share2.get_company_name()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_primary_exchange(self):
+        data = self.share.get_primary_exchange()
+        assert isinstance(data, str)
+        assert data == "Nasdaq Global Select"
+
+        data2 = self.share2.get_primary_exchange()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_sector(self):
+        data = self.share.get_sector()
+        assert isinstance(data, str)
+        assert data == "Technology"
+
+        data2 = self.share2.get_sector()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_open(self):
+        data = self.share.get_open()
+        assert isinstance(data, float)
+        assert data > 0
+
+        data2 = self.share2.get_open()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_close(self):
+        data = self.share.get_close()
+        assert isinstance(data, float)
+        assert data > 0
+
+        data2 = self.share2.get_close()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_years_high(self):
+        data = self.share.get_years_high()
+        assert isinstance(data, float)
+        assert data > 0
+
+        data2 = self.share2.get_years_high()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_years_low(self):
+        data = self.share.get_years_low()
+        assert isinstance(data, float)
+        assert data > 0
+
+        data2 = self.share2.get_years_low()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_ytd_change(self):
+        data = self.share.get_ytd_change()
+        assert isinstance(data, float)
+
+        data2 = self.share2.get_ytd_change()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_volume(self):
+        data = self.share.get_volume()
+        assert isinstance(data, int)
+        assert data > 1000
+
+        data2 = self.share2.get_volume()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_market_cap(self):
+        data = self.share.get_market_cap()
+        assert isinstance(data, int)
+
+        data2 = self.share2.get_market_cap()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_beta(self):
+        data = self.share.get_beta()
+        assert isinstance(data, float)
+
+        data2 = self.share2.get_beta()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_short_interest(self):
+        data = self.share.get_short_interest()
+        assert isinstance(data, int)
+
+        data2 = self.share2.get_short_interest()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_short_ratio(self):
+        data = self.share.get_short_ratio()
+        assert isinstance(data, float)
+
+        data2 = self.share2.get_short_ratio()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_latest_eps(self):
+        data = self.share.get_latest_eps()
+        assert isinstance(data, float)
+
+        data2 = self.share2.get_latest_eps()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_shares_outstanding(self):
+        data = self.share.get_shares_outstanding()
+        assert isinstance(data, int)
+
+        data2 = self.share2.get_shares_outstanding()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_float(self):
+        data = self.share.get_float()
+        assert isinstance(data, int)
+
+        data2 = self.share2.get_float()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_eps_consensus(self):
+        data = self.share.get_eps_consensus()
+        assert isinstance(data, float)
+
+        data2 = self.share2.get_eps_consensus()
+        assert isinstance(data2, pd.DataFrame)
+        assert data2.loc["AAPL"].dtype == "float64"
+
+
+class TestFieldMethodsBatch(object):
+
+    def setup_class(self):
+        self.batch = Stock(["AAPL", "TSLA"])
+        self.batch2 = Stock(["AAPL", "TSLA"], output_format='pandas')
+
+    def test_get_company_name(self):
+        data = self.batch.get_company_name()
+        assert isinstance(data, dict)
+        assert data["AAPL"] == "Apple Inc."
+
+        data2 = self.batch2.get_company_name()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+
+    def test_get_primary_exchange(self):
+        data = self.batch.get_primary_exchange()
+        assert isinstance(data, dict)
+        assert data["AAPL"] == "Nasdaq Global Select"
+
+        data2 = self.batch2.get_primary_exchange()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+
+    def test_get_sector(self):
+        data = self.batch.get_sector()
+        assert isinstance(data, dict)
+        assert data["AAPL"] == "Technology"
+
+        data2 = self.batch2.get_sector()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+
+    def test_get_open(self):
+        data = self.batch.get_open()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 0
+
+        data2 = self.batch2.get_open()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_close(self):
+        data = self.batch.get_close()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 0
+
+        data2 = self.batch2.get_close()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_years_high(self):
+        data = self.batch.get_years_high()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 0
+
+        data2 = self.batch2.get_years_high()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_years_low(self):
+        data = self.batch.get_years_low()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 0
+
+        data2 = self.batch2.get_years_low()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_ytd_change(self):
+        data = self.batch.get_ytd_change()
+        assert isinstance(data, dict)
+
+        data2 = self.batch2.get_ytd_change()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_volume(self):
+        data = self.batch.get_volume()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 50000
+
+        data2 = self.batch2.get_volume()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_market_cap(self):
+        data = self.batch.get_market_cap()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 1000000
+
+        data2 = self.batch2.get_market_cap()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_beta(self):
+        data = self.batch.get_beta()
+        assert isinstance(data, dict)
+        assert isinstance(data["AAPL"], float)
+
+        data2 = self.batch2.get_beta()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_short_interest(self):
+        data = self.batch.get_short_interest()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 50000
+
+        data2 = self.batch2.get_short_interest()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_short_ratio(self):
+        data = self.batch.get_short_ratio()
+        assert isinstance(data, dict)
+        assert isinstance(data["AAPL"], float)
+
+        data2 = self.batch2.get_short_ratio()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_latest_eps(self):
+        data = self.batch.get_latest_eps()
+        assert isinstance(data, dict)
+        assert isinstance(data["AAPL"], float)
+
+        data2 = self.batch2.get_latest_eps()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
+
+    def test_get_shares_outstanding(self):
+        data = self.batch.get_shares_outstanding()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 100000
+
+        data2 = self.batch2.get_shares_outstanding()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_float(self):
+        data = self.batch.get_float()
+        assert isinstance(data, dict)
+        assert data["AAPL"] > 1000000
+
+        data2 = self.batch2.get_float()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "int64"
+
+    def test_get_eps_consensus(self):
+        data = self.batch.get_eps_consensus()
+        assert isinstance(data, dict)
+        assert isinstance(data["AAPL"], float)
+
+        data2 = self.batch2.get_eps_consensus()
+        assert isinstance(data2, pd.DataFrame)
+        assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
+        assert data2.loc["AAPL"].dtype == "float64"
 
 
 class TestHistorical(object):

@@ -40,11 +40,81 @@ def output_format(override=None):
                                   "endpoint. Defaulting to JSON.")
                     if self.key is 'share':
                         return response[self.symbols[0]]
-                    return response
+                    else:
+                        return response
             else:
                 if self.key is 'share':
                     return response[self.symbols[0]]
                 return response
+        return _format_wrapper
+    return _output_format
+
+
+def price_output_format(override=None):
+    """
+    Decorator in charge of giving the output its correct format, either
+    json or pandas
+
+    Parameters
+    ----------
+    func: function
+        The function to be decorated
+    override: str
+        Override the internal format of the call, default none
+    """
+    def _output_format(func):
+
+        @wraps(func)
+        def _format_wrapper(self, *args, **kwargs):
+            response = func(self, *args, **kwargs)
+            if self.output_format is 'pandas':
+                if override is None:
+                    if self.key is 'share':
+                        return pd.DataFrame({"price": response})
+                    else:
+                        return pd.DataFrame({"price": response})
+                else:
+                    import warnings
+                    warnings.warn("Pandas output not supported for this "
+                                  "endpoint. Defaulting to JSON.")
+                    if self.key is 'share':
+                        return response[self.symbols[0]]
+                    else:
+                        return response
+            else:
+                if self.key is 'share':
+                    return response[self.symbols[0]]
+                return response
+        return _format_wrapper
+    return _output_format
+
+
+def field_output_format(override=None, field_name=None):
+    """
+    Decorator in charge of giving the output its correct format, either
+    json or pandas
+
+    Parameters
+    ----------
+    func: function
+        The function to be decorated
+    override: str
+        Override the internal format of the call, default none
+    """
+    def _output_format(func):
+
+        @wraps(func)
+        def _format_wrapper(self, *args, **kwargs):
+            data = func(self, *args, **kwargs)
+
+            if self.output_format is 'pandas':
+                return data.transpose()
+            else:
+                if self.key is 'share':
+                    return data[field_name]
+                else:
+                    return {symbol: data[symbol][field_name] for symbol in
+                            list(data)}
         return _format_wrapper
     return _output_format
 
@@ -60,8 +130,6 @@ class StockReader(_IEXBase):
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
                   "volume-by-venue", "ohlc"]
-    ALL_ENDPOINTS_STR_1 = ",".join(_ENDPOINTS[:10])
-    ALL_ENDPOINTS_STR_2 = ','.join(_ENDPOINTS[10:20])
 
     def __init__(self, symbols=None, output_format='json', **kwargs):
         """ Initialize the class
@@ -71,7 +139,7 @@ class StockReader(_IEXBase):
         symbols: str or list
             A nonempty list of symbols
         displayPercent: boolean
-        range: str
+        range_: str
             The range to use for the chart, dividends, and splits endpoints.
             Must be contained in _RANGE_VALUES
         last: int, default 10, optional
@@ -85,16 +153,14 @@ class StockReader(_IEXBase):
         else:
             self.key = "batch"
         self.output_format = output_format
+        self.endpoints = []
         super(StockReader, self).__init__(**kwargs)
 
-        # # Parameter checking
-        # if not isinstance(self.displayPercent, bool):
-        #     raise TypeError("displayPercent must be a boolean value")
-        # elif self.range not in self._RANGE_VALUES:
-        #     raise ValueError("Invalid chart range.")
-        # elif int(self.last) > 50 or int(self.last) < 1:
-        #     raise ValueError(
-        #         "Invalid news last range. Enter a value between 1 and 50.")
+    def change_output_format(self, new_format):
+        if new_format.lower() not in ['pandas', 'json']:
+            raise ValueError("Please specify a valid output format")
+        else:
+            self.output_format = new_format
 
     @output_format(override='json')
     def get_all(self):
@@ -106,9 +172,9 @@ class StockReader(_IEXBase):
         Only allows JSON format (pandas not supported).
         """
         self.optional_params = {}
-        self.endpoints = self.ALL_ENDPOINTS_STR_1
+        self.endpoints = self._ENDPOINTS[:10]
         json_data = self.fetch()
-        self.endpoints = self.ALL_ENDPOINTS_STR_2
+        self.endpoints = self._ENDPOINTS[10:20]
         json_data_2 = self.fetch()
         for symbol in self.symbols:
             if symbol not in json_data:
@@ -124,22 +190,33 @@ class StockReader(_IEXBase):
     def params(self):
         temp = {
             "symbols": ','.join(self.symbols),
-            "types": self.endpoints
+            "types": ','.join(self.endpoints)
         }
-        temp.update({key: str(self.optional_params[key])
+        temp.update({key: self.optional_params[key]
                      for key in self.optional_params})
-        params = {k.lower() if k[0].isupper() else k: v.lower() for k, v in
-                  temp.items()}
+        if "filter_" in temp:
+            if isinstance(temp["filter_"], list):
+                temp["filter"] = ",".join(temp["filter_"])
+            else:
+                temp["filter"] = temp["filter_"]
+            temp.pop("filter_")
+        if "range_" in temp:
+            temp["range"] = temp.pop("range_")
+        params = {k: str(v).lower() if v is True or v is False else str(v)
+                  for k, v in temp.items()}
         return params
 
     def _get_endpoint(self, endpoint, params={}):
         self.optional_params = params
-        self.endpoints = endpoint
+        self.endpoints = [endpoint]
         data = self.fetch()
         for symbol in self.symbols:
             if symbol not in data:
                 raise IEXSymbolError(symbol)
-            elif endpoint not in data[symbol]:
+            elif endpoint in data[symbol]:
+                if data[symbol][endpoint] is None:
+                    raise IEXEndpointError(endpoint)
+            else:
                 raise IEXEndpointError(endpoint)
         return data
 
@@ -162,6 +239,8 @@ class StockReader(_IEXBase):
         ------
         IEXEndpointError
             If an invalid endpoint is specified
+        IEXSymbolError
+            If a symbol is invalid
         IEXQueryError
             If issues arise during query
         """
@@ -169,33 +248,31 @@ class StockReader(_IEXBase):
             return self._get_endpoint(endpoints)
         elif not endpoints:
             raise ValueError("Please provide a valid list of endpoints")
-        result = {}
+        self.optional_params = {}
+        self.endpoints = endpoints
+        json_data = self.fetch()
         for symbol in self.symbols:
-            temp = {}
-            try:
-                ds = self.data_set[symbol]
-            except KeyError:
-                IEXSymbolError(symbol)
-            for endpoint in endpoints:
-                try:
-                    query = ds[endpoint]
-                except KeyError:
+            if symbol not in json_data:
+                raise IEXSymbolError(symbol)
+        for endpoint in endpoints:
+            if endpoint in json_data[self.symbols[0]]:
+                if json_data[self.symbols[0]][endpoint] is None:
                     raise IEXEndpointError(endpoint)
-                temp[endpoint] = query
-            result[symbol] = temp
-        return result
+            else:
+                raise IEXEndpointError(endpoint)
+        return json_data
 
     @output_format(override=None)
-    def get_book(self):
+    def get_book(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#book
 
         Returns
         -------
-        list or pandas.DataFrame
+        dict or pandas.DataFrame
             Stocks Book endpoint data
         """
-        data = self._get_endpoint("book")
+        data = self._get_endpoint("book", kwargs)
         return {symbol: data[symbol]["book"] for symbol in list(data)}
 
     @output_format(override='json')
@@ -216,7 +293,7 @@ class StockReader(_IEXBase):
         return {symbol: data[symbol]["chart"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_company(self):
+    def get_company(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#company
 
@@ -225,11 +302,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Company endpoint data
         """
-        data = self._get_endpoint("company")
+        data = self._get_endpoint("company", kwargs)
         return {symbol: data[symbol]["company"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_delayed_quote(self):
+    def get_delayed_quote(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#delayed-quote
 
@@ -238,7 +315,7 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Delayed Quote endpoint data
         """
-        data = self._get_endpoint("delayed-quote")
+        data = self._get_endpoint("delayed-quote", kwargs)
         return {symbol: data[symbol]["delayed-quote"] for symbol in
                 list(data)}
 
@@ -260,7 +337,7 @@ class StockReader(_IEXBase):
         return {symbol: data[symbol]["dividends"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_earnings(self):
+    def get_earnings(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#earnings
 
@@ -269,11 +346,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Earnings endpoint data
         """
-        data = self._get_endpoint("earnings")
+        data = self._get_endpoint("earnings", kwargs)
         return {symbol: data[symbol]["earnings"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_effective_spread(self):
+    def get_effective_spread(self, **kwargs):
         """
         Reference:  https://iextrading.com/developer/docs/#effective-spread
 
@@ -282,12 +359,12 @@ class StockReader(_IEXBase):
         list or pandas.DataFrame
             Stocks Effective Spread endpoint data
         """
-        data = self._get_endpoint("effective-spread")
+        data = self._get_endpoint("effective-spread", kwargs)
         return {symbol: data[symbol]["effective-spread"] for symbol
                 in list(data)}
 
     @output_format(override=None)
-    def get_financials(self):
+    def get_financials(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#financials
 
@@ -296,11 +373,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Financials endpoint data
         """
-        data = self._get_endpoint("financials")
+        data = self._get_endpoint("financials", kwargs)
         return {symbol: data[symbol]["financials"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_key_stats(self):
+    def get_key_stats(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#key-stats
 
@@ -309,11 +386,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Key Stats endpoint data
         """
-        data = self._get_endpoint("stats")
+        data = self._get_endpoint("stats", kwargs)
         return {symbol: data[symbol]["stats"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_logo(self):
+    def get_logo(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#logo
 
@@ -322,7 +399,7 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Logo endpoint data
         """
-        data = self._get_endpoint("logo")
+        data = self._get_endpoint("logo", kwargs)
         return {symbol: data[symbol]["logo"] for symbol in list(data)}
 
     @output_format(override=None)
@@ -340,7 +417,7 @@ class StockReader(_IEXBase):
         return {symbol: data[symbol]["news"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_ohlc(self):
+    def get_ohlc(self, **kwargs):
         """
         Reference:  https://iextrading.com/developer/docs/#ohlc
 
@@ -349,11 +426,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks OHLC endpoint data
         """
-        data = self._get_endpoint("ohlc")
+        data = self._get_endpoint("ohlc", kwargs)
         return {symbol: data[symbol]["ohlc"] for symbol
                 in list(data)}
 
-    def get_open_close(self):
+    def get_open_close(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#open-close
 
@@ -370,7 +447,7 @@ class StockReader(_IEXBase):
         return self.get_ohlc()
 
     @output_format(override='json')
-    def get_peers(self):
+    def get_peers(self, **kwargs):
         """
         Reference:https://iextrading.com/developer/docs/#peers
 
@@ -383,11 +460,11 @@ class StockReader(_IEXBase):
         list
             Stocks Peers endpoint data
         """
-        data = self._get_endpoint("peers")
+        data = self._get_endpoint("peers", kwargs)
         return {symbol: data[symbol]["peers"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_previous(self):
+    def get_previous(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#previous
 
@@ -396,11 +473,11 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Previous endpoint data
         """
-        data = self._get_endpoint("previous")
+        data = self._get_endpoint("previous", kwargs)
         return {symbol: data[symbol]["previous"] for symbol in list(data)}
 
-    @output_format(override='json')
-    def get_price(self):
+    @price_output_format(override=None)
+    def get_price(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#price
 
@@ -413,7 +490,7 @@ class StockReader(_IEXBase):
         float
             Stocks Price endpoint data
         """
-        data = self._get_endpoint("price")
+        data = self._get_endpoint("price", kwargs)
         return {symbol: data[symbol]["price"] for symbol in list(data)}
 
     # endpoint methods
@@ -431,7 +508,7 @@ class StockReader(_IEXBase):
         return {symbol: data[symbol]["quote"] for symbol in list(data)}
 
     @output_format(override=None)
-    def get_relevant(self):
+    def get_relevant(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#relevant
 
@@ -440,7 +517,7 @@ class StockReader(_IEXBase):
         dict or pandas.DataFrame
             Stocks Relevant endpoint data
         """
-        data = self._get_endpoint("relevant")
+        data = self._get_endpoint("relevant", kwargs)
         return {symbol: data[symbol]["relevant"] for symbol in list(data)}
 
     @output_format(override=None)
@@ -456,7 +533,7 @@ class StockReader(_IEXBase):
         data = self._get_endpoint("splits", kwargs)
         return {symbol: data[symbol]["splits"] for symbol in list(data)}
 
-    def get_time_series(self):
+    def get_time_series(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#time-series
 
@@ -473,7 +550,7 @@ class StockReader(_IEXBase):
         return self.get_chart()
 
     @output_format(override=None)
-    def get_volume_by_venue(self):
+    def get_volume_by_venue(self, **kwargs):
         """
         Reference:  https://iextrading.com/developer/docs/#volume-by-venue
 
@@ -482,121 +559,78 @@ class StockReader(_IEXBase):
         list or pandas.DataFrame
             Stocks Volume by Venue endpoint data
         """
-        data = self._get_endpoint("volume-by-venue")
+        data = self._get_endpoint("volume-by-venue", kwargs)
         return {symbol: data[symbol]["volume-by-venue"] for symbol
                 in list(data)}
 
     # field methods
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="companyName")
     def get_company_name(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["companyName"]
-                if self.key == 'batch' else self.get_quote()['companyName']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="companyName")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="primaryExchange")
     def get_primary_exchange(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["primaryExchange"]
-                if self.key == 'batch' else self.get_quote()['primaryExchange']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="primaryExchange")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="sector")
     def get_sector(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["sector"]
-                if self.key == 'batch' else self.get_quote()['sector']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="sector")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="open")
     def get_open(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["open"]
-                if self.key == 'batch' else self.get_quote()['open']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="open")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="close")
     def get_close(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["close"]
-                if self.key == 'batch' else self.get_quote()['close']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="close")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="week52High")
     def get_years_high(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["week52High"]
-                if self.key == 'batch' else self.get_quote()['week52High']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="week52High")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="week52Low")
     def get_years_low(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["week52Low"]
-                if self.key == 'batch' else self.get_quote()['week52Low']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="week52Low")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="ytdChange")
     def get_ytd_change(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["ytdChange"]
-                if self.key == 'batch' else self.get_quote()['ytdChange']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="ytdChange")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="latestVolume")
     def get_volume(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["latestVolume"]
-                if self.key == 'batch' else self.get_quote()['latestVolume']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="latestVolume")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="marketCap")
     def get_market_cap(self):
-        return {symbol: self._get_endpoint('quote')[symbol]["marketCap"]
-                if self.key == 'batch' else self.get_quote()['marketCap']
-                for symbol in self.symbols}
+        return self.get_quote(filter_="marketCap")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="beta")
     def get_beta(self):
-        return {symbol: self._get_endpoint("stats")[symbol]["beta"]
-                if self.key == 'batch' else
-                self.get_key_stats()['beta'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="beta")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="shortInterest")
     def get_short_interest(self):
-        return {symbol:
-                self._get_endpoint("stats")[symbol]["shortInterest"]
-                if self.key == 'batch' else
-                self.get_key_stats()['shortInterest'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="shortInterest")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="shortRatio")
     def get_short_ratio(self):
-        return {symbol: self._get_endpoint("stats")[symbol]["shortRatio"]
-                if self.key == 'batch' else
-                self.get_key_stats()['shortRatio'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="shortRatio")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="latestEPS")
     def get_latest_eps(self):
-        return {symbol: self._get_endpoint("stats")[symbol]["latestEPS"]
-                if self.key == 'batch' else
-                self.get_key_stats()['latestEPS'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="latestEPS")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="sharesOutstanding")
     def get_shares_outstanding(self):
-        return {symbol:
-                self._get_endpoint("stats")[symbol]["sharesOutstanding"]
-                if self.key == 'batch' else
-                self.get_key_stats()['sharesOutstanding'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="sharesOutstanding")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="float")
     def get_float(self):
-        return {symbol: self._get_endpoint("stats")[symbol]["float"]
-                if self.key == 'batch' else
-                self.get_key_stats()['float'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="float")
 
-    @output_format(override='json')
+    @field_output_format(override=None, field_name="consensusEPS")
     def get_eps_consensus(self):
-        return {symbol: self._get_endpoint("stats")[symbol]["consensusEPS"]
-                if self.key == 'batch' else
-                self.get_key_stats()['consensusEPS'] for symbol in
-                self.symbols}
+        return self.get_key_stats(filter_="consensusEPS")
 
 
 class HistoricalReader(_IEXBase):
