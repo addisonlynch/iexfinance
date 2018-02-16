@@ -8,6 +8,10 @@ from iexfinance import get_historical_data
 from iexfinance import Stock
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
+import sys
+
+_SYS_VERSION_MAJOR = sys.version_info.major
+
 
 class TestBase(object):
 
@@ -473,7 +477,11 @@ class TestFieldMethodsShare(object):
 
     def test_get_company_name(self):
         data = self.share.get_company_name()
-        assert isinstance(data, str)
+        print(type(data))
+        if _SYS_VERSION_MAJOR < 3:
+            assert isinstance(data, unicode)
+        else:
+            assert isinstance(data, str)
         assert data == "Apple Inc."
 
         data2 = self.share2.get_company_name()
@@ -481,7 +489,10 @@ class TestFieldMethodsShare(object):
 
     def test_get_primary_exchange(self):
         data = self.share.get_primary_exchange()
-        assert isinstance(data, str)
+        if _SYS_VERSION_MAJOR < 3:
+            assert isinstance(data, unicode)
+        else:
+            assert isinstance(data, str)
         assert data == "Nasdaq Global Select"
 
         data2 = self.share2.get_primary_exchange()
@@ -489,7 +500,10 @@ class TestFieldMethodsShare(object):
 
     def test_get_sector(self):
         data = self.share.get_sector()
-        assert isinstance(data, str)
+        if _SYS_VERSION_MAJOR < 3:
+            assert isinstance(data, unicode)
+        else:
+            assert isinstance(data, str)
         assert data == "Technology"
 
         data2 = self.share2.get_sector()

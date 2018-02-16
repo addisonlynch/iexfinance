@@ -5,10 +5,38 @@
 Stocks
 ******
 
-iexfinance takes an object-oriented approach to the `Stocks <https://iextrading.com/developer/#stocks>`__ endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__.
+Overview
+========
 
-The simplest way to obtain data from these endpoints is by calling the top-level ``Stock`` function with a symbol (*str*) or list of
-symbols (*list*). ``Stock`` will return a ``StockReader`` instance.
+Access to the `Stocks <https://iextrading.com/developer/#stocks>`__
+endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ is
+available through the top-level ``Stock`` function.
+
+Calling this function with a symbol (*str*) or list of symbols (*list*)
+will return a ``StockReader`` instance, which allows retrieval of
+endpoints  (`Earnings
+<https://iextrading.com/developer/#earnings>`__,
+`Quote <https://iextrading.com/developer/#quote>`__, etc) for up to 100 symbols
+at once. There are three ways
+to access such endpoints:
+
+1. :ref:`Endpoint Methods<stocks.endpoints>` - Allow retrieval of
+individual
+endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
+``get_book``, ``get_quote``, etc. Where applicable, parameters (i.e.
+``displayPercent`` for the Quote endpoint) may be passed as keyword arguments
+to these methods as keyword arguments.
+
+2. **Field Methods** - supported by certain endpoints. Allow quick and
+lightweight access to select fields of the Quote and Key Stats endpoints.
+Examples are ``get_company_name``, ``get_beta``, etc. The "Field Methods"
+subsection of each endpoint method will list Field Methods (if available) for
+each.
+
+3. ``get_endpoints`` - returns one or more (up to 10) endpoints to be returned
+in the *exact* format of the examples in the IEX docs. This method accepts no
+additional parameters (it uses the defaults) and does not allow output
+formatting (such as Pandas DataFrame).
 
 .. ipython:: python
 
@@ -17,42 +45,81 @@ symbols (*list*). ``Stock`` will return a ``StockReader`` instance.
     aapl.get_price()
 
 
-```StockReader``` allows us to access data for up to 100 symbols at once, returning a dictionary of the results indexed by each symbol.
-
 
 .. autoclass:: iexfinance.stock.StockReader
 
 
-**Parameters**
+Formatting
+==========
 
-Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument to the Stock function at instantiation (see :ref:`example <stocks.passing-parameters>`). Further, iexfinance supports pandas DataFrame as an output format for most endpoints of 'pandas' is specified as the `output_format` parameter.
+
+
+Supported Formats
+^^^^^^^^^^^^^^^^^
+
+1. **JSON** (**All Endpoints**) - For a single symbol, endpoint methods will
+return
+the endpoint as specified in docs (i.e. *dict* for Quote, *float* for Price)
+while multiple symbols will be returned as a symbol-indexed dictionary of the
+requested endpoint for each symbol.
+
+2. **Pandas DataFrame** (*most endpoints*) - The DataFrame is often indexed by
+the endpoint's dictionary keys, with a column for each requested symbol. For
+field methods, the DataFrame is a single column, indexed by each requested
+symbol.
+
+Selecting an Output Format
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Output formatting is most often selected through the initial call to the
+``Stock``
+function (which becomes an attribute of the ``StockReader`` instance) by
+passing
+``output_format`` as a keyword argument:
 
 .. ipython:: python
 
-    aapl = Stock("AAPL", displayPercent=True)
+    from iexfinance import Stock
+    aapl = Stock("aapl", output_format='pandas')
+    aapl.get_quote().head()
 
-+----------------------+------------------------------------------------------------+-------------+
-| Option               | Endpoint                                                   | Default     |
-+======================+============================================================+=============+
-| ``displayPercent``   | `Quote <https://iextrading.com/developer/docs/#quote>`__   | ``False``   |
-+----------------------+------------------------------------------------------------+-------------+
-| ``_range``           | `Chart <https://iextrading.com/developer/docs/#chart>`__   | ``1m``      |
-+----------------------+------------------------------------------------------------+-------------+
-| ``last``             | `News <https://iextrading.com/developer/docs/#news>`__     | ``10``      |
-+----------------------+------------------------------------------------------------+-------------+
-| ``output_format``    | All (some, such as Chart and Price, are JSON only)         | ``json``    |
-+----------------------+------------------------------------------------------------+-------------+
+It is also possible to change the output format of an already-instantiated
+``StockReader`` object using the ``change_output_format`` method:
 
-.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
+.. ipython:: python
+
+    aapl.change_output_format('json')
+    aapl.get_quote()["close"]
 
 
+Parameters
+==========
 
-Endpoints
-=========
+Certain endpoints (such as quote and chart) allow customizable
+parameters. To specify one of these parameters, merely pass it as a
+keyword argument to the endpoint method. (see :ref:`example
+<stocks.passing-parameters>`). 
 
-Endpoint methods will return a symbol-indexed dictionary of the endpoint requested. If :code:`Stock` is passed a single symbol, these methods will return the *data only* (verbatim from IEX docs examples). See examples :ref:`below <stocks.examples-endpoint-methods>` for clarification.
+.. ipython:: python
+
+    aapl = Stock("AAPL", output_format='pandas')
+    aapl.get_quote(displayPercent=True).loc["ytdChange"]
+
+
+.. note:: A key IEX optional parameter is ``filter_``, which allows the
+         filtering of endpoint requests to return certain fields only. See the
+         `IEX docs <https://iextrading.com/developer/docs/#filter-results>`__
+         and the examples below for more information.
+
+.. _stocks.endpoints
+
+Endpoint Methods
+================
+
+**Endpoint methods** will return a symbol-indexed dictionary of the endpoint
+requested. See examples :ref:`below <stocks.examples-endpoint-methods>` for
+clarification. The optional Keyword Arguments (in accordance with the IEX docs)
+are specified for each method below:
 
     - :ref:`Book<stocks.book>`
     - :ref:`Chart<stocks.chart>`
@@ -308,15 +375,6 @@ Volume by Venue
 .. automethod:: iexfinance.stock.StockReader.get_volume_by_venue
 
 
-
-.. _stocks.utility-methods:
-
-Utility Methods
-===============
-
-.. automethod:: iexfinance.stock.StockReader.refresh
-
-
 .. _stocks.examples:
 
 Examples
@@ -347,8 +405,35 @@ Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests w
 .. ipython:: python
 
     from iexfinance import Stock as iex
-    air_transport = Stock(['AAL', 'DAL', 'LUV'], outputFormat='pandas')
+    air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
     air_transport.get_quote().head()
+
+
+.. _stocks.filtering:
+
+Filtering
+^^^^^^^^^
+
+Per the IEX Docs, the 
+`filter <https://iextrading.com/developer/docs/#filter-results>`__,
+paramter may be passed to any endpoint request to restrict single endpoint
+queries to certain fields. iexfinance uses ``filter_``, as ``filter`` is a
+reserved word in Python:
+
+.. ipython:: python
+    
+    from iexfinance import Stock as iex
+    aapl = Stock("AAPL", output_format='pandas')
+    aapl.get_quote(filter_='ytdChange')
+
+Lists of fields are acceptable as well:
+
+.. ipython:: python
+
+    aapl.get_quote(filter_=['ytdChange', 'open', 'close'])
+
+.. note:: The desired fields must **exactly** match the field key names as
+        listed in the IEX docs. 
 
 .. _stocks.passing-parameters:
 
@@ -369,9 +454,9 @@ by default, News returns the last 10 items (`last is 10 by default`), but we can
 
 .. ipython:: python
 
-    aapl = Stock("AAPL", last=35)
+    aapl = Stock("AAPL")
 
-    len(aapl.get_news())
+    len(aapl.get_news(last=35))
 
 With a custom value specified, News now returns the previous 35 items.
 
@@ -388,13 +473,21 @@ Most endpoints allow for pandas DataFrame-formatted output:
 
     aapl.get_quote().head()
 
+We can also change the output format once our ``StockReader`` object has been
+instantiated:
+
+.. ipython:: python
+
+    aapl.change_output_format('json')
+    aapl.ohlc()
+
 
 
 
 .. _stocks.examples-field-methods:
 
 Field Methods
------------------
+^^^^^^^^^^^^^
 
 
 ``get_open()``, ``get_company_name()``
@@ -413,3 +506,10 @@ Multiple symbols
     b = Stock(["AAPL", "TSLA"])
     b.get_open()
     b.get_company_name()
+
+Format as a DataFrame
+
+.. ipython:: python
+
+    b = Stock(["AAPL", "TSLA"], output_format=('pandas'))
+    b.get_beta()

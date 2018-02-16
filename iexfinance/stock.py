@@ -196,10 +196,9 @@ class StockReader(_IEXBase):
                      for key in self.optional_params})
         if "filter_" in temp:
             if isinstance(temp["filter_"], list):
-                temp["filter"] = ",".join(temp["filter_"])
+                temp["filter"] = ",".join(temp.pop("filter_"))
             else:
-                temp["filter"] = temp["filter_"]
-            temp.pop("filter_")
+                temp["filter"] = temp.pop("filter_")
         if "range_" in temp:
             temp["range"] = temp.pop("range_")
         params = {k: str(v).lower() if v is True or v is False else str(v)

@@ -139,7 +139,8 @@ Usage
 IEX Listed Symbol Directory
 ===========================
 
-Similar to `Symbols <ref.symbols>`, `IEX Listed Symbol Directory<https://iextrading.com/developer/docs/#iex-listed-symbol-directory>`__ returns an array of all IEX listed securities.
+Similar to :ref:`Symbol<ref.symbols>`, `IEX Listed Symbol Directory
+<https://iextrading.com/developer/docs/#iex-listed-symbol-directory>`__ returns an array of all IEX listed securities.
 
 Access is available through the top-level function ``get_iex_listed_symbol_dir``
 
