@@ -24,244 +24,422 @@ class TestBase(object):
             x = ["tsla"] * 102
             Stock(x)
 
-    def test_wrong_option_values(self):
-        with pytest.raises(ValueError):
-            Stock("aapl", last=555)
 
-        with pytest.raises(TypeError):
-            Stock("aapl", displayPercent=4)
-
-        with pytest.raises(ValueError):
-            Stock("aapl", _range='1yy')
-
-    # def test_invalid_option_values(self):
-    #   with pytest.raises(TypeError):
-    #       Stock("aapl", displayPercent=4)
-    #   with pytest.raises(ValueError):
-    #       Stock("aapl", last=68)
-    #   with pytest.raises(ValueError):
-    #       Stock("aapl", chartRange='6y')
-    #   with pytest.raises(ValueError):
-    #       Stock("aapl", )
-
-
-# class ShareIntegrityTester(object):
-
-#   def setup_class(self):
-#       self.mshare = mocker.get_mock_share()
-#       self.cshare = Share(self.mshare.get_symbol())
-
-#   def test_endpoints(self):
-#       mendpoints = list(self.mshare.get_all().keys())
-#       cendpoints = list(self.cshare.get_all().keys())
-#       mendpoints.sort()
-#       cendpoints.sort()
-#       self.assertListEqual(mendpoints, cendpoints)
-
-
-#   def test_datapoints(self):
-#       table = self.mshare.get_all()
-#       for endpoint in table.keys():
-#           mmod = self.mshare.get_select_endpoints(endpoint)
-#           cmod = self.cshare.get_select_endpoints(endpoint)
-#           assert type(mmod), type(cmod))
-#           if type(mmod) is dict:
-#               mdatapoints = list(mmod.keys())
-#               cdatapoints = list(cmod.keys())
-#               mdatapoints.sort()
-#               cdatapoints.sort()
-#               self.assertListEqual(mdatapoints, cdatapoints)
-#           else:
-#               print("Skipping endpoint " + endpoint)
-#       self.assertListEqual(mdatapoints, cdatapoints)
-
-class TestShare(object):
+class TestShareDefault(object):
 
     def setup_class(self):
         self.cshare = Stock("aapl")
+        self.cshare2 = Stock("aapl", output_format='pandas')
+        self.cshare3 = Stock("svxy")
+
+    def test_invalid_symbol(self):
+        data = Stock("BAD SYMBOL")
+        with pytest.raises(IEXSymbolError):
+            data.get_price()
 
     def test_get_all_format(self):
         data = self.cshare.get_all()
-        assert isinstance(data, dict,)
+        assert isinstance(data, dict)
 
-    def test_get_chart_format(self):
-        data = self.cshare.get_chart()
-        assert isinstance(data, list)
+    def test_get_all(self):
+        data = self.cshare.get_all()
+        assert len(data) == 20
 
     def test_get_book_format(self):
         data = self.cshare.get_book()
         assert isinstance(data, dict)
 
-    def test_get_open_close_format(self):
-        data = self.cshare.get_open_close()
-        assert isinstance(data, dict)
+        data2 = self.cshare2.get_book()
+        assert isinstance(data2, pd.DataFrame)
 
-    def test_get_previous_format(self):
-        data = self.cshare.get_previous()
-        assert isinstance(data, dict)
+    def test_get_chart_format(self):
+        data = self.cshare.get_chart()
+        assert isinstance(data, list)
+
+        data2 = self.cshare2.get_chart()
+        assert isinstance(data2, list)
+
+    def test_get_chart_params(self):
+        data = self.cshare.get_chart()
+        # Test chart ranges
+        data2 = self.cshare.get_chart(range='1y')
+        assert 15 < len(data) < 35
+        assert 240 < len(data2) < 260
+
+        # Test chartSimplify
+        data4 = self.cshare.get_chart(chartSimplify=True)[0]
+        assert "simplifyFactor" in list(data4)
+
+        data5 = self.cshare.get_chart(Range='1y', chartInterval=5)
+        assert 45 < len(data5) < 55
+
+    @pytest.mark.xfail(reason="This test only runs correctly between 00:00 and"
+                       "09:30 EST")
+    def test_get_chart_reset(self):
+        # Test chartReset
+        data3 = self.cshare.get_chart(Range='1d', chartReset=True)
+        assert data3 == []
 
     def test_get_company_format(self):
         data = self.cshare.get_company()
         assert isinstance(data, dict)
 
-    def test_get_key_stats_format(self):
-        data = self.cshare.get_key_stats()
-        assert isinstance(data, dict)
-
-    def test_get_relevant_format(self):
-        data = self.cshare.get_relevant()
-        assert isinstance(data, dict)
-
-    def test_get_news_format(self):
-        data = self.cshare.get_news()
-        assert isinstance(data, list)
-
-    def test_get_financials_format(self):
-        data = self.cshare.get_financials()
-        assert isinstance(data, dict)
-
-    def test_get_earnings_format(self):
-        data = self.cshare.get_earnings()
-        assert isinstance(data, dict)
-
-    def test_get_logo_format(self):
-        data = self.cshare.get_logo()
-        assert isinstance(data, dict)
-
-    def test_get_price_format(self):
-        data = self.cshare.get_price()
-        assert isinstance(data, float)
+        data2 = self.cshare2.get_company()
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_delayed_quote_format(self):
         data = self.cshare.get_delayed_quote()
         assert isinstance(data, dict)
 
+        data2 = self.cshare2.get_delayed_quote()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_dividends_format(self):
+        data = self.cshare.get_dividends()
+        assert isinstance(data, list)
+
+        data2 = self.cshare2.get_dividends()
+        assert isinstance(data2, list)
+
+    def test_get_dividends_params(self):
+        data = self.cshare.get_dividends()
+        data2 = self.cshare.get_dividends(Range='2y')
+        data3 = self.cshare.get_dividends(Range='5y')
+        assert len(data) < len(data2) < len(data3)
+
+    def test_get_earnings_format(self):
+        data = self.cshare.get_earnings()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_earnings()
+        assert isinstance(data2, pd.DataFrame)
+
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
         assert isinstance(data, list)
 
-    def test_get_volume_by_venue_format(self):
-        data = self.cshare.get_volume_by_venue()
+        data2 = self.cshare2.get_effective_spread()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_financials_format(self):
+        data = self.cshare.get_financials()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_financials()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_key_stats_format(self):
+        data = self.cshare.get_key_stats()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_key_stats()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_logo_format(self):
+        data = self.cshare.get_logo()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_logo()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_news_format(self):
+        data = self.cshare.get_news()
         assert isinstance(data, list)
+
+        data2 = self.cshare2.get_news()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_news_params(self):
+        data = self.cshare.get_news(last=15)
+        assert len(data) == 15
 
     def test_ohlc(self):
         data = self.cshare.get_ohlc()
         assert isinstance(data, dict)
 
-    def test_time_series(self):
+        data2 = self.cshare2.get_ohlc()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_open_close_format(self):
+        data = self.cshare.get_open_close()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_open_close()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_peers_format(self):
+        data = self.cshare.get_peers()
+        assert isinstance(data, list)
+
+        data2 = self.cshare2.get_peers()
+        assert isinstance(data2, list)
+
+    def test_get_previous_format(self):
+        data = self.cshare.get_previous()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_previous()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_price_format(self):
+        data = self.cshare.get_price()
+        assert isinstance(data, float)
+
+        data2 = self.cshare2.get_price()
+        assert isinstance(data2, float)
+
+    def test_get_quote_format(self):
+        data = self.cshare.get_quote()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_quote()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_quote_params(self):
+        data = self.cshare.get_quote()
+        data2 = self.cshare.get_quote(displayPercent=True)
+        assert abs(data["ytdChange"]) < .1
+        assert abs(data2["ytdChange"]) > .1
+
+    def test_get_relevant_format(self):
+        data = self.cshare.get_relevant()
+        assert isinstance(data, dict)
+
+        data2 = self.cshare2.get_relevant()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_splits_format(self):
+        data = self.cshare3.get_splits()
+        assert isinstance(data, list)
+
+        data2 = self.cshare3.get_splits(Range="1y")
+        assert isinstance(data2, list)
+
+    def test_get_splits_params(self):
+        data = self.cshare3.get_splits(Range="2y")
+        data2 = self.cshare3.get_splits(Range="5y")
+        assert len(data2) > len(data)
+
+    def test_get_time_series(self):
         data = self.cshare.get_time_series()
         data2 = self.cshare.get_chart()
         assert data == data2
 
-    def test_nondefault_params_1(self):
-        aapl = Stock("AAPL", _range='5y')
-        aapl2 = Stock("AAPL")
-        assert len(aapl.get_chart()) > len(aapl2.get_chart())
+    def test_get_volume_by_venue_format(self):
+        data = self.cshare.get_volume_by_venue()
+        assert isinstance(data, list)
 
-    def test_nondefault_params_2(self):
-        aapl = Stock("AAPL", last=37)
-        assert len(aapl.get_news()) == 37
+        data2 = self.cshare2.get_volume_by_venue()
+        assert isinstance(data2, pd.DataFrame)
 
 
-class TestBatch(object):
+class TestBatchDefault(object):
 
     def setup_class(self):
         self.cbatch = Stock(["aapl", "tsla"])
+        self.cbatch2 = Stock(["aapl", "tsla"], output_format='pandas')
+        self.cbatch3 = Stock(["uvxy", "svxy"])
 
     def test_invalid_symbol_or_symbols(self):
         with pytest.raises(IEXSymbolError):
-            Stock(["TSLA", "AAAPLPL", "fwoeiwf"])
+            a = Stock(["TSLA", "BAD SYMBOL", "BAD SYMBOL"])
+            a.get_price()
+
+    def test_get_all(self):
+        data = self.cbatch.get_all()
+        assert len(data) == 2
+        assert len(data["AAPL"]) == 20
 
     def test_get_all_format(self):
         data = self.cbatch.get_all()
         assert isinstance(data, dict)
 
+        data2 = self.cbatch2.get_all()
+        assert isinstance(data2["AAPL"], dict)
+
+    def test_get_book_format(self):
+        data = self.cbatch.get_book()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_book()
+        assert isinstance(data2, pd.DataFrame)
+
     def test_get_chart_format(self):
         data = self.cbatch.get_chart()
         assert isinstance(data, dict)
 
-    def test_get_book_format(self):
-        data = self.cbatch.get_book()
+        data2 = self.cbatch2.get_chart()
+        assert isinstance(data2["AAPL"], list)
+
+    def test_get_chart_params(self):
+        data = self.cbatch.get_chart()["AAPL"]
+        # Test chart ranges
+        data2 = self.cbatch.get_chart(range='1y')["AAPL"]
+        assert 15 < len(data) < 35
+        assert 240 < len(data2) < 260
+
+        # Test chartSimplify
+        data4 = self.cbatch.get_chart(chartSimplify=True)["AAPL"][0]
+        assert "simplifyFactor" in list(data4)
+
+        data5 = self.cbatch.get_chart(Range='1y', chartInterval=5)["AAPL"]
+        assert 45 < len(data5) < 55
+
+    @pytest.mark.xfail(reason="This test only works overnight")
+    def test_get_chart_reset(self):
+        # Test chartReset
+        data = self.cbatch.get_chart(Range='1d', chartReset=True)
+        assert data == []
+
+    def test_get_company_format(self):
+        data = self.cbatch.get_company()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_company()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_delayed_quote_format(self):
+        data = self.cbatch.get_delayed_quote()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_delayed_quote()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_dividends_format(self):
+        data = self.cbatch.get_dividends()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_dividends()
+        assert isinstance(data2, dict)
+
+    def test_get_dividends_params(self):
+        data = self.cbatch.get_dividends()["AAPL"]
+        data2 = self.cbatch.get_dividends(Range='2y')["AAPL"]
+        data3 = self.cbatch.get_dividends(Range='5y')["AAPL"]
+        assert len(data) < len(data2) < len(data3)
+
+    def test_get_earnings_format(self):
+        data = self.cbatch.get_earnings()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_earnings()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_effective_spread_format(self):
+        data = self.cbatch.get_effective_spread()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_effective_spread()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_financials_format(self):
+        data = self.cbatch.get_financials()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_financials()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_key_stats_format(self):
+        data = self.cbatch.get_key_stats()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_key_stats()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_logo_format(self):
+        data = self.cbatch.get_logo()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_logo()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_news_format(self):
+        data = self.cbatch.get_news()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_news()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_ohlc(self):
+        data = self.cbatch.get_ohlc()
         assert isinstance(data, dict)
 
     def test_get_open_close_format(self):
         data = self.cbatch.get_open_close()
         assert isinstance(data, dict)
 
+        data2 = self.cbatch2.get_open_close()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_peers_format(self):
+        data = self.cbatch.get_peers()
+        assert isinstance(data, dict)
+
+        data2 = self.cbatch2.get_peers()
+        assert isinstance(data2, dict)
+
     def test_get_previous_format(self):
         data = self.cbatch.get_previous()
         assert isinstance(data, dict)
 
-    def test_get_company_format(self):
-        data = self.cbatch.get_company()
-        assert isinstance(data, dict)
-
-    def test_get_key_stats_format(self):
-        data = self.cbatch.get_key_stats()
-        assert isinstance(data, dict)
-
-    def test_get_relevant_format(self):
-        data = self.cbatch.get_relevant()
-        assert isinstance(data, dict)
-
-    def test_get_news_format(self):
-        data = self.cbatch.get_news()
-        assert isinstance(data, dict)
-
-    def test_get_financials_format(self):
-        data = self.cbatch.get_financials()
-        assert isinstance(data, dict)
-
-    def test_get_earnings_format(self):
-        data = self.cbatch.get_earnings()
-        assert isinstance(data, dict)
-
-    def test_get_logo_format(self):
-        data = self.cbatch.get_logo()
-        assert isinstance(data, dict)
+        data2 = self.cbatch2.get_previous()
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_price_format(self):
         data = self.cbatch.get_price()
         assert isinstance(data, dict)
 
-    def test_get_delayed_quote_format(self):
-        data = self.cbatch.get_delayed_quote()
+        data2 = self.cbatch2.get_price()
+        assert isinstance(data2["AAPL"], float)
+
+    def test_get_quote_format(self):
+        data = self.cbatch.get_quote()
         assert isinstance(data, dict)
 
-    def test_get_effective_spread_format(self):
-        data = self.cbatch.get_effective_spread()
+        data2 = self.cbatch2.get_quote()
+        assert isinstance(data2, pd.DataFrame)
+
+        data3 = self.cbatch.get_quote(displayPercent=True)
+        assert abs(data["AAPL"]["ytdChange"]) < .1
+        assert abs(data3["AAPL"]["ytdChange"]) > .1
+
+    def test_get_relevant_format(self):
+        data = self.cbatch.get_relevant()
         assert isinstance(data, dict)
 
-    def test_get_volume_by_venue_format(self):
-        data = self.cbatch.get_volume_by_venue()
+        data2 = self.cbatch2.get_relevant()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_splits(self):
+        data = self.cbatch.get_splits()
         assert isinstance(data, dict)
 
-    def test_get_select_ep_bad_params(self):
-        with pytest.raises(ValueError):
-            self.cbatch.get_select_endpoints()
+        data2 = self.cbatch2.get_splits()
+        assert isinstance(data2, pd.DataFrame)
 
-        with pytest.raises(IEXEndpointError):
-            self.cbatch.get_select_endpoints("BADENDPOINT")
-
-    def test_ohlc(self):
-        data = self.cbatch.get_ohlc()
-        assert isinstance(data, dict)
+    def test_get_splits_params(self):
+        data = self.cbatch3.get_splits(Range="2y")["SVXY"]
+        data2 = self.cbatch3.get_splits(Range="5y")["SVXY"]
+        assert len(data2) > len(data)
 
     def test_time_series(self):
         data = self.cbatch.get_time_series()
         data2 = self.cbatch.get_chart()
         assert data == data2
 
-    def test_nondefault_params_1(self):
-        data = Stock(["AAPL", "TSLA"], _range='5y')
-        data2 = Stock(["AAPL", "TSLA"])
-        assert len(data.get_chart()["AAPL"]) > len(data2.get_chart()["AAPL"])
-        assert len(data.get_chart()["TSLA"]) > len(data2.get_chart()["TSLA"])
+    def test_get_volume_by_venue_format(self):
+        data = self.cbatch.get_volume_by_venue()
+        assert isinstance(data, dict)
 
-    def test_nondefault_params_2(self):
-        data = Stock(["AAPL", "TSLA"], last=37)
-        assert len(data.get_news()["AAPL"]) == 37
-        assert len(data.get_news()["TSLA"]) == 37
+        data2 = self.cbatch2.get_volume_by_venue()
+        assert isinstance(data2, pd.DataFrame)
+
+    def test_get_select_ep_bad_params(self):
+        with pytest.raises(ValueError):
+            self.cbatch.get_endpoints()
+
+        with pytest.raises(IEXEndpointError):
+            self.cbatch.get_endpoints("BADENDPOINT")
 
 
 class TestHistorical(object):
