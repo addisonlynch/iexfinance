@@ -105,7 +105,6 @@ class _IEXBase(object):
         IEXQueryError
             If problems arise when making the query
         """
-        print("REQUEST URL: " + url)
         pause = self.pause
         for i in range(self.retry_count+1):
 

@@ -70,3 +70,13 @@ Bug Fixes
    `GH1 <https://github.com/addisonlynch/iexfinance/issues/1>`__
 -  Repaired and improved unit tests
    `GH6 <https://github.com/addisonlynch/iexfinance/issues/6>`__
+
+Backward Compability
+~~~~~~~~~~~~~~~~~~~~~
+
+- The top-level ``IexFinance`` function is now ``Stock``
+- Within the ``StockReader`` class (to retrieve stocks endpoints):
+  - ``refresh`` has been removed. Simply conduct another endpoint request to
+  download the most updated data
+  - ``get_select_datapoints`` has been replaced with ``filter``. 
+  - ``get_select_endpoints`` has been replaced with ``get_endpoints``
