@@ -30,14 +30,6 @@ All classes and functions utilize the _IEXBASE class to make their requests:
 
 .. autoclass:: iexfinance.base._IEXBase
 
-
-Caching
--------
-
-iexfinance supports the caching of HTTP requests to IEX using the ``requests-cache`` package.
-
-.. seealso:: `Caching Queries <caching.html>`__
-
 .. _usage.stocks:
 
 Stocks
@@ -57,12 +49,10 @@ Endpoints
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
 contains data regarding a different aspect of the security/securities.
-Both the `Share <stocks.html#share>`__ and `Batch <stocks.html#batch>`__
-objects contain identically-signatured functions which can obtain each
-of these endpoints. Requests for single symbols (`Share <stocks.html#share>`__)
-will return the *exact* results from that endpoint as shown in the IEX API
-documentation (see below). Requests for multiple symbols
-(`Batch <stocks.html#batch>`__) will return a symbol-indexed dictionary of
+The `Stock <stocks.html>`__ function creates an object that can obtain each
+of these endpoints. Requests for single symbols will return the *exact* results
+from that endpoint as shown in the IEX API documentation (see below). Requests
+for multiple symbols will return a symbol-indexed dictionary of
 the endpoint requested.
 
 *Endpoint Method* Examples ``get_quote()``, ``get_volume_by_venue()``
@@ -77,7 +67,7 @@ the endpoint requested.
 
 
 For a detailed list of the *endpoint methods*, see
-`Share <stocks.html#share>`__ or `Batch <stocks.html#batch>`__.
+`Stocks <stocks.html#endpoints>`__.
 
 Fields
 ------
@@ -102,23 +92,31 @@ Examples ``get_open()``, ``get_name()``
     b.get_open()
 
 
-For a detailed list of these functions, see `Share <stocks.html#share>`__ or
-`Batch <stocks.html#batch>`__.
+For a detailed list of these functions, see `Stocks <stocks.html>`__.
 
 Parameters
 ----------
 
+Top-level parameters may be passed to the ``Stock`` function, including
+``output_format`` and request parameters (such as ``retry_count``, and
+``pause``) - the latter of which will be used should any queries made by
+the object fail. These parameters are passed keyword arguments, and are
+entirely optional.
+
 Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument.
+parameters. To specify one of these parameters, merely pass it to an endpoint
+method as a keyword argument. 
 
 .. ipython:: python
 
-    aapl = Stock("AAPL", displayPercent=True)
+    aapl = Stock("AAPL", output_format='pandas')
+    aapl.get_quote(displayPercent=True).loc["ytdChange"]
 
-
-.. note:: Due to collisions between the dividends and splits range options that require separate requests and merging. The single _range value specified will apply to the chart, dividends, and splits endpoints. We have contacted IEX about this issue and hope to resolve it soon.
-
+.. note:: The ``output_format`` from the initial
+  call to the ``Stock`` function will be used (if the output format has not been
+  change through ``change_output_format`` since) and **cannot be changed**
+  through calls to endpoint methods. See `Stocks <stocks.html>`__ for
+  more information.
 
 .. _usage.reference-data:
 
@@ -147,3 +145,12 @@ IEX Stats
 .. seealso:: For more information, see `IEX Stats <stats.html>`__
 
 The IEX Stats `endpoints <stats.html>`__
+
+.. _usage.caching
+
+Caching
+-------
+
+iexfinance supports the caching of HTTP requests to IEX using the ``requests-cache`` package.
+
+.. seealso:: `Caching Queries <caching.html>`__

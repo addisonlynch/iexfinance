@@ -17,8 +17,7 @@ __version__ = '0.3.0'
 # and conditions of use
 
 
-def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
-          output_format='json', **kwargs):
+def Stock(symbols=None, output_format='json', **kwargs):
     """
     Top-level function to to retrieve data from the IEX Stocks endpoints
 
@@ -26,13 +25,9 @@ def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
     ----------
     symbols: str or list
         A string or list of strings that are valid symbols
-    displayPercent: bool
-    _range: str
-    last: int
     output_format: str
     kwargs:
         Additional request options
-
     Returns
     -------
     stock.StockReader
@@ -42,16 +37,14 @@ def Stock(symbols=None, displayPercent=False, _range="1m", last=10,
         if not symbols:
             raise ValueError("Please input a symbol or list of symbols")
         else:
-            inst = StockReader([symbols], displayPercent, _range, last,
-                               output_format, **kwargs)
+            inst = StockReader([symbols], output_format, **kwargs)
     elif type(symbols) is list:
         if not symbols:
             raise ValueError("Please input a symbol or list of symbols")
         if len(symbols) > 100:
             raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
-            inst = StockReader(symbols, displayPercent, _range, last,
-                               output_format, **kwargs)
+            inst = StockReader(symbols, output_format, **kwargs)
         return inst
     else:
         raise ValueError("Please input a symbol or list of symbols")
