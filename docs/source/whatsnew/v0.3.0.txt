@@ -11,8 +11,11 @@ Highlights:
 
 - Added most IEX API endpoints (from Stocks, Reference Data, IEX Market
  Data, and IEX Stats)
-- Added **get\_historical\_data** for the retrieval of
-time-series data from the `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
+- Added **get\_historical\_data** for the retrieval of time-series data from
+the `chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
+- Added support for ``filter``, a parameter which allows the filtering of
+endpoint requests.
+- Pandas DataFrame formatting support.
 
 .. contents:: What's new in v0.3.0
     :local:
@@ -56,6 +59,9 @@ Changes
 - Removes simplejson, mock, and nose as dependencies.
 - Splits requirements into install requirements (requirements.txt) and
 testing requirements (requirements-test.txt)
+- Stocks now downloads endpoints on a per-request basis, not at instantiation
+- Adds requirement that requests must be limited to 10 endpoints at once for
+Stocks endpoints
 
 Bug Fixes
 ~~~~~~~~~
@@ -64,3 +70,13 @@ Bug Fixes
    `GH1 <https://github.com/addisonlynch/iexfinance/issues/1>`__
 -  Repaired and improved unit tests
    `GH6 <https://github.com/addisonlynch/iexfinance/issues/6>`__
+
+Backward Compability
+~~~~~~~~~~~~~~~~~~~~~
+
+- The top-level ``IexFinance`` function is now ``Stock``
+- Within the ``StockReader`` class (to retrieve stocks endpoints):
+  - ``refresh`` has been removed. Simply conduct another endpoint request to
+  download the most updated data
+  - ``get_select_datapoints`` has been replaced with ``filter``. 
+  - ``get_select_endpoints`` has been replaced with ``get_endpoints``

@@ -6,7 +6,6 @@
 Usage
 *****
 
-.. note:: For a thorough, step-by-step walkthrough, see `tutorial <tutorial.html>`__
 
 Overview
 ==================

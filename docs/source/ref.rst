@@ -13,8 +13,6 @@ The following functions retrieve data from the `IEX Reference Data <https://iext
     - :ref:`IEX Next Day Ex Date<ref.iex-next-day-ex-date>`
     - :ref:`IEX Listed Symbol Directory<ref.iex-listed-symbol-directory>`
 
-.. warning:: These endpoints are not yet operational as of 1/31/2018
-
 
 All endpoints will return in list format.
 
@@ -51,6 +49,9 @@ Usage
 
     get_available_symbols()[:2]
 
+
+.. warning:: The remaining endpoints are not yet operational as of 2/16/2018.
+	Use with caution.
 
 .. _ref.iex-corporate-actions:
 
