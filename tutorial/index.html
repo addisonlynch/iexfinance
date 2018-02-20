@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Tutorial - IEX Finance Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Tutorial";
+    var mkdocs_page_input_path = "tutorial.md";
+    var mkdocs_page_url = "/tutorial/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> IEX Finance Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../install/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../usage/">Usage</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../share/">Share</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../batch/">Batch</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../utilities/">Utilities</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../testing/">Testing</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../changes/">Change Log</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Tutorial</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#setting-up-a-new-environment">Setting up a new environment</a></li>
+    
+
+    <li class="toctree-l2"><a href="#getting-started">Getting started</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#retrieving-data">Retrieving Data</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">IEX Finance Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Tutorial</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="setting-up-a-new-environment">Setting up a new environment</h2>
+<p>Ideally, before installing or using iexfinance, we'll create a new virtual environment using <a href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>. This will ensure that our packages are isolated from other projects and configured correctly.</p>
+<pre><code class="bash">$ virtualenv env
+$ source env/bin/activate
+</code></pre>
+
+<h2 id="getting-started">Getting started</h2>
+<p>Once our environment is created, we can now install iexfinance. We do so by the following from iexfinance's pypl repository. </p>
+<pre><code class="bash">(env) $ pip install iexfinance
+</code></pre>
+
+<p>This will install the latest stable release of iexfinance that is ready for use. Once installed, we can import the library and begin downloading data!</p>
+<h3 id="retrieving-data">Retrieving Data</h3>
+<p>iexfinance uses two internal objects, <a href="../share/"><code>Share</code></a> and <a href="../batch/"><code>Batch</code></a> to retrieve equities data. <a href="../share/"><code>Share</code></a> is used for single symbols and uses the <code>/stock/&lt;symbolname&gt;</code> endpoint from IEX. <a href="https://addisonlynch.github.io/iexfinance/batch"><code>Batch</code></a>, however, uses the  <code>market</code> endpoint from <a href="https://iextrading.com/developer/docs/#batch-requests">Batch Requests</a> to conduct the retrieval for multiple symbols. </p>
+<h4 id="single-symbol">Single Symbol</h4>
+<p>We'll first work with the following instantiation:</p>
+<pre><code class="python">&gt;&gt;&gt; from iexfinance import IexFinance as iex
+
+&gt;&gt;&gt; aapl = iex(&quot;aapl&quot;)
+</code></pre>
+
+<p>So, we've called the <code>IexFinance</code> function and passed it the symbol "aapl", for Apple Inc. We've receieved a <a href="../share/"><code>Share</code></a> object in return whose symbol is "aapl." Notice that we have not passed any parameters at instantiation, so our object has used its defaults (see <a href="../share/#parameters"><code>Share</code></a> for more information). Should we attempt to pass a symbol not contained in the available symbol list (see <a href="../utilities/">Utilities</a>), an <code>IEXSymbolError</code> will be raised:</p>
+<pre><code class="python">&gt;&gt;&gt; aapl = iex(&quot;aapleee&quot;)
+# IEXSymbolError: Symbol aapleee not found.
+</code></pre>
+
+<p>At this point, the wrapper has downloaded all avaiable data for Apple Inc., and we can quickly access certain endpoints and datapoints without the overhead of making multiple API calls for the information. We'll first work with the <a href="https://iextrading.com/developer/docs/#quote">Quote</a> endpoint. The IEX Docs for quote:</p>
+<p>We see on the right an exact representation of the Quote endpoint's response, in this case a JSON of various datapoints including "symbol" and "companyName", among others. To retrieve the endpoint as represented, we use the provided <em>endpoint method</em> <code>get_quote</code>:</p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_quote()
+ {
+  &quot;symbol&quot;: &quot;AAPL&quot;,
+  &quot;companyName&quot;: &quot;Apple Inc.&quot;,
+  &quot;primaryExchange&quot;: &quot;Nasdaq Global Select&quot;,
+  &quot;sector&quot;: &quot;Technology&quot;,
+  &quot;calculationPrice&quot;: &quot;tops&quot;,
+  &quot;open&quot;: 154,
+  &quot;openTime&quot;: 1506605400394,
+  &quot;close&quot;: 153.28,
+  &quot;closeTime&quot;: 15066054
+   ...
+   }
+</code></pre>
+
+<p>We see that <code>get_quote</code> returns the same as the IEX docs! But what if we don't want the entire endpoint? iexfinance provides a number of <em>datapoint methods</em> which allow access to specific items within certain endpoints. For instance, we could use <code>get_open</code> or <code>get_company_name</code> to obtain the relevant information:</p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_open()
+124.55
+
+&gt;&gt;&gt; aapl.get_company_name()
+&quot;Apple Inc.&quot;
+</code></pre>
+
+<p>A full list of the avaiable <em>datapoint methods</em> is provided in the <a href="../share/">Share</a> documentation. In addition to these methods, it is possible to obtain one or more datapoints from a specific endpoint, using the <code>get_select_datapoints</code> method, passing the desired endpoint and a <em>string</em> or <em>list</em> of desired datapoint(s) as below:</p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_select_datapoints(&quot;quote&quot;, &quot;symbol&quot;)
+&quot;AAPL&quot;
+
+&gt;&gt;&gt; aapl.get_select_datapoints(&quot;quote&quot;, [&quot;symbol&quot;, &quot;calculationPrice&quot;, &quot;open&quot;])
+{ &quot;symbol&quot; : &quot;AAPL&quot;, &quot;calculationPrice&quot; : &quot;tops&quot;, &quot;open&quot; : 154 } 
+</code></pre>
+
+<p>We see that <code>get_select_datapoints</code> returns a <em>dict</em> of these datapoints, indexed by the keys provided. <em>Note: the datapoint names must be entered in the exact formatting as the IEX documentation</em>. If we attempt to select an invalid datapoint, an <code>IEXDatapointError</code> will be raised:</p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_select_datapoints(&quot;quote&quot;, [&quot;symbol&quot;, &quot;todaysHigh&quot;, &quot;open&quot;])
+#IEXDatapointError: Datapoint todaysHigh not found in endpoint quote
+</code></pre>
+
+<h4 id="multiple-symbols">Multiple Symbols</h4>
+<p>For batch requests, <code>IexFinance</code> returns a <a href="../batch/"><code>Batch</code></a> object, which contains many of the same methods as <a href="../share/"><code>Share</code></a>, but returns data in a <em>dict</em> indexed by each symbol provided.</p>
+<pre><code class="python">&gt;&gt;&gt; b = iex([&quot;aapl&quot;, &quot;tsla&quot;])
+&gt;&gt;&gt; b.get_all()
+{
+  &quot;AAPL&quot; : {
+    &quot;quote&quot;: {...},
+    &quot;news&quot;: [...],
+    &quot;chart&quot;: [...]
+    ...
+  },
+  &quot;TSLA&quot; : {
+    &quot;quote&quot;: {...},
+    &quot;news&quot;: [...],
+    &quot;chart&quot;: [...]
+    ...
+  },
+}
+</code></pre>
+
+<p>We can see that the entire dataset, indexed by "AAPL" and "TSLA", contains each endpoint. To obtain an individual endpoint, we use an <em>endpoint method</em> as we would with single symbols:</p>
+<pre><code class="python">&gt;&gt;&gt; b.get_quote()
+
+{
+  &quot;AAPL&quot; : {
+    &quot;symbol&quot;: &quot;AAPL&quot;,
+    &quot;companyName&quot; : &quot;Apple Inc.&quot;,
+    &quot;primaryExchange&quot; : &quot;Nasdaq Global Select&quot;,
+    ...
+  },
+  &quot;FB&quot; : {
+    &quot;symbol&quot;: &quot;TSLA&quot;,
+    &quot;companyName&quot; : &quot;Tesla Inc.&quot;,
+    &quot;primaryExchange&quot; : &quot;Nasdaq Global Select&quot;,
+    ...
+  },
+}
+</code></pre>
+
+<p>We see that the response of an <em>endpoint method</em> is also symbol-indexed. This remains true for all methods in <a href="../batch/"><code>Batch</code></a>, including <em>datapoint methods</em>:</p>
+<pre><code class="python">&gt;&gt;&gt; b.get_open()
+{ &quot;AAPL&quot; : 154, &quot;TSLA&quot; : 317.44 }
+</code></pre>
+
+<p>Obtaining multiple endpoints or multiple datapoints from a certain endpoint is easy for multiple symbols:</p>
+<pre><code class="python">
+&gt;&gt;&gt; b.get_select_datapoints(&quot;quote&quot;, [&quot;open&quot;, &quot;close&quot;])
+
+{ &quot;AAPL&quot; : {
+        &quot;open&quot; : 154,
+        &quot;close&quot; : 155.55
+        }
+  &quot;TSLA&quot; : {
+        &quot;open&quot; : 317.44,
+        &quot;close&quot; : 314.55
+        } 
+}
+</code></pre>
+
+<h4 id="updating-data">Updating Data</h4>
+<p>When we call the <code>IexFinance</code> function, the resulting object calls the <code>refresh</code> method at instantiation. This method downloads and obtains the latest market data from IEX. Realtime data is updated to the latest 15 minutes, per the IEX documentation. </p>
+<pre><code class="python">&gt;&gt;&gt; aapl.refresh()
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../about/" class="btn btn-neutral" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../about/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Usage - IEX Finance Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Usage";
+    var mkdocs_page_input_path = "usage.md";
+    var mkdocs_page_url = "/usage/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> IEX Finance Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../install/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Usage</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#endpoints">Endpoints</a></li>
+    
+
+    <li class="toctree-l2"><a href="#datapoints">Datapoints</a></li>
+    
+
+    <li class="toctree-l2"><a href="#parameters">Parameters</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../share/">Share</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../batch/">Batch</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../utilities/">Utilities</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../testing/">Testing</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../changes/">Change Log</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../tutorial/">Tutorial</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">IEX Finance Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><em>Note: for a thorough, step-by-step walkthrough, see <a href="../tutorial/">tutorial</a>.</em></p>
+<p>The simplest way to obtain data using the iexfinance wrapper is by calling the <code>IexFinance</code> function with a symbol (<em>str</em>) or list of symbols (<em>list</em>). <code>IexFinance</code> will return a <a href="../share/"><code>Share</code></a> object instance if given a single symbol and a <a href="../batch/"><code>Batch</code></a> object instance if given a list. </p>
+<pre><code class="python">from iexfinance import IexFinance as iex
+aapl = iex(&quot;aapl&quot;)
+&gt;&gt;&gt; aapl.get_price()
+#171.32
+</code></pre>
+
+<p>IEX provides a list of symbols that are available for access, and as such, we provide a utility function <code>utils.get_available_symbols</code> to obtain this list (see <a href="https://addisonlynch/github.io/iexfinance/utilities">Utilities</a>). Invalid symbols will be met with a <code>IEXSymbolError</code>, and duplicate symbols will be kept intact without alteration.</p>
+<h3 id="endpoints">Endpoints</h3>
+<p>The Stock endpoints of the <a href="https://iextrading.com/developer/">IEX Developer API</a> are below, each of which contains data regarding a different aspect of the security/securities. Both the <a href="../share/"><code>Share</code></a> and <a href="../batch/"><code>Batch</code></a> objects contain identically-signatured functions which can obtain each of these endpoints. Requests for single symbols (<a href="../share/"><code>Share</code></a>) will return the <em>exact</em> results from that endpoint as shown in the IEX API documentation (see below). Requests for multiple symbols (<a href="../batch/"><code>Batch</code></a>) will return a symbol-indexed dictionary of the endpoint requested.</p>
+<ul>
+<li><a href="https://iextrading.com/developer/docs/#quote">Quote</a></li>
+<li><a href="https://iextrading.com/developer/docs/#chart">Chart</a></li>
+<li><a href="https://iextrading.com/developer/docs/#book">Book</a></li>
+<li><a href="https://iextrading.com/developer/docs/#open-close">Open / Close</a></li>
+<li><a href="https://iextrading.com/developer/docs/#previous">Previous</a></li>
+<li><a href="https://iextrading.com/developer/docs/#company">Company</a></li>
+<li><a href="https://iextrading.com/developer/docs/#key-stats">Key Stats</a></li>
+<li><a href="https://iextrading.com/developer/docs/#relevant">Relevant</a></li>
+<li><a href="https://iextrading.com/developer/docs/#news">News</a></li>
+<li><a href="https://iextrading.com/developer/docs/#financials">Financials</a></li>
+<li><a href="https://iextrading.com/developer/docs/#earnings">Earnings</a></li>
+<li><a href="https://iextrading.com/developer/docs/#dividends">Dividends</a> </li>
+<li><a href="https://iextrading.com/developer/docs/#splits">Splits</a> </li>
+<li><a href="https://iextrading.com/developer/docs/#logo">Logo</a> </li>
+<li><a href="https://iextrading.com/developer/docs/#price">Price</a></li>
+<li><a href="https://iextrading.com/developer/docs/#delayed-quote">Delayed Quote</a></li>
+<li>~~List~~ (<em>not supported</em>)</li>
+<li><a href="https://iextrading.com/developer/docs/#effective-spread">Effective Spread</a></li>
+<li><a href="https://iextrading.com/developer/docs/#volume-by-venue">Volume by Venue</a></li>
+</ul>
+<p><em>Endpoint Method</em> Examples
+<code>get_quote()</code>, 
+<code>get_volume_by_venue()</code></p>
+<p><strong>Share (single symbol)</strong></p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_previous()
+
+#{&quot;symbol&quot;:&quot;AAPL&quot;,&quot;date&quot;:&quot;2017-11-16&quot;,&quot;open&quot;:171.18,&quot;high&quot;:171.87,&quot;low&quot;:170.3,&quot;close&quot;:171.1,
+#&quot;volume&quot;:23637484,&quot;unadjustedVolume&quot;:23637484,&quot;change&quot;:2.02,&quot;changePercent&quot;:1.195,
+#&quot;vwap&quot;:171.1673}
+
+
+</code></pre>
+
+<p>For a detailed list of the <em>endpoint methods</em>, see <a href="../share/"><code>Share</code></a> or <a href="../batch/"><code>Batch</code></a>. </p>
+<h3 id="datapoints">Datapoints</h3>
+<p>To obtain individual datapoints from an endpoint, select <em>datapoint methods</em> are also provided.</p>
+<p>Examples
+<code>get_open()</code>, 
+<code>get_name()</code></p>
+<p><strong>Share (single symbol)</strong></p>
+<pre><code class="python">&gt;&gt;&gt; aapl.get_open()
+# 111.99
+&gt;&gt;&gt; aapl.get_name()
+# Apple Inc.
+
+
+</code></pre>
+
+<p><strong>Batch (multiple symbols)</strong></p>
+<pre><code class="python">
+&gt;&gt;&gt; from iexfinance import IexFinance as iex
+&gt;&gt;&gt; b = iex([&quot;AAPL&quot;, &quot;TSLA&quot;])
+&gt;&gt;&gt; b.get_open()
+#{&quot;AAPL&quot; : 111.99, &quot;TSLA&quot; : 299.93}
+&gt;&gt;&gt; b.get_open()
+#{&quot;AAPL&quot; : &quot;Apple Inc.&quot;, &quot;TSLA&quot; : &quot;Tesla Inc.&quot;}
+</code></pre>
+
+<p>For a detailed list of these functions, see <a href="../share/"><code>Share</code></a> or <a href="../batch/"><code>Batch</code></a>.</p>
+<h3 id="parameters">Parameters</h3>
+<p>Certain endpoints (such as quote and chart) allow customizable parameters. To specify one of these parameters, merely pass it as a keyword argument.</p>
+<pre><code class="python">aapl = iex(&quot;AAPL&quot;, displayPercent=True)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th align="center">Endpoint</th>
+<th align="center">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>displayPercent</code></td>
+<td align="center"><a href="https://iextrading.com/developer/docs/#quote">quote</a></td>
+<td align="center"><code>False</code></td>
+</tr>
+<tr>
+<td><code>chartRange</code></td>
+<td align="center"><a href="https://iextrading.com/developer/docs/#chart">chart</a></td>
+<td align="center"><code>1m</code></td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td align="center"><a href="https://iextrading.com/developer/docs/#news">news</a></td>
+<td align="center"><code>10</code></td>
+</tr>
+<tr>
+<td><code>dividendsRange</code></td>
+<td align="center"><a href="https://iextrading.com/developer/docs/#dividends">dividends</a></td>
+<td align="center"><code>1m</code></td>
+</tr>
+<tr>
+<td><code>splitsRange</code></td>
+<td align="center"><a href="https://iextrading.com/developer/docs/#splits">splits</a></td>
+<td align="center"><code>1m</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: specifying options other than the defaults will <strong>significantly</strong> impact performance due to collision between the dividends and splits range options that require separate requests and merging. We have contacted IEX about this issue and hope to resolve it soon.</em></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../share/" class="btn btn-neutral float-right" title="Share">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../install/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../install/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../share/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

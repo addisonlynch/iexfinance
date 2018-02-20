@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/install/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/usage/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/share/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/batch/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/utilities/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/testing/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/changes/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/about/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/tutorial/</loc>
+     <lastmod>2018-02-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>
