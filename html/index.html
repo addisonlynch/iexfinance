@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>iexfinance &mdash; iexfinance 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.3.0 documentation" href="#"/>
+        <link rel="next" title="Install" href="install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">iexfinance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>iexfinance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="index"></span><div class="section" id="iexfinance">
+<h1>iexfinance<a class="headerlink" href="#iexfinance" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://travis-ci.org/addisonlynch/iexfinance"><img alt="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" src="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/addisonlynch/iexfinance"><img alt="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" src="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" /></a>
+<p>Python module to get stock data from the Investors Exchange (IEX) Developer API
+platform. iexfinance provides real-time financial data from the various IEX
+endpoints, as well as historical data.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://iextrading.com/developer/docs/#stocks">Stocks</a></dt>
+<dd><ul class="first last">
+<li>Historical Data</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">Reference Data</a></li>
+<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market Data</a></li>
+<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Stats</a></li>
+</ul>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="https://addisonlynch.github.io/iexfinance/index.html#Documentation">IEX Finance
+Documentation</a></p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>From PyPI with pip (latest stable release):</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">iexfinance</span></code></p>
+<p>From development repository (dev version):</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/addisonlynch/iexfinance.git
+$ cd iexfinance
+$ python3 setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stock-endpoints">
+<h3>Stock Endpoints<a class="headerlink" href="#stock-endpoints" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">Stock</span>
+<span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
+<span class="n">tsla</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Historical Data</strong></p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_historical_data</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iex-reference-data">
+<h3>IEX Reference Data<a class="headerlink" href="#iex-reference-data" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_available_symbols</span>
+
+<span class="n">get_available_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iex-market-data">
+<h3>IEX Market Data<a class="headerlink" href="#iex-market-data" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_market_tops</span>
+
+<span class="n">get_market_tops</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iex-stats">
+<h3>IEX Stats<a class="headerlink" href="#iex-stats" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_stats_intraday</span>
+
+<span class="n">get_stats_intraday</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
+<p>Email: <a class="reference external" href="mailto:ahlshop&#37;&#52;&#48;gmail&#46;com">ahlshop<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
+<p>Twitter: <a class="reference external" href="https://www.twitter.com/alynchfc">alynchfc</a></p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Copyright © 2017 Addison Lynch</p>
+<p>See LICENSE for details</p>
+</div>
+</div>
+<div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#stocks">Stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#reference-data">Reference Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#iex-market-data">IEX Market Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#iex-stats">IEX Stats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#formatting">Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#endpoint-methods">Endpoint Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="historical.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="historical.html#plotting">Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#symbols">Symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-corporate-actions">IEX Corporate Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-dividends">IEX Dividends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-next-day-ex-date">IEX Next Day Ex Date</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-listed-symbol-directory">IEX Listed Symbol Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="market.html#tops">TOPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market.html#last">Last</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market.html#deep">DEEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market.html#book">Book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#intraday">Intraday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#recent">Recent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#records">Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#historical-summary">Historical Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stats.html#historical-daily">Historical Daily</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="caching.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#local-testing">Local Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#module-iexfinance.utils.exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-0-february-1-2018">v0.3.0 (February 1, 2018)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#changelog">Changelog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about.html#iex-api-issues">IEX API Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#filling-a-void">Filling a Void</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#setting-up-a-new-environment">Setting up a new environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#getting-started">Getting started</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="modules.html">Modules</a></li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
