@@ -342,7 +342,8 @@ class StockReader(_IEXBase):
             Stocks Earnings endpoint data
         """
         data = self._get_endpoint("earnings", kwargs)
-        return {symbol: data[symbol]["earnings"] for symbol in list(data)}
+        return {symbol: data[symbol]["earnings"]["earnings"]
+                for symbol in list(data)}
 
     @output_format(override=None)
     def get_effective_spread(self, **kwargs):
@@ -369,7 +370,8 @@ class StockReader(_IEXBase):
             Stocks Financials endpoint data
         """
         data = self._get_endpoint("financials", kwargs)
-        return {symbol: data[symbol]["financials"] for symbol in list(data)}
+        return {symbol: data[symbol]["financials"]["financials"]
+                for symbol in list(data)}
 
     @output_format(override=None)
     def get_key_stats(self, **kwargs):
