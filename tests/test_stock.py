@@ -10,7 +10,12 @@ from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 import sys
 
-_SYS_VERSION_MAJOR = sys.version_info.major
+PY3 = sys.version_info.major == 3
+
+if PY3:
+    string_types = (str, )
+else:
+    string_types = (str, unicode)
 
 
 class TestBase(object):
@@ -125,7 +130,7 @@ class TestShareDefault(object):
 
     def test_get_earnings_format(self):
         data = self.cshare.get_earnings()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
         data2 = self.cshare2.get_earnings()
         assert isinstance(data2, pd.DataFrame)
@@ -139,7 +144,7 @@ class TestShareDefault(object):
 
     def test_get_financials_format(self):
         data = self.cshare.get_financials()
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
         data2 = self.cshare2.get_financials()
         assert isinstance(data2, pd.DataFrame)
@@ -214,8 +219,9 @@ class TestShareDefault(object):
     def test_get_quote_params(self):
         data = self.cshare.get_quote()
         data2 = self.cshare.get_quote(displayPercent=True)
-        assert abs(data["ytdChange"]) < .1
-        assert abs(data2["ytdChange"]) > .1
+
+        assert (abs(data2["ytdChange"]) >
+                abs(data["ytdChange"]))
 
     def test_get_relevant_format(self):
         data = self.cshare.get_relevant()
@@ -247,6 +253,11 @@ class TestShareDefault(object):
 
         data2 = self.cshare2.get_volume_by_venue()
         assert isinstance(data2, pd.DataFrame)
+
+    def test_filter(self):
+        data = self.cshare.get_quote(filter_='ytdChange')
+        assert isinstance(data, dict)
+        assert isinstance(data["ytdChange"], float)
 
 
 class TestBatchDefault(object):
@@ -427,8 +438,8 @@ class TestBatchDefault(object):
         assert isinstance(data2, pd.DataFrame)
 
         data3 = self.cbatch.get_quote(displayPercent=True)
-        assert abs(data["AAPL"]["ytdChange"]) < .1
-        assert abs(data3["AAPL"]["ytdChange"]) > .1
+        assert (abs(data3["AAPL"]["ytdChange"]) >
+                abs(data["AAPL"]["ytdChange"]))
 
     def test_get_relevant_format(self):
         data = self.cbatch.get_relevant()
@@ -478,10 +489,8 @@ class TestFieldMethodsShare(object):
     def test_get_company_name(self):
         data = self.share.get_company_name()
         print(type(data))
-        if _SYS_VERSION_MAJOR < 3:
-            assert isinstance(data, unicode)
-        else:
-            assert isinstance(data, str)
+
+        assert isinstance(data, string_types)
         assert data == "Apple Inc."
 
         data2 = self.share2.get_company_name()
@@ -489,10 +498,7 @@ class TestFieldMethodsShare(object):
 
     def test_get_primary_exchange(self):
         data = self.share.get_primary_exchange()
-        if _SYS_VERSION_MAJOR < 3:
-            assert isinstance(data, unicode)
-        else:
-            assert isinstance(data, str)
+        assert isinstance(data, string_types)
         assert data == "Nasdaq Global Select"
 
         data2 = self.share2.get_primary_exchange()
@@ -500,10 +506,8 @@ class TestFieldMethodsShare(object):
 
     def test_get_sector(self):
         data = self.share.get_sector()
-        if _SYS_VERSION_MAJOR < 3:
-            assert isinstance(data, unicode)
-        else:
-            assert isinstance(data, str)
+
+        assert isinstance(data, string_types)
         assert data == "Technology"
 
         data2 = self.share2.get_sector()
