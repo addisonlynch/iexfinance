@@ -12,9 +12,9 @@ install:
   - python setup.py install
 
 script:
-  - python setup.py pytest
+  - coverage run setup.py pytest
   - flake8 --version
   - flake8 iexfinance
 
 after_success:
-  - codecov
+  - codecov --token='f4d1c94d-2af2-49c9-aebd-4e009c8a6266'
