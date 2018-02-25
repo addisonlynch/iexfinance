@@ -331,7 +331,7 @@ class StockReader(_IEXBase):
     def get_dividends(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#dividends
-        
+
         Parameters
         ----------
         range: str, default '1m', optional
@@ -421,7 +421,7 @@ class StockReader(_IEXBase):
         """Returns the Stocks News endpoint (list or pandas)
 
         Reference: https://iextrading.com/developer/docs/#news
-        
+
         Parameters
         ----------
         range: int, default 10, optional

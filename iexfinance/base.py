@@ -37,14 +37,14 @@ class _IEXBase(object):
         ----------
         retry_count: int
             Desired number of retries if a request fails
-        pause: float
+        pause: float default 0.001, optional
             Pause time between retry attempts
         session: requests_cache.session, default None, optional
             A cached requests-cache session
         """
         self.retry_count = kwargs.pop("retry_count", 3)
         self.pause = kwargs.pop("pause", 0.001)
-        self.session = kwargs.pop("session", _init_session(None))
+        self.session = _init_session(kwargs.pop("session", None))
 
     @property
     def params(self):
@@ -102,7 +102,6 @@ class _IEXBase(object):
         """
         pause = self.pause
         for i in range(self.retry_count+1):
-
             response = self.session.get(url=url)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)

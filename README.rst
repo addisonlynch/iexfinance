@@ -101,9 +101,17 @@ Pandas DataFrame and JSON (dict) output formatting are selected with the
 The resulting DataFrame will indexed by date, with a column for each OHLC
 datapoint:
 
-.. image:: /docs/source/images/dfdailyaapl.jpg
+.. image:: /docs/source/images/dfdailyaapl.JPG
 
-It's really simple to plot this data, using `matplotlib
+It's really simple to plot this data, using `matplotlib:
+
+.. code:: python
+
+	import matplotlib.pyplot as plt
+
+	df.plot()
+	plt.show()
+
 <https://matplotlib.org/>`__
 
 .. image:: /docs/source/images/plotdailyaapl.jpg

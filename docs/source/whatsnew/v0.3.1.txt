@@ -7,6 +7,11 @@ v0.3.1 (TBA)
 This is a minor release from 0.3.0, which repairs various bugs related to the
 Stocks endpoints.
 
+Enhancements
+~~~~~~~~~~~~
+
+- Significant cleanup and rebuild of iexfinance `docs
+<https://addisonlynch.github.io/iexfinance>`.
 
 Bug Fixes
 ~~~~~~~~~

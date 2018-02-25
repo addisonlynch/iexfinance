@@ -28,24 +28,19 @@ class Market(_IEXBase):
             Additional request options
 
         """
-        if symbols is None:
-            if self.symbol_required:
-                raise ValueError("Please input a symbol or list of symbols.")
-            self.syms = False
-        else:
-            self.syms = True
-            if not symbols:
-                raise ValueError("Please input a symbol or list of symbols.")
-            if isinstance(symbols, str):
+        if self.symbol_required:
+            if isinstance(symbols, str) and symbols:
                 self.symbols = [symbols]
-            elif len(symbols) in range(0, 10):
+            elif isinstance(symbols, list) and len(symbols) in range(0, 10):
                 self.symbols = symbols
+            else:
+                raise ValueError("Please input a symbol or list of symbols.")
         self.output_format = output_format
         super(Market, self).__init__(**kwargs)
 
     @property
     def params(self):
-        if self.syms is True:
+        if self.symbol_required is True:
             return {"symbols": ",".join(self.symbols)}
         else:
             return {}

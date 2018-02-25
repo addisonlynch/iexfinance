@@ -8,7 +8,7 @@ from .ref import CorporateActions, Dividends, NextDay, ListedSymbolDir
 from .utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -26,6 +26,7 @@ def Stock(symbols=None, output_format='json', **kwargs):
     symbols: str or list
         A string or list of strings that are valid symbols
     output_format: str
+        Desired output format for requests
     kwargs:
         Additional Request Parameters (see base class)
     Returns
@@ -33,22 +34,17 @@ def Stock(symbols=None, output_format='json', **kwargs):
     stock.StockReader
         A StockReader instance
     """
-    if type(symbols) is str:
-        if not symbols:
-            raise ValueError("Please input a symbol or list of symbols")
-        else:
-            inst = StockReader([symbols], output_format, **kwargs)
+    if not symbols:
+        raise ValueError("Please input a symbol or list of symbols")
+    elif type(symbols) is str:
+        return StockReader([symbols], output_format, **kwargs)
     elif type(symbols) is list:
-        if not symbols:
-            raise ValueError("Please input a symbol or list of symbols")
         if len(symbols) > 100:
             raise ValueError("Invalid symbol list. Maximum 100 symbols.")
         else:
-            inst = StockReader(symbols, output_format, **kwargs)
-        return inst
+            return StockReader(symbols, output_format, **kwargs)
     else:
         raise ValueError("Please input a symbol or list of symbols")
-    return inst
 
 
 def get_historical_data(symbols=None, start=None, end=None,
@@ -75,8 +71,8 @@ def get_historical_data(symbols=None, start=None, end=None,
     list or DataFrame
         Historical stock prices over date range, start to end
     """
-    return HistoricalReader(symbols, start, end, output_format,
-                            **kwargs).fetch()
+    return HistoricalReader(symbols, start=start, end=end,
+                            output_format=output_format, **kwargs).fetch()
 
 
 def get_available_symbols(**kwargs):
