@@ -1,0 +1,17 @@
+.. _whatsnew_031:
+
+
+v0.3.1 (TBA)
+-------------------------
+
+This is a minor release from 0.3.0, which repairs various bugs related to the
+Stocks endpoints.
+
+
+Bug Fixes
+~~~~~~~~~
+
+-  Some Stocks endpoints return incorrectly
+   `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
+-  Repaired CodeCov code coverage
+   `GH14 <https://github.com/addisonlynch/iexfinance/issues/14>`__

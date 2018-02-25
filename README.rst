@@ -7,13 +7,22 @@ iexfinance
 .. image:: https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master
 	:target: https://codecov.io/gh/addisonlynch/iexfinance
 
+.. image:: https://badge.fury.io/py/iexfinance.svg
+    :target: https://badge.fury.io/py/iexfinance
 
-Python module to get stock data from the Investors Exchange (IEX) Developer API
+.. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
+    :target: https://opensource.org/licenses/Apache-2.0
+
+
+Python module to get stock data from the `Investors Exchange (IEX)
+<https://iextrading.com/>`__ `Developer API <<https://iextrading.com/developer/>`__
 platform. iexfinance provides real-time financial data from the various IEX
 endpoints, as well as historical data.
 
+This data includes stock quotes, fundamentals, actions, and information. In
+addition, support for IEX market data and statistics is provided.
+
 - `Stocks <https://iextrading.com/developer/docs/#stocks>`__
-	- Historical Data
 - `Reference Data <https://iextrading.com/developer/docs/#reference-data>`__
 - `IEX Market Data <https://iextrading.com/developer/docs/#iex-market-data>`__
 - `IEX Stats <https://iextrading.com/developer/docs/#iex-stats>`__
@@ -42,59 +51,7 @@ From development repository (dev version):
 Usage Examples
 --------------
 
-Stock Endpoints
-^^^^^^^^^^^^^^^
-
-.. code:: python
-
-    from iexfinance import Stock
-    tsla = Stock('TSLA')
-    tsla.get_open()
-    tsla.get_price()
-
-**Historical Data**
-
-.. code:: python
-	
-	from iexfinance import get_historical_data
-	from datetime import datetime
-
-	start = datetime(2017, 2, 9)
-	end = datetime(2017, 5, 24)
-
-	df = get_historical_data("AAPL", start=start, end=end, output_format='pandas')
-	df.head()
-
-
-IEX Reference Data
-^^^^^^^^^^^^^^^^^^
-
-.. code:: python
-
-	from iexfinance import get_available_symbols
-
-	get_available_symbols()[:2]
-
-
-IEX Market Data
-^^^^^^^^^^^^^^^
-
-.. code:: python
-
-	from iexfinance import get_market_tops
-
-	get_market_tops()
-
-IEX Stats
-^^^^^^^^^
-
-.. code:: python
-
-	from iexfinance import get_stats_intraday
-
-	get_stats_intraday()
-
-
+.. include:: docs/source/usage.rst
 
 
 Contact

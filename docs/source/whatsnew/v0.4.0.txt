@@ -1,4 +1,4 @@
-.. _whatsnew_030:
+.. _whatsnew_040:
 
 
 v0.4.0 (TBA)
@@ -11,3 +11,5 @@ update.
 
 -  Some Stocks endpoints return incorrectly
    `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
+
+   

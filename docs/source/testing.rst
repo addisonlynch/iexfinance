@@ -21,6 +21,7 @@ For docs:
 - sphinx_rtd_theme
 - sphinxcontrib-napoleon
 - matplotlib
+- ipython
 
 Local Testing
 -------------

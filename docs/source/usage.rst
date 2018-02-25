@@ -22,6 +22,8 @@ Thus there are four main modules of iexfinance, each allowing the retrieval of d
 These modules provide classes and top-level functions to execute queries to the IEX API.
 
 
+.. usage.request-parameters:
+
 Request Parameters
 ------------------
 
