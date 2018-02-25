@@ -2,6 +2,11 @@
 
 .. role:: strike
 
+.. ipython:: python
+    :suppress:
+
+    import requests_cache
+
 *****
 Usage
 *****
@@ -22,12 +27,15 @@ Thus there are four main modules of iexfinance, each allowing the retrieval of d
 These modules provide classes and top-level functions to execute queries to the IEX API.
 
 
-.. usage.request-parameters:
+.. _usage.parameters:
 
-Request Parameters
-------------------
+Parameters
+==========
 
-All classes and functions utilize the _IEXBASE class to make their requests:
+
+
+All classes and top-level functions utilize the _IEXBASE class to make their
+requests:
 
 .. autoclass:: iexfinance.base._IEXBase
 
@@ -50,15 +58,13 @@ Endpoints
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
 contains data regarding a different aspect of the security/securities.
-The `Stock <stocks.html>`__ function creates an object that can obtain each
+The top-level ``Stock`` function creates an object that can obtain each
 of these endpoints. Requests for single symbols will return the *exact* results
 from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of
 the endpoint requested.
 
 *Endpoint Method* Examples ``get_quote()``, ``get_volume_by_venue()``
-
-**Share (single symbol)**
 
 .. ipython:: python
 
@@ -68,24 +74,24 @@ the endpoint requested.
 
 
 For a detailed list of the *endpoint methods*, see
-`Stocks <stocks.html#endpoints>`__.
+`here <stocks.html#endpoints>`__.
 
 Fields
 ------
 
-To obtain individual fields from an endpoint, select *datapoint
-methods* are also provided.
+To obtain individual fields from an endpoint, select `Field Methods
+<stocks.html#field-methods>`__ are also provided.
 
 Examples ``get_open()``, ``get_name()``
 
-**Share (single symbol)**
+**Single Symbol**
 
 .. ipython:: python
 
     aapl.get_open()
     aapl.get_price()
 
-**Batch (multiple symbols)**
+**Multiple Symbols**
 
 .. ipython:: python
 
@@ -93,10 +99,10 @@ Examples ``get_open()``, ``get_name()``
     b.get_open()
 
 
-For a detailed list of these functions, see `Stocks <stocks.html>`__.
+For a detailed list of these functions, see `here <stocks.html>`__.
 
-Parameters
-----------
+Endpoint-Specific Parameters
+----------------------------
 
 Top-level parameters may be passed to the ``Stock`` function, including
 ``output_format`` and request parameters (such as ``retry_count``, and
@@ -104,7 +110,7 @@ Top-level parameters may be passed to the ``Stock`` function, including
 the object fail. These parameters are passed keyword arguments, and are
 entirely optional.
 
-Certain endpoints (such as quote and chart) allow customizable
+Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
 method as a keyword argument. 
 
@@ -152,6 +158,7 @@ The IEX Stats `endpoints <stats.html>`__
 Caching
 -------
 
-iexfinance supports the caching of HTTP requests to IEX using the ``requests-cache`` package.
+iexfinance supports the caching of HTTP requests to IEX using the
+`requests-cache <https://pypi.python.org/pypi/requests-cache>`__ package.
 
 .. seealso:: `Caching Queries <caching.html>`__

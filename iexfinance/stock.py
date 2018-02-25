@@ -275,6 +275,19 @@ class StockReader(_IEXBase):
         """
         Reference: https://iextrading.com/developer/docs/#chart
 
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Chart range to return. See docs.
+        chartReset: boolean, default True, optional
+            If true, 1d chart will reset at midnight instead of the default
+            behavior of 9:30am EST.
+        chartSimplify: boolean, default True, optional
+            If true, runs polyline simplification using Douglas-Peucker
+            algorithm. Useful for plotting spotline charts
+        chartInterval: int, default None, optional
+            Chart data will return every nth element (where n is chartInterval)
+
         Notes
         -----
         Pandas not supported for this method. list will be returned.
@@ -318,7 +331,11 @@ class StockReader(_IEXBase):
     def get_dividends(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#dividends
-
+        
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Time period of dividends to return
         Notes
         -----
         Pandas not supported for this method. list will be returned.
@@ -404,6 +421,11 @@ class StockReader(_IEXBase):
         """Returns the Stocks News endpoint (list or pandas)
 
         Reference: https://iextrading.com/developer/docs/#news
+        
+        Parameters
+        ----------
+        range: int, default 10, optional
+            Time period of news to return (in days)
 
         Returns
         -------
@@ -516,6 +538,11 @@ class StockReader(_IEXBase):
     def get_splits(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#splits
+
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Time period of splits to return
 
         Returns
         -------

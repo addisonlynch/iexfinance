@@ -13,7 +13,7 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 
 class _IEXBase(object):
-    """ IEX Base Class
+    """
     Base class for retrieving equities information from the IEX Finance API.
     Inherited by Stock and Market Readers, and conducts query operations
     including preparing and executing queries from the API.
@@ -24,13 +24,8 @@ class _IEXBase(object):
         Desired number of retries if a request fails
     pause: float, default 0.001, optional
         Pause time between retry attempts
-    session: requests.session, default None, optional
+    session: requests_cache.session, default None, optional
         A cached requests-cache session
-
-    Methods
-    -------
-    fetch()
-        Retrieve data from IEX API
     """
     # Base URL
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
@@ -44,7 +39,7 @@ class _IEXBase(object):
             Desired number of retries if a request fails
         pause: float
             Pause time between retry attempts
-        session: requests.session
+        session: requests_cache.session, default None, optional
             A cached requests-cache session
         """
         self.retry_count = kwargs.pop("retry_count", 3)

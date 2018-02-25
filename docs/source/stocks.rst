@@ -20,7 +20,7 @@ endpoints  (`Earnings
 at once. There are three ways
 to access such endpoints:
 
-1. :ref:`Endpoint Methods<stocks.endpoints>` - Allow retrieval of
+1. **Endpoint Methods** - Allow retrieval of
 individual
 endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
 ``get_book``, ``get_quote``, etc. Where applicable, parameters (i.e.
@@ -111,7 +111,7 @@ keyword argument to the endpoint method. (see :ref:`example
          `IEX docs <https://iextrading.com/developer/docs/#filter-results>`__
          and the examples below for more information.
 
-.. _stocks.endpoints
+.. _stocks.endpoints:
 
 Endpoint Methods
 ================
@@ -222,20 +222,6 @@ Key Stats
 
 .. automethod:: iexfinance.stock.StockReader.get_key_stats
 
-.. _stocks.key-stats-field-methods:
-
-Field methods
-^^^^^^^^^^^^^
-
-.. automethod:: iexfinance.stock.StockReader.get_beta
-.. automethod:: iexfinance.stock.StockReader.get_short_interest
-.. automethod:: iexfinance.stock.StockReader.get_short_ratio
-.. automethod:: iexfinance.stock.StockReader.get_latest_eps
-.. automethod:: iexfinance.stock.StockReader.get_shares_outstanding
-.. automethod:: iexfinance.stock.StockReader.get_float
-.. automethod:: iexfinance.stock.StockReader.get_eps_consensus
-
-
 
 .. _stocks.list:
 
@@ -319,21 +305,6 @@ Quote
 
 .. automethod:: iexfinance.stock.StockReader.get_quote
 
-.. _stocks.quote-field-methods:
-
-Field methods
-^^^^^^^^^^^^^
-
-.. automethod:: iexfinance.stock.StockReader.get_company_name
-.. automethod:: iexfinance.stock.StockReader.get_sector
-.. automethod:: iexfinance.stock.StockReader.get_open
-.. automethod:: iexfinance.stock.StockReader.get_close
-.. automethod:: iexfinance.stock.StockReader.get_years_high
-.. automethod:: iexfinance.stock.StockReader.get_years_low
-.. automethod:: iexfinance.stock.StockReader.get_ytd_change
-.. automethod:: iexfinance.stock.StockReader.get_volume
-.. automethod:: iexfinance.stock.StockReader.get_market_cap
-
 
 .. _stocks.relevant:
 
@@ -375,7 +346,50 @@ Volume by Venue
 .. automethod:: iexfinance.stock.StockReader.get_volume_by_venue
 
 
+.. _stocks.field-methods:
+
+Field Methods
+=============
+
+In addition, various **Field Methods** are provided for certain endpoints.
+These methods will allow retrieval of a single datapoint, such as ``get_open``,
+``get_company_name``, etc. Field methods are displayed below the endpoint
+methods for which they are available (namely :ref:`Quote<stocks.quote>`
+and :ref:`Key Stats<stocks.key-stats>`).
+
+
+.. _stocks.key-stats-field-methods:
+
+Key Stats
+^^^^^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_beta
+.. automethod:: iexfinance.stock.StockReader.get_short_interest
+.. automethod:: iexfinance.stock.StockReader.get_short_ratio
+.. automethod:: iexfinance.stock.StockReader.get_latest_eps
+.. automethod:: iexfinance.stock.StockReader.get_shares_outstanding
+.. automethod:: iexfinance.stock.StockReader.get_float
+.. automethod:: iexfinance.stock.StockReader.get_eps_consensus
+
+
+.. _stocks.quote-field-methods:
+
+Quote
+^^^^^
+
+.. automethod:: iexfinance.stock.StockReader.get_company_name
+.. automethod:: iexfinance.stock.StockReader.get_sector
+.. automethod:: iexfinance.stock.StockReader.get_open
+.. automethod:: iexfinance.stock.StockReader.get_close
+.. automethod:: iexfinance.stock.StockReader.get_years_high
+.. automethod:: iexfinance.stock.StockReader.get_years_low
+.. automethod:: iexfinance.stock.StockReader.get_ytd_change
+.. automethod:: iexfinance.stock.StockReader.get_volume
+.. automethod:: iexfinance.stock.StockReader.get_market_cap
+
+
 .. _stocks.examples:
+
 
 Examples
 ========
@@ -479,8 +493,7 @@ instantiated:
 .. ipython:: python
 
     aapl.change_output_format('json')
-    aapl.ohlc()
-
+    aapl.get_ohlc()
 
 
 

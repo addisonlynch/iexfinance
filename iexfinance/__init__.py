@@ -27,7 +27,7 @@ def Stock(symbols=None, output_format='json', **kwargs):
         A string or list of strings that are valid symbols
     output_format: str
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     Returns
     -------
     stock.StockReader
@@ -68,7 +68,7 @@ def get_historical_data(symbols=None, start=None, end=None,
     output_format: str, (defaults to json)
         Desired output format (json or pandas)
     kwargs:
-        Additional request options (see base class)
+        Additional Request Parameters (see base class)
 
     Returns
     -------
@@ -86,7 +86,7 @@ def get_available_symbols(**kwargs):
     Parameters
     ----------
     kwargs:
-        Additional request options (see base class)
+        Additional Request Parameters (see base class)
 
     Returns
     -------
@@ -111,7 +111,7 @@ def get_iex_corporate_actions(start=None, **kwargs):
     ----------
     start: datetime.datetime, default None, optional
         A month to use for retrieval (a datetime object)
-    kwargs: Additional request parameters
+    kwargs: Additional Request Parameters (see base class)
     """
     return CorporateActions(start=start, **kwargs).fetch()
 
@@ -125,7 +125,7 @@ def get_iex_dividends(start=None, **kwargs):
     ----------
     start: datetime.datetime, default None, optional
         A month to use for retrieval (a datetime object)
-    kwargs: Additional request parameters
+    kwargs: Additional Request Parameters (see base class)
     """
     return Dividends(start=start, **kwargs).fetch()
 
@@ -139,7 +139,7 @@ def get_iex_next_day_ex_date(start=None, **kwargs):
     ----------
     start: datetime.datetime, default None, optional
         A month to use for retrieval (a datetime object)
-    kwargs: Additional request parameters
+    kwargs: Additional Request Parameters (see base class)
     """
     return NextDay(start=start, **kwargs).fetch()
 
@@ -153,7 +153,7 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
     ----------
     start: datetime.datetime, default None, optional
         A month to use for retrieval (a datetime object)
-    kwargs: Additional request parameters
+    kwargs: Additional Request Parameters (see base class)
     """
     return ListedSymbolDir(start=start, **kwargs)
 
@@ -169,7 +169,7 @@ def get_market_tops(symbols=None, output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return TOPS(symbols, output_format, **kwargs).fetch()
 
@@ -185,7 +185,7 @@ def get_market_last(symbols=None, output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return Last(symbols, output_format, **kwargs).fetch()
 
@@ -201,7 +201,7 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format. JSON required.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
 
     Notes
     -----
@@ -221,7 +221,7 @@ def get_market_book(symbols=None, output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return Book(symbols, output_format, **kwargs).fetch()
 
@@ -236,7 +236,7 @@ def get_stats_intraday(output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return IntradayReader(output_format=output_format, **kwargs).fetch()
 
@@ -250,7 +250,7 @@ def get_stats_recent(output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
 
     """
     return RecentReader(output_format=output_format, **kwargs).fetch()
@@ -266,7 +266,7 @@ def get_stats_records(output_format='json', **kwargs):
     output_format: str, default 'json'
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return RecordsReader(output_format=output_format, **kwargs).fetch()
 
@@ -289,7 +289,7 @@ def get_stats_daily(start=None, end=None, last=None, output_format='json',
     output_format: str, default 'json', optional
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return DailySummaryReader(start=start, end=end, last=last,
                               output_format=output_format, **kwargs).fetch()
@@ -309,7 +309,7 @@ def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
     output_format: str, default 'json', optional
         Desired output format.
     kwargs:
-        Additional request options
+        Additional Request Parameters (see base class)
     """
     return MonthlySummaryReader(start=start, end=end,
                                 output_format=output_format, **kwargs).fetch()
