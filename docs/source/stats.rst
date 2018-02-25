@@ -118,7 +118,7 @@ Usage
     from iexfinance import get_stats_monthly
     from datetime import datetime
 
-    get_stats_monthly(start=datetime(2017, 5, 24))
+    get_stats_monthly(start=datetime(2017, 2, 9), end=datetime(2017, 5, 24))[0]
 
 
 
@@ -147,5 +147,5 @@ Usage
 
     from iexfinance import get_stats_daily
 
-    get_stats_daily(last=10)
+    get_stats_daily(last=3)
 
