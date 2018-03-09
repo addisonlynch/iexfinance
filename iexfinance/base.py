@@ -102,7 +102,7 @@ class _IEXBase(object):
         """
         pause = self.pause
         for i in range(self.retry_count+1):
-            response = self.session.get(url=url)
+            response = self.session.get(url=url, params=self.params)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(pause)
@@ -116,9 +116,7 @@ class _IEXBase(object):
         url: str
             A formatted URL
         """
-        params = "?" + "&".join(
-            "{}={}".format(*i) for i in self.params.items())
-        url = self._IEX_API_URL + self.url + params
+        url = self._IEX_API_URL + self.url
         return url
 
     def fetch(self):
