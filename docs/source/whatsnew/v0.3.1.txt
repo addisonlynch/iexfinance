@@ -16,6 +16,8 @@ Enhancements
 Bug Fixes
 ~~~~~~~~~
 
+-  Symbols with non-alphanumeric characters fail
+   `GH38 <https://github.com/addisonlynch/iexfinance/issues/38>`__
 -  Some Stocks endpoints return incorrectly
    `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
 -  Repaired CodeCov code coverage
