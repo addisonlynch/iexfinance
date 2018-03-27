@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>iexfinance &mdash; iexfinance 0.3.0 documentation</title>
+  <title>Welcome to iexfinance’s documentation! &mdash; iexfinance 0.3.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.0 documentation" href="#"/>
+    <link rel="top" title="iexfinance 0.3.1 documentation" href="#"/>
         <link rel="next" title="Install" href="install.html"/> 
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -148,7 +148,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>iexfinance</li>
+      <li>Welcome to iexfinance’s documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,102 +167,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <span class="target" id="index"></span><div class="section" id="iexfinance">
-<h1>iexfinance<a class="headerlink" href="#iexfinance" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://travis-ci.org/addisonlynch/iexfinance"><img alt="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" src="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" /></a>
-<a class="reference external image-reference" href="https://codecov.io/gh/addisonlynch/iexfinance"><img alt="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" src="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" /></a>
-<p>Python module to get stock data from the Investors Exchange (IEX) Developer API
-platform. iexfinance provides real-time financial data from the various IEX
-endpoints, as well as historical data.</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://iextrading.com/developer/docs/#stocks">Stocks</a></dt>
-<dd><ul class="first last">
-<li>Historical Data</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">Reference Data</a></li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market Data</a></li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Stats</a></li>
-</ul>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference external" href="https://addisonlynch.github.io/iexfinance/index.html#Documentation">IEX Finance
-Documentation</a></p>
-</div>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<p>From PyPI with pip (latest stable release):</p>
-<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">iexfinance</span></code></p>
-<p>From development repository (dev version):</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/addisonlynch/iexfinance.git
-$ cd iexfinance
-$ python3 setup.py install
-</pre></div>
-</div>
-</div>
-<div class="section" id="usage-examples">
-<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="stock-endpoints">
-<h3>Stock Endpoints<a class="headerlink" href="#stock-endpoints" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">Stock</span>
-<span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-</pre></div>
-</div>
-<p><strong>Historical Data</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_historical_data</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-reference-data">
-<h3>IEX Reference Data<a class="headerlink" href="#iex-reference-data" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_available_symbols</span>
-
-<span class="n">get_available_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-market-data">
-<h3>IEX Market Data<a class="headerlink" href="#iex-market-data" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_market_tops</span>
-
-<span class="n">get_market_tops</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-stats">
-<h3>IEX Stats<a class="headerlink" href="#iex-stats" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_stats_intraday</span>
-
-<span class="n">get_stats_intraday</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="contact">
-<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
-<p>Email: <a class="reference external" href="mailto:ahlshop&#37;&#52;&#48;gmail&#46;com">ahlshop<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
-<p>Twitter: <a class="reference external" href="https://www.twitter.com/alynchfc">alynchfc</a></p>
-</div>
-<div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
-<p>Copyright © 2017 Addison Lynch</p>
-<p>See LICENSE for details</p>
-</div>
-</div>
+  <span class="target" id="index"></span><div class="section" id="welcome-to-iexfinance-s-documentation">
+<span id="index-documentation"></span><h1>Welcome to iexfinance’s documentation!<a class="headerlink" href="#welcome-to-iexfinance-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
@@ -272,6 +180,7 @@ $ python3 setup.py install
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#parameters">Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#stocks">Stocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#reference-data">Reference Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#iex-market-data">IEX Market Data</a></li>
@@ -283,6 +192,7 @@ $ python3 setup.py install
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#formatting">Formatting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#parameters">Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#endpoint-methods">Endpoint Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#field-methods">Field Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#examples">Examples</a></li>
 </ul>
 </li>
@@ -321,7 +231,7 @@ $ python3 setup.py install
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#local-testing">Local Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html#module-iexfinance.utils.exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a><ul>
@@ -343,10 +253,11 @@ $ python3 setup.py install
 </div>
 </div>
 <div class="section" id="modules">
-<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="modules.html">Modules</a></li>
 </ul>
+</div>
 </div>
 
 
@@ -391,7 +302,7 @@ $ python3 setup.py install
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

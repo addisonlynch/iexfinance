@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Testing &mdash; iexfinance 0.3.0 documentation</title>
+  <title>Testing &mdash; iexfinance 0.3.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="iexfinance 0.3.1 documentation" href="index.html"/>
         <link rel="next" title="What’s New" href="whatsnew.html"/>
         <link rel="prev" title="Caching Queries" href="caching.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -104,7 +104,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-testing">Local Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-iexfinance.utils.exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
@@ -191,46 +191,20 @@
 <li>sphinx_rtd_theme</li>
 <li>sphinxcontrib-napoleon</li>
 <li>matplotlib</li>
+<li>ipython</li>
 </ul>
 </div>
 <div class="section" id="local-testing">
 <h2>Local Testing<a class="headerlink" href="#local-testing" title="Permalink to this headline">¶</a></h2>
-<p>We’ve provided the BASH script <code class="docutils literal"><span class="pre">test.sh</span></code> which is included in the
+<p>We’ve provided the BASH script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> which is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.</p>
 <p>Docs can be tested with <a class="reference external" href="https://www.sphinx-doc.org/en/stable">Sphinx</a> (with extensions napoleon and sphinx_rtd_theme)
-using the Makefile. <code class="docutils literal"><span class="pre">make</span> <span class="pre">livehtml</span></code> will serve the dev documentation site locally
+using the Makefile. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">livehtml</span></code> will serve the dev documentation site locally
 on 127.0.0.1:8000.</p>
 </div>
-<div class="section" id="module-iexfinance.utils.exceptions">
-<span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-iexfinance.utils.exceptions" title="Permalink to this headline">¶</a></h2>
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXEndpointError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXEndpointError</code><span class="sig-paren">(</span><em>endpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXEndpointError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid endpoint is specified in the custom
-endpoint lookup method</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXFieldError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXFieldError</code><span class="sig-paren">(</span><em>endpoint</em>, <em>field</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXFieldError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid field is specified in the custom
-endpoint lookup method</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXQueryError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXQueryError</code><a class="headerlink" href="#iexfinance.utils.exceptions.IEXQueryError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an error occurs with the query to IEX, be it a
-network problem or an invalid query.</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXSymbolError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXSymbolError</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXSymbolError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid symbol is given.</p>
-</dd></dl>
-
+<div class="section" id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -278,7 +252,7 @@ network problem or an invalid query.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

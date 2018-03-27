@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What’s New &mdash; iexfinance 0.3.0 documentation</title>
+  <title>What’s New &mdash; iexfinance 0.3.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="iexfinance 0.3.1 documentation" href="index.html"/>
         <link rel="next" title="About" href="about.html"/>
         <link rel="prev" title="Testing" href="testing.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -196,7 +196,7 @@ update.</p>
 <li>Added <strong>get_historical_data</strong> for the retrieval of time-series data from</li>
 </ul>
 <p>the <a class="reference external" href="https://iextrading.com/developer/docs/#chart">chart</a> endpoint.
-- Added support for <code class="docutils literal"><span class="pre">filter</span></code>, a parameter which allows the filtering of
+- Added support for <code class="docutils literal notranslate"><span class="pre">filter</span></code>, a parameter which allows the filtering of
 endpoint requests.
 - Pandas DataFrame formatting support.</p>
 <div class="contents local topic" id="what-s-new-in-v0-3-0">
@@ -260,12 +260,12 @@ Stocks endpoints</p>
 <div class="section" id="backward-compability">
 <h3>Backward Compability<a class="headerlink" href="#backward-compability" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The top-level <code class="docutils literal"><span class="pre">IexFinance</span></code> function is now <code class="docutils literal"><span class="pre">Stock</span></code></li>
-<li>Within the <code class="docutils literal"><span class="pre">StockReader</span></code> class (to retrieve stocks endpoints):
-- <code class="docutils literal"><span class="pre">refresh</span></code> has been removed. Simply conduct another endpoint request to
+<li>The top-level <code class="docutils literal notranslate"><span class="pre">IexFinance</span></code> function is now <code class="docutils literal notranslate"><span class="pre">Stock</span></code></li>
+<li>Within the <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> class (to retrieve stocks endpoints):
+- <code class="docutils literal notranslate"><span class="pre">refresh</span></code> has been removed. Simply conduct another endpoint request to
 download the most updated data
-- <code class="docutils literal"><span class="pre">get_select_datapoints</span></code> has been replaced with <code class="docutils literal"><span class="pre">filter</span></code>.
-- <code class="docutils literal"><span class="pre">get_select_endpoints</span></code> has been replaced with <code class="docutils literal"><span class="pre">get_endpoints</span></code></li>
+- <code class="docutils literal notranslate"><span class="pre">get_select_datapoints</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">filter</span></code>.
+- <code class="docutils literal notranslate"><span class="pre">get_select_endpoints</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">get_endpoints</span></code></li>
 </ul>
 </div>
 </div>
@@ -320,7 +320,7 @@ download the most updated data
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -48,3 +48,4 @@ movements using matplotlib.
     plt.title('Time series chart for AAPL')
     plt.show()
 
+.. image:: images/plotdailyaapl.jpg

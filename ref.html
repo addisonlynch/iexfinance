@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reference Data &mdash; iexfinance 0.3.0 documentation</title>
+  <title>Reference Data &mdash; iexfinance 0.3.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="iexfinance 0.3.1 documentation" href="index.html"/>
         <link rel="next" title="IEX Market Data" href="market.html"/>
         <link rel="prev" title="Historical Data" href="historical.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -210,29 +210,28 @@ Docs</a>:</p>
 <blockquote>
 <div>Use the /ref-data/symbols endpoint to find the symbols that we
 support.</div></blockquote>
-<p><code class="docutils literal"><span class="pre">iexfinance</span></code> provides the top-level function <code class="docutils literal"><span class="pre">get_reference_data</span></code> which
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> provides the top-level function <code class="docutils literal notranslate"><span class="pre">get_reference_data</span></code> which
 accesses this endpoint. This function returns a list of dictionary objects
 for each symbol, indexed by the key “symbol”:</p>
-<p>Further, the function, <code class="docutils literal"><span class="pre">get_available_symbols</span></code>
+<p>Further, the function, <code class="docutils literal notranslate"><span class="pre">get_available_symbols</span></code>
 extracts the symbols and returns a list of the symbols only:</p>
 <div class="section" id="usage">
 <span id="ref-symbols-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_available_symbols</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_available_symbols</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-8c4ef82e155f&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_available_symbols</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;get_available_symbols&#39;
 
 <span class="gp">In [2]: </span><span class="n">get_available_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
-<span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">[{&#39;date&#39;: &#39;2018-02-16&#39;,</span>
-<span class="go">  &#39;iexId&#39;: &#39;2&#39;,</span>
-<span class="go">  &#39;isEnabled&#39;: True,</span>
-<span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;A&#39;,</span>
-<span class="go">  &#39;type&#39;: &#39;cs&#39;},</span>
-<span class="go"> {&#39;date&#39;: &#39;2018-02-16&#39;,</span>
-<span class="go">  &#39;iexId&#39;: &#39;12042&#39;,</span>
-<span class="go">  &#39;isEnabled&#39;: True,</span>
-<span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;AA&#39;,</span>
-<span class="go">  &#39;type&#39;: &#39;cs&#39;}]</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-2-ec413f0eba9d&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 get_available_symbols()[:2]</span>
+
+<span class="go">NameError: name &#39;get_available_symbols&#39; is not defined</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -252,56 +251,24 @@ Use with caution.</p>
 <li>Firms (new, deleted for IEX-listed securities)</li>
 </ul>
 </div></blockquote>
-<p>Access is available through the top-level function <code class="docutils literal"><span class="pre">get_iex_corporate_actions</span></code>:</p>
-<dl class="function">
-<dt id="iexfinance.get_iex_corporate_actions">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_corporate_actions</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_corporate_actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Top-level function to retrieve IEX Corporate Actions from the ref-data
-endpoints</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional request parameters</em>) – </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_iex_corporate_actions</span></code>:</p>
 <div class="section" id="ref-iex-corporate-actions-usage">
 <span id="id1"></span><h3>Usage<a class="headerlink" href="#ref-iex-corporate-actions-usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_corporate_actions</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_corporate_actions</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-3-e9d63b57a1ac&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_corporate_actions</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;get_iex_corporate_actions&#39;
 
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXQueryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-0490cbe16594&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-4-0490cbe16594&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 get_iex_corporate_actions()[0]</span>
 
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/__init__.py</span> in <span class="ni">get_iex_corporate_actions</span><span class="nt">(start, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">request</span> <span class="n">parameters</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">116</span><span class="sd">     return CorporateActions(start=start, **kwargs).fetch()</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="sd"> </span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_query</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_iex_query</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">pause</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">115</span>         <span class="k">raise</span> <span class="n">IEXQueryError</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span> 
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="k">def</span> <span class="nf">_prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="ne">IEXQueryError</span>: An error occurred while making the query.
+<span class="go">NameError: name &#39;get_iex_corporate_actions&#39; is not defined</span>
 </pre></div>
 </div>
 </div>
@@ -309,26 +276,7 @@ endpoints</p>
 <div class="section" id="iex-dividends">
 <span id="ref-iex-dividends"></span><h2>IEX Dividends<a class="headerlink" href="#iex-dividends" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#iex-dividends">IEX Dividends</a> details upcoming dividend information and other corporate actions (splits, etc.)</p>
-<p>Access is available through the top-level function <code class="docutils literal"><span class="pre">get_iex_dividends</span></code></p>
-<dl class="function">
-<dt id="iexfinance.get_iex_dividends">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_dividends</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_dividends" title="Permalink to this definition">¶</a></dt>
-<dd><p>Top-level function to retrieve IEX Dividends from the ref-data
-endpoints</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional request parameters</em>) – </li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_iex_dividends</span></code></p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">The <a class="reference external" href="stock.html#dividends">Dividends</a> endpoint provides dividend information on individual or groups of ticker symbols</p>
@@ -341,37 +289,24 @@ endpoints</p>
 <span id="ref-iex-next-day-ex-date"></span><span id="ref-iex-dividends-usage"></span><h2>IEX Next Day Ex Date<a class="headerlink" href="#iex-next-day-ex-date" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#iex-next-day-ex-date">IEX Next Day Ex Date</a> retrieves advance notifications of dividend declarations</p>
 <p>Per the IEX <a class="reference external" href="https://iextrading.com/developer/docs/#iex-next-day-ex-date">docs</a>, records are added at 8:00 a.m. ET one trading day before the specified ex-date, and updates are posted once per hour from 8:00 a.m to 6:00 p.m. EST daily.</p>
-<p>Access is available through the top-level function <code class="docutils literal"><span class="pre">get_iex_next_day_ex_date</span></code></p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_iex_next_day_ex_date</span></code></p>
 <div class="section" id="id3">
 <h3>Usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython" id="ref-iex-next-day-ex-date-usage"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_next_day_ex_date</span>
+<div class="highlight-ipython notranslate" id="ref-iex-next-day-ex-date-usage"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_next_day_ex_date</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-df45f25ccdb1&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_next_day_ex_date</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;get_iex_next_day_ex_date&#39;
 
 <span class="gp">In [6]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXQueryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-6-93229e54e611&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-6-93229e54e611&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 get_iex_next_day_ex_date()[0]</span>
 
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/__init__.py</span> in <span class="ni">get_iex_next_day_ex_date</span><span class="nt">(start, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">request</span> <span class="n">parameters</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">144</span><span class="sd">     return NextDay(start=start, **kwargs).fetch()</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span><span class="sd"> </span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_query</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">141</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_iex_query</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">pause</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">115</span>         <span class="k">raise</span> <span class="n">IEXQueryError</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span> 
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="k">def</span> <span class="nf">_prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="ne">IEXQueryError</span>: An error occurred while making the query.
+<span class="go">NameError: name &#39;get_iex_next_day_ex_date&#39; is not defined</span>
 </pre></div>
 </div>
 </div>
@@ -379,19 +314,25 @@ endpoints</p>
 <div class="section" id="iex-listed-symbol-directory">
 <span id="ref-iex-listed-symbol-directory"></span><h2>IEX Listed Symbol Directory<a class="headerlink" href="#iex-listed-symbol-directory" title="Permalink to this headline">¶</a></h2>
 <p>Similar to <a class="reference internal" href="#ref-symbols"><span class="std std-ref">Symbol</span></a>, <a class="reference external" href="https://iextrading.com/developer/docs/#iex-listed-symbol-directory">IEX Listed Symbol Directory</a> returns an array of all IEX listed securities.</p>
-<p>Access is available through the top-level function <code class="docutils literal"><span class="pre">get_iex_listed_symbol_dir</span></code></p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_iex_listed_symbol_dir</span></code></p>
 <p>..autofunction :: iexfinance.get_iex_listed_symbol_dir</p>
 <div class="section" id="id4">
 <h3>Usage<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython" id="ref-iex-listed-symbol-directory-usage"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_listed_symbol_dir</span>
+<div class="highlight-ipython notranslate" id="ref-iex-listed-symbol-directory-usage"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_listed_symbol_dir</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-7-8f87294c8f4c&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_listed_symbol_dir</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;get_iex_listed_symbol_dir&#39;
 
 <span class="gp">In [8]: </span><span class="n">get_iex_listed_symbol_dir</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-8-44c4bec4efdb&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_listed_symbol_dir</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-8-44c4bec4efdb&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 get_iex_listed_symbol_dir()[0]</span>
 
-<span class="ne">TypeError</span>: &#39;ListedSymbolDir&#39; object does not support indexing
+<span class="go">NameError: name &#39;get_iex_listed_symbol_dir&#39; is not defined</span>
 </pre></div>
 </div>
 </div>
@@ -442,7 +383,7 @@ endpoints</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

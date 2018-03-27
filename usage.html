@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; iexfinance 0.3.0 documentation</title>
+  <title>Usage &mdash; iexfinance 0.3.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.0 documentation" href="index.html"/>
+    <link rel="top" title="iexfinance 0.3.1 documentation" href="index.html"/>
         <link rel="next" title="Stocks" href="stocks.html"/>
         <link rel="prev" title="Install" href="install.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.1
               </div>
             
           
@@ -95,14 +95,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#request-parameters">Request Parameters</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stocks">Stocks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint-specific-parameters">Endpoint-Specific Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-data">Reference Data</a></li>
@@ -201,43 +199,11 @@
 </ul>
 </div></blockquote>
 <p>These modules provide classes and top-level functions to execute queries to the IEX API.</p>
-<div class="section" id="request-parameters">
-<h3>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h3>
-<p>All classes and functions utilize the _IEXBASE class to make their requests:</p>
-<dl class="class">
-<dt id="iexfinance.base._IEXBase">
-<em class="property">class </em><code class="descclassname">iexfinance.base.</code><code class="descname">_IEXBase</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>IEX Base Class
-Base class for retrieving equities information from the IEX Finance API.
-Inherited by Stock and Market Readers, and conducts query operations
-including preparing and executing queries from the API.</p>
-<dl class="attribute">
-<dt id="iexfinance.base._IEXBase.retry_count">
-<code class="descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int, default 3, optional</em> – Desired number of retries if a request fails</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="iexfinance.base._IEXBase.pause">
-<code class="descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>float, default 0.001, optional</em> – Pause time between retry attempts</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="iexfinance.base._IEXBase.session">
-<code class="descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>requests.session, default None, optional</em> – A cached requests-cache session</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="iexfinance.base._IEXBase.fetch">
-<code class="descname">fetch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase.fetch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve data from IEX API</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
+<div class="section" id="parameters">
+<span id="usage-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>All classes and top-level functions utilize the _IEXBASE class to make their
+requests:</p>
 </div>
 <div class="section" id="stocks">
 <span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
@@ -246,88 +212,122 @@ including preparing and executing queries from the API.</p>
 <p class="last">For more information, see <a class="reference external" href="stocks.html">Stocks</a>.</p>
 </div>
 <p>IEX provides a list of symbols that are available for access, and as
-such, we provide a function <code class="docutils literal"><span class="pre">get_available_symbols</span></code> to obtain this
-list. Invalid symbols will be met with a <code class="docutils literal"><span class="pre">IEXSymbolError</span></code>, and
+such, we provide a function <code class="docutils literal notranslate"><span class="pre">get_available_symbols</span></code> to obtain this
+list. Invalid symbols will be met with a <code class="docutils literal notranslate"><span class="pre">IEXSymbolError</span></code>, and
 duplicate symbols will be kept intact without alteration.</p>
 <div class="section" id="endpoints">
 <h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
 <p>The Stock endpoints of the <a class="reference external" href="https://iextrading.com/developer/">IEX Developer
 API</a> are below, each of which
 contains data regarding a different aspect of the security/securities.
-The <a class="reference external" href="stocks.html">Stock</a> function creates an object that can obtain each
+The top-level <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function creates an object that can obtain each
 of these endpoints. Requests for single symbols will return the <em>exact</em> results
 from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of
 the endpoint requested.</p>
-<p><em>Endpoint Method</em> Examples <code class="docutils literal"><span class="pre">get_quote()</span></code>, <code class="docutils literal"><span class="pre">get_volume_by_venue()</span></code></p>
-<p><strong>Share (single symbol)</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+<p><em>Endpoint Method</em> Examples <code class="docutils literal notranslate"><span class="pre">get_quote()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_volume_by_venue()</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-85c841892109&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;Stock&#39;
 
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-2-7c6a5f737357&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 aapl = Stock(&quot;AAPL&quot;)</span>
+
+<span class="go">NameError: name &#39;Stock&#39; is not defined</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">{&#39;change&#39;: -0.56,</span>
-<span class="go"> &#39;changePercent&#39;: -0.324,</span>
-<span class="go"> &#39;close&#39;: 172.43,</span>
-<span class="go"> &#39;date&#39;: &#39;2018-02-16&#39;,</span>
-<span class="go"> &#39;high&#39;: 174.82,</span>
-<span class="go"> &#39;low&#39;: 171.77,</span>
-<span class="go"> &#39;open&#39;: 172.36,</span>
-<span class="go"> &#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 40176091,</span>
-<span class="go"> &#39;volume&#39;: 40176091,</span>
-<span class="go"> &#39;vwap&#39;: 173.4476}</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-3-432cdd661bc3&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 aapl.get_previous()</span>
+
+<span class="go">NameError: name &#39;aapl&#39; is not defined</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
-<a class="reference external" href="stocks.html#endpoints">Stocks</a>.</p>
+<a class="reference external" href="stocks.html#endpoints">here</a>.</p>
 </div>
 <div class="section" id="fields">
 <h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
-<p>To obtain individual fields from an endpoint, select <em>datapoint
-methods</em> are also provided.</p>
-<p>Examples <code class="docutils literal"><span class="pre">get_open()</span></code>, <code class="docutils literal"><span class="pre">get_name()</span></code></p>
-<p><strong>Share (single symbol)</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[4]: </span><span class="go">172.4</span>
+<p>To obtain individual fields from an endpoint, select <a class="reference external" href="stocks.html#field-methods">Field Methods</a> are also provided.</p>
+<p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
+<p><strong>Single Symbol</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-4-86719872a8de&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;aapl&#39; is not defined
 
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">              Out[5]: 172.43</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-5-9e025199ccda&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 aapl.get_price()</span>
+
+<span class="go">NameError: name &#39;aapl&#39; is not defined</span>
 </pre></div>
 </div>
-<p><strong>Batch (multiple symbols)</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+<p><strong>Multiple Symbols</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-6-0e0169a8623e&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;Stock&#39; is not defined
 
 <span class="gp">In [7]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 172.4, &#39;TSLA&#39;: 332.5}</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-7-fe8188520ba1&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 b.get_open()</span>
+
+<span class="go">NameError: name &#39;b&#39; is not defined</span>
 </pre></div>
 </div>
-<p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">Stocks</a>.</p>
+<p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
 </div>
-<div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
-<p>Top-level parameters may be passed to the <code class="docutils literal"><span class="pre">Stock</span></code> function, including
-<code class="docutils literal"><span class="pre">output_format</span></code> and request parameters (such as <code class="docutils literal"><span class="pre">retry_count</span></code>, and
-<code class="docutils literal"><span class="pre">pause</span></code>) - the latter of which will be used should any queries made by
+<div class="section" id="endpoint-specific-parameters">
+<h3>Endpoint-Specific Parameters<a class="headerlink" href="#endpoint-specific-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Top-level parameters may be passed to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function, including
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> and request parameters (such as <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pause</span></code>) - the latter of which will be used should any queries made by
 the object fail. These parameters are passed keyword arguments, and are
 entirely optional.</p>
-<p>Certain endpoints (such as quote and chart) allow customizable
+<p>Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
 method as a keyword argument.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-8-132d015c1de9&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;Stock&#39; is not defined
 
 <span class="gp">In [9]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
-<span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">AAPL    0.098688</span>
-<span class="go">Name: ytdChange, dtype: object</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-9-f5657be3abaf&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 aapl.get_quote(displayPercent=True).loc[&quot;ytdChange&quot;]</span>
+
+<span class="go">NameError: name &#39;aapl&#39; is not defined</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">output_format</span></code> from the initial
-call to the <code class="docutils literal"><span class="pre">Stock</span></code> function will be used (if the output format has not been
-change through <code class="docutils literal"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
+call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
+change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
 through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
 more information.</p>
 </div>
@@ -357,7 +357,8 @@ more information.</p>
 <p>The IEX Stats <a class="reference external" href="stats.html">endpoints</a></p>
 <div class="section" id="caching">
 <h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
-<p>iexfinance supports the caching of HTTP requests to IEX using the <code class="docutils literal"><span class="pre">requests-cache</span></code> package.</p>
+<p>iexfinance supports the caching of HTTP requests to IEX using the
+<a class="reference external" href="https://pypi.python.org/pypi/requests-cache">requests-cache</a> package.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference external" href="caching.html">Caching Queries</a></p>
@@ -410,7 +411,7 @@ more information.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.0',
+            VERSION:'0.3.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
