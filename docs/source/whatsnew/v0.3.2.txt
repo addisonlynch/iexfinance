@@ -1,0 +1,16 @@
+.. _whatsnew_032:
+
+
+v0.3.2 (TBA)
+-------------------------
+
+This is a minor release from 0.3.1, which repairs various bugs.
+
+
+Bug Fixes
+~~~~~~~~~
+
+-  IEX Market Data functions not filtering when symbol passed
+   `GH46 <https://github.com/addisonlynch/iexfinance/issues/46>`__
+-  Expected close test fails 
+   `GH45 <https://github.com/addisonlynch/iexfinance/issues/45>`__

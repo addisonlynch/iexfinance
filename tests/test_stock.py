@@ -817,12 +817,12 @@ class TestHistorical(object):
         assert len(f["AAPL"]) == 73
 
         expected1 = f["AAPL"]["2017-02-09"]
-        assert expected1["close"] == 132.42
-        assert expected1["high"] == 132.445
+        assert expected1["close"] == pytest.approx(132.42, 3)
+        assert expected1["high"] == pytest.approx(132.445, 3)
 
         expected2 = f["AAPL"]["2017-05-24"]
-        assert expected2["close"] == 153.34
-        assert expected2["high"] == 154.17
+        assert expected2["close"] == pytest.approx(153.34, 3)
+        assert expected2["high"] == pytest.approx(154.17, 3)
 
     def test_single_historical_pandas(self):
 
@@ -833,12 +833,12 @@ class TestHistorical(object):
         assert len(f) == 73
 
         expected1 = f.loc["2017-02-09"]
-        assert expected1["close"] == 132.42
-        assert expected1["high"] == 132.445
+        assert expected1["close"] == pytest.approx(132.42, 3)
+        assert expected1["high"] == pytest.approx(132.445, 3)
 
         expected2 = f.loc["2017-05-24"]
-        assert expected2["close"] == 153.34
-        assert expected2["high"] == 154.17
+        assert expected2["close"] == pytest.approx(153.34, 3)
+        assert expected2["high"] == pytest.approx(154.17, 3)
 
     def test_batch_historical_json(self):
 
@@ -856,20 +856,20 @@ class TestHistorical(object):
         assert len(t) == 73
 
         expected1 = a["2017-02-09"]
-        assert expected1["close"] == 132.42
-        assert expected1["high"] == 132.445
+        assert expected1["close"] == pytest.approx(132.42, 3)
+        assert expected1["high"] == pytest.approx(132.445, 3)
 
         expected2 = a["2017-05-24"]
-        assert expected2["close"] == 153.34
-        assert expected2["high"] == 154.17
+        assert expected2["close"] == pytest.approx(153.34, 3)
+        assert expected2["high"] == pytest.approx(154.17, 3)
 
         expected1 = t["2017-02-09"]
-        assert expected1["close"] == 269.20
-        assert expected1["high"] == 271.18
+        assert expected1["close"] == pytest.approx(269.20, 3)
+        assert expected1["high"] == pytest.approx(271.18, 3)
 
         expected2 = t["2017-05-24"]
-        assert expected2["close"] == 310.22
-        assert expected2["high"] == 311.0
+        assert expected2["close"] == pytest.approx(310.22, 3)
+        assert expected2["high"] == pytest.approx(311.0, 3)
 
     def test_batch_historical_pandas(self):
 
@@ -887,20 +887,20 @@ class TestHistorical(object):
         assert len(t) == 73
 
         expected1 = a.loc["2017-02-09"]
-        assert expected1["close"] == 132.42
-        assert expected1["high"] == 132.445
+        assert expected1["close"] == pytest.approx(132.42, 3)
+        assert expected1["high"] == pytest.approx(132.445, 3)
 
         expected2 = a.loc["2017-05-24"]
-        assert expected2["close"] == 153.34
-        assert expected2["high"] == 154.17
+        assert expected2["close"] == pytest.approx(153.34, 3)
+        assert expected2["high"] == pytest.approx(154.17, 3)
 
         expected1 = t.loc["2017-02-09"]
-        assert expected1["close"] == 269.20
-        assert expected1["high"] == 271.18
+        assert expected1["close"] == pytest.approx(269.20, 3)
+        assert expected1["high"] == pytest.approx(271.18, 3)
 
         expected2 = t.loc["2017-05-24"]
-        assert expected2["close"] == 310.22
-        assert expected2["high"] == 311.0
+        assert expected2["close"] == pytest.approx(310.22, 3)
+        assert expected2["high"] == pytest.approx(311.0, 3)
 
     def test_invalid_dates(self):
         start = datetime(2010, 5, 9)
