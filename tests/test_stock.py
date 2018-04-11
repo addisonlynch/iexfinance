@@ -43,7 +43,9 @@ class TestShareDefault(object):
         self.cshare = Stock("aapl")
         self.cshare2 = Stock("aapl", output_format='pandas')
         self.cshare3 = Stock("svxy")
-        self.cshare4 = Stock("aapl", json_parse_int=Decimal, json_parse_float=Decimal)
+        self.cshare4 = Stock("aapl",
+                             json_parse_int=Decimal,
+                             json_parse_float=Decimal)
 
     def test_invalid_symbol(self):
         data = Stock("BAD SYMBOL")
@@ -495,7 +497,9 @@ class TestFieldMethodsShare(object):
     def setup_class(self):
         self.share = Stock("AAPL")
         self.share2 = Stock("AAPL", output_format='pandas')
-        self.share4 = Stock("AAPL", json_parse_int=Decimal, json_parse_float=Decimal)
+        self.share4 = Stock("AAPL",
+                            json_parse_int=Decimal,
+                            json_parse_float=Decimal)
 
     def test_get_company_name(self):
         data = self.share.get_company_name()
@@ -600,7 +604,6 @@ class TestFieldMethodsShare(object):
         assert isinstance(data4, Decimal)
         assert data4 > 1000
 
-
     def test_get_market_cap(self):
         data = self.share.get_market_cap()
         assert isinstance(data, int)
@@ -689,12 +692,15 @@ class TestFieldMethodsShare(object):
         data4 = self.share4.get_eps_consensus()
         assert isinstance(data4, Decimal)
 
+
 class TestFieldMethodsBatch(object):
 
     def setup_class(self):
         self.batch = Stock(["AAPL", "TSLA"])
         self.batch2 = Stock(["AAPL", "TSLA"], output_format='pandas')
-        self.batch4 = Stock(["AAPL", "TSLA"], json_parse_int=Decimal, json_parse_float=Decimal)
+        self.batch4 = Stock(["AAPL", "TSLA"],
+                            json_parse_int=Decimal,
+                            json_parse_float=Decimal)
 
     def test_get_company_name(self):
         data = self.batch.get_company_name()

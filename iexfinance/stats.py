@@ -144,7 +144,7 @@ class DailySummaryReader(Stats):
         self._validate_params()
         super(DailySummaryReader, self).__init__(output_format=output_format,
                                                  **kwargs)
-        
+
     def _validate_params(self):
         if self.last is not None:
             if not isinstance(self.last, int) or not (0 < self.last < 90):
@@ -159,7 +159,7 @@ class DailySummaryReader(Stats):
 
     def _validate_response(self, response):
         return response.json(
-            parse_int=self.json_parse_int, 
+            parse_int=self.json_parse_int,
             parse_float=self.json_parse_float)
 
     @property

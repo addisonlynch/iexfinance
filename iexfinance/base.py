@@ -76,7 +76,7 @@ class _IEXBase(object):
         if response.text == "Unknown symbol":
             raise IEXQueryError()
         json_response = response.json(
-            parse_int=self.json_parse_int, 
+            parse_int=self.json_parse_int,
             parse_float=self.json_parse_float)
         if "Error Message" in json_response:
             raise IEXQueryError()
