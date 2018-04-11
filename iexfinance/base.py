@@ -45,13 +45,14 @@ class _IEXBase(object):
         self.retry_count = kwargs.pop("retry_count", 3)
         self.pause = kwargs.pop("pause", 0.001)
         self.session = _init_session(kwargs.pop("session", None))
+        self.json_parse_int = kwargs.pop("json_parse_int", None)
+        self.json_parse_float = kwargs.pop("json_parse_float", None)
 
     @property
     def params(self):
         return {}
 
-    @staticmethod
-    def _validate_response(response):
+    def _validate_response(self, response):
         """ Ensures response from IEX server is valid.
 
         Parameters
@@ -74,7 +75,9 @@ class _IEXBase(object):
         """
         if response.text == "Unknown symbol":
             raise IEXQueryError()
-        json_response = response.json()
+        json_response = response.json(
+            parse_int=self.json_parse_int, 
+            parse_float=self.json_parse_float)
         if "Error Message" in json_response:
             raise IEXQueryError()
         return json_response

@@ -139,10 +139,12 @@ class DailySummaryReader(Stats):
         self.last = last
         self.start = start
         self.end = end
+        self.json_parse_int = kwargs.pop("json_parse_int", None)
+        self.json_parse_float = kwargs.pop("json_parse_float", None)
         self._validate_params()
         super(DailySummaryReader, self).__init__(output_format=output_format,
                                                  **kwargs)
-
+        
     def _validate_params(self):
         if self.last is not None:
             if not isinstance(self.last, int) or not (0 < self.last < 90):
@@ -155,9 +157,10 @@ class DailySummaryReader(Stats):
         raise ValueError("Please enter a date range or number of days for "
                          "retrieval period.")
 
-    @staticmethod
-    def _validate_response(response):
-        return response.json()
+    def _validate_response(self, response):
+        return response.json(
+            parse_int=self.json_parse_int, 
+            parse_float=self.json_parse_float)
 
     @property
     def url(self):
