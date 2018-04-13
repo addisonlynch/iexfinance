@@ -28,19 +28,21 @@ class Market(_IEXBase):
             Additional request options
 
         """
-        if self.symbol_required:
-            if isinstance(symbols, str) and symbols:
-                self.symbols = [symbols]
-            elif isinstance(symbols, list) and len(symbols) in range(0, 10):
-                self.symbols = symbols
-            else:
+        syms = [symbols] if isinstance(symbols, str) else symbols
+        if isinstance(syms, list):
+            if len(syms) > self.symbol_limit:
+                raise ValueError("At most " + str(self.symbol_limit) +
+                                 "symbols may be entered at once.")
+        else:
+            if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
+        self.symbols = syms
         self.output_format = output_format
         super(Market, self).__init__(**kwargs)
 
     @property
     def params(self):
-        if self.symbol_required is True:
+        if self.symbols:
             return {"symbols": ",".join(self.symbols)}
         else:
             return {}
@@ -94,6 +96,10 @@ class Market(_IEXBase):
         """
         return False
 
+    @property
+    def symbol_limit(self):
+        raise NotImplementedError
+
 
 class TOPS(Market):
     """ Class to retrieve IEX TOPS data
@@ -110,6 +116,10 @@ class TOPS(Market):
     def url(self):
         return "tops"
 
+    @property
+    def symbol_limit(self):
+        return 10
+
 
 class Last(Market):
     """ Class to retrieve Last quote data
@@ -124,6 +134,10 @@ class Last(Market):
     @property
     def url(self):
         return "tops/last"
+
+    @property
+    def symbol_limit(self):
+        return 10
 
 
 class DEEP(Market):
@@ -153,6 +167,10 @@ class DEEP(Market):
     def symbol_required(self):
         return True
 
+    @property
+    def symbol_limit(self):
+        return 1
+
 
 class Book(Market):
     """ Class to retrieve IEX DEEP Book data
@@ -168,9 +186,17 @@ class Book(Market):
     Will return empty outside of trading hours
     """
     @property
+    def acc_pandas(self):
+        return False
+
+    @property
     def url(self):
         return "deep/book"
 
     @property
     def symbol_required(self):
         return True
+
+    @property
+    def symbol_limit(self):
+        return 10
