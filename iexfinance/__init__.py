@@ -5,6 +5,7 @@ from .stats import (IntradayReader, RecentReader, RecordsReader,
                     DailySummaryReader, MonthlySummaryReader)
 from .ref import CorporateActions, Dividends, NextDay, ListedSymbolDir
 
+from iexfinance.utils import _sanitize_dates
 from .utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
@@ -71,6 +72,7 @@ def get_historical_data(symbols=None, start=None, end=None,
     list or DataFrame
         Historical stock prices over date range, start to end
     """
+    start, end = _sanitize_dates(start, end)
     return HistoricalReader(symbols, start=start, end=end,
                             output_format=output_format, **kwargs).fetch()
 
@@ -287,6 +289,7 @@ def get_stats_daily(start=None, end=None, last=None, output_format='json',
     kwargs:
         Additional Request Parameters (see base class)
     """
+    start, end = _sanitize_dates(start, end)
     return DailySummaryReader(start=start, end=end, last=last,
                               output_format=output_format, **kwargs).fetch()
 
