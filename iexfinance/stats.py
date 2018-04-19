@@ -128,7 +128,6 @@ class DailySummaryReader(Stats):
     https://iextrading.com/developer/docs/#historical-daily
 
     """
-    _LAST = True
 
     def __init__(self, start=None, end=None, last=None,
                  output_format='json', **kwargs):
@@ -173,7 +172,7 @@ class DailySummaryReader(Stats):
     @property
     def params(self):
         p = {}
-        if not self._LAST:
+        if not self.islast:
             p['date'] = self.curr_date.strftime('%Y%m%d')
         else:
             p['last'] = self.last
