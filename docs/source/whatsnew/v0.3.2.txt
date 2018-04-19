@@ -11,6 +11,8 @@ New Features
 ~~~~~~~~~~~~
 
 - Adds decimal parsing option (thank you reixd)
+- Adds support for market movers through the Stocks list endpoint
+	`GH52 <https://github.com/addisonlynch/iexfinance/issues/52>`__
 
 Enhancements
 ~~~~~~~~~~~~
@@ -23,5 +25,5 @@ Bug Fixes
 -  Repaired 0.3.1 docs
 -  IEX Market Data functions not filtering when symbol passed
    `GH46 <https://github.com/addisonlynch/iexfinance/issues/46>`__
--  Expected close test fails 
+-  Expected close test fails
    `GH45 <https://github.com/addisonlynch/iexfinance/issues/45>`__

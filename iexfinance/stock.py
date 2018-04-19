@@ -747,3 +747,22 @@ class HistoricalReader(_IEXBase):
             for sym in list(result):
                 result[sym] = result[sym].to_dict('index')
             return result
+
+
+class MoversReader(_IEXBase):
+    """
+    Base class for retrieving market movers from the Stocks List endpoint
+    """
+    _AVAILABLE_MOVERS = ["mostactive", "gainers", "losers", "iexvolume",
+                         "iexpercent"]
+
+    def __init__(self, mover=None, **kwargs):
+        super(MoversReader, self).__init__(**kwargs)
+        if mover in self._AVAILABLE_MOVERS:
+            self.mover = mover
+        else:
+            raise ValueError("Please input a valid market mover.")
+
+    @property
+    def url(self):
+        return 'stock/market/list/' + self.mover
