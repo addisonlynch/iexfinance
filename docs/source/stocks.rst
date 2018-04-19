@@ -24,7 +24,7 @@ to access such endpoints:
 individual
 endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
 ``get_book``, ``get_quote``, etc. Where applicable, parameters (i.e.
-``displayPercent`` for the Quote endpoint) may be passed as keyword arguments
+``displayPercent`` for the Quote endpoint) may be passed
 to these methods as keyword arguments.
 
 2. **Field Methods** - supported by certain endpoints. Allow quick and
@@ -90,6 +90,14 @@ It is also possible to change the output format of an already-instantiated
 
     aapl.change_output_format('json')
     aapl.get_quote()["close"]
+
+Further, it is possible to customize the integer and floating point JSON parsing (into a type such as ``Decimal.decimal``) by passing the desired types via ``json_parse_float`` and ``json_parse_int`` parameters.
+
+.. ipython:: python
+
+    from decimal import Decimal
+
+    aaplD = Stock("AAPL", json_parse_float=Decimal)
 
 
 Parameters

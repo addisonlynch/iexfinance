@@ -34,7 +34,7 @@ Parameters
 
 
 
-All classes and top-level functions utilize the _IEXBASE class to make their
+All classes and top-level functions utilize the ``_IEXBASE`` class to make their
 requests:
 
 .. autoclass:: iexfinance.base._IEXBase
@@ -64,7 +64,7 @@ from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of
 the endpoint requested.
 
-*Endpoint Method* Examples ``get_quote()``, ``get_volume_by_venue()``
+**Endpoint Method** examples ``get_quote()``, ``get_volume_by_venue()``
 
 .. ipython:: python
 
