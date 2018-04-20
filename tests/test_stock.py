@@ -1007,20 +1007,20 @@ class TestMarketMovers(object):
 
     def test_market_gainers(self):
         li = get_market_gainers()
-        assert len(li) == 10
+        assert len(li) == pytest.approx(10, 1)
 
     def test_market_losers(self):
         li = get_market_losers()
-        assert len(li) == 10
+        assert len(li) == pytest.approx(10, 1)
 
     def test_market_most_active(self):
         li = get_market_most_active()
-        assert len(li) == 10
+        assert len(li) == pytest.approx(10, 1)
 
     def test_market_iex_volume(self):
         li = get_market_iex_volume()
-        assert len(li) == 10
+        assert len(li) == pytest.approx(10, 1)
 
     def test_market_iex_percent(self):
         li = get_market_iex_percent()
-        assert len(li) == 10
+        assert len(li) == pytest.approx(10, 1)
