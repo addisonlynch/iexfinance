@@ -1,5 +1,5 @@
 from .base import _IEXBase
-from .stock import StockReader, HistoricalReader
+from .stock import StockReader, HistoricalReader, MoversReader
 from .market import TOPS, Last, DEEP, Book
 from .stats import (IntradayReader, RecentReader, RecordsReader,
                     DailySummaryReader, MonthlySummaryReader)
@@ -312,3 +312,43 @@ def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
     """
     return MonthlySummaryReader(start=start, end=end,
                                 output_format=output_format, **kwargs).fetch()
+
+
+def get_market_gainers(**kwargs):
+    """
+    Top-level function for obtaining top 10 market gainers from the
+    Stocks list endpoint
+    """
+    return MoversReader(mover='gainers', **kwargs).fetch()
+
+
+def get_market_losers(**kwargs):
+    """
+    Top-level function for obtaining top 10 market losers from the
+    Stocks list endpoint
+    """
+    return MoversReader(mover='losers', **kwargs).fetch()
+
+
+def get_market_most_active(**kwargs):
+    """
+    Top-level function for obtaining top 10 most active symbols from
+    the Stocks list endpoint
+    """
+    return MoversReader(mover='mostactive', **kwargs).fetch()
+
+
+def get_market_iex_volume(**kwargs):
+    """
+    Top-level function for obtaining the 10 symbols with the highest
+    IEX volume from the Stocks list endpoint
+    """
+    return MoversReader(mover='iexvolume', **kwargs).fetch()
+
+
+def get_market_iex_percent(**kwargs):
+    """
+    Top-level function for obtaining the 10 symbols with the highest
+    percent change on the IEX exchange from the Stocks list endpoint
+    """
+    return MoversReader(mover='iexpercent', **kwargs).fetch()

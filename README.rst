@@ -14,14 +14,14 @@ iexfinance
     :target: https://opensource.org/licenses/Apache-2.0
 
 
-Python module to get stock data from the 
+Python module to retrieve stock data from the 
 `Investors Exchange (IEX) <https://iextrading.com/>`__ 
 `Developer API <https://iextrading.com/developer/>`__
 platform. iexfinance provides real-time financial data from the various IEX
-endpoints, as well as historical data.
+endpoints, as well as historical time-series data.
 
 This data includes stock quotes, fundamentals, actions, and information. In
-addition, support for IEX market data and statistics is provided.
+addition, support for IEX market data and statistics is provided. 
 
 - `Stocks <https://iextrading.com/developer/docs/#stocks>`__
 - `Reference Data <https://iextrading.com/developer/docs/#reference-data>`__
@@ -32,7 +32,7 @@ Documentation
 -------------
 
 See `IEX Finance
-Documentation <https://addisonlynch.github.io/iexfinance/index.html#Documentation>`__
+Documentation <https://addisonlynch.github.io/iexfinance/index.html#documentation>`__
 
 Install
 -------
@@ -65,7 +65,7 @@ include ``retry_count``, ``pause``, and ``session``. These parameters are
 entirely optional. The first two deal with how unsuccessful requests are
 handled, and the third allows for the passing of a cached ``requests-cache``
 session (see `caching
-<https://addisonlynch.github.io/iexfinance/caching.html>`__.
+<https://addisonlynch.github.io/iexfinance/caching.html>`__).
 
 Stock Endpoints
 ^^^^^^^^^^^^^^^
@@ -177,6 +177,6 @@ Twitter: `alynchfc <https://www.twitter.com/alynchfc>`__
 License
 -------
 
-Copyright © 2017 Addison Lynch
+Copyright © 2018 Addison Lynch
 
 See LICENSE for details

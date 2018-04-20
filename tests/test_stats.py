@@ -58,18 +58,11 @@ class TestStatsDaily(object):
         df = get_stats_daily(start=datetime(2017, 1, 1),
                              end=datetime(2017, 2, 1), output_format='pandas')
         assert isinstance(df, DataFrame)
-        assert len(df) is 31
+        assert len(df) is 20
 
     def test_daily_invalid_last(self):
         with pytest.raises(ValueError):
             get_stats_daily(last=120)
-
-    def test_daily_fails_no_params(self):
-        with pytest.raises(ValueError):
-            get_stats_daily()
-
-        with pytest.raises(ValueError):
-            get_stats_daily(end=datetime(2017, 1, 1))
 
     def test_daily_invalid_start_date(self):
         with pytest.raises(ValueError):
@@ -79,9 +72,6 @@ class TestStatsDaily(object):
             get_stats_daily(start=datetime(2022, 1, 1))
 
     def test_daily_invalid_end_date(self):
-        with pytest.raises(ValueError):
-            get_stats_daily(start=datetime(2017, 1, 1))
-
         with pytest.raises(ValueError):
             get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2016, 1,
                             1))

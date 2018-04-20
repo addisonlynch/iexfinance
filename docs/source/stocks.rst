@@ -24,19 +24,16 @@ to access such endpoints:
 individual
 endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
 ``get_book``, ``get_quote``, etc. Where applicable, parameters (i.e.
-``displayPercent`` for the Quote endpoint) may be passed as keyword arguments
+``displayPercent`` for the Quote endpoint) may be passed
 to these methods as keyword arguments.
 
 2. **Field Methods** - supported by certain endpoints. Allow quick and
 lightweight access to select fields of the Quote and Key Stats endpoints.
-Examples are ``get_company_name``, ``get_beta``, etc. The "Field Methods"
-subsection of each endpoint method will list Field Methods (if available) for
-each.
+Examples are ``get_company_name``, ``get_beta``, etc. See below for more examples.
 
 3. ``get_endpoints`` - returns one or more (up to 10) endpoints to be returned
 in the *exact* format of the examples in the IEX docs. This method accepts no
-additional parameters (it uses the defaults) and does not allow output
-formatting (such as Pandas DataFrame).
+additional parameters (it uses the defaults) and does not allow Pandas DataFrame as an output format.
 
 .. ipython:: python
 
@@ -90,6 +87,14 @@ It is also possible to change the output format of an already-instantiated
 
     aapl.change_output_format('json')
     aapl.get_quote()["close"]
+
+Further, it is possible to customize the integer and floating point JSON parsing (into a type such as ``Decimal.decimal``) by passing the desired types via ``json_parse_float`` and ``json_parse_int`` parameters.
+
+.. ipython:: python
+
+    from decimal import Decimal
+
+    aaplD = Stock("AAPL", json_parse_float=Decimal)
 
 
 Parameters
@@ -228,7 +233,7 @@ Key Stats
 List
 ----
 
-.. warning:: `list <https://iextrading.com/developer/docs/#list>`__  endpoint not supported at this time.
+.. seealso:: :ref:`Market Movers<stocks.movers>`
 
 
 
@@ -502,7 +507,6 @@ instantiated:
 Field Methods
 ^^^^^^^^^^^^^
 
-
 ``get_open()``, ``get_company_name()``
 
 Single symbol
@@ -526,3 +530,16 @@ Format as a DataFrame
 
     b = Stock(["AAPL", "TSLA"], output_format=('pandas'))
     b.get_beta()
+
+.. _stocks.movers:
+
+Market Movers
+=============
+
+The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks provides information about market movers from a given trading day. iexfinance implements these market mover lists with top-level functions, which are listed below. These functions return a list of quotes of the top-10 symbols in each list.
+
+* Gainers (``get_market_gainers``)
+* Losers (``get_market_losers``)
+* Most Active (``get_market_most_active``)
+* IEX Volume (``get_market_iex_volume``)
+* IEX Percent (``get_market_iex_percent``)

@@ -1,7 +1,7 @@
 .. _whatsnew_031:
 
 
-v0.3.1 (TBA)
+v0.3.1 (March 9, 2018)
 -------------------------
 
 This is a minor release from 0.3.0, which repairs various bugs related to the

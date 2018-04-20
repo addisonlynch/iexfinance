@@ -6,7 +6,9 @@ from pandas.util.testing import assert_index_equal
 
 from decimal import Decimal
 
-from iexfinance import get_historical_data
+from iexfinance import (get_historical_data, get_market_gainers,
+                        get_market_losers, get_market_most_active,
+                        get_market_iex_volume, get_market_iex_percent)
 from iexfinance import Stock
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
@@ -999,3 +1001,26 @@ class TestHistorical(object):
         end = datetime(2017, 5, 24)
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
+
+
+class TestMarketMovers(object):
+
+    def test_market_gainers(self):
+        li = get_market_gainers()
+        assert len(li) == pytest.approx(10, 1)
+
+    def test_market_losers(self):
+        li = get_market_losers()
+        assert len(li) == pytest.approx(10, 1)
+
+    def test_market_most_active(self):
+        li = get_market_most_active()
+        assert len(li) == pytest.approx(10, 1)
+
+    def test_market_iex_volume(self):
+        li = get_market_iex_volume()
+        assert len(li) == pytest.approx(10, 1)
+
+    def test_market_iex_percent(self):
+        li = get_market_iex_percent()
+        assert len(li) == pytest.approx(10, 1)

@@ -8,6 +8,9 @@ New features, bug fixes, and improvements for each release.
 
 .. include:: whatsnew/v0.3.2.txt
 
+.. include:: whatsnew/v0.3.1.txt
+
+.. include:: whatsnew/v0.3.0.txt
 Changelog
 ---------
 
