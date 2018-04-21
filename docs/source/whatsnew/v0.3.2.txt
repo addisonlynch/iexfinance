@@ -1,7 +1,7 @@
 .. _whatsnew_032:
 
 
-v0.3.2 (April 19, 2018)
+v0.3.2 (April 21, 2018)
 -----------------------
 
 This is a minor release from 0.3.1, which repairs various bugs and adds minor enhancements.

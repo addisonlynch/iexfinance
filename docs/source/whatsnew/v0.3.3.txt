@@ -1,0 +1,15 @@
+.. _whatsnew_032:
+
+
+v0.3.3 (April 21, 2018)
+-----------------------
+
+This is a minor release from 0.3.2 which repairs PyPi upload and installation issues.
+
+Please see the release notes for v0.3.2 for more information on the latest updates. This version simply repairs installation issues.
+
+Bug Fixes
+~~~~~~~~~
+
+- Repairs installation problems for Python 2 and 3 by adding MANIFEST.in
+	`GH44 <https://github.com/addisonlynch/iexfinance/issues/44>`__
