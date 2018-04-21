@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Queries &mdash; iexfinance 0.3.1 documentation</title>
+  <title>Caching Queries &mdash; iexfinance 0.3.3 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.3.1 documentation" href="index.html"/>
+    <link rel="top" title="iexfinance 0.3.3 documentation" href="index.html"/>
         <link rel="next" title="Testing" href="testing.html"/>
         <link rel="prev" title="IEX Stats" href="stats.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.3.1
+                0.3.3
               </div>
             
           
@@ -187,12 +187,6 @@ top-level function you are using:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
 
 <span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-2-85c841892109&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;Stock&#39;
 
 <span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">requests_cache</span>
 
@@ -203,20 +197,9 @@ top-level function you are using:</p>
 <span class="gp">   ...: </span>
 
 <span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-6-413271544e3e&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Stock&#39; is not defined
 
 <span class="gp">In [7]: </span><span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-7-dde3f8cb8003&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 f.get_price()</span>
-
-<span class="go">NameError: name &#39;f&#39; is not defined</span>
+<span class="gh">Out[7]: </span><span class="go">172.8</span>
 </pre></div>
 </div>
 <p>A <a class="reference external" href="https://www.sqlite.org/">SQLite</a> file named <code class="docutils literal notranslate"><span class="pre">cache.sqlite</span></code> will
@@ -271,7 +254,7 @@ expiry date.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.3.1',
+            VERSION:'0.3.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
