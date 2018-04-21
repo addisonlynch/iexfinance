@@ -4,8 +4,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
-
-import requests_cache
 #
 # iexfinance documentation build configuration file, created by
 # sphinx-quickstart on Sat Jan 27 14:14:10 2018.
