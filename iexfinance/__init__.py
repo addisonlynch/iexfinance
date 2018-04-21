@@ -9,7 +9,7 @@ from iexfinance.utils import _sanitize_dates
 from .utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
