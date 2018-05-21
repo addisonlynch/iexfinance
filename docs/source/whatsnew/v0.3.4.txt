@@ -1,0 +1,11 @@
+.. _whatsnew_034:
+
+
+v0.3.4 
+-------------------------
+
+Bug Fixes
+~~~~~~~~~
+
+-  Fix KeyError exception when there is no earnings or financials data on a ticker.
+   `User@SHA <reixd@644e32e03fa52ce4efafe4c2695489b5bd645b96>`__
