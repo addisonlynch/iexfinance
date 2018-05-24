@@ -897,56 +897,56 @@ class TestHistorical(object):
 
     def test_single_historical_json(self):
 
-        f = get_historical_data("AAPL", self.good_start, self.good_end)
+        f = get_historical_data("AMZN", self.good_start, self.good_end)
         assert isinstance(f, dict)
-        assert len(f["AAPL"]) == 73
+        assert len(f["AMZN"]) == 73
 
-        expected1 = f["AAPL"]["2017-02-09"]
-        assert expected1["close"] == pytest.approx(132.42, 3)
-        assert expected1["high"] == pytest.approx(132.445, 3)
+        expected1 = f["AMZN"]["2017-02-09"]
+        assert expected1["close"] == pytest.approx(821.36, 3)
+        assert expected1["high"] == pytest.approx(825.0, 3)
 
-        expected2 = f["AAPL"]["2017-05-24"]
-        assert expected2["close"] == pytest.approx(153.34, 3)
-        assert expected2["high"] == pytest.approx(154.17, 3)
+        expected2 = f["AMZN"]["2017-05-24"]
+        assert expected2["close"] == pytest.approx(980.35, 3)
+        assert expected2["high"] == pytest.approx(981.0, 3)
 
     def test_single_historical_pandas(self):
 
-        f = get_historical_data("AAPL", self.good_start, self.good_end,
+        f = get_historical_data("AMZN", self.good_start, self.good_end,
                                 output_format="pandas")
 
         assert isinstance(f, pd.DataFrame)
         assert len(f) == 73
 
         expected1 = f.loc["2017-02-09"]
-        assert expected1["close"] == pytest.approx(132.42, 3)
-        assert expected1["high"] == pytest.approx(132.445, 3)
+        assert expected1["close"] == pytest.approx(821.36, 3)
+        assert expected1["high"] == pytest.approx(825.0, 3)
 
         expected2 = f.loc["2017-05-24"]
-        assert expected2["close"] == pytest.approx(153.34, 3)
-        assert expected2["high"] == pytest.approx(154.17, 3)
+        assert expected2["close"] == pytest.approx(980.35, 3)
+        assert expected2["high"] == pytest.approx(981.0, 3)
 
     def test_batch_historical_json(self):
 
-        f = get_historical_data(["AAPL", "TSLA"], self.good_start,
+        f = get_historical_data(["AMZN", "TSLA"], self.good_start,
                                 self.good_end, output_format="json")
 
         assert isinstance(f, dict)
         assert len(f) == 2
-        assert sorted(list(f)) == ["AAPL", "TSLA"]
+        assert sorted(list(f)) == ["AMZN", "TSLA"]
 
-        a = f["AAPL"]
+        a = f["AMZN"]
         t = f["TSLA"]
 
         assert len(a) == 73
         assert len(t) == 73
 
         expected1 = a["2017-02-09"]
-        assert expected1["close"] == pytest.approx(132.42, 3)
-        assert expected1["high"] == pytest.approx(132.445, 3)
+        assert expected1["close"] == pytest.approx(821.36, 3)
+        assert expected1["high"] == pytest.approx(825.0, 3)
 
         expected2 = a["2017-05-24"]
-        assert expected2["close"] == pytest.approx(153.34, 3)
-        assert expected2["high"] == pytest.approx(154.17, 3)
+        assert expected2["close"] == pytest.approx(980.35, 3)
+        assert expected2["high"] == pytest.approx(981.0, 3)
 
         expected1 = t["2017-02-09"]
         assert expected1["close"] == pytest.approx(269.20, 3)
@@ -958,26 +958,26 @@ class TestHistorical(object):
 
     def test_batch_historical_pandas(self):
 
-        f = get_historical_data(["AAPL", "TSLA"], self.good_start,
+        f = get_historical_data(["AMZN", "TSLA"], self.good_start,
                                 self.good_end, output_format="pandas")
 
         assert isinstance(f, dict)
         assert len(f) == 2
-        assert sorted(list(f)) == ["AAPL", "TSLA"]
+        assert sorted(list(f)) == ["AMZN", "TSLA"]
 
-        a = f["AAPL"]
+        a = f["AMZN"]
         t = f["TSLA"]
 
         assert len(a) == 73
         assert len(t) == 73
 
         expected1 = a.loc["2017-02-09"]
-        assert expected1["close"] == pytest.approx(132.42, 3)
-        assert expected1["high"] == pytest.approx(132.445, 3)
+        assert expected1["close"] == pytest.approx(821.36, 3)
+        assert expected1["high"] == pytest.approx(825.0, 3)
 
         expected2 = a.loc["2017-05-24"]
-        assert expected2["close"] == pytest.approx(153.34, 3)
-        assert expected2["high"] == pytest.approx(154.17, 3)
+        assert expected2["close"] == pytest.approx(980.35, 3)
+        assert expected2["high"] == pytest.approx(981.0, 3)
 
         expected1 = t.loc["2017-02-09"]
         assert expected1["close"] == pytest.approx(269.20, 3)
