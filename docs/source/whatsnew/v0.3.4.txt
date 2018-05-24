@@ -1,0 +1,13 @@
+.. _whatsnew_034:
+
+
+v0.3.4 (TBA)
+-----------------------
+
+This is a minor release from 0.3.4.
+
+Bug Fixes
+~~~~~~~~~
+
+-  Fix KeyError exception when there is no earnings or financials data on a ticker. (Thank you reixd)
+`GH60 <https://github.com/addisonlynch/iexfinance/pull/60>`__

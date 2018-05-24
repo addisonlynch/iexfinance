@@ -41,6 +41,7 @@ class TestShareDefault(object):
         self.cshare4 = Stock("aapl",
                              json_parse_int=Decimal,
                              json_parse_float=Decimal)
+        self.cshare5 = Stock("gig^")
 
     def test_invalid_symbol(self):
         data = Stock("BAD SYMBOL")
@@ -135,6 +136,10 @@ class TestShareDefault(object):
         data2 = self.cshare2.get_earnings()
         assert isinstance(data2, pd.DataFrame)
 
+        # Ensure empty list is returned for symbol with no earnings
+        data3 = self.cshare5.get_earnings()
+        assert isinstance(data3, list)
+
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
         assert isinstance(data, list)
@@ -148,6 +153,10 @@ class TestShareDefault(object):
 
         data2 = self.cshare2.get_financials()
         assert isinstance(data2, pd.DataFrame)
+
+        # Ensure empty list is returned even when ticker has no financials
+        data3 = self.cshare5.get_financials()
+        assert isinstance(data3, list)
 
     def test_get_key_stats_format(self):
         data = self.cshare.get_key_stats()
