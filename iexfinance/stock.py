@@ -359,7 +359,7 @@ class StockReader(_IEXBase):
             Stocks Earnings endpoint data
         """
         data = self._get_endpoint("earnings", kwargs)
-        return {symbol: data[symbol]["earnings"]["earnings"]
+        return {symbol: data[symbol]["earnings"].get("earnings", [])
                 for symbol in list(data)}
 
     @output_format(override=None)
@@ -387,7 +387,7 @@ class StockReader(_IEXBase):
             Stocks Financials endpoint data
         """
         data = self._get_endpoint("financials", kwargs)
-        return {symbol: data[symbol]["financials"]["financials"]
+        return {symbol: data[symbol]["financials"].get("financials", [])
                 for symbol in list(data)}
 
     @output_format(override=None)
