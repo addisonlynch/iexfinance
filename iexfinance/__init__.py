@@ -11,9 +11,7 @@ from .utils.exceptions import IEXQueryError
 __author__ = 'Addison Lynch'
 __version__ = '0.3.3'
 
-# Data provided for free by IEX
-# Data is furnished in compliance with the guidelines promulgated in the IEX
-# API terms of service and manual
+# Data provided for free by IEX.
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 

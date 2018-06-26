@@ -5,9 +5,7 @@ import requests
 from iexfinance.utils import _init_session
 from iexfinance.utils.exceptions import IEXQueryError
 
-# Data provided for free by IEX
-# Data is furnished in compliance with the guidelines promulgated in the IEX
-# API terms of service and manual
+# Data provided for free by IEX.
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
