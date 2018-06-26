@@ -121,7 +121,7 @@ IEX Reference Data
 
 Support for the `IEX Reference Data
 <https://iextrading.com/developer/docs/#reference-data>`__ endpoints is
-available through the top level functions ``get_symbols``,
+available through the top level functions ``get_available_symbols``,
 ``get_corporate_actions``, ``get_dividends``, ``get_next_day_ex_date``, and
 ``get_listed_symbol_dir``. As with all endpoints, request parameters such as
 ``retry_count`` and output format selection (through ``output_format``) can be
