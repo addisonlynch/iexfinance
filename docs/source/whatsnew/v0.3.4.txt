@@ -4,7 +4,17 @@
 v0.3.4 (TBA)
 -----------------------
 
-This is a minor release from 0.3.4.
+This is a minor release from 0.3.3.
+
+Highlights:
+
+Adds and updates endpoints related to the May 25, 2018 provider update to the IEX API
+
+New Features
+~~~~~~~~~~~~
+
+- Added support for the Largest Trades endpoint through the ``get_largest_trades`` method of ``Stock``
+
 
 Bug Fixes
 ~~~~~~~~~

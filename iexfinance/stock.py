@@ -404,6 +404,20 @@ class StockReader(_IEXBase):
         return {symbol: data[symbol]["stats"] for symbol in list(data)}
 
     @output_format(override=None)
+    def get_largest_trades(self, **kwargs):
+        """
+        Reference: https://iextrading.com/developer/docs/#largest-trades
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Largest Trades endpoint data
+        """
+        data = self._get_endpoint("largest-trades", kwargs)
+        return {symbol: data[symbol]["largest-trades"] for symbol in 
+                list(data)}
+
+    @output_format(override=None)
     def get_logo(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#logo

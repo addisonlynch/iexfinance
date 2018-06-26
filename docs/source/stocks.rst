@@ -236,13 +236,18 @@ List
 .. seealso:: :ref:`Market Movers<stocks.movers>`
 
 
+.. _stocks.largest-trades:
+
+Largest Trades
+--------------
+
+.. automethod:: iexfinance.stock.StockReader.get_largest_trades
 
 
 .. _stocks.logo:
 
 Logo
 ----
-
 
 
 .. automethod:: iexfinance.stock.StockReader.get_logo

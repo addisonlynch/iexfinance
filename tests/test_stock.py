@@ -165,6 +165,13 @@ class TestShareDefault(object):
         data2 = self.cshare2.get_key_stats()
         assert isinstance(data2, pd.DataFrame)
 
+    def test_get_largest_trades(self):
+        data = self.cshare.get_largest_trades()
+        assert isinstance(data, list)
+
+        data2 = self.cshare2.get_largest_trades()
+        assert isinstance(data2, pd.DataFrame)
+
     def test_get_logo_format(self):
         data = self.cshare.get_logo()
         assert isinstance(data, dict)
