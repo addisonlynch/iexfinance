@@ -548,3 +548,31 @@ The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks pr
 * Most Active (``get_market_most_active``)
 * IEX Volume (``get_market_iex_volume``)
 * IEX Percent (``get_market_iex_percent``)
+
+.. _stocks.crypto:
+
+Cryptocurrencies
+================
+
+As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
+
+The following tickers are supported:
+
+- Bitcoin USD (BTCUSDT)
+- EOS USD (EOSUSDT)
+- Ethereum USD (ETHUSDT)
+- Binance Coin USD (BNBUSDT)
+- Ontology USD (ONTUSDT)
+- Bitcoin Cash USD (BCCUSDT)
+- Cardano USD (ADAUSDT)
+- Ripple USD (XRPUSDT)
+- TrueUSD (TUSDUSDT)
+- TRON USD (TRXUSDT)
+- Litecoin USD (LTCUSDT)
+- Ethereum Classic USD (ETCUSDT)
+- MIOTA USD (IOTAUSDT)
+- ICON USD (ICXUSDT)
+- NEO USD (NEOUSDT)
+- VeChain USD (VENUSDT)
+- Stellar Lumens USD (XLMUSDT)
+- Qtum USD (QTUMUSDT)

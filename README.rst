@@ -103,7 +103,7 @@ datapoint:
 
 .. image:: /docs/source/images/dfdailyaapl.JPG
 
-It's really simple to plot this data, using `matplotlib:
+It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
 
 .. code:: python
 
@@ -112,7 +112,7 @@ It's really simple to plot this data, using `matplotlib:
 	df.plot()
 	plt.show()
 
-<https://matplotlib.org/>`__
+
 
 .. image:: /docs/source/images/plotdailyaapl.jpg
 

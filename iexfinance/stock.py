@@ -6,7 +6,7 @@ import pandas as pd
 from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
-# Data provided for free by IEX.
+# Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
@@ -136,7 +136,7 @@ class StockReader(_IEXBase):
         ----------
         symbols: str or list
             A nonempty list of symbols
-        output_format: str
+        output_format: str, default 'json', optional
             Desired output format
         """
         self.symbols = list(map(lambda x: x.upper(), symbols))
@@ -285,6 +285,11 @@ class StockReader(_IEXBase):
             algorithm. Useful for plotting spotline charts
         chartInterval: int, default None, optional
             Chart data will return every nth element (where n is chartInterval)
+        changeFromClose: bool, default False, optional
+            If true, changeOverTime and marketChangeOverTime will be relative
+            to previous day close instead of the first value.
+        chartLast: int, optional
+            return the last N elements
 
         Notes
         -----
@@ -428,7 +433,7 @@ class StockReader(_IEXBase):
         data = self._get_endpoint("logo", kwargs)
         return {symbol: data[symbol]["logo"] for symbol in list(data)}
 
-    @output_format(override=None)
+    @output_format(override='json')
     def get_news(self, **kwargs):
         """Returns the Stocks News endpoint (list or pandas)
 
@@ -441,7 +446,7 @@ class StockReader(_IEXBase):
 
         Returns
         -------
-        list or pandas.DataFrame
+        list or dict
             Stocks News endpoint data
         """
         data = self._get_endpoint("news", kwargs)
@@ -668,13 +673,16 @@ class HistoricalReader(_IEXBase):
     """
     A class to download historical data from the chart endpoint
 
-    Positional Arguments:
-        symbol: A symbol or list of symbols
-        start: A datetime object
-        end: A datetime object
-
-    Keyword Arguments:
-        output_format: Desired output format (json by default)
+    Parameters
+    ----------
+    symbol: str or list
+        A symbol or list of symbols
+    start: datetime.datetime
+        The desired start date (defaults to 1/1/2015)
+    end: datetime.datetime
+        The desired end date (defaults to today's date)
+    output_format: str, default 'json', optional
+        Desired output format.
 
     Reference: https://iextrading.com/developer/docs/#chart
     """
@@ -764,6 +772,11 @@ class HistoricalReader(_IEXBase):
 class MoversReader(_IEXBase):
     """
     Base class for retrieving market movers from the Stocks List endpoint
+
+    Parameters
+    ----------
+    mover: str
+        Desired mover
     """
     _AVAILABLE_MOVERS = ["mostactive", "gainers", "losers", "iexvolume",
                          "iexpercent"]

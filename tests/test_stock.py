@@ -183,9 +183,7 @@ class TestShareDefault(object):
         data = self.cshare.get_news()
         assert isinstance(data, list)
 
-        data2 = self.cshare2.get_news()
-        assert isinstance(data2, pd.DataFrame)
-
+    @pytest.mark.xfail(reason="Provider error. Awaiting patch.")
     def test_get_news_params(self):
         data = self.cshare.get_news(last=15)
         assert len(data) == 15
@@ -418,9 +416,6 @@ class TestBatchDefault(object):
         data = self.cbatch.get_news()
         assert isinstance(data, dict)
 
-        data2 = self.cbatch2.get_news()
-        assert isinstance(data2, pd.DataFrame)
-
     def test_ohlc(self):
         data = self.cbatch.get_ohlc()
         assert isinstance(data, dict)
@@ -511,6 +506,7 @@ class TestFieldMethodsShare(object):
         self.share4 = Stock("AAPL",
                             json_parse_int=Decimal,
                             json_parse_float=Decimal)
+        self.share5 = Stock("TSLA")
 
     def test_get_company_name(self):
         data = self.share.get_company_name()
@@ -660,12 +656,8 @@ class TestFieldMethodsShare(object):
         assert isinstance(data4, Decimal)
 
     def test_get_latest_eps(self):
-        data = self.share.get_latest_eps()
+        data = self.share5.get_latest_eps()
         assert isinstance(data, float)
-
-        data2 = self.share2.get_latest_eps()
-        assert isinstance(data2, pd.DataFrame)
-        assert data2.loc["AAPL"].dtype == "float64"
 
         data4 = self.share4.get_latest_eps()
         assert isinstance(data4, Decimal)
@@ -850,12 +842,12 @@ class TestFieldMethodsBatch(object):
     def test_get_latest_eps(self):
         data = self.batch.get_latest_eps()
         assert isinstance(data, dict)
-        assert isinstance(data["AAPL"], float)
+        assert isinstance(data["TSLA"], float)
 
         data2 = self.batch2.get_latest_eps()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
-        assert data2.loc["AAPL"].dtype == "float64"
+        assert data2.loc["TSLA"].dtype == "float64"
 
         data4 = self.batch4.get_latest_eps()
         assert isinstance(data4, dict)
@@ -1040,3 +1032,16 @@ class TestMarketMovers(object):
     def test_market_iex_percent(self):
         li = get_market_iex_percent()
         assert len(li) == pytest.approx(10, 1)
+
+
+class TestCrypto(object):
+
+    def setup_class(self):
+        self.ticks = ["BTCUSDT", "EOSUSDT", "ETHUSDT", "BNBUSDT", "ONTUSDT",
+                      "BCCUSDT", "ADAUSDT", "XRPUSDT", "TUSDUSDT", "TRXUSDT",
+                      "LTCUSDT", "ETCUSDT", "IOTAUSDT", "ICXUSDT", "NEOUSDT",
+                      "VENUSDT", "XLMUSDT", "QTUMUSDT"]
+
+    def test_listed_crypto_symbols(self):
+        a = Stock(self.ticks)
+        assert isinstance(a.get_quote(), dict)

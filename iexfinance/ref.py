@@ -2,13 +2,15 @@ import datetime
 
 from .base import _IEXBase
 
-# Data provided for free by IEX.
+# Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
 
 class ReferenceReader(_IEXBase):
-
+    """
+    Base classe to retrieve data from the IEX Reference Data endpoints
+    """
     def __init__(self, start=None, **kwargs):
         self.start = start
         super(ReferenceReader, self).__init__(**kwargs)

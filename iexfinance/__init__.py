@@ -9,9 +9,11 @@ from iexfinance.utils import _sanitize_dates
 from .utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.3.3'
+__version__ = '0.3.4'
 
-# Data provided for free by IEX.
+# Data provided for free by IEX
+# Data is furnished in compliance with the guidelines promulgated in the IEX
+# API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
@@ -24,7 +26,7 @@ def Stock(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list
         A string or list of strings that are valid symbols
-    output_format: str
+    output_format: str, default 'json', optional
         Desired output format for requests
     kwargs:
         Additional Request Parameters (see base class)
@@ -33,15 +35,10 @@ def Stock(symbols=None, output_format='json', **kwargs):
     stock.StockReader
         A StockReader instance
     """
-    if not symbols:
-        raise ValueError("Please input a symbol or list of symbols")
-    elif type(symbols) is str:
+    if isinstance(symbols, str) and symbols:
         return StockReader([symbols], output_format, **kwargs)
-    elif type(symbols) is list:
-        if len(symbols) > 100:
-            raise ValueError("Invalid symbol list. Maximum 100 symbols.")
-        else:
-            return StockReader(symbols, output_format, **kwargs)
+    elif isinstance(symbols, list) and 0 < len(symbols) < 100:
+        return StockReader(symbols, output_format, **kwargs)
     else:
         raise ValueError("Please input a symbol or list of symbols")
 
@@ -60,7 +57,7 @@ def get_historical_data(symbols=None, start=None, end=None,
         Beginning of desired date range
     end: datetime.datetime, default None
         End of required date range
-    output_format: str, (defaults to json)
+    output_format: str, default 'json', optional
         Desired output format (json or pandas)
     kwargs:
         Additional Request Parameters (see base class)
@@ -162,7 +159,7 @@ def get_market_tops(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None, optional
         A symbol or list of symbols
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
@@ -178,7 +175,7 @@ def get_market_last(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None, optional
         A symbol or list of symbols
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
@@ -194,7 +191,7 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None
         A symbol or list of symbols
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format. JSON required.
     kwargs:
         Additional Request Parameters (see base class)
@@ -214,7 +211,7 @@ def get_market_book(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None
         A symbol or list of symbols
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
@@ -229,7 +226,7 @@ def get_stats_intraday(output_format='json', **kwargs):
 
     Parameters
     ----------
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
@@ -243,11 +240,10 @@ def get_stats_recent(output_format='json', **kwargs):
 
     Parameters
     ----------
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
-
     """
     return RecentReader(output_format=output_format, **kwargs).fetch()
 
@@ -259,7 +255,7 @@ def get_stats_records(output_format='json', **kwargs):
 
     Parameters
     ----------
-    output_format: str, default 'json'
+    output_format: str, default 'json', optional
         Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
