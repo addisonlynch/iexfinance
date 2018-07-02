@@ -417,7 +417,7 @@ class StockReader(_IEXBase):
             Stocks Largest Trades endpoint data
         """
         data = self._get_endpoint("largest-trades", kwargs)
-        return {symbol: data[symbol]["largest-trades"] for symbol in 
+        return {symbol: data[symbol]["largest-trades"] for symbol in
                 list(data)}
 
     @output_format(override=None)

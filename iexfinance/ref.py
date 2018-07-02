@@ -9,7 +9,7 @@ from .base import _IEXBase
 
 class ReferenceReader(_IEXBase):
     """
-    Base classe to retrieve data from the IEX Reference Data endpoints
+    Base class to retrieve data from the IEX Reference Data endpoints
     """
     def __init__(self, start=None, **kwargs):
         self.start = start
