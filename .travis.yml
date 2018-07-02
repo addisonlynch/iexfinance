@@ -28,7 +28,9 @@ env:
 install:
   - pip install -qq flake8
   - pip install codecov
-  - pip install doctr
+  - if [[ $DOCBUILD ]]; then
+      pip install doctr;
+    fi
   - python setup.py install
 
 script:
