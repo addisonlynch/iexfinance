@@ -2,11 +2,21 @@ sudo: false
 
 language: python
 
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
+matrix:
+  fast_finish: true
+  include:
+  - dist: trusty
+    env:
+      - PYTHON=2.7 
+  - dist: trusty
+    env:
+      - PYTHON=3.4 
+  - dist: trusty
+    env:
+      - PYTHON=3.5 
+  - dist: trusty
+    env:
+      - PYTHON=3.6 DOCBUILD=true
 
 env:
   global:
@@ -17,7 +27,8 @@ env:
 
 install:
   - pip install -qq flake8
-  - pip install codecov doctr
+  - pip install codecov
+  - pip install doctr
   - python setup.py install
 
 script:
@@ -27,13 +38,15 @@ script:
 
 after_success:
   - |
-    cd docs
-    make html && make html
-    cd ..
-    doctr deploy devel --build-tags
-    if [[ -z ${TRAVIS_TAG} ]]; then
-      echo "Not a tagged build."
-    else
-      doctr deploy stable --build-tags
+    if [[ ${DOCBUILD} ]]; then
+      cd docs
+      make html && make html
+      cd ..
+      doctr deploy devel --build-tags
+      if [[ -z ${TRAVIS_TAG} ]]; then
+        echo "Not a tagged build."
+      else
+        doctr deploy stable --build-tags
+      fi
     fi
   - codecov --token='f4d1c94d-2af2-49c9-aebd-4e009c8a6266'
