@@ -31,8 +31,9 @@ addition, support for IEX market data and statistics is provided.
 Documentation
 -------------
 
-See `IEX Finance
-Documentation <https://addisonlynch.github.io/iexfinance/index.html#documentation>`__
+`Stable documentation <https://addisonlynch.github.io/iexfinance/stable/>`__ is hosted on `github.io <https://addisonlynch.github.io/iexfinance/index.html#documentation>`__.
+
+`Development documentation <https://addisonlynch.github.io/iexfinance/devel/>`__ is also available for the latest changes in master.
 
 Install
 -------

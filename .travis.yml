@@ -1,3 +1,5 @@
+sudo: false
+
 language: python
 
 python:
@@ -6,9 +8,16 @@ python:
   - "3.5"
   - "3.6"
 
+env:
+  global:
+    # Doctr deploy key for addisonlynch/iexfinance
+    - secure: "tuFMca56/oHg/ufxFih5aLpGxlZD7P9/yh+mZc95rcH9HCyTyxMkesgas4GyKSxxlpHL3WzkkvTKMMNZL17ZpCne6UzaR0UILgEmaCk2Numxg+fBDAvtPl0gWs6LkFvtUZYa9vn+A6ipxe/2kO6uGvU5wgsVEC5QOEZ22ZqSYE2rvsidAN4XiVVH00u5jDEYzSYWpS9fglKb/gaDbRQE8VyrSTERrRtAGEBdm0argIh90us9WU2meW9v50aTZysO1JduDw0B0di7UDg422Xw7pMS16lryHA8VMZtijYIokVM21zaf8Rc++L1pLZPbm2pdHcrHoazMxIoOS9FW69pluM7fcIWlqbT6T5GOJTzu6zg1nDBXuC5G+Pd1DuDahZ9CNCvnwuJszBhwMtXO5uU7kM5J2tg4YOkzG8TaXuPKd9x1mBSC6fk2XqnGv/zGPUfCDi4qcM56CeDsliD+uCFDujQYRCCr1BjWuK7fvNXOc0Z71tfqUjGExap/gBu9wm94Q+xt0JydlCGZpfHqHkSImHdgBPXmly6wfHGGu/Ps3lNHJUUD5GToXAhkydV4vt2EEXeZMiSh88ThI06ghFzLBTZ6aIbxty/KIOnxzbXD2TqB+NYm0UXSj0f+tGrrAtqk79cAga9GTuGdQGkGCneuGe2fGUc/e7RGR7MrLZwO2E="
+
+
+
 install:
   - pip install -qq flake8
-  - pip install codecov
+  - pip install codecov doctr
   - python setup.py install
 
 script:
@@ -17,4 +26,14 @@ script:
   - flake8 iexfinance tests
 
 after_success:
+  - |
+    cd docs
+    make html && make html
+    cd ..
+    doctr deploy devel --build-tags
+    if [[ -z ${TRAVIS_TAG} ]]; then
+      echo "Not a tagged build."
+    else
+      doctr deploy stable --build-tags
+    fi
   - codecov --token='f4d1c94d-2af2-49c9-aebd-4e009c8a6266'
