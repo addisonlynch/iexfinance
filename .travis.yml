@@ -2,21 +2,11 @@ sudo: false
 
 language: python
 
-matrix:
-  fast_finish: true
-  include:
-  - dist: trusty
-    env:
-      - PYTHON=2.7
-  - dist: trusty
-    env:
-      - PYTHON=3.4
-  - dist: trusty
-    env:
-      - PYTHON=3.5
-  - dist: trusty
-    env:
-      - PYTHON=3.6 DOCBUILD=true
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 
 env:
   global:
@@ -28,8 +18,8 @@ env:
 install:
   - pip install -qq flake8
   - pip install codecov
-  - if [[ $DOCBUILD ]]; then
-      pip3 install doctr;
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then
+      pip install doctr;
     fi
   - python setup.py install
 
@@ -40,7 +30,7 @@ script:
 
 after_success:
   - |
-    if [[ ${DOCBUILD} ]]; then
+    if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then
       cd docs
       make html && make html
       cd ..
