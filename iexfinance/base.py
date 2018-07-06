@@ -6,8 +6,6 @@ from iexfinance.utils import _init_session
 from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
-# Data is furnished in compliance with the guidelines promulgated in the IEX
-# API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
@@ -22,7 +20,7 @@ class _IEXBase(object):
     ----------
     retry_count: int, default 3, optional
         Desired number of retries if a request fails
-    pause: float, default 0.001, optional
+    pause: float, default 0.5, optional
         Pause time between retry attempts
     session: requests_cache.session, default None, optional
         A cached requests-cache session
@@ -37,13 +35,13 @@ class _IEXBase(object):
         ----------
         retry_count: int
             Desired number of retries if a request fails
-        pause: float default 0.001, optional
+        pause: float default 0.5, optional
             Pause time between retry attempts
         session: requests_cache.session, default None, optional
             A cached requests-cache session
         """
         self.retry_count = kwargs.pop("retry_count", 3)
-        self.pause = kwargs.pop("pause", 0.001)
+        self.pause = kwargs.pop("pause", 0.5)
         self.session = _init_session(kwargs.pop("session", None))
         self.json_parse_int = kwargs.pop("json_parse_int", None)
         self.json_parse_float = kwargs.pop("json_parse_float", None)

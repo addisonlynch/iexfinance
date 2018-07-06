@@ -4,11 +4,26 @@
 v0.3.4 (TBA)
 -----------------------
 
-This is a minor release from 0.3.4.
+This is a minor release from 0.3.3.
+
+Highlights:
+
+Adds and updates endpoints related to the May 25, 2018 provider update to the IEX API
+
+New Features
+~~~~~~~~~~~~
+
+- Added support for the Largest Trades endpoint through the ``get_largest_trades`` method of ``Stock``
+
+Enhancements
+~~~~~~~~~~~~
+
+- Added tests and documentation for cryptocurrency support `GH66 <https://github.com/addisonlynch/iexfinance/issues/66>`__
+- Added docstring for ``get_chart`` ``changeFromClose`` and ``chartLast`` parameters `GH65 <https://github.com/addisonlynch/iexfinance/issues/65>`__
 
 Bug Fixes
 ~~~~~~~~~
 
-- Removes dividend-issuing tickers from historical price tests `GH61 <https://github.com/addisonlynch/iexfinance/pull/61>`__
+- Removes dividend-issuing tickers from historical price tests `GH61 <https://github.com/addisonlynch/iexfinance/issues/61>`__
 - Fix KeyError exception when there is no earnings or financials data on a ticker. (Thank you reixd)
 `GH60 <https://github.com/addisonlynch/iexfinance/pull/60>`__

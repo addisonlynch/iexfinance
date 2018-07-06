@@ -4,8 +4,6 @@ from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
-# Data is furnished in compliance with the guidelines promulgated in the IEX
-# API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
@@ -22,11 +20,10 @@ class Market(_IEXBase):
         ----------
         symbols: str or list
             A symbol or list of symbols
-        output_format: str
+        output_format: str, default 'json', optional
             Desired output format (json or pandas)
         kwargs:
-            Additional request options
-
+            Additional request options (see base class)
         """
         syms = [symbols] if isinstance(symbols, str) else symbols
         if isinstance(syms, list):

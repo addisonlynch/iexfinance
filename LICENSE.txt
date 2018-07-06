@@ -1,4 +1,4 @@
-Copyright © 2017 Addison Lynch
+Copyright © 2018 Addison Lynch
 
 Apache License
 

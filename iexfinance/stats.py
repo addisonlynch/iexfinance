@@ -4,9 +4,8 @@ import pandas as pd
 
 from .base import _IEXBase
 from iexfinance.utils.exceptions import IEXQueryError
+
 # Data provided for free by IEX
-# Data is furnished in compliance with the guidelines promulgated in the IEX
-# API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
@@ -117,7 +116,7 @@ class DailySummaryReader(Stats):
         month will be returned)
     last: int
         Period between 1 and 90 days, overrides dates
-    output_format: str
+    output_format: str, default 'json', optional
         Desired output format (json or pandas)
     kwargs:
         Additional request parameters (see base class)
@@ -220,7 +219,7 @@ class MonthlySummaryReader(Stats):
     end: datetime.datetime
         Desired end of summary period (if omitted, start
         month will be returned)
-    output_format: str
+    output_format: str, default 'json', optional
         Desired output format (json or pandas)
     kwargs:
         Additional request parameters (see base class)
