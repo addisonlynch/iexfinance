@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IEX Stats &mdash; iexfinance 0.3.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Caching Queries" href="caching.html" />
+    <link rel="prev" title="IEX Market Data" href="market.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IEX Stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#intraday">Intraday</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#recent">Recent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stats-recent-usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#records">Records</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stats-records-usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-summary">Historical Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stats-monthly-usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-daily">Historical Daily</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stats-daily-usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>IEX Stats</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stats.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iex-stats">
+<span id="stats"></span><h1>IEX Stats<a class="headerlink" href="#iex-stats" title="Permalink to this headline">¶</a></h1>
+<p>The following functions retrieve data from the IEX Stats endpoints</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#stats-intraday"><span class="std std-ref">Intraday</span></a></li>
+<li><a class="reference internal" href="#stats-recent"><span class="std std-ref">Recent</span></a></li>
+<li><a class="reference internal" href="#stats-records"><span class="std std-ref">Records</span></a></li>
+<li><a class="reference internal" href="#stats-monthly"><span class="std std-ref">Historical Summary</span></a></li>
+<li><a class="reference internal" href="#stats-daily"><span class="std std-ref">Historical Daily</span></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="intraday">
+<span id="stats-intraday"></span><h2>Intraday<a class="headerlink" href="#intraday" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iextrading.com/developer/docs/#intraday">Intraday</a> is IEX’s
+aggregated best quoted bid and offer position in near real time.</p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_stats_intraday()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_stats_intraday">
+<code class="descclassname">iexfinance.</code><code class="descname">get_stats_intraday</code><span class="sig-paren">(</span><em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_intraday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function for obtaining data from the Intraday endpoint of IEX
+Stats</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="usage">
+<span id="stats-intraday-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_stats_intraday</span>
+
+<span class="gp">In [2]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 140823126, &#39;lastUpdated&#39;: 1531426228054},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5696, &#39;lastUpdated&#39;: 1531426045431},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 31163369, &#39;lastUpdated&#39;: 1531426228333},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 7369466675, &#39;lastUpdated&#39;: 1531426228054},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02433, &#39;lastUpdated&#39;: 1531426229892}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recent">
+<span id="stats-recent"></span><h2>Recent<a class="headerlink" href="#recent" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iextrading.com/developer/docs/#recent">Recent</a> is IEX’s
+trading statstics from the previous five trading days.</p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_stats_recent()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_stats_recent">
+<code class="descclassname">iexfinance.</code><code class="descname">get_stats_recent</code><span class="sig-paren">(</span><em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_recent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function for obtaining data from the Recent endpoint of IEX Stats</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="stats-recent-usage">
+<span id="id1"></span><h3>Usage<a class="headerlink" href="#stats-recent-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_stats_recent</span>
+
+<span class="gp">In [4]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">{&#39;date&#39;: &#39;2018-07-11&#39;,</span>
+<span class="go"> &#39;volume&#39;: 142518030,</span>
+<span class="go"> &#39;routedVolume&#39;: 31934257,</span>
+<span class="go"> &#39;marketShare&#39;: 0.02347,</span>
+<span class="go"> &#39;isHalfday&#39;: False,</span>
+<span class="go"> &#39;litVolume&#39;: 34156286}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="records">
+<span id="stats-records"></span><h2>Records<a class="headerlink" href="#records" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iextrading.com/developer/docs/#records">Records</a> is IEX’s
+trading statstics from the previous trading sessions.</p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_stats_records()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_stats_records">
+<code class="descclassname">iexfinance.</code><code class="descname">get_stats_records</code><span class="sig-paren">(</span><em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function for obtaining data from the Records endpoint of IEX
+Stats</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="stats-records-usage">
+<span id="id2"></span><h3>Usage<a class="headerlink" href="#stats-records-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_stats_records</span>
+
+<span class="gp">In [6]: </span><span class="n">get_stats_records</span><span class="p">()</span>
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 286354807,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-02-09&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 142518030,</span>
+<span class="go">  &#39;avg30Value&#39;: 158895034},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6381,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-02-06&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 5587,</span>
+<span class="go">  &#39;avg30Value&#39;: 5791},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 74855222,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2016-11-10&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 31934257,</span>
+<span class="go">  &#39;avg30Value&#39;: 32734529},</span>
+<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17269723089.111,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-02-06&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 7041855454.1266,</span>
+<span class="go">  &#39;avg30Value&#39;: 7815769585.2284}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="historical-summary">
+<span id="stats-monthly"></span><h2>Historical Summary<a class="headerlink" href="#historical-summary" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-summary">Historical Summary</a>
+is IEX’s trading statstics from the previous trading sessions.</p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_stats_monthly()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_stats_monthly">
+<code class="descclassname">iexfinance.</code><code class="descname">get_stats_monthly</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_monthly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function for obtaining data from the Historical Summary endpoint
+of IEX Stats</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
+<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
+<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Data retrieval period must be between 1/2014 and today.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Historical Summary accepts requests of one month per request.
+if specifying a long date range, a query will be made for each
+month in the range, significantly impacting performance</p>
+</div>
+<div class="section" id="stats-monthly-usage">
+<span id="id3"></span><h3>Usage<a class="headerlink" href="#stats-monthly-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_stats_monthly</span>
+
+<span class="gp">In [8]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [9]: </span><span class="n">get_stats_monthly</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">[{&#39;averageDailyVolume&#39;: 143199060.7,</span>
+<span class="go">  &#39;averageDailyRoutedVolume&#39;: 49729760.53,</span>
+<span class="go">  &#39;averageMarketShare&#39;: 0.02084,</span>
+<span class="go">  &#39;averageOrderSize&#39;: 725,</span>
+<span class="go">  &#39;averageFillSize&#39;: 234,</span>
+<span class="go">  &#39;bin100Percent&#39;: 0.69467,</span>
+<span class="go">  &#39;bin101Percent&#39;: 0.01241,</span>
+<span class="go">  &#39;bin200Percent&#39;: 0.12427,</span>
+<span class="go">  &#39;bin300Percent&#39;: 0.05452,</span>
+<span class="go">  &#39;bin400Percent&#39;: 0.02914,</span>
+<span class="go">  &#39;bin500Percent&#39;: 0.05156,</span>
+<span class="go">  &#39;bin1000Percent&#39;: 0.02996,</span>
+<span class="go">  &#39;bin5000Percent&#39;: 0.00226,</span>
+<span class="go">  &#39;bin10000Percent&#39;: 0.00122,</span>
+<span class="go">  &#39;bin10000Trades&#39;: 4052,</span>
+<span class="go">  &#39;bin20000Trades&#39;: 1448,</span>
+<span class="go">  &#39;bin50000Trades&#39;: 216,</span>
+<span class="go">  &#39;uniqueSymbolsTraded&#39;: 7722,</span>
+<span class="go">  &#39;blockPercent&#39;: 0.07064,</span>
+<span class="go">  &#39;selfCrossPercent&#39;: 0.03382,</span>
+<span class="go">  &#39;etfPercent&#39;: 0.11663,</span>
+<span class="go">  &#39;largeCapPercent&#39;: 0.42933,</span>
+<span class="go">  &#39;midCapPercent&#39;: 0.28813,</span>
+<span class="go">  &#39;smallCapPercent&#39;: 0.16591,</span>
+<span class="go">  &#39;venueARCXFirstWaveWeight&#39;: 0.18884,</span>
+<span class="go">  &#39;venueBATSFirstWaveWeight&#39;: 0.05175,</span>
+<span class="go">  &#39;venueBATYFirstWaveWeight&#39;: 0.06428,</span>
+<span class="go">  &#39;venueEDGAFirstWaveWeight&#39;: 0.00913,</span>
+<span class="go">  &#39;venueEDGXFirstWaveWeight&#39;: 0.08463,</span>
+<span class="go">  &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">  &#39;venueXASEFirstWaveWeight&#39;: 0.00252,</span>
+<span class="go">  &#39;venueXBOSFirstWaveWeight&#39;: 0.03266,</span>
+<span class="go">  &#39;venueXCHIFirstWaveWeight&#39;: 0.00176,</span>
+<span class="go">  &#39;venueXCISFirstWaveWeight&#39;: None,</span>
+<span class="go">  &#39;venueXNGSFirstWaveWeight&#39;: 0.19028,</span>
+<span class="go">  &#39;venueXNYSFirstWaveWeight&#39;: 0.2481,</span>
+<span class="go">  &#39;venueXPHLFirstWaveWeight&#39;: 0.01103,</span>
+<span class="go">  &#39;venueARCXFirstWaveRate&#39;: 0.97697,</span>
+<span class="go">  &#39;venueBATSFirstWaveRate&#39;: 0.98719,</span>
+<span class="go">  &#39;venueBATYFirstWaveRate&#39;: 0.98058,</span>
+<span class="go">  &#39;venueEDGAFirstWaveRate&#39;: 0.98961,</span>
+<span class="go">  &#39;venueEDGXFirstWaveRate&#39;: 0.99106,</span>
+<span class="go">  &#39;venueOverallFirstWaveRate&#39;: 0.97996,</span>
+<span class="go">  &#39;venueXASEFirstWaveRate&#39;: 0.91259,</span>
+<span class="go">  &#39;venueXBOSFirstWaveRate&#39;: 0.97117,</span>
+<span class="go">  &#39;venueXCHIFirstWaveRate&#39;: 0.76701,</span>
+<span class="go">  &#39;venueXCISFirstWaveRate&#39;: None,</span>
+<span class="go">  &#39;venueXNGSFirstWaveRate&#39;: 0.97581,</span>
+<span class="go">  &#39;venueXNYSFirstWaveRate&#39;: 0.97746,</span>
+<span class="go">  &#39;venueXPHLFirstWaveRate&#39;: 0.95374}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="historical-daily">
+<span id="stats-daily"></span><h2>Historical Daily<a class="headerlink" href="#historical-daily" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-daily">Historical Daily</a>
+is IEX’s trading statstics from the previous trading sessions.</p>
+<p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_stats_daily()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_stats_daily">
+<code class="descclassname">iexfinance.</code><code class="descname">get_stats_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>last=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_daily" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function for obtaining data from the Historical Daily endpoint
+of IEX Stats</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
+<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
+<li><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
+(up to 90)</li>
+<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>Data retrieval period must be between 1/2014 and today.</p>
+<div class="section" id="stats-daily-usage">
+<span id="id4"></span><h3>Usage<a class="headerlink" href="#stats-daily-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_stats_daily</span>
+
+<span class="gp">In [11]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gh">Out[11]: </span><span class="go"></span>
+<span class="go">[{&#39;date&#39;: &#39;2018-07-11&#39;,</span>
+<span class="go">  &#39;volume&#39;: 142518030,</span>
+<span class="go">  &#39;routedVolume&#39;: 31934257,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02347,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 34156286},</span>
+<span class="go"> {&#39;date&#39;: &#39;2018-07-10&#39;,</span>
+<span class="go">  &#39;volume&#39;: 140661790,</span>
+<span class="go">  &#39;routedVolume&#39;: 27833496,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02392,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 31856400},</span>
+<span class="go"> {&#39;date&#39;: &#39;2018-07-09&#39;,</span>
+<span class="go">  &#39;volume&#39;: 136734559,</span>
+<span class="go">  &#39;routedVolume&#39;: 27160326,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02261,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 32851765}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="caching.html" class="btn btn-neutral float-right" title="Caching Queries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="market.html" class="btn btn-neutral" title="IEX Market Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.4',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

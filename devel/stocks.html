@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stocks &mdash; iexfinance 0.3.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Historical Data" href="historical.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-formats">Supported Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-an-output-format">Selecting an Output Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#endpoint-methods">Endpoint Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#field-methods">Field Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-stats">Key Stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quote">Quote</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-parameters">Passing Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-formatting">Output Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-examples-field-methods">Field Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#market-movers">Market Movers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptocurrencies">Cryptocurrencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Stocks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stocks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stocks">
+<span id="id1"></span><h1>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Access to the <a class="reference external" href="https://iextrading.com/developer/#stocks">Stocks</a>
+endpoints of the <a class="reference external" href="https://iextrading.com/developer/">IEX Developer API</a> is
+available through the top-level <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function.</p>
+<p>Calling this function with a symbol (<em>str</em>) or list of symbols (<em>list</em>)
+will return a <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> instance, which allows retrieval of
+endpoints  (<a class="reference external" href="https://iextrading.com/developer/#earnings">Earnings</a>,
+<a class="reference external" href="https://iextrading.com/developer/#quote">Quote</a>, etc) for up to 100 symbols
+at once. There are three ways
+to access such endpoints:</p>
+<p>1. <strong>Endpoint Methods</strong> - Allow retrieval of
+individual
+endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
+<code class="docutils literal notranslate"><span class="pre">get_book</span></code>, <code class="docutils literal notranslate"><span class="pre">get_quote</span></code>, etc. Where applicable, parameters (i.e.
+<code class="docutils literal notranslate"><span class="pre">displayPercent</span></code> for the Quote endpoint) may be passed
+to these methods as keyword arguments.</p>
+<p>2. <strong>Field Methods</strong> - supported by certain endpoints. Allow quick and
+lightweight access to select fields of the Quote and Key Stats endpoints.
+Examples are <code class="docutils literal notranslate"><span class="pre">get_company_name</span></code>, <code class="docutils literal notranslate"><span class="pre">get_beta</span></code>, etc. See below for more examples.</p>
+<p>3. <code class="docutils literal notranslate"><span class="pre">get_endpoints</span></code> - returns one or more (up to 10) endpoints to be returned
+in the <em>exact</em> format of the examples in the IEX docs. This method accepts no
+additional parameters (it uses the defaults) and does not allow Pandas DataFrame as an output format.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gh">Out[3]: </span><span class="go">191.1</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="iexfinance.stock.StockReader">
+<em class="property">class </em><code class="descclassname">iexfinance.stock.</code><code class="descname">StockReader</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for obtaining data from the Stock endpoints of IEX. Subclass of
+_IEXBase.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="formatting">
+<h2>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="supported-formats">
+<h3>Supported Formats<a class="headerlink" href="#supported-formats" title="Permalink to this headline">¶</a></h3>
+<p>1. <strong>JSON</strong> (<strong>All Endpoints</strong>) - For a single symbol, endpoint methods will
+return
+the endpoint as specified in docs (i.e. <em>dict</em> for Quote, <em>float</em> for Price)
+while multiple symbols will be returned as a symbol-indexed dictionary of the
+requested endpoint for each symbol.</p>
+<p>2. <strong>Pandas DataFrame</strong> (<em>most endpoints</em>) - The DataFrame is often indexed by
+the endpoint’s dictionary keys, with a column for each requested symbol. For
+field methods, the DataFrame is a single column, indexed by each requested
+symbol.</p>
+</div>
+<div class="section" id="selecting-an-output-format">
+<h3>Selecting an Output Format<a class="headerlink" href="#selecting-an-output-format" title="Permalink to this headline">¶</a></h3>
+<p>Output formatting is most often selected through the initial call to the
+<code class="docutils literal notranslate"><span class="pre">Stock</span></code>
+function (which becomes an attribute of the <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> instance) by
+passing
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> as a keyword argument:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [5]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">                      AAPL</span>
+<span class="go">avgTotalVolume    23405292</span>
+<span class="go">calculationPrice      tops</span>
+<span class="go">change                3.22</span>
+<span class="go">changePercent      0.01714</span>
+<span class="go">close               187.88</span>
+</pre></div>
+</div>
+<p>It is also possible to change the output format of an already-instantiated
+<code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object using the <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> method:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">change_output_format</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+
+<span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
+<span class="gh">Out[8]: </span><span class="go">187.88</span>
+</pre></div>
+</div>
+<p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+
+<span class="gp">In [10]: </span><span class="n">aaplD</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">json_parse_float</span><span class="o">=</span><span class="n">Decimal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Certain endpoints (such as quote and chart) allow customizable
+parameters. To specify one of these parameters, merely pass it as a
+keyword argument to the endpoint method. (see <a class="reference internal" href="#stocks-passing-parameters"><span class="std std-ref">example</span></a>).</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
+<span class="gh">Out[12]: </span><span class="go"></span>
+<span class="go">AAPL    11.6487</span>
+<span class="go">Name: ytdChange, dtype: object</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A key IEX optional parameter is <code class="docutils literal notranslate"><span class="pre">filter_</span></code>, which allows the
+filtering of endpoint requests to return certain fields only. See the
+<a class="reference external" href="https://iextrading.com/developer/docs/#filter-results">IEX docs</a>
+and the examples below for more information.</p>
+</div>
+</div>
+<div class="section" id="endpoint-methods">
+<span id="stocks-endpoints"></span><h2>Endpoint Methods<a class="headerlink" href="#endpoint-methods" title="Permalink to this headline">¶</a></h2>
+<p><strong>Endpoint methods</strong> will return a symbol-indexed dictionary of the endpoint
+requested. See examples <a class="reference internal" href="#stocks-examples-endpoint-methods"><span class="std std-ref">below</span></a> for
+clarification. The optional Keyword Arguments (in accordance with the IEX docs)
+are specified for each method below:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#stocks-book"><span class="std std-ref">Book</span></a></li>
+<li><a class="reference internal" href="#stocks-chart"><span class="std std-ref">Chart</span></a></li>
+<li><a class="reference internal" href="#stocks-company"><span class="std std-ref">Company</span></a></li>
+<li><a class="reference internal" href="#stocks-delayed-quote"><span class="std std-ref">Delayed Quote</span></a></li>
+<li><a class="reference internal" href="#stocks-dividends"><span class="std std-ref">Dividends</span></a></li>
+<li><a class="reference internal" href="#stocks-earnings"><span class="std std-ref">Earnings</span></a></li>
+<li><a class="reference internal" href="#stocks-effective-spread"><span class="std std-ref">Effective Spread</span></a></li>
+<li><a class="reference internal" href="#stocks-financials"><span class="std std-ref">Financials</span></a></li>
+<li><a class="reference internal" href="#stocks-key-stats"><span class="std std-ref">Key Stats</span></a></li>
+<li><a class="reference internal" href="#stocks-logo"><span class="std std-ref">Logo</span></a></li>
+<li><a class="reference internal" href="#stocks-news"><span class="std std-ref">News</span></a></li>
+<li><a class="reference internal" href="#stocks-ohlc"><span class="std std-ref">OHLC</span></a></li>
+<li><a class="reference internal" href="#stocks-open-close"><span class="std std-ref">Open/Close</span></a></li>
+<li><a class="reference internal" href="#stocks-peers"><span class="std std-ref">Peers</span></a></li>
+<li><a class="reference internal" href="#stocks-previous"><span class="std std-ref">Previous</span></a></li>
+<li><a class="reference internal" href="#stocks-price"><span class="std std-ref">Price</span></a></li>
+<li><a class="reference internal" href="#stocks-quote"><span class="std std-ref">Quote</span></a></li>
+<li><a class="reference internal" href="#stocks-relevant"><span class="std std-ref">Relevant</span></a></li>
+<li><a class="reference internal" href="#stocks-splits"><span class="std std-ref">Splits</span></a></li>
+<li><a class="reference internal" href="#stocks-time-series"><span class="std std-ref">Time Series</span></a></li>
+<li><a class="reference internal" href="#stocks-volume-by-venue"><span class="std std-ref">Volume by Venue</span></a></li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_book">
+<code class="descclassname">StockReader.</code><code class="descname">get_book</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_book" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#book">https://iextrading.com/developer/docs/#book</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Book endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_chart">
+<code class="descclassname">StockReader.</code><code class="descname">get_chart</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#chart">https://iextrading.com/developer/docs/#chart</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Chart range to return. See docs.</li>
+<li><strong>chartReset</strong> (<em>boolean</em><em>, </em><em>default True</em><em>, </em><em>optional</em>) – If true, 1d chart will reset at midnight instead of the default
+behavior of 9:30am EST.</li>
+<li><strong>chartSimplify</strong> (<em>boolean</em><em>, </em><em>default True</em><em>, </em><em>optional</em>) – If true, runs polyline simplification using Douglas-Peucker
+algorithm. Useful for plotting spotline charts</li>
+<li><strong>chartInterval</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Chart data will return every nth element (where n is chartInterval)</li>
+<li><strong>changeFromClose</strong> (<em>bool</em><em>, </em><em>default False</em><em>, </em><em>optional</em>) – If true, changeOverTime and marketChangeOverTime will be relative
+to previous day close instead of the first value.</li>
+<li><strong>chartLast</strong> (<em>int</em><em>, </em><em>optional</em>) – return the last N elements</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pandas not supported for this method. list will be returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Chart endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_company">
+<code class="descclassname">StockReader.</code><code class="descname">get_company</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_company" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#company">https://iextrading.com/developer/docs/#company</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Company endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_delayed_quote">
+<code class="descclassname">StockReader.</code><code class="descname">get_delayed_quote</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#delayed-quote">https://iextrading.com/developer/docs/#delayed-quote</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Delayed Quote endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_dividends">
+<code class="descclassname">StockReader.</code><code class="descname">get_dividends</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_dividends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#dividends">https://iextrading.com/developer/docs/#dividends</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of dividends to return</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pandas not supported for this method. list will be returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Dividends endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_earnings">
+<code class="descclassname">StockReader.</code><code class="descname">get_earnings</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_earnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#earnings">https://iextrading.com/developer/docs/#earnings</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Earnings endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_effective_spread">
+<code class="descclassname">StockReader.</code><code class="descname">get_effective_spread</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_effective_spread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference:  <a class="reference external" href="https://iextrading.com/developer/docs/#effective-spread">https://iextrading.com/developer/docs/#effective-spread</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Effective Spread endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_financials">
+<code class="descclassname">StockReader.</code><code class="descname">get_financials</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_financials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#financials">https://iextrading.com/developer/docs/#financials</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Financials endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_key_stats">
+<code class="descclassname">StockReader.</code><code class="descname">get_key_stats</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_key_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#key-stats">https://iextrading.com/developer/docs/#key-stats</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Key Stats endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#stocks-movers"><span class="std std-ref">Market Movers</span></a></p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_largest_trades">
+<code class="descclassname">StockReader.</code><code class="descname">get_largest_trades</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_largest_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#largest-trades">https://iextrading.com/developer/docs/#largest-trades</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Largest Trades endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_logo">
+<code class="descclassname">StockReader.</code><code class="descname">get_logo</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_logo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#logo">https://iextrading.com/developer/docs/#logo</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Logo endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_news">
+<code class="descclassname">StockReader.</code><code class="descname">get_news</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_news" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Stocks News endpoint (list or pandas)</p>
+<p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#news">https://iextrading.com/developer/docs/#news</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>range</strong> (<em>int</em><em>, </em><em>default 10</em><em>, </em><em>optional</em>) – Time period of news to return (in days)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks News endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_ohlc">
+<code class="descclassname">StockReader.</code><code class="descname">get_ohlc</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference:  <a class="reference external" href="https://iextrading.com/developer/docs/#ohlc">https://iextrading.com/developer/docs/#ohlc</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks OHLC endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Time Series is an alias for the <a class="reference internal" href="#stocks-ohlc"><span class="std std-ref">OHLC</span></a> endpoint</p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_open_close">
+<code class="descclassname">StockReader.</code><code class="descname">get_open_close</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_open_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#open-close">https://iextrading.com/developer/docs/#open-close</a></p>
+<p class="rubric">Notes</p>
+<p>Open/Close is an alias for the OHLC endpoint, and will return the
+same</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Open/Close (OHLC) endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_peers">
+<code class="descclassname">StockReader.</code><code class="descname">get_peers</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_peers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference:https://iextrading.com/developer/docs/#peers</p>
+<p class="rubric">Notes</p>
+<p>Only allows JSON format (pandas not supported).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Peers endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_previous">
+<code class="descclassname">StockReader.</code><code class="descname">get_previous</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_previous" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#previous">https://iextrading.com/developer/docs/#previous</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Previous endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_price">
+<code class="descclassname">StockReader.</code><code class="descname">get_price</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#price">https://iextrading.com/developer/docs/#price</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Price endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_quote">
+<code class="descclassname">StockReader.</code><code class="descname">get_quote</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#quote">https://iextrading.com/developer/docs/#quote</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Quote endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_relevant">
+<code class="descclassname">StockReader.</code><code class="descname">get_relevant</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_relevant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#relevant">https://iextrading.com/developer/docs/#relevant</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Relevant endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_splits">
+<code class="descclassname">StockReader.</code><code class="descname">get_splits</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_splits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#splits">https://iextrading.com/developer/docs/#splits</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of splits to return</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Splits endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Time Series is an alias for the <a class="reference internal" href="#stocks-chart"><span class="std std-ref">Chart</span></a> endpoint</p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_time_series">
+<code class="descclassname">StockReader.</code><code class="descname">get_time_series</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#time-series">https://iextrading.com/developer/docs/#time-series</a></p>
+<p class="rubric">Notes</p>
+<p>Time Series is an alias for the Chart endpoint, and will return the
+same</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Time Series (Chart) endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_volume_by_venue">
+<code class="descclassname">StockReader.</code><code class="descname">get_volume_by_venue</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference:  <a class="reference external" href="https://iextrading.com/developer/docs/#volume-by-venue">https://iextrading.com/developer/docs/#volume-by-venue</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Volume by Venue endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="field-methods">
+<span id="stocks-field-methods"></span><h2>Field Methods<a class="headerlink" href="#field-methods" title="Permalink to this headline">¶</a></h2>
+<p>In addition, various <strong>Field Methods</strong> are provided for certain endpoints.
+These methods will allow retrieval of a single datapoint, such as <code class="docutils literal notranslate"><span class="pre">get_open</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_company_name</span></code>, etc. Field methods are displayed below the endpoint
+methods for which they are available (namely <a class="reference internal" href="#stocks-quote"><span class="std std-ref">Quote</span></a>
+and <a class="reference internal" href="#stocks-key-stats"><span class="std std-ref">Key Stats</span></a>).</p>
+<div class="section" id="key-stats">
+<span id="stocks-key-stats-field-methods"></span><h3>Key Stats<a class="headerlink" href="#key-stats" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_beta">
+<code class="descclassname">StockReader.</code><code class="descname">get_beta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_beta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_short_interest">
+<code class="descclassname">StockReader.</code><code class="descname">get_short_interest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_short_interest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_short_ratio">
+<code class="descclassname">StockReader.</code><code class="descname">get_short_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_short_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_latest_eps">
+<code class="descclassname">StockReader.</code><code class="descname">get_latest_eps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_latest_eps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_shares_outstanding">
+<code class="descclassname">StockReader.</code><code class="descname">get_shares_outstanding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_shares_outstanding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_float">
+<code class="descclassname">StockReader.</code><code class="descname">get_float</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_float" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_eps_consensus">
+<code class="descclassname">StockReader.</code><code class="descname">get_eps_consensus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_eps_consensus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="quote">
+<span id="stocks-quote-field-methods"></span><h3>Quote<a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_company_name">
+<code class="descclassname">StockReader.</code><code class="descname">get_company_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_company_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_sector">
+<code class="descclassname">StockReader.</code><code class="descname">get_sector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_sector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_open">
+<code class="descclassname">StockReader.</code><code class="descname">get_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_close">
+<code class="descclassname">StockReader.</code><code class="descname">get_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_years_high">
+<code class="descclassname">StockReader.</code><code class="descname">get_years_high</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_years_high" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_years_low">
+<code class="descclassname">StockReader.</code><code class="descname">get_years_low</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_years_low" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_ytd_change">
+<code class="descclassname">StockReader.</code><code class="descname">get_ytd_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_ytd_change" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_volume">
+<code class="descclassname">StockReader.</code><code class="descname">get_volume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stock.StockReader.get_market_cap">
+<code class="descclassname">StockReader.</code><code class="descname">get_market_cap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stock.StockReader.get_market_cap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+<div class="section" id="examples">
+<span id="stocks-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>A single symbol request will return data <em>exactly</em> as it appears in the IEX docs examples:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [14]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [15]: </span><span class="n">a</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-15-ed0859ab46cc&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;a&#39; is not defined
+</pre></div>
+</div>
+<p>While multi-symbol requests will return a symbol-indexed list of the endpoint’s data</p>
+<p>Most endpoints can be formatted as a <cite>pandas.DataFrame</cite>. Multi-symbol requests will concatenate the dataframes for each:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span> <span class="k">as</span> <span class="n">iex</span>
+
+<span class="gp">In [17]: </span><span class="n">air_transport</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s1">&#39;AAL&#39;</span><span class="p">,</span> <span class="s1">&#39;DAL&#39;</span><span class="p">,</span> <span class="s1">&#39;LUV&#39;</span><span class="p">],</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[18]: </span><span class="go"></span>
+<span class="go">                      AAL      DAL      LUV</span>
+<span class="go">avgTotalVolume    6395044  6519532  6142028</span>
+<span class="go">calculationPrice     tops     tops     tops</span>
+<span class="go">change               0.37     0.91    0.265</span>
+<span class="go">changePercent     0.01029  0.01826  0.00504</span>
+<span class="go">close               35.96    49.84    52.53</span>
+</pre></div>
+</div>
+<div class="section" id="filtering">
+<span id="stocks-filtering"></span><h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p>Per the IEX Docs, the
+<a class="reference external" href="https://iextrading.com/developer/docs/#filter-results">filter</a>,
+paramter may be passed to any endpoint request to restrict single endpoint
+queries to certain fields. iexfinance uses <code class="docutils literal notranslate"><span class="pre">filter_</span></code>, as <code class="docutils literal notranslate"><span class="pre">filter</span></code> is a
+reserved word in Python:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span> <span class="k">as</span> <span class="n">iex</span>
+
+<span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
+<span class="gh">Out[21]: </span><span class="go"></span>
+<span class="go">               AAPL</span>
+<span class="go">ytdChange  0.116487</span>
+</pre></div>
+</div>
+<p>Lists of fields are acceptable as well:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
+<span class="gh">Out[22]: </span><span class="go"></span>
+<span class="go">                 AAPL</span>
+<span class="go">close      187.880000</span>
+<span class="go">open       189.490000</span>
+<span class="go">ytdChange    0.116487</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The desired fields must <strong>exactly</strong> match the field key names as
+listed in the IEX docs.</p>
+</div>
+</div>
+<div class="section" id="passing-parameters">
+<span id="stocks-passing-parameters"></span><h3>Passing Parameters<a class="headerlink" href="#passing-parameters" title="Permalink to this headline">¶</a></h3>
+<p><strong>Endpoint-specific</strong></p>
+<p>We show an example using the <cite>last</cite> parameter for the News endpoint:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
+<span class="gh">Out[24]: </span><span class="go">10</span>
+</pre></div>
+</div>
+<p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
+<span class="gh">Out[26]: </span><span class="go">13</span>
+</pre></div>
+</div>
+<p>With a custom value specified, News now returns the previous 35 items.</p>
+</div>
+<div class="section" id="output-formatting">
+<span id="stocks-output-formatting"></span><h3>Output Formatting<a class="headerlink" href="#output-formatting" title="Permalink to this headline">¶</a></h3>
+<p>Most endpoints allow for pandas DataFrame-formatted output:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[28]: </span><span class="go"></span>
+<span class="go">                      AAPL</span>
+<span class="go">avgTotalVolume    23405292</span>
+<span class="go">calculationPrice      tops</span>
+<span class="go">change                3.22</span>
+<span class="go">changePercent      0.01714</span>
+<span class="go">close               187.88</span>
+</pre></div>
+</div>
+<p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
+instantiated:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">change_output_format</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+
+<span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
+<span class="gh">Out[30]: </span><span class="go"></span>
+<span class="go">{&#39;open&#39;: {&#39;price&#39;: 189.49, &#39;time&#39;: 1531402200514},</span>
+<span class="go"> &#39;close&#39;: {&#39;price&#39;: 187.88, &#39;time&#39;: 1531339200166},</span>
+<span class="go"> &#39;high&#39;: 191.41,</span>
+<span class="go"> &#39;low&#39;: 189.31}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stocks-examples-field-methods">
+<span id="id2"></span><h3>Field Methods<a class="headerlink" href="#stocks-examples-field-methods" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_company_name()</span></code></p>
+<p>Single symbol</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[31]: </span><span class="go">189.49</span>
+
+<span class="gp">In [32]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
+<span class="go">                Out[32]: &#39;Apple Inc.&#39;</span>
+</pre></div>
+</div>
+<p>Multiple symbols</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+
+<span class="gp">In [34]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 189.49, &#39;TSLA&#39;: 321.45}</span>
+
+<span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
+<span class="go">                                          Out[35]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
+</pre></div>
+</div>
+<p>Format as a DataFrame</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">],</span> <span class="n">output_format</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pandas&#39;</span><span class="p">))</span>
+
+<span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
+<span class="gh">Out[37]: </span><span class="go"></span>
+<span class="go">          beta</span>
+<span class="go">AAPL  1.158470</span>
+<span class="go">TSLA  0.719279</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="market-movers">
+<span id="stocks-movers"></span><h2>Market Movers<a class="headerlink" href="#market-movers" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#list">List</a> endpoint of stocks provides information about market movers from a given trading day. iexfinance implements these market mover lists with top-level functions, which are listed below. These functions return a list of quotes of the top-10 symbols in each list.</p>
+<ul class="simple">
+<li>Gainers (<code class="docutils literal notranslate"><span class="pre">get_market_gainers</span></code>)</li>
+<li>Losers (<code class="docutils literal notranslate"><span class="pre">get_market_losers</span></code>)</li>
+<li>Most Active (<code class="docutils literal notranslate"><span class="pre">get_market_most_active</span></code>)</li>
+<li>IEX Volume (<code class="docutils literal notranslate"><span class="pre">get_market_iex_volume</span></code>)</li>
+<li>IEX Percent (<code class="docutils literal notranslate"><span class="pre">get_market_iex_percent</span></code>)</li>
+</ul>
+</div>
+<div class="section" id="cryptocurrencies">
+<span id="stocks-crypto"></span><h2>Cryptocurrencies<a class="headerlink" href="#cryptocurrencies" title="Permalink to this headline">¶</a></h2>
+<p>As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the <code class="docutils literal notranslate"><span class="pre">get_quote</span></code> method.</p>
+<p>The following tickers are supported:</p>
+<ul class="simple">
+<li>Bitcoin USD (BTCUSDT)</li>
+<li>EOS USD (EOSUSDT)</li>
+<li>Ethereum USD (ETHUSDT)</li>
+<li>Binance Coin USD (BNBUSDT)</li>
+<li>Ontology USD (ONTUSDT)</li>
+<li>Bitcoin Cash USD (BCCUSDT)</li>
+<li>Cardano USD (ADAUSDT)</li>
+<li>Ripple USD (XRPUSDT)</li>
+<li>TrueUSD (TUSDUSDT)</li>
+<li>TRON USD (TRXUSDT)</li>
+<li>Litecoin USD (LTCUSDT)</li>
+<li>Ethereum Classic USD (ETCUSDT)</li>
+<li>MIOTA USD (IOTAUSDT)</li>
+<li>ICON USD (ICXUSDT)</li>
+<li>NEO USD (NEOUSDT)</li>
+<li>VeChain USD (VENUSDT)</li>
+<li>Stellar Lumens USD (XLMUSDT)</li>
+<li>Qtum USD (QTUMUSDT)</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="historical.html" class="btn btn-neutral float-right" title="Historical Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.4',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
