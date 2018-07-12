@@ -6,6 +6,8 @@ What's New
 
 New features, bug fixes, and improvements for each release.
 
+.. include:: whatsnew/v0.3.4.txt
+
 .. include:: whatsnew/v0.3.3.txt
 
 .. include:: whatsnew/v0.3.3.txt
