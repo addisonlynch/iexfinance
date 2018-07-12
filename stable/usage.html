@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; iexfinance 0.3.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stocks" href="stocks.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stocks">Stocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint-specific-parameters">Endpoint-Specific Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-data">Reference Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iex-market-data">IEX Market Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iex-stats">IEX Stats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#caching">Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<span id="id1"></span><h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The iexfinance codebase and documentation are structured in a way that emulates much of the <a class="reference external" href="https://iextrading.com/developer/docs">IEX API Documentation</a> for readability and ease of use.</p>
+<p>Thus there are four main modules of iexfinance, each allowing the retrieval of data from one of IEX’s main endpoint groups:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></li>
+<li><a class="reference internal" href="#usage-reference-data"><span class="std std-ref">Reference Data</span></a></li>
+<li><a class="reference internal" href="#usage-iex-market-data"><span class="std std-ref">IEX Market Data</span></a></li>
+<li><a class="reference internal" href="#usage-iex-stats"><span class="std std-ref">IEX Stats</span></a></li>
+</ul>
+</div></blockquote>
+<p>These modules provide classes and top-level functions to execute queries to the IEX API.</p>
+</div>
+<div class="section" id="parameters">
+<span id="usage-parameters"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>All classes and top-level functions utilize the <code class="docutils literal notranslate"><span class="pre">_IEXBASE</span></code> class to make their
+requests:</p>
+<dl class="class">
+<dt id="iexfinance.base._IEXBase">
+<em class="property">class </em><code class="descclassname">iexfinance.base.</code><code class="descname">_IEXBase</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for retrieving equities information from the IEX Finance API.
+Inherited by Stock and Market Readers, and conducts query operations
+including preparing and executing queries from the API.</p>
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.retry_count">
+<code class="descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int, default 3, optional</em> – Desired number of retries if a request fails</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.pause">
+<code class="descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float, default 0.5, optional</em> – Pause time between retry attempts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.session">
+<code class="descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>requests_cache.session, default None, optional</em> – A cached requests-cache session</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="stocks">
+<span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see <a class="reference external" href="stocks.html">Stocks</a>.</p>
+</div>
+<p>IEX provides a list of symbols that are available for access, and as
+such, we provide a function <code class="docutils literal notranslate"><span class="pre">get_available_symbols</span></code> to obtain this
+list. Invalid symbols will be met with a <code class="docutils literal notranslate"><span class="pre">IEXSymbolError</span></code>, and
+duplicate symbols will be kept intact without alteration.</p>
+<div class="section" id="endpoints">
+<h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
+<p>The Stock endpoints of the <a class="reference external" href="https://iextrading.com/developer/">IEX Developer
+API</a> are below, each of which
+contains data regarding a different aspect of the security/securities.
+The top-level <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function creates an object that can obtain each
+of these endpoints. Requests for single symbols will return the <em>exact</em> results
+from that endpoint as shown in the IEX API documentation (see below). Requests
+for multiple symbols will return a symbol-indexed dictionary of
+the endpoint requested.</p>
+<p><strong>Endpoint Method</strong> examples <code class="docutils literal notranslate"><span class="pre">get_quote()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_volume_by_venue()</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+<span class="gh">Out[3]: </span><span class="go"></span>
+<span class="go">{&#39;symbol&#39;: &#39;AAPL&#39;,</span>
+<span class="go"> &#39;date&#39;: &#39;2018-07-11&#39;,</span>
+<span class="go"> &#39;open&#39;: 188.5,</span>
+<span class="go"> &#39;high&#39;: 189.7799,</span>
+<span class="go"> &#39;low&#39;: 187.61,</span>
+<span class="go"> &#39;close&#39;: 187.88,</span>
+<span class="go"> &#39;volume&#39;: 18831470,</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 18831470,</span>
+<span class="go"> &#39;change&#39;: -2.47,</span>
+<span class="go"> &#39;changePercent&#39;: -1.298,</span>
+<span class="go"> &#39;vwap&#39;: 188.3475}</span>
+</pre></div>
+</div>
+<p>For a detailed list of the <em>endpoint methods</em>, see
+<a class="reference external" href="stocks.html#endpoints">here</a>.</p>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>To obtain individual fields from an endpoint, select <a class="reference external" href="stocks.html#field-methods">Field Methods</a> are also provided.</p>
+<p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
+<p><strong>Single Symbol</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[4]: </span><span class="go">189.49</span>
+
+<span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="go">               Out[5]: 191.03</span>
+</pre></div>
+</div>
+<p><strong>Multiple Symbols</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+
+<span class="gp">In [7]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 189.49, &#39;TSLA&#39;: 321.45}</span>
+</pre></div>
+</div>
+<p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
+</div>
+<div class="section" id="endpoint-specific-parameters">
+<h3>Endpoint-Specific Parameters<a class="headerlink" href="#endpoint-specific-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Top-level parameters may be passed to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function, including
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> and request parameters (such as <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pause</span></code>) - the latter of which will be used should any queries made by
+the object fail. These parameters are passed keyword arguments, and are
+entirely optional.</p>
+<p>Certain endpoints (such as quote and chart), however, allow customizable
+parameters. To specify one of these parameters, merely pass it to an endpoint
+method as a keyword argument.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [9]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">AAPL    11.6117</span>
+<span class="go">Name: ytdChange, dtype: object</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
+call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
+change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
+through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
+more information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="reference-data">
+<span id="usage-reference-data"></span><h2>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see <a class="reference external" href="ref.html">Reference Data</a></p>
+</div>
+</div>
+<div class="section" id="iex-market-data">
+<span id="usage-iex-market-data"></span><h2>IEX Market Data<a class="headerlink" href="#iex-market-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see <a class="reference external" href="market.html">IEX Market Data</a></p>
+</div>
+<p>The IEX Market Data <a class="reference external" href="market.html">endpoints</a></p>
+</div>
+<div class="section" id="iex-stats">
+<span id="usage-iex-stats"></span><h2>IEX Stats<a class="headerlink" href="#iex-stats" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see <a class="reference external" href="stats.html">IEX Stats</a></p>
+</div>
+<p>The IEX Stats <a class="reference external" href="stats.html">endpoints</a></p>
+<div class="section" id="caching">
+<h3>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h3>
+<p>iexfinance supports the caching of HTTP requests to IEX using the
+<a class="reference external" href="https://pypi.python.org/pypi/requests-cache">requests-cache</a> package.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="caching.html">Caching Queries</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stocks.html" class="btn btn-neutral float-right" title="Stocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.4',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
