@@ -251,16 +251,16 @@ the endpoint requested.</p>
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">{&#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;date&#39;: &#39;2018-07-11&#39;,</span>
-<span class="go"> &#39;open&#39;: 188.5,</span>
-<span class="go"> &#39;high&#39;: 189.7799,</span>
-<span class="go"> &#39;low&#39;: 187.61,</span>
-<span class="go"> &#39;close&#39;: 187.88,</span>
-<span class="go"> &#39;volume&#39;: 18831470,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 18831470,</span>
-<span class="go"> &#39;change&#39;: -2.47,</span>
-<span class="go"> &#39;changePercent&#39;: -1.298,</span>
-<span class="go"> &#39;vwap&#39;: 188.3475}</span>
+<span class="go"> &#39;date&#39;: &#39;2018-07-18&#39;,</span>
+<span class="go"> &#39;open&#39;: 191.78,</span>
+<span class="go"> &#39;high&#39;: 191.8,</span>
+<span class="go"> &#39;low&#39;: 189.93,</span>
+<span class="go"> &#39;close&#39;: 190.4,</span>
+<span class="go"> &#39;volume&#39;: 16393381,</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 16393381,</span>
+<span class="go"> &#39;change&#39;: -1.05,</span>
+<span class="go"> &#39;changePercent&#39;: -0.548,</span>
+<span class="go"> &#39;vwap&#39;: 190.3897}</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -272,17 +272,17 @@ the endpoint requested.</p>
 <p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
 <p><strong>Single Symbol</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[4]: </span><span class="go">189.49</span>
+<span class="gh">Out[4]: </span><span class="go">189.79</span>
 
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">               Out[5]: 191.03</span>
+<span class="go">               Out[5]: 191.88</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [7]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 189.49, &#39;TSLA&#39;: 321.45}</span>
+<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 189.79, &#39;TSLA&#39;: 316.33}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -301,7 +301,7 @@ method as a keyword argument.</p>
 
 <span class="gp">In [9]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">AAPL    11.6117</span>
+<span class="go">AAPL    12.1862</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
