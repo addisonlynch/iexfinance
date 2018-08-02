@@ -37,7 +37,7 @@ def Stock(symbols=None, output_format='json', **kwargs):
     """
     if isinstance(symbols, str) and symbols:
         return StockReader([symbols], output_format, **kwargs)
-    elif isinstance(symbols, list) and 0 < len(symbols) < 100:
+    elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
         return StockReader(symbols, output_format, **kwargs)
     else:
         raise ValueError("Please input a symbol or list of symbols")
