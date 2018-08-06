@@ -224,11 +224,11 @@ Stats</p>
 
 <span class="gp">In [2]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 163032593, &#39;lastUpdated&#39;: 1533330904991},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5540, &#39;lastUpdated&#39;: 1533327270001},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 33036659, &#39;lastUpdated&#39;: 1533330904991},</span>
-<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 7987293694, &#39;lastUpdated&#39;: 1533330904991},</span>
-<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.0271, &#39;lastUpdated&#39;: 1533330902031}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 146519310, &#39;lastUpdated&#39;: 1533588528370},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5570, &#39;lastUpdated&#39;: 1533588281525},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 38007185, &#39;lastUpdated&#39;: 1533588528397},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 7488543532, &#39;lastUpdated&#39;: 1533588528370},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02454, &#39;lastUpdated&#39;: 1533588529125}}</span>
 </pre></div>
 </div>
 </div>
@@ -262,12 +262,12 @@ trading statstics from the previous five trading days.</p>
 
 <span class="gp">In [4]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[4]: </span><span class="go"></span>
-<span class="go">{&#39;date&#39;: &#39;2018-08-02&#39;,</span>
-<span class="go"> &#39;volume&#39;: 186840652,</span>
-<span class="go"> &#39;routedVolume&#39;: 41153974,</span>
-<span class="go"> &#39;marketShare&#39;: 0.0276,</span>
+<span class="go">{&#39;date&#39;: &#39;2018-08-03&#39;,</span>
+<span class="go"> &#39;volume&#39;: 163032593,</span>
+<span class="go"> &#39;routedVolume&#39;: 33036659,</span>
+<span class="go"> &#39;marketShare&#39;: 0.02701,</span>
 <span class="go"> &#39;isHalfday&#39;: False,</span>
-<span class="go"> &#39;litVolume&#39;: 48705654}</span>
+<span class="go"> &#39;litVolume&#39;: 42117609}</span>
 </pre></div>
 </div>
 </div>
@@ -304,20 +304,20 @@ Stats</p>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 286354807,</span>
 <span class="go">  &#39;recordDate&#39;: &#39;2018-02-09&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 186840652,</span>
-<span class="go">  &#39;avg30Value&#39;: 155364296},</span>
+<span class="go">  &#39;previousDayValue&#39;: 163032593,</span>
+<span class="go">  &#39;avg30Value&#39;: 159253881},</span>
 <span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6381,</span>
 <span class="go">  &#39;recordDate&#39;: &#39;2018-02-06&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 5568,</span>
-<span class="go">  &#39;avg30Value&#39;: 5626},</span>
+<span class="go">  &#39;previousDayValue&#39;: 5540,</span>
+<span class="go">  &#39;avg30Value&#39;: 5611},</span>
 <span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 74855222,</span>
 <span class="go">  &#39;recordDate&#39;: &#39;2016-11-10&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 41153974,</span>
-<span class="go">  &#39;avg30Value&#39;: 32791305},</span>
+<span class="go">  &#39;previousDayValue&#39;: 33036659,</span>
+<span class="go">  &#39;avg30Value&#39;: 33775093},</span>
 <span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17269723089.111,</span>
 <span class="go">  &#39;recordDate&#39;: &#39;2018-02-06&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 10223314893.8207,</span>
-<span class="go">  &#39;avg30Value&#39;: 8223239941.986}}</span>
+<span class="go">  &#39;previousDayValue&#39;: 7987293694.1596,</span>
+<span class="go">  &#39;avg30Value&#39;: 8447184825.4407}}</span>
 </pre></div>
 </div>
 </div>
@@ -452,7 +452,13 @@ of IEX Stats</p>
 
 <span class="gp">In [11]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">[{&#39;date&#39;: &#39;2018-08-02&#39;,</span>
+<span class="go">[{&#39;date&#39;: &#39;2018-08-03&#39;,</span>
+<span class="go">  &#39;volume&#39;: 163032593,</span>
+<span class="go">  &#39;routedVolume&#39;: 33036659,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02701,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 42117609},</span>
+<span class="go"> {&#39;date&#39;: &#39;2018-08-02&#39;,</span>
 <span class="go">  &#39;volume&#39;: 186840652,</span>
 <span class="go">  &#39;routedVolume&#39;: 41153974,</span>
 <span class="go">  &#39;marketShare&#39;: 0.0276,</span>
@@ -463,13 +469,7 @@ of IEX Stats</p>
 <span class="go">  &#39;routedVolume&#39;: 38771846,</span>
 <span class="go">  &#39;marketShare&#39;: 0.02781,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 50400792},</span>
-<span class="go"> {&#39;date&#39;: &#39;2018-07-31&#39;,</span>
-<span class="go">  &#39;volume&#39;: 186005018,</span>
-<span class="go">  &#39;routedVolume&#39;: 39484822,</span>
-<span class="go">  &#39;marketShare&#39;: 0.025169999999999998,</span>
-<span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 48488020}]</span>
+<span class="go">  &#39;litVolume&#39;: 50400792}]</span>
 </pre></div>
 </div>
 </div>
