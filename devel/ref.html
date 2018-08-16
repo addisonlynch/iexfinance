@@ -215,13 +215,13 @@ extracts the symbols and returns a list of the symbols only:</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">[{&#39;symbol&#39;: &#39;A&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-08-14&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-08-16&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;2&#39;},</span>
 <span class="go"> {&#39;symbol&#39;: &#39;AA&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-08-14&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-08-16&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;12042&#39;}]</span>
@@ -270,30 +270,11 @@ endpoints</p>
 
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXQueryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">&lt;ipython-input-4-0490cbe16594&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/__init__.py</span> in <span class="ni">get_iex_corporate_actions</span><span class="nt">(start, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">109</span><span class="sd">     return CorporateActions(start=start, **kwargs).fetch()</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="sd"> </span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_query</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">134</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_iex_query</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">pause</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>         <span class="k">raise</span> <span class="n">IEXQueryError</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> 
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="k">def</span> <span class="nf">_prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="ne">IEXQueryError</span>: An error occurred while making the query.
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -340,30 +321,11 @@ endpoints</p>
 
 <span class="gp">In [6]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXQueryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">&lt;ipython-input-6-93229e54e611&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/__init__.py</span> in <span class="ni">get_iex_next_day_ex_date</span><span class="nt">(start, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">137</span><span class="sd">     return NextDay(start=start, **kwargs).fetch()</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="sd"> </span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_query</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">134</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_iex_query</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">pause</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>         <span class="k">raise</span> <span class="n">IEXQueryError</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> 
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="k">def</span> <span class="nf">_prepare_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="ne">IEXQueryError</span>: An error occurred while making the query.
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
