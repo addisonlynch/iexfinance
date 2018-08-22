@@ -361,7 +361,7 @@ def get_sector_performance(**kwargs):
     data: list
         List of dictionary sector performance items
     """
-    _SECTOR_PERFORMANCE_URL = "https://api.iextrading.com/1.0/stock/market/sector-performance"
+    _URL = "https://api.iextrading.com/1.0/stock/market/sector-performance"
     handler = _IEXBase(**kwargs)
     response = handler._execute_iex_query(_SECTOR_PERFORMANCE_URL)
     if not response:
