@@ -346,3 +346,25 @@ def get_market_iex_percent(**kwargs):
     percent change on the IEX exchange from the Stocks list endpoint
     """
     return MoversReader(mover='iexpercent', **kwargs).fetch()
+
+
+def get_sector_performance(**kwargs):
+    """
+    This function returns an array of each sector and performance
+    for the current trading day. Performance is based on each sector ETF.
+    Parameters
+    ----------
+    kwargs:
+        Additional Request Parameters (see base class)
+    Returns
+    -------
+    data: list
+        List of dictionary sector performance items
+    """
+    _SECTOR_PERFORMANCE_URL = "https://api.iextrading.com/1.0/stock/market/sector-performance"
+    handler = _IEXBase(**kwargs)
+    response = handler._execute_iex_query(_SECTOR_PERFORMANCE_URL)
+    if not response:
+        raise IEXQueryError("Could not download all sector performance data")
+    else:
+        return response
