@@ -365,6 +365,6 @@ def get_sector_performance(**kwargs):
     handler = _IEXBase(**kwargs)
     response = handler._execute_iex_query(_SECTOR_PERFORMANCE_URL)
     if not response:
-        raise IEXQueryError("Could not download all sector performance data")
+        raise IEXQueryError("Could not download sector performance data")
     else:
         return response
