@@ -8,7 +8,8 @@ from decimal import Decimal
 
 from iexfinance import (get_historical_data, get_market_gainers,
                         get_market_losers, get_market_most_active,
-                        get_market_iex_volume, get_market_iex_percent)
+                        get_market_iex_volume, get_market_iex_percent,
+                        get_sector_performance)
 from iexfinance import Stock
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
@@ -1045,3 +1046,10 @@ class TestCrypto(object):
     def test_listed_crypto_symbols(self):
         a = Stock(self.ticks)
         assert isinstance(a.get_quote(), dict)
+
+
+class TestSectorPerformance(object):
+
+    def test_list_sector_performance(self):
+        li = get_sector_performance()
+        assert len(li) == pytest.approx(10, 1)
