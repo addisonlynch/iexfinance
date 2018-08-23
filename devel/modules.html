@@ -1491,6 +1491,24 @@ the Stocks list endpoint</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="iexfinance.get_sector_performance">
+<code class="descclassname">iexfinance.</code><code class="descname">get_sector_performance</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_sector_performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns an array of each sector and performance
+for the current trading day. Performance is based on each sector ETF.
+:param kwargs: Additional Request Parameters (see base class)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>data</strong> – List of dictionary sector performance items</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="iexfinance.get_stats_daily">
 <code class="descclassname">iexfinance.</code><code class="descname">get_stats_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>last=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_daily" title="Permalink to this definition">¶</a></dt>
 <dd><p>Top-level function for obtaining data from the Historical Daily endpoint

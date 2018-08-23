@@ -576,3 +576,16 @@ The following tickers are supported:
 - VeChain USD (VENUSDT)
 - Stellar Lumens USD (XLMUSDT)
 - Qtum USD (QTUMUSDT)
+
+.. _stocks.sector:
+
+Sector Performance
+==================
+
+Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_sector_performance
+
+    get_sector_performance()

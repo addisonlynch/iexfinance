@@ -109,6 +109,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#market-movers">Market Movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cryptocurrencies">Cryptocurrencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sector-performance">Sector Performance</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
@@ -909,7 +910,7 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">12</span>
+<span class="gh">Out[26]: </span><span class="go">14</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -1010,6 +1011,27 @@ instantiated:</p>
 <li>Stellar Lumens USD (XLMUSDT)</li>
 <li>Qtum USD (QTUMUSDT)</li>
 </ul>
+</div>
+<div class="section" id="sector-performance">
+<span id="stocks-sector"></span><h2>Sector Performance<a class="headerlink" href="#sector-performance" title="Permalink to this headline">¶</a></h2>
+<p>Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the <code class="docutils literal notranslate"><span class="pre">get_sector_performance</span></code> function.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_sector_performance</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-38-87d2e3e34391&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_sector_performance</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;iexfinance.stocks&#39;
+
+<span class="gp">In [39]: </span><span class="n">get_sector_performance</span><span class="p">()</span>
+<span class="go">                                                                                                                                                                                                                                                                                                                             ---------------------------------------------------------------------------</span>
+<span class="go">NameError                                 Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-39-45230f78afc1&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 get_sector_performance()</span>
+
+<span class="go">NameError: name &#39;get_sector_performance&#39; is not defined</span>
+</pre></div>
+</div>
 </div>
 </div>
 
