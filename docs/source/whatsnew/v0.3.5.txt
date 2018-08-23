@@ -1,0 +1,16 @@
+.. _whatsnew_035:
+
+
+v0.3.5 (TBD)
+-----------------------
+
+This is a minor release from 0.3.4.
+
+Highlights:
+
+Adds and updates endpoints related to provider updates by IEX.
+
+New Features
+~~~~~~~~~~~~
+
+- Adds support for the `Sector Performance <https://iextrading.com/developer/docs/#sector-performance>`__ endpoint of Stocks (thank you kafana).
