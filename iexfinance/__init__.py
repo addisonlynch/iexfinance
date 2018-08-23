@@ -348,6 +348,14 @@ def get_market_iex_percent(**kwargs):
     return MoversReader(mover='iexpercent', **kwargs).fetch()
 
 
+def get_market_in_focus(**kwargs):
+    """
+    Top-level function for obtaining top 10 in focus symbols from the
+    Stocks list endpoint
+    """
+    return MoversReader(mover='infocus', **kwargs).fetch()
+
+
 def get_sector_performance(**kwargs):
     """
     This function returns an array of each sector and performance
