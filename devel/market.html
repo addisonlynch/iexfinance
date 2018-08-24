@@ -226,16 +226,16 @@ aggregated best quoted bid and offer position in near real time.</p>
 <span class="go">[{&#39;symbol&#39;: &#39;AAPL&#39;,</span>
 <span class="go">  &#39;sector&#39;: &#39;technologyhardwareequipment&#39;,</span>
 <span class="go">  &#39;securityType&#39;: &#39;commonstock&#39;,</span>
-<span class="go">  &#39;bidPrice&#39;: 215.49,</span>
-<span class="go">  &#39;bidSize&#39;: 160,</span>
-<span class="go">  &#39;askPrice&#39;: 217.11,</span>
-<span class="go">  &#39;askSize&#39;: 100,</span>
-<span class="go">  &#39;lastUpdated&#39;: 1535118631190,</span>
-<span class="go">  &#39;lastSalePrice&#39;: 215.95,</span>
+<span class="go">  &#39;bidPrice&#39;: 0,</span>
+<span class="go">  &#39;bidSize&#39;: 0,</span>
+<span class="go">  &#39;askPrice&#39;: 0,</span>
+<span class="go">  &#39;askSize&#39;: 0,</span>
+<span class="go">  &#39;lastUpdated&#39;: 1535140800463,</span>
+<span class="go">  &#39;lastSalePrice&#39;: 216.06,</span>
 <span class="go">  &#39;lastSaleSize&#39;: 100,</span>
-<span class="go">  &#39;lastSaleTime&#39;: 1535118619111,</span>
-<span class="go">  &#39;volume&#39;: 27415,</span>
-<span class="go">  &#39;marketPercent&#39;: 0.01299}]</span>
+<span class="go">  &#39;lastSaleTime&#39;: 1535140797995,</span>
+<span class="go">  &#39;volume&#39;: 312497,</span>
+<span class="go">  &#39;marketPercent&#39;: 0.01754}]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -279,7 +279,7 @@ of a real-time quote.</p>
 
 <span class="gp">In [6]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">0    215.95</span>
+<span class="go">0    216.06</span>
 <span class="go">Name: price, dtype: float64</span>
 </pre></div>
 </div>
@@ -341,15 +341,7 @@ for given symbols.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_market_book</span>
 
 <span class="gp">In [10]: </span><span class="n">get_market_book</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
-<span class="gh">Out[10]: </span><span class="go"></span>
-<span class="go">{&#39;AAPL&#39;: {&#39;bids&#39;: [{&#39;price&#39;: 215.49, &#39;size&#39;: 160, &#39;timestamp&#39;: 1535117401251},</span>
-<span class="go">   {&#39;price&#39;: 215.16, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535117519786},</span>
-<span class="go">   {&#39;price&#39;: 214.52, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535117540214},</span>
-<span class="go">   {&#39;price&#39;: 213.88, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535118358568},</span>
-<span class="go">   {&#39;price&#39;: 140, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535117405223}],</span>
-<span class="go">  &#39;asks&#39;: [{&#39;price&#39;: 217.11, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535118250497},</span>
-<span class="go">   {&#39;price&#39;: 217.75, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535117401241},</span>
-<span class="go">   {&#39;price&#39;: 218.39, &#39;size&#39;: 100, &#39;timestamp&#39;: 1535117453725}]}}</span>
+<span class="gh">Out[10]: </span><span class="go">{&#39;AAPL&#39;: {&#39;bids&#39;: [], &#39;asks&#39;: []}}</span>
 </pre></div>
 </div>
 <div class="admonition-todo admonition" id="index-0">
