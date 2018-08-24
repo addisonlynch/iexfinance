@@ -548,6 +548,7 @@ The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks pr
 * Most Active (``get_market_most_active``)
 * IEX Volume (``get_market_iex_volume``)
 * IEX Percent (``get_market_iex_percent``)
+* In Focus (``get_market_in_focus``)
 
 .. _stocks.crypto:
 
