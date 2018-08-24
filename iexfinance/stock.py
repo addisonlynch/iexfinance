@@ -779,7 +779,7 @@ class MoversReader(_IEXBase):
         Desired mover
     """
     _AVAILABLE_MOVERS = ["mostactive", "gainers", "losers", "iexvolume",
-                         "iexpercent"]
+                         "iexpercent", "infocus"]
 
     def __init__(self, mover=None, **kwargs):
         super(MoversReader, self).__init__(**kwargs)

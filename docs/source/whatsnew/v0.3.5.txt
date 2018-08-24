@@ -14,3 +14,4 @@ New Features
 ~~~~~~~~~~~~
 
 - Adds support for the `Sector Performance <https://iextrading.com/developer/docs/#sector-performance>`__ endpoint of Stocks (thank you kafana).
+- Adds support for the `List <https://iextrading.com/developer/docs/#list>`__ infocus endpoint of Stocks (thank you kafana).
