@@ -215,7 +215,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">217.94</span>
+<span class="gh">Out[3]: </span><span class="go">219.7</span>
 </pre></div>
 </div>
 <dl class="class">
@@ -254,11 +254,11 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    26020275</span>
+<span class="go">avgTotalVolume    26184661</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                1.78</span>
-<span class="go">changePercent      0.00823</span>
-<span class="go">close               217.94</span>
+<span class="go">change                1.76</span>
+<span class="go">changePercent      0.00808</span>
+<span class="go">close                219.7</span>
 </pre></div>
 </div>
 <p>It is also possible to change the output format of an already-instantiated
@@ -266,7 +266,7 @@ passing
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">change_output_format</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
-<span class="gh">Out[8]: </span><span class="go">217.94</span>
+<span class="gh">Out[8]: </span><span class="go">219.7</span>
 </pre></div>
 </div>
 <p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
@@ -286,7 +286,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL    27.7488</span>
+<span class="go">AAPL    28.779</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -857,11 +857,11 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    6008322  5026532  4560098</span>
+<span class="go">avgTotalVolume    6202272  4881005  4525973</span>
 <span class="go">calculationPrice    close    close    close</span>
-<span class="go">change                0.7     0.57    -0.08</span>
-<span class="go">changePercent     0.01803  0.00997 -0.00131</span>
-<span class="go">close               39.52    57.75    60.91</span>
+<span class="go">change               1.17     1.04     0.42</span>
+<span class="go">changePercent     0.02961  0.01801   0.0069</span>
+<span class="go">close               40.69    58.79    61.33</span>
 </pre></div>
 </div>
 <div class="section" id="filtering">
@@ -877,17 +877,17 @@ reserved word in Python:</p>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
-<span class="go">               AAPL</span>
-<span class="go">ytdChange  0.277488</span>
+<span class="go">              AAPL</span>
+<span class="go">ytdChange  0.28779</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
-<span class="go">                 AAPL</span>
-<span class="go">close      217.940000</span>
-<span class="go">open       217.020000</span>
-<span class="go">ytdChange    0.277488</span>
+<span class="go">                AAPL</span>
+<span class="go">close      219.70000</span>
+<span class="go">open       219.01000</span>
+<span class="go">ytdChange    0.28779</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -923,11 +923,11 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    26020275</span>
+<span class="go">avgTotalVolume    26184661</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                1.78</span>
-<span class="go">changePercent      0.00823</span>
-<span class="go">close               217.94</span>
+<span class="go">change                1.76</span>
+<span class="go">changePercent      0.00808</span>
+<span class="go">close                219.7</span>
 </pre></div>
 </div>
 <p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
@@ -936,10 +936,10 @@ instantiated:</p>
 
 <span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
 <span class="gh">Out[30]: </span><span class="go"></span>
-<span class="go">{&#39;open&#39;: {&#39;price&#39;: 217.02, &#39;time&#39;: 1535376600370},</span>
-<span class="go"> &#39;close&#39;: {&#39;price&#39;: 217.94, &#39;time&#39;: 1535400000321},</span>
-<span class="go"> &#39;high&#39;: 218.74,</span>
-<span class="go"> &#39;low&#39;: 216.33}</span>
+<span class="go">{&#39;open&#39;: {&#39;price&#39;: 219.01, &#39;time&#39;: 1535463000045},</span>
+<span class="go"> &#39;close&#39;: {&#39;price&#39;: 219.7, &#39;time&#39;: 1535486400479},</span>
+<span class="go"> &#39;high&#39;: 220.54,</span>
+<span class="go"> &#39;low&#39;: 218.92}</span>
 </pre></div>
 </div>
 </div>
@@ -948,7 +948,7 @@ instantiated:</p>
 <p><code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_company_name()</span></code></p>
 <p>Single symbol</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[31]: </span><span class="go">217.02</span>
+<span class="gh">Out[31]: </span><span class="go">219.01</span>
 
 <span class="gp">In [32]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                Out[32]: &#39;Apple Inc.&#39;</span>
@@ -958,7 +958,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [34]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 217.02, &#39;TSLA&#39;: 318.23}</span>
+<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 219.01, &#39;TSLA&#39;: 318.41}</span>
 
 <span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                          Out[35]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
@@ -970,7 +970,7 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          beta</span>
-<span class="go">AAPL  1.274196</span>
+<span class="go">AAPL  1.292006</span>
 <span class="go">TSLA  0.899613</span>
 </pre></div>
 </div>
