@@ -254,7 +254,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    28498971</span>
+<span class="go">avgTotalVolume    28511170</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change                 2.6</span>
 <span class="go">changePercent      0.01155</span>
@@ -857,7 +857,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    5963594  4617800  4326558</span>
+<span class="go">avgTotalVolume    5963650  4618224  4326703</span>
 <span class="go">calculationPrice    close    close    close</span>
 <span class="go">change               0.08     0.04     0.48</span>
 <span class="go">changePercent     0.00198  0.00068  0.00789</span>
@@ -903,14 +903,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">1</span>
+<span class="gh">Out[24]: </span><span class="go">2</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">1</span>
+<span class="gh">Out[26]: </span><span class="go">2</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -923,7 +923,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    28498971</span>
+<span class="go">avgTotalVolume    28511170</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change                 2.6</span>
 <span class="go">changePercent      0.01155</span>
@@ -970,8 +970,8 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          beta</span>
-<span class="go">AAPL  1.317957</span>
-<span class="go">TSLA  0.875368</span>
+<span class="go">AAPL  1.350096</span>
+<span class="go">TSLA  0.825682</span>
 </pre></div>
 </div>
 </div>
