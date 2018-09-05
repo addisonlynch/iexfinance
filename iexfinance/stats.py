@@ -190,7 +190,7 @@ class DailySummaryReader(Stats):
         else:
             data = self._fetch_dates()
         if self.output_format == 'pandas':
-            data.set_index('date', inplace=True)
+            data = data.set_index(pd.DatetimeIndex(df['date']))
             return data
         else:
             return data

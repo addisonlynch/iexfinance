@@ -752,7 +752,7 @@ class HistoricalReader(_IEXBase):
         for symbol in self.symlist:
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
-            df.set_index("date", inplace=True)
+            df = df.set_index(pd.DatetimeIndex(df['date']))
             values = ["open", "high", "low", "close", "volume"]
             df = df[values]
             sstart = self.start.strftime('%Y-%m-%d')
