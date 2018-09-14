@@ -215,13 +215,13 @@ extracts the symbols and returns a list of the symbols only:</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">[{&#39;symbol&#39;: &#39;A&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-13&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-14&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;2&#39;},</span>
 <span class="go"> {&#39;symbol&#39;: &#39;AA&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-13&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-14&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;12042&#39;}]</span>
@@ -270,23 +270,23 @@ endpoints</p>
 
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[4]: </span><span class="go"></span>
-<span class="go">{&#39;RecordID&#39;: &#39;CA20180913115710814&#39;,</span>
-<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-13T17:00:00&#39;,</span>
-<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-14&#39;,</span>
-<span class="go"> &#39;IssueEvent&#39;: &#39;ID&#39;,</span>
+<span class="go">{&#39;RecordID&#39;: &#39;CA20180914142142418&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-14T17:00:00&#39;,</span>
+<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-18&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;AA&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;NewSymbolinINETSymbology&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;NewSymbolinCQSSymbology&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;NewSymbolinCMSSymbology&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentSecurityName&#39;: &#39;ZEXIT Common Stock&#39;,</span>
+<span class="go"> &#39;CurrentSecurityName&#39;: &#39;IEX Test Common Stock ZEXIT&#39;,</span>
 <span class="go"> &#39;NewSecurityName&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Company&#39;,</span>
+<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Incorporated&#39;,</span>
 <span class="go"> &#39;NewCompanyName&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;NewListingCenter&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;DelistingReason&#39;: &#39;OT&#39;,</span>
+<span class="go"> &#39;NewListingCenter&#39;: &#39;V&#39;,</span>
+<span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
 <span class="go"> &#39;NewRoundLotSize&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentLULDTierIndicator&#39;: &#39;1&#39;,</span>
@@ -298,12 +298,12 @@ endpoints</p>
 <span class="go"> &#39;RedemptionDate&#39;: &#39;0&#39;,</span>
 <span class="go"> &#39;CurrentFinancialStatus&#39;: &#39;0&#39;,</span>
 <span class="go"> &#39;NewFinancialStatus&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
 <span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
-<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Test Company is being removed from listing and trading effective September 14, 2018 for Corporate Action testing purposes.&#39;,</span>
-<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-13T12:27:20&#39;}</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Common Stock transferring its listing from NASDAQ Global Select Market to Investors Exchange. First trade date anticipated to be 9/18/2018.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-14T14:43:23&#39;}</span>
 </pre></div>
 </div>
 </div>
@@ -350,23 +350,23 @@ endpoints</p>
 
 <span class="gp">In [6]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">{&#39;RecordID&#39;: &#39;CA20180913115710814&#39;,</span>
-<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-13T17:00:00&#39;,</span>
-<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-14&#39;,</span>
-<span class="go"> &#39;IssueEvent&#39;: &#39;ID&#39;,</span>
+<span class="go">{&#39;RecordID&#39;: &#39;CA20180914142142418&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-14T17:00:00&#39;,</span>
+<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-18&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;AA&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;NewSymbolinINETSymbology&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;NewSymbolinCQSSymbology&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;NewSymbolinCMSSymbology&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentSecurityName&#39;: &#39;ZEXIT Common Stock&#39;,</span>
+<span class="go"> &#39;CurrentSecurityName&#39;: &#39;IEX Test Common Stock ZEXIT&#39;,</span>
 <span class="go"> &#39;NewSecurityName&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Company&#39;,</span>
+<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Incorporated&#39;,</span>
 <span class="go"> &#39;NewCompanyName&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;NewListingCenter&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;DelistingReason&#39;: &#39;OT&#39;,</span>
+<span class="go"> &#39;NewListingCenter&#39;: &#39;V&#39;,</span>
+<span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
 <span class="go"> &#39;NewRoundLotSize&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentLULDTierIndicator&#39;: &#39;1&#39;,</span>
@@ -378,12 +378,12 @@ endpoints</p>
 <span class="go"> &#39;RedemptionDate&#39;: &#39;0&#39;,</span>
 <span class="go"> &#39;CurrentFinancialStatus&#39;: &#39;0&#39;,</span>
 <span class="go"> &#39;NewFinancialStatus&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
 <span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
-<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Test Company is being removed from listing and trading effective September 14, 2018 for Corporate Action testing purposes.&#39;,</span>
-<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-13T12:27:20&#39;}</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Common Stock transferring its listing from NASDAQ Global Select Market to Investors Exchange. First trade date anticipated to be 9/18/2018.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-14T14:43:23&#39;}</span>
 </pre></div>
 </div>
 </div>
