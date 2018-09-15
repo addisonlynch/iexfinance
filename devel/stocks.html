@@ -254,7 +254,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    31024324</span>
+<span class="go">avgTotalVolume    30020523</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -2.57</span>
 <span class="go">changePercent     -0.01135</span>
@@ -286,7 +286,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL    31.8095</span>
+<span class="go">AAPL    30.3004</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -857,7 +857,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    5645622  4584777  3725729</span>
+<span class="go">avgTotalVolume    5544951  4550909  3706656</span>
 <span class="go">calculationPrice    close    close    close</span>
 <span class="go">change               0.26     0.11     0.07</span>
 <span class="go">changePercent     0.00659   0.0019  0.00112</span>
@@ -878,7 +878,7 @@ reserved word in Python:</p>
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
 <span class="go">               AAPL</span>
-<span class="go">ytdChange  0.318095</span>
+<span class="go">ytdChange  0.303004</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
@@ -887,7 +887,7 @@ reserved word in Python:</p>
 <span class="go">                 AAPL</span>
 <span class="go">close      223.840000</span>
 <span class="go">open       225.500000</span>
-<span class="go">ytdChange    0.318095</span>
+<span class="go">ytdChange    0.303004</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -903,14 +903,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">10</span>
+<span class="gh">Out[24]: </span><span class="go">4</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">16</span>
+<span class="gh">Out[26]: </span><span class="go">4</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -923,7 +923,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    31024324</span>
+<span class="go">avgTotalVolume    30020523</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -2.57</span>
 <span class="go">changePercent     -0.01135</span>
@@ -970,7 +970,7 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          beta</span>
-<span class="go">AAPL  1.353569</span>
+<span class="go">AAPL  1.355640</span>
 <span class="go">TSLA  0.834926</span>
 </pre></div>
 </div>
