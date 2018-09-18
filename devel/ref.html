@@ -215,13 +215,13 @@ extracts the symbols and returns a list of the symbols only:</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">[{&#39;symbol&#39;: &#39;A&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-14&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-18&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;2&#39;},</span>
 <span class="go"> {&#39;symbol&#39;: &#39;AA&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-14&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-18&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;12042&#39;}]</span>
@@ -271,9 +271,9 @@ endpoints</p>
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[4]: </span><span class="go"></span>
 <span class="go">{&#39;RecordID&#39;: &#39;CA20180914142142418&#39;,</span>
-<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-16T17:00:00&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-18T17:00:00&#39;,</span>
 <span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-18&#39;,</span>
-<span class="go"> &#39;IssueEvent&#39;: &#39;AA&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;SA&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZEXIT&#39;,</span>
@@ -284,7 +284,7 @@ endpoints</p>
 <span class="go"> &#39;NewSecurityName&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Incorporated&#39;,</span>
 <span class="go"> &#39;NewCompanyName&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentListingCenter&#39;: &#39;Q&#39;,</span>
 <span class="go"> &#39;NewListingCenter&#39;: &#39;V&#39;,</span>
 <span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
@@ -302,8 +302,8 @@ endpoints</p>
 <span class="go"> &#39;WhenDistributedFlag&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
 <span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
-<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Common Stock transferring its listing from NASDAQ Global Select Market to Investors Exchange. First trade date anticipated to be 9/18/2018.&#39;,</span>
-<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-14T14:43:23&#39;}</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Test Incorporated transferring the listing of its Common Stock from the Nasdaq Global Select Market to Investors Exchange effective 9/18/2018. The security will retain its symbol ZEXIT.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-17T15:48:33&#39;}</span>
 </pre></div>
 </div>
 </div>
@@ -351,9 +351,9 @@ endpoints</p>
 <span class="gp">In [6]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">{&#39;RecordID&#39;: &#39;CA20180914142142418&#39;,</span>
-<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-16T17:00:00&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-18T17:00:00&#39;,</span>
 <span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-18&#39;,</span>
-<span class="go"> &#39;IssueEvent&#39;: &#39;AA&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;SA&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZEXIT&#39;,</span>
 <span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZEXIT&#39;,</span>
@@ -364,7 +364,7 @@ endpoints</p>
 <span class="go"> &#39;NewSecurityName&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZEXIT Test Incorporated&#39;,</span>
 <span class="go"> &#39;NewCompanyName&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentListingCenter&#39;: &#39;Q&#39;,</span>
 <span class="go"> &#39;NewListingCenter&#39;: &#39;V&#39;,</span>
 <span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
@@ -382,8 +382,8 @@ endpoints</p>
 <span class="go"> &#39;WhenDistributedFlag&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
 <span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
-<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Common Stock transferring its listing from NASDAQ Global Select Market to Investors Exchange. First trade date anticipated to be 9/18/2018.&#39;,</span>
-<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-14T14:43:23&#39;}</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZEXIT Test Incorporated transferring the listing of its Common Stock from the Nasdaq Global Select Market to Investors Exchange effective 9/18/2018. The security will retain its symbol ZEXIT.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-17T15:48:33&#39;}</span>
 </pre></div>
 </div>
 </div>
