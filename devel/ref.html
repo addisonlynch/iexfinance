@@ -215,13 +215,13 @@ extracts the symbols and returns a list of the symbols only:</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">[{&#39;symbol&#39;: &#39;A&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-20&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-24&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;2&#39;},</span>
 <span class="go"> {&#39;symbol&#39;: &#39;AA&#39;,</span>
 <span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;date&#39;: &#39;2018-09-20&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2018-09-24&#39;,</span>
 <span class="go">  &#39;isEnabled&#39;: True,</span>
 <span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
 <span class="go">  &#39;iexId&#39;: &#39;12042&#39;}]</span>
@@ -269,12 +269,41 @@ endpoints</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_corporate_actions</span>
 
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-0490cbe16594&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_corporate_actions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">IndexError</span>: list index out of range
+<span class="gh">Out[4]: </span><span class="go"></span>
+<span class="go">{&#39;RecordID&#39;: &#39;CA20180921130304483&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-24T17:00:00&#39;,</span>
+<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-24&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;NS&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;NewSymbolinINETSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewSymbolinCQSSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewSymbolinCMSSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentSecurityName&#39;: &#39;ZIEXT Common Stock&#39;,</span>
+<span class="go"> &#39;NewSecurityName&#39;: &#39;IEX Test Common Stock ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZIEXT Test Company&#39;,</span>
+<span class="go"> &#39;NewCompanyName&#39;: &#39;ZIEXT Test Incorporated&#39;,</span>
+<span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
+<span class="go"> &#39;NewRoundLotSize&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentLULDTierIndicator&#39;: &#39;2&#39;,</span>
+<span class="go"> &#39;NewLULDTierIndicator&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;ExpirationDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;SeparationDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;SettlementDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;MaturityDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;RedemptionDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;CurrentFinancialStatus&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;NewFinancialStatus&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZIEXT Test Company is changing its name to ZIEXT Test Incorporated effective September 24, 2018.  There is no change to the CUSIP.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-21T13:53:18&#39;}</span>
 </pre></div>
 </div>
 </div>
@@ -320,12 +349,41 @@ endpoints</p>
 <div class="highlight-ipython notranslate" id="ref-iex-next-day-ex-date-usage"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">get_iex_next_day_ex_date</span>
 
 <span class="gp">In [6]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-6-93229e54e611&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_next_day_ex_date</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">IndexError</span>: list index out of range
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">{&#39;RecordID&#39;: &#39;CA20180921130304483&#39;,</span>
+<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2018-09-24T17:00:00&#39;,</span>
+<span class="go"> &#39;EffectiveDate&#39;: &#39;2018-09-24&#39;,</span>
+<span class="go"> &#39;IssueEvent&#39;: &#39;NS&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinINETSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinCQSSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentSymbolinCMSSymbology&#39;: &#39;ZIEXT&#39;,</span>
+<span class="go"> &#39;NewSymbolinINETSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewSymbolinCQSSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewSymbolinCMSSymbology&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentSecurityName&#39;: &#39;ZIEXT Common Stock&#39;,</span>
+<span class="go"> &#39;NewSecurityName&#39;: &#39;IEX Test Common Stock ZIEXT&#39;,</span>
+<span class="go"> &#39;CurrentCompanyName&#39;: &#39;ZIEXT Test Company&#39;,</span>
+<span class="go"> &#39;NewCompanyName&#39;: &#39;ZIEXT Test Incorporated&#39;,</span>
+<span class="go"> &#39;CurrentListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;NewListingCenter&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;DelistingReason&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentRoundLotSize&#39;: &#39;100&#39;,</span>
+<span class="go"> &#39;NewRoundLotSize&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;CurrentLULDTierIndicator&#39;: &#39;2&#39;,</span>
+<span class="go"> &#39;NewLULDTierIndicator&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;ExpirationDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;SeparationDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;SettlementDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;MaturityDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;RedemptionDate&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;CurrentFinancialStatus&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;NewFinancialStatus&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
+<span class="go"> &#39;HistoryHold&#39;: &#39;Y&#39;,</span>
+<span class="go"> &#39;NotesforEachEntry&#39;: &#39;ZIEXT Test Company is changing its name to ZIEXT Test Incorporated effective September 24, 2018.  There is no change to the CUSIP.&#39;,</span>
+<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-21T13:53:18&#39;}</span>
 </pre></div>
 </div>
 </div>

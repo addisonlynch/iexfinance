@@ -285,8 +285,8 @@ dataframe</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If an invalid output format has been selected</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IEXQueryError</span></code> – If issues arise while making the request</li>
+<li><strong>ValueError</strong> – If an invalid output format has been selected</li>
+<li><a class="reference internal" href="testing.html#iexfinance.utils.exceptions.IEXQueryError" title="iexfinance.utils.exceptions.IEXQueryError"><strong>IEXQueryError</strong></a> – If issues arise while making the request</li>
 </ul>
 </td>
 </tr>
@@ -345,26 +345,58 @@ order book.</p>
 <dl class="attribute">
 <dt id="iexfinance.stats.DailySummaryReader.start">
 <code class="descname">start</code><a class="headerlink" href="#iexfinance.stats.DailySummaryReader.start" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>datetime.datetime</em> – Desired start of summary period</p>
+<dd><p>Desired start of summary period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.stats.DailySummaryReader.end">
 <code class="descname">end</code><a class="headerlink" href="#iexfinance.stats.DailySummaryReader.end" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>datetime.datetime</em> – Desired end of summary period (if omitted, start
+<dd><p>Desired end of summary period (if omitted, start
 month will be returned)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.stats.DailySummaryReader.last">
 <code class="descname">last</code><a class="headerlink" href="#iexfinance.stats.DailySummaryReader.last" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int</em> – Period between 1 and 90 days, overrides dates</p>
+<dd><p>Period between 1 and 90 days, overrides dates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.stats.DailySummaryReader.output_format">
 <code class="descname">output_format</code><a class="headerlink" href="#iexfinance.stats.DailySummaryReader.output_format" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str, default ‘json’, optional</em> – Desired output format (json or pandas)</p>
+<dd><p>Desired output format (json or pandas)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, default ‘json’, optional</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -428,20 +460,44 @@ the read function for each date provided.</p>
 <dl class="attribute">
 <dt id="iexfinance.stats.MonthlySummaryReader.start">
 <code class="descname">start</code><a class="headerlink" href="#iexfinance.stats.MonthlySummaryReader.start" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>datetime.datetime</em> – Desired start of summary period</p>
+<dd><p>Desired start of summary period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.stats.MonthlySummaryReader.end">
 <code class="descname">end</code><a class="headerlink" href="#iexfinance.stats.MonthlySummaryReader.end" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>datetime.datetime</em> – Desired end of summary period (if omitted, start
+<dd><p>Desired end of summary period (if omitted, start
 month will be returned)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.stats.MonthlySummaryReader.output_format">
 <code class="descname">output_format</code><a class="headerlink" href="#iexfinance.stats.MonthlySummaryReader.output_format" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>str, default ‘json’, optional</em> – Desired output format (json or pandas)</p>
+<dd><p>Desired output format (json or pandas)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, default ‘json’, optional</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -825,9 +881,9 @@ data set.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IEXEndpointError</span></code> – If an invalid endpoint is specified</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IEXSymbolError</span></code> – If a symbol is invalid</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">IEXQueryError</span></code> – If issues arise during query</li>
+<li><a class="reference internal" href="testing.html#iexfinance.utils.exceptions.IEXEndpointError" title="iexfinance.utils.exceptions.IEXEndpointError"><strong>IEXEndpointError</strong></a> – If an invalid endpoint is specified</li>
+<li><a class="reference internal" href="testing.html#iexfinance.utils.exceptions.IEXSymbolError" title="iexfinance.utils.exceptions.IEXSymbolError"><strong>IEXSymbolError</strong></a> – If a symbol is invalid</li>
+<li><a class="reference internal" href="testing.html#iexfinance.utils.exceptions.IEXQueryError" title="iexfinance.utils.exceptions.IEXQueryError"><strong>IEXQueryError</strong></a> – If issues arise during query</li>
 </ul>
 </td>
 </tr>

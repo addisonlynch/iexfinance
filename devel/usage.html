@@ -205,19 +205,43 @@ including preparing and executing queries from the API.</p>
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.retry_count">
 <code class="descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>int, default 3, optional</em> – Desired number of retries if a request fails</p>
+<dd><p>Desired number of retries if a request fails</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int, default 3, optional</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.pause">
 <code class="descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>float, default 0.5, optional</em> – Pause time between retry attempts</p>
+<dd><p>Pause time between retry attempts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float, default 0.5, optional</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.session">
 <code class="descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>requests_cache.session, default None, optional</em> – A cached requests-cache session</p>
+<dd><p>A cached requests-cache session</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">requests_cache.session, default None, optional</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -251,16 +275,16 @@ the endpoint requested.</p>
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">{&#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;date&#39;: &#39;2018-09-19&#39;,</span>
-<span class="go"> &#39;open&#39;: 218.5,</span>
-<span class="go"> &#39;high&#39;: 219.62,</span>
-<span class="go"> &#39;low&#39;: 215.3,</span>
-<span class="go"> &#39;close&#39;: 218.37,</span>
-<span class="go"> &#39;volume&#39;: 27123833,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 27123833,</span>
-<span class="go"> &#39;change&#39;: 0.13,</span>
-<span class="go"> &#39;changePercent&#39;: 0.06,</span>
-<span class="go"> &#39;vwap&#39;: 217.4068}</span>
+<span class="go"> &#39;date&#39;: &#39;2018-09-21&#39;,</span>
+<span class="go"> &#39;open&#39;: 220.78,</span>
+<span class="go"> &#39;high&#39;: 221.36,</span>
+<span class="go"> &#39;low&#39;: 217.29,</span>
+<span class="go"> &#39;close&#39;: 217.66,</span>
+<span class="go"> &#39;volume&#39;: 96246748,</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 96246748,</span>
+<span class="go"> &#39;change&#39;: -2.37,</span>
+<span class="go"> &#39;changePercent&#39;: -1.077,</span>
+<span class="go"> &#39;vwap&#39;: 218.4944}</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -272,17 +296,17 @@ the endpoint requested.</p>
 <p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
 <p><strong>Single Symbol</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[4]: </span><span class="go">220.32</span>
+<span class="gh">Out[4]: </span><span class="go">216.72</span>
 
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">               Out[5]: 220.03</span>
+<span class="go">               Out[5]: 220.79</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [7]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 220.32, &#39;TSLA&#39;: 303}</span>
+<span class="gh">Out[7]: </span><span class="go">{&#39;AAPL&#39;: 216.72, &#39;TSLA&#39;: 298.48}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -301,7 +325,7 @@ method as a keyword argument.</p>
 
 <span class="gp">In [9]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">AAPL    28.9835</span>
+<span class="go">AAPL    29.2446</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
