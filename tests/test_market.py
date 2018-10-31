@@ -98,14 +98,6 @@ class TestMarket(object):
         assert isinstance(js, dict) and len(js) == 1
         assert isinstance(js2, dict) and len(js2) == 2
 
-    @pytest.mark.xfail(reason="Market data only available during market open")
-    def test_Book_pandas(self):
-        df = get_market_book("AAPL", output_format='pandas')
-        df2 = get_market_book(["AAPL", "TSLA"], output_format='pandas')
-
-        assert isinstance(df, DataFrame)
-        assert isinstance(df2, DataFrame)
-
     def test_Book_too_many_symbols(self):
         with pytest.raises(ValueError):
             get_market_book(self.bad)

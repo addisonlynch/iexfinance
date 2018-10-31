@@ -28,23 +28,28 @@ class _IEXBase(object):
     # Base URL
     _IEX_API_URL = "https://api.iextrading.com/1.0/"
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, retry_count=3, pause=0.5, session=None,
+                 json_parse_int=None, json_parse_float=None):
         """ Initialize the class
 
         Parameters
         ----------
-        retry_count: int
+        retry_count: int, default 3, optional
             Desired number of retries if a request fails
         pause: float default 0.5, optional
             Pause time between retry attempts
         session: requests_cache.session, default None, optional
             A cached requests-cache session
+        json_parse_int: datatype, default int, optional
+            Desired integer parsing datatype
+        json_parse_float: datatype, default float, optional
+            Desired floating point parsing datatype
         """
-        self.retry_count = kwargs.pop("retry_count", 3)
-        self.pause = kwargs.pop("pause", 0.5)
-        self.session = _init_session(kwargs.pop("session", None))
-        self.json_parse_int = kwargs.pop("json_parse_int", None)
-        self.json_parse_float = kwargs.pop("json_parse_float", None)
+        self.retry_count = retry_count
+        self.pause = pause
+        self.session = _init_session(session)
+        self.json_parse_int = json_parse_int
+        self.json_parse_float = json_parse_float
 
     @property
     def params(self):
@@ -73,10 +78,13 @@ class _IEXBase(object):
         """
         if response.text == "Unknown symbol":
             raise IEXQueryError()
-        json_response = response.json(
-            parse_int=self.json_parse_int,
-            parse_float=self.json_parse_float)
-        if "Error Message" in json_response:
+        try:
+            json_response = response.json(
+                parse_int=self.json_parse_int,
+                parse_float=self.json_parse_float)
+            if "Error Message" in json_response:
+                raise IEXQueryError()
+        except ValueError:
             raise IEXQueryError()
         return json_response
 
@@ -101,12 +109,11 @@ class _IEXBase(object):
         IEXQueryError
             If problems arise when making the query
         """
-        pause = self.pause
         for i in range(self.retry_count+1):
             response = self.session.get(url=url, params=self.params)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
-            time.sleep(pause)
+            time.sleep(self.pause)
         raise IEXQueryError()
 
     def _prepare_query(self):
@@ -117,8 +124,7 @@ class _IEXBase(object):
         url: str
             A formatted URL
         """
-        url = self._IEX_API_URL + self.url
-        return url
+        return "%s%s" % (self._IEX_API_URL, self.url)
 
     def fetch(self):
         """Fetches latest data
