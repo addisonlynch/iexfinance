@@ -53,6 +53,7 @@ From development repository (dev version):
 Usage Examples
 --------------
 
+The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of ``iexfinance`` usage. Basic examples are also provided below.
 
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
 endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
