@@ -18,8 +18,8 @@ class ReferenceReader(_IEXBase):
     @property
     def url(self):
         if isinstance(self.start, datetime.datetime):
-            return 'daily-list/{}/{}'.format(self.endpoint,
-                                             self.start.strftime('%Y%m'))
+            return 'daily-list/%s/%s' % (self.endpoint,
+                                         self.start.strftime('%Y%m'))
         else:
             return 'daily-list/corporate-actions'
 

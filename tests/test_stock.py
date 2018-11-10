@@ -634,6 +634,7 @@ class TestFieldMethodsShare(object):
         data4 = self.share4.get_beta()
         assert isinstance(data4, Decimal)
 
+    @pytest.mark.xfail(reason="Not available outside of market open days.")
     def test_get_short_interest(self):
         data = self.share.get_short_interest()
         assert isinstance(data, int)
@@ -645,6 +646,7 @@ class TestFieldMethodsShare(object):
         data4 = self.share4.get_short_interest()
         assert isinstance(data4, Decimal)
 
+    @pytest.mark.xfail(reason="Not available outside of market open days.")
     def test_get_short_ratio(self):
         data = self.share.get_short_ratio()
         assert isinstance(data, float)
@@ -816,6 +818,7 @@ class TestFieldMethodsBatch(object):
         assert isinstance(data4, dict)
         assert isinstance(data4["AAPL"], Decimal)
 
+    @pytest.mark.xfail(reason="Not available outside of market open days.")
     def test_get_short_interest(self):
         data = self.batch.get_short_interest()
         assert isinstance(data, dict)
@@ -826,6 +829,7 @@ class TestFieldMethodsBatch(object):
         assert_index_equal(data2.index, pd.Index(self.batch2.symbols))
         assert data2.loc["AAPL"].dtype == "int64"
 
+    @pytest.mark.xfail(reason="Not available outside of market open days.")
     def test_get_short_ratio(self):
         data = self.batch.get_short_ratio()
         assert isinstance(data, dict)

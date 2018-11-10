@@ -119,8 +119,7 @@ def field_output_format(override=None, field_name=None):
 
 class StockReader(_IEXBase):
     """
-    Base class for obtaining data from the Stock endpoints of IEX. Subclass of
-    _IEXBase.
+    Base class for obtaining data from the Stock endpoints of IEX.
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",

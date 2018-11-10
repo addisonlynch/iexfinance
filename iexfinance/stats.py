@@ -13,7 +13,7 @@ from iexfinance.utils.exceptions import IEXQueryError
 class Stats(_IEXBase):
     """
     Base class for obtaining date from the IEX Stats endpoints
-    of IEX. Subclass of _IEXBase, subclassed by various.
+    of IEX.
 
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """

@@ -1,6 +1,7 @@
 import pandas as pd
 
 from .base import _IEXBase
+from iexfinance.utils import _handle_lists
 from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
@@ -10,30 +11,30 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 class Market(_IEXBase):
     """
-    Base class for obtaining date from the market endpoints
-    of IEX. Subclass of _IEXBase, subclassed by various.
+    Base class for obtaining data from the market endpoints
+    of IEX.
     """
     def __init__(self, symbols=None, output_format='json', **kwargs):
         """ Initialize the class
 
         Parameters
         ----------
-        symbols: str or list
-            A symbol or list of symbols
+        symbols : string, array-like object (list, tuple, Series), or DataFrame
+            Desired symbols for retrieval
         output_format: str, default 'json', optional
             Desired output format (json or pandas)
         kwargs:
             Additional request options (see base class)
         """
-        syms = [symbols] if isinstance(symbols, str) else symbols
-        if isinstance(syms, list):
-            if len(syms) > self.symbol_limit:
+        if symbols:
+            self.symbols = _handle_lists(symbols)
+            if len(self.symbols) > self.symbol_limit:
                 raise ValueError("At most " + str(self.symbol_limit) +
                                  "symbols may be entered at once.")
         else:
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
-        self.symbols = syms
+            self.symbols = []
         self.output_format = output_format
         super(Market, self).__init__(**kwargs)
 
