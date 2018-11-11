@@ -15,3 +15,11 @@ New Features
 
 - Adds support for the `Sector Performance <https://iextrading.com/developer/docs/#sector-performance>`__ endpoint of Stocks (thank you kafana).
 - Adds support for the `List <https://iextrading.com/developer/docs/#list>`__ infocus endpoint of Stocks (thank you kafana).
+- Adds support for the `Collections <https://iextrading.com/developer/docs/#collections>`__ endpoint of Stocks
+- Adds support for the `Crypto <https://iextrading.com/developer/docs/#crypto>`__ endpoint of Stocks
+- Adds support for the `Earnings Today <https://iextrading.com/developer/docs/#earnings-today>`__ endpoint of Stocks
+- Adds support for the `IPO Calendar <https://iextrading.com/developer/docs/#ipo-calendar>`__ endpoint of Stocks
+
+Enhancements
+~~~~~~~~~~~~
+- Adds pandas DataFrame output formatting

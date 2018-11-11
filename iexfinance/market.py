@@ -1,8 +1,5 @@
-import pandas as pd
-
 from .base import _IEXBase
 from iexfinance.utils import _handle_lists
-from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -14,7 +11,7 @@ class Market(_IEXBase):
     Base class for obtaining data from the market endpoints
     of IEX.
     """
-    def __init__(self, symbols=None, output_format='json', **kwargs):
+    def __init__(self, symbols=None, **kwargs):
         """ Initialize the class
 
         Parameters
@@ -35,7 +32,6 @@ class Market(_IEXBase):
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
             self.symbols = []
-        self.output_format = output_format
         super(Market, self).__init__(**kwargs)
 
     @property
@@ -44,48 +40,6 @@ class Market(_IEXBase):
             return {"symbols": ",".join(self.symbols)}
         else:
             return {}
-
-    def _output_format(self, response):
-        """ Output formatting
-
-        Formats output as either json or pandas, if allowed
-        """
-        if self.output_format == 'json':
-            return response
-        elif self.output_format == 'pandas' and self.acc_pandas:
-            try:
-                df = pd.DataFrame(response)
-                return df
-            except ValueError:
-                raise IEXQueryError()
-        elif self.acc_pandas is False:
-            raise ValueError("Pandas not accepted for this function.")
-        else:
-            raise ValueError("Please input valid output format")
-
-    def fetch(self):
-        """ Fetch latest market data
-        Returns
-        -------
-        response: dict or DataFrame
-            Type based on self.output_format
-
-        Raises
-        ------
-        ValueError
-            If an invalid output format has been selected
-        IEXQueryError
-            If issues arise while making the request
-        """
-        response = super(Market, self).fetch()
-        return self._output_format(response)
-
-    @property
-    def acc_pandas(self):
-        """Property to determine if given endpoint can be formatted as a
-        dataframe
-        """
-        return True
 
     @property
     def symbol_required(self):
@@ -157,9 +111,8 @@ class DEEP(Market):
     def url(self):
         return "deep"
 
-    @property
-    def acc_pandas(self):
-        return False
+    def _convert_output(self, out):
+        return out
 
     @property
     def symbol_required(self):
@@ -183,9 +136,8 @@ class Book(Market):
     -----
     Will return empty outside of trading hours
     """
-    @property
-    def acc_pandas(self):
-        return False
+    def _convert_output(self, out):
+        return out
 
     @property
     def url(self):

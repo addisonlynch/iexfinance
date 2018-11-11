@@ -45,3 +45,7 @@ def _handle_lists(l, mult=True, err_msg=None):
         return list(l)
     else:
         raise ValueError(err_msg or "Only 1 symbol/market parameter allowed.")
+
+
+def no_pandas(out):
+    return out

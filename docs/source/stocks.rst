@@ -103,7 +103,7 @@ Parameters
 Certain endpoints (such as quote and chart) allow customizable
 parameters. To specify one of these parameters, merely pass it as a
 keyword argument to the endpoint method. (see :ref:`example
-<stocks.passing-parameters>`). 
+<stocks.passing-parameters>`).
 
 .. ipython:: python
 
@@ -438,14 +438,14 @@ Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests w
 Filtering
 ^^^^^^^^^
 
-Per the IEX Docs, the 
+Per the IEX Docs, the
 `filter <https://iextrading.com/developer/docs/#filter-results>`__,
 paramter may be passed to any endpoint request to restrict single endpoint
 queries to certain fields. iexfinance uses ``filter_``, as ``filter`` is a
 reserved word in Python:
 
 .. ipython:: python
-    
+
     from iexfinance import Stock as iex
     aapl = Stock("AAPL", output_format='pandas')
     aapl.get_quote(filter_='ytdChange')
@@ -457,7 +457,7 @@ Lists of fields are acceptable as well:
     aapl.get_quote(filter_=['ytdChange', 'open', 'close'])
 
 .. note:: The desired fields must **exactly** match the field key names as
-        listed in the IEX docs. 
+        listed in the IEX docs.
 
 .. _stocks.passing-parameters:
 
@@ -541,14 +541,23 @@ Format as a DataFrame
 Market Movers
 =============
 
-The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks provides information about market movers from a given trading day. iexfinance implements these market mover lists with top-level functions, which are listed below. These functions return a list of quotes of the top-10 symbols in each list.
+The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks
+provides information about market movers from a given trading day. iexfinance
+implements these market mover lists with the functions listed
+below. These functions return a list of quotes of the top-10 symbols in each list.
 
-* Gainers (``get_market_gainers``)
-* Losers (``get_market_losers``)
-* Most Active (``get_market_most_active``)
-* IEX Volume (``get_market_iex_volume``)
-* IEX Percent (``get_market_iex_percent``)
-* In Focus (``get_market_in_focus``)
+* Gainers (``stocks.get_market_gainers``)
+* Losers (``stocks.get_market_losers``)
+* Most Active (``stocks.get_market_most_active``)
+* IEX Volume (``stocks.get_market_iex_volume``)
+* IEX Percent (``stocks.get_market_iex_percent``)
+* In Focus (``stocks.get_market_in_focus``)
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_market_gainers
+
+    get_market_gainers()
 
 .. _stocks.crypto:
 
@@ -578,6 +587,45 @@ The following tickers are supported:
 - Stellar Lumens USD (XLMUSDT)
 - Qtum USD (QTUMUSDT)
 
+To retrieve quotes for all available cryptocurrencies, use the top-level
+``get_crypto_quotes`` function:
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_crypto_quotes
+
+    get_crypto_quotes(output_format='pandas').head()
+
+
+.. _stocks.collections:
+
+Collections
+===========
+
+The `Collections <https://iextrading.com/developer/docs/#collections>`__
+endpoint of Stocks allows retrieval of certain groups of companies, organized
+by:
+
+- sector
+- tag
+- list (see the :ref:`list endpoint <stocks.list>`)
+
+Use the top-level ``get_collections`` to access.
+
+**Tag**
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_collections
+
+    get_collections("Computer Hardware")
+
+**Sector**
+
+.. ipython:: python
+
+    get_collections("Industrials")
+
 .. _stocks.sector:
 
 Sector Performance
@@ -590,3 +638,34 @@ Sector Performance was added to the Stocks endpoints in 2018. Access to this end
     from iexfinance.stocks import get_sector_performance
 
     get_sector_performance()
+
+.. _stocks.earnings_today:
+
+Earnings Today
+==============
+
+Earnings Today was added to the Stocks endpoints in 2018. Access is provided
+through the top-level ``get_todays_earnings`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_todays_earnings
+
+    get_todays_earnings()
+
+.. _stocks.ipo_calendar:
+
+IPO Calendar
+============
+
+IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
+through the top-level ``get_ipo_calendar`` function.
+
+There are two possible values for the ``period`` parameter, of which
+``upcoming-ipos`` is the default. ``today-ipos`` is also available.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_ipo_calendar
+
+    get_ipo_calendar()
