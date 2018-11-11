@@ -72,6 +72,7 @@ class StockReader(_IEXBase):
 
     def _get_endpoint(self, endpoint, params={}, fmt_p=None,
                       fmt_j=None, filter_=None):
+        result = {}
         if filter_:
             params.update({"filter": filter_})
         self.optional_params = params
@@ -80,8 +81,11 @@ class StockReader(_IEXBase):
         for symbol in self.symbols:
             if symbol not in data:
                 raise IEXSymbolError(symbol)
-        data = {symbol: data[symbol][endpoint] for symbol in self.symbols}
-        return self._output_format_one(data, fmt_p=fmt_p, fmt_j=fmt_j)
+            if endpoint not in data[symbol]:
+                result[symbol] = []
+            else:
+                result[symbol] = data[symbol][endpoint]
+        return self._output_format_one(result, fmt_p=fmt_p, fmt_j=fmt_j)
 
     def _get_field(self, endpoint, field):
         data = getattr(self, "get_%s" % endpoint)(filter_=field)
@@ -168,10 +172,6 @@ class StockReader(_IEXBase):
         chartLast: int, optional
             return the last N elements
 
-        Notes
-        -----
-        Pandas not supported for this method. list will be returned.
-
         Returns
         -------
         list
@@ -182,7 +182,7 @@ class StockReader(_IEXBase):
             for symbol in self.symbols:
                 d = out.pop(symbol)
                 df = pd.DataFrame(d)
-                df.set_index("date", inplace=True)
+                df.set_index(pd.DatetimeIndex(df["date"]), inplace=True)
                 values = ["open", "high", "low", "close", "volume"]
                 df = df[values]
                 result.update({symbol: df})
@@ -223,16 +223,27 @@ class StockReader(_IEXBase):
         ----------
         range: str, default '1m', optional
             Time period of dividends to return
-        Notes
-        -----
-        Pandas not supported for this method. list will be returned.
 
         Returns
         -------
-        list
+        list or pandas.DataFrame
             Stocks Dividends endpoint data
         """
-        return self._get_endpoint("dividends", fmt_p=no_pandas, params=kwargs)
+        def fmt(out):
+            return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
+
+        def fmt_p(out):
+            results = {}
+            for symbol in self.symbols:
+                if out[symbol]:
+                    data = pd.DataFrame(out[symbol])
+                    data = data.set_index("exDate")
+                    results[symbol] = data
+            if not results:
+                return pd.DataFrame([])
+            return results if self.n_symbols != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("dividends", fmt_p=fmt_p, params=kwargs)
 
     def get_earnings(self, **kwargs):
         """
@@ -240,19 +251,21 @@ class StockReader(_IEXBase):
 
         Returns
         -------
-        dict
+        dict or pandas.DataFrame
             Stocks Earnings endpoint data
         """
         def fmt(out):
             return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
 
         def fmt_p(out):
-            out = fmt(out)
             results = {}
             for symbol in self.symbols:
-                data = pd.DataFrame(out[symbol])
-                data.set_index("EPSReportDate", inplace=True)
-                results[symbol] = data
+                if out[symbol]:
+                    data = pd.DataFrame(out[symbol]["earnings"])
+                    data = data.set_index("EPSReportDate")
+                    results[symbol] = data
+            if not results:
+                return pd.DataFrame([])
             return results if self.n_symbols != 1 else results[self.symbols[0]]
 
         return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p,
@@ -283,12 +296,14 @@ class StockReader(_IEXBase):
                     self.symbols}
 
         def fmt_p(out):
-            out = fmt(out)
             results = {}
             for symbol in self.symbols:
-                data = pd.DataFrame(out[symbol])
-                data.set_index("reportDate", inplace=True)
-                results[symbol] = data
+                if out[symbol]:
+                    data = pd.DataFrame(out[symbol]["financials"])
+                    data = data.set_index("reportDate")
+                    results[symbol] = data
+            if not results:
+                return pd.DataFrame([])
             return results if self.n_symbols != 1 else results[self.symbols[0]]
 
         return self._get_endpoint("financials", fmt_j=fmt,

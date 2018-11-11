@@ -14,11 +14,7 @@ The following functions retrieve data from the IEX Stats endpoints
 	- :ref:`Historical Summary<stats.monthly>`
 	- :ref:`Historical Daily<stats.daily>`
 
-
-
-
 .. _stats.intraday:
-
 
 Intraday
 ====

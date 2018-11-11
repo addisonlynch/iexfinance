@@ -11,8 +11,8 @@ class HistoricalReader(StockReader):
 
     Parameters
     ----------
-    symbol: str or list-like
-        A symbol or list of symbols
+    symbols : string, array-like object (list, tuple, Series), or DataFrame
+        Desired symbols for retrieval
     start: datetime.datetime
         The desired start date (defaults to 1/1/2015)
     end: datetime.datetime
@@ -63,7 +63,9 @@ class HistoricalReader(StockReader):
                                      symbol)
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
-            df.set_index("date", inplace=True)
+            if self.output_format == 'pandas':
+                df["date"] = pd.DatetimeIndex(df["date"])
+            df = df.set_index(df["date"])
             values = ["open", "high", "low", "close", "volume"]
             df = df[values]
             sstart = self.start.strftime('%Y-%m-%d')

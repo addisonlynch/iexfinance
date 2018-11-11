@@ -102,6 +102,7 @@ class TestShareDefault(object):
         data = self.cshare2.get_chart()
 
         assert isinstance(data, pd.DataFrame)
+        assert isinstance(data.index, pd.DatetimeIndex)
         assert "open" in data.columns
 
     @pytest.mark.xfail(reason="This test only runs correctly between 00:00 and"
@@ -127,10 +128,10 @@ class TestShareDefault(object):
 
     def test_get_dividends_format(self):
         data = self.cshare.get_dividends(range_='1y')
-        assert isinstance(data, dict)
+        assert isinstance(data, list)
 
         data2 = self.cshare2.get_dividends(range_='1y')
-        assert isinstance(data2, dict)
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_dividends_params(self):
         data = self.cshare.get_dividends()
@@ -143,7 +144,7 @@ class TestShareDefault(object):
         assert isinstance(data, list)
 
         data2 = self.cshare2.get_earnings()
-        assert isinstance(data2, list)
+        assert isinstance(data2, pd.DataFrame)
 
         # Ensure empty list is returned for symbol with no earnings
         data3 = self.cshare5.get_earnings()
@@ -378,7 +379,7 @@ class TestBatchDefault(object):
         assert isinstance(data, dict)
 
         data2 = self.cbatch2.get_dividends()
-        assert isinstance(data2, dict)
+        assert isinstance(data2, pd.DataFrame)
 
     def test_get_dividends_params(self):
         data = self.cbatch.get_dividends()["AAPL"]
@@ -405,7 +406,7 @@ class TestBatchDefault(object):
         assert isinstance(data, dict)
 
         data2 = self.cbatch2.get_financials()
-        assert isinstance(data2, pd.DataFrame)
+        assert isinstance(data2, dict)
 
     def test_get_key_stats_format(self):
         data = self.cbatch.get_key_stats()
@@ -927,6 +928,7 @@ class TestHistorical(object):
                                 output_format="pandas")
 
         assert isinstance(f, pd.DataFrame)
+        assert isinstance(f.index, pd.DatetimeIndex)
         assert len(f) == 73
 
         expected1 = f.loc["2017-02-09"]
