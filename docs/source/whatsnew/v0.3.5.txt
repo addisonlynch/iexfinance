@@ -1,7 +1,7 @@
 .. _whatsnew_035:
 
 
-v0.3.5 (TBD)
+v0.3.5 (11/12/2018)
 -----------------------
 
 This is a minor release from 0.3.4.
@@ -15,3 +15,25 @@ New Features
 
 - Adds support for the `Sector Performance <https://iextrading.com/developer/docs/#sector-performance>`__ endpoint of Stocks (thank you kafana).
 - Adds support for the `List <https://iextrading.com/developer/docs/#list>`__ infocus endpoint of Stocks (thank you kafana).
+- Adds support for the `Collections <https://iextrading.com/developer/docs/#collections>`__ endpoint of Stocks
+- Adds support for the `Crypto <https://iextrading.com/developer/docs/#crypto>`__ endpoint of Stocks
+- Adds support for the `Earnings Today <https://iextrading.com/developer/docs/#earnings-today>`__ endpoint of Stocks
+- Adds support for the `IPO Calendar <https://iextrading.com/developer/docs/#ipo-calendar>`__ endpoint of Stocks
+
+Enhancements
+~~~~~~~~~~~~
+- Adds pandas DataFrame output formatting for ``get_chart``, ``get_dividends``,
+``get_earnings``, ``get_financials``.
+- Adds support for list-like data types for symbols (tuple, pandas.Series,
+  numpy.ndarray, etc)
+- Sets index of ``DataFrame`` historical and time series data to
+``pandas.DatetimeIndex`` for easier sorting and wrangling (thank you Brian
+Wylie) `GH83 <https://github.com/addisonlynch/iexfinance/issues/83>`__
+
+Bug Fixes
+~~~~~~~~~
+
+-  Some Stocks endpoints return incorrectly
+   `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
+-  ``get_time_series`` returns incorrect range when passed ``range_`` parameter
+   `GH84 <https://github.com/addisonlynch/iexfinance/issues/84>`__

@@ -1,15 +1,18 @@
-from .base import _IEXBase
-from .stock import StockReader, HistoricalReader, MoversReader
-from .market import TOPS, Last, DEEP, Book
-from .stats import (IntradayReader, RecentReader, RecordsReader,
-                    DailySummaryReader, MonthlySummaryReader)
-from .ref import CorporateActions, Dividends, NextDay, ListedSymbolDir
-
+from iexfinance import stocks
+from iexfinance.base import _IEXBase
+from iexfinance.stocks.base import StockReader
+from iexfinance.market import TOPS, Last, DEEP, Book
+from iexfinance.stats import (IntradayReader, RecentReader, RecordsReader,
+                              DailySummaryReader, MonthlySummaryReader)
+from iexfinance.ref import (CorporateActions, Dividends, NextDay,
+                            ListedSymbolDir)
 from iexfinance.utils import _sanitize_dates
-from .utils.exceptions import IEXQueryError
+from iexfinance.utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
 __version__ = '0.3.4'
+
+WNG_MSG = "%s will be moved to iexfinance.stocks in version 0.4.0"
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -18,7 +21,7 @@ __version__ = '0.3.4'
 # and conditions of use
 
 
-def Stock(symbols=None, output_format='json', **kwargs):
+def Stock(symbols=None, **kwargs):
     """
     Top-level function to to retrieve data from the IEX Stocks endpoints
 
@@ -36,40 +39,53 @@ def Stock(symbols=None, output_format='json', **kwargs):
         A StockReader instance
     """
     if isinstance(symbols, str) and symbols:
-        return StockReader([symbols], output_format, **kwargs)
+        return StockReader([symbols], **kwargs)
     elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
-        return StockReader(symbols, output_format, **kwargs)
+        return StockReader(symbols, **kwargs)
     else:
         raise ValueError("Please input a symbol or list of symbols")
 
 
-def get_historical_data(symbols=None, start=None, end=None,
-                        output_format='json', **kwargs):
-    """
-    Top-level function to obtain historical date for a symbol or list of
-    symbols. Return an instance of HistoricalReader
+# MOVED to iexfinance.stocks
+def get_historical_data(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_historical_data")
+    return stocks.get_historical_data(*args, **kwargs)
 
-    Parameters
-    ----------
-    symbols: str or list, default None
-        A symbol or list of symbols
-    start: datetime.datetime, default None
-        Beginning of desired date range
-    end: datetime.datetime, default None
-        End of required date range
-    output_format: str, default 'json', optional
-        Desired output format (json or pandas)
-    kwargs:
-        Additional Request Parameters (see base class)
 
-    Returns
-    -------
-    list or DataFrame
-        Historical stock prices over date range, start to end
-    """
-    start, end = _sanitize_dates(start, end)
-    return HistoricalReader(symbols, start=start, end=end,
-                            output_format=output_format, **kwargs).fetch()
+# MOVED to iexfinance.stocks
+def get_market_gainers(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_gainers")
+    return stocks.get_market_gainers(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_losers(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_losers")
+    return stocks.get_market_losers(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_most_active(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_most_active")
+    return stocks.get_market_most_active(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_iex_volume(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_iex_volume")
+    return stocks.get_market_iex_volume(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_iex_percent(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_iex_percent")
+    return stocks.get_market_iex_percent(*args, **kwargs)
 
 
 def get_available_symbols(**kwargs):
@@ -151,7 +167,7 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
     return ListedSymbolDir(start=start, **kwargs)
 
 
-def get_market_tops(symbols=None, output_format='json', **kwargs):
+def get_market_tops(symbols=None, **kwargs):
     """
     Top-level function to obtain TOPS data for a symbol or list of symbols
 
@@ -159,15 +175,13 @@ def get_market_tops(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None, optional
         A symbol or list of symbols
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return TOPS(symbols, output_format, **kwargs).fetch()
+    return TOPS(symbols, **kwargs).fetch()
 
 
-def get_market_last(symbols=None, output_format='json', **kwargs):
+def get_market_last(symbols=None, **kwargs):
     """
     Top-level function to obtain Last data for a symbol or list of symbols
 
@@ -175,15 +189,13 @@ def get_market_last(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None, optional
         A symbol or list of symbols
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return Last(symbols, output_format, **kwargs).fetch()
+    return Last(symbols, **kwargs).fetch()
 
 
-def get_market_deep(symbols=None, output_format='json', **kwargs):
+def get_market_deep(symbols=None, **kwargs):
     """
     Top-level function to obtain DEEP data for a symbol or list of symbols
 
@@ -191,8 +203,6 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None
         A symbol or list of symbols
-    output_format: str, default 'json', optional
-        Desired output format. JSON required.
     kwargs:
         Additional Request Parameters (see base class)
 
@@ -200,10 +210,10 @@ def get_market_deep(symbols=None, output_format='json', **kwargs):
     -----
     Pandas not supported as an output format for the DEEP endpoint.
     """
-    return DEEP(symbols, output_format, **kwargs).fetch()
+    return DEEP(symbols, **kwargs).fetch()
 
 
-def get_market_book(symbols=None, output_format='json', **kwargs):
+def get_market_book(symbols=None, **kwargs):
     """
     Top-level function to obtain Book data for a symbol or list of symbols
 
@@ -211,60 +221,51 @@ def get_market_book(symbols=None, output_format='json', **kwargs):
     ----------
     symbols: str or list, default None
         A symbol or list of symbols
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return Book(symbols, output_format, **kwargs).fetch()
+    return Book(symbols, **kwargs).fetch()
 
 
-def get_stats_intraday(output_format='json', **kwargs):
+def get_stats_intraday(**kwargs):
     """
     Top-level function for obtaining data from the Intraday endpoint of IEX
     Stats
 
     Parameters
     ----------
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return IntradayReader(output_format=output_format, **kwargs).fetch()
+    return IntradayReader(**kwargs).fetch()
 
 
-def get_stats_recent(output_format='json', **kwargs):
+def get_stats_recent(**kwargs):
     """
     Top-level function for obtaining data from the Recent endpoint of IEX Stats
 
     Parameters
     ----------
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return RecentReader(output_format=output_format, **kwargs).fetch()
+    return RecentReader(**kwargs).fetch()
 
 
-def get_stats_records(output_format='json', **kwargs):
+def get_stats_records(**kwargs):
     """
     Top-level function for obtaining data from the Records endpoint of IEX
     Stats
 
     Parameters
     ----------
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return RecordsReader(output_format=output_format, **kwargs).fetch()
+    return RecordsReader(**kwargs).fetch()
 
 
-def get_stats_daily(start=None, end=None, last=None, output_format='json',
-                    **kwargs):
+def get_stats_daily(start=None, end=None, last=None, **kwargs):
     """
     Top-level function for obtaining data from the Historical Daily endpoint
     of IEX Stats
@@ -278,17 +279,15 @@ def get_stats_daily(start=None, end=None, last=None, output_format='json',
     last: int, default None, optional
         Used in place of date range to retrieve previous number of trading days
         (up to 90)
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
     start, end = _sanitize_dates(start, end)
     return DailySummaryReader(start=start, end=end, last=last,
-                              output_format=output_format, **kwargs).fetch()
+                              **kwargs).fetch()
 
 
-def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
+def get_stats_monthly(start=None, end=None, **kwargs):
     """
     Top-level function for obtaining data from the Historical Summary endpoint
     of IEX Stats
@@ -299,80 +298,7 @@ def get_stats_monthly(start=None, end=None, output_format='json', **kwargs):
         Start of data retrieval period
     end: datetime.datetime, default None, optional
         End of data retrieval period
-    output_format: str, default 'json', optional
-        Desired output format.
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return MonthlySummaryReader(start=start, end=end,
-                                output_format=output_format, **kwargs).fetch()
-
-
-def get_market_gainers(**kwargs):
-    """
-    Top-level function for obtaining top 10 market gainers from the
-    Stocks list endpoint
-    """
-    return MoversReader(mover='gainers', **kwargs).fetch()
-
-
-def get_market_losers(**kwargs):
-    """
-    Top-level function for obtaining top 10 market losers from the
-    Stocks list endpoint
-    """
-    return MoversReader(mover='losers', **kwargs).fetch()
-
-
-def get_market_most_active(**kwargs):
-    """
-    Top-level function for obtaining top 10 most active symbols from
-    the Stocks list endpoint
-    """
-    return MoversReader(mover='mostactive', **kwargs).fetch()
-
-
-def get_market_iex_volume(**kwargs):
-    """
-    Top-level function for obtaining the 10 symbols with the highest
-    IEX volume from the Stocks list endpoint
-    """
-    return MoversReader(mover='iexvolume', **kwargs).fetch()
-
-
-def get_market_iex_percent(**kwargs):
-    """
-    Top-level function for obtaining the 10 symbols with the highest
-    percent change on the IEX exchange from the Stocks list endpoint
-    """
-    return MoversReader(mover='iexpercent', **kwargs).fetch()
-
-
-def get_market_in_focus(**kwargs):
-    """
-    Top-level function for obtaining top 10 in focus symbols from the
-    Stocks list endpoint
-    """
-    return MoversReader(mover='infocus', **kwargs).fetch()
-
-
-def get_sector_performance(**kwargs):
-    """
-    This function returns an array of each sector and performance
-    for the current trading day. Performance is based on each sector ETF.
-    Parameters
-    ----------
-    kwargs:
-        Additional Request Parameters (see base class)
-    Returns
-    -------
-    data: list
-        List of dictionary sector performance items
-    """
-    _URL = "https://api.iextrading.com/1.0/stock/market/sector-performance"
-    handler = _IEXBase(**kwargs)
-    response = handler._execute_iex_query(_URL)
-    if not response:
-        raise IEXQueryError("Could not download sector performance data")
-    else:
-        return response
+    return MonthlySummaryReader(start=start, end=end, **kwargs).fetch()

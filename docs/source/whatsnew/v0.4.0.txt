@@ -6,10 +6,3 @@ v0.4.0 (TBA)
 
 This is a major release from 0.3.0, and we recommend that all users
 update.
-
-
-
--  Some Stocks endpoints return incorrectly
-   `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
-
-   

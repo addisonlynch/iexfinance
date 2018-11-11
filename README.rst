@@ -14,14 +14,14 @@ iexfinance
     :target: https://opensource.org/licenses/Apache-2.0
 
 
-Python module to retrieve stock data from the 
-`Investors Exchange (IEX) <https://iextrading.com/>`__ 
+Python module to retrieve stock data from the
+`Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__
 platform. iexfinance provides real-time financial data from the various IEX
 endpoints, as well as historical time-series data.
 
 This data includes stock quotes, fundamentals, actions, and information. In
-addition, support for IEX market data and statistics is provided. 
+addition, support for IEX market data and statistics is provided.
 
 - `Stocks <https://iextrading.com/developer/docs/#stocks>`__
 - `Reference Data <https://iextrading.com/developer/docs/#reference-data>`__
@@ -46,9 +46,9 @@ From development repository (dev version):
 
 .. code:: bash
 
-     $ git clone https://github.com/addisonlynch/iexfinance.git  
-     $ cd iexfinance  
-     $ python3 setup.py install  
+     $ git clone https://github.com/addisonlynch/iexfinance.git
+     $ cd iexfinance
+     $ python3 setup.py install
 
 Usage Examples
 --------------
@@ -58,7 +58,7 @@ The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository p
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
 endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
 endpoints, which allow access to various information regarding equities,
-including quotes, historical prices, dividends, and much more. 
+including quotes, historical prices, dividends, and much more.
 
 All top-level functions (such as ``Stock`` and ``get_historical_data``), allow
 for `Request Parameters
@@ -90,7 +90,7 @@ Pandas DataFrame and JSON (dict) output formatting are selected with the
 **Historical Data**
 
 .. code:: python
-	
+
 	from iexfinance import get_historical_data
 	from datetime import datetime
 
@@ -142,7 +142,7 @@ IEX Market Data
 The `IEX Market Data
 <https://iextrading.com/developer/docs/#iex-market-data>`__ endpoints are
 supported through various top-level functions, including ``get_market_tops``
-and ``get_market_deep``. 
+and ``get_market_deep``.
 
 .. code:: python
 
