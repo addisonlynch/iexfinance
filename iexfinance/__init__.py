@@ -1,3 +1,4 @@
+from iexfinance import stocks
 from iexfinance.base import _IEXBase
 from iexfinance.stocks.base import StockReader
 from iexfinance.market import TOPS, Last, DEEP, Book
@@ -10,6 +11,8 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
 __version__ = '0.3.4'
+
+WNG_MSG = "%s will be moved to iexfinance.stocks in version 0.4.0"
 
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
@@ -41,6 +44,48 @@ def Stock(symbols=None, **kwargs):
         return StockReader(symbols, **kwargs)
     else:
         raise ValueError("Please input a symbol or list of symbols")
+
+
+# MOVED to iexfinance.stocks
+def get_historical_data(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_historical_data")
+    return stocks.get_historical_data(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_gainers(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_gainers")
+    return stocks.get_market_gainers(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_losers(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_losers")
+    return stocks.get_market_losers(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_most_active(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_most_active")
+    return stocks.get_market_most_active(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_iex_volume(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_iex_volume")
+    return stocks.get_market_iex_volume(*args, **kwargs)
+
+
+# MOVED to iexfinance.stocks
+def get_market_iex_percent(*args, **kwargs):
+    import warnings
+    warnings.warn(WNG_MSG % "get_market_iex_percent")
+    return stocks.get_market_iex_percent(*args, **kwargs)
 
 
 def get_available_symbols(**kwargs):
