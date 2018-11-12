@@ -21,6 +21,7 @@ If no date parameters are passed, the start date will default to 2015/1/1
 and the end date will default to the current date.
 
 .. ipython:: python
+    :okwarning:
 
     from iexfinance import get_historical_data
     from datetime import datetime
