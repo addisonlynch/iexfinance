@@ -86,6 +86,7 @@ Usage
 ~~~~~
 
 .. ipython:: python
+    :okexcept:
 
     from iexfinance import get_market_deep
 

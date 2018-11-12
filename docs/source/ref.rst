@@ -75,6 +75,7 @@ Usage
 
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_corporate_actions
 
@@ -100,7 +101,8 @@ Usage
 
 .. _ref.iex-dividends-usage:
 
-.. ipython:: pyhton
+.. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_dividends
 
@@ -129,6 +131,7 @@ Usage
 
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_next_day_ex_date
 
@@ -155,6 +158,7 @@ Usage
 .. _ref.iex-listed-symbol-directory-usage:
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_listed_symbol_dir
 

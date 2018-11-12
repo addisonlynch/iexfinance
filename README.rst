@@ -62,14 +62,7 @@ endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
-All top-level functions (such as ``Stock`` and ``get_historical_data``), allow
-for `Request Parameters
-<https://addisonlynch.github.io/usage.html#parameters>`__, which
-include ``retry_count``, ``pause``, and ``session``. These parameters are
-entirely optional. The first two deal with how unsuccessful requests are
-handled, and the third allows for the passing of a cached ``requests-cache``
-session (see `caching
-<https://addisonlynch.github.io/iexfinance/caching.html>`__).
+All top-level functions (such as ``Stock`` and ``get_historical_data``)
 
 Stock Endpoints
 ^^^^^^^^^^^^^^^
@@ -164,6 +157,15 @@ a given ticker.
 	get_stats_intraday()
 
 
+Debugging \& Caching
+--------------------
+
+All functions (including ``Stock`` and ``get_historical_data``) allow
+for `Request Parameters <https://addisonlynch.github.io/usage.html#parameters>`__, which
+include ``retry_count``, ``pause``, and ``session``. These parameters are
+entirely optional. The first two deal with how unsuccessful requests are
+handled, and the third allows for the passing of a cached ``requests-cache``
+session (see `caching <https://addisonlynch.github.io/iexfinance/caching.html>`__).
 
 Contact
 -------

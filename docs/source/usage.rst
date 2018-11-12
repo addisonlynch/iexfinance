@@ -11,6 +11,22 @@
 Usage
 =====
 
+.. _usage.common:
+
+Common Tasks
+------------
+
+Historical Data
+~~~~~~~~~~~~~~~
+
+Daily
+^^^^^
+
+
+
+
+Minutely
+^^^^^^^^
 
 Overview
 --------
