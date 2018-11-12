@@ -140,6 +140,8 @@ Usage
 ~~~~~
 
 .. ipython:: python
+    :okwarning:
+    :okexcept:
 
     from iexfinance import get_stats_daily
 
