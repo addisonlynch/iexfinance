@@ -1012,17 +1012,15 @@ class TestHistorical(object):
         with pytest.raises(ValueError):
             get_historical_data(["AAPL", "TSLA"], start, end)
 
-    def test_invalid_symbol_single(self):
-        start = datetime(2017, 2, 9)
-        end = datetime(2017, 5, 24)
-        with pytest.raises(IEXSymbolError):
-            get_historical_data("BADSYMBOL", start, end)
-
     def test_invalid_symbol_batch(self):
         start = datetime(2017, 2, 9)
         end = datetime(2017, 5, 24)
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
+
+    def test_invalid_symbol_single(self):
+        with pytest.raises(IEXSymbolError):
+            get_historical_data("ZNWAA")
 
 
 class TestMarketMovers(object):

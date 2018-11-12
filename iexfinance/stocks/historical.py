@@ -58,9 +58,8 @@ class HistoricalReader(StockReader):
     def _output_format(self, out, fmt_j=None, fmt_p=None):
         result = {}
         for symbol in self.symbols:
-            if symbol not in out:
-                raise IEXSymbolError("Data for %s could not be found." %
-                                     symbol)
+            if symbol not in out or not out[symbol]["chart"]:
+                raise IEXSymbolError(symbol)
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
             if self.output_format == 'pandas':

@@ -38,3 +38,5 @@ Bug Fixes
    `GH34 <https://github.com/addisonlynch/iexfinance/issues/34>`__
 -  ``get_time_series`` returns incorrect range when passed ``range_`` parameter
    `GH84 <https://github.com/addisonlynch/iexfinance/issues/84>`__
+-  Repaired issue where get_historical_data for an invalid symbol does not
+   raise an exception `GH82 <https://github.com/addisonlynch/iexfinance/issues/82>`__
