@@ -103,9 +103,7 @@ Pandas DataFrame and JSON (dict) output formatting are selected with the
 	df.head()
 
 The resulting DataFrame will indexed by date, with a column for each OHLC
-datapoint:
-
-.. image:: /docs/source/images/dfdailyaapl.JPG
+datapoint.
 
 It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
 
@@ -115,10 +113,6 @@ It's really simple to plot this data, using `matplotlib <https://matplotlib.org/
 
 	df.plot()
 	plt.show()
-
-
-
-.. image:: /docs/source/images/plotdailyaapl.jpg
 
 IEX Reference Data
 ^^^^^^^^^^^^^^^^^^
