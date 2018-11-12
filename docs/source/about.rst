@@ -1,19 +1,19 @@
 .. _about:
 
-*****
+
 About
-*****
+=====
 
 
 IEX API Issues
-==============
+--------------
 
 For issues the provider's API endpoints, see the IEX API `Github <https://github.com/iexg/IEX-API>`__. Further, the `IEX Status <https://twitter.com/iexstatus>`__ twitter account provides
 updates about issues and service interruptions.
 
 
 Filling a Void
-==============
+--------------
 
 It seemed for a number of years that the primary sources of free US
 equities data for Python developers were the Yahoo Finance and Google

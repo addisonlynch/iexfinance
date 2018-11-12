@@ -1,8 +1,8 @@
 .. _testing:
 
-*******
+
 Testing
-*******
+=======
 
 Unit and integration tests for iexfinance are handled by the
 `pytest <https://docs.pytest.org/en/latest>`__ platform.

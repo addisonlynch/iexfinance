@@ -1,5 +1,5 @@
 iexfinance
-===============
+==========
 
 .. image:: https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master
     :target: https://travis-ci.org/addisonlynch/iexfinance
@@ -18,7 +18,9 @@ Python module to retrieve stock data from the
 `Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__
 platform. iexfinance provides real-time financial data from the various IEX
-endpoints, as well as historical time-series data.
+endpoints, including:
+
+
 
 This data includes stock quotes, fundamentals, actions, and information. In
 addition, support for IEX market data and statistics is provided.
@@ -60,14 +62,7 @@ endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
-All top-level functions (such as ``Stock`` and ``get_historical_data``), allow
-for `Request Parameters
-<https://addisonlynch.github.io/usage.html#parameters>`__, which
-include ``retry_count``, ``pause``, and ``session``. These parameters are
-entirely optional. The first two deal with how unsuccessful requests are
-handled, and the third allows for the passing of a cached ``requests-cache``
-session (see `caching
-<https://addisonlynch.github.io/iexfinance/caching.html>`__).
+All top-level functions (such as ``Stock`` and ``get_historical_data``)
 
 Stock Endpoints
 ^^^^^^^^^^^^^^^
@@ -101,9 +96,7 @@ Pandas DataFrame and JSON (dict) output formatting are selected with the
 	df.head()
 
 The resulting DataFrame will indexed by date, with a column for each OHLC
-datapoint:
-
-.. image:: /docs/source/images/dfdailyaapl.JPG
+datapoint.
 
 It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
 
@@ -113,10 +106,6 @@ It's really simple to plot this data, using `matplotlib <https://matplotlib.org/
 
 	df.plot()
 	plt.show()
-
-
-
-.. image:: /docs/source/images/plotdailyaapl.jpg
 
 IEX Reference Data
 ^^^^^^^^^^^^^^^^^^
@@ -168,6 +157,15 @@ a given ticker.
 	get_stats_intraday()
 
 
+Debugging \& Caching
+--------------------
+
+All functions (including ``Stock`` and ``get_historical_data``) allow
+for `Request Parameters <https://addisonlynch.github.io/usage.html#parameters>`__, which
+include ``retry_count``, ``pause``, and ``session``. These parameters are
+entirely optional. The first two deal with how unsuccessful requests are
+handled, and the third allows for the passing of a cached ``requests-cache``
+session (see `caching <https://addisonlynch.github.io/iexfinance/caching.html>`__).
 
 Contact
 -------

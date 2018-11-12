@@ -2,9 +2,9 @@
 
 .. currentmodule:: iexfinance
 
-***************
+
 Historical Data
-***************
+===============
 
 Historical time series data is available through the top-level
 ``get_historical_data`` method, which sources the
@@ -15,14 +15,15 @@ Historical time series data is available through the top-level
 Data can be retrieved from up to 5 years before the current date.
 
 Usage
-=====
+-----
 
 If no date parameters are passed, the start date will default to 2015/1/1
 and the end date will default to the current date.
 
 .. ipython:: python
+    :okwarning:
 
-    from iexfinance import get_historical_data
+    from iexfinance.stocks import get_historical_data
     from datetime import datetime
 
     start = datetime(2017, 2, 9)
@@ -32,7 +33,7 @@ and the end date will default to the current date.
     f.loc["2017-02-09"]
 
 Plotting
-========
+--------
 
 With Pandas output formatting, we are able to plot historical price
 movements using matplotlib.
@@ -40,7 +41,7 @@ movements using matplotlib.
 .. ipython:: python
 
 
-    from iexfinance import get_historical_data
+    from iexfinance.stocks import get_historical_data
     from datetime import datetime
     import matplotlib.pyplot as plt
     start = datetime(2017, 2, 9)

@@ -7,13 +7,29 @@
 
     import requests_cache
 
-*****
-Usage
-*****
 
+Usage
+=====
+
+.. _usage.common:
+
+Common Tasks
+------------
+
+Historical Data
+~~~~~~~~~~~~~~~
+
+Daily
+^^^^^
+
+
+
+
+Minutely
+^^^^^^^^
 
 Overview
-==================
+--------
 
 The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX API Documentation <https://iextrading.com/developer/docs>`__ for readability and ease of use.
 
@@ -30,7 +46,7 @@ These modules provide classes and top-level functions to execute queries to the 
 .. _usage.parameters:
 
 Parameters
-==========
+----------
 
 
 
@@ -42,7 +58,7 @@ requests:
 .. _usage.stocks:
 
 Stocks
-======
+------
 
 .. seealso:: For more information, see `Stocks <stocks.html>`__.
 
@@ -53,7 +69,7 @@ list. Invalid symbols will be met with a ``IEXSymbolError``, and
 duplicate symbols will be kept intact without alteration.
 
 Endpoints
----------
+~~~~~~~~~
 
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
@@ -77,7 +93,7 @@ For a detailed list of the *endpoint methods*, see
 `here <stocks.html#endpoints>`__.
 
 Fields
-------
+~~~~~~
 
 To obtain individual fields from an endpoint, select `Field Methods
 <stocks.html#field-methods>`__ are also provided.
@@ -102,7 +118,7 @@ Examples ``get_open()``, ``get_name()``
 For a detailed list of these functions, see `here <stocks.html>`__.
 
 Endpoint-Specific Parameters
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Top-level parameters may be passed to the ``Stock`` function, including
 ``output_format`` and request parameters (such as ``retry_count``, and
@@ -112,7 +128,7 @@ entirely optional.
 
 Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
-method as a keyword argument. 
+method as a keyword argument.
 
 .. ipython:: python
 
@@ -128,7 +144,7 @@ method as a keyword argument.
 .. _usage.reference-data:
 
 Reference Data
-==============
+--------------
 
 .. seealso:: For more information, see `Reference Data <ref.html>`__
 
@@ -137,7 +153,7 @@ Reference Data
 
 
 IEX Market Data
-===============
+---------------
 
 .. seealso:: For more information, see `IEX Market Data <market.html>`__
 
@@ -147,13 +163,13 @@ The IEX Market Data `endpoints <market.html>`__
 .. _usage.iex-stats:
 
 IEX Stats
-=========
+---------
 
 .. seealso:: For more information, see `IEX Stats <stats.html>`__
 
 The IEX Stats `endpoints <stats.html>`__
 
-.. _usage.caching
+.. _usage.caching:
 
 Caching
 -------

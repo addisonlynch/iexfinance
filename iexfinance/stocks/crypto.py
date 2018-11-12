@@ -9,4 +9,4 @@ class CryptoReader(_IEXBase):
 
     def _convert_output(self, out):
         import pandas as pd
-        return pd.DataFrame(out).set_index("symbol")
+        return pd.DataFrame(out).set_index("symbol").T

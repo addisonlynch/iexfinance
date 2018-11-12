@@ -8,4 +8,6 @@ class SectorPerformanceReader(_IEXBase):
         return "stock/market/sector-performance"
 
     def _convert_output(self, out):
-        return out
+        import pandas as pd
+        out = {item["name"]: item for item in out}
+        return pd.DataFrame(out)

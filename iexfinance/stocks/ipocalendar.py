@@ -15,6 +15,5 @@ class IPOReader(_IEXBase):
     def url(self):
         return "stock/market/%s" % self.period
 
-    @property
     def _convert_output(self, out):
         return out
