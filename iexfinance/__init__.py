@@ -10,7 +10,7 @@ from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.3.4'
+__version__ = '0.3.5'
 
 WNG_MSG = "%s will be moved to iexfinance.stocks in version 0.4.0"
 
