@@ -33,7 +33,7 @@ iexfinance\.stats module
     :show-inheritance:
 
 iexfinance\.stocks module
-------------------------
+-------------------------
 
 .. automodule:: iexfinance.stocks
     :members:

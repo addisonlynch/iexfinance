@@ -22,13 +22,14 @@ New Features
 
 Enhancements
 ~~~~~~~~~~~~
+
 - Adds pandas DataFrame output formatting for ``get_chart``, ``get_dividends``,
-``get_earnings``, ``get_financials``.
+  ``get_earnings``, ``get_financials``.
 - Adds support for list-like data types for symbols (tuple, pandas.Series,
   numpy.ndarray, etc)
 - Sets index of ``DataFrame`` historical and time series data to
-``pandas.DatetimeIndex`` for easier sorting and wrangling (thank you Brian
-Wylie) `GH83 <https://github.com/addisonlynch/iexfinance/issues/83>`__
+  ``pandas.DatetimeIndex`` for easier sorting and wrangling (thank you Brian
+  Wylie) `GH83 <https://github.com/addisonlynch/iexfinance/issues/83>`__
 
 Bug Fixes
 ~~~~~~~~~

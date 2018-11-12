@@ -196,7 +196,7 @@ Earnings
 .. _stocks.effective-spread:
 
 Effective Spread
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_effective_spread
 
@@ -226,7 +226,7 @@ List
 .. _stocks.largest-trades:
 
 Largest Trades
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 .. automethod:: iexfinance.stocks.base.StockReader.get_largest_trades
 
 
@@ -325,7 +325,7 @@ Time Series
 .. _stocks.volume-by-venue:
 
 Volume by Venue
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_volume_by_venue
 

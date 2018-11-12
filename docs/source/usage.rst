@@ -153,7 +153,7 @@ IEX Stats
 
 The IEX Stats `endpoints <stats.html>`__
 
-.. _usage.caching
+.. _usage.caching:
 
 Caching
 -------
