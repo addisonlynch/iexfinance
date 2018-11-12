@@ -32,10 +32,10 @@ iexfinance\.stats module
     :undoc-members:
     :show-inheritance:
 
-iexfinance\.stock module
+iexfinance\.stocks module
 ------------------------
 
-.. automodule:: iexfinance.stock
+.. automodule:: iexfinance.stocks
     :members:
     :undoc-members:
     :show-inheritance:

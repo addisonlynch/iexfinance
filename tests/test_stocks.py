@@ -520,7 +520,6 @@ class TestFieldMethodsShare(object):
 
     def test_get_company_name(self):
         data = self.share.get_company_name()
-        print(type(data))
 
         assert isinstance(data, six.string_types)
         assert data == "Apple Inc."
@@ -1073,6 +1072,9 @@ class TestCrypto(object):
         data = get_crypto_quotes(output_format='pandas')
         assert isinstance(data, pd.DataFrame)
 
+        assert len(data) == 43
+        assert data.loc["sector"][0] == "cryptocurrency"
+
 
 class TestSectorPerformance(object):
 
@@ -1100,13 +1102,16 @@ class TestCollections(object):
         df = get_collections("Computer Hardware", output_format='pandas')
 
         assert isinstance(df, pd.DataFrame)
-        assert len(df.columns) == 39
+        assert len(df) == 39
+
+        assert "change" in df.index
+        assert "close" in df.index
 
     def test_get_collections_type(self):
         df = get_collections("Industrials", "sector", output_format='pandas')
         assert isinstance(df, pd.DataFrame)
-        assert len(df.columns) == 39
-        assert len(df) > 500
+        assert len(df) == 39
+        assert len(df.columns) > 500
 
 
 class TestTodaysEarnings(object):

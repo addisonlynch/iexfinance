@@ -1,8 +1,8 @@
 .. _tutorial:
 
-********
+
 Tutorial
-********
+========
 
 Setting up a new environment
 ----------------------------

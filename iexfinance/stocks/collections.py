@@ -31,4 +31,4 @@ class CollectionsReader(_IEXBase):
         }
 
     def _convert_output(self, out):
-        return pd.DataFrame(out).set_index("symbol")
+        return pd.DataFrame(out).set_index("symbol").T

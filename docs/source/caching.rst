@@ -1,15 +1,14 @@
 .. _caching:
 
-***************
 Caching Queries
-***************
+===============
 
 In some cases it is sensible to cache queries to avoid overloading the
 IEX servers. ``iexfinance`` supports the caching of queries through
 ``requests_cache_``.
 
 Tutorial
-========
+--------
 
 Install ``requests-cache`` using pip:
 
@@ -25,11 +24,11 @@ top-level function you are using:
     import datetime
     from iexfinance import Stock
     import requests_cache
-    
+
     expiry = datetime.timedelta(days=3)
     session = requests_cache.CachedSession(cache_name='cache',
         backend='sqlite', expire_after=expiry)
-    
+
     f = Stock("AAPL", session=session)
     f.get_price()
 

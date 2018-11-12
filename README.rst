@@ -1,5 +1,5 @@
 iexfinance
-===============
+==========
 
 .. image:: https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master
     :target: https://travis-ci.org/addisonlynch/iexfinance
@@ -18,7 +18,9 @@ Python module to retrieve stock data from the
 `Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__
 platform. iexfinance provides real-time financial data from the various IEX
-endpoints, as well as historical time-series data.
+endpoints, including:
+
+
 
 This data includes stock quotes, fundamentals, actions, and information. In
 addition, support for IEX market data and statistics is provided.
