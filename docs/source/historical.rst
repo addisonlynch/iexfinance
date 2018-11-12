@@ -23,7 +23,7 @@ and the end date will default to the current date.
 .. ipython:: python
     :okwarning:
 
-    from iexfinance import get_historical_data
+    from iexfinance.stocks import get_historical_data
     from datetime import datetime
 
     start = datetime(2017, 2, 9)
@@ -41,7 +41,7 @@ movements using matplotlib.
 .. ipython:: python
 
 
-    from iexfinance import get_historical_data
+    from iexfinance.stocks import get_historical_data
     from datetime import datetime
     import matplotlib.pyplot as plt
     start = datetime(2017, 2, 9)

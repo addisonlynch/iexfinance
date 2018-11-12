@@ -78,7 +78,7 @@ DEEP
 
 Access is available through the top-level function ``get_market_deep()``:
 
-.. autofunction:: get_market_deep[:3]
+.. autofunction:: get_market_deep
 
 .. note:: Per IEX, DEEP only accepts one symbol at this time.
 
