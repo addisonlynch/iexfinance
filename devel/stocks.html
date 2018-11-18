@@ -283,7 +283,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    40973014</span>
+<span class="go">avgTotalVolume    41005317</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change                2.12</span>
 <span class="go">changePercent      0.01108</span>
@@ -938,7 +938,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                       AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    11662211  7441514  6404252</span>
+<span class="go">avgTotalVolume    11662263  7444804  6404502</span>
 <span class="go">calculationPrice     close    close    close</span>
 <span class="go">change               -1.07     -0.2    -0.65</span>
 <span class="go">changePercent     -0.02829 -0.00357 -0.01221</span>
@@ -985,14 +985,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">2</span>
+<span class="gh">Out[24]: </span><span class="go">3</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">2</span>
+<span class="gh">Out[26]: </span><span class="go">3</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -1005,7 +1005,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    40973014</span>
+<span class="go">avgTotalVolume    41005317</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change                2.12</span>
 <span class="go">changePercent      0.01108</span>
@@ -1111,7 +1111,7 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go"> &#39;changePercent&#39;: 0.37542,</span>
 <span class="go"> &#39;iexMarketPercent&#39;: None,</span>
 <span class="go"> &#39;iexVolume&#39;: None,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 13735030,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 13739888,</span>
 <span class="go"> &#39;iexBidPrice&#39;: None,</span>
 <span class="go"> &#39;iexBidSize&#39;: None,</span>
 <span class="go"> &#39;iexAskPrice&#39;: None,</span>
@@ -1154,12 +1154,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         5622.71  4.6254   176.34   ...        NaN  0.25048    3.115</span>
-<span class="go">askSize         0.274986     200  2.43255   ...        NaN     1000  123.979</span>
-<span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice         5620.83  4.6225   176.29   ...        NaN  0.25031    3.107</span>
-<span class="go">bidSize         0.161837     200  5.82524   ...        NaN    187.5    87.32</span>
+<span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice         5658.19  4.6297    177.9   ...        NaN  0.2517    3.133</span>
+<span class="go">askSize              3.9     200  0.22479   ...        NaN    11.3  218.557</span>
+<span class="go">avgTotalVolume      None    None     None   ...       None    None     None</span>
+<span class="go">bidPrice         5656.75  4.6264   177.88   ...        NaN  0.2514    3.123</span>
+<span class="go">bidSize         0.907584     200    0.968   ...        NaN    4173  357.236</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1182,7 +1182,7 @@ by:</p>
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
 <span class="go">symbol               KTCC     FLIR     HUBB   ...        FARO     KODK     AMSC</span>
-<span class="go">avgTotalVolume      12142  1183193   688286   ...       83249   431551   188783</span>
+<span class="go">avgTotalVolume      12142  1183451   688527   ...       83291   431555   188885</span>
 <span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
 <span class="go">change              -0.12     0.22     0.54   ...        0.31      0.1     0.04</span>
 <span class="go">changePercent    -0.01724  0.00463  0.00507   ...     0.00676  0.02532  0.00452</span>
@@ -1195,7 +1195,7 @@ by:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">symbol               AZUL      ETN      MWA   ...        RAVN    TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1503015  3350903  1029272   ...      148253    28345   737073</span>
+<span class="go">avgTotalVolume    1503015  3350922  1029272   ...      148564    28345   737073</span>
 <span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
 <span class="go">change               0.69     0.26     0.03   ...       -0.19    -0.01    -0.14</span>
 <span class="go">changePercent     0.02555  0.00351  0.00273   ...    -0.00429 -0.00098 -0.01701</span>
