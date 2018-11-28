@@ -245,7 +245,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">174.24</span>
+<span class="gh">Out[3]: </span><span class="go">180.94</span>
 </pre></div>
 </div>
 </div>
@@ -279,9 +279,9 @@ passing
 <span class="go">                      AAPL</span>
 <span class="go">avgTotalVolume    42161798</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -0.38</span>
-<span class="go">changePercent     -0.00218</span>
-<span class="go">close               174.24</span>
+<span class="go">change                 6.7</span>
+<span class="go">changePercent      0.03845</span>
+<span class="go">close               180.94</span>
 </pre></div>
 </div>
 <p>It is also possible to change the output format of an already-instantiated
@@ -289,7 +289,7 @@ passing
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">output_format</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
-<span class="gh">Out[8]: </span><span class="go">174.24</span>
+<span class="gh">Out[8]: </span><span class="go">180.94</span>
 </pre></div>
 </div>
 <p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
@@ -309,7 +309,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL    2.45005</span>
+<span class="go">AAPL    6.51305</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [14]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[15]: </span><span class="go">174.24</span>
+<span class="gh">Out[15]: </span><span class="go">180.94</span>
 </pre></div>
 </div>
 <p>While multi-symbol requests will return a symbol-indexed list of the endpoint’s data</p>
@@ -934,9 +934,9 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="go">                       AAL      DAL      LUV</span>
 <span class="go">avgTotalVolume    10465379  6781971  6045641</span>
 <span class="go">calculationPrice     close    close    close</span>
-<span class="go">change                0.19      1.6     0.03</span>
-<span class="go">changePercent      0.00499  0.02821  0.00057</span>
-<span class="go">close                38.29    58.31    52.79</span>
+<span class="go">change                0.65     0.56     0.29</span>
+<span class="go">changePercent      0.01698   0.0096  0.00549</span>
+<span class="go">close                38.94    58.87    53.08</span>
 </pre></div>
 </div>
 </div>
@@ -953,17 +953,17 @@ reserved word in Python:</p>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
-<span class="go">             AAPL</span>
-<span class="go">ytdChange  0.0245</span>
+<span class="go">              AAPL</span>
+<span class="go">ytdChange  0.06513</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
-<span class="go">               AAPL</span>
-<span class="go">close      174.2400</span>
-<span class="go">open       171.4800</span>
-<span class="go">ytdChange    0.0245</span>
+<span class="go">                AAPL</span>
+<span class="go">close      180.94000</span>
+<span class="go">open       176.74000</span>
+<span class="go">ytdChange    0.06513</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -979,14 +979,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">1</span>
+<span class="gh">Out[24]: </span><span class="go">10</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">20</span>
+<span class="gh">Out[26]: </span><span class="go">15</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -1001,9 +1001,9 @@ listed in the IEX docs.</p>
 <span class="go">                      AAPL</span>
 <span class="go">avgTotalVolume    42161798</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -0.38</span>
-<span class="go">changePercent     -0.00218</span>
-<span class="go">close               174.24</span>
+<span class="go">change                 6.7</span>
+<span class="go">changePercent      0.03845</span>
+<span class="go">close               180.94</span>
 </pre></div>
 </div>
 <p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
@@ -1014,10 +1014,10 @@ instantiated:</p>
 <span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
 <span class="go">               Out[30]: </span>
 <span class="go">                                           AAPL</span>
-<span class="go">close  {&#39;price&#39;: 174.24, &#39;time&#39;: 1543352400228}</span>
-<span class="go">high                                     174.77</span>
-<span class="go">low                                      170.88</span>
-<span class="go">open   {&#39;price&#39;: 171.48, &#39;time&#39;: 1543329000784}</span>
+<span class="go">close  {&#39;price&#39;: 180.94, &#39;time&#39;: 1543438800478}</span>
+<span class="go">high                                     181.29</span>
+<span class="go">low                                      174.93</span>
+<span class="go">open   {&#39;price&#39;: 176.74, &#39;time&#39;: 1543415400864}</span>
 </pre></div>
 </div>
 </div>
@@ -1028,7 +1028,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[31]: </span><span class="go"></span>
 <span class="go">        AAPL</span>
-<span class="go">open  171.48</span>
+<span class="go">open  176.74</span>
 
 <span class="gp">In [32]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                    Out[32]: </span>
@@ -1040,7 +1040,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [34]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 171.48, &#39;TSLA&#39;: 340.05}</span>
+<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 176.74, &#39;TSLA&#39;: 345.99}</span>
 
 <span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                          Out[35]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
@@ -1052,7 +1052,7 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          AAPL      TSLA</span>
-<span class="go">beta  1.325444  0.582344</span>
+<span class="go">beta  1.315266  0.586213</span>
 </pre></div>
 </div>
 </div>
@@ -1075,46 +1075,46 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [39]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;BXG&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;Bluegreen Vacations Corporation&#39;,</span>
-<span class="go"> &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
-<span class="go"> &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">{&#39;symbol&#39;: &#39;AGMH&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;AGM Group Holdings Inc.&#39;,</span>
+<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
+<span class="go"> &#39;sector&#39;: &#39;Technology&#39;,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go"> &#39;open&#39;: 12.05,</span>
-<span class="go"> &#39;openTime&#39;: 1543329000252,</span>
-<span class="go"> &#39;close&#39;: 14.08,</span>
-<span class="go"> &#39;closeTime&#39;: 1543352520433,</span>
-<span class="go"> &#39;high&#39;: 14.45,</span>
-<span class="go"> &#39;low&#39;: 12.05,</span>
-<span class="go"> &#39;latestPrice&#39;: 14.08,</span>
+<span class="go"> &#39;open&#39;: 37.36,</span>
+<span class="go"> &#39;openTime&#39;: 1543415400285,</span>
+<span class="go"> &#39;close&#39;: 42.04,</span>
+<span class="go"> &#39;closeTime&#39;: 1543438800419,</span>
+<span class="go"> &#39;high&#39;: 41.9,</span>
+<span class="go"> &#39;low&#39;: 37.36,</span>
+<span class="go"> &#39;latestPrice&#39;: 42.04,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;November 27, 2018&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1543352520433,</span>
-<span class="go"> &#39;latestVolume&#39;: 187637,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: 13.985,</span>
-<span class="go"> &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: 1543352319363,</span>
-<span class="go"> &#39;delayedPrice&#39;: 14.08,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1543352520433,</span>
-<span class="go"> &#39;extendedPrice&#39;: 14.08,</span>
-<span class="go"> &#39;extendedChange&#39;: 0,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: 0,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1543352522489,</span>
-<span class="go"> &#39;previousClose&#39;: 12.03,</span>
-<span class="go"> &#39;change&#39;: 2.05,</span>
-<span class="go"> &#39;changePercent&#39;: 0.17041,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: 0.01553,</span>
-<span class="go"> &#39;iexVolume&#39;: 2914,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 73665,</span>
+<span class="go"> &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1543438800419,</span>
+<span class="go"> &#39;latestVolume&#39;: 6863,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: 41.56,</span>
+<span class="go"> &#39;iexRealtimeSize&#39;: 56,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: 1543437895393,</span>
+<span class="go"> &#39;delayedPrice&#39;: 42.04,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1543438800419,</span>
+<span class="go"> &#39;extendedPrice&#39;: 41.56,</span>
+<span class="go"> &#39;extendedChange&#39;: -0.48,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: -0.01142,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1543437895393,</span>
+<span class="go"> &#39;previousClose&#39;: 39.5,</span>
+<span class="go"> &#39;change&#39;: 2.54,</span>
+<span class="go"> &#39;changePercent&#39;: 0.0643,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: 0.00816,</span>
+<span class="go"> &#39;iexVolume&#39;: 56,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 7430,</span>
 <span class="go"> &#39;iexBidPrice&#39;: 0,</span>
 <span class="go"> &#39;iexBidSize&#39;: 0,</span>
 <span class="go"> &#39;iexAskPrice&#39;: 0,</span>
 <span class="go"> &#39;iexAskSize&#39;: 0,</span>
-<span class="go"> &#39;marketCap&#39;: 1052261126,</span>
-<span class="go"> &#39;peRatio&#39;: 12.14,</span>
-<span class="go"> &#39;week52High&#39;: 26.22,</span>
-<span class="go"> &#39;week52Low&#39;: 10.68,</span>
-<span class="go"> &#39;ytdChange&#39;: -0.012666690996437496}</span>
+<span class="go"> &#39;marketCap&#39;: 896126952,</span>
+<span class="go"> &#39;peRatio&#39;: None,</span>
+<span class="go"> &#39;week52High&#39;: 52.001,</span>
+<span class="go"> &#39;week52Low&#39;: 5.01,</span>
+<span class="go"> &#39;ytdChange&#39;: 5.334141269841271}</span>
 </pre></div>
 </div>
 </div>
@@ -1148,12 +1148,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol           BTCUSDT EOSUSDT ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice            4120  3.2054  116.89   ...        NaN  0.15711     2.08</span>
-<span class="go">askSize         0.014532    6.36      11   ...        NaN     15.3  726.622</span>
-<span class="go">avgTotalVolume      None    None    None   ...       None     None     None</span>
-<span class="go">bidPrice         4118.18  3.2025  116.82   ...        NaN  0.15657    2.073</span>
-<span class="go">bidSize         0.379406   64.69  1.9217   ...        NaN      7.6    8.844</span>
+<span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice         4311.05  3.3077    123.7   ...        NaN  0.16334    2.209</span>
+<span class="go">askSize         0.099919   59.59  198.523   ...        NaN    129.3   31.296</span>
+<span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
+<span class="go">bidPrice         4310.47  3.3042   123.66   ...        NaN  0.16307    2.205</span>
+<span class="go">bidSize         0.139796     200  0.09699   ...        NaN   9597.9  232.787</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1175,12 +1175,12 @@ by:</p>
 
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
-<span class="go">symbol              RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
-<span class="go">avgTotalVolume    263309    11328   298385   ...       10977   197857   540063</span>
-<span class="go">calculationPrice   close    close    close   ...       close    close    close</span>
-<span class="go">change              0.75     -0.8    -0.04   ...       -0.11    -0.05    -0.29</span>
-<span class="go">changePercent     0.0375 -0.02062 -0.00157   ...    -0.00169 -0.01946 -0.00384</span>
-<span class="go">close              20.75       38    25.43   ...       64.81     2.52    75.15</span>
+<span class="go">symbol               RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
+<span class="go">avgTotalVolume     263309    11328   298385   ...       10977   197857   540063</span>
+<span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
+<span class="go">change               0.53     0.53     1.12   ...        2.39   -0.051     2.94</span>
+<span class="go">changePercent     0.02554  0.01395  0.04404   ...     0.03688 -0.02024  0.03912</span>
+<span class="go">close               21.28    38.53    26.55   ...        67.2    2.469    78.09</span>
 
 <span class="go">[5 rows x 164 columns]</span>
 </pre></div>
@@ -1188,12 +1188,12 @@ by:</p>
 <p><strong>Sector</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
-<span class="go">symbol               AZUL      ETN      MWA   ...        RAVN  TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1290123  3221866  1055703   ...      137942   5179   770835</span>
-<span class="go">calculationPrice    close    close    close   ...       close  close    close</span>
-<span class="go">change               0.71     0.26    -0.18   ...       -0.87      0     0.04</span>
-<span class="go">changePercent     0.02821  0.00346 -0.01681   ...    -0.02187      0  0.00511</span>
-<span class="go">close               25.88    75.35    10.53   ...       38.91  10.15     7.87</span>
+<span class="go">symbol               AZUL      ETN      MWA   ...        RAVN    TBRGU     ACCO</span>
+<span class="go">avgTotalVolume    1290123  3221866  1055703   ...      137942     5179   770835</span>
+<span class="go">calculationPrice    close    close    close   ...       close      sip    close</span>
+<span class="go">change               0.86     1.22     0.05   ...        1.17     0.04     0.22</span>
+<span class="go">changePercent     0.03323  0.01619  0.00475   ...     0.03007  0.00394  0.02795</span>
+<span class="go">close               26.74    76.57    10.58   ...       40.08    10.15     8.09</span>
 
 <span class="go">[5 rows x 810 columns]</span>
 </pre></div>
@@ -1206,10 +1206,10 @@ by:</p>
 
 <span class="gp">In [46]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[46]: </span><span class="go"></span>
-<span class="go">               Health Care      ...            Materials</span>
-<span class="go">lastUpdated  1543352400390      ...        1543352400350</span>
-<span class="go">name           Health Care      ...            Materials</span>
-<span class="go">performance        0.01039      ...             -0.01224</span>
+<span class="go">                Technology      ...            Utilities</span>
+<span class="go">lastUpdated  1543438800469      ...        1543438800385</span>
+<span class="go">name            Technology      ...            Utilities</span>
+<span class="go">performance        0.03503      ...             -0.00073</span>
 <span class="go">type                sector      ...               sector</span>
 
 <span class="go">[4 rows x 11 columns]</span>
@@ -1227,7 +1227,770 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [47]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_todays_earnings</span>
 
 <span class="gp">In [48]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
-<span class="gh">Out[48]: </span><span class="go">[]</span>
+<span class="gh">Out[48]: </span><span class="go"></span>
+<span class="go">[{&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 1.61,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 1.61,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 4,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 1.54,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.04545454545454549,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;6052&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;RY&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;RY&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Royal Bank Of Canada&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Financial Services&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 72.77,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400605,</span>
+<span class="go">   &#39;close&#39;: 73.96,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438924464,</span>
+<span class="go">   &#39;high&#39;: 74.18,</span>
+<span class="go">   &#39;low&#39;: 72.09,</span>
+<span class="go">   &#39;latestPrice&#39;: 73.96,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438924464,</span>
+<span class="go">   &#39;latestVolume&#39;: 1413455,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 73.935,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438793783,</span>
+<span class="go">   &#39;delayedPrice&#39;: 73.96,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438924464,</span>
+<span class="go">   &#39;extendedPrice&#39;: 73.483,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.477,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00645,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543439463570,</span>
+<span class="go">   &#39;previousClose&#39;: 71.83,</span>
+<span class="go">   &#39;change&#39;: 2.13,</span>
+<span class="go">   &#39;changePercent&#39;: 0.02965,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03114,</span>
+<span class="go">   &#39;iexVolume&#39;: 44015,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 777803,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 106574761798,</span>
+<span class="go">   &#39;peRatio&#39;: 11.26,</span>
+<span class="go">   &#39;week52High&#39;: 87.1,</span>
+<span class="go">   &#39;week52Low&#39;: 69.99,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.06924566734785795},</span>
+<span class="go">  &#39;headline&#39;: &#39;Royal Bank of Canada beats by C$0.05, misses on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.68,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.68,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 3,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.45,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.5111111111111112,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;8546&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;WB&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;WB&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Weibo Corporation&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 61.65,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400513,</span>
+<span class="go">   &#39;close&#39;: 61.99,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438800485,</span>
+<span class="go">   &#39;high&#39;: 65.49,</span>
+<span class="go">   &#39;low&#39;: 57.61,</span>
+<span class="go">   &#39;latestPrice&#39;: 61.99,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438800485,</span>
+<span class="go">   &#39;latestVolume&#39;: 6821285,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 62,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438790047,</span>
+<span class="go">   &#39;delayedPrice&#39;: 61.99,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438800485,</span>
+<span class="go">   &#39;extendedPrice&#39;: 62.21,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.22,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.00355,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440689787,</span>
+<span class="go">   &#39;previousClose&#39;: 59.1,</span>
+<span class="go">   &#39;change&#39;: 2.89,</span>
+<span class="go">   &#39;changePercent&#39;: 0.0489,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.01837,</span>
+<span class="go">   &#39;iexVolume&#39;: 125307,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 2241332,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 13805537129,</span>
+<span class="go">   &#39;peRatio&#39;: 29.66,</span>
+<span class="go">   &#39;week52High&#39;: 142.12,</span>
+<span class="go">   &#39;week52Low&#39;: 53.11,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.4288767959706636},</span>
+<span class="go">  &#39;headline&#39;: &#39;Weibo beats by $0.05, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.76,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.76,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 10,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.8,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.050000000000000044,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;6798&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;TIF&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;TIF&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Tiffany &amp; Co.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 93.41,</span>
+<span class="go">   &#39;openTime&#39;: 1543415405938,</span>
+<span class="go">   &#39;close&#39;: 92.54,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438941111,</span>
+<span class="go">   &#39;high&#39;: 96.74,</span>
+<span class="go">   &#39;low&#39;: 92,</span>
+<span class="go">   &#39;latestPrice&#39;: 92.54,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438941111,</span>
+<span class="go">   &#39;latestVolume&#39;: 10089262,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 92.5,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 61,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438797602,</span>
+<span class="go">   &#39;delayedPrice&#39;: 92.54,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438941111,</span>
+<span class="go">   &#39;extendedPrice&#39;: 92.74,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.2,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.00216,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440840916,</span>
+<span class="go">   &#39;previousClose&#39;: 104.95,</span>
+<span class="go">   &#39;change&#39;: -12.41,</span>
+<span class="go">   &#39;changePercent&#39;: -0.11825,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.04349,</span>
+<span class="go">   &#39;iexVolume&#39;: 438782,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1529292,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 11327917179,</span>
+<span class="go">   &#39;peRatio&#39;: 23.67,</span>
+<span class="go">   &#39;week52High&#39;: 141.64,</span>
+<span class="go">   &#39;week52Low&#39;: 90.55,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.11870905548857022}},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 2.35,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 2.35,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 6,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 2.02,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.1633663366336634,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;6307&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;SJM&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;SJM&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;J.M. Smucker Company (The)&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Defensive&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 103.5,</span>
+<span class="go">   &#39;openTime&#39;: 1543415519434,</span>
+<span class="go">   &#39;close&#39;: 101.28,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438865239,</span>
+<span class="go">   &#39;high&#39;: 106.67,</span>
+<span class="go">   &#39;low&#39;: 100.65,</span>
+<span class="go">   &#39;latestPrice&#39;: 101.28,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438865239,</span>
+<span class="go">   &#39;latestVolume&#39;: 4848740,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 101.26,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438798257,</span>
+<span class="go">   &#39;delayedPrice&#39;: 101.28,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438865239,</span>
+<span class="go">   &#39;extendedPrice&#39;: 102.5,</span>
+<span class="go">   &#39;extendedChange&#39;: 1.22,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.01205,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440849976,</span>
+<span class="go">   &#39;previousClose&#39;: 109.18,</span>
+<span class="go">   &#39;change&#39;: -7.9,</span>
+<span class="go">   &#39;changePercent&#39;: -0.07236,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.04446,</span>
+<span class="go">   &#39;iexVolume&#39;: 215575,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1219004,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 11519340077,</span>
+<span class="go">   &#39;peRatio&#39;: 12.93,</span>
+<span class="go">   &#39;week52High&#39;: 133.38,</span>
+<span class="go">   &#39;week52Low&#39;: 96.13,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.1643932948845997}},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 1.06,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 1.06,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 9,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.7,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.5142857142857145,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;7884&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;BURL&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;BURL&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Burlington Stores Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Defensive&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 155.98,</span>
+<span class="go">   &#39;openTime&#39;: 1543415503213,</span>
+<span class="go">   &#39;close&#39;: 167.56,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438814151,</span>
+<span class="go">   &#39;high&#39;: 169.53,</span>
+<span class="go">   &#39;low&#39;: 152.33,</span>
+<span class="go">   &#39;latestPrice&#39;: 167.56,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438814151,</span>
+<span class="go">   &#39;latestVolume&#39;: 4696408,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 167.6,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 29,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438795245,</span>
+<span class="go">   &#39;delayedPrice&#39;: 167.56,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438814151,</span>
+<span class="go">   &#39;extendedPrice&#39;: 168.03,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.47,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.0028,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440857000,</span>
+<span class="go">   &#39;previousClose&#39;: 148.56,</span>
+<span class="go">   &#39;change&#39;: 19,</span>
+<span class="go">   &#39;changePercent&#39;: 0.12789,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03925,</span>
+<span class="go">   &#39;iexVolume&#39;: 184334,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1240312,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 11318796968,</span>
+<span class="go">   &#39;peRatio&#39;: 42.64,</span>
+<span class="go">   &#39;week52High&#39;: 180.27,</span>
+<span class="go">   &#39;week52Low&#39;: 101.4,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.34320413612565454},</span>
+<span class="go">  &#39;headline&#39;: &#39;Burlington beats by $0.15, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.46,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.46,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.66,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.30303030303030304,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;6290&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;SINA&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;SINA&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Sina Corporation&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 64.85,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400907,</span>
+<span class="go">   &#39;close&#39;: 63.01,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438800342,</span>
+<span class="go">   &#39;high&#39;: 66.8,</span>
+<span class="go">   &#39;low&#39;: 60.3,</span>
+<span class="go">   &#39;latestPrice&#39;: 63.01,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438800342,</span>
+<span class="go">   &#39;latestVolume&#39;: 1809895,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 62.99,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438792185,</span>
+<span class="go">   &#39;delayedPrice&#39;: 63.01,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438800342,</span>
+<span class="go">   &#39;extendedPrice&#39;: 63.739,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.729,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.01157,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543439463570,</span>
+<span class="go">   &#39;previousClose&#39;: 61.9,</span>
+<span class="go">   &#39;change&#39;: 1.11,</span>
+<span class="go">   &#39;changePercent&#39;: 0.01793,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.0285,</span>
+<span class="go">   &#39;iexVolume&#39;: 51582,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 750130,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 4503354189,</span>
+<span class="go">   &#39;peRatio&#39;: 29.86,</span>
+<span class="go">   &#39;week52High&#39;: 124.6,</span>
+<span class="go">   &#39;week52Low&#39;: 56.67,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.4111947809646777},</span>
+<span class="go">  &#39;headline&#39;: &#39;Sina beats by $0.22, misses on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.26,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.26,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 12,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.3,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.13333333333333328,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;1803&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;DKS&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;DKS&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &quot;Dick&#39;s Sporting Goods Inc&quot;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 35.13,</span>
+<span class="go">   &#39;openTime&#39;: 1543415539864,</span>
+<span class="go">   &#39;close&#39;: 37.26,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438849602,</span>
+<span class="go">   &#39;high&#39;: 37.75,</span>
+<span class="go">   &#39;low&#39;: 34.9,</span>
+<span class="go">   &#39;latestPrice&#39;: 37.26,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438849602,</span>
+<span class="go">   &#39;latestVolume&#39;: 8403458,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 37.235,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438797488,</span>
+<span class="go">   &#39;delayedPrice&#39;: 37.26,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438849602,</span>
+<span class="go">   &#39;extendedPrice&#39;: 36.471,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.789,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.02118,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543439463570,</span>
+<span class="go">   &#39;previousClose&#39;: 36.33,</span>
+<span class="go">   &#39;change&#39;: 0.93,</span>
+<span class="go">   &#39;changePercent&#39;: 0.0256,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.0214,</span>
+<span class="go">   &#39;iexVolume&#39;: 179834,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 2935359,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 3765836343,</span>
+<span class="go">   &#39;peRatio&#39;: 11.94,</span>
+<span class="go">   &#39;week52High&#39;: 39.75,</span>
+<span class="go">   &#39;week52Low&#39;: 26.88,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.2812509477002198},</span>
+<span class="go">  &#39;headline&#39;: &quot;Dick&#39;s Sporting Goods beats by $0.13, misses on revenue&quot;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.44,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.44,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: -1.32,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 1.3333333333333333,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;761&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;BITA&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;BITA&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Bitauto Holdings Limited American Depositary Shares (each representing one)&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 20,</span>
+<span class="go">   &#39;openTime&#39;: 1543415578873,</span>
+<span class="go">   &#39;close&#39;: 19.98,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438923051,</span>
+<span class="go">   &#39;high&#39;: 20.65,</span>
+<span class="go">   &#39;low&#39;: 18.2,</span>
+<span class="go">   &#39;latestPrice&#39;: 19.98,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438923051,</span>
+<span class="go">   &#39;latestVolume&#39;: 935065,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 19.98,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438707351,</span>
+<span class="go">   &#39;delayedPrice&#39;: 19.98,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438923051,</span>
+<span class="go">   &#39;extendedPrice&#39;: 19.8,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.18,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00901,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440279837,</span>
+<span class="go">   &#39;previousClose&#39;: 18.71,</span>
+<span class="go">   &#39;change&#39;: 1.27,</span>
+<span class="go">   &#39;changePercent&#39;: 0.06788,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.00924,</span>
+<span class="go">   &#39;iexVolume&#39;: 8640,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 737259,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 1453344521,</span>
+<span class="go">   &#39;peRatio&#39;: -6.24,</span>
+<span class="go">   &#39;week52High&#39;: 39.54,</span>
+<span class="go">   &#39;week52Low&#39;: 15.61,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.362561400304414},</span>
+<span class="go">  &#39;headline&#39;: &#39;Bitauto beats by $0.03, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.09,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.09,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 5,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.13,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.30769230769230776,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;1231&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;CHS&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;CHS&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &quot;Chico&#39;s FAS Inc.&quot;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 5.05,</span>
+<span class="go">   &#39;openTime&#39;: 1543415427220,</span>
+<span class="go">   &#39;close&#39;: 4.79,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438942643,</span>
+<span class="go">   &#39;high&#39;: 5.3,</span>
+<span class="go">   &#39;low&#39;: 4.42,</span>
+<span class="go">   &#39;latestPrice&#39;: 4.79,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438942643,</span>
+<span class="go">   &#39;latestVolume&#39;: 29579843,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 4.785,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 600,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438799700,</span>
+<span class="go">   &#39;delayedPrice&#39;: 4.79,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438942643,</span>
+<span class="go">   &#39;extendedPrice&#39;: 4.85,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.06,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.01253,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440792265,</span>
+<span class="go">   &#39;previousClose&#39;: 7.32,</span>
+<span class="go">   &#39;change&#39;: -2.53,</span>
+<span class="go">   &#39;changePercent&#39;: -0.34563,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.0636,</span>
+<span class="go">   &#39;iexVolume&#39;: 1881278,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 2891859,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 602092175,</span>
+<span class="go">   &#39;peRatio&#39;: 7.15,</span>
+<span class="go">   &#39;week52High&#39;: 10.9,</span>
+<span class="go">   &#39;week52Low&#39;: 4.42,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.5085898289327738}},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.61,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.61,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.31,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.9677419354838709,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;11329&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;ATKR&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;ATKR&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Atkore International Group Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Industrials&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 20.25,</span>
+<span class="go">   &#39;openTime&#39;: 1543415591692,</span>
+<span class="go">   &#39;close&#39;: 21.06,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438957273,</span>
+<span class="go">   &#39;high&#39;: 21.8,</span>
+<span class="go">   &#39;low&#39;: 19.82,</span>
+<span class="go">   &#39;latestPrice&#39;: 21.06,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438957273,</span>
+<span class="go">   &#39;latestVolume&#39;: 884558,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 21.03,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438780341,</span>
+<span class="go">   &#39;delayedPrice&#39;: 21.06,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438957273,</span>
+<span class="go">   &#39;extendedPrice&#39;: 20.62,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.44,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.02089,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440211565,</span>
+<span class="go">   &#39;previousClose&#39;: 17.9,</span>
+<span class="go">   &#39;change&#39;: 3.16,</span>
+<span class="go">   &#39;changePercent&#39;: 0.17654,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.0215,</span>
+<span class="go">   &#39;iexVolume&#39;: 19018,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 330086,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 969537977,</span>
+<span class="go">   &#39;peRatio&#39;: 9.53,</span>
+<span class="go">   &#39;week52High&#39;: 28.67,</span>
+<span class="go">   &#39;week52Low&#39;: 17.47,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.0002859733087895999},</span>
+<span class="go">  &#39;headline&#39;: &#39;Atkore International beats by $0.08, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.09,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.09,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 5,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.13,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.30769230769230776,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;12377&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;JILL&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;JILL&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;J. Jill Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 6,</span>
+<span class="go">   &#39;openTime&#39;: 1543415415448,</span>
+<span class="go">   &#39;close&#39;: 5.93,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438921479,</span>
+<span class="go">   &#39;high&#39;: 6.14,</span>
+<span class="go">   &#39;low&#39;: 5.425,</span>
+<span class="go">   &#39;latestPrice&#39;: 5.93,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438921479,</span>
+<span class="go">   &#39;latestVolume&#39;: 1289743,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 5.92,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 84,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438782999,</span>
+<span class="go">   &#39;delayedPrice&#39;: 5.93,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438921479,</span>
+<span class="go">   &#39;extendedPrice&#39;: 5.822,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.108,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.01821,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543439463570,</span>
+<span class="go">   &#39;previousClose&#39;: 5,</span>
+<span class="go">   &#39;change&#39;: 0.93,</span>
+<span class="go">   &#39;changePercent&#39;: 0.186,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03071,</span>
+<span class="go">   &#39;iexVolume&#39;: 39608,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 211787,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 259424199,</span>
+<span class="go">   &#39;peRatio&#39;: 8.98,</span>
+<span class="go">   &#39;week52High&#39;: 9.62,</span>
+<span class="go">   &#39;week52Low&#39;: 4.17,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.19974938574938578},</span>
+<span class="go">  &#39;headline&#39;: &#39;J. Jill beats by $0.06, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.26,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.26,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 5,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.23,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.13043478260869565,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;8433&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;SPWH&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;SPWH&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &quot;Sportsman&#39;s Warehouse Holdings Inc.&quot;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 5.05,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400692,</span>
+<span class="go">   &#39;close&#39;: 4.95,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438800539,</span>
+<span class="go">   &#39;high&#39;: 5.3,</span>
+<span class="go">   &#39;low&#39;: 4.5,</span>
+<span class="go">   &#39;latestPrice&#39;: 4.95,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438800539,</span>
+<span class="go">   &#39;latestVolume&#39;: 645132,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 4.93,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438775705,</span>
+<span class="go">   &#39;delayedPrice&#39;: 4.95,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438800539,</span>
+<span class="go">   &#39;extendedPrice&#39;: 5,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.05,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.0101,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543440004924,</span>
+<span class="go">   &#39;previousClose&#39;: 4.72,</span>
+<span class="go">   &#39;change&#39;: 0.23,</span>
+<span class="go">   &#39;changePercent&#39;: 0.04873,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03893,</span>
+<span class="go">   &#39;iexVolume&#39;: 25115,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 268378,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 212544268,</span>
+<span class="go">   &#39;peRatio&#39;: 9,</span>
+<span class="go">   &#39;week52High&#39;: 6.99,</span>
+<span class="go">   &#39;week52Low&#39;: 3.66,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.2509732640949556},</span>
+<span class="go">  &#39;headline&#39;: &#39;Sportsmans Warehouse EPS in-line, misses on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: -0.03,</span>
+<span class="go">  &#39;estimatedEPS&#39;: -0.03,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;13633&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;ICLK&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;ICLK&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;iClick Interactive Asia Group Limited&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;NASDAQ Global Market&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 3.85,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400486,</span>
+<span class="go">   &#39;close&#39;: 3.8,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438800229,</span>
+<span class="go">   &#39;high&#39;: 3.99,</span>
+<span class="go">   &#39;low&#39;: 3.744,</span>
+<span class="go">   &#39;latestPrice&#39;: 3.8,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438800229,</span>
+<span class="go">   &#39;latestVolume&#39;: 182353,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 3.795,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 86,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438791605,</span>
+<span class="go">   &#39;delayedPrice&#39;: 3.8,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543438800229,</span>
+<span class="go">   &#39;extendedPrice&#39;: 3.795,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.005,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00132,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543438791605,</span>
+<span class="go">   &#39;previousClose&#39;: 3.73,</span>
+<span class="go">   &#39;change&#39;: 0.07,</span>
+<span class="go">   &#39;changePercent&#39;: 0.01877,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.00187,</span>
+<span class="go">   &#39;iexVolume&#39;: 341,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 152015,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 198726594,</span>
+<span class="go">   &#39;peRatio&#39;: -10,</span>
+<span class="go">   &#39;week52High&#39;: 11.4,</span>
+<span class="go">   &#39;week52Low&#39;: 2.72,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.5885984210526316}},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.2,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.2,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-28&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.07,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 1.857142857142857,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;3430&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;IEC&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;IEC&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;IEC Electronics Corp.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;NYSE American&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 5.61,</span>
+<span class="go">   &#39;openTime&#39;: 1543415400023,</span>
+<span class="go">   &#39;close&#39;: 6.234,</span>
+<span class="go">   &#39;closeTime&#39;: 1543438800069,</span>
+<span class="go">   &#39;high&#39;: 6.25,</span>
+<span class="go">   &#39;low&#39;: 5.61,</span>
+<span class="go">   &#39;latestPrice&#39;: 6.234,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;November 28, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543438800069,</span>
+<span class="go">   &#39;latestVolume&#39;: 274521,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 6.195,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543438117582,</span>
+<span class="go">   &#39;delayedPrice&#39;: 6.234,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543439400001,</span>
+<span class="go">   &#39;extendedPrice&#39;: 6.21,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.024,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00385,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543439838566,</span>
+<span class="go">   &#39;previousClose&#39;: 5.33,</span>
+<span class="go">   &#39;change&#39;: 0.904,</span>
+<span class="go">   &#39;changePercent&#39;: 0.16961,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.00522,</span>
+<span class="go">   &#39;iexVolume&#39;: 1433,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 18049,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 64144282,</span>
+<span class="go">   &#39;peRatio&#39;: 69.27,</span>
+<span class="go">   &#39;week52High&#39;: 6.8,</span>
+<span class="go">   &#39;week52Low&#39;: 3.421,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.4539473493975903},</span>
+<span class="go">  &#39;headline&#39;: &#39;IEC Electronics misses by $0.07, misses on revenue&#39;}]</span>
 </pre></div>
 </div>
 </div>

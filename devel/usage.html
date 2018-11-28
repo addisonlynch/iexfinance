@@ -198,7 +198,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">343.92</span>
+<span class="gh">Out[3]: </span><span class="go">347.87</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -206,7 +206,7 @@ etc.):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 343.92, &#39;AAPL&#39;: 174.24}</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 347.87, &#39;AAPL&#39;: 180.94}</span>
 </pre></div>
 </div>
 </div>
@@ -239,7 +239,7 @@ requested over the desired date range (<code class="docutils literal notranslate
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="gp">In [13]: </span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x14a6a21b6a58&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x14ee392aa1d0&gt;</span>
 
 <span class="gp">In [14]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -8453,9 +8453,71 @@ current day (default is current date):</p>
 <p>or for a Pandas Dataframe indexed by each minute:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">Empty DataFrame</span>
-<span class="go">Columns: []</span>
-<span class="go">Index: []</span>
+<span class="go">        average  changeOverTime  ...       open volume</span>
+<span class="go">minute                           ...                  </span>
+<span class="go">09:30   176.564        0.000000  ...    176.640  13613</span>
+<span class="go">09:31   176.211       -0.001999  ...    176.500  23919</span>
+<span class="go">09:32   175.884       -0.003851  ...    176.000   5218</span>
+<span class="go">09:33   175.805       -0.004299  ...    175.790   6552</span>
+<span class="go">09:34   175.784       -0.004418  ...    175.710   7660</span>
+<span class="go">09:35   176.092       -0.002673  ...    176.050   7959</span>
+<span class="go">09:36   175.929       -0.003596  ...    175.910   8090</span>
+<span class="go">09:37   176.327       -0.001342  ...    176.090   3741</span>
+<span class="go">09:38   176.459       -0.000595  ...    176.300   5255</span>
+<span class="go">09:39   176.611        0.000266  ...    176.570   3652</span>
+<span class="go">09:40   176.744        0.001019  ...    176.790   3332</span>
+<span class="go">09:41   176.525       -0.000221  ...    176.570   4888</span>
+<span class="go">09:42   176.572        0.000045  ...    176.510   3711</span>
+<span class="go">09:43   176.382       -0.001031  ...    176.520   5804</span>
+<span class="go">09:44   176.053       -0.002894  ...    176.220   5080</span>
+<span class="go">09:45   175.928       -0.003602  ...    176.010   4638</span>
+<span class="go">09:46   175.638       -0.005245  ...    175.760   3283</span>
+<span class="go">09:47   175.760       -0.004554  ...    175.560   6964</span>
+<span class="go">09:48   176.121       -0.002509  ...    176.100   3628</span>
+<span class="go">09:49   176.176       -0.002198  ...    176.160   2301</span>
+<span class="go">09:50   176.305       -0.001467  ...    176.150   3276</span>
+<span class="go">09:51   176.314       -0.001416  ...    176.390   2600</span>
+<span class="go">09:52   176.056       -0.002877  ...    176.195   2057</span>
+<span class="go">09:53   176.060       -0.002854  ...    176.050    841</span>
+<span class="go">09:54   175.938       -0.003545  ...    176.150   3485</span>
+<span class="go">09:55   175.933       -0.003574  ...    175.790   2142</span>
+<span class="go">09:56   175.880       -0.003874  ...    175.780   2569</span>
+<span class="go">09:57   175.948       -0.003489  ...    175.970   2555</span>
+<span class="go">09:58   176.039       -0.002973  ...    175.970   1373</span>
+<span class="go">09:59   176.064       -0.002832  ...    176.090   2469</span>
+<span class="go">...         ...             ...  ...        ...    ...</span>
+<span class="go">15:30   179.915        0.018979  ...    179.960   1618</span>
+<span class="go">15:31   179.828        0.018486  ...    179.870   2620</span>
+<span class="go">15:32   179.900        0.018894  ...    179.890   1589</span>
+<span class="go">15:33   180.011        0.019523  ...    179.935   3000</span>
+<span class="go">15:34   180.174        0.020446  ...    180.130   3887</span>
+<span class="go">15:35   180.309        0.021210  ...    180.300   2119</span>
+<span class="go">15:36   180.386        0.021647  ...    180.430   3044</span>
+<span class="go">15:37   180.335        0.021358  ...    180.340   2263</span>
+<span class="go">15:38   180.433        0.021913  ...    180.340   3377</span>
+<span class="go">15:39   180.474        0.022145  ...    180.520   5464</span>
+<span class="go">15:40   180.444        0.021975  ...    180.490   3113</span>
+<span class="go">15:41   180.631        0.023034  ...    180.520   3694</span>
+<span class="go">15:42   180.671        0.023261  ...    180.650   2511</span>
+<span class="go">15:43   180.696        0.023402  ...    180.690   3574</span>
+<span class="go">15:44   180.684        0.023334  ...    180.650   9413</span>
+<span class="go">15:45   180.726        0.023572  ...    180.650  11222</span>
+<span class="go">15:46   180.800        0.023991  ...    180.840   6599</span>
+<span class="go">15:47   180.777        0.023861  ...    180.830   5139</span>
+<span class="go">15:48   180.879        0.024439  ...    180.770   5799</span>
+<span class="go">15:49   180.922        0.024682  ...    180.900   3397</span>
+<span class="go">15:50   180.927        0.024711  ...    180.930   2539</span>
+<span class="go">15:51   180.923        0.024688  ...    180.930   5526</span>
+<span class="go">15:52   180.891        0.024507  ...    180.880   4201</span>
+<span class="go">15:53   180.805        0.024020  ...    180.890   3198</span>
+<span class="go">15:54   180.793        0.023952  ...    180.810   7053</span>
+<span class="go">15:55   180.759        0.023759  ...    180.800  12313</span>
+<span class="go">15:56   180.903        0.024575  ...    180.840   7725</span>
+<span class="go">15:57   180.974        0.024977  ...    180.980   6928</span>
+<span class="go">15:58   181.083        0.025594  ...    180.950  15297</span>
+<span class="go">15:59   181.040        0.025351  ...    181.100  29364</span>
+
+<span class="go">[390 rows x 20 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -8535,17 +8597,17 @@ the endpoint requested.</p>
 <p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
 <p><strong>Single Symbol</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[23]: </span><span class="go">171.48</span>
+<span class="gh">Out[23]: </span><span class="go">176.74</span>
 
 <span class="gp">In [24]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                Out[24]: 174.24</span>
+<span class="go">                Out[24]: 180.94</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [26]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[26]: </span><span class="go">{&#39;AAPL&#39;: 171.48, &#39;TSLA&#39;: 340.05}</span>
+<span class="gh">Out[26]: </span><span class="go">{&#39;AAPL&#39;: 176.74, &#39;TSLA&#39;: 345.99}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -8561,7 +8623,7 @@ method as a keyword argument.</p>
 
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
-<span class="go">AAPL    2.45005</span>
+<span class="go">AAPL    6.51305</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
