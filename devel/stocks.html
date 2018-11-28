@@ -986,7 +986,7 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">23</span>
+<span class="gh">Out[26]: </span><span class="go">20</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -1148,12 +1148,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol           BTCUSDT  EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         4063.78   3.1962    115.9   ...        NaN  0.15577    2.067</span>
-<span class="go">askSize         0.400004   197.59  2.17497   ...        NaN      7.5   99.517</span>
-<span class="go">avgTotalVolume      None     None     None   ...       None     None     None</span>
-<span class="go">bidPrice         4061.04   3.1941   115.82   ...        NaN  0.15535    2.061</span>
-<span class="go">bidSize              0.2  4962.58   81.115   ...        NaN      7.7   43.675</span>
+<span class="go">symbol           BTCUSDT EOSUSDT ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice            4120  3.2054  116.89   ...        NaN  0.15711     2.08</span>
+<span class="go">askSize         0.014532    6.36      11   ...        NaN     15.3  726.622</span>
+<span class="go">avgTotalVolume      None    None    None   ...       None     None     None</span>
+<span class="go">bidPrice         4118.18  3.2025  116.82   ...        NaN  0.15657    2.073</span>
+<span class="go">bidSize         0.379406   64.69  1.9217   ...        NaN      7.6    8.844</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
