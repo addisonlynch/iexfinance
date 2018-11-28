@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Queries &mdash; iexfinance 0.3.4 documentation</title>
+  <title>Caching Queries &mdash; iexfinance 0.3.5 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.3.4
+                0.3.5
               </div>
             
           
@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
 
             
@@ -178,44 +179,20 @@ IEX servers. <code class="docutils literal notranslate"><span class="pre">iexfin
 top-level function you are using:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="kn">import</span> <span class="n">Stock</span>
+<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
 
 <span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">requests_cache</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-3-cdd7959a39e2&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">requests_cache</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;requests_cache&#39;
 
 <span class="gp">In [4]: </span><span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
 <span class="gp">   ...: </span>    <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span> <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
 <span class="gp">   ...: </span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-5-709778376a21&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span> <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;requests_cache&#39; is not defined
 
 <span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                            ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-6-413271544e3e&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 f = Stock(&quot;AAPL&quot;, session=session)</span>
-
-<span class="go">NameError: name &#39;session&#39; is not defined</span>
 
 <span class="gp">In [7]: </span><span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ---------------------------------------------------------------------------</span>
-<span class="go">NameError                                 Traceback (most recent call last)</span>
-<span class="go">&lt;ipython-input-7-dde3f8cb8003&gt; in &lt;module&gt;()</span>
-<span class="go">----&gt; 1 f.get_price()</span>
-
-<span class="go">NameError: name &#39;f&#39; is not defined</span>
+<span class="gh">Out[7]: </span><span class="go">174.24</span>
 </pre></div>
 </div>
 <p>A <a class="reference external" href="https://www.sqlite.org/">SQLite</a> file named <code class="docutils literal notranslate"><span class="pre">cache.sqlite</span></code> will
@@ -246,7 +223,7 @@ expiry date.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2018, Addison Lynch
 
     </p>
   </div>
@@ -265,20 +242,13 @@ expiry date.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.4',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 

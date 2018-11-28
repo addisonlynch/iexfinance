@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>IEX Market Data &mdash; iexfinance 0.3.4 documentation</title>
+  <title>IEX Market Data &mdash; iexfinance 0.3.5 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.3.4
+                0.3.5
               </div>
             
           
@@ -114,6 +114,7 @@
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
 
             
@@ -200,7 +201,7 @@ aggregated best quoted bid and offer position in near real time.</p>
 <p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_market_tops()</span></code>:</p>
 <dl class="function">
 <dt id="iexfinance.get_market_tops">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_tops</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_tops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">iexfinance.</code><code class="descname">get_market_tops</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_tops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Top-level function to obtain TOPS data for a symbol or list of symbols</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -208,7 +209,6 @@ aggregated best quoted bid and offer position in near real time.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
 <li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
 </td>
@@ -230,12 +230,12 @@ aggregated best quoted bid and offer position in near real time.</p>
 <span class="go">  &#39;bidSize&#39;: 0,</span>
 <span class="go">  &#39;askPrice&#39;: 0,</span>
 <span class="go">  &#39;askSize&#39;: 0,</span>
-<span class="go">  &#39;lastUpdated&#39;: 1531426283964,</span>
-<span class="go">  &#39;lastSalePrice&#39;: 191.1,</span>
+<span class="go">  &#39;lastUpdated&#39;: 1543355506456,</span>
+<span class="go">  &#39;lastSalePrice&#39;: 174.23,</span>
 <span class="go">  &#39;lastSaleSize&#39;: 100,</span>
-<span class="go">  &#39;lastSaleTime&#39;: 1531425593116,</span>
-<span class="go">  &#39;volume&#39;: 251457,</span>
-<span class="go">  &#39;marketPercent&#39;: 0.01407}]</span>
+<span class="go">  &#39;lastSaleTime&#39;: 1543352399341,</span>
+<span class="go">  &#39;volume&#39;: 1019552,</span>
+<span class="go">  &#39;marketPercent&#39;: 0.02484}]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -252,7 +252,7 @@ of a real-time quote.</p>
 <p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_market_last()</span></code>:</p>
 <dl class="function">
 <dt id="iexfinance.get_market_last">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_last</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_last" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">iexfinance.</code><code class="descname">get_market_last</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_last" title="Permalink to this definition">¶</a></dt>
 <dd><p>Top-level function to obtain Last data for a symbol or list of symbols</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -260,7 +260,6 @@ of a real-time quote.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
 <li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
 </td>
@@ -279,7 +278,7 @@ of a real-time quote.</p>
 
 <span class="gp">In [6]: </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">0    191.1</span>
+<span class="go">0    174.23</span>
 <span class="go">Name: price, dtype: float64</span>
 </pre></div>
 </div>
@@ -293,6 +292,26 @@ of a real-time quote.</p>
 <span id="market-deep"></span><h2>DEEP<a class="headerlink" href="#deep" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#DEEP">DEEP</a>  is IEX’s aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.</p>
 <p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_market_deep()</span></code>:</p>
+<dl class="function">
+<dt id="iexfinance.get_market_deep">
+<code class="descclassname">iexfinance.</code><code class="descname">get_market_deep</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_deep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top-level function to obtain DEEP data for a symbol or list of symbols</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pandas not supported as an output format for the DEEP endpoint.</p>
+</dd></dl>
+
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Per IEX, DEEP only accepts one symbol at this time.</p>
@@ -304,7 +323,7 @@ of a real-time quote.</p>
 <span class="gp">In [8]: </span><span class="n">get_market_deep</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-8-9d6ca559d3dd&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">9</span><span class="n">d6ca559d3dd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_market_deep</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="ne">TypeError</span>: unhashable type: &#39;slice&#39;
@@ -319,7 +338,7 @@ for given symbols.</p>
 <p>Access is available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_market_book()</span></code>:</p>
 <dl class="function">
 <dt id="iexfinance.get_market_book">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_book</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>output_format='json'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_book" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">iexfinance.</code><code class="descname">get_market_book</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Top-level function to obtain Book data for a symbol or list of symbols</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -327,7 +346,6 @@ for given symbols.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</li>
-<li><strong>output_format</strong> (<em>str</em><em>, </em><em>default 'json'</em><em>, </em><em>optional</em>) – Desired output format.</li>
 <li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
 </td>
@@ -372,7 +390,7 @@ for given symbols.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2018, Addison Lynch
 
     </p>
   </div>
@@ -391,20 +409,13 @@ for given symbols.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.4',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>iexfinance &mdash; iexfinance 0.3.4 documentation</title>
+  <title>iexfinance &mdash; iexfinance 0.3.5 documentation</title>
   
 
   
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                0.3.4
+                0.3.5
               </div>
             
           
@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
 
             
@@ -165,18 +166,25 @@
 <a class="reference external image-reference" href="https://codecov.io/gh/addisonlynch/iexfinance"><img alt="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" src="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" /></a>
 <a class="reference external image-reference" href="https://badge.fury.io/py/iexfinance"><img alt="https://badge.fury.io/py/iexfinance.svg" src="https://badge.fury.io/py/iexfinance.svg" /></a>
 <a class="reference external image-reference" href="https://opensource.org/licenses/Apache-2.0"><img alt="https://img.shields.io/badge/License-Apache%202.0-blue.svg" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
-<p>Python module to retrieve stock data from the
+<p>Python wrapper around the
 <a class="reference external" href="https://iextrading.com/">Investors Exchange (IEX)</a>
-<a class="reference external" href="https://iextrading.com/developer/">Developer API</a>
-platform. iexfinance provides real-time financial data from the various IEX
-endpoints, as well as historical time-series data.</p>
-<p>This data includes stock quotes, fundamentals, actions, and information. In
-addition, support for IEX market data and statistics is provided.</p>
+<a class="reference external" href="https://iextrading.com/developer/">Developer API</a>.</p>
+<p>An easy-to-use interface to obtain:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#stocks">Stocks</a></li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">Reference Data</a></li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market Data</a></li>
-<li><a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Stats</a></li>
+<li>Real-time quotes</li>
+<li>Historical data</li>
+<li>Fundamentals,</li>
+<li>Actions (dividends, splits), Sector Performance</li>
+<li>Trading analyses (gainers, losers, etc.)</li>
+<li>IEX Market Data &amp; Stats</li>
+</ul>
+<p>iexfinance provides real-time financial data from the various IEX
+endpoints, including:</p>
+<ul class="simple">
+<li>Stocks (<a class="reference external" href="https://iextrading.com/developer/docs/#stocks">IEX Docs</a>)</li>
+<li>Reference Data (<a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">IEX Docs</a>)</li>
+<li>IEX Market Data (<a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Docs</a>)</li>
+<li>IEX Stats (<a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Docs</a>)</li>
 </ul>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
@@ -194,46 +202,52 @@ $ python3 setup.py install
 </pre></div>
 </div>
 </div>
-<div class="section" id="usage-examples">
-<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="common-usage-examples">
+<h2>Common Usage Examples<a class="headerlink" href="#common-usage-examples" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/addisonlynch/iex-examples">iex-examples</a> repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.</p>
 <p>Using iexfinance to access data from IEX is quite easy. The most commonly-used
 endpoints are the <a class="reference external" href="https://iextrading.com/developer/docs/#stocks">Stocks</a>
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.</p>
-<p>All top-level functions (such as <code class="docutils literal notranslate"><span class="pre">Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>), allow
-for <a class="reference external" href="https://addisonlynch.github.io/usage.html#parameters">Request Parameters</a>, which
-include <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, <code class="docutils literal notranslate"><span class="pre">pause</span></code>, and <code class="docutils literal notranslate"><span class="pre">session</span></code>. These parameters are
-entirely optional. The first two deal with how unsuccessful requests are
-handled, and the third allows for the passing of a cached <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>
-session (see <a class="reference external" href="https://addisonlynch.github.io/iexfinance/caching.html">caching</a>).</p>
-<div class="section" id="stock-endpoints">
-<h3>Stock Endpoints<a class="headerlink" href="#stock-endpoints" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">Stock</span>
+<div class="section" id="real-time-quotes">
+<h3>Real-time Quotes<a class="headerlink" href="#real-time-quotes" title="Permalink to this headline">¶</a></h3>
+<p>To obtain real-time quotes for one or more symbols, use the <code class="docutils literal notranslate"><span class="pre">get_price</span></code>
+method of the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">Stock</span>
 <span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>It’s also possible to obtain historical data from the <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>
-top-level function. This will return a daily time-series of the ticker
-requested over the desired date range (<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> passed as
-<code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> objects).</p>
-<p>Pandas DataFrame and JSON (dict) output formatting are selected with the
-<code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter.</p>
-<p><strong>Historical Data</strong></p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_historical_data</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
+etc.):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The resulting DataFrame will indexed by date, with a column for each OHLC
-datapoint:</p>
-<img alt="docs/source/images/dfdailyaapl.JPG" src="docs/source/images/dfdailyaapl.JPG" />
+</div>
+<div class="section" id="historical-data">
+<h3>Historical Data<a class="headerlink" href="#historical-data" title="Permalink to this headline">¶</a></h3>
+<p>It’s possible to obtain historical data the <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>.</p>
+<div class="section" id="daily">
+<h4>Daily<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h4>
+<p>To obtain daily historical price data for one or more symbols, use the
+<code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> function. This will return a daily time-series of the ticker
+requested over the desired date range (<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> passed as
+<code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> objects):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">get_historical_data</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For Pandas DataFrame output formatting, pass <code class="docutils literal notranslate"><span class="pre">output_format</span></code>:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>It’s really simple to plot this data, using <a class="reference external" href="https://matplotlib.org/">matplotlib</a>:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -241,7 +255,46 @@ datapoint:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="docs/source/images/plotdailyaapl.jpg" src="docs/source/images/plotdailyaapl.jpg" />
+</div>
+<div class="section" id="minutely-intraday">
+<h4>Minutely (Intraday)<a class="headerlink" href="#minutely-intraday" title="Permalink to this headline">¶</a></h4>
+<p>To obtain historical intraday data, use <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code> as follows.
+Pass an optional <code class="docutils literal notranslate"><span class="pre">date</span></code> to specify a date within three months prior to the
+current day (default is current date):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">get_historical_intraday</span>
+
+<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+
+<span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or for a Pandas Dataframe indexed by each minute:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="endpoints">
+<h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stock-endpoints">
+<h3>Stock Endpoints<a class="headerlink" href="#stock-endpoints" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function creates a <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> instance which has a method to
+retrieve each of the Stocks endpoints (<code class="docutils literal notranslate"><span class="pre">get_quote</span></code>, <code class="docutils literal notranslate"><span class="pre">get_book</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_volume_by_venue</span></code>, etc.):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">Stock</span>
+<span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
+<span class="n">tsla</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Pandas DataFrame and JSON (dict) output formatting are selected with the
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter when calling <code class="docutils literal notranslate"><span class="pre">Stock</span></code>.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="n">tsla</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="iex-reference-data">
 <h3>IEX Reference Data<a class="headerlink" href="#iex-reference-data" title="Permalink to this headline">¶</a></h3>
@@ -281,6 +334,15 @@ a given ticker.</p>
 </div>
 </div>
 </div>
+<div class="section" id="debugging-caching">
+<h2>Debugging &amp; Caching<a class="headerlink" href="#debugging-caching" title="Permalink to this headline">¶</a></h2>
+<p>All functions (including <code class="docutils literal notranslate"><span class="pre">Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>) allow
+for <a class="reference external" href="https://addisonlynch.github.io/usage.html#parameters">Request Parameters</a>, which
+include <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, <code class="docutils literal notranslate"><span class="pre">pause</span></code>, and <code class="docutils literal notranslate"><span class="pre">session</span></code>. These parameters are
+entirely optional. The first two deal with how unsuccessful requests are
+handled, and the third allows for the passing of a cached <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>
+session (see <a class="reference external" href="https://addisonlynch.github.io/iexfinance/stable/caching.html">caching</a>).</p>
+</div>
 <div class="section" id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
 <p>Email: <a class="reference external" href="mailto:ahlshop&#37;&#52;&#48;gmail&#46;com">ahlshop<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
@@ -292,8 +354,10 @@ a given ticker.</p>
 <p>See LICENSE for details</p>
 </div>
 </div>
+<div class="section" id="welcome-to-iexfinance-s-documentation">
+<span id="index-documentation"></span><h1>Welcome to iexfinance’s documentation!<a class="headerlink" href="#welcome-to-iexfinance-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="contents">
-<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
@@ -302,12 +366,14 @@ a given ticker.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#common-usage-examples">Common Usage Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#parameters">Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#stocks">Stocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#reference-data">Reference Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#iex-market-data">IEX Market Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html#iex-stats">IEX Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#caching">Caching</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a><ul>
@@ -319,6 +385,10 @@ a given ticker.</p>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#examples">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#market-movers">Market Movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#cryptocurrencies">Cryptocurrencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#collections">Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#sector-performance">Sector Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#earnings-today">Earnings Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#ipo-calendar">IPO Calendar</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a><ul>
@@ -360,9 +430,10 @@ a given ticker.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-5-11-28-2018">v0.3.5 (11/28/2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-4-july-12-2018">v0.3.4 (July 12, 2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-3-april-21-2018">v0.3.3 (April 21, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#id2">v0.3.3 (April 21, 2018)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#id4">v0.3.3 (April 21, 2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-2-april-21-2018">v0.3.2 (April 21, 2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-1-march-9-2018">v0.3.1 (March 9, 2018)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-0-february-1-2018">v0.3.0 (February 1, 2018)</a></li>
@@ -379,14 +450,24 @@ a given ticker.</p>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#getting-started">Getting started</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.base">iexfinance.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.market">iexfinance.market module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.stats">iexfinance.stats module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.stocks">iexfinance.stocks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="modules">
-<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="modules.html">Modules</a></li>
 </ul>
+</div>
 </div>
 
 
@@ -407,7 +488,7 @@ a given ticker.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2018, Addison Lynch
 
     </p>
   </div>
@@ -426,20 +507,13 @@ a given ticker.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.4',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
