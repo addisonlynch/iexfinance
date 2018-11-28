@@ -41,8 +41,6 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
     aapl.get_price()
 
 
-.. autoclass:: iexfinance.stocks.base.StockReader
-
 
 Formatting
 ----------

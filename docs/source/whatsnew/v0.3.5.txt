@@ -1,7 +1,7 @@
 .. _whatsnew_035:
 
 
-v0.3.5 (11/12/2018)
+v0.3.5 (11/28/2018)
 -----------------------
 
 This is a minor release from 0.3.4.
@@ -10,19 +10,18 @@ Highlights:
 
 Adds and updates endpoints related to provider updates by IEX.
 
-New Features
+
+Enhancements
 ~~~~~~~~~~~~
 
+- Adds support for intraday historical data through ``get_historical_intraday``
+  of ``stocks``.
 - Adds support for the `Sector Performance <https://iextrading.com/developer/docs/#sector-performance>`__ endpoint of Stocks (thank you kafana).
 - Adds support for the `List <https://iextrading.com/developer/docs/#list>`__ infocus endpoint of Stocks (thank you kafana).
 - Adds support for the `Collections <https://iextrading.com/developer/docs/#collections>`__ endpoint of Stocks
 - Adds support for the `Crypto <https://iextrading.com/developer/docs/#crypto>`__ endpoint of Stocks
 - Adds support for the `Earnings Today <https://iextrading.com/developer/docs/#earnings-today>`__ endpoint of Stocks
 - Adds support for the `IPO Calendar <https://iextrading.com/developer/docs/#ipo-calendar>`__ endpoint of Stocks
-
-Enhancements
-~~~~~~~~~~~~
-
 - Adds pandas DataFrame output formatting for ``get_chart``, ``get_dividends``,
   ``get_earnings``, ``get_financials``.
 - Adds support for list-like data types for symbols (tuple, pandas.Series,

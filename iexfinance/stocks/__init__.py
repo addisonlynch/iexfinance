@@ -1,6 +1,6 @@
 from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.crypto import CryptoReader
-from iexfinance.stocks.historical import HistoricalReader
+from iexfinance.stocks.historical import HistoricalReader, IntradayReader
 from iexfinance.stocks.ipocalendar import IPOReader
 from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
@@ -12,14 +12,14 @@ from iexfinance.utils import _sanitize_dates
 # and conditions of use
 
 
-def get_historical_data(symbols=None, start=None, end=None, **kwargs):
+def get_historical_data(symbols, start=None, end=None, **kwargs):
     """
     Top-level function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
 
     Parameters
     ----------
-    symbols: str or list, default None
+    symbols: str or list
         A symbol or list of symbols
     start: datetime.datetime, default None
         Beginning of desired date range
@@ -35,6 +35,28 @@ def get_historical_data(symbols=None, start=None, end=None, **kwargs):
     """
     start, end = _sanitize_dates(start, end)
     return HistoricalReader(symbols, start=start, end=end, **kwargs).fetch()
+
+
+def get_historical_intraday(symbol, date=None, **kwargs):
+    """
+    Top-level function to obtain intraday one-minute pricing data for one
+    symbol on a given date (defaults to current date)
+
+    Parameters
+    ----------
+    symbol: str
+        A single ticker
+    date: datetime.datetime, default current date
+        Desired date for intraday retrieval, defaults to today
+    kwargs:
+        Additional Request Parameters (see base class)
+
+    Returns
+    -------
+    list or DataFrame
+        Intraday pricing data for specified symbol on given date
+    """
+    return IntradayReader(symbol, date, **kwargs).fetch()
 
 
 def get_sector_performance(**kwargs):

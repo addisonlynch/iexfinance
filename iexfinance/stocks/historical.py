@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
 
+from iexfinance.base import _IEXBase
 from iexfinance.stocks.base import StockReader
 from iexfinance.utils.exceptions import IEXSymbolError
 
@@ -78,3 +79,37 @@ class HistoricalReader(StockReader):
             for sym in list(result):
                 result[sym] = result[sym].to_dict('index')
         return result[self.symbols[0]] if self.n_symbols == 1 else result
+
+
+class IntradayReader(_IEXBase):
+    """
+    Base class for intraday historical data
+    """
+    def __init__(self, symbol, date, **kwargs):
+        if not date:
+            date = datetime.datetime.now()
+
+        try:
+            self.date = date.strftime("%Y%m%d")
+        except AttributeError:
+            self.date = date
+
+        if not isinstance(symbol, str):
+            raise ValueError("Please enter a valid single symbol.")
+
+        self.symbol = symbol
+        super(IntradayReader, self).__init__(**kwargs)
+
+    @property
+    def params(self):
+        return {}
+
+    @property
+    def url(self):
+        return 'stock/%s/chart/date/%s' % (self.symbol, self.date)
+
+    def _convert_output(self, out):
+        if out:
+            return pd.DataFrame(out).set_index("minute")
+        else:
+            return pd.DataFrame([])
