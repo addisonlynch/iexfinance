@@ -12,7 +12,7 @@ from iexfinance.utils.exceptions import IEXQueryError
 __author__ = 'Addison Lynch'
 __version__ = '0.3.5'
 
-WNG_MSG = "%s is moved to iexfinance.stocks. This function will in be "\
+WNG_MSG = "%s is moved to iexfinance.%s. This function will in be "\
           "deprecated in v0.4.0"
 
 # Data provided for free by IEX
@@ -25,6 +25,8 @@ WNG_MSG = "%s is moved to iexfinance.stocks. This function will in be "\
 def Stock(symbols=None, **kwargs):
     """
     Top-level function to to retrieve data from the IEX Stocks endpoints
+
+    WARNING: Moving to ``iexfinance.stocks``. Will be deprecated in v0.4.0.
 
     Parameters
     ----------
@@ -39,6 +41,8 @@ def Stock(symbols=None, **kwargs):
     stock.StockReader
         A StockReader instance
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("Stock", "stocks"))
     if isinstance(symbols, str) and symbols:
         return StockReader([symbols], **kwargs)
     elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
@@ -50,42 +54,27 @@ def Stock(symbols=None, **kwargs):
 # MOVED to iexfinance.stocks
 def get_historical_data(*args, **kwargs):
     import warnings
-    warnings.warn(WNG_MSG % "get_historical_data")
+    warnings.warn(WNG_MSG % ("get_historical_data", "stocks"))
     return stocks.get_historical_data(*args, **kwargs)
 
 
-# MOVED to iexfinance.stocks
 def get_market_gainers(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % "get_market_gainers")
     return stocks.get_market_gainers(*args, **kwargs)
 
 
-# MOVED to iexfinance.stocks
 def get_market_losers(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % "get_market_losers")
     return stocks.get_market_losers(*args, **kwargs)
 
 
-# MOVED to iexfinance.stocks
 def get_market_most_active(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % "get_market_most_active")
     return stocks.get_market_most_active(*args, **kwargs)
 
 
-# MOVED to iexfinance.stocks
 def get_market_iex_volume(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % "get_market_iex_volume")
     return stocks.get_market_iex_volume(*args, **kwargs)
 
 
-# MOVED to iexfinance.stocks
 def get_market_iex_percent(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % "get_market_iex_percent")
     return stocks.get_market_iex_percent(*args, **kwargs)
 
 

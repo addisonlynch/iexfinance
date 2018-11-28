@@ -36,7 +36,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 
 .. ipython:: python
 
-    from iexfinance import Stock
+    from iexfinance.stocks import Stock
     aapl = Stock("aapl")
     aapl.get_price()
 
@@ -71,7 +71,7 @@ passing
 
 .. ipython:: python
 
-    from iexfinance import Stock
+    from iexfinance.stocks import Stock
     aapl = Stock("aapl", output_format='pandas')
     aapl.get_quote().head()
 
@@ -385,7 +385,7 @@ A single symbol request will return data *exactly* as it appears in the IEX docs
 
 .. ipython:: python
 
-    from iexfinance import Stock
+    from iexfinance.stocks import Stock
     aapl = Stock("AAPL")
     aapl.get_price()
 
@@ -400,7 +400,7 @@ Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests w
 
 .. ipython:: python
 
-    from iexfinance import Stock as iex
+    from iexfinance.stocks import Stock as iex
     air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
     air_transport.get_quote().head()
 
@@ -418,7 +418,7 @@ reserved word in Python:
 
 .. ipython:: python
 
-    from iexfinance import Stock as iex
+    from iexfinance.stocks import Stock as iex
     aapl = Stock("AAPL", output_format='pandas')
     aapl.get_quote(filter_='ytdChange')
 

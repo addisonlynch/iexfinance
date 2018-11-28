@@ -14,10 +14,11 @@ iexfinance
     :target: https://opensource.org/licenses/Apache-2.0
 
 
-Python module to retrieve stock data from the
+Python wrapper around the
 `Investors Exchange (IEX) <https://iextrading.com/>`__
-`Developer API <https://iextrading.com/developer/>`__
-platform. An easy-to-use interface to obtain:
+`Developer API <https://iextrading.com/developer/>`__.
+
+An easy-to-use interface to obtain:
 
 - Real-time quotes
 - Historical data

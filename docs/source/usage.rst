@@ -30,7 +30,7 @@ Real-time Quotes
 To obtain real-time quotes for one or more symbols, use the ``get_price``
 method of the ``Stock`` object:
 
-.. code:: python
+.. ipython:: python
 
     from iexfinance.stocks import Stock
     tsla = Stock('TSLA')
@@ -39,7 +39,7 @@ method of the ``Stock`` object:
 or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
 etc.):
 
-.. code:: python
+.. ipython:: python
 
     batch = Stock(["TSLA", "AAPL"])
     batch.get_price()
@@ -59,7 +59,7 @@ To obtain daily historical price data for one or more symbols, use the
 requested over the desired date range (``start`` and ``end`` passed as
 ``datetime.datetime`` objects):
 
-.. code:: python
+.. ipython:: python
 
     from datetime import datetime
     from iexfinance.stocks import get_historical_data
@@ -72,13 +72,13 @@ requested over the desired date range (``start`` and ``end`` passed as
 
 For Pandas DataFrame output formatting, pass ``output_format``:
 
-.. code:: python
+.. ipython:: python
 
     df = get_historical_data("TSLA", start, end, output_format='pandas')
 
 It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
 
-.. code:: python
+.. ipython:: python
 
     import matplotlib.pyplot as plt
 
@@ -93,7 +93,7 @@ To obtain historical intraday data, use ``get_historical_intraday`` as follows.
 Pass an optional ``date`` to specify a date within three months prior to the
 current day (default is current date):
 
-.. code:: python
+.. ipython:: python
 
     from datetime import datetime
     from iexfinance.stocks import get_historical_intraday
@@ -104,7 +104,7 @@ current day (default is current date):
 
 or for a Pandas Dataframe indexed by each minute:
 
-.. code:: python
+.. ipython:: python
 
     get_historical_intraday("AAPL", output_format='pandas')
 
@@ -171,7 +171,7 @@ the endpoint requested.
 
 .. ipython:: python
 
-	from iexfinance import Stock
+	from iexfinance.stocks import Stock
 	aapl = Stock("AAPL")
     aapl.get_previous()
 

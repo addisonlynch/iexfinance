@@ -10,7 +10,7 @@ Highlights:
 
 - Adds support for intraday historical prices
 - Adds support for endpoint additions and updates from 8/8/2018 provider
-updates (including expanded cryptocurrency support)
+  updates (including expanded cryptocurrency support)
 - Various bug fixes and enhancements
 
 
