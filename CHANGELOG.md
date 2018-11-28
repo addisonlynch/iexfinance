@@ -1,3 +1,3 @@
 # Changelog
 
-See [here](https://addisonlynch.github.io/whatsnew.html).
+See [here](https://addisonlynch.github.io/stable/whatsnew.html).

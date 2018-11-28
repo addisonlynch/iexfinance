@@ -8,7 +8,10 @@ This is a minor release from 0.3.4.
 
 Highlights:
 
-Adds and updates endpoints related to provider updates by IEX.
+- Adds support for intraday historical prices
+- Adds support for endpoint additions and updates from 8/8/2018 provider
+updates (including expanded cryptocurrency support)
+- Various bug fixes and enhancements
 
 
 Enhancements
@@ -39,3 +42,10 @@ Bug Fixes
    `GH84 <https://github.com/addisonlynch/iexfinance/issues/84>`__
 -  Repaired issue where get_historical_data for an invalid symbol does not
    raise an exception `GH82 <https://github.com/addisonlynch/iexfinance/issues/82>`__
+
+Backward Compatability
+~~~~~~~~~~~~~~~~~~~~~~
+
+-  ``Stock`` and ``get_historical_data`` have been moved to
+   ``iexfinance.stocks``. The top-level functions remain with warnings but
+   will be deprecated in v0.4.0.
