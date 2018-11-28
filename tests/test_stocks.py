@@ -11,8 +11,8 @@ from iexfinance.stocks import (get_historical_data, get_market_gainers,
                                get_market_iex_volume, get_market_iex_percent,
                                get_market_in_focus, get_sector_performance,
                                get_collections, get_crypto_quotes,
-                               get_todays_earnings, get_ipo_calendar)
-from iexfinance import Stock
+                               get_todays_earnings, get_ipo_calendar,
+                               get_historical_intraday, Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 import six
@@ -1012,17 +1012,15 @@ class TestHistorical(object):
         with pytest.raises(ValueError):
             get_historical_data(["AAPL", "TSLA"], start, end)
 
-    def test_invalid_symbol_single(self):
-        start = datetime(2017, 2, 9)
-        end = datetime(2017, 5, 24)
-        with pytest.raises(IEXSymbolError):
-            get_historical_data("BADSYMBOL", start, end)
-
     def test_invalid_symbol_batch(self):
         start = datetime(2017, 2, 9)
         end = datetime(2017, 5, 24)
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
+
+    def test_invalid_symbol_single(self):
+        with pytest.raises(IEXSymbolError):
+            get_historical_data("ZNWAA")
 
 
 class TestMarketMovers(object):
@@ -1145,3 +1143,32 @@ class TestIPOCalendar(object):
     def test_ipo_calendar_bad_period(self):
         with pytest.raises(ValueError):
             get_ipo_calendar("BADPERIOD")
+
+
+class TestHistoricalIntraday(object):
+
+    def test_intraday_fails_no_symbol(self):
+        with pytest.raises(TypeError):
+            get_historical_intraday()
+
+    def test_intraday_default(self):
+        data = get_historical_intraday("AAPL")
+
+        assert isinstance(data, list)
+
+    def test_intraday_pandas(self):
+        data = get_historical_intraday("AAPL", output_format='pandas')
+
+        assert isinstance(data, pd.DataFrame)
+
+    def test_intraday_pass_date_str(self):
+        data = get_historical_intraday("AAPL", date="20181127")
+
+        assert isinstance(data, list)
+
+    def test_intraday_pass_datetime(self):
+        date = datetime(2018, 10, 27)
+
+        data = get_historical_intraday("AAPL", date=date)
+
+        assert isinstance(data, list)

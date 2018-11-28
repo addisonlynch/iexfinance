@@ -13,14 +13,101 @@ Usage
 
 .. _usage.common:
 
-Common Tasks
-------------
+
+Common Usage Examples
+---------------------
+
+The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
+
+Using iexfinance to access data from IEX is quite easy. The most commonly-used
+endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
+endpoints, which allow access to various information regarding equities,
+including quotes, historical prices, dividends, and much more.
+
+Real-time Quotes
+^^^^^^^^^^^^^^^^
+
+To obtain real-time quotes for one or more symbols, use the ``get_price``
+method of the ``Stock`` object:
+
+.. ipython:: python
+
+    from iexfinance.stocks import Stock
+    tsla = Stock('TSLA')
+    tsla.get_price()
+
+or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
+etc.):
+
+.. ipython:: python
+
+    batch = Stock(["TSLA", "AAPL"])
+    batch.get_price()
+
 
 Historical Data
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
+
+It's possible to obtain historical data the ``get_historical_data`` and
+``get_historical_intraday``.
 
 Daily
-^^^^^
+~~~~~
+
+To obtain daily historical price data for one or more symbols, use the
+``get_historical_data`` function. This will return a daily time-series of the ticker
+requested over the desired date range (``start`` and ``end`` passed as
+``datetime.datetime`` objects):
+
+.. ipython:: python
+
+    from datetime import datetime
+    from iexfinance.stocks import get_historical_data
+
+    start = datetime(2017, 1, 1)
+    end = datetime(2018, 1, 1)
+
+    df = get_historical_data("TSLA", start, end)
+
+
+For Pandas DataFrame output formatting, pass ``output_format``:
+
+.. ipython:: python
+
+    df = get_historical_data("TSLA", start, end, output_format='pandas')
+
+It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
+
+.. ipython:: python
+
+    import matplotlib.pyplot as plt
+
+    df.plot()
+    plt.show()
+
+
+Minutely (Intraday)
+~~~~~~~~~~~~~~~~~~~
+
+To obtain historical intraday data, use ``get_historical_intraday`` as follows.
+Pass an optional ``date`` to specify a date within three months prior to the
+current day (default is current date):
+
+.. ipython:: python
+
+    from datetime import datetime
+    from iexfinance.stocks import get_historical_intraday
+
+    date = datetime(2018, 11, 27)
+
+    get_historical_intraday("AAPL", date)
+
+or for a Pandas Dataframe indexed by each minute:
+
+.. ipython:: python
+
+    get_historical_intraday("AAPL", output_format='pandas')
+
 
 
 
@@ -84,7 +171,7 @@ the endpoint requested.
 
 .. ipython:: python
 
-	from iexfinance import Stock
+	from iexfinance.stocks import Stock
 	aapl = Stock("AAPL")
     aapl.get_previous()
 

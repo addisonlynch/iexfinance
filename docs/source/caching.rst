@@ -22,7 +22,7 @@ top-level function you are using:
 .. ipython:: python
 
     import datetime
-    from iexfinance import Stock
+    from iexfinance.stocks import Stock
     import requests_cache
 
     expiry = datetime.timedelta(days=3)
