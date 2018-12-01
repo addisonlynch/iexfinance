@@ -277,7 +277,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    43098910</span>
+<span class="go">avgTotalVolume    43650895</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -0.97</span>
 <span class="go">changePercent      -0.0054</span>
@@ -309,7 +309,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL    5.25688</span>
+<span class="go">AAPL    4.68532</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -931,12 +931,12 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
-<span class="go">                       AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    10123416  6775893  6021968</span>
-<span class="go">calculationPrice     close    close    close</span>
-<span class="go">change                1.74     1.85     1.38</span>
-<span class="go">changePercent      0.04529  0.03143  0.02593</span>
-<span class="go">close                40.16    60.71    54.61</span>
+<span class="go">                      AAL      DAL      LUV</span>
+<span class="go">avgTotalVolume    9954432  6827225  6015393</span>
+<span class="go">calculationPrice    close    close    close</span>
+<span class="go">change               1.74     1.85     1.38</span>
+<span class="go">changePercent     0.04529  0.03143  0.02593</span>
+<span class="go">close               40.16    60.71    54.61</span>
 </pre></div>
 </div>
 </div>
@@ -954,7 +954,7 @@ reserved word in Python:</p>
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
 <span class="go">               AAPL</span>
-<span class="go">ytdChange  0.052569</span>
+<span class="go">ytdChange  0.046853</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
@@ -963,7 +963,7 @@ reserved word in Python:</p>
 <span class="go">                 AAPL</span>
 <span class="go">close      178.580000</span>
 <span class="go">open       180.330000</span>
-<span class="go">ytdChange    0.052569</span>
+<span class="go">ytdChange    0.046853</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -979,14 +979,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">10</span>
+<span class="gh">Out[24]: </span><span class="go">2</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">14</span>
+<span class="gh">Out[26]: </span><span class="go">2</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -999,7 +999,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    43098910</span>
+<span class="go">avgTotalVolume    43650895</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -0.97</span>
 <span class="go">changePercent      -0.0054</span>
@@ -1052,7 +1052,7 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          AAPL      TSLA</span>
-<span class="go">beta  1.233471  0.588009</span>
+<span class="go">beta  1.197204  0.590569</span>
 </pre></div>
 </div>
 </div>
@@ -1090,10 +1090,10 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
 <span class="go"> &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
 <span class="go"> &#39;latestUpdate&#39;: 1543611600551,</span>
-<span class="go"> &#39;latestVolume&#39;: 77519,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: 40.6,</span>
-<span class="go"> &#39;iexRealtimeSize&#39;: 200,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: 1543596759443,</span>
+<span class="go"> &#39;latestVolume&#39;: 77395,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: None,</span>
+<span class="go"> &#39;iexRealtimeSize&#39;: None,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: None,</span>
 <span class="go"> &#39;delayedPrice&#39;: 39.36,</span>
 <span class="go"> &#39;delayedPriceTime&#39;: 1543611600551,</span>
 <span class="go"> &#39;extendedPrice&#39;: 39.36,</span>
@@ -1103,18 +1103,18 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go"> &#39;previousClose&#39;: 38.36,</span>
 <span class="go"> &#39;change&#39;: 1,</span>
 <span class="go"> &#39;changePercent&#39;: 0.02607,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: 0.00387,</span>
-<span class="go"> &#39;iexVolume&#39;: 300,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 7037,</span>
-<span class="go"> &#39;iexBidPrice&#39;: 0,</span>
-<span class="go"> &#39;iexBidSize&#39;: 0,</span>
-<span class="go"> &#39;iexAskPrice&#39;: 0,</span>
-<span class="go"> &#39;iexAskSize&#39;: 0,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: None,</span>
+<span class="go"> &#39;iexVolume&#39;: None,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 9424,</span>
+<span class="go"> &#39;iexBidPrice&#39;: None,</span>
+<span class="go"> &#39;iexBidSize&#39;: None,</span>
+<span class="go"> &#39;iexAskPrice&#39;: None,</span>
+<span class="go"> &#39;iexAskSize&#39;: None,</span>
 <span class="go"> &#39;marketCap&#39;: 838999925,</span>
 <span class="go"> &#39;peRatio&#39;: None,</span>
 <span class="go"> &#39;week52High&#39;: 52.001,</span>
 <span class="go"> &#39;week52Low&#39;: 5.01,</span>
-<span class="go"> &#39;ytdChange&#39;: 5.114958888888889}</span>
+<span class="go"> &#39;ytdChange&#39;: 5.273689047619048}</span>
 </pre></div>
 </div>
 </div>
@@ -1149,11 +1149,11 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
 <span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         3968.49  2.8577   112.49   ...        NaN   0.1572    1.981</span>
-<span class="go">askSize         0.194825     200  28.1567   ...        NaN    290.1   51.832</span>
+<span class="go">askPrice         4204.79  2.9445   118.24   ...        NaN  0.16575    2.127</span>
+<span class="go">askSize          0.05232     500  0.77788   ...        NaN     51.7   76.212</span>
 <span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice         3966.01  2.8534   112.45   ...        NaN  0.15706    1.974</span>
-<span class="go">bidSize            3e-06     500  0.54986   ...        NaN    353.7   85.061</span>
+<span class="go">bidPrice          4201.8  2.9422   118.15   ...        NaN  0.16546    2.115</span>
+<span class="go">bidSize         0.052321   73.17  0.77801   ...        NaN     4708   94.727</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1176,7 +1176,7 @@ by:</p>
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
 <span class="go">symbol               RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
-<span class="go">avgTotalVolume     253514    11123   301180   ...       11542   183550   545577</span>
+<span class="go">avgTotalVolume     247232    11302   303404   ...       11614   167308   544823</span>
 <span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
 <span class="go">change               0.28    -0.75    -0.18   ...       -0.41     0.03     1.91</span>
 <span class="go">changePercent     0.01337 -0.01925 -0.00682   ...    -0.00635  0.01215  0.02495</span>
@@ -1189,11 +1189,11 @@ by:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">symbol               AZUL      ETN      MWA   ...        RAVN  TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1254101  3214445  1070499   ...      140574   5705   780299</span>
-<span class="go">calculationPrice    close    close    close   ...       close    sip    close</span>
+<span class="go">avgTotalVolume    1227875  3259841  1079863   ...      140354   5810   785822</span>
+<span class="go">calculationPrice    close    close    close   ...       close  close    close</span>
 <span class="go">change               0.54     0.93     0.17   ...        0.24      0     0.01</span>
 <span class="go">changePercent     0.02042  0.01224  0.01641   ...     0.00598      0  0.00123</span>
-<span class="go">close               26.99    76.94    10.53   ...       40.35  10.08     8.12</span>
+<span class="go">close               26.99    76.94    10.53   ...       40.35  10.17     8.12</span>
 
 <span class="go">[5 rows x 810 columns]</span>
 </pre></div>
@@ -1227,223 +1227,7 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [47]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_todays_earnings</span>
 
 <span class="gp">In [48]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
-<span class="gh">Out[48]: </span><span class="go"></span>
-<span class="go">[{&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: 0.75,</span>
-<span class="go">  &#39;estimatedEPS&#39;: 0.75,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 6,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-30&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;15027&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;DOOO&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;DOOO&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;BRP Inc.&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 34.27,</span>
-<span class="go">   &#39;openTime&#39;: 1543588200703,</span>
-<span class="go">   &#39;close&#39;: 35.68,</span>
-<span class="go">   &#39;closeTime&#39;: 1543611600512,</span>
-<span class="go">   &#39;high&#39;: 36.81,</span>
-<span class="go">   &#39;low&#39;: 34.085,</span>
-<span class="go">   &#39;latestPrice&#39;: 35.68,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1543611600512,</span>
-<span class="go">   &#39;latestVolume&#39;: 89092,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 35.66,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1543611541263,</span>
-<span class="go">   &#39;delayedPrice&#39;: 35.68,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1543611600512,</span>
-<span class="go">   &#39;extendedPrice&#39;: 35.636,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.044,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.00123,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1543612852037,</span>
-<span class="go">   &#39;previousClose&#39;: 33.28,</span>
-<span class="go">   &#39;change&#39;: 2.4,</span>
-<span class="go">   &#39;changePercent&#39;: 0.07212,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.04822,</span>
-<span class="go">   &#39;iexVolume&#39;: 4296,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 35017,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
-<span class="go">   &#39;iexBidSize&#39;: 0,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 1535360673,</span>
-<span class="go">   &#39;peRatio&#39;: None,</span>
-<span class="go">   &#39;week52High&#39;: 55.41485,</span>
-<span class="go">   &#39;week52Low&#39;: 30.225,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.02679859400975805}},</span>
-<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: 0.06,</span>
-<span class="go">  &#39;estimatedEPS&#39;: 0.06,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-30&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.03,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: 1,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;6226&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;SFUN&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;SFUN&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Fang Holdings Limited American Depositary Shares (Each representing Four Class A HK$1.00 par value)&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 1.62,</span>
-<span class="go">   &#39;openTime&#39;: 1543588292252,</span>
-<span class="go">   &#39;close&#39;: 1.84,</span>
-<span class="go">   &#39;closeTime&#39;: 1543611653920,</span>
-<span class="go">   &#39;high&#39;: 1.898,</span>
-<span class="go">   &#39;low&#39;: 1.62,</span>
-<span class="go">   &#39;latestPrice&#39;: 1.84,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1543611653920,</span>
-<span class="go">   &#39;latestVolume&#39;: 23670411,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 1.835,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1543611591154,</span>
-<span class="go">   &#39;delayedPrice&#39;: 1.84,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1543611653920,</span>
-<span class="go">   &#39;extendedPrice&#39;: 1.84,</span>
-<span class="go">   &#39;extendedChange&#39;: 0,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1543613294269,</span>
-<span class="go">   &#39;previousClose&#39;: 1.72,</span>
-<span class="go">   &#39;change&#39;: 0.12,</span>
-<span class="go">   &#39;changePercent&#39;: 0.06977,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.01362,</span>
-<span class="go">   &#39;iexVolume&#39;: 322391,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 2479298,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
-<span class="go">   &#39;iexBidSize&#39;: 0,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 818671927,</span>
-<span class="go">   &#39;peRatio&#39;: 10.82,</span>
-<span class="go">   &#39;week52High&#39;: 5.69,</span>
-<span class="go">   &#39;week52Low&#39;: 1.51,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.6075283114446529},</span>
-<span class="go">  &#39;headline&#39;: &#39;Fang Holdings misses by $0.01, misses on revenue&#39;},</span>
-<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: -0.19,</span>
-<span class="go">  &#39;estimatedEPS&#39;: -0.19,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 6,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-30&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2018&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: -0.12,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: -0.5833333333333334,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;6852&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;TNP&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;TNP&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Tsakos Energy Navigation Ltd&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Industrials&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 3.39,</span>
-<span class="go">   &#39;openTime&#39;: 1543588209831,</span>
-<span class="go">   &#39;close&#39;: 3.37,</span>
-<span class="go">   &#39;closeTime&#39;: 1543611722523,</span>
-<span class="go">   &#39;high&#39;: 3.42,</span>
-<span class="go">   &#39;low&#39;: 3.3,</span>
-<span class="go">   &#39;latestPrice&#39;: 3.37,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1543611722523,</span>
-<span class="go">   &#39;latestVolume&#39;: 221398,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 3.36,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 44,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1543607010058,</span>
-<span class="go">   &#39;delayedPrice&#39;: 3.37,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1543611722523,</span>
-<span class="go">   &#39;extendedPrice&#39;: 3.36,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.01,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.00297,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1543607010058,</span>
-<span class="go">   &#39;previousClose&#39;: 3.38,</span>
-<span class="go">   &#39;change&#39;: -0.01,</span>
-<span class="go">   &#39;changePercent&#39;: -0.00296,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.02776,</span>
-<span class="go">   &#39;iexVolume&#39;: 6146,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 156913,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
-<span class="go">   &#39;iexBidSize&#39;: 0,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 294323847,</span>
-<span class="go">   &#39;peRatio&#39;: -7.02,</span>
-<span class="go">   &#39;week52High&#39;: 4.64,</span>
-<span class="go">   &#39;week52Low&#39;: 3,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.1357596715927751},</span>
-<span class="go">  &#39;headline&#39;: &#39;Tsakos Energy misses by $0.02, misses on revenue&#39;},</span>
-<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: 0.03,</span>
-<span class="go">  &#39;estimatedEPS&#39;: 0.03,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-11-30&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.05,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: -0.4000000000000001,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;1553&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;CTRN&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;CTRN&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Citi Trends Inc.&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 22.5,</span>
-<span class="go">   &#39;openTime&#39;: 1543588200640,</span>
-<span class="go">   &#39;close&#39;: 20.5,</span>
-<span class="go">   &#39;closeTime&#39;: 1543611600638,</span>
-<span class="go">   &#39;high&#39;: 22.55,</span>
-<span class="go">   &#39;low&#39;: 19.6,</span>
-<span class="go">   &#39;latestPrice&#39;: 20.5,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1543611600638,</span>
-<span class="go">   &#39;latestVolume&#39;: 270768,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 20.51,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 93,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1543611548254,</span>
-<span class="go">   &#39;delayedPrice&#39;: 20.5,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1543611600638,</span>
-<span class="go">   &#39;extendedPrice&#39;: 20.51,</span>
-<span class="go">   &#39;extendedChange&#39;: 0.01,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0.00049,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1543611548254,</span>
-<span class="go">   &#39;previousClose&#39;: 22.87,</span>
-<span class="go">   &#39;change&#39;: -2.37,</span>
-<span class="go">   &#39;changePercent&#39;: -0.10363,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.02918,</span>
-<span class="go">   &#39;iexVolume&#39;: 7901,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 71961,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
-<span class="go">   &#39;iexBidSize&#39;: 0,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 265993794,</span>
-<span class="go">   &#39;peRatio&#39;: None,</span>
-<span class="go">   &#39;week52High&#39;: 34.9,</span>
-<span class="go">   &#39;week52Low&#39;: 19.6,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.23163783915995922},</span>
-<span class="go">  &#39;headline&#39;: &#39;Citi Trends reports Q3 results&#39;}]</span>
+<span class="gh">Out[48]: </span><span class="go">[]</span>
 </pre></div>
 </div>
 </div>
@@ -1493,9 +1277,9 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <span class="go"> &#39;totalAssets&#39;: 632185000,</span>
 <span class="go"> &#39;totalLiabilities&#39;: 81050000,</span>
 <span class="go"> &#39;stockholderEquity&#39;: -733849000,</span>
-<span class="go"> &#39;companyDescription&#39;: &#39;Our mission is to make fashion accessible to everyone. &amp;#10;  &amp;#10; We are a leading online fashion and lifestyle destination in China. We provide &amp;#10; young people with a more accessible and enjoyable shopping experience for &amp;#10; everyday fashion, particularly as they increasingly live their lives online. &amp;#10; People shop not only to buy, but also for leisure, entertainment and to stay &amp;#10; informed of the latest trends. Through innovative use of content, our platform &amp;#10; provides a vibrant and dynamic community for people to discover and share the &amp;#10; latest fashion trends with others, and offers our users a truly comprehensive &amp;#10; shopping experience that is: &amp;#10;  &amp;#10; • Fun and engaging. Rich fashion content in different and engaging formats helps &amp;#10;   our users immerse themselves in the world of fashion. Our users can also share &amp;#10;   content and interact with other users through social features integrated  &amp;#10;   across our platform. &amp;#10;  &amp;#10; • Personalized and relevant. Using technology and data, we tailor user  &amp;#10;   experience by curating content that is most relevant to their tastes and &amp;#10;   preferences. We recommend the latest and most relevant content and products  &amp;#10;   that they may like to purchase. &amp;#10;  &amp;#10; • Convenient and reliable. While our content makes fashion more relatable, &amp;#10;   embedded transaction links allow users to purchase the products that they are &amp;#10;   interested in from our merchants and brand partners quickly and easily. We  &amp;#10;   also work with our merchants and brand partners to uphold the quality of  &amp;#10;   products on our platform and to ensure the timely fulfillment of orders. &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at Zheshang Wealth Center, 12/F, &amp;#10; Building No. 1, No. 99 Gudun Road, Xihu District, Hangzhou, 310012, People’s &amp;#10; Republic of China. Our telephone number at this address is +86 571 8605-2790. &amp;#10; Our registered office in the Cayman Islands is located at offices of Maples &amp;#10; Corporate Services Limited at PO Box 309, Ugland House, Grand Cayman, KY1-1104, &amp;#10; Cayman Islands. Our main website is www.mogu-inc.com. &amp;#10;  &amp;#10; Our agent for service of process in the United States is Puglisi &amp; Associates,  &amp;#10; located at 850 Library Avenue, Suite 204, Newark, Delaware 19711.&#39;,</span>
-<span class="go"> &#39;businessDescription&#39;: &#39;Our mission is to make fashion accessible to everyone. &amp;#10;  &amp;#10; We are a leading online fashion and lifestyle destination in China. We provide &amp;#10; young people with a more accessible and enjoyable shopping experience for &amp;#10; everyday fashion, particularly as they increasingly live their lives online. &amp;#10; People shop not only to buy, but also for leisure, entertainment and to stay &amp;#10; informed of the latest trends. Through innovative use of content, our platform &amp;#10; provides a vibrant and dynamic community for people to discover and share the &amp;#10; latest fashion trends with others, and offers our users a truly comprehensive &amp;#10; shopping experience that is: &amp;#10;  &amp;#10; • Fun and engaging. Rich fashion content in different and engaging formats helps &amp;#10;   our users immerse themselves in the world of fashion. Our users can also share &amp;#10;   content and interact with other users through social features integrated  &amp;#10;   across our platform. &amp;#10;  &amp;#10; • Personalized and relevant. Using technology and data, we tailor user  &amp;#10;   experience by curating content that is most relevant to their tastes and &amp;#10;   preferences. We recommend the latest and most relevant content and products  &amp;#10;   that they may like to purchase. &amp;#10;  &amp;#10; • Convenient and reliable. While our content makes fashion more relatable, &amp;#10;   embedded transaction links allow users to purchase the products that they are &amp;#10;   interested in from our merchants and brand partners quickly and easily. We  &amp;#10;   also work with our merchants and brand partners to uphold the quality of  &amp;#10;   products on our platform and to ensure the timely fulfillment of orders. &amp;#10;  &amp;#10; Our rich and diverse content distills styles and trends and guides our users &amp;#10; along their shopping journey from discovery to purchase. This content mostly &amp;#10; comes from our users, including a vibrant community of fashion influencers, as &amp;#10; well as our in-house editorial team. Our platform provides our fashion &amp;#10; influencers with access to actual products from our brand and merchant partners &amp;#10; with which they can create engaging content. Our highly engaging content &amp;#10; comprises live video broadcasts, short-form videos, photographs, and articles &amp;#10; covering topics including product reviews, fashion tips, brand fitting room, &amp;#10; celebrity on-screen and street runway. Our platform features an extensive &amp;#10; portfolio of live video broadcasts, where fashion influencers continuously &amp;#10; promote and review products to our users and interact with their audience. In &amp;#10; September 2018, we had live video broadcasts totaling approximately 3,000 hours &amp;#10; on a daily basis. We also place links to products within our content to &amp;#10; encourage and facilitate purchases. For example, when a user sees a certain item &amp;#10; featured in a live video broadcast or a short-form video, or sees it recommended &amp;#10; by a friend or fashion influencer through a like or share, the user can directly &amp;#10; purchase that item. &amp;#10;  &amp;#10; Users access our platform primarily through mobile, including our flagship &amp;#10; Mogujie app, as well as through our Mini Programs on Weixin. Through our &amp;#10; strategic partnership with Tencent, one of our principal shareholders and the &amp;#10; owner of Weixin and QQ, we also have one of the few dedicated Weixin Pay and QQ &amp;#10; Wallet entryways that help direct Tencent’s massive base of users to our &amp;#10; platform when they look to fulfill their fashion- and lifestyle-related needs.  &amp;#10; Our highly engaged user base primarily consists of young females between the  &amp;#10; ages of 15 and 30. For the twelve months ended September 30, 2018, we had an  &amp;#10; average of 62.6 million mobile MAUs on our platform. In September 2018, on  &amp;#10; average, a user who clicked the live video broadcasts on our platform spent over &amp;#10; 35 minutes per day on watching our live video broadcasts. In determining the  &amp;#10; number of such users, if an individual actively uses multiple devices or  &amp;#10; accounts to access our live video broadcasts simultaneously, such individual  &amp;#10; would be counted as multiple “users” in calculating the above average time  &amp;#10; spent. &amp;#10;  &amp;#10; We are a technology-driven company that has relentlessly pursued the development &amp;#10; of industry-leading AI and big data analytics capabilities to improve &amp;#10; operational efficiency and user experience. Our user data is multi-dimensional &amp;#10; as it relates to our users’ shopping behaviors, fashion tastes and purchasing &amp;#10; history, which enables us to provide better and more personalized experience for &amp;#10; them. &amp;#10;  &amp;#10; Our content-driven platform allows us not only to guide users through their &amp;#10; entire shopping journey but also to generate revenues at multiple points. This &amp;#10; in turn helps us provide online marketing services to our merchants and brand &amp;#10; partners. We also receive commissions from our merchants for transactions &amp;#10; completed through our platform.  &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at Zheshang Wealth Center, 12/F, &amp;#10; Building No. 1, No. 99 Gudun Road, Xihu District, Hangzhou, 310012, People’s &amp;#10; Republic of China. Our telephone number at this address is +86 571 8605-2790. &amp;#10; Our registered office in the Cayman Islands is located at offices of Maples &amp;#10; Corporate Services Limited at PO Box 309, Ugland House, Grand Cayman, KY1-1104, &amp;#10; Cayman Islands. Our main website is www.mogu-inc.com. &amp;#10;  &amp;#10; Our agent for service of process in the United States is Puglisi &amp; Associates,  &amp;#10; located at 850 Library Avenue, Suite 204, Newark, Delaware 19711. &#39;,</span>
-<span class="go"> &#39;useOfProceeds&#39;: &#39;We estimate that we will receive net proceeds from this offering of &amp;#10; approximately US$60.6 million, or approximately US$70.5 million if the &amp;#10; underwriters exercise their over-allotment option in full, after deducting &amp;#10; underwriting discounts and commissions and the estimated offering expenses &amp;#10; payable by us and assuming that Windcreek Limited does not purchase any Class A &amp;#10; ordinary shares from us in the concurrent private placement and is allocated the &amp;#10; full amount of US$30 million worth of ADSs in this offering. These estimates are &amp;#10; based upon an assumed initial public offering price of US$15.00 per ADS, which &amp;#10; is the midpoint of the price range shown on the front page of this prospectus. A &amp;#10; US$1.00 increase (decrease) in the assumed initial public offering price of &amp;#10; US$15.00 per ADS would increase (decrease) the net proceeds to us from this &amp;#10; offering by US$4.4 million, assuming the number of ADSs offered by us, as set &amp;#10; forth on the front cover of this prospectus, remains the same and after &amp;#10; deducting the estimated underwriting discounts and commissions and estimated &amp;#10; expenses payable by us. &amp;#10;  &amp;#10; The primary purposes of this offering are to create a public market for our &amp;#10; shares for the benefit of all shareholders, retain talented employees by &amp;#10; providing them with equity incentives, and obtain additional capital. We plan to &amp;#10; use the net proceeds of this offering as follows: &amp;#10;  &amp;#10; • approximately 30% to develop and expand our content offering; &amp;#10;  &amp;#10; • approximately 30% to continue to invest in and develop our technology; &amp;#10;  &amp;#10; • approximately 20% to deepen collaboration with merchants and brand partners;  &amp;#10;   and                                                              &amp;#10;  &amp;#10; • the balance for general corporate purposes, which may include working      &amp;#10;   capital needs and potential investments and acquisitions, although we have &amp;#10;   not identified any specific investments or acquisition opportunities at    &amp;#10;   this time.                                                                 &amp;#10;  &amp;#10; The foregoing represents our current intentions based upon our present plans and &amp;#10; business conditions to use and allocate the net proceeds of this offering. Our &amp;#10; management, however, will have significant flexibility and discretion to apply &amp;#10; the net proceeds of this offering. If an unforeseen event occurs or business &amp;#10; conditions change, we may use the proceeds of this offering differently than as &amp;#10; described in this prospectus.  &amp;#10;  &amp;#10; Pending any use described above, we plan to invest the net proceeds in &amp;#10; short-term, interest-bearing, debt instruments or demand deposits. &amp;#10;  &amp;#10; In using the proceeds of this offering, we are permitted under PRC laws and &amp;#10; regulations as an offshore holding company to provide funding to our PRC &amp;#10; subsidiaries only through loans or capital contributions and to our consolidated &amp;#10; affiliated entities only through loans, subject to satisfaction of applicable &amp;#10; government registration and approval requirements. We cannot assure you that we &amp;#10; will be able to obtain these government registrations or approvals on a timely &amp;#10; basis, if at all.&#39;,</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;Our mission is to make fashion accessible to everyone. &amp;#10;  &amp;#10; We are a leading online fashion and lifestyle destination in China. We provide &amp;#10; young people with a more accessible and enjoyable shopping experience for &amp;#10; everyday fashion, particularly as they increasingly live their lives online. &amp;#10; People shop not only to buy, but also for leisure, entertainment and to stay &amp;#10; informed of the latest trends. Through innovative use of content, our platform &amp;#10; provides a vibrant and dynamic community for people to discover and share the &amp;#10; latest fashion trends with others, and offers our users a truly comprehensive &amp;#10; shopping experience that is: &amp;#10;  &amp;#10; • Fun and engaging. Rich fashion content in different and engaging formats helps &amp;#10;   our users immerse themselves in the world of fashion. Our users can also share &amp;#10;   content and interact with other users through social features integrated &amp;#10;   across our platform. &amp;#10;  &amp;#10; • Personalized and relevant. Using technology and data, we tailor user &amp;#10;   experience by curating content that is most relevant to their tastes and &amp;#10;   preferences. We recommend the latest and most relevant content and products &amp;#10;   that they may like to purchase. &amp;#10;  &amp;#10; • Convenient and reliable. While our content makes fashion more relatable, &amp;#10;   embedded transaction links allow users to purchase the products that they are &amp;#10;   interested in from our merchants and brand partners quickly and easily. We &amp;#10;   also work with our merchants and brand partners to uphold the quality of &amp;#10;   products on our platform and to ensure the timely fulfillment of orders. &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at Zheshang Wealth Center, 12/F, &amp;#10; Building No. 1, No. 99 Gudun Road, Xihu District, Hangzhou, 310012, People’s &amp;#10; Republic of China. Our telephone number at this address is +86 571 8605-2790. &amp;#10; Our registered office in the Cayman Islands is located at offices of Maples &amp;#10; Corporate Services Limited at PO Box 309, Ugland House, Grand Cayman, KY1-1104, &amp;#10; Cayman Islands. Our main website is www.mogu-inc.com. &amp;#10;  &amp;#10; Our agent for service of process in the United States is Puglisi &amp; Associates, &amp;#10; located at 850 Library Avenue, Suite 204, Newark, Delaware 19711.&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;Our mission is to make fashion accessible to everyone. &amp;#10;  &amp;#10; We are a leading online fashion and lifestyle destination in China. We provide &amp;#10; young people with a more accessible and enjoyable shopping experience for &amp;#10; everyday fashion, particularly as they increasingly live their lives online. &amp;#10; People shop not only to buy, but also for leisure, entertainment and to stay &amp;#10; informed of the latest trends. Through innovative use of content, our platform &amp;#10; provides a vibrant and dynamic community for people to discover and share the &amp;#10; latest fashion trends with others, and offers our users a truly comprehensive &amp;#10; shopping experience that is: &amp;#10;  &amp;#10; • Fun and engaging. Rich fashion content in different and engaging formats helps &amp;#10;   our users immerse themselves in the world of fashion. Our users can also share &amp;#10;   content and interact with other users through social features integrated &amp;#10;   across our platform. &amp;#10;  &amp;#10; • Personalized and relevant. Using technology and data, we tailor user &amp;#10;   experience by curating content that is most relevant to their tastes and &amp;#10;   preferences. We recommend the latest and most relevant content and products &amp;#10;   that they may like to purchase. &amp;#10;  &amp;#10; • Convenient and reliable. While our content makes fashion more relatable, &amp;#10;   embedded transaction links allow users to purchase the products that they are &amp;#10;   interested in from our merchants and brand partners quickly and easily. We &amp;#10;   also work with our merchants and brand partners to uphold the quality of &amp;#10;   products on our platform and to ensure the timely fulfillment of orders. &amp;#10;  &amp;#10; Our rich and diverse content distills styles and trends and guides our users &amp;#10; along their shopping journey from discovery to purchase. This content mostly &amp;#10; comes from our users, including a vibrant community of fashion influencers, as &amp;#10; well as our in-house editorial team. Our platform provides our fashion &amp;#10; influencers with access to actual products from our brand and merchant partners &amp;#10; with which they can create engaging content. Our highly engaging content &amp;#10; comprises live video broadcasts, short-form videos, photographs, and articles &amp;#10; covering topics including product reviews, fashion tips, brand fitting room, &amp;#10; celebrity on-screen and street runway. Our platform features an extensive &amp;#10; portfolio of live video broadcasts, where fashion influencers continuously &amp;#10; promote and review products to our users and interact with their audience. In &amp;#10; September 2018, we had live video broadcasts totaling approximately 3,000 hours &amp;#10; on a daily basis. We also place links to products within our content to &amp;#10; encourage and facilitate purchases. For example, when a user sees a certain item &amp;#10; featured in a live video broadcast or a short-form video, or sees it recommended &amp;#10; by a friend or fashion influencer through a like or share, the user can directly &amp;#10; purchase that item. &amp;#10;  &amp;#10; Users access our platform primarily through mobile, including our flagship &amp;#10; Mogujie app, as well as through our Mini Programs on Weixin. Through our &amp;#10; strategic partnership with Tencent, one of our principal shareholders and the &amp;#10; owner of Weixin and QQ, we also have one of the few dedicated Weixin Pay and QQ &amp;#10; Wallet entryways that help direct Tencent’s massive base of users to our &amp;#10; platform when they look to fulfill their fashion- and lifestyle-related needs. &amp;#10; Our highly engaged user base primarily consists of young females between the &amp;#10; ages of 15 and 30. For the twelve months ended September 30, 2018, we had an &amp;#10; average of 62.6 million mobile MAUs on our platform. In September 2018, on &amp;#10; average, a user who clicked the live video broadcasts on our platform spent over &amp;#10; 35 minutes per day on watching our live video broadcasts. In determining the &amp;#10; number of such users, if an individual actively uses multiple devices or &amp;#10; accounts to access our live video broadcasts simultaneously, such individual &amp;#10; would be counted as multiple “users” in calculating the above average time &amp;#10; spent. &amp;#10;  &amp;#10; We are a technology-driven company that has relentlessly pursued the development &amp;#10; of industry-leading AI and big data analytics capabilities to improve &amp;#10; operational efficiency and user experience. Our user data is multi-dimensional &amp;#10; as it relates to our users’ shopping behaviors, fashion tastes and purchasing &amp;#10; history, which enables us to provide better and more personalized experience for &amp;#10; them. &amp;#10;  &amp;#10; Our content-driven platform allows us not only to guide users through their  &amp;#10; entire shopping journey but also to generate revenues at multiple points. This  &amp;#10; in turn helps us provide online marketing services to our merchants and brand  &amp;#10; partners. We also receive commissions from our merchants for transactions  &amp;#10; completed through our platform. &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at Zheshang Wealth Center, 12/F, &amp;#10; Building No. 1, No. 99 Gudun Road, Xihu District, Hangzhou, 310012, People’s &amp;#10; Republic of China. Our telephone number at this address is +86 571 8605-2790. &amp;#10; Our registered office in the Cayman Islands is located at offices of Maples &amp;#10; Corporate Services Limited at PO Box 309, Ugland House, Grand Cayman, KY1-1104, &amp;#10; Cayman Islands. Our main website is www.mogu-inc.com. &amp;#10;  &amp;#10; Our agent for service of process in the United States is Puglisi &amp; Associates, &amp;#10; located at 850 Library Avenue, Suite 204, Newark, Delaware 19711.&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &#39;We estimate that we will receive net proceeds from this offering of &amp;#10; approximately US$60.6 million, or approximately US$70.5 million if the &amp;#10; underwriters exercise their over-allotment option in full, after deducting &amp;#10; underwriting discounts and commissions and the estimated offering expenses &amp;#10; payable by us and assuming that Windcreek Limited does not purchase any Class A &amp;#10; ordinary shares from us in the concurrent private placement and is allocated the &amp;#10; full amount of US$30 million worth of ADSs in this offering. These estimates are &amp;#10; based upon an assumed initial public offering price of US$15.00 per ADS, which &amp;#10; is the midpoint of the price range shown on the front page of this prospectus. A &amp;#10; US$1.00 increase (decrease) in the assumed initial public offering price of &amp;#10; US$15.00 per ADS would increase (decrease) the net proceeds to us from this &amp;#10; offering by US$4.4 million, assuming the number of ADSs offered by us, as set &amp;#10; forth on the front cover of this prospectus, remains the same and after &amp;#10; deducting the estimated underwriting discounts and commissions and estimated &amp;#10; expenses payable by us. &amp;#10;  &amp;#10; The primary purposes of this offering are to create a public market for our &amp;#10; shares for the benefit of all shareholders, retain talented employees by &amp;#10; providing them with equity incentives, and obtain additional capital. We plan to &amp;#10; use the net proceeds of this offering as follows: &amp;#10;  &amp;#10; • approximately 30% to develop and expand our content offering; &amp;#10;  &amp;#10; • approximately 30% to continue to invest in and develop our technology; &amp;#10;  &amp;#10; • approximately 20% to deepen collaboration with merchants and brand partners; &amp;#10;   and  &amp;#10;  &amp;#10; • the balance for general corporate purposes, which may include working capital &amp;#10;   needs and potential investments and acquisitions, although we have not &amp;#10;   identified any specific investments or acquisition opportunities at this time. &amp;#10;  &amp;#10; The foregoing represents our current intentions based upon our present plans and &amp;#10; business conditions to use and allocate the net proceeds of this offering. Our &amp;#10; management, however, will have significant flexibility and discretion to apply &amp;#10; the net proceeds of this offering. If an unforeseen event occurs or business &amp;#10; conditions change, we may use the proceeds of this offering differently than as &amp;#10; described in this prospectus. &amp;#10;  &amp;#10; Pending any use described above, we plan to invest the net proceeds in &amp;#10; short-term, interest-bearing, debt instruments or demand deposits. &amp;#10;  &amp;#10; In using the proceeds of this offering, we are permitted under PRC laws and &amp;#10; regulations as an offshore holding company to provide funding to our PRC &amp;#10; subsidiaries only through loans or capital contributions and to our consolidated &amp;#10; affiliated entities only through loans, subject to satisfaction of applicable &amp;#10; government registration and approval requirements. We cannot assure you that we &amp;#10; will be able to obtain these government registrations or approvals on a timely &amp;#10; basis, if at all.&#39;,</span>
 <span class="go"> &#39;competition&#39;: &#39;The fashion retail industry in China is highly competitive and rapidly evolving. &amp;#10; Our primary competitors include (i) major e-commerce platforms in China, &amp;#10; (ii) major traditional and brick-and-mortar retailers in China, and (iii) social &amp;#10; media platforms and content providers in China that cover the fashion and &amp;#10; apparel industries. &amp;#10;  &amp;#10; We compete primarily on the basis of the following factors: (i) the relevance of &amp;#10; our fashion-related content for our targeted user base; (ii) our ability to &amp;#10; seamlessly connect content with merchandise; (iii) the superior shopping &amp;#10; experience on our platform; (iv) our large and active user base; (v) pricing of &amp;#10; products sold on our platform; (vi) our ability to attract and retain merchants; &amp;#10; (vii) product quality and selection; (viii) brand recognition and reputation; &amp;#10; and (ix) the experience and expertise of our management team. &amp;#10;  &amp;#10; We believe that we are well-positioned to effectively compete on the basis of &amp;#10; the factors listed above. However, our competitors may have longer operating &amp;#10; histories, greater brand recognition, better relationships with merchants and &amp;#10; brand partners, stronger infrastructure, larger user base or greater financial, &amp;#10; technical or marketing resources than we do, and they may also offer similar &amp;#10; products and services on their platforms.&#39;,</span>
 <span class="go"> &#39;amount&#39;: 71250000,</span>
 <span class="go"> &#39;percentOffered&#39;: &#39;100.00&#39;}</span>
