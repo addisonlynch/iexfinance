@@ -277,7 +277,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    43650895</span>
+<span class="go">avgTotalVolume    43663723</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -0.97</span>
 <span class="go">changePercent      -0.0054</span>
@@ -932,7 +932,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    9954432  6827225  6015393</span>
+<span class="go">avgTotalVolume    9955408  6832609  6018464</span>
 <span class="go">calculationPrice    close    close    close</span>
 <span class="go">change               1.74     1.85     1.38</span>
 <span class="go">changePercent     0.04529  0.03143  0.02593</span>
@@ -979,14 +979,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">2</span>
+<span class="gh">Out[24]: </span><span class="go">3</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">2</span>
+<span class="gh">Out[26]: </span><span class="go">3</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -999,7 +999,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    43650895</span>
+<span class="go">avgTotalVolume    43663723</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -0.97</span>
 <span class="go">changePercent      -0.0054</span>
@@ -1052,7 +1052,7 @@ instantiated:</p>
 <span class="gp">In [37]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
 <span class="go">          AAPL      TSLA</span>
-<span class="go">beta  1.197204  0.590569</span>
+<span class="go">beta  1.206543  0.540821</span>
 </pre></div>
 </div>
 </div>
@@ -1149,11 +1149,11 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
 <span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         4204.79  2.9445   118.24   ...        NaN  0.16575    2.127</span>
-<span class="go">askSize          0.05232     500  0.77788   ...        NaN     51.7   76.212</span>
+<span class="go">askPrice          4207.5  2.9613   118.08   ...        NaN  0.16215    2.157</span>
+<span class="go">askSize                1  941.51    7.276   ...        NaN     7704  204.252</span>
 <span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice          4201.8  2.9422   118.15   ...        NaN  0.16546    2.115</span>
-<span class="go">bidSize         0.052321   73.17  0.77801   ...        NaN     4708   94.727</span>
+<span class="go">bidPrice         4207.31  2.9607   118.06   ...        NaN  0.16208    2.152</span>
+<span class="go">bidSize         0.024937  361.75  22.2099   ...        NaN    130.5        5</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1176,20 +1176,20 @@ by:</p>
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
 <span class="go">symbol               RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
-<span class="go">avgTotalVolume     247232    11302   303404   ...       11614   167308   544823</span>
+<span class="go">avgTotalVolume     247325    11302   303404   ...       11614   167309   544864</span>
 <span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
 <span class="go">change               0.28    -0.75    -0.18   ...       -0.41     0.03     1.91</span>
 <span class="go">changePercent     0.01337 -0.01925 -0.00682   ...    -0.00635  0.01215  0.02495</span>
 <span class="go">close               21.22    38.21    26.21   ...       64.16      2.5    78.46</span>
 
-<span class="go">[5 rows x 164 columns]</span>
+<span class="go">[5 rows x 165 columns]</span>
 </pre></div>
 </div>
 <p><strong>Sector</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">symbol               AZUL      ETN      MWA   ...        RAVN  TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1227875  3259841  1079863   ...      140354   5810   785822</span>
+<span class="go">avgTotalVolume    1227875  3262180  1079863   ...      140354   5810   785822</span>
 <span class="go">calculationPrice    close    close    close   ...       close  close    close</span>
 <span class="go">change               0.54     0.93     0.17   ...        0.24      0     0.01</span>
 <span class="go">changePercent     0.02042  0.01224  0.01641   ...     0.00598      0  0.00123</span>
