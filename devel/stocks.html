@@ -245,7 +245,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">178.58</span>
+<span class="gh">Out[3]: </span><span class="go">184.82</span>
 </pre></div>
 </div>
 </div>
@@ -279,9 +279,9 @@ passing
 <span class="go">                      AAPL</span>
 <span class="go">avgTotalVolume    43663723</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -0.97</span>
-<span class="go">changePercent      -0.0054</span>
-<span class="go">close               178.58</span>
+<span class="go">change                6.24</span>
+<span class="go">changePercent      0.03494</span>
+<span class="go">close               184.82</span>
 </pre></div>
 </div>
 <p>It is also possible to change the output format of an already-instantiated
@@ -289,7 +289,7 @@ passing
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">output_format</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
-<span class="gh">Out[8]: </span><span class="go">178.58</span>
+<span class="gh">Out[8]: </span><span class="go">184.82</span>
 </pre></div>
 </div>
 <p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
@@ -309,7 +309,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL    4.68532</span>
+<span class="go">AAPL    8.71932</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [14]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[15]: </span><span class="go">178.58</span>
+<span class="gh">Out[15]: </span><span class="go">184.82</span>
 </pre></div>
 </div>
 <p>While multi-symbol requests will return a symbol-indexed list of the endpoint’s data</p>
@@ -934,9 +934,9 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="go">                      AAL      DAL      LUV</span>
 <span class="go">avgTotalVolume    9955408  6832609  6018464</span>
 <span class="go">calculationPrice    close    close    close</span>
-<span class="go">change               1.74     1.85     1.38</span>
-<span class="go">changePercent     0.04529  0.03143  0.02593</span>
-<span class="go">close               40.16    60.71    54.61</span>
+<span class="go">change              -0.51    -0.59    -0.24</span>
+<span class="go">changePercent     -0.0127 -0.00972 -0.00439</span>
+<span class="go">close               39.65    60.12    54.37</span>
 </pre></div>
 </div>
 </div>
@@ -954,16 +954,16 @@ reserved word in Python:</p>
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[21]: </span><span class="go"></span>
 <span class="go">               AAPL</span>
-<span class="go">ytdChange  0.046853</span>
+<span class="go">ytdChange  0.087193</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
 <span class="go">                 AAPL</span>
-<span class="go">close      178.580000</span>
-<span class="go">open       180.330000</span>
-<span class="go">ytdChange    0.046853</span>
+<span class="go">close      184.820000</span>
+<span class="go">open       184.450000</span>
+<span class="go">ytdChange    0.087193</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -979,14 +979,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[24]: </span><span class="go">3</span>
+<span class="gh">Out[24]: </span><span class="go">10</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [26]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[26]: </span><span class="go">3</span>
+<span class="gh">Out[26]: </span><span class="go">20</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -1001,9 +1001,9 @@ listed in the IEX docs.</p>
 <span class="go">                      AAPL</span>
 <span class="go">avgTotalVolume    43663723</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -0.97</span>
-<span class="go">changePercent      -0.0054</span>
-<span class="go">close               178.58</span>
+<span class="go">change                6.24</span>
+<span class="go">changePercent      0.03494</span>
+<span class="go">close               184.82</span>
 </pre></div>
 </div>
 <p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
@@ -1014,10 +1014,10 @@ instantiated:</p>
 <span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
 <span class="go">               Out[30]: </span>
 <span class="go">                                           AAPL</span>
-<span class="go">close  {&#39;price&#39;: 178.58, &#39;time&#39;: 1543611600250}</span>
-<span class="go">high                                     180.33</span>
-<span class="go">low                                      177.03</span>
-<span class="go">open   {&#39;price&#39;: 180.33, &#39;time&#39;: 1543588200589}</span>
+<span class="go">close  {&#39;price&#39;: 184.82, &#39;time&#39;: 1543870800300}</span>
+<span class="go">high                                     184.94</span>
+<span class="go">low                                      181.21</span>
+<span class="go">open   {&#39;price&#39;: 184.45, &#39;time&#39;: 1543847400309}</span>
 </pre></div>
 </div>
 </div>
@@ -1028,7 +1028,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[31]: </span><span class="go"></span>
 <span class="go">        AAPL</span>
-<span class="go">open  180.33</span>
+<span class="go">open  184.45</span>
 
 <span class="gp">In [32]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                    Out[32]: </span>
@@ -1040,7 +1040,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [34]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 180.33, &#39;TSLA&#39;: 341.83}</span>
+<span class="gh">Out[34]: </span><span class="go">{&#39;AAPL&#39;: 184.45, &#39;TSLA&#39;: 360.28}</span>
 
 <span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                          Out[35]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
@@ -1075,46 +1075,46 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [39]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;AGMH&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;AGM Group Holdings Inc.&#39;,</span>
-<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
-<span class="go"> &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">{&#39;symbol&#39;: &#39;AINV&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;Apollo Investment Corporation&#39;,</span>
+<span class="go"> &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go"> &#39;sector&#39;: &#39;Financial Services&#39;,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go"> &#39;open&#39;: 40.12,</span>
-<span class="go"> &#39;openTime&#39;: 1543588208510,</span>
-<span class="go"> &#39;close&#39;: 39.36,</span>
-<span class="go"> &#39;closeTime&#39;: 1543611600551,</span>
-<span class="go"> &#39;high&#39;: 41.175,</span>
-<span class="go"> &#39;low&#39;: 38.68,</span>
-<span class="go"> &#39;latestPrice&#39;: 39.36,</span>
+<span class="go"> &#39;open&#39;: 15.88,</span>
+<span class="go"> &#39;openTime&#39;: 1543847401095,</span>
+<span class="go"> &#39;close&#39;: 16.5,</span>
+<span class="go"> &#39;closeTime&#39;: 1543870800219,</span>
+<span class="go"> &#39;high&#39;: 16.58,</span>
+<span class="go"> &#39;low&#39;: 15.8,</span>
+<span class="go"> &#39;latestPrice&#39;: 16.5,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;November 30, 2018&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1543611600551,</span>
-<span class="go"> &#39;latestVolume&#39;: 77395,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: None,</span>
-<span class="go"> &#39;iexRealtimeSize&#39;: None,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: None,</span>
-<span class="go"> &#39;delayedPrice&#39;: 39.36,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1543611600551,</span>
-<span class="go"> &#39;extendedPrice&#39;: 39.36,</span>
-<span class="go"> &#39;extendedChange&#39;: 0,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: 0,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1543611612278,</span>
-<span class="go"> &#39;previousClose&#39;: 38.36,</span>
-<span class="go"> &#39;change&#39;: 1,</span>
-<span class="go"> &#39;changePercent&#39;: 0.02607,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: None,</span>
-<span class="go"> &#39;iexVolume&#39;: None,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 9424,</span>
-<span class="go"> &#39;iexBidPrice&#39;: None,</span>
-<span class="go"> &#39;iexBidSize&#39;: None,</span>
-<span class="go"> &#39;iexAskPrice&#39;: None,</span>
-<span class="go"> &#39;iexAskSize&#39;: None,</span>
-<span class="go"> &#39;marketCap&#39;: 838999925,</span>
-<span class="go"> &#39;peRatio&#39;: None,</span>
-<span class="go"> &#39;week52High&#39;: 52.001,</span>
-<span class="go"> &#39;week52Low&#39;: 5.01,</span>
-<span class="go"> &#39;ytdChange&#39;: 5.273689047619048}</span>
+<span class="go"> &#39;latestTime&#39;: &#39;December 3, 2018&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1543870800219,</span>
+<span class="go"> &#39;latestVolume&#39;: 687620,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: 16.5,</span>
+<span class="go"> &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: 1543870683021,</span>
+<span class="go"> &#39;delayedPrice&#39;: 16.5,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1543870800219,</span>
+<span class="go"> &#39;extendedPrice&#39;: 16.49,</span>
+<span class="go"> &#39;extendedChange&#39;: -0.01,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: -0.00061,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1543872315970,</span>
+<span class="go"> &#39;previousClose&#39;: 5.25,</span>
+<span class="go"> &#39;change&#39;: 11.25,</span>
+<span class="go"> &#39;changePercent&#39;: 2.14286,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: 0.01147,</span>
+<span class="go"> &#39;iexVolume&#39;: 7887,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 893419,</span>
+<span class="go"> &#39;iexBidPrice&#39;: 0,</span>
+<span class="go"> &#39;iexBidSize&#39;: 0,</span>
+<span class="go"> &#39;iexAskPrice&#39;: 0,</span>
+<span class="go"> &#39;iexAskSize&#39;: 0,</span>
+<span class="go"> &#39;marketCap&#39;: 1163659101,</span>
+<span class="go"> &#39;peRatio&#39;: 25.78,</span>
+<span class="go"> &#39;week52High&#39;: 16.58,</span>
+<span class="go"> &#39;week52Low&#39;: 4.945,</span>
+<span class="go"> &#39;ytdChange&#39;: 2.1349984836344396}</span>
 </pre></div>
 </div>
 </div>
@@ -1149,11 +1149,11 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
 <span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice          4207.5  2.9613   118.08   ...        NaN  0.16215    2.157</span>
-<span class="go">askSize                1  941.51    7.276   ...        NaN     7704  204.252</span>
+<span class="go">askPrice            3908  2.6255   109.68   ...        NaN  0.15071    1.942</span>
+<span class="go">askSize          0.11951   137.1        2   ...        NaN       31   183.95</span>
 <span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice         4207.31  2.9607   118.06   ...        NaN  0.16208    2.152</span>
-<span class="go">bidSize         0.024937  361.75  22.2099   ...        NaN    130.5        5</span>
+<span class="go">bidPrice         3904.98  2.6222   109.64   ...        NaN  0.15051    1.934</span>
+<span class="go">bidSize         0.071647     500  1.65907   ...        NaN   1359.1   90.865</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1175,12 +1175,12 @@ by:</p>
 
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
-<span class="go">symbol               RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
-<span class="go">avgTotalVolume     247325    11302   303404   ...       11614   167309   544864</span>
-<span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
-<span class="go">change               0.28    -0.75    -0.18   ...       -0.41     0.03     1.91</span>
-<span class="go">changePercent     0.01337 -0.01925 -0.00682   ...    -0.00635  0.01215  0.02495</span>
-<span class="go">close               21.22    38.21    26.21   ...       64.16      2.5    78.46</span>
+<span class="go">symbol               RTEC   HURC     CRAY   ...        PLPC    VJET     MKSI</span>
+<span class="go">avgTotalVolume     247325  11302   303404   ...       11614  167309   544864</span>
+<span class="go">calculationPrice    close  close    close   ...       close   close    close</span>
+<span class="go">change               0.02   1.49    -0.06   ...        1.14   -0.13     2.83</span>
+<span class="go">changePercent     0.00094  0.039 -0.00229   ...     0.01777  -0.052  0.03607</span>
+<span class="go">close               21.24   39.7    26.15   ...        65.3    2.37    81.29</span>
 
 <span class="go">[5 rows x 165 columns]</span>
 </pre></div>
@@ -1190,10 +1190,10 @@ by:</p>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">symbol               AZUL      ETN      MWA   ...        RAVN  TBRGU     ACCO</span>
 <span class="go">avgTotalVolume    1227875  3262180  1079863   ...      140354   5810   785822</span>
-<span class="go">calculationPrice    close    close    close   ...       close  close    close</span>
-<span class="go">change               0.54     0.93     0.17   ...        0.24      0     0.01</span>
-<span class="go">changePercent     0.02042  0.01224  0.01641   ...     0.00598      0  0.00123</span>
-<span class="go">close               26.99    76.94    10.53   ...       40.35  10.17     8.12</span>
+<span class="go">calculationPrice    close    close    close   ...       close    sip    close</span>
+<span class="go">change              -1.38     1.07     0.17   ...        0.59      0    -0.07</span>
+<span class="go">changePercent    -0.05113  0.01391  0.01614   ...     0.01462      0 -0.00862</span>
+<span class="go">close               25.61    78.01     10.7   ...       40.94  10.08     8.05</span>
 
 <span class="go">[5 rows x 810 columns]</span>
 </pre></div>
@@ -1206,10 +1206,10 @@ by:</p>
 
 <span class="gp">In [46]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[46]: </span><span class="go"></span>
-<span class="go">               Health Care      ...               Energy</span>
-<span class="go">lastUpdated  1543611600377      ...        1543611600411</span>
-<span class="go">name           Health Care      ...               Energy</span>
-<span class="go">performance        0.02033      ...             -0.00181</span>
+<span class="go">                    Energy      ...          Health Care</span>
+<span class="go">lastUpdated  1543870800413      ...        1543870800387</span>
+<span class="go">name                Energy      ...          Health Care</span>
+<span class="go">performance        0.02224      ...              -0.0048</span>
 <span class="go">type                sector      ...               sector</span>
 
 <span class="go">[4 rows x 11 columns]</span>
@@ -1227,7 +1227,117 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [47]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_todays_earnings</span>
 
 <span class="gp">In [48]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
-<span class="gh">Out[48]: </span><span class="go">[]</span>
+<span class="gh">Out[48]: </span><span class="go"></span>
+<span class="go">[{&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.1,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.1,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 7,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-03&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.11,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -0.09090909090909087,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;2592&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;FNSR&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;FNSR&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Finisar Corporation&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 23.43,</span>
+<span class="go">   &#39;openTime&#39;: 1543847400685,</span>
+<span class="go">   &#39;close&#39;: 23.44,</span>
+<span class="go">   &#39;closeTime&#39;: 1543870800216,</span>
+<span class="go">   &#39;high&#39;: 23.68,</span>
+<span class="go">   &#39;low&#39;: 23.18,</span>
+<span class="go">   &#39;latestPrice&#39;: 23.44,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 3, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543870800216,</span>
+<span class="go">   &#39;latestVolume&#39;: 2959905,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 23.43,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543870791802,</span>
+<span class="go">   &#39;delayedPrice&#39;: 23.44,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543870800216,</span>
+<span class="go">   &#39;extendedPrice&#39;: 22.58,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.86,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.03669,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543872362960,</span>
+<span class="go">   &#39;previousClose&#39;: 23.35,</span>
+<span class="go">   &#39;change&#39;: 0.09,</span>
+<span class="go">   &#39;changePercent&#39;: 0.00385,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.05664,</span>
+<span class="go">   &#39;iexVolume&#39;: 167649,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 3835669,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 2751513002,</span>
+<span class="go">   &#39;peRatio&#39;: 28.24,</span>
+<span class="go">   &#39;week52High&#39;: 25.41,</span>
+<span class="go">   &#39;week52Low&#39;: 14.251,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.10578487494100992},</span>
+<span class="go">  &#39;headline&#39;: &#39;Finisar beats by $0.05, misses on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.55,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.55,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-03&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.44,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.2500000000000001,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;10878&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;RMR&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;RMR&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;The RMR Group Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Real Estate&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 67.5,</span>
+<span class="go">   &#39;openTime&#39;: 1543847401014,</span>
+<span class="go">   &#39;close&#39;: 68.39,</span>
+<span class="go">   &#39;closeTime&#39;: 1543870800558,</span>
+<span class="go">   &#39;high&#39;: 68.97,</span>
+<span class="go">   &#39;low&#39;: 65.14,</span>
+<span class="go">   &#39;latestPrice&#39;: 68.39,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 3, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1543870800558,</span>
+<span class="go">   &#39;latestVolume&#39;: 75509,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 68.05,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1543870771770,</span>
+<span class="go">   &#39;delayedPrice&#39;: 68.39,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1543870800558,</span>
+<span class="go">   &#39;extendedPrice&#39;: 68.39,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1543871874111,</span>
+<span class="go">   &#39;previousClose&#39;: 64.64,</span>
+<span class="go">   &#39;change&#39;: 3.75,</span>
+<span class="go">   &#39;changePercent&#39;: 0.05801,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.05594,</span>
+<span class="go">   &#39;iexVolume&#39;: 4224,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 38753,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 2132021525,</span>
+<span class="go">   &#39;peRatio&#39;: 31.66,</span>
+<span class="go">   &#39;week52High&#39;: 98,</span>
+<span class="go">   &#39;week52Low&#39;: 52.805,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.15942954304038826},</span>
+<span class="go">  &#39;headline&#39;: &#39;RMR Group beats by $0.05, beats on revenue&#39;}]</span>
 </pre></div>
 </div>
 </div>
