@@ -277,7 +277,7 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    44778672</span>
+<span class="go">avgTotalVolume    44807135</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -6.23</span>
 <span class="go">changePercent     -0.03566</span>
@@ -932,7 +932,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [18]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    9934475  7288296  6278353</span>
+<span class="go">avgTotalVolume    9935003  7289904  6278706</span>
 <span class="go">calculationPrice    close    close    close</span>
 <span class="go">change              -3.37    -2.01    -2.24</span>
 <span class="go">changePercent    -0.09123 -0.03461 -0.04179</span>
@@ -999,7 +999,7 @@ listed in the IEX docs.</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    44778672</span>
+<span class="go">avgTotalVolume    44807135</span>
 <span class="go">calculationPrice     close</span>
 <span class="go">change               -6.23</span>
 <span class="go">changePercent     -0.03566</span>
@@ -1105,7 +1105,7 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go"> &#39;changePercent&#39;: 0.30518,</span>
 <span class="go"> &#39;iexMarketPercent&#39;: None,</span>
 <span class="go"> &#39;iexVolume&#39;: None,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 370915,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 374347,</span>
 <span class="go"> &#39;iexBidPrice&#39;: None,</span>
 <span class="go"> &#39;iexBidSize&#39;: None,</span>
 <span class="go"> &#39;iexAskPrice&#39;: None,</span>
@@ -1148,12 +1148,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [41]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol          BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         3303.8  1.7093    85.89   ...        NaN  0.11206    1.534</span>
-<span class="go">askSize         3.02597  578.75  3.55533   ...        NaN     10.5  114.531</span>
-<span class="go">avgTotalVolume     None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice        3300.72  1.7052    85.82   ...        NaN  0.11186    1.527</span>
-<span class="go">bidSize             0.5     100  0.13971   ...        NaN    885.5  1009.86</span>
+<span class="go">symbol           BTCUSDT  EOSUSDT ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice         3544.92   2.0157   93.58   ...        NaN  0.12191    1.652</span>
+<span class="go">askSize         0.005588  1776.71   4e-05   ...        NaN   3205.3   98.039</span>
+<span class="go">avgTotalVolume      None     None    None   ...       None     None     None</span>
+<span class="go">bidPrice         3543.26    2.014   93.57   ...        NaN  0.12178    1.646</span>
+<span class="go">bidSize          0.12412      180       3   ...        NaN    821.2  158.769</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1176,7 +1176,7 @@ by:</p>
 <span class="gp">In [43]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[43]: </span><span class="go"></span>
 <span class="go">symbol              RTEC     HURC     CRAY   ...       PLPC     VJET    MKSI</span>
-<span class="go">avgTotalVolume    242585    11992   317149   ...      12482    57961  559499</span>
+<span class="go">avgTotalVolume    242671    12009   317259   ...      12482    57961  559719</span>
 <span class="go">calculationPrice   close    close    close   ...      close    close   close</span>
 <span class="go">change             -0.66    -0.92    -1.12   ...      -5.43    -0.01    -4.6</span>
 <span class="go">changePercent    -0.0325 -0.02405 -0.04482   ...   -0.08282 -0.00441 -0.0634</span>
@@ -1189,7 +1189,7 @@ by:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [44]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
 <span class="go">symbol               AZUL      ETN      MWA   ...        RAVN    TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1138399  3244010  1120894   ...      135630     6976   798879</span>
+<span class="go">avgTotalVolume    1138399  3245212  1121542   ...      136793     6976   803832</span>
 <span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
 <span class="go">change              -1.33    -2.04    -0.19   ...       -1.79  -0.0232    -0.24</span>
 <span class="go">changePercent    -0.05257 -0.02783 -0.01861   ...    -0.04541 -0.00227 -0.03217</span>
