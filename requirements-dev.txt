@@ -1,6 +1,5 @@
 flake8
 ipython
-matplotlib
 pytest
 pytest-runner
 requests-cache
