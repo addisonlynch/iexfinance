@@ -27,7 +27,8 @@ top-level function you are using:
 
     expiry = datetime.timedelta(days=3)
     session = requests_cache.CachedSession(cache_name='cache',
-        backend='sqlite', expire_after=expiry)
+                                           backend='sqlite',
+                                           expire_after=expiry)
 
     f = Stock("AAPL", session=session)
     f.get_price()

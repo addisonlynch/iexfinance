@@ -61,7 +61,6 @@ Usage
 .. ipython:: python
 
     from iexfinance import get_market_last
-    import pandas as pd
 
     df = get_market_last(symbols="AAPL", output_format='pandas')
     df['price']

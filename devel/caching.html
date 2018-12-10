@@ -186,7 +186,8 @@ top-level function you are using:</p>
 <span class="gp">In [4]: </span><span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>    <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span> <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
+<span class="gp">   ...: </span>                                       <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>                                       <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
 <span class="gp">   ...: </span>
 
 <span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
