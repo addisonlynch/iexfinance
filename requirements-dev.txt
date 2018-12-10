@@ -1,0 +1,11 @@
+flake8
+ipython
+matplotlib
+pytest
+pytest-runner
+requests-cache
+six
+sphinx
+sphinx-autobuild
+sphinx-rtd-theme
+sphinxcontrib-napoleon

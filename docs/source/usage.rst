@@ -1,12 +1,5 @@
 .. _usage:
 
-.. role:: strike
-
-.. ipython:: python
-    :suppress:
-
-    import requests_cache
-
 
 Usage
 =====
@@ -191,6 +184,7 @@ Examples ``get_open()``, ``get_name()``
 
 .. ipython:: python
 
+    aapl = Stock("AAPL")
     aapl.get_open()
     aapl.get_price()
 

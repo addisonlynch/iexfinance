@@ -400,7 +400,6 @@ Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests w
 
 .. ipython:: python
 
-    from iexfinance.stocks import Stock as iex
     air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
     air_transport.get_quote().head()
 
@@ -418,7 +417,6 @@ reserved word in Python:
 
 .. ipython:: python
 
-    from iexfinance.stocks import Stock as iex
     aapl = Stock("AAPL", output_format='pandas')
     aapl.get_quote(filter_='ytdChange')
 
