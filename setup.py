@@ -93,7 +93,7 @@ setup(
     # project is installed.
     install_requires=parse_requirements("requirements.txt"),
     setup_requires=['pytest-runner'],
-    tests_require=parse_requirements("requirements-test.txt"),
+    tests_require=parse_requirements("requirements-dev.txt"),
     # If there are data files included in your packages that need to be
     # installed, specify them here. If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
