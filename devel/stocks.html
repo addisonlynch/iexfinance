@@ -245,7 +245,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">168.49</span>
+<span class="gh">Out[3]: </span><span class="go">168.63</span>
 </pre></div>
 </div>
 </div>
@@ -277,11 +277,11 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    44807135</span>
+<span class="go">avgTotalVolume    45498655</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -6.23</span>
-<span class="go">changePercent     -0.03566</span>
-<span class="go">close               168.49</span>
+<span class="go">change               -0.97</span>
+<span class="go">changePercent     -0.00572</span>
+<span class="go">close               168.63</span>
 </pre></div>
 </div>
 <p>It is also possible to change the output format of an already-instantiated
@@ -289,7 +289,7 @@ passing
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">output_format</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
-<span class="gh">Out[8]: </span><span class="go">168.49</span>
+<span class="gh">Out[8]: </span><span class="go">168.63</span>
 </pre></div>
 </div>
 <p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
@@ -309,7 +309,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL   -4.28604</span>
+<span class="go">AAPL   -0.637994</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [14]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[15]: </span><span class="go">168.49</span>
+<span class="gh">Out[15]: </span><span class="go">168.63</span>
 </pre></div>
 </div>
 <p>While multi-symbol requests will return a symbol-indexed list of the endpoint’s data</p>
@@ -930,11 +930,11 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [17]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    9935003  7289904  6278706</span>
+<span class="go">avgTotalVolume    9708099  7253198  6238966</span>
 <span class="go">calculationPrice    close    close    close</span>
-<span class="go">change              -3.37    -2.01    -2.24</span>
-<span class="go">changePercent    -0.09123 -0.03461 -0.04179</span>
-<span class="go">close               33.57    56.07    51.36</span>
+<span class="go">change               0.26    -0.43    -0.06</span>
+<span class="go">changePercent     0.00768 -0.00763 -0.00117</span>
+<span class="go">close                34.1    55.89    51.08</span>
 </pre></div>
 </div>
 </div>
@@ -950,16 +950,16 @@ reserved word in Python:</p>
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">              AAPL</span>
-<span class="go">ytdChange -0.04286</span>
+<span class="go">ytdChange -0.00638</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
 <span class="gh">Out[20]: </span><span class="go"></span>
 <span class="go">                AAPL</span>
-<span class="go">close      168.49000</span>
-<span class="go">open       173.45000</span>
-<span class="go">ytdChange   -0.04286</span>
+<span class="go">close      168.63000</span>
+<span class="go">open       171.69000</span>
+<span class="go">ytdChange   -0.00638</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -975,14 +975,14 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [22]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">())</span>
-<span class="gh">Out[22]: </span><span class="go">5</span>
+<span class="gh">Out[22]: </span><span class="go">10</span>
 </pre></div>
 </div>
 <p>by default, News returns the last 10 items (<cite>last is 10 by default</cite>), but we can specify a custom value:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[24]: </span><span class="go">5</span>
+<span class="gh">Out[24]: </span><span class="go">16</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -995,11 +995,11 @@ listed in the IEX docs.</p>
 <span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    44807135</span>
+<span class="go">avgTotalVolume    45498655</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -6.23</span>
-<span class="go">changePercent     -0.03566</span>
-<span class="go">close               168.49</span>
+<span class="go">change               -0.97</span>
+<span class="go">changePercent     -0.00572</span>
+<span class="go">close               168.63</span>
 </pre></div>
 </div>
 <p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
@@ -1010,10 +1010,10 @@ instantiated:</p>
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
 <span class="go">               Out[28]: </span>
 <span class="go">                                           AAPL</span>
-<span class="go">close  {&#39;price&#39;: 168.49, &#39;time&#39;: 1544216400424}</span>
-<span class="go">high                                     174.49</span>
-<span class="go">low                                       168.3</span>
-<span class="go">open   {&#39;price&#39;: 173.45, &#39;time&#39;: 1544193000334}</span>
+<span class="go">close  {&#39;price&#39;: 168.63, &#39;time&#39;: 1544562000554}</span>
+<span class="go">high                                     171.79</span>
+<span class="go">low                                         167</span>
+<span class="go">open   {&#39;price&#39;: 171.69, &#39;time&#39;: 1544538600921}</span>
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1024,7 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[29]: </span><span class="go"></span>
 <span class="go">        AAPL</span>
-<span class="go">open  173.45</span>
+<span class="go">open  171.69</span>
 
 <span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
 <span class="go">                                    Out[30]: </span>
@@ -1036,10 +1036,10 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [32]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[32]: </span><span class="go">{&#39;AAPL&#39;: 173.45, &#39;TSLA&#39;: 369}</span>
+<span class="gh">Out[32]: </span><span class="go">{&#39;AAPL&#39;: 171.69, &#39;TSLA&#39;: 369.91}</span>
 
 <span class="gp">In [33]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
-<span class="go">                                       Out[33]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
+<span class="go">                                          Out[33]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
 </pre></div>
 </div>
 <p>Format as a DataFrame</p>
@@ -1048,7 +1048,7 @@ instantiated:</p>
 <span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[35]: </span><span class="go"></span>
 <span class="go">          AAPL      TSLA</span>
-<span class="go">beta  1.216679  0.511397</span>
+<span class="go">beta  1.212256  0.492877</span>
 </pre></div>
 </div>
 </div>
@@ -1071,46 +1071,46 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [37]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;DOMO&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;Domo Inc.&#39;,</span>
-<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Global Market&#39;,</span>
-<span class="go"> &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">{&#39;symbol&#39;: &#39;CORT&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;Corcept Therapeutics Incorporated&#39;,</span>
+<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
+<span class="go"> &#39;sector&#39;: &#39;Healthcare&#39;,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go"> &#39;open&#39;: 17.95,</span>
-<span class="go"> &#39;openTime&#39;: 1544193000862,</span>
-<span class="go"> &#39;close&#39;: 20.4,</span>
-<span class="go"> &#39;closeTime&#39;: 1544216400360,</span>
-<span class="go"> &#39;high&#39;: 20.49,</span>
-<span class="go"> &#39;low&#39;: 17.25,</span>
-<span class="go"> &#39;latestPrice&#39;: 20.4,</span>
+<span class="go"> &#39;open&#39;: 13.06,</span>
+<span class="go"> &#39;openTime&#39;: 1544538600817,</span>
+<span class="go"> &#39;close&#39;: 17.17,</span>
+<span class="go"> &#39;closeTime&#39;: 1544562000218,</span>
+<span class="go"> &#39;high&#39;: 17.38,</span>
+<span class="go"> &#39;low&#39;: 12.59,</span>
+<span class="go"> &#39;latestPrice&#39;: 17.17,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;December 7, 2018&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1544216400360,</span>
-<span class="go"> &#39;latestVolume&#39;: 2607077,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: None,</span>
-<span class="go"> &#39;iexRealtimeSize&#39;: None,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: None,</span>
-<span class="go"> &#39;delayedPrice&#39;: 20.4,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1544216400360,</span>
-<span class="go"> &#39;extendedPrice&#39;: 20.4,</span>
-<span class="go"> &#39;extendedChange&#39;: 0,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: 0,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1544219611207,</span>
-<span class="go"> &#39;previousClose&#39;: 15.63,</span>
-<span class="go"> &#39;change&#39;: 4.77,</span>
-<span class="go"> &#39;changePercent&#39;: 0.30518,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: None,</span>
-<span class="go"> &#39;iexVolume&#39;: None,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 374347,</span>
-<span class="go"> &#39;iexBidPrice&#39;: None,</span>
-<span class="go"> &#39;iexBidSize&#39;: None,</span>
-<span class="go"> &#39;iexAskPrice&#39;: None,</span>
-<span class="go"> &#39;iexAskSize&#39;: None,</span>
-<span class="go"> &#39;marketCap&#39;: 537280308,</span>
-<span class="go"> &#39;peRatio&#39;: None,</span>
-<span class="go"> &#39;week52High&#39;: 28.86,</span>
-<span class="go"> &#39;week52Low&#39;: 13.28,</span>
-<span class="go"> &#39;ytdChange&#39;: 0.052432747252747214}</span>
+<span class="go"> &#39;latestTime&#39;: &#39;December 11, 2018&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1544562000218,</span>
+<span class="go"> &#39;latestVolume&#39;: 8156354,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: 17.175,</span>
+<span class="go"> &#39;iexRealtimeSize&#39;: 175,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: 1544561987586,</span>
+<span class="go"> &#39;delayedPrice&#39;: 17.17,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1544562000218,</span>
+<span class="go"> &#39;extendedPrice&#39;: 16.9,</span>
+<span class="go"> &#39;extendedChange&#39;: -0.27,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: -0.01573,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1544564447498,</span>
+<span class="go"> &#39;previousClose&#39;: 12.98,</span>
+<span class="go"> &#39;change&#39;: 4.19,</span>
+<span class="go"> &#39;changePercent&#39;: 0.3228,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: 0.0384,</span>
+<span class="go"> &#39;iexVolume&#39;: 313204,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 1068907,</span>
+<span class="go"> &#39;iexBidPrice&#39;: 0,</span>
+<span class="go"> &#39;iexBidSize&#39;: 0,</span>
+<span class="go"> &#39;iexAskPrice&#39;: 0,</span>
+<span class="go"> &#39;iexAskSize&#39;: 0,</span>
+<span class="go"> &#39;marketCap&#39;: 1982650772,</span>
+<span class="go"> &#39;peRatio&#39;: 29.1,</span>
+<span class="go"> &#39;week52High&#39;: 25.96,</span>
+<span class="go"> &#39;week52Low&#39;: 11.21,</span>
+<span class="go"> &#39;ytdChange&#39;: 0.0383457552370452}</span>
 </pre></div>
 </div>
 </div>
@@ -1144,12 +1144,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [39]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">symbol           BTCUSDT  EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         3574.62   2.0034    94.11   ...        NaN   0.1226    1.647</span>
-<span class="go">askSize         0.087872    87.06  0.12746   ...        NaN      172  157.282</span>
-<span class="go">avgTotalVolume      None     None     None   ...       None     None     None</span>
-<span class="go">bidPrice         3573.13   2.0024    94.09   ...        NaN  0.12235    1.643</span>
-<span class="go">bidSize         0.108046  1193.27  0.16031   ...        NaN     84.8      200</span>
+<span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice         3404.98  1.8606     88.7   ...        NaN  0.11277    1.645</span>
+<span class="go">askSize         0.295613    8.07  0.13528   ...        NaN     32.7  154.411</span>
+<span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
+<span class="go">bidPrice         3403.25  1.8587    88.67   ...        NaN  0.11261    1.641</span>
+<span class="go">bidSize         0.058737   96.64  3.21729   ...        NaN     5564   41.692</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1171,12 +1171,12 @@ by:</p>
 
 <span class="gp">In [41]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol              RTEC     HURC     CRAY   ...       PLPC     VJET    MKSI</span>
-<span class="go">avgTotalVolume    242671    12009   317259   ...      12482    57961  559719</span>
-<span class="go">calculationPrice   close    close    close   ...      close    close   close</span>
-<span class="go">change             -0.66    -0.92    -1.12   ...      -5.43    -0.01    -4.6</span>
-<span class="go">changePercent    -0.0325 -0.02405 -0.04482   ...   -0.08282 -0.00441 -0.0634</span>
-<span class="go">close              19.65    37.33    23.87   ...      60.13     2.26   67.96</span>
+<span class="go">symbol               RTEC    HURC     CRAY   ...        PLPC    VJET     MKSI</span>
+<span class="go">avgTotalVolume     237464   12544   318224   ...       12306   56891   531420</span>
+<span class="go">calculationPrice    close   close    close   ...       close   close    close</span>
+<span class="go">change               0.41   -0.18     0.02   ...        0.18    0.04    -0.39</span>
+<span class="go">changePercent     0.02096 -0.0048  0.00086   ...     0.00294  0.0181 -0.00578</span>
+<span class="go">close               19.97   37.35    23.31   ...       61.39    2.25    67.11</span>
 
 <span class="go">[5 rows x 165 columns]</span>
 </pre></div>
@@ -1184,12 +1184,12 @@ by:</p>
 <p><strong>Sector</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[42]: </span><span class="go"></span>
-<span class="go">symbol               AZUL      ETN      MWA   ...        RAVN    TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1138399  3245212  1121542   ...      136793     6976   803832</span>
-<span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
-<span class="go">change              -1.33    -2.04    -0.19   ...       -1.79  -0.0232    -0.24</span>
-<span class="go">changePercent    -0.05257 -0.02783 -0.01861   ...    -0.04541 -0.00227 -0.03217</span>
-<span class="go">close               23.97    71.25    10.02   ...       37.63  10.1868     7.22</span>
+<span class="go">symbol               AZUL      ETN   ...             TBRGU     ACCO</span>
+<span class="go">avgTotalVolume    1119568  3174315   ...              6943   787282</span>
+<span class="go">calculationPrice    close    close   ...     previousclose    close</span>
+<span class="go">change               1.79    -0.41   ...                 0    -0.12</span>
+<span class="go">changePercent     0.07627 -0.00575   ...                 0 -0.01685</span>
+<span class="go">close               25.26    70.92   ...              10.2        7</span>
 
 <span class="go">[5 rows x 812 columns]</span>
 </pre></div>
@@ -1202,11 +1202,11 @@ by:</p>
 
 <span class="gp">In [44]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
-<span class="go">                 Utilities      ...           Technology</span>
-<span class="go">lastUpdated  1544216400382      ...        1544216400464</span>
-<span class="go">name             Utilities      ...           Technology</span>
-<span class="go">performance        0.00373      ...             -0.03524</span>
-<span class="go">type                sector      ...               sector</span>
+<span class="go">             Consumer Staples      ...           Financials</span>
+<span class="go">lastUpdated     1544562000395      ...        1544562000465</span>
+<span class="go">name         Consumer Staples      ...           Financials</span>
+<span class="go">performance           0.00822      ...             -0.00969</span>
+<span class="go">type                   sector      ...               sector</span>
 
 <span class="go">[4 rows x 11 columns]</span>
 </pre></div>
@@ -1223,7 +1223,117 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [45]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_todays_earnings</span>
 
 <span class="gp">In [46]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
-<span class="gh">Out[46]: </span><span class="go">[]</span>
+<span class="gh">Out[46]: </span><span class="go"></span>
+<span class="go">[{&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.53,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.53,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 5,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-11&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.45,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.1777777777777778,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;1907&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;DSW&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;DSW&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;DSW Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 26.5,</span>
+<span class="go">   &#39;openTime&#39;: 1544538697911,</span>
+<span class="go">   &#39;close&#39;: 25.01,</span>
+<span class="go">   &#39;closeTime&#39;: 1544562033261,</span>
+<span class="go">   &#39;high&#39;: 26.94,</span>
+<span class="go">   &#39;low&#39;: 24.18,</span>
+<span class="go">   &#39;latestPrice&#39;: 25.01,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 11, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1544562033261,</span>
+<span class="go">   &#39;latestVolume&#39;: 11068753,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 25.01,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1544561996340,</span>
+<span class="go">   &#39;delayedPrice&#39;: 25.01,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1544562033261,</span>
+<span class="go">   &#39;extendedPrice&#39;: 25.01,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1544564477000,</span>
+<span class="go">   &#39;previousClose&#39;: 23.13,</span>
+<span class="go">   &#39;change&#39;: 1.88,</span>
+<span class="go">   &#39;changePercent&#39;: 0.08128,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.02205,</span>
+<span class="go">   &#39;iexVolume&#39;: 244066,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1726537,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 2008148138,</span>
+<span class="go">   &#39;peRatio&#39;: 18.53,</span>
+<span class="go">   &#39;week52High&#39;: 34.63,</span>
+<span class="go">   &#39;week52Low&#39;: 18.01,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.17359038049047706},</span>
+<span class="go">  &#39;headline&#39;: &#39;DSW beats by $0.18, beats on revenue&#39;},</span>
+<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: -0.18,</span>
+<span class="go">  &#39;estimatedEPS&#39;: -0.18,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-11&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.01,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: -19,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;2623&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;FRAN&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;FRAN&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &quot;Francesca&#39;s Holdings Corporation&quot;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: 1.5,</span>
+<span class="go">   &#39;openTime&#39;: 1544538600365,</span>
+<span class="go">   &#39;close&#39;: 1.5,</span>
+<span class="go">   &#39;closeTime&#39;: 1544562000247,</span>
+<span class="go">   &#39;high&#39;: 1.65,</span>
+<span class="go">   &#39;low&#39;: 1.49,</span>
+<span class="go">   &#39;latestPrice&#39;: 1.5,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 11, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1544562000247,</span>
+<span class="go">   &#39;latestVolume&#39;: 1897300,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 1.49,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 800,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1544561996077,</span>
+<span class="go">   &#39;delayedPrice&#39;: 1.5,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1544562000247,</span>
+<span class="go">   &#39;extendedPrice&#39;: 1.55,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.05,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.03333,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1544562667949,</span>
+<span class="go">   &#39;previousClose&#39;: 1.8,</span>
+<span class="go">   &#39;change&#39;: -0.3,</span>
+<span class="go">   &#39;changePercent&#39;: -0.16667,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03852,</span>
+<span class="go">   &#39;iexVolume&#39;: 73084,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1213406,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 54334607,</span>
+<span class="go">   &#39;peRatio&#39;: 2.08,</span>
+<span class="go">   &#39;week52High&#39;: 8.48,</span>
+<span class="go">   &#39;week52Low&#39;: 1.49,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.9276261752988048},</span>
+<span class="go">  &#39;headline&#39;: &quot;Francesca&#39;s EPS in-line, beats on revenue&quot;}]</span>
 </pre></div>
 </div>
 </div>
@@ -1237,49 +1347,57 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 
 <span class="gp">In [48]: </span><span class="n">get_ipo_calendar</span><span class="p">()[</span><span class="s2">&quot;rawData&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[48]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;MERCANTIL BANK HOLDING CORP\t&#39;,</span>
-<span class="go"> &#39;expectedDate&#39;: &#39;2018-12-11&#39;,</span>
-<span class="go"> &#39;leadUnderwriters&#39;: [&#39;Keefe, Bruyette &amp; Woods, Inc&#39;,</span>
-<span class="go">  &#39;Raymond James and Associates, Inc.&#39;],</span>
-<span class="go"> &#39;underwriters&#39;: [&#39;FIG Partners, L.L.C.&#39;,</span>
-<span class="go">  &#39;Stephens Inc.&#39;,</span>
-<span class="go">  &#39;SunTrust Robinson Humphrey, Inc&#39;],</span>
-<span class="go"> &#39;companyCounsel&#39;: [&#39;Jones Day&#39;],</span>
-<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Davis Polk &amp; Wardwell LLP&#39;],</span>
-<span class="go"> &#39;auditor&#39;: &#39;Computershare Trust Company, N.A&#39;,</span>
-<span class="go"> &#39;market&#39;: &#39;NASDAQ Global Select&#39;,</span>
-<span class="go"> &#39;cik&#39;: &#39;0001734342&#39;,</span>
-<span class="go"> &#39;address&#39;: &#39;220 ALHAMBRA CIRCLE&#39;,</span>
-<span class="go"> &#39;city&#39;: &#39;CORAL GABLES&#39;,</span>
-<span class="go"> &#39;state&#39;: &#39;FL&#39;,</span>
-<span class="go"> &#39;zip&#39;: &#39;33134&#39;,</span>
-<span class="go"> &#39;phone&#39;: &#39;(305)460-4038&#39;,</span>
-<span class="go"> &#39;ceo&#39;: &#39;Millar Wilson&#39;,</span>
-<span class="go"> &#39;employees&#39;: 948,</span>
-<span class="go"> &#39;url&#39;: &#39;www.mercantilbank.com&#39;,</span>
+<span class="go">{&#39;symbol&#39;: &#39;TME&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;TENCENT MUSIC ENTERTAINMENT GROUP\t&#39;,</span>
+<span class="go"> &#39;expectedDate&#39;: &#39;2018-12-12&#39;,</span>
+<span class="go"> &#39;leadUnderwriters&#39;: [&#39;BofA Merrill Lynch&#39;,</span>
+<span class="go">  &#39;Deutsche Bank Securities Inc.&#39;,</span>
+<span class="go">  &#39;Goldman Sachs (Asia) L.L.C.&#39;,</span>
+<span class="go">  &#39;J.P. Morgan Securities LLC&#39;,</span>
+<span class="go">  &#39;Morgan Stanley &amp; Co. LLC&#39;],</span>
+<span class="go"> &#39;underwriters&#39;: [&#39;Allen &amp; Company LLC&#39;,</span>
+<span class="go">  &#39;BOCI Asia Limited&#39;,</span>
+<span class="go">  &#39;China International Capital Corporation Hong Kong Securities...&#39;,</span>
+<span class="go">  &#39;China Renaissance Securities (Hong Kong) Limited&#39;,</span>
+<span class="go">  &#39;Credit Suisse Securities (USA) LLC&#39;,</span>
+<span class="go">  &#39;HSBC Securities (USA) Inc.&#39;,</span>
+<span class="go">  &#39;KeyBanc Capital Markets Inc&#39;,</span>
+<span class="go">  &#39;Stifel Nicolaus &amp; Company, Incorporated&#39;],</span>
+<span class="go"> &#39;companyCounsel&#39;: [&#39;Davis Polk &amp; Wardwell LLP&#39;],</span>
+<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Skadden, Arps, Slate, Meagher &amp; Flom LLP&#39;],</span>
+<span class="go"> &#39;auditor&#39;: &#39;Not Specified&#39;,</span>
+<span class="go"> &#39;market&#39;: &#39;NYSE&#39;,</span>
+<span class="go"> &#39;cik&#39;: &#39;0001744676&#39;,</span>
+<span class="go"> &#39;address&#39;: &#39;17/F, MALATA BUILDING, KEJIZHONGYI ROAD&#39;,</span>
+<span class="go"> &#39;city&#39;: &#39;NANSHAN DISTRICT, SHENZHEN 518057&#39;,</span>
+<span class="go"> &#39;state&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;zip&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;phone&#39;: &#39;86 755 86013388&#39;,</span>
+<span class="go"> &#39;ceo&#39;: &#39;Cussion Kar Shun Pang&#39;,</span>
+<span class="go"> &#39;employees&#39;: 2559,</span>
+<span class="go"> &#39;url&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;status&#39;: &#39;Filed&#39;,</span>
-<span class="go"> &#39;sharesOffered&#39;: 11022477,</span>
-<span class="go"> &#39;priceLow&#39;: 16.5,</span>
-<span class="go"> &#39;priceHigh&#39;: 18.5,</span>
+<span class="go"> &#39;sharesOffered&#39;: 82000000,</span>
+<span class="go"> &#39;priceLow&#39;: 13,</span>
+<span class="go"> &#39;priceHigh&#39;: 15,</span>
 <span class="go"> &#39;offerAmount&#39;: None,</span>
-<span class="go"> &#39;totalExpenses&#39;: 3974520,</span>
-<span class="go"> &#39;sharesOverAlloted&#39;: 1653372,</span>
-<span class="go"> &#39;shareholderShares&#39;: 4922477,</span>
-<span class="go"> &#39;sharesOutstanding&#39;: 30837470,</span>
+<span class="go"> &#39;totalExpenses&#39;: 7419937.4,</span>
+<span class="go"> &#39;sharesOverAlloted&#39;: 12300000,</span>
+<span class="go"> &#39;shareholderShares&#39;: 40970171,</span>
+<span class="go"> &#39;sharesOutstanding&#39;: 84281800,</span>
 <span class="go"> &#39;lockupPeriodExpiration&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;quietPeriodExpiration&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;revenue&#39;: 269353000,</span>
-<span class="go"> &#39;netIncome&#39;: 31403000,</span>
-<span class="go"> &#39;totalAssets&#39;: 8435802000,</span>
-<span class="go"> &#39;totalLiabilities&#39;: 7708127000,</span>
-<span class="go"> &#39;stockholderEquity&#39;: 727675000,</span>
-<span class="go"> &#39;companyDescription&#39;: &#39;We are a bank holding company headquartered in Coral Gables, Florida, with &amp;#10; $8.4 billion in assets, $6.2 billion in loans, $6.2 billion in deposits, &amp;#10; $727.7 million of shareholders’ equity and $1.7 billion in assets under &amp;#10; management and custody as of September 30, 2018. We provide individuals and &amp;#10; businesses a comprehensive array of deposit, credit, investment, wealth &amp;#10; management, retail banking and fiduciary services. We serve customers in our &amp;#10; United States markets and select international customers. These services are &amp;#10; offered through Amerant Bank, N.A., or the Bank, which is also headquartered in &amp;#10; Coral Gables, Florida, and its subsidiaries. Fiduciary, investment and wealth &amp;#10; management services are provided by the Bank’s national trust company &amp;#10; subsidiary, or the Trust Company, and the Bank’s securities broker-dealer &amp;#10; subsidiary, or Investment Services. We call these services and entities wealth &amp;#10; management. &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at 220 Alhambra Circle, Coral &amp;#10; Gables, FL 33134, and our telephone number is (305) 460-8728. Our website is &amp;#10; www.mercantilbank.com.&#39;,</span>
-<span class="go"> &#39;businessDescription&#39;: &#39;We are a bank holding company headquartered in Coral Gables, Florida, with &amp;#10; $8.4 billion in assets, $6.2 billion in loans, $6.2 billion in deposits, &amp;#10; $727.7 million of shareholders’ equity and $1.7 billion in assets under &amp;#10; management and custody as of September 30, 2018. We provide individuals and &amp;#10; businesses a comprehensive array of deposit, credit, investment, wealth &amp;#10; management, retail banking and fiduciary services. We serve customers in our &amp;#10; United States markets and select international customers. These services are &amp;#10; offered through Amerant Bank, N.A., or the Bank, which is also headquartered in &amp;#10; Coral Gables, Florida, and its subsidiaries. Fiduciary, investment and wealth &amp;#10; management services are provided by the Bank’s national trust company &amp;#10; subsidiary, or the Trust Company, and the Bank’s securities broker-dealer &amp;#10; subsidiary, or Investment Services. We call these services and entities wealth &amp;#10; management. &amp;#10;  &amp;#10; The Bank was founded in 1979 and is the largest community bank headquartered in &amp;#10; Florida. We currently operate 23 banking centers where we offer personal and &amp;#10; commercial banking services. The Bank’s primary markets are South Florida, where &amp;#10; we operate 15 banking centers in the Miami-Dade, Broward and Palm Beach &amp;#10; counties; the greater Houston, Texas area, where we have eight banking centers &amp;#10; that serve nearby areas of Harris, Montgomery, Fort Bend and Waller counties; &amp;#10; and the New York City area, where we have a loan production office, or LPO, in &amp;#10; Midtown Manhattan. We are opening a LPO in Dallas, Texas in the fourth quarter &amp;#10; of 2018. We currently have 948 full time equivalent employees, or FTEs, &amp;#10; throughout our markets. We have no foreign offices. &amp;#10;  &amp;#10; From 1987 through December 31, 2017, we were a wholly-owned subsidiary of &amp;#10; Mercantil Servicios Financieros, C.A., which we refer to as MSF or the selling &amp;#10; shareholder. On March 15, 2018, MSF transferred 100% of our outstanding Class A &amp;#10; common stock and Class B common stock, together, the Company Shares, to a newly &amp;#10; created Florida common law, non-discretionary, grantor trust, which we refer to &amp;#10; as the Distribution Trust or the Trust. TMI Trust Company is the trustee of the &amp;#10; Distribution Trust. &amp;#10;  &amp;#10; On August 10, 2018, we completed our spin-off. &amp;#10; --- &amp;#10;  &amp;#10; Our principal executive offices are located at 220 Alhambra Circle, Coral &amp;#10; Gables, FL 33134, and our telephone number is (305) 460-8728. Our website is &amp;#10; www.mercantilbank.com.&#39;,</span>
-<span class="go"> &#39;useOfProceeds&#39;: &#39;We estimate that the net proceeds to us from this Offering will be approximately &amp;#10; $104.1 million, or approximately $131.3 million if the underwriters exercise in &amp;#10; full their option to purchase additional shares of Class A common stock from us, &amp;#10; assuming an Offering price of $17.50 per share (the midpoint of the range set &amp;#10; forth on the cover page of this prospectus), after deducting estimated &amp;#10; underwriting discounts, commissions and Offering expenses. &amp;#10;  &amp;#10; We will not receive any of the proceeds from the sale of our Class A common &amp;#10; stock in this Offering by the selling shareholder. &amp;#10;  &amp;#10; Each $1.00 increase (decrease) in the Offering price per share would increase &amp;#10; (decrease) our net proceeds, after deducting estimated underwriting discounts, &amp;#10; commissions and Offering expenses, by approximately $6.0 million, or &amp;#10; approximately $7.6 million if the underwriters exercise in full their option to &amp;#10; purchase additional shares of Class A common stock. &amp;#10;  &amp;#10; An increase (decrease) of 1,000,000 in the number of shares we are offering &amp;#10; would increase (decrease) our net proceeds, after deducting estimated &amp;#10; underwriting discounts, commissions and Offering expenses, by approximately &amp;#10; $16.5 million, assuming the assumed Offering price per share stays the same. &amp;#10;  &amp;#10; We intend to use approximately $55.7 million of the net proceeds to us from this &amp;#10; Offering to repurchase, at or about the closing of this offering, subject to &amp;#10; Federal Reserve approval, up to all shares of our Class B common stock held as &amp;#10; Retained Shares by the Distribution Trust on behalf of MSF. We anticipate that &amp;#10; we will price these repurchases of Class B common stock at the public offering &amp;#10; price of the Class A common stock in this offering less a discount of &amp;#10; approximately 3% of such public offering price. This discount reflects the &amp;#10; limited voting rights of the Class B common stock. &amp;#10;  &amp;#10; We intend to use the remaining proceeds to us from this Offering to redeem, in &amp;#10; whole or in part, three series of our highest cost outstanding trust preferred &amp;#10; securities with an aggregate outstanding balance of $53.9 million. These trust &amp;#10; preferred securities have annual interest rates of 10.60%, 10.18% and 8.90%, &amp;#10; mature on September 7, 2030, June 8, 2031 and June 15, 2028, respectively, and &amp;#10; two of these have call premiums of approximately 1.06% and 1.53%. Any remaining &amp;#10; proceeds will be used for general corporate purposes, including technology &amp;#10; investments to implement our strategic plan. &amp;#10;  &amp;#10; The repurchase of our Class B common stock and redemption of our trust preferred &amp;#10; securities are subject to prior Federal Reserve approval. &amp;#10;  &amp;#10; Pending the final use of proceeds from this Offering as described above, we plan &amp;#10; to invest the net proceeds that we receive in this Offering in short-term high &amp;#10; quality interest-bearing securities, including government and investment-grade &amp;#10; debt securities and money market funds.&#39;,</span>
-<span class="go"> &#39;competition&#39;: &#39;The banking and financial services industry is highly competitive, and we &amp;#10; compete with a wide range of lenders and other financial institutions within our &amp;#10; markets, including local, regional, national and international commercial banks &amp;#10; and credit unions. We also compete with mortgage companies, brokerage firms, &amp;#10; trust service providers, consumer finance companies, mutual funds, securities &amp;#10; firms, insurance companies, third-party payment processors, fintech companies &amp;#10; and other financial intermediaries on various of our products and services. Some &amp;#10; of our competitors are not subject to the regulatory restrictions and level of &amp;#10; regulatory supervision applicable to us. &amp;#10;  &amp;#10; Interest rates on loans and deposits, as well as prices on fee-based services, &amp;#10; are typically significant competitive factors within the banking and financial &amp;#10; services industry. Many of our competitors are much larger financial &amp;#10; institutions that have greater financial resources than we do and compete &amp;#10; aggressively for market share. These competitors attempt to gain market share &amp;#10; through their financial product mix, pricing strategies and larger banking &amp;#10; center networks. Other important competitive factors in our industry and markets &amp;#10; include office locations and hours, quality of customer service, community &amp;#10; reputation, continuity of personnel and services, capacity and willingness to &amp;#10; extend credit, electronic delivery systems and ability to offer sophisticated &amp;#10; banking products and services. While we seek to remain competitive with respect &amp;#10; to fees charged, interest rates and pricing, we believe that our broad and &amp;#10; sophisticated commercial banking product suite, our high-quality customer &amp;#10; service culture, our positive reputation and long-standing community &amp;#10; relationships enable us to compete successfully within our markets and enhance &amp;#10; our ability to attract and retain customers.&#39;,</span>
-<span class="go"> &#39;amount&#39;: 192893348,</span>
-<span class="go"> &#39;percentOffered&#39;: &#39;35.74&#39;}</span>
+<span class="go"> &#39;revenue&#39;: 1978000000,</span>
+<span class="go"> &#39;netIncome&#39;: 394000000,</span>
+<span class="go"> &#39;totalAssets&#39;: 5780000000,</span>
+<span class="go"> &#39;totalLiabilities&#39;: 811000000,</span>
+<span class="go"> &#39;stockholderEquity&#39;: 4962000000,</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;Our mission is to use technology to elevate the role of music in people’s lives, &amp;#10; by enabling them to create, enjoy, share and interact with music. &amp;#10;  &amp;#10; Music is a universal passion. No matter who we are, or where we come from, we &amp;#10; all have our favorite songs, albums or artists. We love music because it can &amp;#10; inspire, uplift, motivate and enrich our lives. Music reaches us in deeply &amp;#10; personal ways and connects us with each other through engaging, social and fun &amp;#10; experiences. &amp;#10; --- &amp;#10;  &amp;#10; We are the largest online music entertainment platform in China, operating the &amp;#10; top four music mobile apps in terms of mobile MAUs in the third quarter of 2018. &amp;#10; Our platform comprises our online music, online karaoke and music-centric live &amp;#10; streaming services, supported by our content offerings, technology and data. &amp;#10; --- &amp;#10;  &amp;#10; The principal executive offices of our main operations are located at 17/F, &amp;#10; Malata Building, Kejizhongyi Road, Midwest District of Hi-tech Park, Nanshan &amp;#10; District, Shenzhen, 518057, the People’s Republic of China. Our telephone number &amp;#10; at this address is +86-755-8601-3388. Our registered office in the Cayman &amp;#10; Islands is located at the office of Walkers Corporate Limited, Cayman Corporate &amp;#10; Centre, 27 Hospital Road, George Town, Grand Cayman KY1-9008, Cayman Islands. &amp;#10; Our agent for service of process in the United States is Cogency Global Inc., &amp;#10; located at 10 E. 40th Street, 10th Floor, New York, N.Y. 10016.&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;Our mission is to use technology to elevate the role of music in people’s lives, &amp;#10; by enabling them to create, enjoy, share and interact with music. &amp;#10;  &amp;#10; Music is a universal passion. No matter who we are, or where we come from, we &amp;#10; all have our favorite songs, albums or artists. We love music because it can &amp;#10; inspire, uplift, motivate and enrich our lives. Music reaches us in deeply &amp;#10; personal ways and connects us with each other through engaging, social and fun &amp;#10; experiences. &amp;#10;  &amp;#10; With over 1.4 billion people, China has a massive audience with a growing demand &amp;#10; for music entertainment. Until recently, the music industry in China was &amp;#10; relatively underdeveloped and highly fragmented largely due to deficiencies in &amp;#10; copyright protection. Piracy was rampant. People didn’t see the value of paying &amp;#10; for music. Spending on music entertainment in China has been relatively low. &amp;#10; According to iResearch, while the recorded music market in the U.S. was more &amp;#10; than 45 times that of China in 2017 on a per capita basis, China’s per capita &amp;#10; spending on recorded music is expected to more than quadruple between 2017 and &amp;#10; 2023, demonstrating tremendous growth potential. &amp;#10;  &amp;#10; We are pioneering the way people enjoy online music and music-centric social &amp;#10; entertainment services. We have demonstrated that users will pay for &amp;#10; personalized, engaging and interactive music experiences. Just as we value our &amp;#10; users, we also respect those who create music. This is why we champion copyright &amp;#10; protection—because unless content creators are rewarded for their creative work, &amp;#10; there won’t be a sustainable music entertainment industry in the long run. Our &amp;#10; scale, technology and commitment to copyright protection make us a partner of &amp;#10; choice for artists and content owners. &amp;#10;  &amp;#10; We are the largest online music entertainment platform in China, operating the &amp;#10; top four music mobile apps in terms of mobile MAUs in the third quarter of 2018. &amp;#10; Our platform comprises our online music, online karaoke and music-centric live &amp;#10; streaming services, supported by our content offerings, technology and data. &amp;#10;  &amp;#10; Our platform is an all-in-one music entertainment destination that allows users &amp;#10; to seamlessly engage with music in many ways, including discovering, listening, &amp;#10; singing, watching, performing and socializing. On our platform, social &amp;#10; interactions such as sharing, liking, commenting, following and virtual gifting, &amp;#10; are deeply integrated in our products and highly complementary to the core music &amp;#10; experience, thereby enhancing our user experience, engagement and retention. As &amp;#10; a result, we have built our platform into not just a music streaming platform, &amp;#10; but a broad community for music fans to discover, listen, sing, watch, perform &amp;#10; and socialize. &amp;#10;  &amp;#10; We have worked tirelessly to build a vibrant and fast-growing music platform &amp;#10; with the following elements: &amp;#10;  &amp;#10; • Users. With over 800 million total unique MAUs in the third quarter of 2018, &amp;#10;   our massive user base covers the full spectrum of user demographics in China. &amp;#10;   Our users are highly engaged, with each daily active user on average spending &amp;#10;   over 70 minutes per day on our platform in the third quarter of 2018. &amp;#10;  &amp;#10; • Products. We develop and operate a portfolio of products that are engaging, &amp;#10;   social and fun. Our products allow users to discover and listen to music, sing &amp;#10;   and perform, as well as watch music videos and live music performances in a &amp;#10;   seamless and immersive way. With different music entertainment services fully &amp;#10;   integrated into one platform, users don’t just listen to music on our &amp;#10;   platform—after listening to a song, users may be inspired to sing that song &amp;#10;   and share the performance with friends or want to watch a live performance of &amp;#10;   the same song by a popular live streaming performer. &amp;#10;  &amp;#10; • Content. We have China’s most comprehensive library of music content, recorded &amp;#10;   and live, in both audio and video formats. We have the largest music content &amp;#10;   library with over 20 million tracks from over 200 domestic and international &amp;#10;   music labels, as of September 30, 2018. We also offer a broad range of video &amp;#10;   content, such as music videos, live and recorded concerts and music shows. In &amp;#10;   addition, hundreds of millions of users have shared their singing, short &amp;#10;   videos, live streaming of music performances, comments and music-related &amp;#10;   articles on our platform. &amp;#10;  &amp;#10; • Data and Technology. The scale and engagement of our user base generate &amp;#10;   extensive data that we use to develop innovative products that best cater to &amp;#10;   user preferences and enhance user experience. We have also developed &amp;#10;   technology that can monitor and protect copyrighted music, which empowers our &amp;#10;   artists and content partners to promote their music and protect their creative &amp;#10;   work. &amp;#10;  &amp;#10; • Monetization. We have innovative and multi-faceted monetization models that &amp;#10;   mainly include subscriptions, sales of digital music, virtual gifts and &amp;#10;   premium memberships. They are seamlessly integrated with our products and &amp;#10;   services in a way that enhances user experience. Our strong monetization &amp;#10;   capability supports our long-term investments in content, technology and &amp;#10;   products. It also allows us to attract more content creators and transform &amp;#10;   China’s music entertainment industry. &amp;#10; --- &amp;#10;  &amp;#10; Tencent’s acquisition of CMC was completed on July 12, 2016. Since then, the &amp;#10; results of operations of CMC have been consolidated with ours and had &amp;#10; contributed to our total revenues since July 2016. For the period from January &amp;#10; 1, 2016 to July 12, 2016, CMC’s total net revenues and net loss were RMB1,923 &amp;#10; million (US$288 million) and RMB152 million (US$23 million), respectively. After &amp;#10; the acquisition of CMC in July 2016, our business and the business that was &amp;#10; previously operated by CMC both grew substantially as a result of the combined &amp;#10; content library and sharing of operational know-how. Post-acquisition, we: (i) &amp;#10; operated our business on a combined basis, with CMC’s business substantially &amp;#10; integrated into our business; (ii) shared many costs and expenses, and (iii) &amp;#10; ceased to maintain consolidated financial statements of CMC’s business on a &amp;#10; standalone basis. &amp;#10; --- &amp;#10;  &amp;#10; The principal executive offices of our main operations are located at 17/F, &amp;#10; Malata Building, Kejizhongyi Road, Midwest District of Hi-tech Park, Nanshan &amp;#10; District, Shenzhen, 518057, the People’s Republic of China. Our telephone number &amp;#10; at this address is +86-755-8601-3388. Our registered office in the Cayman &amp;#10; Islands is located at the office of Walkers Corporate Limited, Cayman Corporate &amp;#10; Centre, 27 Hospital Road, George Town, Grand Cayman KY1-9008, Cayman Islands. &amp;#10; Our agent for service of process in the United States is Cogency Global Inc., &amp;#10; located at 10 E. 40th Street, 10th Floor, New York, N.Y. 10016.&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &#39;Based on an assumed initial public offering price of US$14.00 per ADS, the &amp;#10; midpoint of the estimated public offering price range shown on the front cover &amp;#10; of this prospectus, we expect to receive (i) net proceeds of approximately &amp;#10; US$544 million in the aggregate (or net proceeds of approximately US$709 million &amp;#10; in the aggregate if the underwriters exercise their over-allotment option in &amp;#10; full in connection with this offering) from this offering, after deducting &amp;#10; underwriting discounts and commissions and estimated offering expenses payable &amp;#10; by us; and (ii) additional net proceeds of approximately US$32 million from the &amp;#10; concurrent private placement to Tencent to effect its Assured Entitlement &amp;#10; Distribution (assuming Tencent’s full subscription of the Class A ordinary &amp;#10; shares to be issued by us in such concurrent private placement). We will not &amp;#10; receive any of the proceeds from the sale of the ADSs being sold by the selling &amp;#10; shareholders. &amp;#10;  &amp;#10; We plan to use such net proceeds primarily for the following purposes: &amp;#10;  &amp;#10; • approximately 40% for investment to enhance our music content offerings to &amp;#10;   improve the variety, quality and quantity of content on our platform;      &amp;#10;  &amp;#10; • approximately 30% for product and service development to expand and enhance  &amp;#10;   our current product and service offerings, as well as to develop new products &amp;#10;   and services to further enhance user engagement;              &amp;#10;  &amp;#10; • approximately 15% for selling and marketing, including marketing and &amp;#10;   promotions to strengthen our brand and grow our paying user base; and      &amp;#10;  &amp;#10; • approximately 15% for potential strategic investments and acquisitions and &amp;#10;   general corporate purposes.                                                &amp;#10;  &amp;#10; If an unforeseen event occurs or business conditions change, we may use the &amp;#10; proceeds differently than as described in this prospectus. In utilizing the &amp;#10; proceeds, we are permitted under PRC laws and regulations to provide funding to &amp;#10; our PRC subsidiaries only through loans or capital contributions, and to our &amp;#10; consolidated VIEs only through loans, and only if we satisfy the applicable &amp;#10; government registration and approval requirements. The relevant filing and &amp;#10; registration processes for capital contributions typically take approximately &amp;#10; eight weeks to complete. The filing and registration processes for loans &amp;#10; typically take approximately four weeks or longer to complete. While we &amp;#10; currently see no material obstacles to completing the filing and registration &amp;#10; procedures with respect to future capital contributions and loans to our PRC &amp;#10; subsidiaries or VIEs, we cannot assure you that we will be able to complete &amp;#10; these filings and registrations on a timely basis, or at all. Additionally, &amp;#10; while there is no statutory limit on the amount of capital contribution that we &amp;#10; can make to our PRC subsidiaries, loans provided to our PRC subsidiaries and &amp;#10; consolidated VIEs in the PRC are subject to certain statutory limits. With &amp;#10; respect to our PRC subsidiaries, the maximum amount of the loans that they can &amp;#10; acquire in aggregate from outside China as of September 30, 2018 is (i)  &amp;#10; approximately US$10.3 million under the total investment minus registered &amp;#10; capital approach; or (ii) approximately US$846.9 million under the net asset  &amp;#10; approach. With respect to our VIEs and their subsidiaries, the maximum amount of &amp;#10; the loans that they can obtain in aggregate from outside China as of September &amp;#10; 30, 2018 is approximately US$1,116.4 million under the net asset approach. We  &amp;#10; are able to use all of the net proceeds from this offering for investment in our &amp;#10; PRC operations by funding our PRC subsidiaries through capital contributions  &amp;#10; which is not subject to any statutory limit on the amount under PRC laws and  &amp;#10; regulations. We expect the net proceeds from this offering and the concurrent  &amp;#10; private placement to be used in the PRC will be in the form of RMB and,  &amp;#10; therefore, our PRC subsidiaries and consolidated VIEs will need to convert any  &amp;#10; capital contributions or loans from U.S. dollars into Renminbi in accordance  &amp;#10; with applicable PRC laws and regulations. All of the net proceeds from this  &amp;#10; offering and the concurrent private placement would be available for investment &amp;#10; in our operations in the PRC, subject to the foregoing statutory limits on the  &amp;#10; amount of loans provided to our PRC subsidiaries and consolidated VIEs in the &amp;#10; PRC and the laws and regulations on the conversion from U.S. dollars into  &amp;#10; Renminbi. &amp;#10;  &amp;#10; Pending use of the net proceeds, we intend to hold our net proceeds in &amp;#10; short-term, interest-bearing, financial instruments or demand deposits.&#39;,</span>
+<span class="go"> &#39;competition&#39;: &#39;We face competition for users and their time and attention primarily from &amp;#10; NetEase Music and other online music providers in China. We also face &amp;#10; competition from online offerings of other forms of content, including karaoke &amp;#10; services, live streaming, radio services, literature, games and long- and &amp;#10; short-form videos provided by other online service providers. We compete to &amp;#10; attract, engage and retain users based on a number of factors, such as the &amp;#10; diversity of content, product features, social interaction features, quality of &amp;#10; user experience, brand awareness and reputation. Some of our competitors may &amp;#10; have greater financial, marketing or technology resources than we do, which &amp;#10; could enable them to respond more quickly to technological innovations or &amp;#10; changes in user demands and preferences, license more attractive content, and &amp;#10; devote greater resources towards the development, promotion and sale of products &amp;#10; than we can.&#39;,</span>
+<span class="go"> &#39;amount&#39;: 1148000000,</span>
+<span class="go"> &#39;percentOffered&#39;: &#39;97.29&#39;}</span>
 </pre></div>
 </div>
 </div>
