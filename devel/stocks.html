@@ -245,7 +245,7 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">169.1</span>
+<span class="gh">Out[3]: </span><span class="go">170.95</span>
 </pre></div>
 </div>
 </div>
@@ -277,11 +277,11 @@ passing
 <span class="gp">In [6]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    46045477</span>
+<span class="go">avgTotalVolume    45694567</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                0.47</span>
-<span class="go">changePercent      0.00279</span>
-<span class="go">close                169.1</span>
+<span class="go">change                1.85</span>
+<span class="go">changePercent      0.01094</span>
+<span class="go">close               170.95</span>
 </pre></div>
 </div>
 <p>It is also possible to change the output format of an already-instantiated
@@ -289,7 +289,7 @@ passing
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">output_format</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span>
-<span class="gh">Out[8]: </span><span class="go">169.1</span>
+<span class="gh">Out[8]: </span><span class="go">170.95</span>
 </pre></div>
 </div>
 <p>Further, it is possible to customize the integer and floating point JSON parsing (into a type such as <code class="docutils literal notranslate"><span class="pre">Decimal.decimal</span></code>) by passing the desired types via <code class="docutils literal notranslate"><span class="pre">json_parse_float</span></code> and <code class="docutils literal notranslate"><span class="pre">json_parse_int</span></code> parameters.</p>
@@ -309,7 +309,7 @@ keyword argument to the endpoint method. (see <a class="reference internal" href
 
 <span class="gp">In [12]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">AAPL   -0.358551</span>
+<span class="go">AAPL    0.733389</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [14]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[15]: </span><span class="go">169.1</span>
+<span class="gh">Out[15]: </span><span class="go">170.95</span>
 </pre></div>
 </div>
 <p>While multi-symbol requests will return a symbol-indexed list of the endpoint’s data</p>
@@ -930,11 +930,11 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <span class="gp">In [17]: </span><span class="n">air_transport</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
 <span class="go">                      AAL      DAL      LUV</span>
-<span class="go">avgTotalVolume    9365025  7177570  5618157</span>
+<span class="go">avgTotalVolume    9236773  7079409  5420698</span>
 <span class="go">calculationPrice    close    close    close</span>
-<span class="go">change               0.25     0.38    -0.18</span>
-<span class="go">changePercent     0.00733   0.0068 -0.00352</span>
-<span class="go">close               34.35    56.27     50.9</span>
+<span class="go">change              -1.89    -2.72    -0.56</span>
+<span class="go">changePercent    -0.05502 -0.04834   -0.011</span>
+<span class="go">close               32.46    53.55    50.34</span>
 </pre></div>
 </div>
 </div>
@@ -950,16 +950,16 @@ reserved word in Python:</p>
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">               AAPL</span>
-<span class="go">ytdChange -0.003586</span>
+<span class="go">ytdChange  0.007334</span>
 </pre></div>
 </div>
 <p>Lists of fields are acceptable as well:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ytdChange&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">])</span>
 <span class="gh">Out[20]: </span><span class="go"></span>
 <span class="go">                 AAPL</span>
-<span class="go">close      169.100000</span>
-<span class="go">open       170.400000</span>
-<span class="go">ytdChange   -0.003586</span>
+<span class="go">close      170.950000</span>
+<span class="go">open       170.440000</span>
+<span class="go">ytdChange    0.007334</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -982,7 +982,7 @@ listed in the IEX docs.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="nb">len</span><span class="p">(</span><span class="n">aapl</span><span class="o">.</span><span class="n">get_news</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
-<span class="gh">Out[24]: </span><span class="go">15</span>
+<span class="gh">Out[24]: </span><span class="go">19</span>
 </pre></div>
 </div>
 <p>With a custom value specified, News now returns the previous 35 items.</p>
@@ -995,11 +995,11 @@ listed in the IEX docs.</p>
 <span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    46045477</span>
+<span class="go">avgTotalVolume    45694567</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                0.47</span>
-<span class="go">changePercent      0.00279</span>
-<span class="go">close                169.1</span>
+<span class="go">change                1.85</span>
+<span class="go">changePercent      0.01094</span>
+<span class="go">close               170.95</span>
 </pre></div>
 </div>
 <p>We can also change the output format once our <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> object has been
@@ -1009,11 +1009,11 @@ instantiated:</p>
 
 <span class="gp">In [28]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_ohlc</span><span class="p">()</span>
 <span class="go">               Out[28]: </span>
-<span class="go">                                          AAPL</span>
-<span class="go">close  {&#39;price&#39;: 169.1, &#39;time&#39;: 1544648400741}</span>
-<span class="go">high                                    171.92</span>
-<span class="go">low                                     169.02</span>
-<span class="go">open   {&#39;price&#39;: 170.4, &#39;time&#39;: 1544625000377}</span>
+<span class="go">                                           AAPL</span>
+<span class="go">close  {&#39;price&#39;: 170.95, &#39;time&#39;: 1544734800331}</span>
+<span class="go">high                                     172.57</span>
+<span class="go">low                                      169.55</span>
+<span class="go">open   {&#39;price&#39;: 170.44, &#39;time&#39;: 1544711400900}</span>
 </pre></div>
 </div>
 </div>
@@ -1023,11 +1023,11 @@ instantiated:</p>
 <p>Single symbol</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[29]: </span><span class="go"></span>
-<span class="go">       AAPL</span>
-<span class="go">open  170.4</span>
+<span class="go">        AAPL</span>
+<span class="go">open  170.44</span>
 
 <span class="gp">In [30]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
-<span class="go">                                  Out[30]: </span>
+<span class="go">                                    Out[30]: </span>
 <span class="go">                   AAPL</span>
 <span class="go">companyName  Apple Inc.</span>
 </pre></div>
@@ -1036,10 +1036,10 @@ instantiated:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [32]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[32]: </span><span class="go">{&#39;AAPL&#39;: 170.4, &#39;TSLA&#39;: 369.42}</span>
+<span class="gh">Out[32]: </span><span class="go">{&#39;AAPL&#39;: 170.44, &#39;TSLA&#39;: 370.02}</span>
 
 <span class="gp">In [33]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_company_name</span><span class="p">()</span>
-<span class="go">                                         Out[33]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
+<span class="go">                                          Out[33]: {&#39;AAPL&#39;: &#39;Apple Inc.&#39;, &#39;TSLA&#39;: &#39;Tesla Inc.&#39;}</span>
 </pre></div>
 </div>
 <p>Format as a DataFrame</p>
@@ -1048,7 +1048,7 @@ instantiated:</p>
 <span class="gp">In [35]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span>
 <span class="gh">Out[35]: </span><span class="go"></span>
 <span class="go">          AAPL      TSLA</span>
-<span class="go">beta  1.217278  0.487845</span>
+<span class="go">beta  1.219569  0.495597</span>
 </pre></div>
 </div>
 </div>
@@ -1071,46 +1071,46 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [37]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[37]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;UXIN&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;Uxin Limited&#39;,</span>
-<span class="go"> &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
-<span class="go"> &#39;sector&#39;: &#39;Technology&#39;,</span>
+<span class="go">{&#39;symbol&#39;: &#39;SRC&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;Spirit Realty Capital Inc.&#39;,</span>
+<span class="go"> &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
+<span class="go"> &#39;sector&#39;: &#39;Real Estate&#39;,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go"> &#39;open&#39;: 6.24,</span>
-<span class="go"> &#39;openTime&#39;: 1544625000474,</span>
-<span class="go"> &#39;close&#39;: 7.26,</span>
-<span class="go"> &#39;closeTime&#39;: 1544648400733,</span>
-<span class="go"> &#39;high&#39;: 8.99,</span>
-<span class="go"> &#39;low&#39;: 6.16,</span>
-<span class="go"> &#39;latestPrice&#39;: 7.26,</span>
+<span class="go"> &#39;open&#39;: 37.66,</span>
+<span class="go"> &#39;openTime&#39;: 1544711400856,</span>
+<span class="go"> &#39;close&#39;: 39.72,</span>
+<span class="go"> &#39;closeTime&#39;: 1544734952356,</span>
+<span class="go"> &#39;high&#39;: 40.105,</span>
+<span class="go"> &#39;low&#39;: 37.66,</span>
+<span class="go"> &#39;latestPrice&#39;: 39.72,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;December 12, 2018&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1544648400733,</span>
-<span class="go"> &#39;latestVolume&#39;: 27234018,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: 7.27,</span>
+<span class="go"> &#39;latestTime&#39;: &#39;December 13, 2018&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1544734952356,</span>
+<span class="go"> &#39;latestVolume&#39;: 3496110,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: 39.74,</span>
 <span class="go"> &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: 1544648314308,</span>
-<span class="go"> &#39;delayedPrice&#39;: 7.26,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1544648400733,</span>
-<span class="go"> &#39;extendedPrice&#39;: 7.14,</span>
-<span class="go"> &#39;extendedChange&#39;: -0.12,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: -0.01653,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1544650940138,</span>
-<span class="go"> &#39;previousClose&#39;: 5.88,</span>
-<span class="go"> &#39;change&#39;: 1.38,</span>
-<span class="go"> &#39;changePercent&#39;: 0.23469,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: 0.00973,</span>
-<span class="go"> &#39;iexVolume&#39;: 264987,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 2585451,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: 1544734795177,</span>
+<span class="go"> &#39;delayedPrice&#39;: 39.72,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1544734952356,</span>
+<span class="go"> &#39;extendedPrice&#39;: 39.95,</span>
+<span class="go"> &#39;extendedChange&#39;: 0.23,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: 0.00579,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1544736425976,</span>
+<span class="go"> &#39;previousClose&#39;: 38.25,</span>
+<span class="go"> &#39;change&#39;: 1.47,</span>
+<span class="go"> &#39;changePercent&#39;: 0.03843,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: 0.01568,</span>
+<span class="go"> &#39;iexVolume&#39;: 54819,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 6338116,</span>
 <span class="go"> &#39;iexBidPrice&#39;: 0,</span>
 <span class="go"> &#39;iexBidSize&#39;: 0,</span>
 <span class="go"> &#39;iexAskPrice&#39;: 0,</span>
 <span class="go"> &#39;iexAskSize&#39;: 0,</span>
-<span class="go"> &#39;marketCap&#39;: 2122776549,</span>
-<span class="go"> &#39;peRatio&#39;: None,</span>
-<span class="go"> &#39;week52High&#39;: 10.49,</span>
-<span class="go"> &#39;week52Low&#39;: 2.81,</span>
-<span class="go"> &#39;ytdChange&#39;: -0.15724381592554293}</span>
+<span class="go"> &#39;marketCap&#39;: 17019088645,</span>
+<span class="go"> &#39;peRatio&#39;: 49.65,</span>
+<span class="go"> &#39;week52High&#39;: 40.105,</span>
+<span class="go"> &#39;week52Low&#39;: 7.22,</span>
+<span class="go"> &#39;ytdChange&#39;: 0.12187049716464324}</span>
 </pre></div>
 </div>
 </div>
@@ -1144,12 +1144,12 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [39]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">symbol           BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
-<span class="go">askPrice         3454.93  1.9892    90.28   ...        NaN  0.11299    1.656</span>
-<span class="go">askSize         0.092857   95.88  0.00094   ...        NaN    241.4  382.907</span>
-<span class="go">avgTotalVolume      None    None     None   ...       None     None     None</span>
-<span class="go">bidPrice         3454.02  1.9867    90.24   ...        NaN  0.11281    1.652</span>
-<span class="go">bidSize         0.061292    6.03  14.6448   ...        NaN    143.3    8.474</span>
+<span class="go">symbol          BTCUSDT EOSUSDT  ETHUSDT   ...    VENUSDT  XLMUSDT QTUMUSDT</span>
+<span class="go">askPrice        3294.31  1.8467    85.28   ...        NaN  0.10492    1.748</span>
+<span class="go">askSize         6.89835    6.49  1.66409   ...        NaN   1753.4  123.864</span>
+<span class="go">avgTotalVolume     None    None     None   ...       None     None     None</span>
+<span class="go">bidPrice        3292.85  1.8451    85.22   ...        NaN  0.10471    1.742</span>
+<span class="go">bidSize         13.0353    6.49   1.6649   ...        NaN    341.2  122.625</span>
 
 <span class="go">[5 rows x 18 columns]</span>
 </pre></div>
@@ -1171,27 +1171,27 @@ by:</p>
 
 <span class="gp">In [41]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[41]: </span><span class="go"></span>
-<span class="go">symbol               RTEC    HURC     CRAY   ...        PLPC     VJET     MKSI</span>
-<span class="go">avgTotalVolume     236699   12467   326504   ...       11887    54020   528645</span>
-<span class="go">calculationPrice    close   close    close   ...       close    close    close</span>
-<span class="go">change               0.18    0.31     0.32   ...        0.99    -0.08     0.97</span>
-<span class="go">changePercent     0.00901  0.0083  0.01373   ...     0.01613 -0.03556  0.01445</span>
-<span class="go">close               20.15   37.66    23.63   ...       62.38     2.17    68.08</span>
+<span class="go">symbol               RTEC     HURC     CRAY   ...        PLPC     VJET     MKSI</span>
+<span class="go">avgTotalVolume     237503    12383   328769   ...       11862    56062   528844</span>
+<span class="go">calculationPrice    close    close    close   ...       close    close    close</span>
+<span class="go">change              -0.29    -0.77     -0.6   ...       -1.61    -0.05    -1.67</span>
+<span class="go">changePercent    -0.01439 -0.02045 -0.02539   ...    -0.02581 -0.02304 -0.02453</span>
+<span class="go">close               19.86    36.89    23.03   ...       60.77     2.12    66.41</span>
 
-<span class="go">[5 rows x 165 columns]</span>
+<span class="go">[5 rows x 166 columns]</span>
 </pre></div>
 </div>
 <p><strong>Sector</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[42]: </span><span class="go"></span>
-<span class="go">symbol               AZUL      ETN   ...             TBRGU     ACCO</span>
-<span class="go">avgTotalVolume    1088812  3086629   ...              6902   796981</span>
-<span class="go">calculationPrice    close    close   ...     previousclose    close</span>
-<span class="go">change               0.71     0.19   ...                 0     0.03</span>
-<span class="go">changePercent     0.02811  0.00268   ...                 0  0.00429</span>
-<span class="go">close               25.97    71.11   ...              10.2     7.03</span>
+<span class="go">symbol               AZUL      ETN      MWA   ...      AMCIU    TBRGU     ACCO</span>
+<span class="go">avgTotalVolume    1045049  3015733  1147677   ...     139366     6864   798117</span>
+<span class="go">calculationPrice    close    close    close   ...        sip    close    close</span>
+<span class="go">change               0.04    -0.31    -0.14   ...      0.019   0.0032    -0.11</span>
+<span class="go">changePercent     0.00154 -0.00436 -0.01377   ...     0.0019  0.00031 -0.01565</span>
+<span class="go">close               26.01     70.8    10.03   ...       9.98    10.19     6.92</span>
 
-<span class="go">[5 rows x 812 columns]</span>
+<span class="go">[5 rows x 844 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -1202,11 +1202,11 @@ by:</p>
 
 <span class="gp">In [44]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[44]: </span><span class="go"></span>
-<span class="go">             Communication Services      ...          Real Estate</span>
-<span class="go">lastUpdated           1544648400321      ...        1544648400349</span>
-<span class="go">name         Communication Services      ...          Real Estate</span>
-<span class="go">performance                 0.01074      ...             -0.01888</span>
-<span class="go">type                         sector      ...               sector</span>
+<span class="go">                 Utilities      ...            Materials</span>
+<span class="go">lastUpdated  1544734800382      ...        1544734800327</span>
+<span class="go">name             Utilities      ...            Materials</span>
+<span class="go">performance        0.00868      ...             -0.01166</span>
+<span class="go">type                sector      ...               sector</span>
 
 <span class="go">[4 rows x 11 columns]</span>
 </pre></div>
@@ -1225,170 +1225,114 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 <span class="gp">In [46]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
 <span class="gh">Out[46]: </span><span class="go"></span>
 <span class="go">[{&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: 0.17,</span>
-<span class="go">  &#39;estimatedEPS&#39;: 0.17,</span>
+<span class="go">  &#39;consensusEPS&#39;: 0.41,</span>
+<span class="go">  &#39;estimatedEPS&#39;: 0.41,</span>
 <span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 7,</span>
 <span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-12&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-13&#39;,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
 <span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.08,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.4,</span>
 <span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: 1.125,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;5461&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;PLAB&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;PLAB&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Photronics Inc.&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.024999999999999883,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;1250&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;CIEN&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;CIEN&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Ciena Corporation&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;New York Stock Exchange&#39;,</span>
 <span class="go">   &#39;sector&#39;: &#39;Technology&#39;,</span>
 <span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 9.55,</span>
-<span class="go">   &#39;openTime&#39;: 1544625000916,</span>
-<span class="go">   &#39;close&#39;: 9.48,</span>
-<span class="go">   &#39;closeTime&#39;: 1544648400328,</span>
-<span class="go">   &#39;high&#39;: 9.784,</span>
-<span class="go">   &#39;low&#39;: 9.05,</span>
-<span class="go">   &#39;latestPrice&#39;: 9.48,</span>
+<span class="go">   &#39;open&#39;: 35.6,</span>
+<span class="go">   &#39;openTime&#39;: 1544711499301,</span>
+<span class="go">   &#39;close&#39;: 34.91,</span>
+<span class="go">   &#39;closeTime&#39;: 1544735042064,</span>
+<span class="go">   &#39;high&#39;: 36.55,</span>
+<span class="go">   &#39;low&#39;: 34.25,</span>
+<span class="go">   &#39;latestPrice&#39;: 34.91,</span>
 <span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;December 12, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1544648400328,</span>
-<span class="go">   &#39;latestVolume&#39;: 921419,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 9.475,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1544648355111,</span>
-<span class="go">   &#39;delayedPrice&#39;: 9.48,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1544648400328,</span>
-<span class="go">   &#39;extendedPrice&#39;: 9.55,</span>
-<span class="go">   &#39;extendedChange&#39;: 0.07,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0.00738,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1544650523587,</span>
-<span class="go">   &#39;previousClose&#39;: 9.58,</span>
-<span class="go">   &#39;change&#39;: -0.1,</span>
-<span class="go">   &#39;changePercent&#39;: -0.01044,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.02199,</span>
-<span class="go">   &#39;iexVolume&#39;: 20262,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 338666,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 13, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1544735042064,</span>
+<span class="go">   &#39;latestVolume&#39;: 13339672,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 34.91,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 59,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1544734797608,</span>
+<span class="go">   &#39;delayedPrice&#39;: 34.91,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1544735042064,</span>
+<span class="go">   &#39;extendedPrice&#39;: 34.91,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1544737332787,</span>
+<span class="go">   &#39;previousClose&#39;: 32.14,</span>
+<span class="go">   &#39;change&#39;: 2.77,</span>
+<span class="go">   &#39;changePercent&#39;: 0.08619,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.02377,</span>
+<span class="go">   &#39;iexVolume&#39;: 317084,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 3489296,</span>
 <span class="go">   &#39;iexBidPrice&#39;: 0,</span>
 <span class="go">   &#39;iexBidSize&#39;: 0,</span>
 <span class="go">   &#39;iexAskPrice&#39;: 0,</span>
 <span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 648321093,</span>
-<span class="go">   &#39;peRatio&#39;: 19.35,</span>
-<span class="go">   &#39;week52High&#39;: 11,</span>
-<span class="go">   &#39;week52Low&#39;: 7.2,</span>
-<span class="go">   &#39;ytdChange&#39;: 0.10351348837209308},</span>
-<span class="go">  &#39;headline&#39;: &#39;Photronics beats by $0.01, beats on revenue&#39;},</span>
+<span class="go">   &#39;marketCap&#39;: 4978209603,</span>
+<span class="go">   &#39;peRatio&#39;: 33.25,</span>
+<span class="go">   &#39;week52High&#39;: 36.55,</span>
+<span class="go">   &#39;week52Low&#39;: 20.705,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.6007988595664469}},</span>
 <span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: 0.16,</span>
-<span class="go">  &#39;estimatedEPS&#39;: 0.16,</span>
+<span class="go">  &#39;consensusEPS&#39;: -0.09,</span>
+<span class="go">  &#39;estimatedEPS&#39;: -0.09,</span>
 <span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
 <span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
 <span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-12&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q3 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.23,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-13&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q4 2018&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-09-30&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: -0.1,</span>
 <span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: -0.30434782608695654,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;7341&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;VRA&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;VRA&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Vera Bradley Inc.&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;Nasdaq Global Select&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
+<span class="go">  &#39;estimatedChangePercent&#39;: 0.10000000000000009,</span>
+<span class="go">  &#39;symbolId&#39;: &#39;2509&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;VERU&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;VERU&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Veru Inc.&#39;,</span>
+<span class="go">   &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
+<span class="go">   &#39;sector&#39;: &#39;Healthcare&#39;,</span>
 <span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 9,</span>
-<span class="go">   &#39;openTime&#39;: 1544625000744,</span>
-<span class="go">   &#39;close&#39;: 9.13,</span>
-<span class="go">   &#39;closeTime&#39;: 1544648400208,</span>
-<span class="go">   &#39;high&#39;: 10.33,</span>
-<span class="go">   &#39;low&#39;: 8.9,</span>
-<span class="go">   &#39;latestPrice&#39;: 9.13,</span>
+<span class="go">   &#39;open&#39;: 1.49,</span>
+<span class="go">   &#39;openTime&#39;: 1544711400653,</span>
+<span class="go">   &#39;close&#39;: 1.35,</span>
+<span class="go">   &#39;closeTime&#39;: 1544734800517,</span>
+<span class="go">   &#39;high&#39;: 1.52,</span>
+<span class="go">   &#39;low&#39;: 1.28,</span>
+<span class="go">   &#39;latestPrice&#39;: 1.35,</span>
 <span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;December 12, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1544648400208,</span>
-<span class="go">   &#39;latestVolume&#39;: 2340978,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 9.125,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1544648396173,</span>
-<span class="go">   &#39;delayedPrice&#39;: 9.125,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1544648400214,</span>
-<span class="go">   &#39;extendedPrice&#39;: 9.13,</span>
-<span class="go">   &#39;extendedChange&#39;: 0,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1544650878000,</span>
-<span class="go">   &#39;previousClose&#39;: 10.18,</span>
-<span class="go">   &#39;change&#39;: -1.05,</span>
-<span class="go">   &#39;changePercent&#39;: -0.10314,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.02965,</span>
-<span class="go">   &#39;iexVolume&#39;: 69410,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 421780,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;December 13, 2018&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1544734800517,</span>
+<span class="go">   &#39;latestVolume&#39;: 133333,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 1.47,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 8,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1544715477428,</span>
+<span class="go">   &#39;delayedPrice&#39;: 1.35,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1544734800517,</span>
+<span class="go">   &#39;extendedPrice&#39;: 1.47,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.12,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.08889,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1544715477428,</span>
+<span class="go">   &#39;previousClose&#39;: 1.42,</span>
+<span class="go">   &#39;change&#39;: -0.07,</span>
+<span class="go">   &#39;changePercent&#39;: -0.0493,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 6e-05,</span>
+<span class="go">   &#39;iexVolume&#39;: 8,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 68079,</span>
 <span class="go">   &#39;iexBidPrice&#39;: 0,</span>
 <span class="go">   &#39;iexBidSize&#39;: 0,</span>
 <span class="go">   &#39;iexAskPrice&#39;: 0,</span>
 <span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 320979630,</span>
-<span class="go">   &#39;peRatio&#39;: 16.6,</span>
-<span class="go">   &#39;week52High&#39;: 17.38,</span>
-<span class="go">   &#39;week52Low&#39;: 8.9,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.2939190143084261},</span>
-<span class="go">  &#39;headline&#39;: &#39;Vera Bradley misses by $0.03, misses on revenue&#39;},</span>
-<span class="go"> {&#39;actualEPS&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;consensusEPS&#39;: -0.84,</span>
-<span class="go">  &#39;estimatedEPS&#39;: -0.84,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 4,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2018-12-12&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2018-10-31&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: -0.66,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;&#39;,</span>
-<span class="go">  &#39;estimatedChangePercent&#39;: -0.2727272727272726,</span>
-<span class="go">  &#39;symbolId&#39;: &#39;9405&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;SKIS&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;SKIS&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Peak Resorts Inc.&#39;,</span>
-<span class="go">   &#39;primaryExchange&#39;: &#39;NASDAQ Global Market&#39;,</span>
-<span class="go">   &#39;sector&#39;: &#39;Consumer Cyclical&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go">   &#39;open&#39;: 4.96,</span>
-<span class="go">   &#39;openTime&#39;: 1544625000682,</span>
-<span class="go">   &#39;close&#39;: 5.1,</span>
-<span class="go">   &#39;closeTime&#39;: 1544648400423,</span>
-<span class="go">   &#39;high&#39;: 5.18,</span>
-<span class="go">   &#39;low&#39;: 4.96,</span>
-<span class="go">   &#39;latestPrice&#39;: 5.1,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;December 12, 2018&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1544648400423,</span>
-<span class="go">   &#39;latestVolume&#39;: 23164,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 0,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 0,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 0,</span>
-<span class="go">   &#39;delayedPrice&#39;: 5.1,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1544648400423,</span>
-<span class="go">   &#39;extendedPrice&#39;: 4.9,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.2,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.03922,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1544622081797,</span>
-<span class="go">   &#39;previousClose&#39;: 4.9,</span>
-<span class="go">   &#39;change&#39;: 0.2,</span>
-<span class="go">   &#39;changePercent&#39;: 0.04082,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0,</span>
-<span class="go">   &#39;iexVolume&#39;: 0,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 13363,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
-<span class="go">   &#39;iexBidSize&#39;: 0,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 77345743,</span>
-<span class="go">   &#39;peRatio&#39;: -26.84,</span>
-<span class="go">   &#39;week52High&#39;: 5.775,</span>
-<span class="go">   &#39;week52Low&#39;: 4.4501,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.009953909842893266},</span>
-<span class="go">  &#39;headline&#39;: &#39;Peak Resorts beats by $0.01, misses on revenue&#39;}]</span>
+<span class="go">   &#39;marketCap&#39;: 74634691,</span>
+<span class="go">   &#39;peRatio&#39;: -3.86,</span>
+<span class="go">   &#39;week52High&#39;: 2.37,</span>
+<span class="go">   &#39;week52Low&#39;: 1,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.056293006993006996},</span>
+<span class="go">  &#39;headline&#39;: &#39;Veru reports Q4 results&#39;}]</span>
 </pre></div>
 </div>
 </div>
@@ -1402,46 +1346,46 @@ through the top-level <code class="docutils literal notranslate"><span class="pr
 
 <span class="gp">In [48]: </span><span class="n">get_ipo_calendar</span><span class="p">()[</span><span class="s2">&quot;rawData&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[48]: </span><span class="go"></span>
-<span class="go">{&#39;symbol&#39;: &#39;CFFAU&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;CF FINANCE ACQUISITION CORP.\t&#39;,</span>
-<span class="go"> &#39;expectedDate&#39;: &#39;2018-12-13&#39;,</span>
-<span class="go"> &#39;leadUnderwriters&#39;: [&#39;Cantor Fitzgerald &amp; Co.&#39;],</span>
+<span class="go">{&#39;symbol&#39;: &#39;CHACU&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;CHARDAN HEALTHCARE ACQUISITION CORP.\t&#39;,</span>
+<span class="go"> &#39;expectedDate&#39;: &#39;2018-12-14&#39;,</span>
+<span class="go"> &#39;leadUnderwriters&#39;: [&#39;Chardan Capital Markets LLC&#39;],</span>
 <span class="go"> &#39;underwriters&#39;: [],</span>
-<span class="go"> &#39;companyCounsel&#39;: [&#39;Ellenoff Grossman &amp; Schole LLP&#39;],</span>
-<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Skadden, Arps, Slate, Meagher &amp; Flom LLP&#39;],</span>
+<span class="go"> &#39;companyCounsel&#39;: [&#39;Loeb and Loeb LLP&#39;],</span>
+<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Schiff Hardin LLP&#39;],</span>
 <span class="go"> &#39;auditor&#39;: &#39;Continental Stock Transfer &amp; Trust Company&#39;,</span>
-<span class="go"> &#39;market&#39;: &#39;NASDAQ Capital&#39;,</span>
-<span class="go"> &#39;cik&#39;: &#39;0001728041&#39;,</span>
-<span class="go"> &#39;address&#39;: &#39;110 EAST 59TH STREET&#39;,</span>
+<span class="go"> &#39;market&#39;: &#39;NYSE MKT&#39;,</span>
+<span class="go"> &#39;cik&#39;: &#39;0001739174&#39;,</span>
+<span class="go"> &#39;address&#39;: &#39;17 STATE STREET, 16TH FLOOR&#39;,</span>
 <span class="go"> &#39;city&#39;: &#39;NEW YORK&#39;,</span>
 <span class="go"> &#39;state&#39;: &#39;NY&#39;,</span>
-<span class="go"> &#39;zip&#39;: &#39;10022&#39;,</span>
-<span class="go"> &#39;phone&#39;: &#39;212-938-5000&#39;,</span>
-<span class="go"> &#39;ceo&#39;: &#39;Howard W. Lutnick&#39;,</span>
-<span class="go"> &#39;employees&#39;: 5,</span>
-<span class="go"> &#39;url&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;zip&#39;: &#39;10004&#39;,</span>
+<span class="go"> &#39;phone&#39;: &#39;646-465-9000&#39;,</span>
+<span class="go"> &#39;ceo&#39;: &#39;Jonas Grossman&#39;,</span>
+<span class="go"> &#39;employees&#39;: 2,</span>
+<span class="go"> &#39;url&#39;: &#39;www.chardan.com&#39;,</span>
 <span class="go"> &#39;status&#39;: &#39;Filed&#39;,</span>
-<span class="go"> &#39;sharesOffered&#39;: 25000000,</span>
+<span class="go"> &#39;sharesOffered&#39;: 7000000,</span>
 <span class="go"> &#39;priceLow&#39;: 10,</span>
 <span class="go"> &#39;priceHigh&#39;: None,</span>
 <span class="go"> &#39;offerAmount&#39;: None,</span>
-<span class="go"> &#39;totalExpenses&#39;: 650000,</span>
-<span class="go"> &#39;sharesOverAlloted&#39;: 3750000,</span>
+<span class="go"> &#39;totalExpenses&#39;: 285000,</span>
+<span class="go"> &#39;sharesOverAlloted&#39;: 1050000,</span>
 <span class="go"> &#39;shareholderShares&#39;: None,</span>
-<span class="go"> &#39;sharesOutstanding&#39;: 25600000,</span>
+<span class="go"> &#39;sharesOutstanding&#39;: 8750000,</span>
 <span class="go"> &#39;lockupPeriodExpiration&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;quietPeriodExpiration&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;revenue&#39;: 0,</span>
-<span class="go"> &#39;netIncome&#39;: -385,</span>
-<span class="go"> &#39;totalAssets&#39;: 176015,</span>
-<span class="go"> &#39;totalLiabilities&#39;: 132917,</span>
-<span class="go"> &#39;stockholderEquity&#39;: 43098,</span>
-<span class="go"> &#39;companyDescription&#39;: &#39;We are a blank check company formed on July 9, 2014 as a Delaware corporation &amp;#10; for the purpose of effecting a merger, capital stock exchange, asset &amp;#10; acquisition, stock purchase, reorganization or similar business combination with &amp;#10; one or more businesses, which we refer to throughout this prospectus as our &amp;#10; initial business combination. We have not selected any specific business &amp;#10; combination target and we have not, nor has anyone on our behalf, initiated any &amp;#10; substantive discussions, directly or indirectly, with any business combination &amp;#10; target. &amp;#10;  &amp;#10; We intend to focus our search on businesses that may provide significant &amp;#10; opportunities for attractive investor returns. Our efforts to identify a &amp;#10; prospective target business will not be limited to a particular industry or &amp;#10; geographic region, although we intend to focus on companies operating in the &amp;#10; financial services or real estate services industries where our management team &amp;#10; has significant experience. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 110 East 59th Street, New York, New York &amp;#10; 10022 and our telephone number is (212) 938-5000.&#39;,</span>
-<span class="go"> &#39;businessDescription&#39;: &#39;We are a blank check company formed on July 9, 2014 as a Delaware corporation &amp;#10; for the purpose of effecting a merger, capital stock exchange, asset &amp;#10; acquisition, stock purchase, reorganization or similar business combination with &amp;#10; one or more businesses, which we refer to throughout this prospectus as our &amp;#10; initial business combination. We have not selected any specific business &amp;#10; combination target and we have not, nor has anyone on our behalf, initiated any &amp;#10; substantive discussions, directly or indirectly, with any business combination &amp;#10; target. &amp;#10;  &amp;#10; We intend to focus our search on businesses that may provide significant &amp;#10; opportunities for attractive investor returns. Our efforts to identify a &amp;#10; prospective target business will not be limited to a particular industry or &amp;#10; geographic region, although we intend to focus on companies operating in the &amp;#10; financial services or real estate services industries where our management team &amp;#10; has significant experience. &amp;#10;  &amp;#10; Our officers consist of: &amp;#10;  &amp;#10; . Howard W. Lutnick, our Chairman and Chief Executive Officer, who joined Cantor &amp;#10;   Fitzgerald, L.P., or Cantor, in 1983 and has served as President and Chief &amp;#10;   Executive Officer of Cantor since 1992 and as Chairman since 1996;  &amp;#10;  &amp;#10; . Anshu Jain, our President, who also serves as the President of Cantor, a &amp;#10;   position he has held since January 2017, and previously served as a senior &amp;#10;   executive of Deutsche Bank, which firm he joined from Merrill Lynch in 1995, &amp;#10;   most recently in the position of Co-CEO from June 2012 to June 2015; &amp;#10;  &amp;#10; . Henrique de Castro, our Chief Operating Officer, who has served as an advisor &amp;#10;   to Cantor since February 2015 and who served as the Chief Operating Officer of &amp;#10;   Yahoo! Inc. from 2012 to 2014; &amp;#10;  &amp;#10; . Steven Bisgay, our Chief Financial Officer, who has served as Cantor’s &amp;#10;   Executive Managing Director and Chief Financial Officer since February 2015; &amp;#10;   and  &amp;#10;  &amp;#10; . Stephen M. Merkel, our Executive Vice President, General Counsel and      &amp;#10;   Secretary, who has served as Executive Managing Director, General Counsel and &amp;#10;   Secretary of Cantor since December 2000 and was Senior Vice President, General &amp;#10;   Counsel and Secretary of Cantor from May 1993 to December 2000. &amp;#10;  &amp;#10; We, our sponsor, and CF&amp;Co are all affiliates of Cantor. Cantor is a diversified &amp;#10; company specializing in financial and real estate services for institutional &amp;#10; customers operating in the global financial and commercial real estate markets, &amp;#10; whose businesses include CF&amp;Co, a leading independent middle market investment &amp;#10; bank and primary dealer, BGC Partners, Inc., or BGC Partners, whose common stock &amp;#10; trades on the Nasdaq Global Select Market under the ticker symbol “BGCP”, a &amp;#10; leading global financial technology and brokerage business primarily servicing &amp;#10; the financial services markets, and Newmark Group, Inc., or Newmark, whose Class &amp;#10; A common stock trades on the Nasdaq Global Select Market under the ticker symbol &amp;#10; “NMRK”, which, through its subsidiaries, operates a real estate services &amp;#10; business that offers a full suite of services and products for both owners and &amp;#10; occupiers across the entire commercial real estate industry. &amp;#10;  &amp;#10; Over the past 70 years, Cantor, led by Howard W. Lutnick since 1992, has &amp;#10; successfully built a well-capitalized business across multiple and growing &amp;#10; business lines, with numerous market-leading financial services products and &amp;#10; large and growing commercial real estate businesses. Cantor has been at the &amp;#10; forefront of financial and technological innovation in its industries, &amp;#10; developing new markets and providing superior service to thousands of customers &amp;#10; globally. &amp;#10;  &amp;#10; Mr. Lutnick has led Cantor’s expansion from a broker of fixed income and equity &amp;#10; products to become a premier global financial services provider, which is &amp;#10; recognized for its leading institutional equity and fixed income capital markets &amp;#10; services, investment banking, prime brokerage, wholesale financial brokerage, &amp;#10; insurance brokerage, commercial real estate services, commercial real estate &amp;#10; asset management, commercial real estate loan servicing, and commercial real &amp;#10; estate financing operations. Over Cantor’s and its affiliates’ history, its &amp;#10; employees have developed long-term relationships with a wide range of U.S. and &amp;#10; foreign private and public financial services organizations of all sizes. We &amp;#10; will seek to capitalize on the substantial resources and the global &amp;#10; infrastructure of Cantor and we believe these relationships will provide us with &amp;#10; exposure to a broad selection of potential acquisition targets. However, there &amp;#10; is no formal agreement between us and Cantor with respect to the provision of &amp;#10; any services to us by Cantor and its employees. Consequently, while we expect &amp;#10; Cantor and its employees to provide us services so that we can capitalize on the &amp;#10; substantial resources and global infrastructure of Cantor and leverage Cantor’s &amp;#10; relationships, there is no guarantee that Cantor or its employees will provide &amp;#10; any services to us or that we will be able to do so. &amp;#10;  &amp;#10; Our officers, in their positions as officers of, or advisors to, Cantor, &amp;#10; respectively, have a history of making successful acquisitions. From 2005 &amp;#10; through 2018, Cantor acquired over 60 companies in the financial and real estate &amp;#10; services industries. In financial services, these acquisitions have included, &amp;#10; among others, the publicly traded wholesale and inter-dealer brokerage firm GFI &amp;#10; Group, Inc., or GFI, Sunrise Brokers Group, a global leader in listed and over &amp;#10; the counter (“OTC”) derivative products brokerage, and Besso Insurance Group &amp;#10; Limited, an independent insurance broker. In real estate services, these &amp;#10; acquisitions have included, among others, Newmark &amp; Company Real Estate, Inc., &amp;#10; Berkeley Point Financial LLC, which is one of the nation’s leading providers of &amp;#10; multifamily capital solutions, engaged primarily in the origination, funding, &amp;#10; sale and servicing of multifamily loans guaranteed by Government Sponsored &amp;#10; Enterprises, Grubb &amp; Ellis, Apartment Realty Advisors (“ARA”), and Cornish &amp; &amp;#10; Carey. Most of Newmark’s subsidiaries, including, ARA, Berkeley Point and &amp;#10; Cornish &amp; Carey now operate under the name “Newmark Knight Frank” or “NKF”. &amp;#10;  &amp;#10; Mr. Lutnick has led Cantor’s successful exit from many of its acquisitions and &amp;#10; investments. For example, in 1996, Cantor launched eSpeed, its fully electronic &amp;#10; treasuries trading platform. Cantor developed and launched eSpeed into which BGC &amp;#10; Partners was merged in 2008. In June 2013, BGC Partners sold the eSpeed business &amp;#10; to Nasdaq, Inc. for $750 million in cash and up to $484 million earn-out shares &amp;#10; of Nasdaq, Inc. (based on the stock price of Nasdaq, Inc. at the time the deal &amp;#10; was announced). Following BGC Partners’ acquisition of GFI in 2015, BGC &amp;#10; Partners, whose Chairman and Chief Executive Officer is Mr. Lutnick, sold GFI’s &amp;#10; Trayport business a leading intermediary and provider of trading technologies &amp;#10; and support services to the global OTC and listed markets, to Intercontinental &amp;#10; Exchange, Inc. for $650 million in stock. &amp;#10;  &amp;#10; Cantor and its affiliates, under the guidance of Mr. Lutnick and our other &amp;#10; officers, have a history of making accretive acquisitions, as set forth above, &amp;#10; and of creating shareholder value, as evident from the revenue growth in &amp;#10; Cantor’s BGC Partners and Newmark businesses. &amp;#10;  &amp;#10; Cantor’s BGC Partners Financial Services revenues nearly quadrupled between 2003 &amp;#10; (which at the time included eSpeed) and the trailing 12 months ended September &amp;#10; 30, 2018 (excluding revenues from of eSpeed, which was sold in 2013 as set forth &amp;#10; above). Cantor’s BGC Partners business has significantly increased its &amp;#10; revenue-generating headcount over the last ten years, including as a result of &amp;#10; BGC Partners’ acquisition and integration of more than 20 companies over this &amp;#10; timeframe. &amp;#10;  &amp;#10; Cantor entered the commercial real estate brokerage market by acquiring Newmark &amp;#10; in 2011 for total consideration of approximately $99 million (based on BGC &amp;#10; Partners’ stock price as of the day the deal closed). Since such acquisition, &amp;#10; Newmark’s revenues increased from approximately $230 million (unaudited) in 2011 &amp;#10; to approximately $1.9 billion for the trailing 12 months ended September 30, &amp;#10; 2018 at a compounded annual growth rate (“CAGR”) of 37%. This CAGR is &amp;#10; significantly higher than those of its publicly traded full service U.S. &amp;#10; commercial real estate services competitors over the same time period. In &amp;#10; December 2017, Newmark debuted on the Nasdaq Global Select Market after an &amp;#10; initial public offering. Newmark had a fully diluted market cap of approximately &amp;#10; $2.9 billion as of the end of the third quarter of 2018. &amp;#10;  &amp;#10; We believe that the combination of our officers’ and our affiliates’ financial &amp;#10; services and real estate industry expertise and proven ability to grow &amp;#10; businesses through acquisitions make us uniquely qualified to pursue &amp;#10; acquisitions. &amp;#10;  &amp;#10; With respect to the foregoing descriptions, past performance of Cantor (and its &amp;#10; affiliates) and our management team is not a guarantee either (i) of success &amp;#10; with respect to any business combination we may consummate or (ii) that we will &amp;#10; be able to identify a suitable candidate for our initial business combination. &amp;#10; Because Cantor generally integrates acquisitions into its existing businesses as &amp;#10; part of the growth strategy for its lines of business, Cantor does not generally &amp;#10; seek to sell individual businesses as a private equity firm would and therefore &amp;#10; does not measure returns to investors from its acquisition activity. You should &amp;#10; not rely on the historical performance record of Cantor (and its affiliates) or &amp;#10; our management team as indicative of our future performance. Our officers and &amp;#10; directors have not had experience managing blank check companies or special &amp;#10; purpose acquisition companies in the past. In addition, our officers may have &amp;#10; conflicts of interest with other entities to which they owe fiduciary or &amp;#10; contractual obligations with respect to initial business combination &amp;#10; opportunities. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 110 East 59th Street, New York, New York &amp;#10; 10022 and our telephone number is (212) 938-5000.&#39;,</span>
-<span class="go"> &#39;useOfProceeds&#39;: &#39;We are offering 25,000,000 units at an offering price of $10.00 per unit. We &amp;#10; estimate that the net proceeds of this offering together with the funds we will &amp;#10; receive from the sale of the private placement units and the sponsor loan will &amp;#10; be used as set forth in the following table. &amp;#10;  &amp;#10;                                                                  Without           Over-Allotment   &amp;#10;                                                               Over-Allotment        Option Fully    &amp;#10;                                                                   Option             Exercised       &amp;#10; Gross proceeds                                                                                       &amp;#10; Gross proceeds from units offered to public(1)               $    250,000,000     $    287,500,000   &amp;#10; Gross proceeds from private placement units offered in the                                          &amp;#10; private placement                                                   6,000,000            6,000,000   &amp;#10; Gross proceeds from sponsor loan                                    2,500,000            2,875,000   &amp;#10; Total gross proceeds                                         $    258,500,000     $    296,375,000   &amp;#10; Offering expenses(2)                                                                                 &amp;#10; Underwriting commissions (2% of gross proceeds from units                                           &amp;#10; offered to public, other than units sold pursuant to the                                            &amp;#10; underwriters’ overallotment option)(3)                       $      5,000,000     $      5,000,000   &amp;#10; Payment to qualified independent underwriter                          100,000              100,000   &amp;#10; Legal fees and expenses                                               250,000              250,000   &amp;#10; Accounting fees and expenses                                           37,500               37,500   &amp;#10; SEC/FINRA Expenses                                                     78,470               78,470   &amp;#10; Travel and road show                                                   25,000               25,000   &amp;#10; Nasdaq listing and filing fees                                         75,000               75,000   &amp;#10; Printing and engraving expenses                                        40,000               40,000   &amp;#10; Miscellaneous                                                          44,030               44,030   &amp;#10; Total offering expenses (excluding underwriting                                                     &amp;#10; commissions)                                                 $        650,000     $        650,000   &amp;#10; Proceeds after offering expenses                             $    252,850,000     $    290,725,000   &amp;#10; Held in trust account(3)                                     $    252,500,000     $    290,375,000   &amp;#10; % of public offering size                                                 101 %                101 % &amp;#10; Not held in trust account                                    $        350,000     $        350,000   &amp;#10;  &amp;#10; The following table shows the use of the approximately $350,000 of net proceeds &amp;#10; not held in the trust account, as well as up to $750,000 in working capital &amp;#10; loans committed by our sponsor, its affiliates or designees.(4) &amp;#10;  &amp;#10;                                                                Amount         % of Total    &amp;#10; Legal, accounting, due diligence, travel, and other                                        &amp;#10; expenses in connection with any business combination(5)      $   450,000             40.9 % &amp;#10; Legal and accounting fees related to regulatory reporting                                  &amp;#10; obligations                                                      150,000             13.6 % &amp;#10; Director and Officer liability insurance premiums                220,000             20.0 % &amp;#10; Working capital to cover miscellaneous expenses(6)               280,000             25.5 % &amp;#10; Total                                                        $ 1,100,000            100.0 % &amp;#10;  &amp;#10; (1) Includes gross proceeds from this offering of $250,000,000 (or $287,500,000   &amp;#10;     if the underwriters’ overallotment option is exercised in full) as well as    &amp;#10;     amounts payable to public stockholders who properly redeem their shares in    &amp;#10;     connection with our successful completion of our initial business             &amp;#10;     combination. &amp;#10;  &amp;#10; (2) A portion of the offering expenses will be paid from the proceeds of loans    &amp;#10;     from Cantor of up to $300,000 as described in this prospectus. As of          &amp;#10;     September 30, 2018, we had borrowed approximately $82,000 (of up to $300,000  &amp;#10;     available to us) under the promissory note with Cantor to be used for a       &amp;#10;     portion of the expenses of this offering. These amounts will be repaid upon   &amp;#10;     completion of this offering out of the $650,000 of offering proceeds that  &amp;#10;     has been allocated for the payment of offering expenses (other than  &amp;#10;     underwriting commissions). In the event that offering expenses are more than &amp;#10;     as set forth in this table, they will be repaid using a portion of the  &amp;#10;     $350,000 of offering proceeds not held in the trust account and set aside  &amp;#10;     for post-closing working capital expenses. In the event that offering  &amp;#10;     expenses are less than set forth in this table, any such amounts will be  &amp;#10;     used for post-closing working capital expenses. &amp;#10;  &amp;#10; (3) Upon completion of our initial business combination, the funds held in the    &amp;#10;     trust account, less amounts released to the trustee to pay redeeming          &amp;#10;     stockholders, will be released to us and can be used to pay all or a portion  &amp;#10;     of the purchase price of the business or businesses with which our initial    &amp;#10;     business combination occurs, to pay the Marketing Fee of $8,750,000 (or       &amp;#10;     $10,062,500 if the underwriters’ over-allotment option is exercised in full)  &amp;#10;     or for general corporate purposes, including payment of principal or  &amp;#10;     interest on indebtedness incurred in connection with our initial business  &amp;#10;     combination, to fund the purchases of other companies or for working  &amp;#10;     capital.              &amp;#10;  &amp;#10; (4) These expenses are estimates only and do not include interest which may be &amp;#10;     available to us from the trust account. Our actual expenditures for some or &amp;#10;     all of these items may differ from the estimates set forth herein. For   &amp;#10;     example, we may incur greater legal and accounting expenses than our current  &amp;#10;     estimates in connection with negotiating and structuring our initial  &amp;#10;     business combination based upon the level of complexity of such business  &amp;#10;     combination. In the event we identify an initial business combination target &amp;#10;     in a specific industry subject to specific regulations, we may incur  &amp;#10;     additional expenses associated with legal due diligence and the engagement  &amp;#10;     of special legal counsel. In addition, our staffing needs may vary and as a &amp;#10;     result, we may engage a number of consultants to assist with legal and  &amp;#10;     financial due diligence. We do not anticipate any change in our intended use &amp;#10;     of proceeds, other than fluctuations among the current categories of  &amp;#10;     allocated expenses, which fluctuations, to the extent they exceed current  &amp;#10;     estimates for any specific category of expenses, would not be available for &amp;#10;     our expenses. &amp;#10;  &amp;#10; (5) Includes estimated amounts that may also be used in connection with our &amp;#10;     initial business combination to fund a “no shop” provision and commitment &amp;#10;     fees for financing. &amp;#10;  &amp;#10; (6) Includes fees payable to our independent directors. &amp;#10;  &amp;#10; Of the net proceeds of this offering and the sale of the private placement &amp;#10; units, $252,500,000 (or $290,375,000 if the underwriters’ over-allotment option &amp;#10; is exercised in full), including $2,500,000 (or $2,875,000 if the underwriters’ &amp;#10; over-allotment option is exercised in full) of sponsor loans, will be placed in &amp;#10; a trust account in the United States at J.P. Morgan Chase Bank, N.A., with &amp;#10; Continental Stock Transfer &amp; Trust Company acting as trustee, and will be &amp;#10; invested only in U.S. government treasury bills with a maturity of 180 days or &amp;#10; less or in money market funds meeting certain conditions under Rule 2a-7 under &amp;#10; the Investment Company Act which invest only in direct U.S. government treasury &amp;#10; obligations. We estimate that the interest earned on the trust account will be &amp;#10; approximately $3.5 million per year, assuming an interest rate of 1.4% per year; &amp;#10; however, we can provide no assurance regarding this amount. Except with respect &amp;#10; to interest earned on the funds held in the trust account that may be released &amp;#10; to us to pay our tax obligations, the proceeds from this offering, the sale of &amp;#10; the private placement units and the sponsor loan will not be released from the &amp;#10; trust account until the earliest to occur of: (a) the completion of our initial &amp;#10; business combination, (b) the redemption of any public shares properly submitted &amp;#10; in connection with a stockholder vote to amend our amended and restated &amp;#10; certificate of incorporation (A) to modify the substance or timing of our &amp;#10; obligation to redeem 100% of our public shares if we do not complete our initial &amp;#10; business combination within 18 months from the closing of this offering or (B) &amp;#10; with respect to any other provision relating to stockholders’ rights or &amp;#10; pre-initial business combination activity, and (c) the redemption of our public &amp;#10; shares if we are unable to complete our initial business combination within 18 &amp;#10; months from the closing of this offering, subject to applicable law. &amp;#10;  &amp;#10; The net proceeds held in the trust account may be used as consideration to pay &amp;#10; the sellers of a target business with which we ultimately complete our initial &amp;#10; business combination. If our initial business combination is paid for using &amp;#10; equity or debt securities, or not all of the funds released from the trust &amp;#10; account are used for payment of the consideration in connection with our initial &amp;#10; business combination or used for redemptions of our Class A common stock, we may &amp;#10; apply the balance of the cash released from the trust account, as well as the &amp;#10; $30,000,000 private placement described elsewhere in this prospectus, for &amp;#10; general corporate purposes, including for maintenance or expansion of operations &amp;#10; of the post-transaction company, the payment of principal or interest due on &amp;#10; indebtedness incurred in completing our initial business combination, to fund &amp;#10; the purchase of other companies or for working capital. There is no limitation &amp;#10; on our ability to raise funds privately or through loans in connection with our &amp;#10; initial business combination, including pursuant to forward purchase agreements &amp;#10; we may enter into following consummation of this offering. &amp;#10;  &amp;#10; We believe that amounts not held in trust, together with the loan committed by &amp;#10; our sponsor for working capital, will be sufficient to pay the costs and &amp;#10; expenses to which such proceeds are allocated. This belief is based on the fact &amp;#10; that while we may begin preliminary due diligence of a target business in &amp;#10; connection with an indication of interest, we intend to undertake in-depth due &amp;#10; diligence, depending on the circumstances of the relevant prospective business &amp;#10; combination, only after we have negotiated and signed a letter of intent or &amp;#10; other preliminary agreement that addresses the terms of an initial business &amp;#10; combination. However, if our estimate of the costs of undertaking in-depth due &amp;#10; diligence and negotiating an initial business combination is less than the &amp;#10; actual amount necessary to do so, we may be required to raise additional &amp;#10; capital, the amount, availability and cost of which is currently &amp;#10; unascertainable. If we are required to seek additional capital, we could seek &amp;#10; such additional capital through loans or additional investments from our &amp;#10; sponsor, members of our management team or their affiliates, but such persons &amp;#10; are not under any obligation to advance funds to, or invest in, us. &amp;#10;  &amp;#10; Prior to the closing of this offering, Cantor has agreed to loan us up to &amp;#10; $300,000 to be used for a portion of the expenses of this offering. As of &amp;#10; September 30, 2018, we had borrowed approximately $82,000 under the promissory &amp;#10; note with our sponsor to be used for a portion of the expenses of this offering. &amp;#10; These loans are non-interest bearing, unsecured and are due at the earlier of &amp;#10; December 31, 2018 or the closing of this offering. The loan will be repaid upon &amp;#10; the closing of this offering out of the $350,000 of offering proceeds not held &amp;#10; in the trust account. &amp;#10;  &amp;#10; In addition, in order to finance transaction costs in connection with an &amp;#10; intended initial business combination, our sponsor has committed $750,000 to be &amp;#10; provided to us to fund our expenses relating to investigating and selecting a &amp;#10; target business and other working capital requirements after this offering and &amp;#10; prior to our initial business combination. In addition, our sponsor or an &amp;#10; affiliate of our sponsor or certain of our officers and directors may, but are &amp;#10; not obligated to, loan us additional funds as may be required. If we complete &amp;#10; our initial business combination, we would repay such loaned amounts out of the &amp;#10; proceeds of the trust account released to us. Otherwise, such loans would be &amp;#10; repaid only out of funds held outside the trust account. In the event that our &amp;#10; initial business combination does not close, we may use a portion of the working &amp;#10; capital held outside the trust account to repay such loaned amounts but no &amp;#10; proceeds from our trust account would be used to repay such loaned amounts. Up &amp;#10; to $1,500,000 of such loans (in the case of loans in excess of the initial &amp;#10; $750,000 loan commitment, only if such loans are made to us more than 90 days &amp;#10; after the effective date of the registration statement of which this prospectus &amp;#10; forms a part) may be convertible into warrants, at a price of $1.00 per warrant &amp;#10; at the option of the lender. The warrants would be identical to the private &amp;#10; placement warrants, including as to exercise price, exercisability and exercise &amp;#10; period. The terms of such additional loans by our officers and directors, if &amp;#10; any, have not been determined and no written agreements exist with respect to &amp;#10; such loans. We do not expect to seek loans from parties other than our sponsor &amp;#10; or an affiliate of our sponsor as we do not believe third parties will be &amp;#10; willing to loan such funds and provide a waiver against any and all rights to &amp;#10; seek access to funds in our trust account. &amp;#10;  &amp;#10; Our sponsor has committed, pursuant to a forward purchase contract with us, to &amp;#10; purchase, in a private placement for gross proceeds of $30,000,000 to occur &amp;#10; concurrently with the consummation of our initial business combination, &amp;#10; 3,000,000 of our units on substantially the same terms as the sale of units in &amp;#10; this offering at $10.00 per unit, and 750,000 shares of Class A common stock. &amp;#10; The funds from the sale of units will be used as part of the consideration to &amp;#10; the sellers in the initial business combination; any excess funds from this &amp;#10; private placement will be used for working capital in the post-transaction &amp;#10; company. This commitment is independent of the percentage of stockholders &amp;#10; electing to redeem their public shares and provides us with a minimum funding &amp;#10; level for the initial business combination. &amp;#10;  &amp;#10; If we seek stockholder approval of our initial business combination and we do &amp;#10; not conduct redemptions in connection with our initial business combination &amp;#10; pursuant to the tender offer rules, our initial stockholders, directors, &amp;#10; officers, advisors or their affiliates may purchase shares or public warrants in &amp;#10; privately negotiated transactions or in the open market either prior to or &amp;#10; following the completion of our initial business combination. There is no limit &amp;#10; on the number of shares our initial stockholders, directors, officers, advisors &amp;#10; or their affiliates may purchase in such transactions, subject to compliance &amp;#10; with applicable law and Nasdaq rules. However, they have no current commitments, &amp;#10; plans or intentions to engage in such transactions and have not formulated any &amp;#10; terms or conditions for any such transactions. If they engage in such &amp;#10; transactions, they will not make any such purchases when they are in possession &amp;#10; of any material nonpublic information not disclosed to the seller or if such &amp;#10; purchases are prohibited by Regulation M under the Exchange Act. We do not &amp;#10; currently anticipate that such purchases, if any, would constitute a tender &amp;#10; offer subject to the tender offer rules under the Exchange Act or a &amp;#10; going-private transaction subject to the going-private rules under the Exchange &amp;#10; Act; however, if the purchasers determine at the time of any such purchases that &amp;#10; the purchases are subject to such rules, the purchasers will comply with such &amp;#10; rules. Any such purchases will be reported pursuant to Section 13 and Section 16 &amp;#10; of the Exchange Act to the extent such purchasers are subject to such reporting &amp;#10; requirements. None of the funds held in the trust account will be used to &amp;#10; purchase shares or public warrants in such transactions prior to completion of &amp;#10; our initial business combination. &amp;#10;  &amp;#10; The purpose of any such purchases of shares could be to vote such shares in &amp;#10; favor of the initial business combination and thereby increase the likelihood of &amp;#10; obtaining stockholder approval of the initial business combination or to satisfy &amp;#10; a closing condition in an agreement with a target that requires us to have a &amp;#10; minimum net worth or a certain amount of cash at the closing of our initial &amp;#10; business combination, where it appears that such requirement would otherwise not &amp;#10; be met. The purpose of any such purchases of public warrants could be to reduce &amp;#10; the number of public warrants outstanding or to vote such warrants on any &amp;#10; matters submitted to the warrantholders for approval in connection with our &amp;#10; initial business combination. Any such purchases of our securities may result in &amp;#10; the completion of our initial business combination that may not otherwise have &amp;#10; been possible. In addition, if such purchases are made, the public “float” of &amp;#10; our shares of Class A common stock or warrants may be reduced and the number of &amp;#10; beneficial holders of our securities may be reduced, which may make it difficult &amp;#10; to maintain or obtain the quotation, listing or trading of our securities on a &amp;#10; national securities exchange. &amp;#10;  &amp;#10; We may not redeem our public shares in an amount that would cause our net &amp;#10; tangible assets to be less than $5,000,001 upon consummation of our initial &amp;#10; business combination and after payment of underwriters’ fees and commissions (so &amp;#10; that we are not subject to the SEC’s “penny stock” rules) and the agreement for &amp;#10; our initial business combination may require as a closing condition that we have &amp;#10; a minimum net worth or a certain amount of cash. If too many public stockholders &amp;#10; exercise their redemption rights so that we cannot satisfy the net tangible &amp;#10; asset requirement or any net worth or cash requirements, we would not proceed &amp;#10; with the redemption of our public shares or the initial business combination, &amp;#10; and instead may search for an alternate business combination. &amp;#10;  &amp;#10; A public stockholder will be entitled to receive funds from the trust account &amp;#10; only upon the earliest to occur of: (i) our completion of an initial business &amp;#10; combination, (ii) the redemption of any public shares properly submitted in &amp;#10; connection with a stockholder vote to amend our amended and restated certificate &amp;#10; of incorporation (A) to modify the substance or timing of our obligation to &amp;#10; redeem 100% of our public shares if we do not complete our initial business &amp;#10; combination within 18 months from the closing of this offering or (B) with &amp;#10; respect to any other provision relating to stockholders’ rights or pre-initial &amp;#10; business combination activity, and (iii) the redemption of our public shares if &amp;#10; we are unable to complete our initial business combination within 18 months &amp;#10; following the closing of this offering, subject to applicable law and as further &amp;#10; described herein and any limitations (including but not limited to cash &amp;#10; requirements) created by the terms of the proposed initial business combination. &amp;#10; In no other circumstances will a public stockholder have any right or interest &amp;#10; of any kind to or in the trust account. &amp;#10;  &amp;#10; Our sponsor, officers and directors have entered into a letter agreement with &amp;#10; us, pursuant to which they have agreed to waive their redemption rights with &amp;#10; respect to any founder shares and any public shares held by them in connection &amp;#10; with the completion of our initial business combination. In addition, our &amp;#10; initial stockholders have agreed to waive their rights to liquidating &amp;#10; distributions from the trust account with respect to any founder shares or &amp;#10; private placement shares held by them if we fail to complete our initial &amp;#10; business combination within the prescribed time frame. However, if our sponsor &amp;#10; or any of our officers, directors or affiliates acquires public shares in or &amp;#10; after this offering, they will be entitled to liquidating distributions from the &amp;#10; trust account with respect to such public shares if we fail to complete our &amp;#10; initial business combination within the prescribed time frame.&#39;,</span>
-<span class="go"> &#39;competition&#39;: &#39;In identifying, evaluating and selecting a target business for our initial &amp;#10; business combination, we may encounter intense competition from other entities &amp;#10; having a business objective similar to ours, including other blank check &amp;#10; companies, private equity groups and leveraged buyout funds, and operating &amp;#10; businesses seeking strategic business combinations. Many of these entities are &amp;#10; well established and have extensive experience identifying and effecting &amp;#10; business combinations directly or through affiliates. Moreover, many of these &amp;#10; competitors possess greater financial, technical, human and other resources than &amp;#10; we do. Our ability to acquire larger target businesses will be limited by our &amp;#10; available financial resources. This inherent limitation gives others an &amp;#10; advantage in pursuing the initial business combination of a target business. &amp;#10; Furthermore, our obligation to pay cash in connection with our public &amp;#10; stockholders who exercise their redemption rights may reduce the resources &amp;#10; available to us for our initial business combination and our outstanding &amp;#10; warrants, and the future dilution they potentially represent, may not be viewed &amp;#10; favorably by certain target businesses. Either of these factors may place us at &amp;#10; a competitive disadvantage in successfully negotiating an initial business &amp;#10; combination.&#39;,</span>
-<span class="go"> &#39;amount&#39;: 125000000,</span>
-<span class="go"> &#39;percentOffered&#39;: &#39;97.66&#39;}</span>
+<span class="go"> &#39;netIncome&#39;: -650,</span>
+<span class="go"> &#39;totalAssets&#39;: 114332,</span>
+<span class="go"> &#39;totalLiabilities&#39;: 91007,</span>
+<span class="go"> &#39;stockholderEquity&#39;: 23325,</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;We are a blank check company formed under the laws of the State of Delaware on &amp;#10; November 1, 2017. We were formed for the purpose of entering into a merger, &amp;#10; share exchange, asset acquisition, stock purchase, recapitalization, &amp;#10; reorganization or other similar business combination, which we refer to &amp;#10; throughout this prospectus as our initial business combination, with one or more &amp;#10; businesses or entities, which we refer to throughout this prospectus as a target &amp;#10; business. To date, our efforts have been limited to organizational activities as &amp;#10; well as activities related to this offering. Our efforts to identify a &amp;#10; prospective target business will not be limited to any particular industry or &amp;#10; geographic region, although we intend to focus our search on target businesses &amp;#10; operating in North America in the healthcare industry. We have not identified &amp;#10; any acquisition targets. From the date of our incorporation through the date of &amp;#10; this prospectus, there have been no communications, evaluations or discussions &amp;#10; between any of our officers or directors and any of their contacts or &amp;#10; relationships regarding a potential initial business combination with our &amp;#10; company. Additionally, we have not engaged or retained any agent or other &amp;#10; representative to identify or locate any suitable acquisition candidate. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 17 State Street, 21st Floor, New York, NY &amp;#10; 10004, and our telephone number is (646) 465-9000. Our website: www.chardan.com.&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;We are a blank check company formed under the laws of the State of Delaware on &amp;#10; November 1, 2017. We were formed for the purpose of entering into a merger, &amp;#10; share exchange, asset acquisition, stock purchase, recapitalization, &amp;#10; reorganization or other similar business combination, which we refer to &amp;#10; throughout this prospectus as our initial business combination, with one or more &amp;#10; businesses or entities, which we refer to throughout this prospectus as a target &amp;#10; business. To date, our efforts have been limited to organizational activities as &amp;#10; well as activities related to this offering. Our efforts to identify a &amp;#10; prospective target business will not be limited to any particular industry or &amp;#10; geographic region, although we intend to focus our search on target businesses &amp;#10; operating in North America in the healthcare industry. We have not identified &amp;#10; any acquisition targets. From the date of our incorporation through the date of &amp;#10; this prospectus, there have been no communications, evaluations or discussions &amp;#10; between any of our officers or directors and any of their contacts or &amp;#10; relationships regarding a potential initial business combination with our &amp;#10; company. Additionally, we have not engaged or retained any agent or other &amp;#10; representative to identify or locate any suitable acquisition candidate. &amp;#10;  &amp;#10; We anticipate structuring our initial business combination to acquire 100% of &amp;#10; the equity interest or assets of the target business or businesses. We may, &amp;#10; however, structure our initial business combination to acquire less than 100% of &amp;#10; such interests or assets of the target business, but we will only consummate &amp;#10; such business combination if we will become the majority stockholder of the &amp;#10; target (or control the target through contractual arrangements in limited &amp;#10; circumstances for regulatory compliance purposes) or are otherwise not required &amp;#10; to register as an “investment company” under the Investment Company Act of 1940, &amp;#10; as amended, or the “Investment Company Act” or, to the extent permitted by law, &amp;#10; we may acquire interests in a variable interest entity, in which we may have &amp;#10; less than a majority of the voting rights in such entity, but in which we are &amp;#10; the primary beneficiary. We will not consider any transaction that does not meet &amp;#10; this criterion. Even though we will own a majority interest in the target, our &amp;#10; stockholders prior to the business combination may collectively own a minority &amp;#10; interest in the post business combination company, depending on valuations &amp;#10; ascribed to the target and us in the business combination transaction. For &amp;#10; example, we could pursue a transaction in which we issue a substantial number of &amp;#10; new shares in exchange for all of the outstanding capital stock of a target. In &amp;#10; this case, we would acquire a 100% controlling interest in the target. However, &amp;#10; as a result of the issuance of a substantial number of new shares, our &amp;#10; stockholders immediately prior to our initial business combination could own &amp;#10; less than a majority of our outstanding shares subsequent to our initial &amp;#10; business combination. &amp;#10;  &amp;#10; Our sponsor was founded in November 2017 and is affiliated with Chardan Capital &amp;#10; Markets LLC, the representative of the underwriters in this offering, an &amp;#10; investment firm and a provider of investment banking services, primarily focused &amp;#10; on emerging growth companies in the healthcare industry. Chardan conducts &amp;#10; business across North America, Europe, Asia (including Israel) and Australia. &amp;#10; Since its inception, Chardan has executed over 400 equity capital markets &amp;#10; transactions, raising approximately $19 billion of capital in both public and &amp;#10; private markets. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 17 State Street, 21st Floor, New York, NY &amp;#10; 10004, and our telephone number is (646) 465-9000. Our website: www.chardan.com.&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &#39;We are offering 7,000,000 units at a price of $10.00 per unit. We estimate that &amp;#10; the net proceeds of this offering, together with the funds we receive from the &amp;#10; sale of the private warrants (all of which will be deposited into the trust &amp;#10; account), will be used as set forth in the following table: &amp;#10;  &amp;#10;                                                                Without             Over- &amp;#10;                                                                 Over-            Allotment &amp;#10;                                                               Allotment            Option &amp;#10;                                                                 Option           Exercised &amp;#10; Gross proceeds &amp;#10; From offering                                                $ 70,000,000       $ 80,500,000 &amp;#10; From sale of private warrants                                   1,160,000          1,160,000 &amp;#10; Total gross proceeds                                         $ 71,160,000       $ 81,660,000 &amp;#10;                                                                                          &amp;#10; Offering expenses(1)                                                                    &amp;#10; Underwriting discount                                        $          0 (2)   $          0 (2) &amp;#10; Legal fees and expenses                                           125,000            125,000 &amp;#10; NYSE American listing fee                                          55,000             55,000 &amp;#10; Printing and engraving expenses                                    20,000             20,000 &amp;#10; Accounting fees and expenses                                       30,000             30,000 &amp;#10; FINRA filing fee                                                   12,575             12,575 &amp;#10; SEC registration fee                                               10,022             10,022 &amp;#10; Miscellaneous expenses                                             32,403             32,403 &amp;#10; Total offering expenses                                      $    285,000       $    285,000 &amp;#10;                                                                                              &amp;#10; Net proceeds                                                                                 &amp;#10; Held in trust                                                $ 70,000,000 (3)   $ 80,500,000 (3) &amp;#10; Not held in trust                                                 875,000            875,000 &amp;#10; Total net proceeds                                           $ 70,875,000       $ 81,375,000 &amp;#10;  &amp;#10; Use of net proceeds not held in the trust account (4)(5)                                     &amp;#10; Legal, accounting and other third party expenses attendant                                    &amp;#10; to the search for target businesses and to the due                                            &amp;#10; diligence investigation, structuring and negotiation of a                                     &amp;#10; business combination                                         $    150,000               17.1 % &amp;#10; Due diligence of prospective target businesses by                                             &amp;#10; officers, directors and initial stockholders                      150,000               17.1 % &amp;#10; Legal and accounting fees relating to SEC reporting                                           &amp;#10; obligations                                                        40,000                4.6 % &amp;#10; Working capital to cover miscellaneous expenses, D&amp;O                                          &amp;#10; insurance, general corporate purposes, liquidation                                            &amp;#10; obligations and reserves                                          535,000               61.2 % &amp;#10; Total                                                        $    875,000              100.0 % &amp;#10;  &amp;#10; (1) A portion of the offering expenses, including the SEC registration fee, the &amp;#10;     FINRA filing fee, the non-refundable portion of the NYSE American stock &amp;#10;     exchange listing fee and a portion of the legal and audit fees, have been &amp;#10;     paid from the funds we borrowed from our sponsor. These funds will be repaid &amp;#10;     out of the proceeds of this offering available to us. &amp;#10;  &amp;#10; (2) Our sponsor will pay the $500,000 in underwriting fees and qualified &amp;#10;     independent underwriter fees and receive a non-interest bearing promissory &amp;#10;     note in exchange for the payment of such amount. The promissory note will be &amp;#10;     payable at the closing of a business combination. &amp;#10;  &amp;#10; (3) The funds held in the trust account will be used to acquire a target &amp;#10;     business, to pay holders who wish to convert or sell their shares for a &amp;#10;     portion of the funds held in the trust account and potentially to pay our &amp;#10;     expenses relating thereto. Our expenses relating to the acquisition of a &amp;#10;     target business would either come from the funds held in the trust account or &amp;#10;     additional funds otherwise available to us outside of the trust account, &amp;#10;     including cash held by the target business. Any remaining funds will be &amp;#10;     disbursed to the combined company and be used as working capital to finance &amp;#10;     the operations of the target business. &amp;#10;  &amp;#10; (4) The amount of proceeds not held in trust will remain constant at $875,000 &amp;#10;     even if the over-allotment is exercised. &amp;#10;  &amp;#10; (5) These are estimates only. Our actual expenditures for some or all of these &amp;#10;     items may differ from the estimates set forth herein. For example, we may    &amp;#10;     incur greater legal and accounting expenses than our current estimates in  &amp;#10;     connection with negotiating and structuring our initial business combination &amp;#10;     based upon the level of complexity of that business combination. We do not &amp;#10;     anticipate any change in our intended use of proceeds, other than &amp;#10;     fluctuations among the current categories of allocated expenses, which &amp;#10;     fluctuations, to the extent they exceed current estimates for any specific &amp;#10;     category of expenses, would be deducted from our excess working capital. &amp;#10;  &amp;#10; A total of $10.00 per share (whether or not the underwriters’ over-allotment &amp;#10; option is exercised in full) of the net proceeds from this offering and the sale &amp;#10; of the private warrants described in this prospectus will be placed in a trust &amp;#10; account in the United States at Morgan Stanley, maintained by Continental Stock &amp;#10; Transfer &amp; Trust Company acting as trustee and will be invested only in U.S. &amp;#10; government treasury bills, notes and bonds with a maturity of 180 days or less &amp;#10; or in money market funds meeting certain conditions under Rule 2a-7 under the &amp;#10; Investment Company Act and which invest solely in U.S. Treasuries. Except for &amp;#10; all interest income that may be released to us to pay our tax obligations, as &amp;#10; discussed below, none of the funds held in the trust account will be released &amp;#10; from the trust account until the earlier of: (i) the consummation of our initial &amp;#10; business combination within 24 months from the closing of this offering and (ii) &amp;#10; a redemption to public stockholders prior to any voluntary winding-up in the &amp;#10; event we do not consummate our initial business combination within the &amp;#10; applicable period. &amp;#10;  &amp;#10; The net proceeds held in the trust account may be used as consideration to pay &amp;#10; the sellers of a target business with which we ultimately complete our initial &amp;#10; business combination. If our initial business combination is paid for using &amp;#10; shares or debt securities, or not all of the funds released from the trust &amp;#10; account are used for payment of the purchase price in connection with our &amp;#10; business combination, we may apply the cash released from the trust account that &amp;#10; is not applied to the purchase price for general corporate purposes, including &amp;#10; for maintenance or expansion of operations of acquired businesses, the payment &amp;#10; of principal or interest due on indebtedness incurred in consummating the &amp;#10; initial business combination, to fund the purchase of other companies or for &amp;#10; working capital. &amp;#10;  &amp;#10; We believe that amounts not held in trust will be sufficient to pay the costs &amp;#10; and expenses to which such proceeds are allocated. This belief is based on the &amp;#10; fact that while we may begin preliminary due diligence of a target business in &amp;#10; connection with an indication of interest, we intend to undertake in-depth due &amp;#10; diligence, depending on the circumstances of the relevant prospective &amp;#10; acquisition, only after we have negotiated and signed a letter of intent or &amp;#10; other preliminary agreement that addresses the terms of our initial business &amp;#10; combination. However, if our estimate of the costs of undertaking in-depth due &amp;#10; diligence and negotiating our initial business combination is less than the &amp;#10; actual amount necessary to do so, or the amount of interest available to use &amp;#10; from the trust account is minimal as a result of the current interest rate &amp;#10; environment, we may be required to raise additional capital, the amount, &amp;#10; availability and cost of which is currently unascertainable. In this event, we &amp;#10; could seek such additional capital through loans or additional investments from &amp;#10; members of our management team, but such members of our management team are not &amp;#10; under any obligation to advance funds to, or invest in, us. &amp;#10;  &amp;#10; As of the date of this prospectus, our sponsor loaned us a total of $85,500 to &amp;#10; be used for a portion of the expenses of this offering. The loans are &amp;#10; non-interest bearing and payable on the date on which we consummate the &amp;#10; offering. &amp;#10;  &amp;#10; In addition, in order to finance transaction costs in connection with an &amp;#10; intended initial business combination, our sponsor or an affiliate of our &amp;#10; sponsor or our officers and directors may, but are not obligated to, loan us &amp;#10; funds as may be required. If we consummate our initial business combination, we &amp;#10; would repay such loaned amounts. The notes would either be paid upon &amp;#10; consummation of our initial business combination, without interest, or, at the &amp;#10; lender’s discretion, up to $500,000 of the notes may be converted upon &amp;#10; consummation of our business combination into additional private warrants to &amp;#10; purchase shares of common stock at a conversion price of $0.40 per private &amp;#10; warrant (which, for example, would result in the holders being issued private &amp;#10; warrants to purchase 1,250,000 shares of common stock if $500,000 of notes were &amp;#10; so converted). Such private warrants will be identical to the private warrants &amp;#10; to be issued at the closing of this offering. &amp;#10;  &amp;#10; In no event will we redeem our public shares in an amount that would cause our &amp;#10; net tangible assets to be less than $5,000,001. Furthermore, the redemption &amp;#10; threshold may be further limited by the terms and conditions of our initial &amp;#10; business combination. In such case, we would not proceed with the redemption of &amp;#10; our public shares or the business combination, and instead may search for an &amp;#10; alternate business combination. &amp;#10;  &amp;#10; A public stockholder will be entitled to receive funds from the trust account &amp;#10; only upon the earlier to occur of: (i) our consummation of our initial business &amp;#10; combination, and then only in connection with those shares of common stock that &amp;#10; such stockholder properly elected to redeem, subject to the limitations &amp;#10; described herein, (ii) the redemption of our public shares if we are unable to &amp;#10; consummate our initial business combination within 24 months following the &amp;#10; closing of this offering, subject to applicable law, or (iii) if we seek to &amp;#10; amend our certificate of incorporation to affect the substance or timing of our &amp;#10; obligation to redeem all public shares if we cannot complete an initial business &amp;#10; combination within 24 months of the closing of this offering and such amendment &amp;#10; is duly approved. In no other circumstances will a public stockholder have any &amp;#10; right or interest of any kind to or in the trust account. &amp;#10;  &amp;#10; Our initial stockholders have agreed to waive their redemption rights with &amp;#10; respect to any shares they own in connection with the consummation of our &amp;#10; initial business combination, including their founder shares and public shares &amp;#10; that they have purchased during or after the offering, if any. In addition, our &amp;#10; initial stockholders have agreed to waive their rights to liquidating &amp;#10; distributions with respect to its founder shares if we fail to consummate our &amp;#10; initial business combination within 24 months from the closing of this offering. &amp;#10; However, if our initial stockholders acquire public shares in or after this &amp;#10; offering, they will be entitled to receive liquidating distributions with &amp;#10; respect to such public shares if we fail to consummate our initial business &amp;#10; combination within the required time period.&#39;,</span>
+<span class="go"> &#39;competition&#39;: &#39;In identifying, evaluating and selecting a target business for our initial &amp;#10; business combination, we may encounter intense competition from other entities &amp;#10; having a business objective similar to ours, including other blank check &amp;#10; companies, private equity groups and leveraged buyout funds, and operating &amp;#10; businesses seeking strategic acquisitions. Many of these entities are well &amp;#10; established and have significant experience identifying and effecting business &amp;#10; combinations directly or through affiliates. Moreover, many of these competitors &amp;#10; possess greater financial, technical, human and other resources than us. Our &amp;#10; ability to acquire larger target businesses will be limited by our available &amp;#10; financial resources. This inherent limitation gives others an advantage in &amp;#10; pursuing the acquisition of a target business. Furthermore, the requirement that &amp;#10; we acquire a target business or businesses having a fair market value equal to &amp;#10; at least 80% of the value of the trust account (excluding any taxes payable) at &amp;#10; the time of the agreement to enter into the business combination, our obligation &amp;#10; to pay cash in connection with our public stockholders who exercise their &amp;#10; redemption rights and the number of our outstanding warrants and the future &amp;#10; dilution they potentially represent, may not be viewed favorably by certain &amp;#10; target businesses. Any of these factors may place us at a competitive &amp;#10; disadvantage in successfully negotiating our initial business combination.&#39;,</span>
+<span class="go"> &#39;amount&#39;: 35000000,</span>
+<span class="go"> &#39;percentOffered&#39;: &#39;80.00&#39;}</span>
 </pre></div>
 </div>
 </div>

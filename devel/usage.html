@@ -198,7 +198,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">366.6</span>
+<span class="gh">Out[3]: </span><span class="go">376.79</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -206,7 +206,7 @@ etc.):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 366.6, &#39;AAPL&#39;: 169.1}</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 376.79, &#39;AAPL&#39;: 170.95}</span>
 </pre></div>
 </div>
 </div>
@@ -239,7 +239,7 @@ requested over the desired date range (<code class="docutils literal notranslate
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="gp">In [13]: </span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2ac49413e8d0&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x2b851333c9b0&gt;</span>
 
 <span class="gp">In [14]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -8455,67 +8455,67 @@ current day (default is current date):</p>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">        average  changeOverTime  ...       open volume</span>
 <span class="go">minute                           ...                  </span>
-<span class="go">09:30   170.418        0.000000  ...    170.305   4369</span>
-<span class="go">09:31   170.184       -0.001373  ...    170.250   2355</span>
-<span class="go">09:32   170.150       -0.001573  ...    169.980   1387</span>
-<span class="go">09:33   169.872       -0.003204  ...    169.800    700</span>
-<span class="go">09:34   169.872       -0.003204  ...    170.000   1258</span>
-<span class="go">09:35   169.911       -0.002975  ...    169.790   1307</span>
-<span class="go">09:36   169.903       -0.003022  ...    169.950   2866</span>
-<span class="go">09:37   169.862       -0.003263  ...    169.835   3069</span>
-<span class="go">09:38   169.902       -0.003028  ...    169.720   1695</span>
-<span class="go">09:39   169.793       -0.003667  ...    169.900   2206</span>
-<span class="go">09:40   169.389       -0.006038  ...    169.340   2767</span>
-<span class="go">09:41   169.504       -0.005363  ...    169.450   1533</span>
-<span class="go">09:42   169.462       -0.005610  ...    169.345   1685</span>
-<span class="go">09:43   169.502       -0.005375  ...    169.550   1540</span>
-<span class="go">09:44   169.739       -0.003984  ...    169.570  21680</span>
-<span class="go">09:45   169.622       -0.004671  ...    169.670   6417</span>
-<span class="go">09:46   169.457       -0.005639  ...    169.610   2583</span>
-<span class="go">09:47   169.238       -0.006924  ...    169.190    743</span>
-<span class="go">09:48   169.292       -0.006607  ...    169.255   1915</span>
-<span class="go">09:49   169.424       -0.005833  ...    169.400    961</span>
-<span class="go">09:50   169.653       -0.004489  ...    169.490   6167</span>
-<span class="go">09:51   169.784       -0.003720  ...    169.805   1995</span>
-<span class="go">09:52   169.828       -0.003462  ...    169.710   2276</span>
-<span class="go">09:53   169.877       -0.003175  ...    169.850    600</span>
-<span class="go">09:54   169.830       -0.003450  ...    169.880   1121</span>
-<span class="go">09:55   169.739       -0.003984  ...    169.700    722</span>
-<span class="go">09:56   170.146       -0.001596  ...    169.950   1050</span>
-<span class="go">09:57   170.312       -0.000622  ...    170.200    500</span>
-<span class="go">09:58   170.367       -0.000299  ...    170.410   1315</span>
-<span class="go">09:59   170.437        0.000111  ...    170.300   1102</span>
+<span class="go">09:30   170.437        0.000000  ...    170.435   1560</span>
+<span class="go">09:31   169.901       -0.003145  ...    170.030   1606</span>
+<span class="go">09:32   170.082       -0.002083  ...    169.990   1196</span>
+<span class="go">09:33   169.871       -0.003321  ...    170.040    993</span>
+<span class="go">09:34   169.676       -0.004465  ...    169.850   1116</span>
+<span class="go">09:35   169.969       -0.002746  ...    169.925   1529</span>
+<span class="go">09:36   170.188       -0.001461  ...    170.000   2100</span>
+<span class="go">09:37   170.434       -0.000018  ...    170.230   1064</span>
+<span class="go">09:38   170.553        0.000681  ...    170.470   1688</span>
+<span class="go">09:39   170.486        0.000287  ...    170.550   1300</span>
+<span class="go">09:40   170.450        0.000076  ...    170.440    200</span>
+<span class="go">09:41   170.709        0.001596  ...    170.720   2500</span>
+<span class="go">09:42   170.710        0.001602  ...    170.720    418</span>
+<span class="go">09:43   170.571        0.000786  ...    170.600    705</span>
+<span class="go">09:44   170.445        0.000047  ...    170.490    900</span>
+<span class="go">09:45   170.470        0.000194  ...    170.480    200</span>
+<span class="go">09:46   170.440        0.000018  ...    170.450    947</span>
+<span class="go">09:47   170.482        0.000264  ...    170.480    200</span>
+<span class="go">09:48   170.579        0.000833  ...    170.485    400</span>
+<span class="go">09:49   170.524        0.000510  ...    170.410   1400</span>
+<span class="go">09:50   170.547        0.000645  ...    170.515    500</span>
+<span class="go">09:51   170.708        0.001590  ...    170.880    823</span>
+<span class="go">09:52   170.476        0.000229  ...    170.510   1200</span>
+<span class="go">09:53   170.442        0.000029  ...    170.560    220</span>
+<span class="go">09:54   170.255       -0.001068  ...    170.250    435</span>
+<span class="go">09:55   170.170       -0.001567  ...    170.200    200</span>
+<span class="go">09:56   170.222       -0.001261  ...    170.160    200</span>
+<span class="go">09:57   170.300       -0.000804  ...    170.380    406</span>
+<span class="go">09:58   170.508        0.000417  ...    170.360    980</span>
+<span class="go">09:59   170.394       -0.000252  ...    170.375    214</span>
 <span class="go">...         ...             ...  ...        ...    ...</span>
-<span class="go">15:30   169.429       -0.005803  ...    169.280   4151</span>
-<span class="go">15:31   169.431       -0.005792  ...    169.385   3547</span>
-<span class="go">15:32   169.285       -0.006648  ...    169.370   3248</span>
-<span class="go">15:33   169.319       -0.006449  ...    169.305   1409</span>
-<span class="go">15:34   169.227       -0.006989  ...    169.250    981</span>
-<span class="go">15:35   169.354       -0.006243  ...    169.245   2233</span>
-<span class="go">15:36   169.385       -0.006062  ...    169.350   1810</span>
-<span class="go">15:37   169.451       -0.005674  ...    169.420   2823</span>
-<span class="go">15:38   169.623       -0.004665  ...    169.400   2206</span>
-<span class="go">15:39   169.798       -0.003638  ...    169.665   1532</span>
-<span class="go">15:40   169.963       -0.002670  ...    169.925   1329</span>
-<span class="go">15:41   169.943       -0.002787  ...    169.920    902</span>
-<span class="go">15:42   169.953       -0.002729  ...    170.000   2800</span>
-<span class="go">15:43   169.890       -0.003098  ...    169.880   1013</span>
-<span class="go">15:44   169.864       -0.003251  ...    169.890   1053</span>
-<span class="go">15:45   169.802       -0.003615  ...    169.930   1825</span>
-<span class="go">15:46   169.682       -0.004319  ...    169.700   1210</span>
-<span class="go">15:47   169.788       -0.003697  ...    169.690   2311</span>
-<span class="go">15:48   169.839       -0.003398  ...    169.800   2617</span>
-<span class="go">15:49   169.726       -0.004061  ...    169.740   1471</span>
-<span class="go">15:50   169.650       -0.004507  ...    169.690   1502</span>
-<span class="go">15:51   169.585       -0.004888  ...    169.570   2301</span>
-<span class="go">15:52   169.534       -0.005187  ...    169.540   3542</span>
-<span class="go">15:53   169.500       -0.005387  ...    169.565   2279</span>
-<span class="go">15:54   169.663       -0.004430  ...    169.505   4313</span>
-<span class="go">15:55   169.444       -0.005715  ...    169.580   7133</span>
-<span class="go">15:56   169.362       -0.006197  ...    169.325   4706</span>
-<span class="go">15:57   169.294       -0.006596  ...    169.380   4451</span>
-<span class="go">15:58   169.262       -0.006783  ...    169.280   7667</span>
-<span class="go">15:59   169.140       -0.007499  ...    169.280  23166</span>
+<span class="go">15:30   170.335       -0.000598  ...    170.400    919</span>
+<span class="go">15:31   170.412       -0.000147  ...    170.420    314</span>
+<span class="go">15:32   170.597        0.000939  ...    170.490   1092</span>
+<span class="go">15:33   170.580        0.000839  ...    170.610   1500</span>
+<span class="go">15:34   170.578        0.000827  ...    170.590    255</span>
+<span class="go">15:35   170.518        0.000475  ...    170.500    500</span>
+<span class="go">15:36   170.395       -0.000246  ...    170.470    600</span>
+<span class="go">15:37   170.349       -0.000516  ...    170.320    320</span>
+<span class="go">15:38   170.446        0.000053  ...    170.420    403</span>
+<span class="go">15:39   170.505        0.000399  ...    170.510   1000</span>
+<span class="go">15:40   170.582        0.000851  ...    170.510   1150</span>
+<span class="go">15:41   170.666        0.001344  ...    170.570   2443</span>
+<span class="go">15:42   170.832        0.002318  ...    170.700   2350</span>
+<span class="go">15:43   171.057        0.003638  ...    170.950   4016</span>
+<span class="go">15:44   171.149        0.004177  ...    171.140   1214</span>
+<span class="go">15:45   171.212        0.004547  ...    171.160    910</span>
+<span class="go">15:46   171.067        0.003696  ...    171.080    300</span>
+<span class="go">15:47   171.013        0.003380  ...    171.010    917</span>
+<span class="go">15:48   170.935        0.002922  ...    170.900    969</span>
+<span class="go">15:49   170.911        0.002781  ...    170.935    657</span>
+<span class="go">15:50   170.964        0.003092  ...    170.940    722</span>
+<span class="go">15:51   170.933        0.002910  ...    170.960   1176</span>
+<span class="go">15:52   170.949        0.003004  ...    170.910    519</span>
+<span class="go">15:53   170.918        0.002822  ...    170.910   1100</span>
+<span class="go">15:54   170.891        0.002664  ...    170.870    700</span>
+<span class="go">15:55   170.997        0.003286  ...    171.090   3300</span>
+<span class="go">15:56   170.960        0.003069  ...    170.940   2922</span>
+<span class="go">15:57   170.882        0.002611  ...    170.955   2103</span>
+<span class="go">15:58   170.796        0.002106  ...    170.860   5050</span>
+<span class="go">15:59   170.900        0.002717  ...    170.780  17005</span>
 
 <span class="go">[390 rows x 20 columns]</span>
 </pre></div>
@@ -8579,16 +8579,16 @@ the endpoint requested.</p>
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
 <span class="go">{&#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;date&#39;: &#39;2018-12-11&#39;,</span>
-<span class="go"> &#39;open&#39;: 171.66,</span>
-<span class="go"> &#39;high&#39;: 171.79,</span>
-<span class="go"> &#39;low&#39;: 167,</span>
-<span class="go"> &#39;close&#39;: 168.63,</span>
-<span class="go"> &#39;volume&#39;: 47281665,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 47281665,</span>
-<span class="go"> &#39;change&#39;: -0.97,</span>
-<span class="go"> &#39;changePercent&#39;: -0.572,</span>
-<span class="go"> &#39;vwap&#39;: 168.9359}</span>
+<span class="go"> &#39;date&#39;: &#39;2018-12-12&#39;,</span>
+<span class="go"> &#39;open&#39;: 170.4,</span>
+<span class="go"> &#39;high&#39;: 171.92,</span>
+<span class="go"> &#39;low&#39;: 169.02,</span>
+<span class="go"> &#39;close&#39;: 169.1,</span>
+<span class="go"> &#39;volume&#39;: 35627674,</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 35627674,</span>
+<span class="go"> &#39;change&#39;: 0.47,</span>
+<span class="go"> &#39;changePercent&#39;: 0.279,</span>
+<span class="go"> &#39;vwap&#39;: 170.3124}</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -8599,17 +8599,17 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [24]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[24]: </span><span class="go">170.4</span>
+<span class="gh">Out[24]: </span><span class="go">170.44</span>
 
 <span class="gp">In [25]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">               Out[25]: 169.1</span>
+<span class="go">                Out[25]: 170.95</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [27]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[27]: </span><span class="go">{&#39;AAPL&#39;: 170.4, &#39;TSLA&#39;: 369.42}</span>
+<span class="gh">Out[27]: </span><span class="go">{&#39;AAPL&#39;: 170.44, &#39;TSLA&#39;: 370.02}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -8625,7 +8625,7 @@ method as a keyword argument.</p>
 
 <span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[29]: </span><span class="go"></span>
-<span class="go">AAPL   -0.358551</span>
+<span class="go">AAPL    0.733389</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
