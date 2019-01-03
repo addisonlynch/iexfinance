@@ -110,6 +110,9 @@ class IntradayReader(_IEXBase):
 
     def _convert_output(self, out):
         if out:
-            return pd.DataFrame(out).set_index("minute")
+            df = pd.DataFrame(out).set_index("minute")
+            df.index = pd.DatetimeIndex([pd.to_datetime(x) for x in
+                                         df.index])
+            return df
         else:
             return pd.DataFrame([])
