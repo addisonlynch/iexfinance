@@ -115,4 +115,4 @@ class IntradayReader(_IEXBase):
                                          df.index])
             return df
         else:
-            return pd.DataFrame([])
+            return pd.DataFrame()
