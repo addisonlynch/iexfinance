@@ -1,9 +1,9 @@
 .. _ref:
 
 
-**************
+
 Reference Data
-**************
+==============
 
 The following functions retrieve data from the `IEX Reference Data <https://iextrading.com/developer/docs/#reference-data>`__ endpoints:
 
@@ -19,7 +19,7 @@ All endpoints will return in list format.
 .. _ref.symbols:
 
 Symbols
-=======
+-------
 
 From the `IEX API
 Docs <https://iextrading.com/developer/docs/#stocks>`__:
@@ -41,7 +41,7 @@ extracts the symbols and returns a list of the symbols only:
 .. _ref.symbols-usage:
 
 Usage
--------
+~~~~~
 
 .. ipython:: python
 
@@ -56,7 +56,7 @@ Usage
 .. _ref.iex-corporate-actions:
 
 IEX Corporate Actions
-=====================
+---------------------
 
 `IEX Corporate Actions <https://iextrading.com/developer/docs/#iex-corporate-actions>`__ is a reference list which includes the following:
 
@@ -71,10 +71,11 @@ Access is available through the top-level function ``get_iex_corporate_actions``
 .. _ref.iex-corporate-actions-usage:
 
 Usage
--------
+~~~~~
 
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_corporate_actions
 
@@ -84,7 +85,7 @@ Usage
 .. _ref.iex-dividends:
 
 IEX Dividends
-=============
+-------------
 
 `IEX Dividends <https://iextrading.com/developer/docs/#iex-dividends>`__ details upcoming dividend information and other corporate actions (splits, etc.)
 
@@ -95,12 +96,13 @@ Access is available through the top-level function ``get_iex_dividends``
 .. seealso:: The `Dividends <stock.html#dividends>`__ endpoint provides dividend information on individual or groups of ticker symbols
 
 Usage
--------
+~~~~~
 
 
 .. _ref.iex-dividends-usage:
 
-.. ipython:: pyhton
+.. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_dividends
 
@@ -111,7 +113,7 @@ Usage
 .. _ref.iex-next-day-ex-date:
 
 IEX Next Day Ex Date
-====================
+--------------------
 
 `IEX Next Day Ex Date <https://iextrading.com/developer/docs/#iex-next-day-ex-date>`__ retrieves advance notifications of dividend declarations
 
@@ -119,16 +121,17 @@ Per the IEX `docs <https://iextrading.com/developer/docs/#iex-next-day-ex-date>`
 
 Access is available through the top-level function ``get_iex_next_day_ex_date``
 
-.. autofunction:: iexfinance.get_next_day_ex_date
+.. autofunction:: iexfinance.get_iex_next_day_ex_date
 
 
 Usage
--------
+~~~~~
 
 .. _ref.iex-next-day-ex-date-usage:
 
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_next_day_ex_date
 
@@ -138,7 +141,7 @@ Usage
 .. _ref.iex-listed-symbol-directory:
 
 IEX Listed Symbol Directory
-===========================
+---------------------------
 
 Similar to :ref:`Symbol<ref.symbols>`, `IEX Listed Symbol Directory
 <https://iextrading.com/developer/docs/#iex-listed-symbol-directory>`__ returns an array of all IEX listed securities.
@@ -146,15 +149,16 @@ Similar to :ref:`Symbol<ref.symbols>`, `IEX Listed Symbol Directory
 Access is available through the top-level function ``get_iex_listed_symbol_dir``
 
 
-..autofunction :: iexfinance.get_iex_listed_symbol_dir
+.. autofunction:: iexfinance.get_iex_listed_symbol_dir
 
 
 Usage
---------
+~~~~~
 
 .. _ref.iex-listed-symbol-directory-usage:
 
 .. ipython:: python
+    :okexcept:
 
 	from iexfinance import get_iex_listed_symbol_dir
 

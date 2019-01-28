@@ -1,6 +1,8 @@
 import requests
 
 from datetime import datetime
+import pandas as pd
+import pandas.compat as compat
 from pandas import to_datetime
 
 
@@ -32,3 +34,18 @@ def _sanitize_dates(start, end):
     if start > end:
         raise ValueError('start must be an earlier date than end')
     return start, end
+
+
+def _handle_lists(l, mult=True, err_msg=None):
+    if isinstance(l, (compat.string_types, int)):
+        return [l] if mult is True else l
+    elif isinstance(l, pd.DataFrame) and mult is True:
+        return list(l.index)
+    elif mult is True:
+        return list(l)
+    else:
+        raise ValueError(err_msg or "Only 1 symbol/market parameter allowed.")
+
+
+def no_pandas(out):
+    return out

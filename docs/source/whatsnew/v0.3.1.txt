@@ -11,7 +11,7 @@ Enhancements
 ~~~~~~~~~~~~
 
 - Significant cleanup and rebuild of iexfinance `docs
-<https://addisonlynch.github.io/iexfinance>`.
+  <https://addisonlynch.github.io/iexfinance>`.
 
 Bug Fixes
 ~~~~~~~~~

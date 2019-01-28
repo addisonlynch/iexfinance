@@ -17,10 +17,11 @@ env:
 
 install:
   - pip install -qq flake8
+  - pip install flake8-rst
   - pip install codecov
   - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then
       pip install doctr sphinx sphinx_rtd_theme ipython matplotlib;
-      pip install sphinxcontrib-napoleon;
+      pip install sphinxcontrib-napoleon requests-cache;
     fi
   - python setup.py install
 
@@ -28,6 +29,8 @@ script:
   - coverage run setup.py pytest
   - flake8 --version
   - flake8 iexfinance tests
+  - flake8-rst --version
+  - flake8-rst --filename="*.rst"
 
 after_success:
   - |

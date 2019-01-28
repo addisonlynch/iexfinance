@@ -1,12 +1,11 @@
 .. _install:
 
 
-*******
 Install
-*******
+=======
 
 Dependencies
-============
+------------
 
 iexfinance relies on:
 
@@ -16,7 +15,7 @@ iexfinance relies on:
 For testing requirements, see `testing <testing.html>`__.
 
 Installation
-============
+------------
 
 Latest stable release via pip (recommended):
 

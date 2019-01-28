@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 from .base import _IEXBase
-from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -13,28 +12,13 @@ from iexfinance.utils.exceptions import IEXQueryError
 class Stats(_IEXBase):
     """
     Base class for obtaining date from the IEX Stats endpoints
-    of IEX. Subclass of _IEXBase, subclassed by various.
+    of IEX.
 
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """
-
-    def __init__(self, output_format='json', **kwargs):
-        self.output_format = output_format
-        super(Stats, self).__init__(**kwargs)
-
-    def _output_format(self, response):
-        if self.output_format == 'json':
-            return response
-        elif self.output_format == 'pandas' and self.acc_pandas:
-            try:
-                df = pd.DataFrame(response)
-                return df
-            except ValueError:
-                raise IEXQueryError()
-        elif self.acc_pandas is False:
-            raise ValueError("Pandas not accepted for this function.")
-        else:
-            raise ValueError("Please input valid output format")
+    @property
+    def url(self):
+        return "stats"
 
     @staticmethod
     def _validate_dates(start, end):
@@ -55,17 +39,6 @@ class Stats(_IEXBase):
                 raise ValueError("end: Please enter a valid end date")
         else:
             raise ValueError("Please specify a valid date range or last value")
-
-    @property
-    def acc_pandas(self):
-        return True
-
-    @property
-    def url(self):
-        return "stats"
-
-    def fetch(self):
-        return self._output_format(super(Stats, self).fetch())
 
 
 class IntradayReader(Stats):
@@ -128,8 +101,7 @@ class DailySummaryReader(Stats):
 
     """
 
-    def __init__(self, start=None, end=None, last=None,
-                 output_format='json', **kwargs):
+    def __init__(self, start=None, end=None, last=None, **kwargs):
         import warnings
         warnings.warn('Daily statistics is not working due to issues with the '
                       'IEX API')
@@ -140,8 +112,7 @@ class DailySummaryReader(Stats):
         self.json_parse_int = kwargs.pop("json_parse_int", None)
         self.json_parse_float = kwargs.pop("json_parse_float", None)
         self._validate_params()
-        super(DailySummaryReader, self).__init__(output_format=output_format,
-                                                 **kwargs)
+        super(DailySummaryReader, self).__init__(**kwargs)
 
     def _validate_params(self):
         if self.last is not None:
@@ -231,14 +202,13 @@ class MonthlySummaryReader(Stats):
 
     """
 
-    def __init__(self, start=None, end=None, output_format='json', **kwargs):
+    def __init__(self, start=None, end=None, **kwargs):
         self.curr_date = start
         self.date_format = '%Y%m'
         self.start = start
         self.end = end
         self._validate_dates(self.start, self.end)
-        super(MonthlySummaryReader, self).__init__(output_format=output_format,
-                                                   **kwargs)
+        super(MonthlySummaryReader, self).__init__(**kwargs)
 
     @property
     def url(self):
