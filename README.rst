@@ -57,6 +57,17 @@ From development repository (dev version):
      $ cd iexfinance
      $ python3 setup.py install
 
+Selecting an API version
+------------------------
+
+IEX is continuing support for their version 1 (current) API until at least May 29th, 2019. IEX cloud beta is now available and includes a variety of additional endpoints. IEX is also introducing versioning through URL routing which will allow users to query from each version of the IEX Cloud API as more become available.
+
+The IEX api version can be selected by setting the environment variable ``IEX_API_VERSION`` to one of the following values:
+
+- ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
+- ``iexcloud-beta`` for the current beta of IEX cloud
+- ``iexcloud-v1`` for version 1 of IEX cloud (not yet available)
+
 Common Usage Examples
 ---------------------
 

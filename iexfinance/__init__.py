@@ -12,50 +12,11 @@ from iexfinance.utils.exceptions import IEXQueryError
 __author__ = 'Addison Lynch'
 __version__ = '0.3.5'
 
-WNG_MSG = "%s is moved to iexfinance.%s. This function will in be "\
-          "deprecated in v0.4.0"
-
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
 # API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
-
-
-def Stock(symbols=None, **kwargs):
-    """
-    Top-level function to to retrieve data from the IEX Stocks endpoints
-
-    WARNING: Moving to ``iexfinance.stocks``. Will be deprecated in v0.4.0.
-
-    Parameters
-    ----------
-    symbols: str or list
-        A string or list of strings that are valid symbols
-    output_format: str, default 'json', optional
-        Desired output format for requests
-    kwargs:
-        Additional Request Parameters (see base class)
-    Returns
-    -------
-    stock.StockReader
-        A StockReader instance
-    """
-    import warnings
-    warnings.warn(WNG_MSG % ("Stock", "stocks"))
-    if isinstance(symbols, str) and symbols:
-        return StockReader([symbols], **kwargs)
-    elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
-        return StockReader(symbols, **kwargs)
-    else:
-        raise ValueError("Please input a symbol or list of symbols")
-
-
-# MOVED to iexfinance.stocks
-def get_historical_data(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % ("get_historical_data", "stocks"))
-    return stocks.get_historical_data(*args, **kwargs)
 
 
 def get_market_gainers(*args, **kwargs):

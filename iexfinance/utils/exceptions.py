@@ -42,3 +42,15 @@ class IEXQueryError(Exception):
     """
     def __str__(self):
         return "An error occurred while making the query."
+
+
+class IEXAuthenticationError(Exception):
+    """
+    This error is thrown when there is an authentication issue with an IEX
+    cloud request.
+    """
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __str__(self):
+        return self.msg

@@ -6,3 +6,24 @@ v0.4.0 (TBA)
 
 This is a major release from 0.3.0, and we recommend that all users
 update.
+
+
+Highlights
+
+- Adds support for `IEX Cloud <https://iexcloud.io>`__
+
+
+.. whatsnew_040.enhancements:
+
+Enhancements
+~~~~~~~~~~~~
+
+- Select between IEX API versions using the IEX_API_VERSION environment variable
+
+
+.. whatsnew_040.backwards:
+
+Backwards Incompatible Changes
+~~~~~~~~~~~~
+
+- Deprecated ``iexfinance.Stock`` and ``iexfinance.get_historical_data`` have been removed. These are now available as ``iexfinance.stocks.Stock`` and ``iexfinance.stocks.get_historical_data``.
