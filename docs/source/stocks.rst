@@ -144,11 +144,29 @@ are specified for each method below:
     - :ref:`Volume by Venue<stocks.volume-by-venue>`
 
 
+.. _stocks.balance-sheet:
+
+Balance Sheet
+~~~~~~~~~~~~~
+
+.. warning:: This endpoint is available with IEX Cloud only.
+
+.. automethod:: iexfinance.stocks.base.StockReader.get_balance_sheet
+
 .. _stocks.book:
 
 Book
 ~~~~~~~~~~~~~
 .. automethod:: iexfinance.stocks.base.StockReader.get_book
+
+.. _stocks.cash-flow:
+
+Cash Flow
+~~~~~~~~~
+
+.. warning:: This endpoint is available with IEX Cloud only.
+
+.. automethod:: iexfinance.stocks.base.StockReader.get_cash_flow
 
 .. _stocks.chart:
 
@@ -205,6 +223,14 @@ Financials
 ~~~~~~~~~~~~~
 .. automethod:: iexfinance.stocks.base.StockReader.get_financials
 
+.. _stocks.income-statement:
+
+Income Statement
+~~~~~~~~~~~~~~~~
+
+.. warning:: This endpoint is available with IEX Cloud only.
+
+.. automethod:: iexfinance.stocks.base.StockReader.get_income_statement
 
 .. _stocks.key-stats:
 

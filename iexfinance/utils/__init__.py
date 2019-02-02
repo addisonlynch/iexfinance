@@ -1,9 +1,12 @@
 import requests
 
 from datetime import datetime
+from functools import wraps
 import pandas as pd
 import pandas.compat as compat
 from pandas import to_datetime
+
+from iexfinance.utils.exceptions import IEXVersionError
 
 
 def _init_session(session, retry_count=3):
@@ -49,3 +52,12 @@ def _handle_lists(l, mult=True, err_msg=None):
 
 def no_pandas(out):
     return out
+
+
+def cloud_endpoint(func):
+    @wraps(func)
+    def _wrapped_function(self, *args, **kwargs):
+        if self.version == 'v1':
+            raise IEXVersionError()
+        return func(self, *args, **kwargs)
+    return _wrapped_function

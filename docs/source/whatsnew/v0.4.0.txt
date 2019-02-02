@@ -12,6 +12,16 @@ Highlights
 
 - Adds support for `IEX Cloud <https://iexcloud.io>`__
 
+.. whatsnew_040.new-endpoints:
+
+New Endpoints
+~~~~~~~~~~~~~
+
+**Stock**
+
+* /balance-sheet (``get_balance_sheet``)
+* /cash-flow (``get_cash_flow``)
+* /income (``get_income_statement``)
 
 .. whatsnew_040.enhancements:
 

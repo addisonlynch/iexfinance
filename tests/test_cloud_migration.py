@@ -3,12 +3,19 @@ import pytest
 
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils.exceptions import IEXAuthenticationError
+from iexfinance.stocks import Stock
+from iexfinance.utils.exceptions import (IEXAuthenticationError,
+                                         IEXVersionError)
 
 
 @pytest.fixture
 def use_cloud(scope='function'):
     os.environ["IEX_API_VERSION"] = "iexcloud-beta"
+
+
+@pytest.fixture
+def use_legacy(scope='function'):
+    os.environ["IEX_API_VERSION"] = 'v1'
 
 
 @pytest.fixture
@@ -37,3 +44,9 @@ class TestCloudMigration(object):
         a = _IEXBase(token="TESTKEY2")
 
         assert a.api_key == "TESTKEY2"
+
+    def test_cloud_endpoint_decorator(self, use_legacy):
+        a = Stock("AAPL")
+
+        with pytest.raises(IEXVersionError):
+            a.get_balance_sheet()

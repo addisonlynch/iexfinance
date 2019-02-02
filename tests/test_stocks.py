@@ -1191,3 +1191,21 @@ class TestHistoricalIntraday(object):
         data = get_historical_intraday("AAPL", date=date)
 
         assert isinstance(data, list)
+
+
+@pytest.mark.cloud
+class TestMarketCloud(object):
+
+    def setup_class(self):
+        self.stock = Stock("AAPL")
+        self.p_stock = Stock("AAPL", output_format='pandas')
+
+    def test_get_balance_sheet(self):
+        data = self.stock.get_balance_sheet()
+
+        assert isinstance(data, dict)
+
+    def test_get_cash_flow(self):
+        data = self.stock.get_cash_flow()
+
+        assert isinstance(data, dict)

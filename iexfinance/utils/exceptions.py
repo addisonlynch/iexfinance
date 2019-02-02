@@ -54,3 +54,12 @@ class IEXAuthenticationError(Exception):
 
     def __str__(self):
         return self.msg
+
+
+class IEXVersionError(Exception):
+    """
+    This error is thrown when an attempt is made to access an IEX Cloud
+    endpoint when API version 1 (v1) has been selected for use.
+    """
+    def __str__(self):
+        return "The requested endpoint is only available using IEX Cloud."

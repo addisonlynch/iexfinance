@@ -1,7 +1,7 @@
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import _handle_lists, no_pandas
+from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
@@ -78,6 +78,11 @@ class StockReader(_IEXBase):
         self.optional_params = params
         self.endpoints = [endpoint]
         data = self.fetch(fmt_j=fmt_j, fmt_p=no_pandas)
+        # IEX Cloud returns multiple symbol requests as as a list of dicts
+        # so convert to dict of dicts
+        if isinstance(data, list):
+            data = data[0]
+        return data
         for symbol in self.symbols:
             if symbol not in data:
                 raise IEXSymbolError(symbol)
@@ -139,6 +144,19 @@ class StockReader(_IEXBase):
                 raise IEXSymbolError(symbol)
         return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
 
+    @cloud_endpoint
+    def get_balance_sheet(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#balance-sheet
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+            Allows you to specify annual or quarterly balance sheet. Defaults
+            to quarterly. Values should be annual or quarter.
+        """
+        return self._get_endpoint("balance-sheet", params=kwargs)
+
     def get_book(self, **kwargs):
         """
         Reference: https://iextrading.com/developer/docs/#book
@@ -149,6 +167,19 @@ class StockReader(_IEXBase):
             Stocks Book endpoint data
         """
         return self._get_endpoint("book", params=kwargs)
+
+    @cloud_endpoint
+    def get_cash_flow(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#balance-sheet
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+            Allows you to specify annual or quarterly cash flows. Defaults to
+            quarterly. Values should be annual or quarter.
+        """
+        return self._get_endpoint("cash-flow", params=kwargs)
 
     def get_chart(self, **kwargs):
         """
@@ -308,6 +339,19 @@ class StockReader(_IEXBase):
 
         return self._get_endpoint("financials", fmt_j=fmt,
                                   fmt_p=fmt_p, params=kwargs)
+
+    @cloud_endpoint
+    def get_income_statement(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#income-statement
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+             Allows you to specify annual or quarterly income statement.
+             Defaults to quarterly. Values should be annual or quarter
+        """
+        return self._get_endpoint("income", params=kwargs)
 
     def get_key_stats(self, **kwargs):
         """
