@@ -85,10 +85,7 @@ class IntradayReader(_IEXBase):
     """
     Base class for intraday historical data
     """
-    def __init__(self, symbol, date, **kwargs):
-        if not date:
-            date = datetime.datetime.now()
-
+    def __init__(self, symbol, date=None, **kwargs):
         try:
             self.date = date.strftime("%Y%m%d")
         except AttributeError:
@@ -106,10 +103,16 @@ class IntradayReader(_IEXBase):
 
     @property
     def url(self):
-        return 'stock/%s/chart/date/%s' % (self.symbol, self.date)
+        if self.date is None:
+            return 'stock/%s/chart/1d' % self.symbol
+        else:
+            return 'stock/%s/chart/date/%s' % (self.symbol, self.date)
 
     def _convert_output(self, out):
         if out:
-            return pd.DataFrame(out).set_index("minute")
+            df = pd.DataFrame(out).set_index("minute")
+            df.index = pd.DatetimeIndex([pd.to_datetime(x) for x in
+                                         df.index])
+            return df
         else:
-            return pd.DataFrame([])
+            return pd.DataFrame()

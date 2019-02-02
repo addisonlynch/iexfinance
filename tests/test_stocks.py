@@ -1147,6 +1147,12 @@ class TestIPOCalendar(object):
 
 class TestHistoricalIntraday(object):
 
+    def verify_timeframe(self, data):
+        assert data.index[0].hour == 9
+        assert data.index[0].minute == 30
+        assert data.index[-1].hour == 15
+        assert data.index[-1].minute == 59
+
     def test_intraday_fails_no_symbol(self):
         with pytest.raises(TypeError):
             get_historical_intraday()
@@ -1160,9 +1166,22 @@ class TestHistoricalIntraday(object):
         data = get_historical_intraday("AAPL", output_format='pandas')
 
         assert isinstance(data, pd.DataFrame)
+        assert isinstance(data.index, pd.DatetimeIndex)
+
+        self.verify_timeframe(data)
+
+    def test_intraday_pandas_pass_datetime(self):
+        u_date = "20190102"
+        data = get_historical_intraday("AAPL", date=u_date,
+                                       output_format='pandas')
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.index[0].strftime("%Y%m%d") == u_date
+
+        self.verify_timeframe(data)
 
     def test_intraday_pass_date_str(self):
-        data = get_historical_intraday("AAPL", date="20181127")
+        data = get_historical_intraday("AAPL", date="20190102")
 
         assert isinstance(data, list)
 
