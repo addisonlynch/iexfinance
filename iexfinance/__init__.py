@@ -127,6 +127,9 @@ def get_symbols(**kwargs):
 
     Reference: https://iexcloud.io/docs/api/#symbols
 
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
     Data Weighting: ``100`` per call
     """
     return Symbols(**kwargs).fetch()
@@ -138,6 +141,9 @@ def get_iex_symbols(**kwargs):
     supports for trading
 
     Reference: https://iexcloud.io/docs/api/#iex-symbols
+
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
 
     Data Weighting: ``Free``
     """

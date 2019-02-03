@@ -152,8 +152,6 @@ are specified for each method below:
 Balance Sheet
 ~~~~~~~~~~~~~
 
-.. warning:: This endpoint is available with IEX Cloud only.
-
 .. automethod:: iexfinance.stocks.base.StockReader.get_balance_sheet
 
 .. _stocks.book:
@@ -167,8 +165,6 @@ Book
 
 Cash Flow
 ~~~~~~~~~
-
-.. warning:: This endpoint is available with IEX Cloud only.
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_cash_flow
 
@@ -225,8 +221,6 @@ Effective Spread
 Estimates
 ~~~~~~~~~
 
-.. warning:: This endpoint is available with IEX Cloud only
-
 .. automethod:: iexfinance.stocks.base.StockReader.get_estimates
 
 .. _stocks.financials:
@@ -239,8 +233,6 @@ Financials
 
 Income Statement
 ~~~~~~~~~~~~~~~~
-
-.. warning:: This endpoint is available with IEX Cloud only.
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_income_statement
 

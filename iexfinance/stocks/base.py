@@ -151,6 +151,9 @@ class StockReader(_IEXBase):
 
         Data Weighting: ``3000`` per symbol per period
 
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                     :ref:`Migrating` for more information.
+
         Parameters
         ----------
         period: str, default 'quarterly', optional
@@ -176,6 +179,9 @@ class StockReader(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#cash-flow
 
         Data Weighting: 1000 per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
 
         Parameters
         ----------
@@ -324,6 +330,9 @@ class StockReader(_IEXBase):
 
         Data Weighting: ``10000`` per symbol per period
 
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
         Returns
         -------
         dict or pandas.DataFrame
@@ -361,6 +370,11 @@ class StockReader(_IEXBase):
     def get_income_statement(self, **kwargs):
         """
         Reference: https://iexcloud.io/docs/api/#income-statement
+
+        Data Weighting: ``1000`` per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
 
         Parameters
         ----------
@@ -493,6 +507,9 @@ class StockReader(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#price-target
 
         Data Weighting: ``500`` per symbol
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
 
         Returns
         -------

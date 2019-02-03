@@ -21,13 +21,21 @@ New Endpoints
 
 * /balance-sheet (``get_balance_sheet``)
 * /cash-flow (``get_cash_flow``)
+* /estimates (``get_estimates``)
 * /income (``get_income_statement``)
 
 **Account**
+
 * /account/usage (``iexfinance.tools.account.get_usage``)
-* /account/metadaa (``iexfinance.tools.account.get_metadata``)
+* /account/metadata (``iexfinance.tools.account.get_metadata``)
 * /account/payasyougo (``iexfinance.tools.account.allow_pay_as_you_go``,
   ``iexfinance.tools.account.disallow_pay_as_you_go``)
+
+**Reference Data**
+
+* /ref-data/symbols (``iexfinance.get_symbols``)
+* /ref-data/iex-symbols (``iexfinance.get_iex_symbols``)
+
 
 .. whatsnew_040.enhancements:
 

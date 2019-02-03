@@ -6,4 +6,5 @@ six
 sphinx
 sphinx-autobuild
 sphinx-rtd-theme
+sphinxcontrib-fulltoc
 sphinxcontrib-napoleon

@@ -26,6 +26,11 @@ def get_api_status(output_format=None):
     Retrieves IEX Cloud API status
 
     Reference: https://iexcloud.io/docs/api/#status
+
+    Data Weighting: ``Free``
+
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
     """
     a = APIReader(output_format=output_format)
     return a.fetch()

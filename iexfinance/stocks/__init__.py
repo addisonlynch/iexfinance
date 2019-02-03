@@ -124,6 +124,9 @@ def get_market_volume(**kwargs):
     Top-level function for obtaining market volume data
 
     Data Weighting: 1 per call
+
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
     """
     return MarketVolumeReader(**kwargs).fetch()
 
