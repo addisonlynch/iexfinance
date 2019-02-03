@@ -1194,6 +1194,11 @@ class TestHistoricalIntraday(object):
 
 
 @pytest.mark.cloud
+class TestMarketVolume(object):
+    pass
+
+
+@pytest.mark.cloud
 class TestMarketCloud(object):
     """
     Dev note: These are very rudimentary tests which check output formatting

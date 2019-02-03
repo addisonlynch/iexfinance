@@ -73,3 +73,9 @@ class TestRef(object):
         d = get_iex_listed_symbol_dir(start=self.start)
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
+
+
+class TestCloudRef(object):
+
+    def test_symbols(self):
+        pass

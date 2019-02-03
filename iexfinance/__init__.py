@@ -5,7 +5,7 @@ from iexfinance.market import TOPS, Last, DEEP, Book
 from iexfinance.stats import (IntradayReader, RecentReader, RecordsReader,
                               DailySummaryReader, MonthlySummaryReader)
 from iexfinance.ref import (CorporateActions, Dividends, NextDay,
-                            ListedSymbolDir)
+                            ListedSymbolDir, Symbols, IEXSymbols)
 from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXQueryError
 
@@ -116,6 +116,32 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
     kwargs: Additional Request Parameters (see base class)
     """
     return ListedSymbolDir(start=start, **kwargs)
+
+
+# IEX Cloud reference endpoints
+
+def get_symbols(**kwargs):
+    """
+    Top-level function to retrieve array of all symbols that IEX Cloud supports
+    for API calls
+
+    Reference: https://iexcloud.io/docs/api/#symbols
+
+    Data Weighting: ``100`` per call
+    """
+    return Symbols(**kwargs).fetch()
+
+
+def get_iex_symbols(**kwargs):
+    """
+    Top-level function to retrieve array of all symbols the Investor's Exchange
+    supports for trading
+
+    Reference: https://iexcloud.io/docs/api/#iex-symbols
+
+    Data Weighting: ``Free``
+    """
+    return IEXSymbols(**kwargs).fetch()
 
 
 def get_market_tops(symbols=None, **kwargs):

@@ -149,6 +149,8 @@ class StockReader(_IEXBase):
         """
         Reference: https://iexcloud.io/docs/api/#balance-sheet
 
+        Data Weighting: ``3000`` per symbol per period
+
         Parameters
         ----------
         period: str, default 'quarterly', optional
@@ -171,7 +173,9 @@ class StockReader(_IEXBase):
     @cloud_endpoint
     def get_cash_flow(self, **kwargs):
         """
-        Reference: https://iexcloud.io/docs/api/#balance-sheet
+        Reference: https://iexcloud.io/docs/api/#cash-flow
+
+        Data Weighting: 1000 per symbol per period
 
         Parameters
         ----------

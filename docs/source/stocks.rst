@@ -122,6 +122,7 @@ clarification. The optional Keyword Arguments (in accordance with the IEX docs)
 are specified for each method below:
 
     - :ref:`Book<stocks.book>`
+    - :ref:`Cash Flow<stocks.cash_flow>`
     - :ref:`Chart<stocks.chart>`
     - :ref:`Company<stocks.company>`
     - :ref:`Delayed Quote<stocks.delayed-quote>`
@@ -161,7 +162,8 @@ Book
 ~~~~~~~~~~~~~
 .. automethod:: iexfinance.stocks.base.StockReader.get_book
 
-.. _stocks.cash-flow:
+
+.. _stocks.cash_flow:
 
 Cash Flow
 ~~~~~~~~~
@@ -222,6 +224,8 @@ Effective Spread
 
 Estimates
 ~~~~~~~~~
+
+.. warning:: This endpoint is available with IEX Cloud only
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_estimates
 
@@ -338,7 +342,6 @@ Relevant Stocks
 ~~~~~~~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_relevant
-
 
 
 .. _stocks.splits:
