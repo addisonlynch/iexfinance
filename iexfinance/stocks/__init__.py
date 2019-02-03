@@ -3,6 +3,7 @@ from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.crypto import CryptoReader
 from iexfinance.stocks.historical import HistoricalReader, IntradayReader
 from iexfinance.stocks.ipocalendar import IPOReader
+from iexfinance.stocks.marketvolume import MarketVolumeReader
 from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
@@ -116,6 +117,15 @@ def get_collections(collection_name, collection_type="tag", **kwargs):
     """
     return CollectionsReader(collection_name,
                              collection_type, **kwargs).fetch()
+
+
+def get_market_volume(**kwargs):
+    """
+    Top-level function for obtaining market volume data
+
+    Data Weighting: 1 per call
+    """
+    return MarketVolumeReader(**kwargs).fetch()
 
 
 def get_crypto_quotes(**kwargs):

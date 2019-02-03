@@ -159,7 +159,7 @@ class StockReader(_IEXBase):
 
     def get_book(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#book
+        Reference: https://iexcloud.io/docs/api/#book
 
         Returns
         -------
@@ -183,7 +183,7 @@ class StockReader(_IEXBase):
 
     def get_chart(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#chart
+        Reference: https://iexcloud.io/docs/api/#chart
 
         Parameters
         ----------
@@ -226,7 +226,7 @@ class StockReader(_IEXBase):
 
     def get_company(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#company
+        Reference: https://iexcloud.io/docs/api/#company
 
         Returns
         -------
@@ -237,7 +237,7 @@ class StockReader(_IEXBase):
 
     def get_delayed_quote(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#delayed-quote
+        Reference: https://iexcloud.io/docs/api/#delayed-quote
 
         Returns
         -------
@@ -248,7 +248,7 @@ class StockReader(_IEXBase):
 
     def get_dividends(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#dividends
+        Reference: https://iexcloud.io/docs/api/#dividends
 
         Parameters
         ----------
@@ -278,7 +278,7 @@ class StockReader(_IEXBase):
 
     def get_earnings(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#earnings
+        Reference: https://iexcloud.io/docs/api/#earnings
 
         Returns
         -------
@@ -304,7 +304,7 @@ class StockReader(_IEXBase):
 
     def get_effective_spread(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#effective-spread
+        Reference:  https://iexcloud.io/docs/api/#effective-spread
 
         Returns
         -------
@@ -313,9 +313,22 @@ class StockReader(_IEXBase):
         """
         return self._get_endpoint("effective-spread", params=kwargs)
 
+    @cloud_endpoint
+    def get_estimates(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#estimates
+
+        Data Weighting: ``10000`` per symbol per period
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+        """
+        return self._get_endpoint("estimates", params=kwargs)
+
     def get_financials(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#financials
+        Reference: https://iexcloud.io/docs/api/#financials
 
         Returns
         -------
@@ -355,7 +368,7 @@ class StockReader(_IEXBase):
 
     def get_key_stats(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#key-stats
+        Reference: https://iexcloud.io/docs/api/#key-stats
 
         Returns
         -------
@@ -366,7 +379,7 @@ class StockReader(_IEXBase):
 
     def get_largest_trades(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#largest-trades
+        Reference: https://iexcloud.io/docs/api/#largest-trades
 
         Returns
         -------
@@ -377,7 +390,7 @@ class StockReader(_IEXBase):
 
     def get_logo(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#logo
+        Reference: https://iexcloud.io/docs/api/#logo
 
         Returns
         -------
@@ -389,7 +402,7 @@ class StockReader(_IEXBase):
     def get_news(self, **kwargs):
         """Returns the Stocks News endpoint (list or pandas)
 
-        Reference: https://iextrading.com/developer/docs/#news
+        Reference: https://iexcloud.io/docs/api/#news
 
         Parameters
         ----------
@@ -405,7 +418,7 @@ class StockReader(_IEXBase):
 
     def get_ohlc(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#ohlc
+        Reference:  https://iexcloud.io/docs/api/#ohlc
 
         Returns
         -------
@@ -416,7 +429,7 @@ class StockReader(_IEXBase):
 
     def get_open_close(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#open-close
+        Reference: https://iexcloud.io/docs/api/#open-close
 
         Notes
         -----
@@ -432,7 +445,7 @@ class StockReader(_IEXBase):
 
     def get_peers(self, **kwargs):
         """
-        Reference:https://iextrading.com/developer/docs/#peers
+        Reference:https://iexcloud.io/docs/api/#peers
 
         Notes
         -----
@@ -447,18 +460,18 @@ class StockReader(_IEXBase):
 
     def get_previous(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#previous
+        Reference: https://iexcloud.io/docs/api/#previous-day-prices
 
         Returns
         -------
         dict or pandas.DataFrame
-            Stocks Previous endpoint data
+            Stocks Previous Day Prices endpoint data
         """
         return self._get_endpoint("previous", params=kwargs)
 
     def get_price(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#price
+        Reference: https://iexcloud.io/docs/api/#price
 
         Returns
         -------
@@ -470,9 +483,27 @@ class StockReader(_IEXBase):
 
         return self._get_endpoint("price", fmt_p=fmt_p, params=kwargs)
 
+    @cloud_endpoint
+    def get_price_target(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#price-target
+
+        Data Weighting: ``500`` per symbol
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Latest average, high, and low price targets for a symbol
+        """
+        def fmt_p(out):
+            result = {item.pop("symbol"): item for item in out}
+            return pd.DataFrame(result)
+
+        return self._get_endpoint('price-target', fmt_p=fmt_p, params=kwargs)
+
     def get_quote(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#quote
+        Reference: https://iexcloud.io/docs/api/#quote
 
         Returns
         -------
@@ -483,18 +514,18 @@ class StockReader(_IEXBase):
 
     def get_relevant(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#relevant
+        Reference: https://iexcloud.io/docs/api/#relevant-stocks
 
         Returns
         -------
         dict or pandas.DataFrame
-            Stocks Relevant endpoint data
+            Stocks Relevant Stocks endpoint data
         """
         return self._get_endpoint("relevant", params=kwargs)
 
     def get_splits(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#splits
+        Reference: https://iexcloud.io/docs/api/#splits
 
         Parameters
         ----------
@@ -510,7 +541,7 @@ class StockReader(_IEXBase):
 
     def get_time_series(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#time-series
+        Reference: https://iexcloud.io/docs/api/#time-series
 
         Notes
         -----
@@ -526,7 +557,7 @@ class StockReader(_IEXBase):
 
     def get_volume_by_venue(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#volume-by-venue
+        Reference:  https://iexcloud.io/docs/api/#volume-by-venue
 
         Returns
         -------

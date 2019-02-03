@@ -1195,7 +1195,10 @@ class TestHistoricalIntraday(object):
 
 @pytest.mark.cloud
 class TestMarketCloud(object):
-
+    """
+    Dev note: These are very rudimentary tests which check output formatting
+    only.They will need to be made more robust
+    """
     def setup_class(self):
         self.stock = Stock("AAPL")
         self.p_stock = Stock("AAPL", output_format='pandas')
@@ -1207,5 +1210,15 @@ class TestMarketCloud(object):
 
     def test_get_cash_flow(self):
         data = self.stock.get_cash_flow()
+
+        assert isinstance(data, dict)
+
+    def test_get_estimates(self):
+        data = self.stock.get_estimates()
+
+        assert isinstance(data, dict)
+
+    def test_get_price_target(self):
+        data = self.stock.get_price_target()
 
         assert isinstance(data, dict)

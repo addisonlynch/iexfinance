@@ -128,6 +128,7 @@ are specified for each method below:
     - :ref:`Dividends<stocks.dividends>`
     - :ref:`Earnings<stocks.earnings>`
     - :ref:`Effective Spread<stocks.effective-spread>`
+    - :ref:`Estimates<stocks.estimates>`
     - :ref:`Financials<stocks.financials>`
     - :ref:`Key Stats<stocks.key-stats>`
     - :ref:`Logo<stocks.logo>`
@@ -135,10 +136,11 @@ are specified for each method below:
     - :ref:`OHLC<stocks.ohlc>`
     - :ref:`Open/Close<stocks.open-close>`
     - :ref:`Peers<stocks.peers>`
-    - :ref:`Previous<stocks.previous>`
+    - :ref:`Previous Day Prices<stocks.previous>`
     - :ref:`Price<stocks.price>`
+    - :ref:`Price Target<stocks.price_target>`
     - :ref:`Quote<stocks.quote>`
-    - :ref:`Relevant<stocks.relevant>`
+    - :ref:`Relevant Stocks<stocks.relevant_stocks>`
     - :ref:`Splits<stocks.splits>`
     - :ref:`Time Series<stocks.time-series>`
     - :ref:`Volume by Venue<stocks.volume-by-venue>`
@@ -208,7 +210,6 @@ Earnings
 .. automethod:: iexfinance.stocks.base.StockReader.get_earnings
 
 
-
 .. _stocks.effective-spread:
 
 Effective Spread
@@ -216,6 +217,13 @@ Effective Spread
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_effective_spread
 
+
+.. _stocks.estimates:
+
+Estimates
+~~~~~~~~~
+
+.. automethod:: iexfinance.stocks.base.StockReader.get_estimates
 
 .. _stocks.financials:
 
@@ -293,12 +301,10 @@ Peers
 .. automethod:: iexfinance.stocks.base.StockReader.get_peers
 
 
+.. _stocks.previous_day_prices:
 
-
-.. _stocks.previous:
-
-Previous
-~~~~~~~~~~~~~
+Previous Day Prices
+~~~~~~~~~~~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_previous
 
@@ -311,6 +317,13 @@ Price
 .. automethod:: iexfinance.stocks.base.StockReader.get_price
 
 
+.. _stocks.price_target:
+
+Price Target
+~~~~~~~~~~~~
+
+.. automethod:: iexfinance.stocks.base.StockReader.get_price_target
+
 .. _stocks.quote:
 
 Quote
@@ -318,14 +331,13 @@ Quote
 .. automethod:: iexfinance.stocks.base.StockReader.get_quote
 
 
-.. _stocks.relevant:
+.. _stocks.relevant_stocks:
 
 
-Relevant
-~~~~~~~~~~~~~
+Relevant Stocks
+~~~~~~~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_relevant
-
 
 
 
@@ -667,3 +679,18 @@ There are two possible values for the ``period`` parameter, of which
     from iexfinance.stocks import get_ipo_calendar
 
     get_ipo_calendar()["rawData"][0]
+
+
+.. _stocks.market_volume:
+
+Market Volume
+-------------
+
+Market Volume returns real-time traded volume on U.S. Markets. Access is
+provided through the top-level ``get_market_volume`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_market_volume
+
+    get_market_volume()
