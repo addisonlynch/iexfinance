@@ -19,7 +19,7 @@ Usage
 .. autofunction:: iexfinance.tools.account.get_usage
 
 
-.. _account.pay-as-you-go:
+.. _account.pay_as_you_go:
 
 Pay-as-you-go
 -------------

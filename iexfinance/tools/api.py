@@ -4,6 +4,8 @@ import pandas as pd
 from iexfinance.base import _IEXBase
 from iexfinance.utils import cloud_endpoint
 
+__all__ = ["get_api_status"]
+
 
 class APIReader(_IEXBase):
 

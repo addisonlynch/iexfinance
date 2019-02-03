@@ -35,6 +35,7 @@ Contents
    ref.rst
    market.rst
    stats.rst
+   apistatus.rst
 
 .. toctree::
    :maxdepth: 2
