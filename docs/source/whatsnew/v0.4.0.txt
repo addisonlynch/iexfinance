@@ -23,6 +23,12 @@ New Endpoints
 * /cash-flow (``get_cash_flow``)
 * /income (``get_income_statement``)
 
+**Account**
+* /account/usage (``iexfinance.tools.account.get_usage``)
+* /account/metadaa (``iexfinance.tools.account.get_metadata``)
+* /account/payasyougo (``iexfinance.tools.account.allow_pay_as_you_go``,
+  ``iexfinance.tools.account.disallow_pay_as_you_go``)
+
 .. whatsnew_040.enhancements:
 
 Enhancements

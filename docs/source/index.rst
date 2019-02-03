@@ -18,18 +18,30 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: Package Information
 
    install.rst
    usage.rst
+   whatsnew.rst
+   about.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Endpoints
+
+   account.rst
    stocks.rst
    historical.rst
    ref.rst
    market.rst
    stats.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: iexfinance Utilities
+
    caching.rst
    testing.rst
-   whatsnew.rst
-   about.rst
    tutorial.rst
    modules.rst
 
