@@ -29,7 +29,6 @@ def set_keys(scope='function'):
     os.environ["IEX_API_KEY"] = "TESTKEY"
 
 
-@pytest.mark.cloud
 class TestCloudMigration(object):
 
     def test_fails_api_key(self, use_cloud, block_keys):

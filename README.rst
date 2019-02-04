@@ -14,7 +14,7 @@ iexfinance
     :target: https://opensource.org/licenses/Apache-2.0
 
 
-Python wrapper around the
+Python wrapper around `IEX Cloud <https://iexcloud.io>`__ and the legacy
 `Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__.
 

@@ -14,6 +14,7 @@ from iexfinance.stocks import (get_historical_data, get_market_gainers,
                                get_todays_earnings, get_ipo_calendar,
                                get_historical_intraday, Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
+from iexfinance.utils.testing import using_cloud
 
 import six
 
@@ -46,15 +47,18 @@ class TestShareDefault(object):
                              json_parse_float=Decimal)
         self.cshare5 = Stock("gig^")
 
+    @pytest.mark.xfail(reason="Unstable / errored IEX cloud endpoint.")
     def test_invalid_symbol(self):
         data = Stock("BAD SYMBOL")
         with pytest.raises(IEXSymbolError):
             data.get_price()
 
+    @pytest.mark.xfail(reason="Unsable / errored IEX cloud endpoint.")
     def test_get_all_format(self):
         data = self.cshare.get_all()
         assert isinstance(data, dict)
 
+    @pytest.mark.xfail(reason="Unsable / errored IEX cloud endpoint.")
     def test_get_all(self):
         data = self.cshare.get_all()
         assert len(data) == 20
