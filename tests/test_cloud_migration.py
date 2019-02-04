@@ -6,7 +6,6 @@ from iexfinance.base import _IEXBase
 from iexfinance.stocks import Stock
 from iexfinance.utils.exceptions import (IEXAuthenticationError,
                                          IEXVersionError)
-from iexfinance.utils.testing import using_cloud
 
 
 @pytest.fixture
@@ -30,7 +29,7 @@ def set_keys(scope='function'):
     os.environ["IEX_API_KEY"] = "TESTKEY"
 
 
-@pytest.mark.skipif(using_cloud() is False, reason="IEX Cloud test only.")
+@pytest.mark.cloud
 class TestCloudMigration(object):
 
     def test_fails_api_key(self, use_cloud, block_keys):

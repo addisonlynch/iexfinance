@@ -5,6 +5,7 @@ from iexfinance.tools.api import get_api_status
 from iexfinance.tools.account import (get_usage, get_metadata)
 
 
+@pytest.mark.cloud
 class TestAPIStatus(object):
 
     def test_api_status_json(self):
@@ -18,6 +19,7 @@ class TestAPIStatus(object):
         assert isinstance(data, pd.DataFrame)
 
 
+@pytest.mark.cloud
 class TestAccount(object):
 
     def test_usage_json_default(self):
