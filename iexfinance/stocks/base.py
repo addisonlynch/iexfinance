@@ -199,6 +199,14 @@ class StockReader(_IEXBase):
         ----------
         range: str, default '1m', optional
             Chart range to return. See docs.
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`,`1d`,`date`,
+            `dynamic`]
+            Choosing `date` will return  IEX-only data by minute for a
+            specified date in the format YYYYMMDD if available.
+            Currently supporting trailing 30 calendar days.
+            Choosing `dynamic` will return `1d` or `1m` data depending on
+            the day or week and time of day.
+            Intraday per minute data is only returned during market hours.
         chartReset: boolean, default True, optional
             If true, 1d chart will reset at midnight instead of the default
             behavior of 9:30am EST.
@@ -264,10 +272,11 @@ class StockReader(_IEXBase):
         ----------
         range: str, default '1m', optional
             Time period of dividends to return
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`]
 
         Returns
         -------
-        list or pandas.DataFrame
+        list of dict or pandas.DataFrame
             Stocks Dividends endpoint data
         """
         def fmt(out):
@@ -342,6 +351,10 @@ class StockReader(_IEXBase):
     def get_financials(self, **kwargs):
         """
         Reference: https://iexcloud.io/docs/api/#financials
+
+        Parameters
+        ----------
+        period: str, default 'quarter', choose between 'annual' and 'quarter'
 
         Returns
         -------
