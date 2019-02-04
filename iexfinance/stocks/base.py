@@ -85,7 +85,7 @@ class StockReader(_IEXBase):
                 result[symbol] = []
             else:
                 result[symbol] = data[symbol][endpoint]
-        return self._output_format(result, fmt_p=fmt_p, fmt_j=fmt_j)
+        return self._output_format_one(result, fmt_p=fmt_p, fmt_j=fmt_j)
 
     def _get_field(self, endpoint, field):
         data = getattr(self, "get_%s" % endpoint)(filter_=field)
