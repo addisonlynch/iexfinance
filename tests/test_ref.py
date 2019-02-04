@@ -2,9 +2,10 @@ from datetime import datetime
 
 import pytest
 
-from iexfinance import (get_available_symbols, get_iex_corporate_actions,
-                        get_iex_dividends, get_iex_next_day_ex_date,
-                        get_iex_listed_symbol_dir)
+from iexfinance.refdata import (get_available_symbols,
+                                get_iex_corporate_actions, get_iex_dividends,
+                                get_iex_next_day_ex_date,
+                                get_iex_listed_symbol_dir)
 
 
 class TestRef(object):

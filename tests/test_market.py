@@ -1,8 +1,8 @@
 import pytest
 from pandas import DataFrame
 
-from iexfinance import (get_market_tops, get_market_last, get_market_deep,
-                        get_market_book)
+from iexfinance.iexdata import (get_market_tops, get_market_last,
+                                get_market_deep, get_market_book)
 
 
 class TestMarket(object):

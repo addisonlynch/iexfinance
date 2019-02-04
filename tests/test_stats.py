@@ -3,9 +3,9 @@ from datetime import datetime
 import pytest
 from pandas import DataFrame
 
-from iexfinance import (get_stats_intraday, get_stats_recent,
-                        get_stats_records, get_stats_daily,
-                        get_stats_monthly)
+from iexfinance.iexdata import (get_stats_intraday, get_stats_recent,
+                                get_stats_records, get_stats_daily,
+                                get_stats_monthly)
 
 
 class TestStats(object):

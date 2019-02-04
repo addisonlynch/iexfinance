@@ -30,8 +30,7 @@ Contents
 
    account
    stocks
-   historical
-   ref
+   refdata
    market
    stats
    apistatus

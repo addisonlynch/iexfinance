@@ -61,5 +61,9 @@ class IEXVersionError(Exception):
     This error is thrown when an attempt is made to access an IEX Cloud
     endpoint when API version 1 (v1) has been selected for use.
     """
+    def __init__(self, version):
+        self.version = version
+
     def __str__(self):
-        return "The requested endpoint is only available using IEX Cloud."
+        msg = "The requested endpoint is only available using %s."
+        return msg % self.version

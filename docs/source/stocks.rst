@@ -42,151 +42,116 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 
 
 
-Formatting
-----------
 
-
-Supported Formats
-~~~~~~~~~~~~~~~~~
-
-1. **JSON** (**All Endpoints**) - For a single symbol, endpoint methods will
-return
-the endpoint as specified in docs (i.e. *dict* for Quote, *float* for Price)
-while multiple symbols will be returned as a symbol-indexed dictionary of the
-requested endpoint for each symbol.
-
-2. **Pandas DataFrame** (*most endpoints*) - The DataFrame is often indexed by
-the endpoint's dictionary keys, with a column for each requested symbol. For
-field methods, the DataFrame is a single column, indexed by each requested
-symbol.
-
-Selecting an Output Format
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Output formatting is most often selected through the initial call to the
-``Stock``
-function (which becomes an attribute of the ``StockReader`` instance) by
-passing
-``output_format`` as a keyword argument:
-
-.. ipython:: python
-
-    from iexfinance.stocks import Stock
-    aapl = Stock("aapl", output_format='pandas')
-    aapl.get_quote().head()
-
-It is also possible to change the output format of an already-instantiated
-``StockReader``:
-
-.. ipython:: python
-
-    aapl.output_format = 'json'
-    aapl.get_quote()["close"]
-
-Further, it is possible to customize the integer and floating point JSON parsing (into a type such as ``Decimal.decimal``) by passing the desired types via ``json_parse_float`` and ``json_parse_int`` parameters.
-
-.. ipython:: python
-
-    from decimal import Decimal
-
-    aaplD = Stock("AAPL", json_parse_float=Decimal)
-
-
-Parameters
-----------
-
-Certain endpoints (such as quote and chart) allow customizable
-parameters. To specify one of these parameters, merely pass it as a
-keyword argument to the endpoint method. (see :ref:`example
-<stocks.passing-parameters>`).
-
-.. ipython:: python
-
-    aapl = Stock("AAPL", output_format='pandas')
-    aapl.get_quote(displayPercent=True).loc["ytdChange"]
-
-
-.. note:: A key IEX optional parameter is ``filter_``, which allows the
-         filtering of endpoint requests to return certain fields only. See the
-         `IEX docs <https://iextrading.com/developer/docs/#filter-results>`__
-         and the examples below for more information.
-
-.. _stocks.endpoints:
-
-Endpoint Methods
-----------------
-
-**Endpoint methods** will return a symbol-indexed dictionary of the endpoint
-requested. See examples :ref:`below <stocks.examples-endpoint-methods>` for
-clarification. The optional Keyword Arguments (in accordance with the IEX docs)
-are specified for each method below:
-
-    - :ref:`Book<stocks.book>`
-    - :ref:`Cash Flow<stocks.cash_flow>`
-    - :ref:`Chart<stocks.chart>`
-    - :ref:`Company<stocks.company>`
-    - :ref:`Delayed Quote<stocks.delayed-quote>`
-    - :ref:`Dividends<stocks.dividends>`
-    - :ref:`Earnings<stocks.earnings>`
-    - :ref:`Effective Spread<stocks.effective-spread>`
-    - :ref:`Estimates<stocks.estimates>`
-    - :ref:`Financials<stocks.financials>`
-    - :ref:`Key Stats<stocks.key-stats>`
-    - :ref:`Logo<stocks.logo>`
-    - :ref:`News<stocks.news>`
-    - :ref:`OHLC<stocks.ohlc>`
-    - :ref:`Open/Close<stocks.open-close>`
-    - :ref:`Peers<stocks.peers>`
-    - :ref:`Previous Day Prices<stocks.previous>`
-    - :ref:`Price<stocks.price>`
-    - :ref:`Price Target<stocks.price_target>`
-    - :ref:`Quote<stocks.quote>`
-    - :ref:`Relevant Stocks<stocks.relevant_stocks>`
-    - :ref:`Splits<stocks.splits>`
-    - :ref:`Time Series<stocks.time-series>`
-    - :ref:`Volume by Venue<stocks.volume-by-venue>`
-
-
-.. _stocks.balance-sheet:
+.. _stocks.balance_sheet:
 
 Balance Sheet
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_balance_sheet
 
 .. _stocks.book:
 
 Book
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_book
 
 
 .. _stocks.cash_flow:
 
 Cash Flow
-~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_cash_flow
 
 .. _stocks.chart:
 
 Chart
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_chart
+
+
+.. _stocks.collections:
+
+Collections
+-----------
+
+The `Collections <https://iextrading.com/developer/docs/#collections>`__
+endpoint of Stocks allows retrieval of certain groups of companies, organized
+by:
+
+- sector
+- tag
+- list (see the :ref:`list endpoint <stocks.list>`)
+
+Use the top-level ``get_collections`` to access.
+
+**Tag**
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_collections
+
+    get_collections("Computer Hardware", output_format='pandas').head()
+
+**Sector**
+
+.. ipython:: python
+
+    get_collections("Industrials", output_format='pandas').head()
+
 
 
 .. _stocks.company:
 
 Company
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_company
 
+.. _stocks.crypto:
 
-.. _stocks.delayed-quote:
+Cryptocurrencies
+----------------
+
+As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
+
+The following tickers are supported:
+
+- Bitcoin USD (BTCUSDT)
+- EOS USD (EOSUSDT)
+- Ethereum USD (ETHUSDT)
+- Binance Coin USD (BNBUSDT)
+- Ontology USD (ONTUSDT)
+- Bitcoin Cash USD (BCCUSDT)
+- Cardano USD (ADAUSDT)
+- Ripple USD (XRPUSDT)
+- TrueUSD (TUSDUSDT)
+- TRON USD (TRXUSDT)
+- Litecoin USD (LTCUSDT)
+- Ethereum Classic USD (ETCUSDT)
+- MIOTA USD (IOTAUSDT)
+- ICON USD (ICXUSDT)
+- NEO USD (NEOUSDT)
+- VeChain USD (VENUSDT)
+- Stellar Lumens USD (XLMUSDT)
+- Qtum USD (QTUMUSDT)
+
+To retrieve quotes for all available cryptocurrencies, use the top-level
+``get_crypto_quotes`` function:
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_crypto_quotes
+
+    get_crypto_quotes(output_format='pandas').head()
+
+
+
+.. _stocks.delayed_quote:
 
 Delayed Quote
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_delayed_quote
 
@@ -195,7 +160,7 @@ Delayed Quote
 .. _stocks.dividends:
 
 Dividends
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_dividends
 
@@ -204,14 +169,33 @@ Dividends
 .. _stocks.earnings:
 
 Earnings
-~~~~~~~~~~~~~
+-------------
+
 .. automethod:: iexfinance.stocks.base.StockReader.get_earnings
 
+.. _stocks.earnings_today:
 
-.. _stocks.effective-spread:
+.. note:: Earnings Today supports JSON output formatting only.
+
+Earnings Today
+--------------
+
+Earnings Today was added to the Stocks endpoints in 2018. Access is provided
+through the top-level ``get_todays_earnings`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_todays_earnings
+
+    get_todays_earnings()["bto"]
+
+
+
+
+.. _stocks.effective_spread:
 
 Effective Spread
-~~~~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_effective_spread
 
@@ -219,27 +203,108 @@ Effective Spread
 .. _stocks.estimates:
 
 Estimates
-~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_estimates
 
 .. _stocks.financials:
 
 Financials
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_financials
 
-.. _stocks.income-statement:
+
+.. _stocks.historical
+
+Historical Prices
+-----------------
+
+Historical time series data is available through the
+``get_historical_data`` and ``get_historical_intraday`` functions of
+``stocks``, which
+source the
+`chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
+
+Daily data can be retrieved from up to 5 years before the current date, and
+historical data up to 3 months prior to the current date.
+
+Daily
+^^^^^
+
+To obtain daily historical data, use ``get_historical_data``.
+
+.. autofunction:: get_historical_data
+
+
+If no date parameters are passed, the start date will default to 2015/1/1
+and the end date will default to the current date.
+
+
+.. ipython:: python
+    :okwarning:
+
+    from iexfinance.stocks import get_historical_data
+    from datetime import datetime
+
+    start = datetime(2017, 2, 9)
+    end = datetime(2017, 5, 24)
+
+    f = get_historical_data('AAPL', start, end, output_format='pandas')
+    f.loc["2017-02-09"]
+
+
+Minutely
+^^^^^^^^
+
+To obtain one-minute intraday data for a given date, use
+``get_historical_intraday``. **Note: this endpoint has a maximum of one symbol
+and a single date.**
+
+.. autofunction:: get_historical_intraday
+
+.. ipython:: python
+
+    from datetime import datetime
+    from iexfinance.stocks import get_historical_intraday
+
+    date = datetime(2018, 11, 27)
+
+    data = get_historical_intraday("AAPL", date, output_format='pandas')
+    data.head()
+
+
+
+.. _stocks.income_statement:
 
 Income Statement
-~~~~~~~~~~~~~~~~
+----------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_income_statement
 
-.. _stocks.key-stats:
+.. _stocks.ipo_calendar:
+
+IPO Calendar
+------------
+
+IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
+through the top-level ``get_ipo_calendar`` function.
+
+There are two possible values for the ``period`` parameter, of which
+``upcoming-ipos`` is the default. ``today-ipos`` is also available.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_ipo_calendar
+
+    get_ipo_calendar()["rawData"][0]
+
+
+
+
+.. _stocks.key_stats:
 
 Key Stats
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_key_stats
 
@@ -247,43 +312,56 @@ Key Stats
 .. _stocks.list:
 
 List
-~~~~~~~~~~~~~
+-------------
 .. seealso:: :ref:`Market Movers<stocks.movers>`
 
 
-.. _stocks.largest-trades:
+.. _stocks.largest_trades:
 
 Largest Trades
-~~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_largest_trades
 
 
 .. _stocks.logo:
 
 Logo
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_logo
 
+.. _stocks.market_volume:
+
+Market Volume (U.S)
+-------------------
+
+Market Volume returns real-time traded volume on U.S. Markets. Access is
+provided through the top-level ``get_market_volume`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_market_volume
+
+    get_market_volume()
 
 .. _stocks.news:
 
 News
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_news
 
 
 .. _stocks.ohlc:
 
 OHLC
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_ohlc
 
 
-.. _stocks.open-close:
+.. _stocks.open_close:
 
-Open/Close
-~~~~~~~~~~~~~
+Open/Close Price
+----------------
 .. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
 
 
@@ -293,14 +371,14 @@ Open/Close
 .. _stocks.peers:
 
 Peers
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_peers
 
 
 .. _stocks.previous_day_prices:
 
 Previous Day Prices
-~~~~~~~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_previous
 
@@ -308,7 +386,7 @@ Previous Day Prices
 .. _stocks.price:
 
 Price
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_price
 
@@ -316,14 +394,14 @@ Price
 .. _stocks.price_target:
 
 Price Target
-~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_price_target
 
 .. _stocks.quote:
 
 Quote
-~~~~~~~~~~~~~
+-------------
 .. automethod:: iexfinance.stocks.base.StockReader.get_quote
 
 
@@ -331,37 +409,51 @@ Quote
 
 
 Relevant Stocks
-~~~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_relevant
+
+.. _stocks.sector:
+
+Sector Performance
+------------------
+
+Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_sector_performance
+
+    get_sector_performance(output_format='pandas')
+
 
 
 .. _stocks.splits:
 
 Splits
-~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_splits
 
 
-.. _stocks.time-series:
+.. _stocks.time_series:
 
 Time Series
-~~~~~~~~~~~~~
+-------------
 .. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_time_series
 
 
-.. _stocks.volume-by-venue:
+.. _stocks.volume_by_venue:
 
 Volume by Venue
-~~~~~~~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_volume_by_venue
 
 
-.. _stocks.field-methods:
+.. _stocks.field_methods:
 
 Field Methods
 -------------
@@ -373,10 +465,10 @@ methods for which they are available (namely :ref:`Quote<stocks.quote>`
 and :ref:`Key Stats<stocks.key-stats>`).
 
 
-.. _stocks.key-stats-field-methods:
+.. _stocks.key_stats_field_methods:
 
 Key Stats
-~~~~~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_beta
 .. automethod:: iexfinance.stocks.base.StockReader.get_short_interest
@@ -387,10 +479,10 @@ Key Stats
 .. automethod:: iexfinance.stocks.base.StockReader.get_eps_consensus
 
 
-.. _stocks.quote-field-methods:
+.. _stocks.quote_field_methods:
 
 Quote
-~~~~~
+-------------
 
 .. automethod:: iexfinance.stocks.base.StockReader.get_company_name
 .. automethod:: iexfinance.stocks.base.StockReader.get_sector
@@ -409,7 +501,7 @@ Quote
 Examples
 --------
 
-.. _stocks.examples-endpoint-methods:
+.. _stocks.examples_endpoint_methods:
 
 Endpoint Methods
 ~~~~~~~~~~~~~~~~
@@ -462,7 +554,7 @@ Lists of fields are acceptable as well:
 .. note:: The desired fields must **exactly** match the field key names as
         listed in the IEX docs.
 
-.. _stocks.passing-parameters:
+.. _stocks.passing_parameters:
 
 Passing Parameters
 ~~~~~~~~~~~~~~~~~~
@@ -487,7 +579,7 @@ by default, News returns the last 10 items (`last is 10 by default`), but we can
 
 With a custom value specified, News now returns the previous 35 items.
 
-.. _stocks.output-formatting:
+.. _stocks.output_formatting:
 
 Output Formatting
 ~~~~~~~~~~~~~~~~~
@@ -510,7 +602,7 @@ instantiated:
 
 
 
-.. _stocks.examples-field-methods:
+.. _stocks.examples_field-methods:
 
 Field Methods
 ~~~~~~~~~~~~~
@@ -562,130 +654,4 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
     get_market_gainers()[0]
 
-.. _stocks.crypto:
 
-Cryptocurrencies
-----------------
-
-As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
-
-The following tickers are supported:
-
-- Bitcoin USD (BTCUSDT)
-- EOS USD (EOSUSDT)
-- Ethereum USD (ETHUSDT)
-- Binance Coin USD (BNBUSDT)
-- Ontology USD (ONTUSDT)
-- Bitcoin Cash USD (BCCUSDT)
-- Cardano USD (ADAUSDT)
-- Ripple USD (XRPUSDT)
-- TrueUSD (TUSDUSDT)
-- TRON USD (TRXUSDT)
-- Litecoin USD (LTCUSDT)
-- Ethereum Classic USD (ETCUSDT)
-- MIOTA USD (IOTAUSDT)
-- ICON USD (ICXUSDT)
-- NEO USD (NEOUSDT)
-- VeChain USD (VENUSDT)
-- Stellar Lumens USD (XLMUSDT)
-- Qtum USD (QTUMUSDT)
-
-To retrieve quotes for all available cryptocurrencies, use the top-level
-``get_crypto_quotes`` function:
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_crypto_quotes
-
-    get_crypto_quotes(output_format='pandas').head()
-
-
-.. _stocks.collections:
-
-Collections
------------
-
-The `Collections <https://iextrading.com/developer/docs/#collections>`__
-endpoint of Stocks allows retrieval of certain groups of companies, organized
-by:
-
-- sector
-- tag
-- list (see the :ref:`list endpoint <stocks.list>`)
-
-Use the top-level ``get_collections`` to access.
-
-**Tag**
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_collections
-
-    get_collections("Computer Hardware", output_format='pandas').head()
-
-**Sector**
-
-.. ipython:: python
-
-    get_collections("Industrials", output_format='pandas').head()
-
-.. _stocks.sector:
-
-Sector Performance
-------------------
-
-Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_sector_performance
-
-    get_sector_performance(output_format='pandas')
-
-.. _stocks.earnings_today:
-
-.. note:: Earnings Today and IPO Calendar support JSON output formatting only.
-
-Earnings Today
---------------
-
-Earnings Today was added to the Stocks endpoints in 2018. Access is provided
-through the top-level ``get_todays_earnings`` function.
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_todays_earnings
-
-    get_todays_earnings()["bto"]
-
-.. _stocks.ipo_calendar:
-
-IPO Calendar
-------------
-
-IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
-through the top-level ``get_ipo_calendar`` function.
-
-There are two possible values for the ``period`` parameter, of which
-``upcoming-ipos`` is the default. ``today-ipos`` is also available.
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_ipo_calendar
-
-    get_ipo_calendar()["rawData"][0]
-
-
-.. _stocks.market_volume:
-
-Market Volume
--------------
-
-Market Volume returns real-time traded volume on U.S. Markets. Access is
-provided through the top-level ``get_market_volume`` function.
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_market_volume
-
-    get_market_volume()

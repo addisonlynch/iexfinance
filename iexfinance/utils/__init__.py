@@ -58,6 +58,15 @@ def cloud_endpoint(func):
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
         if self.version == 'v1':
-            raise IEXVersionError()
+            raise IEXVersionError("IEX Cloud")
+        return func(self, *args, **kwargs)
+    return _wrapped_function
+
+
+def legacy_endpoint(func):
+    @wraps(func)
+    def _wrapped_function(self, *args, **kwargs):
+        if self.version != 'v1':
+            raise IEXVersionError("(legacy) IEX Developer API version 1.0")
         return func(self, *args, **kwargs)
     return _wrapped_function
