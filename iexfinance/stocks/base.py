@@ -158,8 +158,8 @@ class StockReader(_IEXBase):
         ----------
         range: str, default '1m', optional
             Chart range to return. See docs.
-            Choose from ['5y','2y','1y','ytd','6m','3m','1m','1d','date',
-            'dynamic']
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`,`1d`,`date`,
+            `dynamic`]
             Choosing 'date' will return  IEX-only data by minute for a
             specified date in the format YYYYMMDD if available.
             Currently supporting trailing 30 calendar days.
@@ -209,9 +209,6 @@ class StockReader(_IEXBase):
         -------
         dict or pandas.DataFrame
             Stocks Company endpoint data
-            Includes the following keys/columns: ['symbol','companyName',
-            'exchange','indsutry','website','description','CEO',
-            'issueType','sector','tags']
         """
         return self._get_endpoint("company", params=kwargs)
 
@@ -223,9 +220,6 @@ class StockReader(_IEXBase):
         -------
         dict or pandas.DataFrame
             Stocks Delayed Quote endpoint data
-            Includes the following keys/columns: ['symbol',
-            'delayedPrice', 'delayedSize','delayedPriceTime',
-            'processedTime']
         """
         return self._get_endpoint("delayed-quote", params=kwargs)
 
@@ -237,16 +231,12 @@ class StockReader(_IEXBase):
         ----------
         range: str, default '1m', optional
             Time period of dividends to return
-            Choose from ['5y','2y','1y','ytd','6m','3m','1m']
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`]
 
         Returns
         -------
-        list of dicts or pandas.DataFrame
+        list of dict or pandas.DataFrame
             Stocks Dividends endpoint data
-            Includes the following keys/columns: ['exDate',
-            'paymentDate', 'recordDate', 'declaredDate',
-            'amount', 'flag', 'type', 'qualified',
-            'indicated']
         """
         def fmt(out):
             return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
@@ -272,11 +262,6 @@ class StockReader(_IEXBase):
         -------
         dict or pandas.DataFrame
             Stocks Earnings endpoint data
-            Includes the following keys/columns: ['actualEPS', 'consensualEPS',
-            'estimatedEPS', 'announceTime', 'numberOfEstimates',
-            'EPSSurpriseDollar', 'EPSReportDate', 'fiscalPeriod',
-            'fiscalEndDate', 'yearAgo', 'yearAgoChangePercent',
-            'estimatedChangePercent', 'symbolId']
         """
         def fmt(out):
             return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
@@ -303,9 +288,6 @@ class StockReader(_IEXBase):
         -------
         list or pandas.DataFrame
             Stocks Effective Spread endpoint data
-            Includes the following keys/columns: ['volume',
-            'venue', 'venueName', 'effectiveSpread',
-            'effectiveQuoted', 'priceImprovement']
         """
         return self._get_endpoint("effective-spread", params=kwargs)
 
@@ -321,13 +303,6 @@ class StockReader(_IEXBase):
         -------
         dict or pandas.DataFrame
             Stocks Financials endpoint data
-            Includes the following keys/columns: ['reportDate', 'grossProfit',
-            'costOfRevenue', 'operatingRevenue', 'totalRevenue',
-            'operatingIncome', 'netIncome', 'researchAndDevelopment',
-            'operatingExpense', 'currentAssets', 'totalAsets',
-            totalLiabilities', 'currentCash', 'currentDebt', 'totalCash',
-            'totalDebt', 'shareholderEquity', 'cashChange', 'cashFlow',
-            'operatingGainsLosses']
         """
         def fmt(out):
             return {symbol: out[symbol].get("financials", []) for symbol in
@@ -355,20 +330,6 @@ class StockReader(_IEXBase):
         -------
         dict or pandas.DataFrame
             Stocks Key Stats endpoint data
-            Includes the following keys/columns: ['companyName', 'marketCap',
-            'beta', 'week52high', 'week52low', 'shortInterest', 'shortDate',
-            'dividendRate', 'dividendYield', 'exDividendDate', 'latestEPS',
-            'latestEPSDate', 'sharesOutstanding', 'float', 'returnOnEquity',
-            'consensusEPS', 'numberOfEstimates', 'symbol', 'EBITDA', 'revenue',
-            'grossProfit', 'cash', 'debt', ttmEPS', revenuePerShare',
-            'revenuePerEmployee', 'peRatioHigh', 'peRatioLow',
-            'EPSSurpriseDollar', 'EPSSurprisePercent', 'returnOnAssets',
-            'returnOnCapital', 'profitMargin', 'priceToSales', 'priceToBook',
-            'day200MovingAvg', 'day50MovingAvg', 'institutionPercent',
-            'insiderPercent', 'shortRatio', 'year5ChangePercent',
-            'year2ChangePercent', 'year1ChangePercent', 'ytdChangePercent',
-            'month6ChangePercent', 'month3ChangePercent', 
-            'month1ChangePercent', 'day5ChangePercent']
         """
         return self._get_endpoint("stats", params=kwargs)
 
