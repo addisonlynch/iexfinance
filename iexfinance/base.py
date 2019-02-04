@@ -191,7 +191,7 @@ class _IEXBase(object):
         Output formatting handler
         """
         if self.output_format == 'pandas':
-            if fmt_p:
+            if fmt_p is not None:
                 return fmt_p(out)
             else:
                 return self._convert_output(out)

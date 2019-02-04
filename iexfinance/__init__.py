@@ -1,6 +1,5 @@
 from iexfinance import stocks
 from iexfinance.base import _IEXBase
-from iexfinance.stocks.base import StockReader
 from iexfinance.market import TOPS, Last, DEEP, Book
 from iexfinance.stats import (IntradayReader, RecentReader, RecordsReader,
                               DailySummaryReader, MonthlySummaryReader)

@@ -14,6 +14,7 @@ from iexfinance.stocks import (get_historical_data, get_market_gainers,
                                get_todays_earnings, get_ipo_calendar,
                                get_historical_intraday, Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
+from iexfinance.utils.testing import using_cloud
 
 import six
 
@@ -1193,12 +1194,12 @@ class TestHistoricalIntraday(object):
         assert isinstance(data, list)
 
 
-@pytest.mark.cloud
+@pytest.mark.skipif(using_cloud() is False, reason="IEX Cloud test only.")
 class TestMarketVolume(object):
     pass
 
 
-@pytest.mark.cloud
+@pytest.mark.skipif(using_cloud() is False, reason="IEX Cloud test only.")
 class TestMarketCloud(object):
     """
     Dev note: These are very rudimentary tests which check output formatting

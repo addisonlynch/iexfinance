@@ -77,7 +77,7 @@ class StockReader(_IEXBase):
             params.update({"filter": filter_})
         self.optional_params = params
         self.endpoints = [endpoint]
-        data = self.fetch(fmt_j=fmt_j, fmt_p=no_pandas)
+        data = self.fetch(fmt_j=fmt_j, fmt_p=fmt_p)
         # IEX Cloud returns multiple symbol requests as as a list of dicts
         # so convert to dict of dicts
         if isinstance(data, list):

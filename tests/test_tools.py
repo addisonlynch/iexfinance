@@ -2,9 +2,7 @@ import pandas as pd
 import pytest
 
 from iexfinance.tools.api import get_api_status
-from iexfinance.tools.account import (get_usage, get_metadata,
-                                      allow_pay_as_you_go,
-                                      disallow_pay_as_you_go)
+from iexfinance.tools.account import (get_usage, get_metadata)
 
 
 class TestAPIStatus(object):
