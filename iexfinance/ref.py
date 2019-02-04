@@ -1,6 +1,7 @@
 import datetime
 
 from .base import _IEXBase
+from iexfinance.utils import cloud_endpoint
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -50,3 +51,32 @@ class ListedSymbolDir(ReferenceReader):
     @property
     def endpoint(self):
         return 'symbol-directory'
+
+
+class CloudRef(_IEXBase):
+
+    @cloud_endpoint
+    def fetch(self):
+        return super(CloudRef, self).fetch()
+
+    @property
+    def url(self):
+        return "ref-data/%s" % self.endpoint
+
+    @property
+    def endpoint(self):
+        raise NotImplementedError
+
+
+class Symbols(_IEXBase):
+
+    @property
+    def endpoint(self):
+        return "symbols"
+
+
+class IEXSymbols(_IEXBase):
+
+    @property
+    def endpoint(self):
+        return "iex/symbols"

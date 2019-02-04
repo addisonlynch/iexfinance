@@ -18,20 +18,33 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :caption: Getting Started
 
-   install.rst
-   usage.rst
-   stocks.rst
-   historical.rst
-   ref.rst
-   market.rst
-   stats.rst
-   caching.rst
-   testing.rst
-   whatsnew.rst
-   about.rst
-   tutorial.rst
-   modules.rst
+   whatsnew
+   install
+   usage
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Endpoints
+
+   account
+   stocks
+   historical
+   ref
+   market
+   stats
+   apistatus
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Package Information
+
+   about
+   caching
+   testing
+   tutorial
+   modules
 
 Modules
 -------

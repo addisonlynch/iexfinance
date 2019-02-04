@@ -6,3 +6,48 @@ v0.4.0 (TBA)
 
 This is a major release from 0.3.0, and we recommend that all users
 update.
+
+
+Highlights
+
+- Adds support for `IEX Cloud <https://iexcloud.io>`__
+
+.. whatsnew_040.new-endpoints:
+
+New Endpoints
+~~~~~~~~~~~~~
+
+**Stock**
+
+* /balance-sheet (``get_balance_sheet``)
+* /cash-flow (``get_cash_flow``)
+* /estimates (``get_estimates``)
+* /income (``get_income_statement``)
+
+**Account**
+
+* /account/usage (``iexfinance.tools.account.get_usage``)
+* /account/metadata (``iexfinance.tools.account.get_metadata``)
+* /account/payasyougo (``iexfinance.tools.account.allow_pay_as_you_go``,
+  ``iexfinance.tools.account.disallow_pay_as_you_go``)
+
+**Reference Data**
+
+* /ref-data/symbols (``iexfinance.get_symbols``)
+* /ref-data/iex-symbols (``iexfinance.get_iex_symbols``)
+
+
+.. whatsnew_040.enhancements:
+
+Enhancements
+~~~~~~~~~~~~
+
+- Select between IEX API versions using the IEX_API_VERSION environment variable
+
+
+.. whatsnew_040.backwards:
+
+Backwards Incompatible Changes
+~~~~~~~~~~~~
+
+- Deprecated ``iexfinance.Stock`` and ``iexfinance.get_historical_data`` have been removed. These are now available as ``iexfinance.stocks.Stock`` and ``iexfinance.stocks.get_historical_data``.

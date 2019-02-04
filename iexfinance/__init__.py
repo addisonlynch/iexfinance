@@ -1,61 +1,21 @@
 from iexfinance import stocks
 from iexfinance.base import _IEXBase
-from iexfinance.stocks.base import StockReader
 from iexfinance.market import TOPS, Last, DEEP, Book
 from iexfinance.stats import (IntradayReader, RecentReader, RecordsReader,
                               DailySummaryReader, MonthlySummaryReader)
 from iexfinance.ref import (CorporateActions, Dividends, NextDay,
-                            ListedSymbolDir)
+                            ListedSymbolDir, Symbols, IEXSymbols)
 from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
 __version__ = '0.3.5'
 
-WNG_MSG = "%s is moved to iexfinance.%s. This function will in be "\
-          "deprecated in v0.4.0"
-
 # Data provided for free by IEX
 # Data is furnished in compliance with the guidelines promulgated in the IEX
 # API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
-
-
-def Stock(symbols=None, **kwargs):
-    """
-    Top-level function to to retrieve data from the IEX Stocks endpoints
-
-    WARNING: Moving to ``iexfinance.stocks``. Will be deprecated in v0.4.0.
-
-    Parameters
-    ----------
-    symbols: str or list
-        A string or list of strings that are valid symbols
-    output_format: str, default 'json', optional
-        Desired output format for requests
-    kwargs:
-        Additional Request Parameters (see base class)
-    Returns
-    -------
-    stock.StockReader
-        A StockReader instance
-    """
-    import warnings
-    warnings.warn(WNG_MSG % ("Stock", "stocks"))
-    if isinstance(symbols, str) and symbols:
-        return StockReader([symbols], **kwargs)
-    elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
-        return StockReader(symbols, **kwargs)
-    else:
-        raise ValueError("Please input a symbol or list of symbols")
-
-
-# MOVED to iexfinance.stocks
-def get_historical_data(*args, **kwargs):
-    import warnings
-    warnings.warn(WNG_MSG % ("get_historical_data", "stocks"))
-    return stocks.get_historical_data(*args, **kwargs)
 
 
 def get_market_gainers(*args, **kwargs):
@@ -155,6 +115,38 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
     kwargs: Additional Request Parameters (see base class)
     """
     return ListedSymbolDir(start=start, **kwargs)
+
+
+# IEX Cloud reference endpoints
+
+def get_symbols(**kwargs):
+    """
+    Top-level function to retrieve array of all symbols that IEX Cloud supports
+    for API calls
+
+    Reference: https://iexcloud.io/docs/api/#symbols
+
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+    Data Weighting: ``100`` per call
+    """
+    return Symbols(**kwargs).fetch()
+
+
+def get_iex_symbols(**kwargs):
+    """
+    Top-level function to retrieve array of all symbols the Investor's Exchange
+    supports for trading
+
+    Reference: https://iexcloud.io/docs/api/#iex-symbols
+
+    .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+    Data Weighting: ``Free``
+    """
+    return IEXSymbols(**kwargs).fetch()
 
 
 def get_market_tops(symbols=None, **kwargs):
