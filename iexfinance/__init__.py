@@ -1,10 +1,11 @@
 from iexfinance import stocks
 from iexfinance.base import _IEXBase
-from iexfinance.market import TOPS, Last, DEEP, Book
-from iexfinance.stats import (IntradayReader, RecentReader, RecordsReader,
-                              DailySummaryReader, MonthlySummaryReader)
-from iexfinance.refdata import (CorporateActions, Dividends, NextDay,
-                                ListedSymbolDir)
+from iexfinance.iexdata.base import TOPS, Last, DEEP, Book
+from iexfinance.iexdata.base import (IntradayReader, RecentReader,
+                                     RecordsReader, DailySummaryReader,
+                                     MonthlySummaryReader)
+from iexfinance.refdata.base import (CorporateActions, Dividends, NextDay,
+                                     ListedSymbolDir)
 from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXQueryError
 

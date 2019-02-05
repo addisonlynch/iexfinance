@@ -2,11 +2,11 @@ import datetime
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.stocks.base import StockReader
+from iexfinance.stocks.base import Stock
 from iexfinance.utils.exceptions import IEXSymbolError
 
 
-class HistoricalReader(StockReader):
+class HistoricalReader(Stock):
     """
     A class to download historical data from the chart endpoint
 

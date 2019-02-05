@@ -5,7 +5,7 @@ from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
-class StockReader(_IEXBase):
+class Stock(_IEXBase):
     """
     Base class for obtaining data from the Stock endpoints of IEX.
     """
@@ -24,10 +24,16 @@ class StockReader(_IEXBase):
         symbols : string, array-like object (list, tuple, Series), or DataFrame
             Desired symbols for retrieval
         """
+        if isinstance(symbols, str) and symbols:
+            self.symbols = [symbols]
+        elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
+            self.symbols = symbols
+        else:
+            raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
         self.n_symbols = len(self.symbols)
         self.endpoints = []
-        super(StockReader, self).__init__(**kwargs)
+        super(Stock, self).__init__(**kwargs)
 
     def get_all(self):
         """
@@ -102,7 +108,7 @@ class StockReader(_IEXBase):
         return data
 
     def _output_format_one(self, out, fmt_p=None, fmt_j=None):
-        data = super(StockReader, self)._output_format(out, fmt_p=fmt_p)
+        data = super(Stock, self)._output_format(out, fmt_p=fmt_p)
         if len(self.symbols) == 1 and self.output_format == 'json':
             return data[self.symbols[0]]
         return data

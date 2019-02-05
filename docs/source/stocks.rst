@@ -14,7 +14,7 @@ endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ is
 available through the top-level ``Stock`` function.
 
 Calling this function with a symbol (*str*) or list of symbols (*list*)
-will return a ``StockReader`` instance, which allows retrieval of
+will return a ``Stock`` instance, which allows retrieval of
 endpoints  (`Earnings
 <https://iextrading.com/developer/#earnings>`__,
 `Quote <https://iextrading.com/developer/#quote>`__, etc) for up to 100 symbols
@@ -50,13 +50,13 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 Balance Sheet
 -------------
 
-.. automethod:: base.StockReader.get_balance_sheet
+.. automethod:: base.Stock.get_balance_sheet
 
 .. _stocks.book:
 
 Book
 -------------
-.. automethod:: base.StockReader.get_book
+.. automethod:: base.Stock.get_book
 
 
 .. _stocks.cash_flow:
@@ -64,13 +64,13 @@ Book
 Cash Flow
 -------------
 
-.. automethod:: base.StockReader.get_cash_flow
+.. automethod:: base.Stock.get_cash_flow
 
 .. _stocks.chart:
 
 Chart
 -------------
-.. automethod:: base.StockReader.get_chart
+.. automethod:: base.Stock.get_chart
 
 
 .. _stocks.collections:
@@ -109,7 +109,7 @@ Use the top-level ``get_collections`` to access.
 Company
 -------------
 
-.. automethod:: base.StockReader.get_company
+.. automethod:: base.Stock.get_company
 
 .. _stocks.crypto:
 
@@ -155,7 +155,7 @@ To retrieve quotes for all available cryptocurrencies, use the top-level
 Delayed Quote
 -------------
 
-.. automethod:: base.StockReader.get_delayed_quote
+.. automethod:: base.Stock.get_delayed_quote
 
 
 
@@ -164,7 +164,7 @@ Delayed Quote
 Dividends
 -------------
 
-.. automethod:: base.StockReader.get_dividends
+.. automethod:: base.Stock.get_dividends
 
 
 
@@ -173,7 +173,7 @@ Dividends
 Earnings
 -------------
 
-.. automethod:: base.StockReader.get_earnings
+.. automethod:: base.Stock.get_earnings
 
 .. _stocks.earnings_today:
 
@@ -199,7 +199,7 @@ through the top-level ``get_todays_earnings`` function.
 Effective Spread
 -------------
 
-.. automethod:: base.StockReader.get_effective_spread
+.. automethod:: base.Stock.get_effective_spread
 
 
 .. _stocks.estimates:
@@ -207,13 +207,13 @@ Effective Spread
 Estimates
 -------------
 
-.. automethod:: base.StockReader.get_estimates
+.. automethod:: base.Stock.get_estimates
 
 .. _stocks.financials:
 
 Financials
 -------------
-.. automethod:: base.StockReader.get_financials
+.. automethod:: base.Stock.get_financials
 
 
 .. _stocks.historical
@@ -281,7 +281,7 @@ and a single date.**
 Income Statement
 ----------------
 
-.. automethod:: base.StockReader.get_income_statement
+.. automethod:: base.Stock.get_income_statement
 
 .. _stocks.ipo_calendar:
 
@@ -308,7 +308,7 @@ There are two possible values for the ``period`` parameter, of which
 Key Stats
 -------------
 
-.. automethod:: base.StockReader.get_key_stats
+.. automethod:: base.Stock.get_key_stats
 
 
 .. _stocks.list:
@@ -322,7 +322,7 @@ List
 
 Largest Trades
 -------------
-.. automethod:: base.StockReader.get_largest_trades
+.. automethod:: base.Stock.get_largest_trades
 
 
 .. _stocks.logo:
@@ -330,7 +330,7 @@ Largest Trades
 Logo
 -------------
 
-.. automethod:: base.StockReader.get_logo
+.. automethod:: base.Stock.get_logo
 
 .. _stocks.market_volume:
 
@@ -350,14 +350,14 @@ provided through the top-level ``get_market_volume`` function.
 
 News
 -------------
-.. automethod:: base.StockReader.get_news
+.. automethod:: base.Stock.get_news
 
 
 .. _stocks.ohlc:
 
 OHLC
 -------------
-.. automethod:: base.StockReader.get_ohlc
+.. automethod:: base.Stock.get_ohlc
 
 
 .. _stocks.open_close:
@@ -367,14 +367,14 @@ Open/Close Price
 .. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
 
 
-.. automethod:: base.StockReader.get_open_close
+.. automethod:: base.Stock.get_open_close
 
 
 .. _stocks.peers:
 
 Peers
 -------------
-.. automethod:: base.StockReader.get_peers
+.. automethod:: base.Stock.get_peers
 
 
 .. _stocks.previous_day_prices:
@@ -382,7 +382,7 @@ Peers
 Previous Day Prices
 -------------
 
-.. automethod:: base.StockReader.get_previous
+.. automethod:: base.Stock.get_previous
 
 
 .. _stocks.price:
@@ -390,7 +390,7 @@ Previous Day Prices
 Price
 -------------
 
-.. automethod:: base.StockReader.get_price
+.. automethod:: base.Stock.get_price
 
 
 .. _stocks.price_target:
@@ -398,13 +398,13 @@ Price
 Price Target
 -------------
 
-.. automethod:: base.StockReader.get_price_target
+.. automethod:: base.Stock.get_price_target
 
 .. _stocks.quote:
 
 Quote
 -------------
-.. automethod:: base.StockReader.get_quote
+.. automethod:: base.Stock.get_quote
 
 
 .. _stocks.relevant_stocks:
@@ -413,7 +413,7 @@ Quote
 Relevant Stocks
 -------------
 
-.. automethod:: base.StockReader.get_relevant
+.. automethod:: base.Stock.get_relevant
 
 .. _stocks.sector:
 
@@ -435,7 +435,7 @@ Sector Performance was added to the Stocks endpoints in 2018. Access to this end
 Splits
 -------------
 
-.. automethod:: base.StockReader.get_splits
+.. automethod:: base.Stock.get_splits
 
 
 .. _stocks.time_series:
@@ -444,7 +444,7 @@ Time Series
 -------------
 .. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
 
-.. automethod:: base.StockReader.get_time_series
+.. automethod:: base.Stock.get_time_series
 
 
 .. _stocks.volume_by_venue:
@@ -452,7 +452,7 @@ Time Series
 Volume by Venue
 -------------
 
-.. automethod:: base.StockReader.get_volume_by_venue
+.. automethod:: base.Stock.get_volume_by_venue
 
 
 .. _stocks.field_methods:
@@ -472,13 +472,13 @@ and :ref:`Key Stats<stocks.key-stats>`).
 Key Stats
 -------------
 
-.. automethod:: base.StockReader.get_beta
-.. automethod:: base.StockReader.get_short_interest
-.. automethod:: base.StockReader.get_short_ratio
-.. automethod:: base.StockReader.get_latest_eps
-.. automethod:: base.StockReader.get_shares_outstanding
-.. automethod:: base.StockReader.get_float
-.. automethod:: base.StockReader.get_eps_consensus
+.. automethod:: base.Stock.get_beta
+.. automethod:: base.Stock.get_short_interest
+.. automethod:: base.Stock.get_short_ratio
+.. automethod:: base.Stock.get_latest_eps
+.. automethod:: base.Stock.get_shares_outstanding
+.. automethod:: base.Stock.get_float
+.. automethod:: base.Stock.get_eps_consensus
 
 
 .. _stocks.quote_field_methods:
@@ -486,15 +486,15 @@ Key Stats
 Quote
 -------------
 
-.. automethod:: base.StockReader.get_company_name
-.. automethod:: base.StockReader.get_sector
-.. automethod:: base.StockReader.get_open
-.. automethod:: base.StockReader.get_close
-.. automethod:: base.StockReader.get_years_high
-.. automethod:: base.StockReader.get_years_low
-.. automethod:: base.StockReader.get_ytd_change
-.. automethod:: base.StockReader.get_volume
-.. automethod:: base.StockReader.get_market_cap
+.. automethod:: base.Stock.get_company_name
+.. automethod:: base.Stock.get_sector
+.. automethod:: base.Stock.get_open
+.. automethod:: base.Stock.get_close
+.. automethod:: base.Stock.get_years_high
+.. automethod:: base.Stock.get_years_low
+.. automethod:: base.Stock.get_ytd_change
+.. automethod:: base.Stock.get_volume
+.. automethod:: base.Stock.get_market_cap
 
 
 .. _stocks.examples:
@@ -594,7 +594,7 @@ Most endpoints allow for pandas DataFrame-formatted output:
 
     aapl.get_quote().head()
 
-We can also change the output format once our ``StockReader`` object has been
+We can also change the output format once our ``Stock`` object has been
 instantiated:
 
 .. ipython:: python

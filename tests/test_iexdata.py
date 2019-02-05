@@ -3,7 +3,7 @@ from datetime import datetime
 import pytest
 from pandas import DataFrame
 
-from iexfinance.iexdata import (get_tops, get_last, get_deep, get_book,
+from iexfinance.iexdata import (get_tops, get_last, get_deep, get_deep_book,
                                 get_stats_intraday, get_stats_recent,
                                 get_stats_records, get_stats_daily,
                                 get_stats_monthly)
@@ -92,19 +92,19 @@ class TestMarketData(object):
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_json_default(self):
         with pytest.raises(ValueError):
-            get_book()
+            get_deep_book()
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_Book_json_syms(self):
-        js = get_book("AAPL")
-        js2 = get_book(["AAPL", "TSLA"])
+        js = get_deep_book("AAPL")
+        js2 = get_deep_book(["AAPL", "TSLA"])
 
         assert isinstance(js, dict) and len(js) == 1
         assert isinstance(js2, dict) and len(js2) == 2
 
     def test_Book_too_many_symbols(self):
         with pytest.raises(ValueError):
-            get_book(self.bad)
+            get_deep_book(self.bad)
 
 
 class TestStats(object):

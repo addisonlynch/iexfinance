@@ -169,7 +169,7 @@ Endpoints
 Stock Endpoints
 ^^^^^^^^^^^^^^^
 
-The ``Stock`` function creates a ``StockReader`` instance which has a method to
+The ``Stock`` function creates a ``Stock`` instance which has a method to
 retrieve each of the Stocks endpoints (``get_quote``, ``get_book``,
 ``get_volume_by_venue``, etc.):
 

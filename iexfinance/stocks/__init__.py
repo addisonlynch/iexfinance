@@ -1,4 +1,4 @@
-from iexfinance.stocks.base import StockReader
+from iexfinance.stocks.base import Stock # noqa
 from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.crypto import CryptoReader
 from iexfinance.stocks.historical import HistoricalReader, IntradayReader
@@ -12,31 +12,6 @@ from iexfinance.utils import _sanitize_dates
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
-
-
-def Stock(symbols=None, **kwargs):
-    """
-    Function to to retrieve data from the IEX Stocks endpoints
-
-    Parameters
-    ----------
-    symbols: str or list
-        A string or list of strings that are valid symbols
-    output_format: str, default 'json', optional
-        Desired output format for requests
-    kwargs:
-        Additional Request Parameters (see base class)
-    Returns
-    -------
-    stock.StockReader
-        A StockReader instance
-    """
-    if isinstance(symbols, str) and symbols:
-        return StockReader([symbols], **kwargs)
-    elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
-        return StockReader(symbols, **kwargs)
-    else:
-        raise ValueError("Please input a symbol or list of symbols")
 
 
 def get_historical_data(symbols, start=None, end=None, **kwargs):
