@@ -14,7 +14,6 @@ from iexfinance.stocks import (get_historical_data, get_market_gainers,
                                get_todays_earnings, get_ipo_calendar,
                                get_historical_intraday, Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
-from iexfinance.utils.testing import using_cloud
 
 import six
 

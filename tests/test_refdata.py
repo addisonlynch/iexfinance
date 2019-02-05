@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from iexfinance.refdata import (get_available_symbols,
+from iexfinance.refdata import (get_symbols,
                                 get_iex_corporate_actions, get_iex_dividends,
                                 get_iex_next_day_ex_date,
                                 get_iex_listed_symbol_dir)
@@ -14,18 +14,26 @@ class TestRef(object):
         self.keys = {"RecordID", "DailyListTimestamp", "CompanyName"}
         self.start = datetime(2017, 5, 4)
 
-    def test_get_available_symbols(self):
-        d = get_available_symbols()
+    def test_get_symbols(self):
+        d = get_symbols()
+        assert isinstance(d, list)
+        assert isinstance(d[0], dict)
+
+    def test_get_iex_symbols(self):
+        d = get_symbols()
+
         assert isinstance(d, list)
         assert isinstance(d[0], dict)
 
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
+    @pytest.mark.legacy
     def test_get_iex_corporate_actions(self):
         d = get_iex_corporate_actions()
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_get_iex_dividends(self):
@@ -33,6 +41,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_iex_next_day_ex_date(self):
@@ -40,6 +49,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_iex_listed_symbol_dir(self):
@@ -47,6 +57,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_get_iex_corporate_actions_dates(self):
@@ -54,6 +65,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_get_iex_dividends_dates(self):
@@ -61,6 +73,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_iex_next_day_ex_date_dates(self):
@@ -68,6 +81,7 @@ class TestRef(object):
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
 
+    @pytest.mark.legacy
     @pytest.mark.xfail(reason="New reference datapoints are not operational "
                        "yet as of 1/31/18.")
     def test_iex_listed_symbol_dir_dates(self):

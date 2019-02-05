@@ -31,9 +31,9 @@ iexfinance provides real-time financial data from the various IEX
 endpoints, including:
 
 - Stocks (`IEX Docs <https://iextrading.com/developer/docs/#stocks>`__)
-- Reference Data (`IEX Docs <https://iextrading.com/developer/docs/#reference-data>`__)
-- IEX Market Data (`IEX Docs <https://iextrading.com/developer/docs/#iex-market-data>`__)
-- IEX Stats (`IEX Docs <https://iextrading.com/developer/docs/#iex-stats>`__)
+- Reference Data (`IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
+- Investors Exchange Data (`IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
+- API System Metadata (`IEX Cloud Docs <https://iexcloud.io/docs/api/#api-system-metadata>`__)
 
 Documentation
 -------------

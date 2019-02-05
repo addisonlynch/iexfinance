@@ -1,6 +1,8 @@
 .. _stocks:
 
 
+.. currentmodule:: iexfinance.stocks
+
 Stocks
 ======
 
@@ -48,13 +50,13 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 Balance Sheet
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_balance_sheet
+.. automethod:: base.StockReader.get_balance_sheet
 
 .. _stocks.book:
 
 Book
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_book
+.. automethod:: base.StockReader.get_book
 
 
 .. _stocks.cash_flow:
@@ -62,13 +64,13 @@ Book
 Cash Flow
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_cash_flow
+.. automethod:: base.StockReader.get_cash_flow
 
 .. _stocks.chart:
 
 Chart
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_chart
+.. automethod:: base.StockReader.get_chart
 
 
 .. _stocks.collections:
@@ -107,7 +109,7 @@ Use the top-level ``get_collections`` to access.
 Company
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_company
+.. automethod:: base.StockReader.get_company
 
 .. _stocks.crypto:
 
@@ -153,7 +155,7 @@ To retrieve quotes for all available cryptocurrencies, use the top-level
 Delayed Quote
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_delayed_quote
+.. automethod:: base.StockReader.get_delayed_quote
 
 
 
@@ -162,7 +164,7 @@ Delayed Quote
 Dividends
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_dividends
+.. automethod:: base.StockReader.get_dividends
 
 
 
@@ -171,7 +173,7 @@ Dividends
 Earnings
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_earnings
+.. automethod:: base.StockReader.get_earnings
 
 .. _stocks.earnings_today:
 
@@ -197,7 +199,7 @@ through the top-level ``get_todays_earnings`` function.
 Effective Spread
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_effective_spread
+.. automethod:: base.StockReader.get_effective_spread
 
 
 .. _stocks.estimates:
@@ -205,13 +207,13 @@ Effective Spread
 Estimates
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_estimates
+.. automethod:: base.StockReader.get_estimates
 
 .. _stocks.financials:
 
 Financials
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_financials
+.. automethod:: base.StockReader.get_financials
 
 
 .. _stocks.historical
@@ -279,7 +281,7 @@ and a single date.**
 Income Statement
 ----------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_income_statement
+.. automethod:: base.StockReader.get_income_statement
 
 .. _stocks.ipo_calendar:
 
@@ -306,7 +308,7 @@ There are two possible values for the ``period`` parameter, of which
 Key Stats
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_key_stats
+.. automethod:: base.StockReader.get_key_stats
 
 
 .. _stocks.list:
@@ -320,7 +322,7 @@ List
 
 Largest Trades
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_largest_trades
+.. automethod:: base.StockReader.get_largest_trades
 
 
 .. _stocks.logo:
@@ -328,7 +330,7 @@ Largest Trades
 Logo
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_logo
+.. automethod:: base.StockReader.get_logo
 
 .. _stocks.market_volume:
 
@@ -348,14 +350,14 @@ provided through the top-level ``get_market_volume`` function.
 
 News
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_news
+.. automethod:: base.StockReader.get_news
 
 
 .. _stocks.ohlc:
 
 OHLC
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_ohlc
+.. automethod:: base.StockReader.get_ohlc
 
 
 .. _stocks.open_close:
@@ -365,14 +367,14 @@ Open/Close Price
 .. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
 
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_open_close
+.. automethod:: base.StockReader.get_open_close
 
 
 .. _stocks.peers:
 
 Peers
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_peers
+.. automethod:: base.StockReader.get_peers
 
 
 .. _stocks.previous_day_prices:
@@ -380,7 +382,7 @@ Peers
 Previous Day Prices
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_previous
+.. automethod:: base.StockReader.get_previous
 
 
 .. _stocks.price:
@@ -388,7 +390,7 @@ Previous Day Prices
 Price
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_price
+.. automethod:: base.StockReader.get_price
 
 
 .. _stocks.price_target:
@@ -396,13 +398,13 @@ Price
 Price Target
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_price_target
+.. automethod:: base.StockReader.get_price_target
 
 .. _stocks.quote:
 
 Quote
 -------------
-.. automethod:: iexfinance.stocks.base.StockReader.get_quote
+.. automethod:: base.StockReader.get_quote
 
 
 .. _stocks.relevant_stocks:
@@ -411,7 +413,7 @@ Quote
 Relevant Stocks
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_relevant
+.. automethod:: base.StockReader.get_relevant
 
 .. _stocks.sector:
 
@@ -433,7 +435,7 @@ Sector Performance was added to the Stocks endpoints in 2018. Access to this end
 Splits
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_splits
+.. automethod:: base.StockReader.get_splits
 
 
 .. _stocks.time_series:
@@ -442,7 +444,7 @@ Time Series
 -------------
 .. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_time_series
+.. automethod:: base.StockReader.get_time_series
 
 
 .. _stocks.volume_by_venue:
@@ -450,7 +452,7 @@ Time Series
 Volume by Venue
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_volume_by_venue
+.. automethod:: base.StockReader.get_volume_by_venue
 
 
 .. _stocks.field_methods:
@@ -470,13 +472,13 @@ and :ref:`Key Stats<stocks.key-stats>`).
 Key Stats
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_beta
-.. automethod:: iexfinance.stocks.base.StockReader.get_short_interest
-.. automethod:: iexfinance.stocks.base.StockReader.get_short_ratio
-.. automethod:: iexfinance.stocks.base.StockReader.get_latest_eps
-.. automethod:: iexfinance.stocks.base.StockReader.get_shares_outstanding
-.. automethod:: iexfinance.stocks.base.StockReader.get_float
-.. automethod:: iexfinance.stocks.base.StockReader.get_eps_consensus
+.. automethod:: base.StockReader.get_beta
+.. automethod:: base.StockReader.get_short_interest
+.. automethod:: base.StockReader.get_short_ratio
+.. automethod:: base.StockReader.get_latest_eps
+.. automethod:: base.StockReader.get_shares_outstanding
+.. automethod:: base.StockReader.get_float
+.. automethod:: base.StockReader.get_eps_consensus
 
 
 .. _stocks.quote_field_methods:
@@ -484,15 +486,15 @@ Key Stats
 Quote
 -------------
 
-.. automethod:: iexfinance.stocks.base.StockReader.get_company_name
-.. automethod:: iexfinance.stocks.base.StockReader.get_sector
-.. automethod:: iexfinance.stocks.base.StockReader.get_open
-.. automethod:: iexfinance.stocks.base.StockReader.get_close
-.. automethod:: iexfinance.stocks.base.StockReader.get_years_high
-.. automethod:: iexfinance.stocks.base.StockReader.get_years_low
-.. automethod:: iexfinance.stocks.base.StockReader.get_ytd_change
-.. automethod:: iexfinance.stocks.base.StockReader.get_volume
-.. automethod:: iexfinance.stocks.base.StockReader.get_market_cap
+.. automethod:: base.StockReader.get_company_name
+.. automethod:: base.StockReader.get_sector
+.. automethod:: base.StockReader.get_open
+.. automethod:: base.StockReader.get_close
+.. automethod:: base.StockReader.get_years_high
+.. automethod:: base.StockReader.get_years_low
+.. automethod:: base.StockReader.get_ytd_change
+.. automethod:: base.StockReader.get_volume
+.. automethod:: base.StockReader.get_market_cap
 
 
 .. _stocks.examples:

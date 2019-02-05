@@ -31,8 +31,7 @@ Contents
    account
    stocks
    refdata
-   market
-   stats
+   iexdata
    apistatus
 
 .. toctree::

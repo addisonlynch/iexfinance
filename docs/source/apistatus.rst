@@ -1,8 +1,9 @@
 .. _api_status:
 
+.. currentmodule:: iexfinance.apidata
+
 API System Metadata
 ===================
-
 
 .. _api_status.status:
 

@@ -9,9 +9,9 @@ from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXQueryError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.3.5'
+__version__ = '0.4.0'
 
-WNG_MSG = "%s is moved to iexfinance.%s. This funciton will be "\
+WNG_MSG = "%s is moved to iexfinance.%s. This function will be "\
           "deprecated in 0.4.1."
 
 # Data provided for free by IEX
@@ -115,7 +115,7 @@ def get_iex_next_day_ex_date(start=None, **kwargs):
 
 def get_iex_listed_symbol_dir(start=None, **kwargs):
     """
-    MOVED to iexfinance.refdata.get_symbols
+    MOVED to iexfinance.refdata.get_listed_symbol_dir
     """
     import warnings
     warnings.warn(WNG_MSG % ("get_iex_listed_symbol_dir",
@@ -145,78 +145,54 @@ def get_market_deep(symbols=None, **kwargs):
     """
     MOVED to iexfinance.iexdata.get_deep
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_market_deep", "iexdata.get_deep"))
     return DEEP(symbols, **kwargs).fetch()
 
 
 def get_market_book(symbols=None, **kwargs):
     """
-    Top-level function to obtain Book data for a symbol or list of symbols
-
-    Parameters
-    ----------
-    symbols: str or list, default None
-        A symbol or list of symbols
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_deep_book
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_market_book", "iexdata.get_deep_book"))
     return Book(symbols, **kwargs).fetch()
 
 
 def get_stats_intraday(**kwargs):
     """
-    Top-level function for obtaining data from the Intraday endpoint of IEX
-    Stats
-
-    Parameters
-    ----------
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_stats_intraday
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_stats_intraday",
+                             "iexdata.get_stats_intraday"))
     return IntradayReader(**kwargs).fetch()
 
 
 def get_stats_recent(**kwargs):
     """
-    Top-level function for obtaining data from the Recent endpoint of IEX Stats
-
-    Parameters
-    ----------
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_stats_recent
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_stats_recent", "iexdata.get_stats_recent"))
     return RecentReader(**kwargs).fetch()
 
 
 def get_stats_records(**kwargs):
     """
-    Top-level function for obtaining data from the Records endpoint of IEX
-    Stats
-
-    Parameters
-    ----------
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_stats_records
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_stats_records", "iexdata.get_stats_records"))
     return RecordsReader(**kwargs).fetch()
 
 
 def get_stats_daily(start=None, end=None, last=None, **kwargs):
     """
-    Top-level function for obtaining data from the Historical Daily endpoint
-    of IEX Stats
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        Start of data retrieval period
-    end: datetime.datetime, default None, optional
-        End of data retrieval period
-    last: int, default None, optional
-        Used in place of date range to retrieve previous number of trading days
-        (up to 90)
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_stats_daily
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_stats_daily", "iexdata.get_stats_daily"))
     start, end = _sanitize_dates(start, end)
     return DailySummaryReader(start=start, end=end, last=last,
                               **kwargs).fetch()
@@ -224,16 +200,8 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
 
 def get_stats_monthly(start=None, end=None, **kwargs):
     """
-    Top-level function for obtaining data from the Historical Summary endpoint
-    of IEX Stats
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        Start of data retrieval period
-    end: datetime.datetime, default None, optional
-        End of data retrieval period
-    kwargs:
-        Additional Request Parameters (see base class)
+    MOVED to iexfinance.iexdata.get_stats_monthly
     """
+    import warnings
+    warnings.warn(WNG_MSG % ("get_stats_monthly", "iexdata.get_stats_monthly"))
     return MonthlySummaryReader(start=start, end=end, **kwargs).fetch()
