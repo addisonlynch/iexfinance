@@ -1,31 +1,37 @@
-.. _index:
-
-.. iexfinance documentation master file, created by
-   sphinx-quickstart on Sat Jan 27 14:14:10 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-.. include:: ../../README.rst
-
-.. _index.documentation:
-
-
 Welcome to iexfinance's documentation!
 ======================================
 
-Contents
---------
+``iexfinance``'s documentation is organized into the following sections:
+
+- :ref:`getting_started` - Installation instructions, basic usage information,
+  migrating to IEX Cloud
+- :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
+- :ref:`package_info` - additional package information, developer / testing
+  documentation
+
+.. note:: ``iexfinance`` version 0.4.0 introduces a refactored :ref:`refdata`
+          and :ref:`iexdata` (formerly IEX Stats and IEX Market Data). For more
+          information, see :ref:`migrating`.
+
+Full Contents
+-------------
+
+.. _getting_started:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Getting Started
 
    whatsnew
+   migrating
    install
+   auth
    usage
 
+.. _endpoints:
+
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Endpoints
 
    account
@@ -34,8 +40,10 @@ Contents
    iexdata
    apistatus
 
+.. _package_info:
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Package Information
 
    about

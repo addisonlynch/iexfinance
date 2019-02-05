@@ -20,9 +20,9 @@ class ReferenceReader(_IEXBase):
     def url(self):
         if isinstance(self.start, datetime.datetime):
             return 'daily-list/%s/%s' % (self.endpoint,
-                                         self.start.strftime('%Y%m'))
+                                         self.start.strftime('%Y%m%d'))
         else:
-            return 'daily-list/corporate-actions'
+            return 'daily-list/%s' % self.endpoint
 
 
 class CorporateActions(ReferenceReader):
@@ -66,7 +66,7 @@ class ListedSymbolDir(ReferenceReader):
 
     @legacy_endpoint
     def fetch(self):
-        return super(CorporateActions, self).fetch()
+        return super(ListedSymbolDir, self).fetch()
 
 
 class CloudRef(_IEXBase):
@@ -84,14 +84,14 @@ class CloudRef(_IEXBase):
         raise NotImplementedError
 
 
-class Symbols(_IEXBase):
+class Symbols(CloudRef):
 
     @property
     def endpoint(self):
         return "symbols"
 
 
-class IEXSymbols(_IEXBase):
+class IEXSymbols(CloudRef):
 
     @property
     def endpoint(self):

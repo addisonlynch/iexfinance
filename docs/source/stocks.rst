@@ -1,7 +1,7 @@
 .. _stocks:
 
 
-.. currentmodule:: iexfinance.stocks
+.. currentmodule:: iexfinance
 
 Stocks
 ======
@@ -50,27 +50,27 @@ additional parameters (it uses the defaults) and does not allow Pandas DataFrame
 Balance Sheet
 -------------
 
-.. automethod:: base.Stock.get_balance_sheet
+.. automethod:: iexfinance.stocks.base.Stock.get_balance_sheet
 
 .. _stocks.book:
 
 Book
--------------
-.. automethod:: base.Stock.get_book
+----
+.. automethod:: iexfinance.stocks.base.Stock.get_book
 
 
 .. _stocks.cash_flow:
 
 Cash Flow
--------------
+---------
 
-.. automethod:: base.Stock.get_cash_flow
+.. automethod:: iexfinance.stocks.base.Stock.get_cash_flow
 
 .. _stocks.chart:
 
 Chart
--------------
-.. automethod:: base.Stock.get_chart
+-----
+.. automethod:: iexfinance.stocks.base.Stock.get_chart
 
 
 .. _stocks.collections:
@@ -107,9 +107,9 @@ Use the top-level ``get_collections`` to access.
 .. _stocks.company:
 
 Company
--------------
+-------
 
-.. automethod:: base.Stock.get_company
+.. automethod:: iexfinance.stocks.base.Stock.get_company
 
 .. _stocks.crypto:
 
@@ -155,25 +155,25 @@ To retrieve quotes for all available cryptocurrencies, use the top-level
 Delayed Quote
 -------------
 
-.. automethod:: base.Stock.get_delayed_quote
+.. automethod:: iexfinance.stocks.base.Stock.get_delayed_quote
 
 
 
 .. _stocks.dividends:
 
 Dividends
--------------
+---------
 
-.. automethod:: base.Stock.get_dividends
+.. automethod:: iexfinance.stocks.base.Stock.get_dividends
 
 
 
 .. _stocks.earnings:
 
 Earnings
--------------
+--------
 
-.. automethod:: base.Stock.get_earnings
+.. automethod:: iexfinance.stocks.base.Stock.get_earnings
 
 .. _stocks.earnings_today:
 
@@ -197,26 +197,26 @@ through the top-level ``get_todays_earnings`` function.
 .. _stocks.effective_spread:
 
 Effective Spread
--------------
+----------------
 
-.. automethod:: base.Stock.get_effective_spread
+.. automethod:: iexfinance.stocks.base.Stock.get_effective_spread
 
 
 .. _stocks.estimates:
 
 Estimates
--------------
+---------
 
-.. automethod:: base.Stock.get_estimates
+.. automethod:: iexfinance.stocks.base.Stock.get_estimates
 
 .. _stocks.financials:
 
 Financials
--------------
-.. automethod:: base.Stock.get_financials
+----------
+.. automethod:: iexfinance.stocks.base.Stock.get_financials
 
 
-.. _stocks.historical
+.. _stocks.historical:
 
 Historical Prices
 -----------------
@@ -235,7 +235,7 @@ Daily
 
 To obtain daily historical data, use ``get_historical_data``.
 
-.. autofunction:: get_historical_data
+.. autofunction:: iexfinance.stocks.get_historical_data
 
 
 If no date parameters are passed, the start date will default to 2015/1/1
@@ -262,7 +262,7 @@ To obtain one-minute intraday data for a given date, use
 ``get_historical_intraday``. **Note: this endpoint has a maximum of one symbol
 and a single date.**
 
-.. autofunction:: get_historical_intraday
+.. autofunction:: iexfinance.stocks.get_historical_intraday
 
 .. ipython:: python
 
@@ -281,7 +281,7 @@ and a single date.**
 Income Statement
 ----------------
 
-.. automethod:: base.Stock.get_income_statement
+.. automethod:: iexfinance.stocks.base.Stock.get_income_statement
 
 .. _stocks.ipo_calendar:
 
@@ -306,31 +306,31 @@ There are two possible values for the ``period`` parameter, of which
 .. _stocks.key_stats:
 
 Key Stats
--------------
+---------
 
-.. automethod:: base.Stock.get_key_stats
+.. automethod:: iexfinance.stocks.base.Stock.get_key_stats
 
 
 .. _stocks.list:
 
 List
--------------
+----
 .. seealso:: :ref:`Market Movers<stocks.movers>`
 
 
 .. _stocks.largest_trades:
 
 Largest Trades
--------------
-.. automethod:: base.Stock.get_largest_trades
+--------------
+.. automethod:: iexfinance.stocks.base.Stock.get_largest_trades
 
 
 .. _stocks.logo:
 
 Logo
--------------
+----
 
-.. automethod:: base.Stock.get_logo
+.. automethod:: iexfinance.stocks.base.Stock.get_logo
 
 .. _stocks.market_volume:
 
@@ -349,15 +349,15 @@ provided through the top-level ``get_market_volume`` function.
 .. _stocks.news:
 
 News
--------------
-.. automethod:: base.Stock.get_news
+----
+.. automethod:: iexfinance.stocks.base.Stock.get_news
 
 
 .. _stocks.ohlc:
 
 OHLC
--------------
-.. automethod:: base.Stock.get_ohlc
+----
+.. automethod:: iexfinance.stocks.base.Stock.get_ohlc
 
 
 .. _stocks.open_close:
@@ -367,53 +367,53 @@ Open/Close Price
 .. seealso:: Time Series is an alias for the :ref:`OHLC <stocks.ohlc>` endpoint
 
 
-.. automethod:: base.Stock.get_open_close
+.. automethod:: iexfinance.stocks.base.Stock.get_open_close
 
 
 .. _stocks.peers:
 
 Peers
--------------
-.. automethod:: base.Stock.get_peers
+-----
+.. automethod:: iexfinance.stocks.base.Stock.get_peers
 
 
 .. _stocks.previous_day_prices:
 
 Previous Day Prices
--------------
+-------------------
 
-.. automethod:: base.Stock.get_previous
+.. automethod:: iexfinance.stocks.base.Stock.get_previous
 
 
 .. _stocks.price:
 
 Price
--------------
+-----
 
-.. automethod:: base.Stock.get_price
+.. automethod:: iexfinance.stocks.base.Stock.get_price
 
 
 .. _stocks.price_target:
 
 Price Target
--------------
+------------
 
-.. automethod:: base.Stock.get_price_target
+.. automethod:: iexfinance.stocks.base.Stock.get_price_target
 
 .. _stocks.quote:
 
 Quote
--------------
-.. automethod:: base.Stock.get_quote
+-----
+.. automethod:: iexfinance.stocks.base.Stock.get_quote
 
 
 .. _stocks.relevant_stocks:
 
 
 Relevant Stocks
--------------
+---------------
 
-.. automethod:: base.Stock.get_relevant
+.. automethod:: iexfinance.stocks.base.Stock.get_relevant
 
 .. _stocks.sector:
 
@@ -433,26 +433,26 @@ Sector Performance was added to the Stocks endpoints in 2018. Access to this end
 .. _stocks.splits:
 
 Splits
--------------
+------
 
-.. automethod:: base.Stock.get_splits
+.. automethod:: iexfinance.stocks.base.Stock.get_splits
 
 
 .. _stocks.time_series:
 
 Time Series
--------------
+-----------
 .. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
 
-.. automethod:: base.Stock.get_time_series
+.. automethod:: iexfinance.stocks.base.Stock.get_time_series
 
 
 .. _stocks.volume_by_venue:
 
 Volume by Venue
--------------
+---------------
 
-.. automethod:: base.Stock.get_volume_by_venue
+.. automethod:: iexfinance.stocks.base.Stock.get_volume_by_venue
 
 
 .. _stocks.field_methods:
@@ -464,174 +464,38 @@ In addition, various **Field Methods** are provided for certain endpoints.
 These methods will allow retrieval of a single datapoint, such as ``get_open``,
 ``get_company_name``, etc. Field methods are displayed below the endpoint
 methods for which they are available (namely :ref:`Quote<stocks.quote>`
-and :ref:`Key Stats<stocks.key-stats>`).
+and :ref:`Key Stats<stocks.key_stats>`).
 
 
 .. _stocks.key_stats_field_methods:
 
 Key Stats
--------------
+---------
 
-.. automethod:: base.Stock.get_beta
-.. automethod:: base.Stock.get_short_interest
-.. automethod:: base.Stock.get_short_ratio
-.. automethod:: base.Stock.get_latest_eps
-.. automethod:: base.Stock.get_shares_outstanding
-.. automethod:: base.Stock.get_float
-.. automethod:: base.Stock.get_eps_consensus
+.. automethod:: iexfinance.stocks.base.Stock.get_beta
+.. automethod:: iexfinance.stocks.base.Stock.get_short_interest
+.. automethod:: iexfinance.stocks.base.Stock.get_short_ratio
+.. automethod:: iexfinance.stocks.base.Stock.get_latest_eps
+.. automethod:: iexfinance.stocks.base.Stock.get_shares_outstanding
+.. automethod:: iexfinance.stocks.base.Stock.get_float
+.. automethod:: iexfinance.stocks.base.Stock.get_eps_consensus
 
 
 .. _stocks.quote_field_methods:
 
 Quote
--------------
+-----
 
-.. automethod:: base.Stock.get_company_name
-.. automethod:: base.Stock.get_sector
-.. automethod:: base.Stock.get_open
-.. automethod:: base.Stock.get_close
-.. automethod:: base.Stock.get_years_high
-.. automethod:: base.Stock.get_years_low
-.. automethod:: base.Stock.get_ytd_change
-.. automethod:: base.Stock.get_volume
-.. automethod:: base.Stock.get_market_cap
+.. automethod:: iexfinance.stocks.base.Stock.get_company_name
+.. automethod:: iexfinance.stocks.base.Stock.get_sector
+.. automethod:: iexfinance.stocks.base.Stock.get_open
+.. automethod:: iexfinance.stocks.base.Stock.get_close
+.. automethod:: iexfinance.stocks.base.Stock.get_years_high
+.. automethod:: iexfinance.stocks.base.Stock.get_years_low
+.. automethod:: iexfinance.stocks.base.Stock.get_ytd_change
+.. automethod:: iexfinance.stocks.base.Stock.get_volume
+.. automethod:: iexfinance.stocks.base.Stock.get_market_cap
 
-
-.. _stocks.examples:
-
-
-Examples
---------
-
-.. _stocks.examples_endpoint_methods:
-
-Endpoint Methods
-~~~~~~~~~~~~~~~~
-
-A single symbol request will return data *exactly* as it appears in the IEX docs examples:
-
-.. ipython:: python
-
-    from iexfinance.stocks import Stock
-    aapl = Stock("AAPL")
-    aapl.get_price()
-
-While multi-symbol requests will return a symbol-indexed list of the endpoint's data
-
-.. ipython::python
-
-    batch = Stock(["AAPL", "TSLA"])
-    batch.get_price()
-
-Most endpoints can be formatted as a `pandas.DataFrame`. Multi-symbol requests will concatenate the dataframes for each:
-
-.. ipython:: python
-
-    air_transport = Stock(['AAL', 'DAL', 'LUV'], output_format='pandas')
-    air_transport.get_quote().head()
-
-
-.. _stocks.filtering:
-
-Filtering
-~~~~~~~~~
-
-Per the IEX Docs, the
-`filter <https://iextrading.com/developer/docs/#filter-results>`__,
-paramter may be passed to any endpoint request to restrict single endpoint
-queries to certain fields. iexfinance uses ``filter_``, as ``filter`` is a
-reserved word in Python:
-
-.. ipython:: python
-
-    aapl = Stock("AAPL", output_format='pandas')
-    aapl.get_quote(filter_='ytdChange')
-
-Lists of fields are acceptable as well:
-
-.. ipython:: python
-
-    aapl.get_quote(filter_=['ytdChange', 'open', 'close'])
-
-.. note:: The desired fields must **exactly** match the field key names as
-        listed in the IEX docs.
-
-.. _stocks.passing_parameters:
-
-Passing Parameters
-~~~~~~~~~~~~~~~~~~
-
-**Endpoint-specific**
-
-We show an example using the `last` parameter for the News endpoint:
-
-.. ipython:: python
-
-    aapl = Stock("AAPL")
-
-    len(aapl.get_news())
-
-by default, News returns the last 10 items (`last is 10 by default`), but we can specify a custom value:
-
-.. ipython:: python
-
-    aapl = Stock("AAPL")
-
-    len(aapl.get_news(last=35))
-
-With a custom value specified, News now returns the previous 35 items.
-
-.. _stocks.output_formatting:
-
-Output Formatting
-~~~~~~~~~~~~~~~~~
-
-Most endpoints allow for pandas DataFrame-formatted output:
-
-.. ipython:: python
-
-    aapl = Stock("AAPL", output_format='pandas')
-
-    aapl.get_quote().head()
-
-We can also change the output format once our ``Stock`` object has been
-instantiated:
-
-.. ipython:: python
-
-    aapl.output_format == 'json'
-    aapl.get_ohlc()
-
-
-
-.. _stocks.examples_field-methods:
-
-Field Methods
-~~~~~~~~~~~~~
-
-``get_open()``, ``get_company_name()``
-
-Single symbol
-
-.. ipython:: python
-
-    aapl.get_open()
-    aapl.get_company_name()
-
-Multiple symbols
-
-.. ipython:: python
-
-    b = Stock(["AAPL", "TSLA"])
-    b.get_open()
-    b.get_company_name()
-
-Format as a DataFrame
-
-.. ipython:: python
-
-    b = Stock(["AAPL", "TSLA"], output_format=('pandas'))
-    b.get_beta()
 
 .. _stocks.movers:
 
@@ -655,5 +519,3 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
     from iexfinance.stocks import get_market_gainers
 
     get_market_gainers()[0]
-
-

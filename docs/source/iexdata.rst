@@ -93,7 +93,6 @@ Usage
 ~~~~~
 
 .. code-block:: python
-    :okexcept:
 
     from iexfinance.iexdata import get_deep
 

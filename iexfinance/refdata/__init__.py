@@ -97,4 +97,4 @@ def get_iex_listed_symbol_dir(start=None, **kwargs):
         A month to use for retrieval (a datetime object)
     kwargs: Additional Request Parameters (see base class)
     """
-    return ListedSymbolDir(start=start, **kwargs)
+    return ListedSymbolDir(start=start, **kwargs).fetch()

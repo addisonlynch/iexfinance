@@ -50,6 +50,16 @@ Enhancements
 .. whatsnew_040.backwards:
 
 Backwards Incompatible Changes
-~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Deprecated ``iexfinance.Stock`` and ``iexfinance.get_historical_data`` have been removed. These are now available as ``iexfinance.stocks.Stock`` and ``iexfinance.stocks.get_historical_data``.
+
+.. whatsnew_040.bug_fixes:
+
+Bug Fixes
+~~~~~~~~~
+
+- Make pandas indexing consistent for ``get_historical_intraday``, using
+  ``pandas.DatetimeIndex`` instead of ``str`` (GH95_)
+
+.. _GH95: https://github.com/addisonlynch/iexfinance/issues/95

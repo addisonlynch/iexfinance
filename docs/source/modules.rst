@@ -16,18 +16,18 @@ iexfinance\.base module
     :undoc-members:
     :show-inheritance:
 
-iexfinance\.market module
+iexfinance\.refdata module
 -------------------------
 
-.. automodule:: iexfinance.market
+.. automodule:: iexfinance.refdata
     :members:
     :undoc-members:
     :show-inheritance:
 
-iexfinance\.stats module
+iexfinance\.iexdata module
 ------------------------
 
-.. automodule:: iexfinance.stats
+.. automodule:: iexfinance.iexdata
     :members:
     :undoc-members:
     :show-inheritance:

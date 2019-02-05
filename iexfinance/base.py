@@ -57,12 +57,12 @@ class _IEXBase(object):
         self.version = os.getenv("IEX_API_VERSION")
         if self.version in ("iexcloud-beta", "iexcloud-v1"):
             if self.api_key is None:
-                self.api_key = os.getenv('IEX_API_KEY')
+                self.api_key = os.getenv('IEX_TOKEN')
             if not self.api_key or not isinstance(self.api_key, str):
                 raise auth_error('The IEX Cloud API key must be provided '
                                  'either through the api_key variable or '
                                  'through the environmental variable '
-                                 'IEX_API_KEY.')
+                                 'IEX_TOKEN.')
         else:
             self.version = 'v1'
 
@@ -128,6 +128,7 @@ class _IEXBase(object):
         IEXQueryError
             If problems arise when making the query
         """
+        print("URL %s" % url)
         params = self.params
         params['token'] = self.api_key
         for i in range(self.retry_count+1):
