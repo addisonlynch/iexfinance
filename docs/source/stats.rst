@@ -132,7 +132,7 @@ Access is available through the top-level function ``get_stats_daily()``:
 
 .. autofunction:: get_stats_daily
 
-Data retrieval period must be between 1/2014 and today.
+Data retrieval period must be between 2/2014 and today.
 
 .. _stats.daily.usage:
 
