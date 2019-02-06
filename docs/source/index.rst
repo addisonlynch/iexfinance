@@ -47,6 +47,7 @@ Full Contents
    :caption: Package Information
 
    about
+   apistatus
    caching
    testing
    tutorial
