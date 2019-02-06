@@ -42,7 +42,7 @@ class _IEXBase(object):
         output_format: str, default "json", optional
             Desired output format (json or pandas DataFrame)
         token: str, optional
-            Authentication token (reuqired for use with IEX Cloud)
+            Authentication token (required for use with IEX Cloud)
         """
         self.retry_count = kwargs.get("retry_count", 3)
         self.pause = kwargs.get("pause", 0.5)
