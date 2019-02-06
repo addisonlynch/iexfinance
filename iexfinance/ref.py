@@ -22,7 +22,7 @@ class ReferenceReader(_IEXBase):
             return 'daily-list/%s/%s' % (self.endpoint,
                                          self.start.strftime('%Y%m'))
         else:
-            return 'daily-list/corporate-actions'
+            return 'daily-list/%s' % self.endpoint
 
 
 class CorporateActions(ReferenceReader):
