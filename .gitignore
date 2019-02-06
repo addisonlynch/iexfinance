@@ -110,3 +110,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 sftp-config\.json
+
+# VS Code
+.vscode/
