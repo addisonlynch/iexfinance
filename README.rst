@@ -259,7 +259,10 @@ API Status
     from iexfinance.tools import get_api_status
 
     get_api_status()
+<<<<<<< 5041e122fad45ccdb231741d49f3bcafa740966c
 
+=======
+>>>>>>> CLN: Update docs
 
 Contact
 -------
