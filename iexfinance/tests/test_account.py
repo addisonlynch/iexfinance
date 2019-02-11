@@ -1,22 +1,7 @@
 import pandas as pd
 import pytest
 
-from iexfinance.tools.api import get_api_status
 from iexfinance.tools.account import (get_usage, get_metadata)
-
-
-@pytest.mark.cloud
-class TestAPIStatus(object):
-
-    def test_api_status_json(self):
-        data = get_api_status()
-
-        assert isinstance(data, dict)
-
-    def test_api_status_pandas(self):
-        data = get_api_status(output_format='pandas')
-
-        assert isinstance(data, pd.DataFrame)
 
 
 @pytest.mark.cloud

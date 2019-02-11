@@ -194,7 +194,7 @@ Stats Historical Daily
 `Historical Daily <https://iextrading.com/developer/docs/#historical-daily>`__
 is IEX's trading statstics from the previous trading sessions.
 
-Access is available through the top-level function ``get_stats_daily()``:
+Access is available through the function ``get_stats_daily()``:
 
 .. autofunction:: iexfinance.iexdata.get_stats_daily
 
@@ -214,9 +214,6 @@ Usage
     get_stats_daily(last=3)
 
 
-
-
-
 .. _iexdata.stats_monthly:
 
 Stats Historical Summary
@@ -225,9 +222,9 @@ Stats Historical Summary
 `Historical Summary <https://iextrading.com/developer/docs/#historical-summary>`__
 is IEX's trading statstics from the previous trading sessions.
 
-Access is available through the function ``get_stats_monthly()``:
+Access is available through the function ``get_stats_summary()``:
 
-.. autofunction:: iexfinance.iexdata.get_stats_monthly
+.. autofunction:: iexfinance.iexdata.get_stats_summary
 
 Data retrieval period must be between 1/2014 and today.
 
@@ -242,10 +239,10 @@ Usage
 
 .. ipython:: python
 
-    from iexfinance.iexdata import get_stats_monthly
+    from iexfinance.iexdata import get_stats_summary
     from datetime import datetime
 
-    get_stats_monthly(start=datetime(2017, 2, 9), end=datetime(2017, 5, 24))[0]
+    get_stats_summary(start=datetime(2017, 2, 9), end=datetime(2017, 5, 24))[0]
 
 
 

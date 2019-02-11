@@ -64,7 +64,7 @@ IEX Corporate Actions
     - Symbol and name changes
     - Firms (new, deleted for IEX-listed securities)
 
-Access is available through the top-level function ``get_iex_corporate_actions``:
+Access is available through the function ``get_iex_corporate_actions``:
 
 .. autofunction:: get_iex_corporate_actions
 
@@ -118,7 +118,7 @@ IEX Next Day Ex Date
 
 Per the IEX `docs <https://iextrading.com/developer/docs/#iex-next-day-ex-date>`__, records are added at 8:00 a.m. ET one trading day before the specified ex-date, and updates are posted once per hour from 8:00 a.m to 6:00 p.m. EST daily.
 
-Access is available through the top-level function ``get_iex_next_day_ex_date``
+Access is available through the function ``get_iex_next_day_ex_date``
 
 .. autofunction:: get_iex_next_day_ex_date
 
@@ -145,7 +145,7 @@ IEX Listed Symbol Directory
 Similar to :ref:`Symbol<refdata.symbols>`, `IEX Listed Symbol Directory
 <https://iextrading.com/developer/docs/#iex-listed-symbol-directory>`__ returns an array of all IEX listed securities.
 
-Access is available through the top-level function ``get_iex_listed_symbol_dir``
+Access is available through the function ``get_iex_listed_symbol_dir``
 
 
 .. autofunction:: get_iex_listed_symbol_dir

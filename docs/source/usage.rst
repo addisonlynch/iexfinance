@@ -115,20 +115,8 @@ Thus there are four main modules of iexfinance, each allowing the retrieval of d
   - :ref:`IEX Market Data<usage.iex-market-data>`
   - :ref:`IEX Stats<usage.iex-stats>`
 
-These modules provide classes and top-level functions to execute queries to the IEX API.
+These modules provide classes and functions to execute queries to the IEX API.
 
-
-.. _usage.parameters:
-
-Parameters
-----------
-
-
-
-All classes and top-level functions utilize the ``_IEXBASE`` class to make their
-requests:
-
-.. autoclass:: iexfinance.base._IEXBase
 
 .. _usage.stocks:
 
@@ -149,7 +137,7 @@ Endpoints
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
 contains data regarding a different aspect of the security/securities.
-The top-level ``Stock`` function creates an object that can obtain each
+The  ``Stock`` object can obtain each
 of these endpoints. Requests for single symbols will return the *exact* results
 from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of

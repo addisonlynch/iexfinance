@@ -201,8 +201,8 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
 
 def get_stats_monthly(start=None, end=None, **kwargs):
     """
-    MOVED to iexfinance.iexdata.get_stats_monthly
+    MOVED to iexfinance.iexdata.get_stats_summary
     """
     import warnings
-    warnings.warn(WNG_MSG % ("get_stats_monthly", "iexdata.get_stats_monthly"))
+    warnings.warn(WNG_MSG % ("get_stats_monthly", "iexdata.get_stats_summary"))
     return MonthlySummaryReader(start=start, end=end, **kwargs).fetch()

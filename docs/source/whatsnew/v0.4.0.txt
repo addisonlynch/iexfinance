@@ -49,6 +49,8 @@ Enhancements
   ``Stock`` function has been removed
 - Loosened testing restrictions on return types to allow for ``int`` or
   ``float`` to eliminate periodic even number returns and CI failures
+- Improved testing for ``_IEXBase`` base class configuration (request
+  parameters, output formatting)
 
 .. whatsnew_040.backwards:
 
@@ -58,6 +60,15 @@ Backwards Incompatible Changes
 - Deprecated ``iexfinance.Stock`` and ``iexfinance.get_historical_data`` have been removed. These are now available as ``iexfinance.stocks.Stock`` and ``iexfinance.stocks.get_historical_data``.
 - ``iexfinance.stocks.get_todays_earnings`` has been deprecated and renamed
   ``get_earnings_today``.
+- ``iexfinance.marketdata`` has been moved to a new module ``iexdata``.
+   - ``get_market_tops``, ``get_market_last``, ``get_market_deep``,
+     ``get_market_book`` have been deprecated and renamed (respectively)
+     ``get_tops``, ``get_last``, ``get_deep``, ``get_deep_book``
+- ``iexfinance.stats`` moved to a new module ``iexdata``.
+    - ``get_stats_intraday``, ``get_stats_recent``, ``get_stats_records``, ``get_stats_daily``, ``get_stats_monthly``
+      have been moved to ``iexdata``. The top level functions ``iexfinance.get_stats_intraday`` etc. have
+      been deprecated.
+    - ``get_stats_monthly`` renamed to ``get_stats_summary``
 
 
 .. whatsnew_040.bug_fixes:

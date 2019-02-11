@@ -25,7 +25,7 @@ Full Contents
    whatsnew
    migrating
    install
-   auth
+   configuration
    usage
 
 .. _endpoints:

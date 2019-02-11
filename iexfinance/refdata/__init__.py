@@ -4,11 +4,10 @@ from iexfinance.refdata.base import (Symbols, IEXSymbols, CorporateActions,
 
 def get_symbols(**kwargs):
     """
-    Top-level function to retrieve array of all symbols that IEX Cloud supports
+    Returns array of all symbols that IEX Cloud supports
     for API calls
 
     Reference: https://iexcloud.io/docs/api/#symbols
-
     Data Weighting: ``100`` per call
     """
     return Symbols(**kwargs).fetch()
@@ -16,7 +15,7 @@ def get_symbols(**kwargs):
 
 def get_iex_symbols(**kwargs):
     """
-    Top-level function to retrieve array of all symbols the Investor's Exchange
+    Returns array of all symbols the Investor's Exchange
     supports for trading
 
     Reference: https://iexcloud.io/docs/api/#iex-symbols
@@ -24,6 +23,7 @@ def get_iex_symbols(**kwargs):
     .. warning:: This endpoint is only available using IEX Cloud. See
                  :ref:`Migrating` for more information.
 
+    Reference: https://iexcloud.io/docs/api/#iex-symbols
     Data Weighting: ``Free``
     """
     return IEXSymbols(**kwargs).fetch()
@@ -31,7 +31,7 @@ def get_iex_symbols(**kwargs):
 
 def get_iex_corporate_actions(start=None, **kwargs):
     """
-    Top-level function to retrieve IEX Corporate Actions from the ref-data
+    Returns IEX Corporate Actions from the ref-data
     endpoints
 
     .. warning:: This endpoint is available with the legacy IEX Developer API
@@ -48,7 +48,7 @@ def get_iex_corporate_actions(start=None, **kwargs):
 
 def get_iex_dividends(start=None, **kwargs):
     """
-    Top-level function to retrieve IEX Dividends from the ref-data
+    Returns IEX Dividends from the ref-data
     endpoints
 
     .. warning:: This endpoint is available with the legacy IEX Developer API
@@ -65,7 +65,7 @@ def get_iex_dividends(start=None, **kwargs):
 
 def get_iex_next_day_ex_date(start=None, **kwargs):
     """
-    Top-level function to retrieve IEX Next Day Ex Date from the ref-data
+    Returns IEX Next Day Ex Date from the ref-data
     endpoints
 
     .. warning:: This endpoint is available with the legacy IEX Developer API
@@ -82,7 +82,7 @@ def get_iex_next_day_ex_date(start=None, **kwargs):
 
 def get_iex_listed_symbol_dir(start=None, **kwargs):
     """
-    Top-level function to retrieve IEX Listed Symbol Directory from the
+    Returns IEX Listed Symbol Directory from the
     ref-data endpoints
 
     .. warning:: This endpoint is available with the legacy IEX Developer API
