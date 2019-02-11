@@ -1,7 +1,7 @@
 import datetime
 
-from iexfinance.base import _IEXBase
-from iexfinance.utils import cloud_endpoint, legacy_endpoint
+from .base import _IEXBase
+from iexfinance.utils import cloud_endpoint
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -20,9 +20,9 @@ class ReferenceReader(_IEXBase):
     def url(self):
         if isinstance(self.start, datetime.datetime):
             return 'daily-list/%s/%s' % (self.endpoint,
-                                         self.start.strftime('%Y%m%d'))
+                                         self.start.strftime('%Y%m'))
         else:
-            return 'daily-list/%s' % self.endpoint
+            return 'daily-list/corporate-actions'
 
 
 class CorporateActions(ReferenceReader):
@@ -31,20 +31,12 @@ class CorporateActions(ReferenceReader):
     def endpoint(self):
         return 'corporate-actions'
 
-    @legacy_endpoint
-    def fetch(self):
-        return super(CorporateActions, self).fetch()
-
 
 class Dividends(ReferenceReader):
 
     @property
     def endpoint(self):
         return 'dividends'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(Dividends, self).fetch()
 
 
 class NextDay(ReferenceReader):
@@ -53,10 +45,6 @@ class NextDay(ReferenceReader):
     def endpoint(self):
         return 'next-day-ex-date'
 
-    @legacy_endpoint
-    def fetch(self):
-        return super(NextDay, self).fetch()
-
 
 class ListedSymbolDir(ReferenceReader):
 
@@ -64,12 +52,12 @@ class ListedSymbolDir(ReferenceReader):
     def endpoint(self):
         return 'symbol-directory'
 
-    @legacy_endpoint
-    def fetch(self):
-        return super(ListedSymbolDir, self).fetch()
-
 
 class CloudRef(_IEXBase):
+
+    @cloud_endpoint
+    def fetch(self):
+        return super(CloudRef, self).fetch()
 
     @property
     def url(self):
@@ -80,18 +68,14 @@ class CloudRef(_IEXBase):
         raise NotImplementedError
 
 
-class Symbols(CloudRef):
+class Symbols(_IEXBase):
 
     @property
     def endpoint(self):
         return "symbols"
 
 
-class IEXSymbols(CloudRef):
-
-    @cloud_endpoint
-    def fetch(self):
-        return super(CloudRef, self).fetch()
+class IEXSymbols(_IEXBase):
 
     @property
     def endpoint(self):

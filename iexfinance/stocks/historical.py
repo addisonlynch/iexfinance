@@ -2,11 +2,11 @@ import datetime
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.stocks.base import Stock
+from iexfinance.stocks.base import StockReader
 from iexfinance.utils.exceptions import IEXSymbolError
 
 
-class HistoricalReader(Stock):
+class HistoricalReader(StockReader):
     """
     A class to download historical data from the chart endpoint
 
@@ -111,7 +111,6 @@ class IntradayReader(_IEXBase):
     def _convert_output(self, out):
         if out:
             df = pd.DataFrame(out).set_index("minute")
-            df.index = df.date + " " + df.index
             df.index = pd.DatetimeIndex([pd.to_datetime(x) for x in
                                          df.index])
             return df
