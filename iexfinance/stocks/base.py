@@ -1,13 +1,23 @@
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import _handle_lists, no_pandas
+from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
-class StockReader(_IEXBase):
+class Stock(_IEXBase):
     """
     Base class for obtaining data from the Stock endpoints of IEX.
+
+    Attributes
+    ----------
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
+        A symbol or list of symbols for which to obtain data
+    output_format: str
+        Desired output format for requests (default is ``json``, also accepts
+        ``pandas`` for a ``pandas.DataFrame`` output format)
+    token: str, optional
+        Authentication token (reuqired for use with IEX Cloud)
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
@@ -24,10 +34,16 @@ class StockReader(_IEXBase):
         symbols : string, array-like object (list, tuple, Series), or DataFrame
             Desired symbols for retrieval
         """
+        if isinstance(symbols, str) and symbols:
+            self.symbols = [symbols]
+        elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
+            self.symbols = symbols
+        else:
+            raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
         self.n_symbols = len(self.symbols)
         self.endpoints = []
-        super(StockReader, self).__init__(**kwargs)
+        super(Stock, self).__init__(**kwargs)
 
     def get_all(self):
         """
@@ -77,7 +93,12 @@ class StockReader(_IEXBase):
             params.update({"filter": filter_})
         self.optional_params = params
         self.endpoints = [endpoint]
+
         data = self.fetch(fmt_j=fmt_j, fmt_p=no_pandas)
+        # IEX Cloud returns multiple symbol requests as as a list of dicts
+        # so convert to dict of dicts
+        if isinstance(data, list):
+            data = data[0]
         for symbol in self.symbols:
             if symbol not in data:
                 raise IEXSymbolError(symbol)
@@ -97,7 +118,7 @@ class StockReader(_IEXBase):
         return data
 
     def _output_format_one(self, out, fmt_p=None, fmt_j=None):
-        data = super(StockReader, self)._output_format(out, fmt_p=fmt_p)
+        data = super(Stock, self)._output_format(out, fmt_p=fmt_p)
         if len(self.symbols) == 1 and self.output_format == 'json':
             return data[self.symbols[0]]
         return data
@@ -139,9 +160,27 @@ class StockReader(_IEXBase):
                 raise IEXSymbolError(symbol)
         return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
 
+    @cloud_endpoint
+    def get_balance_sheet(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#balance-sheet
+
+        Data Weighting: ``3000`` per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                     :ref:`Migrating` for more information.
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+            Allows you to specify annual or quarterly balance sheet. Defaults
+            to quarterly. Values should be annual or quarter.
+        """
+        return self._get_endpoint("balance-sheet", params=kwargs)
+
     def get_book(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#book
+        Reference: https://iexcloud.io/docs/api/#book
 
         Returns
         -------
@@ -150,14 +189,40 @@ class StockReader(_IEXBase):
         """
         return self._get_endpoint("book", params=kwargs)
 
+    @cloud_endpoint
+    def get_cash_flow(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#cash-flow
+
+        Data Weighting: 1000 per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+            Allows you to specify annual or quarterly cash flows. Defaults to
+            quarterly. Values should be annual or quarter.
+        """
+        return self._get_endpoint("cash-flow", params=kwargs)
+
     def get_chart(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#chart
+        Reference: https://iexcloud.io/docs/api/#chart
 
         Parameters
         ----------
         range: str, default '1m', optional
             Chart range to return. See docs.
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`,`1d`,`date`,
+            `dynamic`]
+            Choosing `date` will return  IEX-only data by minute for a
+            specified date in the format YYYYMMDD if available.
+            Currently supporting trailing 30 calendar days.
+            Choosing `dynamic` will return `1d` or `1m` data depending on
+            the day or week and time of day.
+            Intraday per minute data is only returned during market hours.
         chartReset: boolean, default True, optional
             If true, 1d chart will reset at midnight instead of the default
             behavior of 9:30am EST.
@@ -195,7 +260,7 @@ class StockReader(_IEXBase):
 
     def get_company(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#company
+        Reference: https://iexcloud.io/docs/api/#company
 
         Returns
         -------
@@ -206,7 +271,7 @@ class StockReader(_IEXBase):
 
     def get_delayed_quote(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#delayed-quote
+        Reference: https://iexcloud.io/docs/api/#delayed-quote
 
         Returns
         -------
@@ -217,16 +282,17 @@ class StockReader(_IEXBase):
 
     def get_dividends(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#dividends
+        Reference: https://iexcloud.io/docs/api/#dividends
 
         Parameters
         ----------
         range: str, default '1m', optional
             Time period of dividends to return
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`]
 
         Returns
         -------
-        list or pandas.DataFrame
+        list of dict or pandas.DataFrame
             Stocks Dividends endpoint data
         """
         def fmt(out):
@@ -247,7 +313,7 @@ class StockReader(_IEXBase):
 
     def get_earnings(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#earnings
+        Reference: https://iexcloud.io/docs/api/#earnings
 
         Returns
         -------
@@ -273,7 +339,7 @@ class StockReader(_IEXBase):
 
     def get_effective_spread(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#effective-spread
+        Reference:  https://iexcloud.io/docs/api/#effective-spread
 
         Returns
         -------
@@ -282,9 +348,29 @@ class StockReader(_IEXBase):
         """
         return self._get_endpoint("effective-spread", params=kwargs)
 
+    @cloud_endpoint
+    def get_estimates(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#estimates
+
+        Data Weighting: ``10000`` per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+        """
+        return self._get_endpoint("estimates", params=kwargs)
+
     def get_financials(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#financials
+        Reference: https://iexcloud.io/docs/api/#financials
+
+        Parameters
+        ----------
+        period: str, default 'quarter', choose between 'annual' and 'quarter'
 
         Returns
         -------
@@ -309,9 +395,27 @@ class StockReader(_IEXBase):
         return self._get_endpoint("financials", fmt_j=fmt,
                                   fmt_p=fmt_p, params=kwargs)
 
+    @cloud_endpoint
+    def get_income_statement(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#income-statement
+
+        Data Weighting: ``1000`` per symbol per period
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+             Allows you to specify annual or quarterly income statement.
+             Defaults to quarterly. Values should be annual or quarter
+        """
+        return self._get_endpoint("income", params=kwargs)
+
     def get_key_stats(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#key-stats
+        Reference: https://iexcloud.io/docs/api/#key-stats
 
         Returns
         -------
@@ -322,7 +426,7 @@ class StockReader(_IEXBase):
 
     def get_largest_trades(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#largest-trades
+        Reference: https://iexcloud.io/docs/api/#largest-trades
 
         Returns
         -------
@@ -333,7 +437,7 @@ class StockReader(_IEXBase):
 
     def get_logo(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#logo
+        Reference: https://iexcloud.io/docs/api/#logo
 
         Returns
         -------
@@ -345,7 +449,7 @@ class StockReader(_IEXBase):
     def get_news(self, **kwargs):
         """Returns the Stocks News endpoint (list or pandas)
 
-        Reference: https://iextrading.com/developer/docs/#news
+        Reference: https://iexcloud.io/docs/api/#news
 
         Parameters
         ----------
@@ -361,7 +465,7 @@ class StockReader(_IEXBase):
 
     def get_ohlc(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#ohlc
+        Reference:  https://iexcloud.io/docs/api/#ohlc
 
         Returns
         -------
@@ -372,7 +476,7 @@ class StockReader(_IEXBase):
 
     def get_open_close(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#open-close
+        Reference: https://iexcloud.io/docs/api/#open-close
 
         Notes
         -----
@@ -388,7 +492,7 @@ class StockReader(_IEXBase):
 
     def get_peers(self, **kwargs):
         """
-        Reference:https://iextrading.com/developer/docs/#peers
+        Reference:https://iexcloud.io/docs/api/#peers
 
         Notes
         -----
@@ -403,18 +507,18 @@ class StockReader(_IEXBase):
 
     def get_previous(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#previous
+        Reference: https://iexcloud.io/docs/api/#previous-day-prices
 
         Returns
         -------
         dict or pandas.DataFrame
-            Stocks Previous endpoint data
+            Stocks Previous Day Prices endpoint data
         """
         return self._get_endpoint("previous", params=kwargs)
 
     def get_price(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#price
+        Reference: https://iexcloud.io/docs/api/#price
 
         Returns
         -------
@@ -426,9 +530,30 @@ class StockReader(_IEXBase):
 
         return self._get_endpoint("price", fmt_p=fmt_p, params=kwargs)
 
+    @cloud_endpoint
+    def get_price_target(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#price-target
+
+        Data Weighting: ``500`` per symbol
+
+        .. warning:: This endpoint is only available using IEX Cloud. See
+                 :ref:`Migrating` for more information.
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Latest average, high, and low price targets for a symbol
+        """
+        def fmt_p(out):
+            result = {item.pop("symbol"): item for item in out}
+            return pd.DataFrame(result)
+
+        return self._get_endpoint('price-target', fmt_p=fmt_p, params=kwargs)
+
     def get_quote(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#quote
+        Reference: https://iexcloud.io/docs/api/#quote
 
         Returns
         -------
@@ -439,18 +564,18 @@ class StockReader(_IEXBase):
 
     def get_relevant(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#relevant
+        Reference: https://iexcloud.io/docs/api/#relevant-stocks
 
         Returns
         -------
         dict or pandas.DataFrame
-            Stocks Relevant endpoint data
+            Stocks Relevant Stocks endpoint data
         """
         return self._get_endpoint("relevant", params=kwargs)
 
     def get_splits(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#splits
+        Reference: https://iexcloud.io/docs/api/#splits
 
         Parameters
         ----------
@@ -466,7 +591,7 @@ class StockReader(_IEXBase):
 
     def get_time_series(self, **kwargs):
         """
-        Reference: https://iextrading.com/developer/docs/#time-series
+        Reference: https://iexcloud.io/docs/api/#time-series
 
         Notes
         -----
@@ -482,7 +607,7 @@ class StockReader(_IEXBase):
 
     def get_volume_by_venue(self, **kwargs):
         """
-        Reference:  https://iextrading.com/developer/docs/#volume-by-venue
+        Reference:  https://iexcloud.io/docs/api/#volume-by-venue
 
         Returns
         -------

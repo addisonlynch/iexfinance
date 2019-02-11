@@ -14,7 +14,7 @@ iexfinance
     :target: https://opensource.org/licenses/Apache-2.0
 
 
-Python wrapper around the
+Python wrapper around `IEX Cloud <https://iexcloud.io>`__ and the legacy
 `Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__.
 
@@ -30,10 +30,10 @@ An easy-to-use interface to obtain:
 iexfinance provides real-time financial data from the various IEX
 endpoints, including:
 
-- Stocks (`IEX Docs <https://iextrading.com/developer/docs/#stocks>`__)
-- Reference Data (`IEX Docs <https://iextrading.com/developer/docs/#reference-data>`__)
-- IEX Market Data (`IEX Docs <https://iextrading.com/developer/docs/#iex-market-data>`__)
-- IEX Stats (`IEX Docs <https://iextrading.com/developer/docs/#iex-stats>`__)
+- Stocks (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/stocks.html>`__ | `IEX Docs <https://iexcloud.io/api/docs/#stocks>`__)
+- Reference Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/refdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
+- Investors Exchange Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/iexdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
+- API System Metadata (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/apistatus.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#api-system-metadata>`__)
 
 Documentation
 -------------
@@ -57,13 +57,24 @@ From development repository (dev version):
      $ cd iexfinance
      $ python3 setup.py install
 
+Selecting an API version
+------------------------
+
+IEX is continuing support for their version 1 (current) API until at least May 29th, 2019. IEX cloud beta is now available and includes a variety of additional endpoints. IEX is also introducing versioning through URL routing which will allow users to query from each version of the IEX Cloud API as more become available.
+
+The IEX api version can be selected by setting the environment variable ``IEX_API_VERSION`` to one of the following values:
+
+- ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
+- ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
+- ``iexcloud-v1`` for version 1 of IEX cloud (not yet available)
+
 Common Usage Examples
 ---------------------
 
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
+endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
@@ -158,7 +169,7 @@ Endpoints
 Stock Endpoints
 ^^^^^^^^^^^^^^^
 
-The ``Stock`` function creates a ``StockReader`` instance which has a method to
+The ``Stock`` function creates a ``Stock`` instance which has a method to
 retrieve each of the Stocks endpoints (``get_quote``, ``get_book``,
 ``get_volume_by_venue``, etc.):
 
@@ -247,6 +258,6 @@ Twitter: `alynchfc <https://www.twitter.com/alynchfc>`__
 License
 -------
 
-Copyright © 2018 Addison Lynch
+Copyright © 2019 Addison Lynch
 
 See LICENSE for details

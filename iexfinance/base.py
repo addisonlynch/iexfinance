@@ -1,9 +1,11 @@
+import os
 import time
 
 import requests
 
 from iexfinance.utils import _init_session
 from iexfinance.utils.exceptions import IEXQueryError
+from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -16,8 +18,14 @@ class _IEXBase(object):
     Inherited by Stock and Market Readers, and conducts query operations
     including preparing and executing queries from the API.
     """
-    # Base URL
-    _IEX_API_URL = "https://api.iextrading.com/1.0/"
+    _URLS = {
+        "v1": "https://api.iextrading.com/1.0/",
+        "iexcloud-beta": "https://cloud.iexapis.com/beta/",
+        "iexcloud-v1": "https://cloud.iexapis.com/v1/"
+    }
+
+    _VALID_FORMATS = ('json', 'pandas')
+    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1")
 
     def __init__(self, **kwargs):
         """ Initialize the class
@@ -35,18 +43,44 @@ class _IEXBase(object):
         json_parse_float: datatype, default float, optional
             Desired floating point parsing datatype
         output_format: str, default "json", optional
-            Desired output format (json or pandas DataFrame)
+            Desired output format (json or pandas DataFrame). This can also be
+            set using the environment variable ``IEX_OUTPUT_FORMAT``.
+        token: str, optional
+            Authentication token (reuqired for use with IEX Cloud)
         """
         self.retry_count = kwargs.get("retry_count", 3)
         self.pause = kwargs.get("pause", 0.5)
         self.session = _init_session(kwargs.get("session"))
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
-        self.output_format = kwargs.get("output_format", 'json')
+        self.output_format = kwargs.get("output_format",
+                                        os.getenv("IEX_OUTPUT_FORMAT", 'json'))
+        if self.output_format not in self._VALID_FORMATS:
+            raise ValueError("Please enter a valid output format ('json' "
+                             "or 'pandas').")
+        self.token = kwargs.get("token")
+
+        # Get desired API version from environment variables
+        # Defaults to v1 API
+        self.version = os.getenv("IEX_API_VERSION")
+        if self.version in self._VALID_CLOUD_VERSIONS:
+            if self.token is None:
+                self.token = os.getenv('IEX_TOKEN')
+            if not self.token or not isinstance(self.token, str):
+                raise auth_error('The IEX Cloud API key must be provided '
+                                 'either through the token variable or '
+                                 'through the environmental variable '
+                                 'IEX_TOKEN.')
+        else:
+            self.version = 'v1'
 
     @property
     def params(self):
         return {}
+
+    @property
+    def url(self):
+        raise NotImplementedError
 
     def _validate_response(self, response):
         """ Ensures response from IEX server is valid.
@@ -102,12 +136,35 @@ class _IEXBase(object):
         IEXQueryError
             If problems arise when making the query
         """
+        params = self.params
+        params['token'] = self.token
         for i in range(self.retry_count+1):
-            response = self.session.get(url=url, params=self.params)
+            response = self.session.get(url=url, params=params)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(self.pause)
-        raise IEXQueryError()
+        return self._handle_error(response)
+
+    def _handle_error(self, response):
+        """
+        Handles all responses which return an error status code
+        """
+        auth_msg = "The query could not be completed. Invalid auth token."
+
+        status_code = response.status_code
+        if 400 <= status_code < 500:
+            if status_code == 400:
+                raise auth_error(auth_msg)
+            else:
+                raise auth_error("The query could not be completed. "
+                                 "There was a client-side error with your "
+                                 "request.")
+        elif 500 <= status_code < 600:
+            raise auth_error("The query could not be completed. "
+                             "There was a server-side error with "
+                             "your request.")
+        else:
+            raise auth_error("The query could not be completed.")
 
     def _prepare_query(self):
         """ Prepares the query URL
@@ -117,7 +174,7 @@ class _IEXBase(object):
         url: str
             A formatted URL
         """
-        return "%s%s" % (self._IEX_API_URL, self.url)
+        return "%s%s" % (self._URLS[self.version], self.url)
 
     def fetch(self, fmt_p=None, fmt_j=None):
         """Fetches latest data
@@ -130,6 +187,7 @@ class _IEXBase(object):
             A response object
         """
         url = self._prepare_query()
+        print("URL: %s" % url)
         data = self._execute_iex_query(url)
         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)
 
@@ -142,7 +200,7 @@ class _IEXBase(object):
         Output formatting handler
         """
         if self.output_format == 'pandas':
-            if fmt_p:
+            if fmt_p is not None:
                 return fmt_p(out)
             else:
                 return self._convert_output(out)

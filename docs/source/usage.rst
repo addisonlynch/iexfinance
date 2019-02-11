@@ -1,14 +1,9 @@
 .. _usage:
 
 
-Usage
-=====
-
-.. _usage.common:
-
-
 Common Usage Examples
----------------------
+=====================
+
 
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
@@ -18,7 +13,7 @@ endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
 Real-time Quotes
-^^^^^^^^^^^^^^^^
+----------------
 
 To obtain real-time quotes for one or more symbols, use the ``get_price``
 method of the ``Stock`` object:
@@ -39,13 +34,13 @@ etc.):
 
 
 Historical Data
-^^^^^^^^^^^^^^^
+---------------
 
 It's possible to obtain historical data the ``get_historical_data`` and
 ``get_historical_intraday``.
 
 Daily
-~~~~~
+-----
 
 To obtain daily historical price data for one or more symbols, use the
 ``get_historical_data`` function. This will return a daily time-series of the ticker
@@ -80,7 +75,7 @@ It's really simple to plot this data, using `matplotlib <https://matplotlib.org/
 
 
 Minutely (Intraday)
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 To obtain historical intraday data, use ``get_historical_intraday`` as follows.
 Pass an optional ``date`` to specify a date within three months prior to the
@@ -106,7 +101,7 @@ or for a Pandas Dataframe indexed by each minute:
 
 
 Minutely
-^^^^^^^^
+~~~~~~~~
 
 Overview
 --------
@@ -120,20 +115,8 @@ Thus there are four main modules of iexfinance, each allowing the retrieval of d
   - :ref:`IEX Market Data<usage.iex-market-data>`
   - :ref:`IEX Stats<usage.iex-stats>`
 
-These modules provide classes and top-level functions to execute queries to the IEX API.
+These modules provide classes and functions to execute queries to the IEX API.
 
-
-.. _usage.parameters:
-
-Parameters
-----------
-
-
-
-All classes and top-level functions utilize the ``_IEXBASE`` class to make their
-requests:
-
-.. autoclass:: iexfinance.base._IEXBase
 
 .. _usage.stocks:
 
@@ -154,7 +137,7 @@ Endpoints
 The Stock endpoints of the `IEX Developer
 API <https://iextrading.com/developer/>`__ are below, each of which
 contains data regarding a different aspect of the security/securities.
-The top-level ``Stock`` function creates an object that can obtain each
+The  ``Stock`` object can obtain each
 of these endpoints. Requests for single symbols will return the *exact* results
 from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of
@@ -259,3 +242,29 @@ iexfinance supports the caching of HTTP requests to IEX using the
 `requests-cache <https://pypi.python.org/pypi/requests-cache>`__ package.
 
 .. seealso:: `Caching Queries <caching.html>`__
+
+
+.. _usage.plotting:
+
+Plotting
+--------
+
+With Pandas output formatting, we are able to plot historical price
+movements using matplotlib.
+
+.. ipython:: python
+
+
+    from iexfinance.stocks import get_historical_data
+    from datetime import datetime
+    import matplotlib.pyplot as plt
+    start = datetime(2017, 2, 9)
+    end = datetime(2017, 5, 24)
+
+    f = get_historical_data("AAPL", start, end, output_format='pandas')
+    plt.plot(f["close"])
+    plt.title('Time series chart for AAPL')
+    plt.show()
+
+.. image:: images/plotdailyaapl.jpg
+
