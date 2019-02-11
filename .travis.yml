@@ -28,7 +28,7 @@ install:
 script:
   - coverage run setup.py pytest
   - flake8 --version
-  - flake8 iexfinance tests
+  - flake8 iexfinance
   - flake8-rst --version
   - flake8-rst --filename="*.rst"
 

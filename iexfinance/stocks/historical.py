@@ -72,7 +72,7 @@ class HistoricalReader(Stock):
             send = self.end.strftime('%Y-%m-%d')
             df = df.loc[sstart:send]
             result.update({symbol: df})
-        if self.output_format is "pandas":
+        if self.output_format == "pandas":
             if len(result) > 1:
                 result = pd.concat(result.values(), keys=result.keys(), axis=1)
         else:

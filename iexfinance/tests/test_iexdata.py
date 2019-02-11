@@ -140,24 +140,24 @@ class TestStatsDaily(object):
     def test_daily_last_json(self):
         ls = get_stats_daily(last=5)
         assert isinstance(ls, list)
-        assert len(ls) is 5
+        assert len(ls) == 5
 
     def test_daily_last_pandas(self):
         df = get_stats_daily(last=5, output_format='pandas')
         assert isinstance(df, DataFrame)
-        assert len(df) is 5
+        assert len(df) == 5
 
     def test_daily_dates_json(self):
         ls = get_stats_daily(start=datetime(2017, 1, 1),
                              end=datetime(2017, 2, 1))
         assert isinstance(ls, list)
-        assert len(ls) is 31
+        assert len(ls) == 31
 
     def test_daily_dates_pandas(self):
         df = get_stats_daily(start=datetime(2017, 1, 1),
                              end=datetime(2017, 2, 1), output_format='pandas')
         assert isinstance(df, DataFrame)
-        assert len(df) is 20
+        assert len(df) == 20
 
     def test_daily_invalid_last(self):
         with pytest.raises(ValueError):
@@ -186,14 +186,14 @@ class TestStatsSummary(object):
         ls = get_stats_summary(start=datetime(2017, 1, 1),
                                end=datetime(2017, 2, 1))
         assert isinstance(ls, list)
-        assert len(ls) is 1
+        assert len(ls) == 1
 
     def test_summary_pandas(self):
         df = get_stats_summary(start=datetime(2017, 1, 1),
                                end=datetime(2017, 3, 1),
                                output_format='pandas')
         assert isinstance(df, DataFrame)
-        assert len(df) is 2
+        assert len(df) == 2
 
     def test_summary_fails_no_params(self):
         with pytest.raises(ValueError):
