@@ -12,7 +12,7 @@ endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
-The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX Cloud Documentation <https://iexcloud.io/docs/api/>`__ for readability and ease of use.
+The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX API Documentation <https://iextrading.com/developer/docs>`__ for readability and ease of use.
 
   - :ref:`Account<usage.account>`
   - :ref:`Stocks<usage.stocks>`
@@ -20,8 +20,7 @@ The iexfinance codebase and documentation are structured in a way that emulates 
   - :ref:`Investor's Exchange Data<usage.iexdata>`
   - :ref:`API System Metadata<usage.apistatus>`
 
-These modules provide classes and functions to execute queries to the IEX Cloud.
-
+These modules provide classes and functions to execute queries to IEX Cloud.
 
 .. _usage.account:
 
@@ -207,7 +206,7 @@ Reference Data
 
 .. seealso:: :ref:`Reference Data<refdata>`
 
-
+	    
 .. _usage.iexdata:
 
 Investor's Exchange Data
@@ -216,6 +215,7 @@ Investor's Exchange Data
 .. seealso:: :ref:`Investor's Exchange Data<iexdata>`
 
 .. _usage.apistatus:
+
 
 API System Metadata
 -------------------
