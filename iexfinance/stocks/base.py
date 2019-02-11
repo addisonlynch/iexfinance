@@ -5,19 +5,9 @@ from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
-class Stock(_IEXBase):
+class StockReader(_IEXBase):
     """
     Base class for obtaining data from the Stock endpoints of IEX.
-
-    Attributes
-    ----------
-    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
-        A symbol or list of symbols for which to obtain data
-    output_format: str
-        Desired output format for requests (default is ``json``, also accepts
-        ``pandas`` for a ``pandas.DataFrame`` output format)
-    token: str, optional
-        Authentication token (reuqired for use with IEX Cloud)
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
@@ -34,16 +24,10 @@ class Stock(_IEXBase):
         symbols : string, array-like object (list, tuple, Series), or DataFrame
             Desired symbols for retrieval
         """
-        if isinstance(symbols, str) and symbols:
-            self.symbols = [symbols]
-        elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
-            self.symbols = symbols
-        else:
-            raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
         self.n_symbols = len(self.symbols)
         self.endpoints = []
-        super(Stock, self).__init__(**kwargs)
+        super(StockReader, self).__init__(**kwargs)
 
     def get_all(self):
         """
@@ -118,7 +102,7 @@ class Stock(_IEXBase):
         return data
 
     def _output_format_one(self, out, fmt_p=None, fmt_j=None):
-        data = super(Stock, self)._output_format(out, fmt_p=fmt_p)
+        data = super(StockReader, self)._output_format(out, fmt_p=fmt_p)
         if len(self.symbols) == 1 and self.output_format == 'json':
             return data[self.symbols[0]]
         return data
