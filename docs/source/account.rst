@@ -21,7 +21,7 @@ Usage
 
 .. _account.pay_as_you_go:
 
-Pay-as-you-go
+Pay as you go
 -------------
 
 ``iexfinance`` provides two methods, ``allow_pay_as_you_go`` and

@@ -17,7 +17,7 @@ fi
 echo "PASSED"
 
 echo "pytest..."
-pytest -x tests
+pytest -x iexfinance/tests
 rc=$?;
 
 if [[ $rc != 0 ]]; then

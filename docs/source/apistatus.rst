@@ -1,7 +1,13 @@
 .. _api_status:
 
+.. currentmodule:: iexfinance.apidata
+
 API System Metadata
 ===================
+
+
+.. contents:: Endpoints
+    :depth: 2
 
 
 .. _api_status.status:
