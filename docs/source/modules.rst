@@ -17,7 +17,7 @@ iexfinance\.base module
     :show-inheritance:
 
 iexfinance\.refdata module
--------------------------
+--------------------------
 
 .. automodule:: iexfinance.refdata
     :members:
@@ -25,7 +25,7 @@ iexfinance\.refdata module
     :show-inheritance:
 
 iexfinance\.iexdata module
-------------------------
+--------------------------
 
 .. automodule:: iexfinance.iexdata
     :members:

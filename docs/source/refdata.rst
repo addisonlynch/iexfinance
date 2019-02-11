@@ -10,21 +10,16 @@ Reference Data
     supports for trading. In IEX cloud, it returns the list of symbols IEX
     supports for *api calls*.
 
-The following functions are available under Reference Data:
+.. contents:: Endpoints
+    :depth: 2
 
-- :ref:`symbols`
-- :ref:`iex_symbols`
-- :ref:`iex_corporate_actions`
-- :ref:`iex_dividends`
-- :ref:`iex_next_day_ex_date`
-- :ref:`iex_listed_symbol_directory`
 
 .. _refdata.symbols:
 
 Symbols
 -------
 
-.. autofunction::get_symbols
+.. autofunction:: iexfinance.refdata.get_symbols
 
 
 .. _refdata.symbols_usage:
@@ -32,7 +27,7 @@ Symbols
 Usage
 ~~~~~
 
-.. code-block:: python
+.. ipython:: python
 
     from iexfinance.refdata import get_symbols
 
@@ -44,7 +39,7 @@ Usage
 IEX Symbols
 -----------
 
-.. autofunction::get_iex_symbols
+.. autofunction:: iexfinance.refdata.get_iex_symbols
 
 .. _refdata.iex_symbols_usage:
 
@@ -84,7 +79,7 @@ Usage
 
     from iexfinance.refdata import get_iex_corporate_actions
 
-    get_iex_corporate_actions()[0]
+    get_iex_corporate_actions()
 
 
 .. _refdata.iex_dividends:
@@ -111,8 +106,7 @@ Usage
 
     from iexfinance.refdata import get_iex_dividends
 
-    get_iex_dividends()[0]
-
+    get_iex_dividends()
 
 
 .. _refdata.iex_next_day_ex_date:
@@ -140,7 +134,7 @@ Usage
 
     from iexfinance.refdata import get_iex_next_day_ex_date
 
-    get_iex_next_day_ex_date()[0]
+    get_iex_next_day_ex_date()
 
 
 .. _refdata.iex_listed_symbol_directory:

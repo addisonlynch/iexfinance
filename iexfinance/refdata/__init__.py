@@ -9,9 +9,6 @@ def get_symbols(**kwargs):
 
     Reference: https://iexcloud.io/docs/api/#symbols
 
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
-
     Data Weighting: ``100`` per call
     """
     return Symbols(**kwargs).fetch()

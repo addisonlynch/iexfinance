@@ -5,6 +5,11 @@
 API System Metadata
 ===================
 
+
+.. contents:: Endpoints
+    :depth: 2
+
+
 .. _api_status.status:
 
 Status

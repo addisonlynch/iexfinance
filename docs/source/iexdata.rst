@@ -1,6 +1,5 @@
 .. _iexdata:
 
-.. currentmodule:: iexfinance.iexdata
 
 Investor's Exchange Data
 ========================
@@ -8,19 +7,9 @@ Investor's Exchange Data
 
 The following endpoints are available under Investor's Exchange Data:
 
-**Market Data**
+.. contents:: Endpoints
+    :depth: 2
 
-- :ref:`TOPS`
-- :ref:`Last`
-- :ref:`DEEP`
-
-**Market Statistics**
-
-- :ref:`stats_monthly`
-- :ref:`stats_intraday`
-- :ref:`stats_recent`
-- :ref:`stats_records`
-- :ref:`stats_daily`
 
 
 .. _iexdata.TOPS:
@@ -35,7 +24,7 @@ aggregated best quoted bid and offer position in near real time.
 Access is available through the function ``get_tops()``:
 
 
-.. autofunction:: get_tops
+.. autofunction:: iexfinance.iexdata.get_tops
 
 Usage
 ~~~~~
@@ -61,7 +50,7 @@ of a real-time quote.
 
 Access is available through the function ``get_last()``:
 
-.. autofunction:: get_last
+.. autofunction:: iexfinance.iexdata.get_last
 
 Usage
 ~~~~~
@@ -85,9 +74,13 @@ DEEP
 
 Access is available through the function ``get_deep()``:
 
-.. autofunction:: get_deep
+.. autofunction:: iexfinance.iexdata.get_deep
 
 .. note:: Per IEX, DEEP only accepts one symbol at this time.
+
+
+.. _iexdata.DEEP.usage:
+
 
 Usage
 ~~~~~
@@ -99,6 +92,131 @@ Usage
     get_deep("AAPL")[:2]
 
 
+.. _iexdata.DEEP_auction:
+
+DEEP Auction
+------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.DEEP_book:
+
+DEEP Book
+---------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.DEEP_halt_status:
+
+DEEP Operational Halt Status
+----------------------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.DEEP_official_price:
+
+DEEP Official Price
+-------------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.DEEP_security_event:
+
+DEEP Security Event
+-------------------
+
+.. todo:: Coming soon.
+
+.. _iexdata.DEEP_short_sale_status:
+
+DEEP Short Sale Price Test Status
+---------------------------------
+
+.. todo:: Coming soon.
+
+.. _iexdata.DEEP_system_event:
+
+DEEP System Event
+-----------------
+
+.. todo:: Coming soon.
+
+.. _iexdata.DEEP_trades:
+
+DEEP Trades
+-----------
+
+.. todo:: Coming soon.
+
+.. _iexdata.DEEP_trade_break:
+
+DEEP Trade Break
+----------------
+
+.. todo:: Coming soon.
+
+.. _iexdata.DEEP_trading_status:
+
+DEEP Trading Status
+-------------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.regulation_list:
+
+Listed Regulation SHO Threshold Securities List
+-----------------------------------------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.short_interest_list:
+
+Listed Short Interest List
+--------------------------
+
+.. todo:: Coming soon.
+
+
+.. _iexdata.stats_daily:
+
+
+Stats Historical Daily
+----------------------
+
+.. warning:: This endpoint has been marked as *in-dev* by the provider.
+
+`Historical Daily <https://iextrading.com/developer/docs/#historical-daily>`__
+is IEX's trading statstics from the previous trading sessions.
+
+Access is available through the top-level function ``get_stats_daily()``:
+
+.. autofunction:: iexfinance.iexdata.get_stats_daily
+
+Data retrieval period must be between 1/2014 and today.
+
+.. _iexdata.stats_daily.usage:
+
+Usage
+~~~~~
+
+.. ipython:: python
+    :okwarning:
+    :okexcept:
+
+    from iexfinance.iexdata import get_stats_daily
+
+    get_stats_daily(last=3)
+
+
+
+
+
 .. _iexdata.stats_monthly:
 
 Stats Historical Summary
@@ -107,9 +225,9 @@ Stats Historical Summary
 `Historical Summary <https://iextrading.com/developer/docs/#historical-summary>`__
 is IEX's trading statstics from the previous trading sessions.
 
-Access is available through the top-level function ``get_stats_monthly()``:
+Access is available through the function ``get_stats_monthly()``:
 
-.. autofunction:: get_stats_monthly
+.. autofunction:: iexfinance.iexdata.get_stats_monthly
 
 Data retrieval period must be between 1/2014 and today.
 
@@ -124,7 +242,7 @@ Usage
 
 .. ipython:: python
 
-    from iexfinance import get_stats_monthly
+    from iexfinance.iexdata import get_stats_monthly
     from datetime import datetime
 
     get_stats_monthly(start=datetime(2017, 2, 9), end=datetime(2017, 5, 24))[0]
@@ -139,9 +257,9 @@ Stats Intraday
 `Intraday <https://iextrading.com/developer/docs/#intraday>`__ is IEX's
 aggregated best quoted bid and offer position in near real time.
 
-Access is available through the top-level function ``get_stats_intraday()``:
+Access is available through the function ``get_stats_intraday()``:
 
-.. autofunction:: get_stats_intraday
+.. autofunction:: iexfinance.iexdata.get_stats_intraday
 
 .. _iexdata.stats_intraday.usage:
 
@@ -150,22 +268,22 @@ Usage
 
 .. ipython:: python
 
-    from iexfinance import get_stats_intraday
+    from iexfinance.iexdata import get_stats_intraday
 
     get_stats_intraday()
 
 .. _iexdata.stats_recent:
 
 
-Recent
-------
+Stats Recent
+------------
 
 `Recent <https://iextrading.com/developer/docs/#recent>`__ is IEX's
 trading statstics from the previous five trading days.
 
-Access is available through the top-level function ``get_stats_recent()``:
+Access is available through the function ``get_stats_recent()``:
 
-.. autofunction:: get_stats_recent
+.. autofunction:: iexfinance.iexdata.get_stats_recent
 
 .. _iexdata.stats_recent.usage:
 
@@ -174,22 +292,22 @@ Usage
 
 .. ipython:: python
 
-    from iexfinance import get_stats_recent
+    from iexfinance.iexdata import get_stats_recent
 
     get_stats_recent()[0]
 
 
 .. _iexdata.stats_records:
 
-Records
--------
+Stats Records
+-------------
 
 `Records <https://iextrading.com/developer/docs/#records>`__ is IEX's
 trading statstics from the previous trading sessions.
 
-Access is available through the top-level function ``get_stats_records()``:
+Access is available through the function ``get_stats_records()``:
 
-.. autofunction:: get_stats_records
+.. autofunction:: iexfinance.iexdata.get_stats_records
 
 .. _iexdata.stats_records.usage:
 
@@ -198,38 +316,9 @@ Usage
 
 .. ipython:: python
 
-    from iexfinance import get_stats_records
+    from iexfinance.iexdata import get_stats_records
 
     get_stats_records()
 
-
-
-.. _iexdata.stats_daily:
-
-
-Historical Daily
-----------------
-
-`Historical Daily <https://iextrading.com/developer/docs/#historical-daily>`__
-is IEX's trading statstics from the previous trading sessions.
-
-Access is available through the top-level function ``get_stats_daily()``:
-
-.. autofunction:: get_stats_daily
-
-Data retrieval period must be between 1/2014 and today.
-
-.. _iexdata.stats_daily.usage:
-
-Usage
-~~~~~
-
-.. ipython:: python
-    :okwarning:
-    :okexcept:
-
-    from iexfinance import get_stats_daily
-
-    get_stats_daily(last=3)
 
 
