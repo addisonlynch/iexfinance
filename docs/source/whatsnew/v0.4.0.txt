@@ -42,6 +42,8 @@ New Endpoints
 Enhancements
 ~~~~~~~~~~~~
 
+- Adds support for setting persistent output format settings using
+  the environment variable ``IEX_OUTPUT_FORMAT``
 - Select between IEX API versions using the IEX_API_VERSION environment variable
 - The ``StockReader`` base class has been renamed ``Stock`` and the duplicate
   ``Stock`` function has been removed

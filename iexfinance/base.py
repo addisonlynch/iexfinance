@@ -24,6 +24,9 @@ class _IEXBase(object):
         "iexcloud-v1": "https://cloud.iexapis.com/v1/"
     }
 
+    _VALID_FORMATS = ('json', 'pandas')
+    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1")
+
     def __init__(self, **kwargs):
         """ Initialize the class
 
@@ -40,7 +43,8 @@ class _IEXBase(object):
         json_parse_float: datatype, default float, optional
             Desired floating point parsing datatype
         output_format: str, default "json", optional
-            Desired output format (json or pandas DataFrame)
+            Desired output format (json or pandas DataFrame). This can also be
+            set using the environment variable ``IEX_OUTPUT_FORMAT``.
         token: str, optional
             Authentication token (reuqired for use with IEX Cloud)
         """
@@ -49,13 +53,17 @@ class _IEXBase(object):
         self.session = _init_session(kwargs.get("session"))
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
-        self.output_format = kwargs.get("output_format", 'json')
+        self.output_format = kwargs.get("output_format",
+                                        os.getenv("IEX_OUTPUT_FORMAT", 'json'))
+        if self.output_format not in self._VALID_FORMATS:
+            raise ValueError("Please enter a valid output format ('json' "
+                             "or 'pandas').")
         self.token = kwargs.get("token")
 
         # Get desired API version from environment variables
         # Defaults to v1 API
         self.version = os.getenv("IEX_API_VERSION")
-        if self.version in ("iexcloud-beta", "iexcloud-v1"):
+        if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
                 self.token = os.getenv('IEX_TOKEN')
             if not self.token or not isinstance(self.token, str):
