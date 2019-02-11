@@ -1,6 +1,6 @@
 import pytest
 
-from iexfinance.tests.fixtures import *  # noqa: F403
+from iexfinance.tests.fixtures import *  # noqa: F403,F401
 from iexfinance.utils.testing import using_cloud
 
 

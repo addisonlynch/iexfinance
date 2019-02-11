@@ -231,7 +231,7 @@ class TestShareDefault(object):
 
     def test_get_price_format(self):
         data = self.cshare.get_price()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data2 = self.cshare2.get_price()
         assert isinstance(data2, pd.DataFrame)
@@ -287,7 +287,7 @@ class TestShareDefault(object):
     def test_filter(self):
         data = self.cshare.get_quote(filter_='ytdChange')
         assert isinstance(data, dict)
-        assert isinstance(data["ytdChange"], float)
+        assert isinstance(data["ytdChange"], (int, float))
 
         data4 = self.cshare4.get_quote(filter_='ytdChange')
         assert isinstance(data4, dict)
@@ -549,12 +549,12 @@ class TestFieldMethodsShare(object):
 
     def test_get_open(self):
         data = self.share.get_open()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
         assert data > 0
 
         data2 = self.share2.get_open()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_open()
         assert isinstance(data4, Decimal)
@@ -562,12 +562,12 @@ class TestFieldMethodsShare(object):
 
     def test_get_close(self):
         data = self.share.get_close()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
         assert data > 0
 
         data2 = self.share2.get_close()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_close()
         assert isinstance(data4, Decimal)
@@ -575,12 +575,12 @@ class TestFieldMethodsShare(object):
 
     def test_get_years_high(self):
         data = self.share.get_years_high()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
         assert data > 0
 
         data2 = self.share2.get_years_high()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_years_high()
         assert isinstance(data4, Decimal)
@@ -588,12 +588,12 @@ class TestFieldMethodsShare(object):
 
     def test_get_years_low(self):
         data = self.share.get_years_low()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
         assert data > 0
 
         data2 = self.share2.get_years_low()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("float64", "int64")
 
         data4 = self.share4.get_years_low()
         assert isinstance(data4, Decimal)
@@ -601,11 +601,11 @@ class TestFieldMethodsShare(object):
 
     def test_get_ytd_change(self):
         data = self.share.get_ytd_change()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data2 = self.share2.get_ytd_change()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_ytd_change()
         assert isinstance(data4, Decimal)
@@ -636,11 +636,11 @@ class TestFieldMethodsShare(object):
 
     def test_get_beta(self):
         data = self.share.get_beta()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data2 = self.share2.get_beta()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_beta()
         assert isinstance(data4, Decimal)
@@ -660,18 +660,18 @@ class TestFieldMethodsShare(object):
     @pytest.mark.xfail(reason="Not available outside of market open days.")
     def test_get_short_ratio(self):
         data = self.share.get_short_ratio()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data2 = self.share2.get_short_ratio()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_short_ratio()
         assert isinstance(data4, Decimal)
 
     def test_get_latest_eps(self):
         data = self.share5.get_latest_eps()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data4 = self.share4.get_latest_eps()
         assert isinstance(data4, Decimal)
@@ -700,11 +700,11 @@ class TestFieldMethodsShare(object):
 
     def test_get_eps_consensus(self):
         data = self.share.get_eps_consensus()
-        assert isinstance(data, float)
+        assert isinstance(data, (int, float))
 
         data2 = self.share2.get_eps_consensus()
         assert isinstance(data2, pd.DataFrame)
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.share4.get_eps_consensus()
         assert isinstance(data4, Decimal)
@@ -754,7 +754,7 @@ class TestFieldMethodsBatch(object):
         data2 = self.batch2.get_open()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
     def test_get_close(self):
         data = self.batch.get_close()
@@ -764,7 +764,7 @@ class TestFieldMethodsBatch(object):
         data2 = self.batch2.get_close()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
     def test_get_years_high(self):
         data = self.batch.get_years_high()
@@ -774,7 +774,7 @@ class TestFieldMethodsBatch(object):
         data2 = self.batch2.get_years_high()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
     def test_get_years_low(self):
         data = self.batch.get_years_low()
@@ -784,7 +784,7 @@ class TestFieldMethodsBatch(object):
         data2 = self.batch2.get_years_low()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
     def test_get_ytd_change(self):
         data = self.batch.get_ytd_change()
@@ -793,7 +793,7 @@ class TestFieldMethodsBatch(object):
         data2 = self.batch2.get_ytd_change()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
     def test_get_volume(self):
         data = self.batch.get_volume()
@@ -818,12 +818,12 @@ class TestFieldMethodsBatch(object):
     def test_get_beta(self):
         data = self.batch.get_beta()
         assert isinstance(data, dict)
-        assert isinstance(data["AAPL"], float)
+        assert isinstance(data["AAPL"], (int, float))
 
         data2 = self.batch2.get_beta()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.batch4.get_beta()
         assert isinstance(data4, dict)
@@ -844,12 +844,12 @@ class TestFieldMethodsBatch(object):
     def test_get_short_ratio(self):
         data = self.batch.get_short_ratio()
         assert isinstance(data, dict)
-        assert isinstance(data["AAPL"], float)
+        assert isinstance(data["AAPL"], (int, float))
 
         data2 = self.batch2.get_short_ratio()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.batch4.get_short_ratio()
         assert isinstance(data4, dict)
@@ -858,12 +858,12 @@ class TestFieldMethodsBatch(object):
     def test_get_latest_eps(self):
         data = self.batch.get_latest_eps()
         assert isinstance(data, dict)
-        assert isinstance(data["TSLA"], float)
+        assert isinstance(data["TSLA"], (int, float))
 
         data2 = self.batch2.get_latest_eps()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["TSLA"].dtype == "float64"
+        assert data2["TSLA"].dtype in ("int64", "float64")
 
         data4 = self.batch4.get_latest_eps()
         assert isinstance(data4, dict)
@@ -892,12 +892,12 @@ class TestFieldMethodsBatch(object):
     def test_get_eps_consensus(self):
         data = self.batch.get_eps_consensus()
         assert isinstance(data, dict)
-        assert isinstance(data["AAPL"], float)
+        assert isinstance(data["AAPL"], (int, float))
 
         data2 = self.batch2.get_eps_consensus()
         assert isinstance(data2, pd.DataFrame)
         assert_index_equal(data2.columns, pd.Index(self.batch2.symbols))
-        assert data2["AAPL"].iloc[0].dtype == "float64"
+        assert data2["AAPL"].iloc[0].dtype in ("int64", "float64")
 
         data4 = self.batch4.get_eps_consensus()
         assert isinstance(data4, dict)

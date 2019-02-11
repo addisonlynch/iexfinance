@@ -6,43 +6,113 @@
 Stocks
 ======
 
+.. _stocks.overview:
+
 Overview
 --------
 
-Access to the `Stocks <https://iextrading.com/developer/#stocks>`__
-endpoints of the `IEX Developer API <https://iextrading.com/developer/>`__ is
-available through the top-level ``Stock`` function.
+This documentation is organized as a 1:1 mirror of the
+IEX Cloud `Stocks Documentation <https://iexcloud.io/docs/api/#stocks>`__.
 
-Calling this function with a symbol (*str*) or list of symbols (*list*)
-will return a ``Stock`` instance, which allows retrieval of
+The ``Stock`` :ref:`object<stocks.stock_object>` is instantiated with one or
+more symbols (equities, ETFs, etc.) and allows access to most endpoints:
+
+.. ipython:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL")
+    aapl.get_price()
+
+Certain endpoints, such as `Sector Performance <https://iexcloud.io/docs/api/#sector-performance>`__,
+which are unrelated to specific symbols, are supported by top-level functions
+(i.e. ``iexfinance.stocks.get_sector_performance``).
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_sector_performance
+
+    get_sector_performance()[0]
+
+Additional utility functions, such as ``get_historical_data`` are provided as
+well:
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_historical_data
+
+    get_historical_data("AAPL", output_format='pandas').head()
+
+
+See :ref:`Additional Methods<stocks.additional_methods>` for more a list of
+methods available.
+
+.. _stocks.endpoint_list:
+
+List of Endpoints
+~~~~~~~~~~~~~~~~~
+
+All endpoints not available as methods of the ``Stock`` object are noted below.
+
+
+- :ref:`Balance Sheet<stocks.balance_sheet>`
+- :ref:`Book<stocks.book>`
+- :ref:`Cash Flow<stocks.cash_flow>`
+- :ref:`Chart<stocks.chart>`
+- :ref:`Collections<stocks.collections>` - ``get_collections``
+- :ref:`Company<stocks.company>`
+- :ref:`Crypto<stocks.crypto>` - ``get_crypto_quotes``
+- :ref:`Delayed Quote<stocks.delayed_quote>`
+- :ref:`Dividends<stocks.dividends>`
+- :ref:`Earnings<stocks.earnings>`
+- :ref:`Earnings Today<stocks.earnings_today>` - ``get_earnings_today``
+- :ref:`Effective Spread<stocks.effective_spread>`
+- :ref:`Estimates<stocks.estimates>`
+- :ref:`Financials<stocks.financials>`
+- :ref:`Historical<stocks.historical>` - ``get_historical_data`` and ``get_historical_intraday``
+- :ref:`Key Stats<stocks.key_stats>`
+- :ref:`Logo<stocks.logo>`
+- :ref:`Market Volume<stocks.market_volume>` - ``get_market_volume``
+- :ref:`News<stocks.news>`
+- :ref:`OHLC<stocks.ohlc>`
+- :ref:`Open/Close<stocks.open_close>`
+- :ref:`Peers<stocks.peers>`
+- :ref:`Previous Day Prices<stocks.previous_day_prices>`
+- :ref:`Price<stocks.price>`
+- :ref:`Price Target<stocks.price_target>`
+- :ref:`Sector Performance<stocks.sector>` - ``get_sector_performance``
+- :ref:`Quote<stocks.quote>`
+- :ref:`Relevant Stocks<stocks.relevant_stocks>`
+- :ref:`Splits<stocks.splits>`
+- :ref:`Time Series<stocks.time_series>`
+- :ref:`Volume by Venue<stocks.volume_by_venue>`
+
+
+.. _stocks.stock_object:
+
+The ``Stock`` object
+~~~~~~~~~~~~~~~~~~~~
+
+The ``Stock`` object allows retrieval of
 endpoints  (`Earnings
 <https://iextrading.com/developer/#earnings>`__,
 `Quote <https://iextrading.com/developer/#quote>`__, etc) for up to 100 symbols
-at once. There are three ways
-to access such endpoints:
+at once.
 
-1. **Endpoint Methods** - Allow retrieval of
-individual
-endpoints. Most endpoints allow Pandas DataFrame formatting. Examples are
-``get_book``, ``get_quote``, etc. Where applicable, parameters (i.e.
-``displayPercent`` for the Quote endpoint) may be passed
-to these methods as keyword arguments.
 
-2. **Field Methods** - supported by certain endpoints. Allow quick and
-lightweight access to select fields of the Quote and Key Stats endpoints.
-Examples are ``get_company_name``, ``get_beta``, etc. See below for more examples.
+.. autoclass:: iexfinance.stocks.base.Stock
 
-3. ``get_endpoints`` - returns one or more (up to 10) endpoints to be returned
-in the *exact* format of the examples in the IEX docs. This method accepts no
-additional parameters (it uses the defaults) and does not allow Pandas DataFrame as an output format.
+
+.. _stocks.basic_usage:
+
+Basic Usage Example
+~~~~~~~~~~~~~~~~~~~
 
 .. ipython:: python
 
     from iexfinance.stocks import Stock
     aapl = Stock("aapl")
     aapl.get_price()
-
-
 
 
 .. _stocks.balance_sheet:
@@ -86,7 +156,16 @@ by:
 - tag
 - list (see the :ref:`list endpoint <stocks.list>`)
 
-Use the top-level ``get_collections`` to access.
+Use ``get_collections`` to access.
+
+
+.. autofunction:: iexfinance.stocks.get_collections
+
+
+.. _stocks.collections.examples:
+
+Examples
+~~~~~~~~
 
 **Tag**
 
@@ -139,8 +218,17 @@ The following tickers are supported:
 - Stellar Lumens USD (XLMUSDT)
 - Qtum USD (QTUMUSDT)
 
-To retrieve quotes for all available cryptocurrencies, use the top-level
+To retrieve quotes for all available cryptocurrencies, use the
 ``get_crypto_quotes`` function:
+
+
+.. autofunction:: iexfinance.stocks.get_crypto_quotes
+
+
+.. _stocks.crypto.examples:
+
+Examples
+~~~~~~~~
 
 .. ipython:: python
 
@@ -177,13 +265,26 @@ Earnings
 
 .. _stocks.earnings_today:
 
-.. note:: Earnings Today supports JSON output formatting only.
-
 Earnings Today
 --------------
 
+.. warning:: ``get_todays_earnings`` has been deprecated and renamed
+            ``get_earnings_today``.
+
 Earnings Today was added to the Stocks endpoints in 2018. Access is provided
-through the top-level ``get_todays_earnings`` function.
+through the  ``get_earnings_today`` function.
+
+
+.. autofunction:: iexfinance.stocks.get_earnings_today
+
+
+.. note:: ``get_earnings_today`` supports JSON output formatting only.
+
+
+.. _stocks.earnings.examples:
+
+Examples
+~~~~~~~~
 
 .. ipython:: python
 
@@ -231,7 +332,7 @@ Daily data can be retrieved from up to 5 years before the current date, and
 historical data up to 3 months prior to the current date.
 
 Daily
-^^^^^
+~~~~~
 
 To obtain daily historical data, use ``get_historical_data``.
 
@@ -256,7 +357,7 @@ and the end date will default to the current date.
 
 
 Minutely
-^^^^^^^^
+~~~~~~~~
 
 To obtain one-minute intraday data for a given date, use
 ``get_historical_intraday``. **Note: this endpoint has a maximum of one symbol
@@ -289,10 +390,17 @@ IPO Calendar
 ------------
 
 IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
-through the top-level ``get_ipo_calendar`` function.
+through the  ``get_ipo_calendar`` function.
+
+.. autofunction:: iexfinance.stocks.get_ipo_calendar
 
 There are two possible values for the ``period`` parameter, of which
 ``upcoming-ipos`` is the default. ``today-ipos`` is also available.
+
+..  _stocks.ipo_calendar.examples:
+
+Examples
+~~~~~~~~
 
 .. ipython:: python
 
@@ -338,7 +446,16 @@ Market Volume (U.S)
 -------------------
 
 Market Volume returns real-time traded volume on U.S. Markets. Access is
-provided through the top-level ``get_market_volume`` function.
+provided through the ``get_market_volume`` function.
+
+
+.. autofunction:: iexfinance.stocks.get_market_volume
+
+
+.. _stocks.market_volume.examples:
+
+Examples
+~~~~~~~~
 
 .. ipython:: python
 
@@ -422,6 +539,14 @@ Sector Performance
 
 Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
 
+.. autofunction:: iexfinance.stocks.get_sector_performance
+
+
+.. _stocks.sector.examples:
+
+Examples
+~~~~~~~~
+
 .. ipython:: python
 
     from iexfinance.stocks import get_sector_performance
@@ -455,13 +580,13 @@ Volume by Venue
 .. automethod:: iexfinance.stocks.base.Stock.get_volume_by_venue
 
 
-.. _stocks.field_methods:
+.. _stocks.additional_methods:
 
-Field Methods
--------------
+Additional Methods
+------------------
 
-In addition, various **Field Methods** are provided for certain endpoints.
-These methods will allow retrieval of a single datapoint, such as ``get_open``,
+In addition, various additional ``Stock`` methods are provided for certain
+endpoints. These methods will allow retrieval of a single datapoint, such as ``get_open``,
 ``get_company_name``, etc. Field methods are displayed below the endpoint
 methods for which they are available (namely :ref:`Quote<stocks.quote>`
 and :ref:`Key Stats<stocks.key_stats>`).
@@ -470,7 +595,7 @@ and :ref:`Key Stats<stocks.key_stats>`).
 .. _stocks.key_stats_field_methods:
 
 Key Stats
----------
+~~~~~~~~~
 
 .. automethod:: iexfinance.stocks.base.Stock.get_beta
 .. automethod:: iexfinance.stocks.base.Stock.get_short_interest
@@ -484,7 +609,7 @@ Key Stats
 .. _stocks.quote_field_methods:
 
 Quote
------
+~~~~~
 
 .. automethod:: iexfinance.stocks.base.Stock.get_company_name
 .. automethod:: iexfinance.stocks.base.Stock.get_sector
@@ -500,7 +625,7 @@ Quote
 .. _stocks.movers:
 
 Market Movers
--------------
+~~~~~~~~~~~~~
 
 The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks
 provides information about market movers from a given trading day. iexfinance

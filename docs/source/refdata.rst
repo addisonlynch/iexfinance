@@ -5,6 +5,11 @@
 Reference Data
 ==============
 
+.. note:: The ``ref-data/symbols`` endpoint has changed in IEX Cloud. In the v1
+    (legacy) Developer API, this endpoint returned the list of symbols IEX
+    supports for trading. In IEX cloud, it returns the list of symbols IEX
+    supports for *api calls*.
+
 The following functions are available under Reference Data:
 
 - :ref:`symbols`
@@ -89,7 +94,7 @@ IEX Dividends
 
 `IEX Dividends <https://iextrading.com/developer/docs/#iex-dividends>`__ details upcoming dividend information and other corporate actions (splits, etc.)
 
-Access is available through the top-level function ``get_iex_dividends``
+Access is available through the function ``get_iex_dividends``
 
 .. autofunction:: get_iex_dividends
 
@@ -106,7 +111,7 @@ Usage
 
     from iexfinance.refdata import get_iex_dividends
 
-    get_iex_iex_dividends()[0]
+    get_iex_dividends()[0]
 
 
 

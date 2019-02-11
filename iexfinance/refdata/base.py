@@ -71,10 +71,6 @@ class ListedSymbolDir(ReferenceReader):
 
 class CloudRef(_IEXBase):
 
-    @cloud_endpoint
-    def fetch(self):
-        return super(CloudRef, self).fetch()
-
     @property
     def url(self):
         return "ref-data/%s" % self.endpoint
@@ -92,6 +88,10 @@ class Symbols(CloudRef):
 
 
 class IEXSymbols(CloudRef):
+
+    @cloud_endpoint
+    def fetch(self):
+        return super(CloudRef, self).fetch()
 
     @property
     def endpoint(self):

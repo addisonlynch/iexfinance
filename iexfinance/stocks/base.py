@@ -8,6 +8,16 @@ from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 class Stock(_IEXBase):
     """
     Base class for obtaining data from the Stock endpoints of IEX.
+
+    Attributes
+    ----------
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
+        A symbol or list of symbols for which to obtain data
+    output_format: str
+        Desired output format for requests (default is ``json``, also accepts
+        ``pandas`` for a ``pandas.DataFrame`` output format)
+    token: str, optional
+        Authentication token (reuqired for use with IEX Cloud)
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",

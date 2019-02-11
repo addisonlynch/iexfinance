@@ -45,7 +45,8 @@ Enhancements
 - Select between IEX API versions using the IEX_API_VERSION environment variable
 - The ``StockReader`` base class has been renamed ``Stock`` and the duplicate
   ``Stock`` function has been removed
-
+- Loosened testing restrictions on return types to allow for ``int`` or
+  ``float`` to eliminate periodic even number returns and CI failures
 
 .. whatsnew_040.backwards:
 
@@ -53,6 +54,9 @@ Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Deprecated ``iexfinance.Stock`` and ``iexfinance.get_historical_data`` have been removed. These are now available as ``iexfinance.stocks.Stock`` and ``iexfinance.stocks.get_historical_data``.
+- ``iexfinance.stocks.get_todays_earnings`` has been deprecated and renamed
+  ``get_earnings_today``.
+
 
 .. whatsnew_040.bug_fixes:
 

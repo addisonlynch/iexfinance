@@ -50,17 +50,17 @@ class _IEXBase(object):
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
         self.output_format = kwargs.get("output_format", 'json')
-        self.api_key = kwargs.get("token")
+        self.token = kwargs.get("token")
 
         # Get desired API version from environment variables
         # Defaults to v1 API
         self.version = os.getenv("IEX_API_VERSION")
         if self.version in ("iexcloud-beta", "iexcloud-v1"):
-            if self.api_key is None:
-                self.api_key = os.getenv('IEX_TOKEN')
-            if not self.api_key or not isinstance(self.api_key, str):
+            if self.token is None:
+                self.token = os.getenv('IEX_TOKEN')
+            if not self.token or not isinstance(self.token, str):
                 raise auth_error('The IEX Cloud API key must be provided '
-                                 'either through the api_key variable or '
+                                 'either through the token variable or '
                                  'through the environmental variable '
                                  'IEX_TOKEN.')
         else:
@@ -128,9 +128,8 @@ class _IEXBase(object):
         IEXQueryError
             If problems arise when making the query
         """
-        print("URL %s" % url)
         params = self.params
-        params['token'] = self.api_key
+        params['token'] = self.token
         for i in range(self.retry_count+1):
             response = self.session.get(url=url, params=params)
             if response.status_code == requests.codes.ok:
@@ -180,6 +179,7 @@ class _IEXBase(object):
             A response object
         """
         url = self._prepare_query()
+        print("URL: %s" % url)
         data = self._execute_iex_query(url)
         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)
 

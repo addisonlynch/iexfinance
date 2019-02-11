@@ -12,15 +12,15 @@ class TestAuth(object):
         with pytest.raises(IEXAuthenticationError):
             _IEXBase()
 
-    def test_api_key_env(self, use_cloud, set_keys):
+    def test_token_env(self, use_cloud, set_keys):
         a = _IEXBase()
 
-        assert a.api_key == "TESTKEY"
+        assert a.token == "TESTKEY"
 
-    def test_api_key_arg(self, use_cloud, set_keys):
+    def test_token_arg(self, use_cloud, set_keys):
         a = _IEXBase(token="TESTKEY2")
 
-        assert a.api_key == "TESTKEY2"
+        assert a.token == "TESTKEY2"
 
     def test_stock_quote_fails_no_key(self, use_cloud, block_keys):
         with pytest.raises(IEXAuthenticationError):
