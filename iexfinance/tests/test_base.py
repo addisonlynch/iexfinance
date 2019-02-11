@@ -10,6 +10,21 @@ def block_format_env():
         del os.environ["IEX_OUTPUT_FORMAT"]
 
 
+@pytest.fixture
+def pandas_format():
+    os.environ["IEX_OUTPUT_FORMAT"] = 'pandas'
+    yield
+    del os.environ["IEX_OUTPUT_FORMAT"]
+
+
+@pytest.fixture
+def bad_format():
+    os.environ["IEX_OUTPUT_FORMAT"] = 'BADFORMAT'
+    yield
+    del os.environ["IEX_OUTPUT_FORMAT"]
+
+
+@pytest.mark.usefixtures("use_legacy")
 class TestBase(object):
 
     def test_all_defaults(self, block_format_env):
@@ -24,8 +39,7 @@ class TestBase(object):
 
         assert base.output_format == 'pandas'
 
-    def test_output_format_env(self):
-        os.environ["IEX_OUTPUT_FORMAT"] = 'pandas'
+    def test_output_format_env(self, pandas_format):
         base = _IEXBase()
 
         assert base.output_format == 'pandas'
@@ -34,7 +48,6 @@ class TestBase(object):
         with pytest.raises(ValueError):
             _IEXBase(output_format='BADFORMAT')
 
-    def test_invalid_format_env(self):
-        os.environ["IEX_OUTPUT_FORMAT"] = "BADFORMAT"
+    def test_invalid_format_env(self, bad_format):
         with pytest.raises(ValueError):
             _IEXBase()

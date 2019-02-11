@@ -187,7 +187,6 @@ class _IEXBase(object):
             A response object
         """
         url = self._prepare_query()
-        print("URL: %s" % url)
         data = self._execute_iex_query(url)
         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)
 

@@ -22,14 +22,15 @@ An easy-to-use interface to obtain:
 
 - Real-time quotes
 - Historical data
-- Fundamentals,
+- Fundamentals (financial statements, analyst estimates, price targets)
 - Actions (dividends, splits), Sector Performance
 - Trading analyses (gainers, losers, etc.)
-- IEX Market Data & Stats
+- IEX Market Data & Statistics
 
-iexfinance provides real-time financial data from the various IEX
+``iexfinance`` provides real-time financial data from the various IEX
 endpoints, including:
 
+- Account (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/account.html>`__ | `IEX Docs <https://iexcloud.io/docs/api/#account>`__)
 - Stocks (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/stocks.html>`__ | `IEX Docs <https://iexcloud.io/api/docs/#stocks>`__)
 - Reference Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/refdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
 - Investors Exchange Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/iexdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
@@ -57,16 +58,27 @@ From development repository (dev version):
      $ cd iexfinance
      $ python3 setup.py install
 
-Selecting an API version
-------------------------
+Configuration
+-------------
+
+Selecting an API Version
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 IEX is continuing support for their version 1 (current) API until at least May 29th, 2019. IEX cloud beta is now available and includes a variety of additional endpoints. IEX is also introducing versioning through URL routing which will allow users to query from each version of the IEX Cloud API as more become available.
 
-The IEX api version can be selected by setting the environment variable ``IEX_API_VERSION`` to one of the following values:
+The IEX API version can be selected by setting the environment variable
+``IEX_API_VERSION`` to one of the following values:
 
 - ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
 - ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
-- ``iexcloud-v1`` for version 1 of IEX cloud (not yet available)
+
+Output Formatting
+~~~~~~~~~~~~~~~~~
+
+pandas ``DataFrame`` output formatting can be selected by setting the
+``IEX_OUTPUT_FORMAT`` environment variable to ``pandas`` or by passing
+``output_format`` as an argument to any function call (or at the instantiation
+of a ``Stock`` object).
 
 Common Usage Examples
 ---------------------
@@ -79,7 +91,7 @@ endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
 Real-time Quotes
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 To obtain real-time quotes for one or more symbols, use the ``get_price``
 method of the ``Stock`` object:
@@ -100,13 +112,13 @@ etc.):
 
 
 Historical Data
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 It's possible to obtain historical data the ``get_historical_data`` and
 ``get_historical_intraday``.
 
 Daily
-~~~~~
+^^^^^
 
 To obtain daily historical price data for one or more symbols, use the
 ``get_historical_data`` function. This will return a daily time-series of the ticker
@@ -141,7 +153,7 @@ It's really simple to plot this data, using `matplotlib <https://matplotlib.org/
 
 
 Minutely (Intraday)
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 To obtain historical intraday data, use ``get_historical_intraday`` as follows.
 Pass an optional ``date`` to specify a date within three months prior to the
@@ -162,91 +174,91 @@ or for a Pandas Dataframe indexed by each minute:
 
     get_historical_intraday("AAPL", output_format='pandas')
 
+Fundamentals
+~~~~~~~~~~~~
 
-Endpoints
----------
+Financial Statements
+^^^^^^^^^^^^^^^^^^^^
 
-Stock Endpoints
-^^^^^^^^^^^^^^^
+`Balance Sheet <https://addisonlynch.github.io/iexfinance/stable/stocks.html#balance-sheet>`__
 
-The ``Stock`` function creates a ``Stock`` instance which has a method to
-retrieve each of the Stocks endpoints (``get_quote``, ``get_book``,
-``get_volume_by_venue``, etc.):
-
-.. code:: python
+.. code-block:: python
 
     from iexfinance.stocks import Stock
-    tsla = Stock('TSLA')
-    tsla.get_open()
-    tsla.get_price()
 
-Pandas DataFrame and JSON (dict) output formatting are selected with the
-``output_format`` parameter when calling ``Stock``.
+    aapl = Stock("AAPL")
+    aapl.get_balance_sheet()
 
-.. code:: python
+`Income Statement <https://addisonlynch.github.io/iexfinance/stable/stocks.html#income-statement>`__
 
-    tsla = Stock("TSLA", output_format='pandas')
-    tsla.get_quote()
+.. code-block:: python
 
+    aapl.get_income_statement()
 
-IEX Reference Data
-^^^^^^^^^^^^^^^^^^
+`Cash Flow <https://addisonlynch.github.io/iexfinance/stable/stocks.html#cash-flow>`__
 
-Support for the `IEX Reference Data
-<https://iextrading.com/developer/docs/#reference-data>`__ endpoints is
-available through the top level functions ``get_available_symbols``,
-``get_corporate_actions``, ``get_dividends``, ``get_next_day_ex_date``, and
-``get_listed_symbol_dir``. As with all endpoints, request parameters such as
-``retry_count`` and output format selection (through ``output_format``) can be
-passed to the call.
+.. code-block:: python
 
-.. code:: python
+    aapl.get_cash_flow()
 
-	from iexfinance import get_available_symbols
+Modeling/Valuation Tools
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-	get_available_symbols(output_format='pandas')[:2]
+`Analyst Estimates <https://addisonlynch.github.io/iexfinance/stable/stocks.html#estimates>`__
 
+.. code-block:: python
 
-IEX Market Data
-^^^^^^^^^^^^^^^
+    from iexfinance.stocks import Stock
 
-The `IEX Market Data
-<https://iextrading.com/developer/docs/#iex-market-data>`__ endpoints are
-supported through various top-level functions, including ``get_market_tops``
-and ``get_market_deep``.
+    aapl = Stock("AAPL")
+    aapl.get_estimates()
 
-.. code:: python
+`Price Targets <https://addisonlynch.github.io/iexfinance/stable/stocks.html#price-target>`__
 
-	from iexfinance import get_market_tops
+.. code-block:: python
 
-	get_market_tops()
+    aapl.get_price_target()
 
+Reference Data
+~~~~~~~~~~~~~~
 
-IEX Stats
-^^^^^^^^^
+`List of Symbols IEX supports for API calls <https://addisonlynch.github.io/iexfinance/stable/refdata.html#symbols>`__
 
-The `IEX Stats
-<https://iextrading.com/developer/docs/#iex-stats>`__ endpoints are
-supported through various top-level functions, including ``get_stats_intraday``
-and ``get_stats_recent``. These endpoints provide IEX's trading statistics for
-a given ticker.
+.. code-block:: python
 
-.. code:: python
+    from iexfinance.refdata import get_symbols
 
-	from iexfinance import get_stats_intraday
+    get_symbols()
 
-	get_stats_intraday()
+`List of Symbols IEX supports for trading <https://addisonlynch.github.io/iexfinance/stable/refdata.html#iex-symbols>`__
 
+.. code-block:: python
 
-Debugging \& Caching
---------------------
+    from iexfinance.refdata import get_iex_symbols
 
-All functions (including ``Stock`` and ``get_historical_data``) allow
-for `Request Parameters <https://addisonlynch.github.io/usage.html#parameters>`__, which
-include ``retry_count``, ``pause``, and ``session``. These parameters are
-entirely optional. The first two deal with how unsuccessful requests are
-handled, and the third allows for the passing of a cached ``requests-cache``
-session (see `caching <https://addisonlynch.github.io/iexfinance/stable/caching.html>`__).
+    get_iex_symbols()
+
+Account Usage
+~~~~~~~~~~~~~
+
+`Message Count <https://addisonlynch.github.io/iexfinance/stable/account.html#usage>`__
+
+.. code-block:: python
+
+    from iexfinance.tools import get_usage
+
+    get_usage(quota_type='messages')
+
+API Status
+~~~~~~~~~~
+
+`IEX Cloud API Status <http://addisonlynch.github.io/iexfinance/stable/apistatus.html#iexfinance.tools.api.get_api_status>`__
+
+.. code-block:: python
+
+    from iexfinance.tools import get_api_status
+
+    get_api_status()
 
 Contact
 -------

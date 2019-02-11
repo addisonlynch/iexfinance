@@ -12,13 +12,17 @@ Dependencies
 
 -  pytest
 -  pytest-runner
--  flake8 (to pass TravisCI build)
+-  flake8
+-  flake8-rst
+-  requests-cache
+-  six
 
 For docs:
 
 - sphinx
 - sphinx-autobuild
-- sphinx_rtd_theme
+- sphinx-rtd-theme
+- sphinxcontrib-fulltoc
 - sphinxcontrib-napoleon
 - matplotlib
 - ipython

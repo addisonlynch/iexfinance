@@ -8,9 +8,37 @@ Common Usage Examples
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
+endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
+
+The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX Cloud Documentation <https://iexcloud.io/docs/api/>`__ for readability and ease of use.
+
+  - :ref:`Account<usage.account>`
+  - :ref:`Stocks<usage.stocks>`
+  - :ref:`Reference Data<usage.refdata>`
+  - :ref:`Investor's Exchange Data<usage.iexdata>`
+  - :ref:`API System Metadata<usage.apistatus>`
+
+These modules provide classes and functions to execute queries to the IEX Cloud.
+
+
+.. _usage.account:
+
+Account
+-------
+
+.. seealso:: :ref:`Account<account>`
+
+
+.. _usage.stocks:
+
+Stocks
+------
+
+.. seealso:: For more information, see `Stocks <stocks.html>`__.
+
+
 
 Real-time Quotes
 ----------------
@@ -40,7 +68,7 @@ It's possible to obtain historical data the ``get_historical_data`` and
 ``get_historical_intraday``.
 
 Daily
------
+~~~~~
 
 To obtain daily historical price data for one or more symbols, use the
 ``get_historical_data`` function. This will return a daily time-series of the ticker
@@ -75,7 +103,7 @@ It's really simple to plot this data, using `matplotlib <https://matplotlib.org/
 
 
 Minutely (Intraday)
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 To obtain historical intraday data, use ``get_historical_intraday`` as follows.
 Pass an optional ``date`` to specify a date within three months prior to the
@@ -88,48 +116,14 @@ current day (default is current date):
 
     date = datetime(2018, 11, 27)
 
-    get_historical_intraday("AAPL", date)
+    get_historical_intraday("AAPL", date)[0]
 
-or for a Pandas Dataframe indexed by each minute:
+or for a ``pandas.DataFrame`` indexed by each minute:
 
 .. ipython:: python
 
-    get_historical_intraday("AAPL", output_format='pandas')
+    get_historical_intraday("AAPL", output_format='pandas').head()
 
-
-
-
-
-Minutely
-~~~~~~~~
-
-Overview
---------
-
-The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX API Documentation <https://iextrading.com/developer/docs>`__ for readability and ease of use.
-
-Thus there are four main modules of iexfinance, each allowing the retrieval of data from one of IEX's main endpoint groups:
-
-  - :ref:`Stocks<usage.stocks>`
-  - :ref:`Reference Data<usage.reference-data>`
-  - :ref:`IEX Market Data<usage.iex-market-data>`
-  - :ref:`IEX Stats<usage.iex-stats>`
-
-These modules provide classes and functions to execute queries to the IEX API.
-
-
-.. _usage.stocks:
-
-Stocks
-------
-
-.. seealso:: For more information, see `Stocks <stocks.html>`__.
-
-
-IEX provides a list of symbols that are available for access, and as
-such, we provide a function ``get_available_symbols`` to obtain this
-list. Invalid symbols will be met with a ``IEXSymbolError``, and
-duplicate symbols will be kept intact without alteration.
 
 Endpoints
 ~~~~~~~~~
@@ -205,33 +199,29 @@ method as a keyword argument.
   through calls to endpoint methods. See `Stocks <stocks.html>`__ for
   more information.
 
-.. _usage.reference-data:
+
+.. _usage.refdata:
 
 Reference Data
 --------------
 
-.. seealso:: For more information, see `Reference Data <ref.html>`__
+.. seealso:: :ref:`Reference Data<refdata>`
 
 
-.. _usage.iex-market-data:
+.. _usage.iexdata:
 
+Investor's Exchange Data
+------------------------
 
-IEX Market Data
----------------
+.. seealso:: :ref:`Investor's Exchange Data<iexdata>`
 
-.. seealso:: For more information, see `IEX Market Data <market.html>`__
+.. _usage.apistatus:
 
-The IEX Market Data `endpoints <market.html>`__
+API System Metadata
+-------------------
 
+.. seealso:: :ref:`API System Metadata<api_status>`
 
-.. _usage.iex-stats:
-
-IEX Stats
----------
-
-.. seealso:: For more information, see `IEX Stats <stats.html>`__
-
-The IEX Stats `endpoints <stats.html>`__
 
 .. _usage.caching:
 
@@ -241,7 +231,7 @@ Caching
 iexfinance supports the caching of HTTP requests to IEX using the
 `requests-cache <https://pypi.python.org/pypi/requests-cache>`__ package.
 
-.. seealso:: `Caching Queries <caching.html>`__
+.. seealso:: :ref:`Caching Queries<caching>`
 
 
 .. _usage.plotting:
