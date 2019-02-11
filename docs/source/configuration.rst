@@ -15,7 +15,7 @@ Authentication
 An IEX Cloud account is required to acecss the IEX Cloud API.
 
 There are two ways to pass your IEX Cloud authentication token to
-``iexfinance``
+``iexfinance``: environment variables and arguments.
 
 
 .. _config.auth.env:
@@ -46,13 +46,12 @@ Windows
 See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__
 
 
-.. _config.auth.parameter:
+.. _config.auth.argument:
 
-Passing as a Parameter
+Passing as an Argument
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The authentication token can also be passed to any function call, or at the
-instantiation of a ``Stock`` object:
+The authentication token can also be passed to any function call, or at the instantiation of a ``Stock`` object:
 
 .. code-block:: python
 

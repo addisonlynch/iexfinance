@@ -241,7 +241,7 @@ Reference Data
 Account Usage
 ~~~~~~~~~~~~~
 
-`Message Count<https://addisonlynch.github.io/iexfinance/stable/account.html#usage>`__
+`Message Count <https://addisonlynch.github.io/iexfinance/stable/account.html#usage>`__
 
 .. code-block:: python
 
@@ -258,7 +258,7 @@ API Status
 
     from iexfinance.tools import get_api_status
 
-    get_api_status
+    get_api_status()
 
 Contact
 -------

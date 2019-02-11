@@ -8,11 +8,11 @@ Common Usage Examples
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the `Stocks <https://iextrading.com/developer/docs/#stocks>`__
+endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
-The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX API Documentation <https://iextrading.com/developer/docs>`__ for readability and ease of use.
+The iexfinance codebase and documentation are structured in a way that emulates much of the `IEX Cloud Documentation <https://iexcloud.io/docs/api/>`__ for readability and ease of use.
 
   - :ref:`Account<usage.account>`
   - :ref:`Stocks<usage.stocks>`
@@ -20,7 +20,7 @@ The iexfinance codebase and documentation are structured in a way that emulates 
   - :ref:`Investor's Exchange Data<usage.iexdata>`
   - :ref:`API System Metadata<usage.apistatus>`
 
-These modules provide classes and functions to execute queries to the IEX API.
+These modules provide classes and functions to execute queries to the IEX Cloud.
 
 
 .. _usage.account:
