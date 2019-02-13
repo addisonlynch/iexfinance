@@ -197,6 +197,13 @@ Cryptocurrencies
 
 As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
 
+To retrieve quotes for all available cryptocurrencies, use the
+``get_crypto_quotes`` function:
+
+
+.. autofunction:: iexfinance.stocks.get_crypto_quotes
+
+
 The following tickers are supported:
 
 - Bitcoin USD (BTCUSDT)
@@ -217,12 +224,6 @@ The following tickers are supported:
 - VeChain USD (VENUSDT)
 - Stellar Lumens USD (XLMUSDT)
 - Qtum USD (QTUMUSDT)
-
-To retrieve quotes for all available cryptocurrencies, use the
-``get_crypto_quotes`` function:
-
-
-.. autofunction:: iexfinance.stocks.get_crypto_quotes
 
 
 .. _stocks.crypto.examples:

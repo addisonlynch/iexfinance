@@ -1053,6 +1053,7 @@ class TestMarketMovers(object):
         assert len(li) == pytest.approx(10, 1)
 
 
+@pytest.mark.legacy
 class TestCrypto(object):
 
     def setup_class(self):

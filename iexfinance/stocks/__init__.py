@@ -109,6 +109,9 @@ def get_market_volume(**kwargs):
 def get_crypto_quotes(**kwargs):
     """
     Function for obtaining all available cryptocurrency quotes
+
+    .. warning:: This endpoint is only available using the legacy IEX
+        Developer API (v1). See :ref:`Migrating` for more information.
     """
     return CryptoReader(**kwargs).fetch()
 
