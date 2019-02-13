@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from iexfinance.refdata import (get_symbols,
+from iexfinance.refdata import (get_symbols, get_iex_symbols,
                                 get_iex_corporate_actions, get_iex_dividends,
                                 get_iex_next_day_ex_date,
                                 get_iex_listed_symbol_dir)
@@ -23,8 +23,9 @@ class TestRef(object):
         assert isinstance(d, list)
         assert isinstance(d[0], dict)
 
+    @pytest.mark.cloud
     def test_get_iex_symbols(self):
-        d = get_symbols()
+        d = get_iex_symbols()
 
         assert isinstance(d, list)
         assert isinstance(d[0], dict)
@@ -83,9 +84,3 @@ class TestRef(object):
         d = get_iex_listed_symbol_dir(start=self.start)
         assert isinstance(d, list)
         assert self.keys.issubset(set(d[0]))
-
-
-class TestCloudRef(object):
-
-    def test_symbols(self):
-        pass
