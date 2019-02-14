@@ -20,12 +20,7 @@ The iexfinance codebase and documentation are structured in a way that emulates 
   - :ref:`Investor's Exchange Data<usage.iexdata>`
   - :ref:`API System Metadata<usage.apistatus>`
 
-<<<<<<< 5041e122fad45ccdb231741d49f3bcafa740966c
 These modules provide classes and functions to execute queries to IEX Cloud.
-=======
-These modules provide classes and functions to execute queries to the IEX Cloud.
-
->>>>>>> CLN: Update docs
 
 .. _usage.account:
 
@@ -220,7 +215,6 @@ Investor's Exchange Data
 .. seealso:: :ref:`Investor's Exchange Data<iexdata>`
 
 .. _usage.apistatus:
-
 
 API System Metadata
 -------------------

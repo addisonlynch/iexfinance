@@ -26,16 +26,24 @@ New Endpoints
 
 **Account**
 
-* /account/usage (``iexfinance.tools.account.get_usage``)
-* /account/metadata (``iexfinance.tools.account.get_metadata``)
-* /account/payasyougo (``iexfinance.tools.account.allow_pay_as_you_go``,
-  ``iexfinance.tools.account.disallow_pay_as_you_go``)
+* /account/usage (``iexfinance.account.get_usage``)
+* /account/metadata (``iexfinance.account.get_metadata``)
+* /account/payasyougo (``iexfinance.account.allow_pay_as_you_go``,
+  ``iexfinance.account.disallow_pay_as_you_go``)
 
 **Reference Data**
 
 * /ref-data/symbols (``iexfinance.get_symbols``)
 * /ref-data/iex-symbols (``iexfinance.get_iex_symbols``)
 
+**Alternative Data**
+
+* /crypto/quote (``iexfinance.altdata.get_crypto_quote``)
+* /stock/sentiment (``iexfinance.altdata.get_social_sentiment``)
+
+**API System Metadata**
+
+* /status (``iexfinance.apidata.get_api_status``)
 
 .. whatsnew_040.enhancements:
 

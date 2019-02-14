@@ -201,6 +201,86 @@ Financial Statements
 
     aapl.get_cash_flow()
 
+
+Modeling/Valuation Tools
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Analyst Estimates <https://addisonlynch.github.io/iexfinance/stable/stocks.html#estimates>`__
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL")
+
+    aapl.get_estimates()
+
+
+`Price Targets <https://addisonlynch.github.io/iexfinance/stable/stocks.html#price-target>`__
+
+.. code-block:: python
+
+    aapl.get_price_target()
+
+Reference Data
+~~~~~~~~~~~~~~
+
+`List of Symbols IEX supports for API calls <https://addisonlynch.github.io/iexfinance/stable/refdata.html#symbols>`__
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_symbols
+
+    get_symbols()
+
+`List of Symbols IEX supports for trading <https://addisonlynch.github.io/iexfinance/stable/refdata.html#iex-symbols>`__
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_iex_symbols
+
+    get_iex_symbols()
+
+Account Usage
+~~~~~~~~~~~~~
+
+`Message Count <https://addisonlynch.github.io/iexfinance/stable/account.html#usage>`__
+
+.. code-block:: python
+
+    from iexfinance.account import get_usage
+
+    get_usage(quota_type='messages')
+
+API Status
+~~~~~~~~~~
+
+`IEX Cloud API Status <http://addisonlynch.github.io/iexfinance/stable/apistatus.html#iexfinance.tools.api.get_api_status>`__
+
+.. code-block:: python
+
+    from iexfinance.account import get_api_status
+
+    get_api_status()
+<<<<<<< 5041e122fad45ccdb231741d49f3bcafa740966c
+
+=======
+>>>>>>> CLN: Update docs
+=======
+    aapl.get_balance_sheet()
+
+`Income Statement <https://addisonlynch.github.io/iexfinance/stable/stocks.html#income-statement>`__
+
+.. code-block:: python
+
+    aapl.get_income_statement()
+
+`Cash Flow <https://addisonlynch.github.io/iexfinance/stable/stocks.html#cash-flow>`__
+
+.. code-block:: python
+
+    aapl.get_cash_flow()
+
 Modeling/Valuation Tools
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -259,10 +339,7 @@ API Status
     from iexfinance.tools import get_api_status
 
     get_api_status()
-<<<<<<< 5041e122fad45ccdb231741d49f3bcafa740966c
-
-=======
->>>>>>> CLN: Update docs
+>>>>>>> cca8eb5ce8beb6891789cf5da472b9215cdfa682
 
 Contact
 -------

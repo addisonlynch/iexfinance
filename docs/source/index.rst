@@ -36,9 +36,10 @@ Full Contents
 
    account
    stocks
+   altdata
    refdata
    iexdata
-   apistatus
+   apidata
 
 .. _package_info:
 
