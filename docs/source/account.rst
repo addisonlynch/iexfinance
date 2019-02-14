@@ -3,6 +3,14 @@
 Account
 =======
 
+The `Account <https://iexcloud.io/docs/api/#account>`__ endpoints provide information about your IEX Cloud account, which allow tracking of message counts, account metadata, and more.
+
+* :ref:`account.metadata`
+* :ref:`account.usage`
+* :ref:`account.pay_as_you_go`
+
+Data weighting for all ``iexfinance.account`` endpoints is ``Free``.
+
 .. _account.metadata:
 
 Metadata
