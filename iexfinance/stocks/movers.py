@@ -1,3 +1,5 @@
+import pandas as pd
+
 from iexfinance.base import _IEXBase
 
 
@@ -23,3 +25,6 @@ class MoversReader(_IEXBase):
     @property
     def url(self):
         return 'stock/market/list/' + self.mover
+
+    def _convert_output(self, out):
+        return pd.DataFrame(out).set_index("symbol")

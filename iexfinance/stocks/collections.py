@@ -13,11 +13,12 @@ class CollectionsReader(_IEXBase):
     """
     _COLLECTION_TYPES = ["tag", "sector", "list"]
 
-    def __init__(self, collection_name, collection_type="tag", **kwargs):
+    def __init__(self, collection_name, collection_type, **kwargs):
         self.collection_name = collection_name
         self.collection_type = collection_type
         if self.collection_type not in self._COLLECTION_TYPES:
             raise ValueError("Please select a valid collection type.")
+        # deal with collection name with spaces
         super(CollectionsReader, self).__init__(**kwargs)
 
     @property

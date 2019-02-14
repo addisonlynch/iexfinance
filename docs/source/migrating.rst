@@ -29,7 +29,9 @@ Legacy Endpoints (Removed in IEX Cloud)
 Stocks
 ~~~~~~
 
+* Chart - ``stocks.get_chart`` (renamed Historical Prices)
 * Crypto Quotes - ``stocks.get_crypto_quotes``
+* Time Series - ``stocks.get_time_series``
 
 Reference Data
 ~~~~~~~~~~~~~~

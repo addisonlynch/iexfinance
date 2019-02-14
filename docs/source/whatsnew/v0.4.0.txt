@@ -23,6 +23,7 @@ New Endpoints
 * /cash-flow (``get_cash_flow``)
 * /estimates (``get_estimates``)
 * /income (``get_income_statement``)
+* /historical (``get_historical_prices``) (same as ``get_chart``)
 
 **Account**
 
@@ -77,7 +78,10 @@ Backwards Incompatible Changes
       have been moved to ``iexdata``. The top level functions ``iexfinance.get_stats_intraday`` etc. have
       been deprecated.
     - ``get_stats_monthly`` renamed to ``get_stats_summary``
-
+- The named parameter ``range_`` for ``iexfinance.stocks.Stock.get_dividends``,
+  ``get_splits``, and ``get_chart`` is now the keyword argument ``range``
+- ``iexfinance.stocks.Stock.get_previous`` deprecated and renamed
+  ``get_previous_day_prices``
 
 .. whatsnew_040.bug_fixes:
 
@@ -86,5 +90,7 @@ Bug Fixes
 
 - Make pandas indexing consistent for ``get_historical_intraday``, using
   ``pandas.DatetimeIndex`` instead of ``str`` (GH95_)
+- ``stocks.Stock.get_dividends`` output fomatting returns one symbol only (GH110_)
 
 .. _GH95: https://github.com/addisonlynch/iexfinance/issues/95
+.. _GH110: https://github.com/addisonlynch/iexfinance/issues/110

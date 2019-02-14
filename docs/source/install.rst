@@ -12,7 +12,7 @@ iexfinance relies on:
 -  `pandas <http://pandas.pydata.org>`__
 -  `requests <http://docs.python-requests.org>`__
 
-For testing requirements, see `testing <testing.html>`__.
+For testing requirements, see :ref:`testing.dependencies`.
 
 Installation
 ------------

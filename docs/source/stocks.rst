@@ -69,7 +69,7 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Effective Spread<stocks.effective_spread>`
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
-- :ref:`Historical<stocks.historical>` - ``get_historical_data`` and ``get_historical_intraday``
+- :ref:`Historical Prices<stocks.historical_prices>` - ``get_historical_data`` and ``get_historical_intraday``
 - :ref:`Key Stats<stocks.key_stats>`
 - :ref:`Logo<stocks.logo>`
 - :ref:`Market Volume<stocks.market_volume>` - ``get_market_volume``
@@ -323,11 +323,19 @@ Financials
 Historical Prices
 -----------------
 
-Historical time series data is available through the
-``get_historical_data`` and ``get_historical_intraday`` functions of
-``stocks``, which
-source the
-`chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
+The method used to obtain historical prices from a ``Stock`` object:
+
+.. ipython:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL")
+    aapl.get_historical_prices()
+
+
+Historical time series data is also available through the
+``get_historical_prices`` method or the top-level ``get_historical_data`` and
+``get_historical_intraday`` functions of ``stocks``, which source the `Historical Prices <https://iexcloud.io/docs/api/#historical-prices>`__ endpoint.
 
 Daily data can be retrieved from up to 5 years before the current date, and
 historical data up to 3 months prior to the current date.
