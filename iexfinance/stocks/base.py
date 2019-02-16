@@ -232,7 +232,7 @@ class Stock(_IEXBase):
 
         .. seealso:: ``get_historical_prices``
         """
-        return self.get_historical_prices()
+        return self.get_historical_prices(**kwargs)
 
     def get_company(self, **kwargs):
         """Company

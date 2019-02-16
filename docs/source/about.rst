@@ -8,7 +8,7 @@ About
 IEX API Issues
 --------------
 
-For issues the provider's API endpoints, see the IEX API `Github <https://github.com/iexg/IEX-API>`__. Further, the `IEX Status <https://twitter.com/iexstatus>`__ twitter account provides
+For issues the provider's API endpoints, see the IEX Cloud `Github <https://github.com/iexg/IEX-API>`__. Further, the `IEX Status <https://twitter.com/iexstatus>`__ twitter account provides
 updates about issues and service interruptions.
 
 

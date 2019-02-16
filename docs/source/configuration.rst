@@ -4,11 +4,29 @@
 Configuration
 =============
 
-There are three core components of ``iexfinance``'s configuration:
+There are four core components of ``iexfinance``'s configuration:
 
+* :ref:`config.api_version` - specifying use of IEX Cloud or the IEX legacy v1 Developer API
 * :ref:`config.auth` - setting your IEX Cloud Authentication Token
 * :ref:`config.formatting` - configuring desired output format (mirror IEX output or Pandas DataFrame)
 * :ref:`config.debugging` - cached sessions, request retries, and more
+
+
+.. _config.api_version:
+
+API Version
+-----------
+
+By default, ``iexfinance`` makes its requests to the legacy
+`v1 IEX Developer API <https://iextrading.com/developer/docs/>`__. IEX recommends migrating to IEX Cloud.
+
+.. seealso:: :ref:`migrating`
+
+To select an API version, set the environment variable ``IEX_API_VERSION`` to one of the following values:
+
+- ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
+- ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
+
 
 .. _config.auth:
 

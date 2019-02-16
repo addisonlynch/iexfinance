@@ -168,7 +168,8 @@ class TestShareDefault(object):
         # weight: 1000
         data = self.cshare2.get_earnings()
         assert "actualEPS" in data.columns
-        assert len(data.columns) == 9
+        # 9 for iexcloud, 13 for v1
+        assert len(data.columns) in (10, 12)
 
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
@@ -406,7 +407,7 @@ class TestBatchDefault(object):
         assert isinstance(data, dict)
 
         data2 = self.cbatch2.get_dividends()
-        assert isinstance(data2, pd.DataFrame)
+        assert isinstance(data2, dict)
 
     def test_get_dividends_params(self):
         data = self.cbatch.get_dividends()["AAPL"]

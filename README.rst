@@ -339,7 +339,6 @@ API Status
     from iexfinance.tools import get_api_status
 
     get_api_status()
->>>>>>> cca8eb5ce8beb6891789cf5da472b9215cdfa682
 
 Contact
 -------

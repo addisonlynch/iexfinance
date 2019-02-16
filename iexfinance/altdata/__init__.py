@@ -5,7 +5,7 @@ def get_crypto_quote(symbol, **kwargs):
     """
     Crypto Quotes
 
-    This will return a quote for Cryptocurrencies supported by the IEX API.
+    This will return a quote for Cryptocurrencies supported by IEX Cloud.
     Each element is a standard ``quote``.
 
     Reference: https://iexcloud.io/docs/api/#crypto
