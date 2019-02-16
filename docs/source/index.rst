@@ -6,12 +6,9 @@ Welcome to iexfinance's documentation!
 - :ref:`getting_started` - Installation instructions, basic usage information,
   migrating to IEX Cloud
 - :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
-- :ref:`package_info` - additional package information, developer / testing
-  documentation
+- :ref:`package_info` - additional package information, developer/testing documentation
 
-.. note:: ``iexfinance`` version 0.4.0 introduces a refactored :ref:`refdata`
-          and :ref:`iexdata` (formerly IEX Stats and IEX Market Data). For more
-          information, see :ref:`migrating`.
+.. note:: ``iexfinance`` version 0.4.0 introduces a number of new endpoint groups, including :ref:`altdata`, :ref:`account`, and :ref:`apidata`. Certain modules are also refactored or renamed, including :ref:`refdata` and :ref:`iexdata` (formerly IEX Stats and IEX Market Data). For more information, see :ref:`migrating`.
 
 Full Contents
 -------------
@@ -36,9 +33,10 @@ Full Contents
 
    account
    stocks
+   altdata
    refdata
    iexdata
-   apistatus
+   apidata
 
 .. _package_info:
 

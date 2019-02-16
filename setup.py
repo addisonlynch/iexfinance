@@ -39,7 +39,8 @@ with codecs.open('README.rst', encoding='utf-8') as f:
 setup(
     name="iexfinance",
     version=find_version('iexfinance', '__init__.py'),
-    description="Python module to get stock data from IEX API 1.0",
+    description="Python module to get stock data from IEX Cloud and "
+                "IEX API 1.0",
     long_description=long_description,
 
     # The project URL.

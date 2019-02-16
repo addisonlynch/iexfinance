@@ -1,11 +1,11 @@
 import pandas as pd
 import pytest
 
-from iexfinance.tools.api import get_api_status
+from iexfinance.apidata import get_api_status
 
 
 @pytest.mark.cloud
-class TestAPIStatus(object):
+class TestAPIData(object):
 
     def test_api_status_json(self):
         data = get_api_status()

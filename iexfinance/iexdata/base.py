@@ -249,9 +249,6 @@ class DailySummaryReader(Stats):
     """
 
     def __init__(self, start=None, end=None, last=None, **kwargs):
-        import warnings
-        warnings.warn('Daily statistics is not working due to issues with the '
-                      'IEX API')
         self.curr_date = start
         self.last = last
         self.start = start

@@ -20,8 +20,7 @@ The iexfinance codebase and documentation are structured in a way that emulates 
   - :ref:`Investor's Exchange Data<usage.iexdata>`
   - :ref:`API System Metadata<usage.apistatus>`
 
-These modules provide classes and functions to execute queries to the IEX Cloud.
-
+These modules provide classes and functions to execute queries to IEX Cloud.
 
 .. _usage.account:
 
@@ -257,4 +256,3 @@ movements using matplotlib.
     plt.show()
 
 .. image:: images/plotdailyaapl.jpg
-

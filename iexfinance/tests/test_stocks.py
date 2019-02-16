@@ -73,6 +73,7 @@ class TestShareDefault(object):
         with pytest.raises(IEXEndpointError):
             self.cshare.get_endpoints("BAD ENDPOINT")
 
+    @pytest.mark.cloudbroken
     def test_get_book_format(self):
         data = self.cshare.get_book()
         assert isinstance(data, dict)
@@ -90,7 +91,7 @@ class TestShareDefault(object):
     def test_get_chart_params(self):
         data = self.cshare.get_chart()
         # Test chart ranges
-        data2 = self.cshare.get_chart(range_='1y')
+        data2 = self.cshare.get_chart(range='1y')
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -98,7 +99,7 @@ class TestShareDefault(object):
         data4 = self.cshare.get_chart(chartSimplify=True)[0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cshare.get_chart(range_='1y', chartInterval=5)
+        data5 = self.cshare.get_chart(range='1y', chartInterval=5)
         assert 45 < len(data5) < 55
 
     def test_get_chart_pandas(self):
@@ -112,7 +113,7 @@ class TestShareDefault(object):
                        "09:30 EST")
     def test_get_chart_reset(self):
         # Test chartReset
-        data3 = self.cshare.get_chart(range_='1d', chartReset=True)
+        data3 = self.cshare.get_chart(range='1d', chartReset=True)
         assert data3 == []
 
     def test_get_company_format(self):
@@ -130,19 +131,28 @@ class TestShareDefault(object):
         assert isinstance(data2, pd.DataFrame)
 
     def test_get_dividends_format(self):
-        data = self.cshare.get_dividends(range_='1y')
+        data = self.cshare.get_dividends(range='1y')
         assert isinstance(data, list)
 
-        data2 = self.cshare2.get_dividends(range_='1y')
+        data2 = self.cshare2.get_dividends(range='1y')
         assert isinstance(data2, pd.DataFrame)
 
     def test_get_dividends_params(self):
         data = self.cshare.get_dividends()
-        data2 = self.cshare.get_dividends(range_='2y')
-        data3 = self.cshare.get_dividends(range_='5y')
+        data2 = self.cshare.get_dividends(range='2y')
+        data3 = self.cshare.get_dividends(range='5y')
         assert len(data) < len(data2) < len(data3)
 
+    def test_get_dividends_pandas(self):
+        data = self.cshare2.get_dividends(range='5y')
+        assert isinstance(data, pd.DataFrame)
+        assert "amount" in data.columns
+        assert "flag" in data.columns
+        assert isinstance(data.index, pd.DatetimeIndex)
+
+    @pytest.mark.highweight
     def test_get_earnings_format(self):
+        # weight: 3000
         data = self.cshare.get_earnings()
         assert isinstance(data, list)
 
@@ -153,6 +163,14 @@ class TestShareDefault(object):
         data3 = self.cshare5.get_earnings()
         assert isinstance(data3, list)
 
+    @pytest.mark.highweight
+    def test_get_earnings_pandas(self):
+        # weight: 1000
+        data = self.cshare2.get_earnings()
+        assert "actualEPS" in data.columns
+        # 9 for iexcloud, 13 for v1
+        assert len(data.columns) in (10, 12)
+
     def test_get_effective_spread_format(self):
         data = self.cshare.get_effective_spread()
         assert isinstance(data, list)
@@ -160,7 +178,9 @@ class TestShareDefault(object):
         data2 = self.cshare2.get_effective_spread()
         assert isinstance(data2, pd.DataFrame)
 
+    @pytest.mark.highweight
     def test_get_financials_format(self):
+        # weight: 15000
         data = self.cshare.get_financials()
         assert isinstance(data, list)
 
@@ -215,7 +235,9 @@ class TestShareDefault(object):
         data2 = self.cshare2.get_open_close()
         assert isinstance(data2, pd.DataFrame)
 
+    @pytest.mark.highweight
     def test_get_peers_format(self):
+        # weight: 1000
         data = self.cshare.get_peers()
         assert isinstance(data, list)
 
@@ -253,7 +275,9 @@ class TestShareDefault(object):
         assert (abs(data2["ytdChange"]) >
                 abs(data["ytdChange"]))
 
+    @pytest.mark.highweight
     def test_get_relevant_format(self):
+        # weight: 1000
         data = self.cshare.get_relevant()
         assert isinstance(data, dict)
 
@@ -264,12 +288,12 @@ class TestShareDefault(object):
         data = self.cshare3.get_splits()
         assert isinstance(data, list)
 
-        data2 = self.cshare3.get_splits(range_="1y")
+        data2 = self.cshare3.get_splits(range="1y")
         assert isinstance(data2, list)
 
     def test_get_splits_params(self):
-        data = self.cshare3.get_splits(range_="2y")
-        data2 = self.cshare3.get_splits(range_="5y")
+        data = self.cshare3.get_splits(range="2y")
+        data2 = self.cshare3.get_splits(range="5y")
         assert len(data2) > len(data)
 
     def test_get_time_series(self):
@@ -329,6 +353,7 @@ class TestBatchDefault(object):
         data2 = self.cbatch2.get_all()
         assert isinstance(data2["AAPL"], dict)
 
+    @pytest.mark.cloudbroken
     def test_get_book_format(self):
         data = self.cbatch.get_book()
         assert isinstance(data, dict)
@@ -345,8 +370,8 @@ class TestBatchDefault(object):
 
     def test_get_chart_params(self):
         data = self.cbatch.get_chart()["AAPL"]
-        # Test chart range_s
-        data2 = self.cbatch.get_chart(range_='1y')["AAPL"]
+        # Test chart ranges
+        data2 = self.cbatch.get_chart(range='1y')["AAPL"]
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -354,13 +379,13 @@ class TestBatchDefault(object):
         data4 = self.cbatch.get_chart(chartSimplify=True)["AAPL"][0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cbatch.get_chart(range_='1y', chartInterval=5)["AAPL"]
+        data5 = self.cbatch.get_chart(range='1y', chartInterval=5)["AAPL"]
         assert 45 < len(data5) < 55
 
     @pytest.mark.xfail(reason="This test only works overnight")
     def test_get_chart_reset(self):
         # Test chartReset
-        data = self.cbatch.get_chart(range_='1d', chartReset=True)
+        data = self.cbatch.get_chart(range='1d', chartReset=True)
         assert data == []
 
     def test_get_company_format(self):
@@ -382,15 +407,17 @@ class TestBatchDefault(object):
         assert isinstance(data, dict)
 
         data2 = self.cbatch2.get_dividends()
-        assert isinstance(data2, pd.DataFrame)
+        assert isinstance(data2, dict)
 
     def test_get_dividends_params(self):
         data = self.cbatch.get_dividends()["AAPL"]
-        data2 = self.cbatch.get_dividends(range_='2y')["AAPL"]
-        data3 = self.cbatch.get_dividends(range_='5y')["AAPL"]
+        data2 = self.cbatch.get_dividends(range='2y')["AAPL"]
+        data3 = self.cbatch.get_dividends(range='5y')["AAPL"]
         assert len(data) < len(data2) < len(data3)
 
+    @pytest.mark.highweight
     def test_get_earnings_format(self):
+        # weight: 4000
         data = self.cbatch.get_earnings()
         assert isinstance(data, dict)
 
@@ -404,7 +431,9 @@ class TestBatchDefault(object):
         data2 = self.cbatch2.get_effective_spread()
         assert isinstance(data2, pd.DataFrame)
 
+    @pytest.mark.highweight
     def test_get_financials_format(self):
+        # weight: 10000
         data = self.cbatch.get_financials()
         assert isinstance(data, dict)
 
@@ -472,7 +501,9 @@ class TestBatchDefault(object):
         assert (abs(data3["AAPL"]["ytdChange"]) >
                 abs(data["AAPL"]["ytdChange"]))
 
+    @pytest.mark.highweight
     def test_get_relevant_format(self):
+        # weight: 1000
         data = self.cbatch.get_relevant()
         assert isinstance(data, dict)
 
@@ -487,8 +518,8 @@ class TestBatchDefault(object):
         assert isinstance(data2, pd.DataFrame)
 
     def test_get_splits_params(self):
-        data = self.cbatch3.get_splits(range_="2y")["SVXY"]
-        data2 = self.cbatch3.get_splits(range_="5y")["SVXY"]
+        data = self.cbatch3.get_splits(range="2y")["SVXY"]
+        data2 = self.cbatch3.get_splits(range="5y")["SVXY"]
         assert len(data2) > len(data)
 
     def test_time_series(self):
@@ -1053,6 +1084,7 @@ class TestMarketMovers(object):
         assert len(li) == pytest.approx(10, 1)
 
 
+@pytest.mark.legacy
 class TestCrypto(object):
 
     def setup_class(self):
@@ -1084,6 +1116,7 @@ class TestSectorPerformance(object):
         assert len(li) == pytest.approx(10, 1)
 
 
+@pytest.mark.cloudbroken
 class TestCollections(object):
 
     def test_get_collections_no_collection(self):
@@ -1211,17 +1244,76 @@ class TestMarketCloud(object):
         self.stock = Stock("AAPL")
         self.p_stock = Stock("AAPL", output_format='pandas')
 
+    @pytest.mark.highweight
     def test_get_balance_sheet(self):
+        # weight: 3000
         data = self.stock.get_balance_sheet()
 
         assert isinstance(data, dict)
 
+    @pytest.mark.highweight
+    def test_get_balance_sheet_pandas(self):
+        # weight: 3000
+        data = self.p_stock.get_balance_sheet()
+
+        assert isinstance(data, pd.DataFrame)
+        assert len(data) == 27
+        assert data.columns == "AAPL"
+
+    @pytest.mark.highweight
+    def test_get_balance_sheet_batch(self):
+        # weight: 6000
+        stock = Stock(["AAPL", "TSLA"])
+        data = stock.get_balance_sheet()
+
+        assert isinstance(data, dict)
+        assert "AAPL" in data
+        assert "TSLA" in data
+
+    @pytest.mark.highweight
+    def test_get_balance_sheet_b_pandas(self):
+        # weight: 6000
+        stock = Stock(["AAPL", "TSLA"])
+        data = stock.get_balance_sheet()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (27, 2)
+        assert "AAPL" in data
+        assert "TSLA" in data.columns
+
+    @pytest.mark.highweight
     def test_get_cash_flow(self):
+        # weight: 1000
         data = self.stock.get_cash_flow()
 
         assert isinstance(data, dict)
+        assert len(data) == 2
+        assert "symbol" in data
+        assert "cashflow" in data
+        assert isinstance(data["cashflow"], list)
 
+    @pytest.mark.highweight
+    def test_get_cash_flow_pandas(self):
+        # weight: 1000
+        data = self.p_stock.get_cash_flow()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (16, 1)
+        assert "AAPL" in data
+
+    @pytest.mark.highweight
+    def test_batch_cash_flow_pandas(self):
+        # weight: 2000
+        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
+        data = stock.get_cash_flow()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (16, 2)
+        assert "AAPL" in data
+
+    @pytest.mark.highweight
     def test_get_estimates(self):
+        # weight: 10000
         data = self.stock.get_estimates()
 
         assert isinstance(data, dict)
@@ -1230,3 +1322,49 @@ class TestMarketCloud(object):
         data = self.stock.get_price_target()
 
         assert isinstance(data, dict)
+
+    def test_get_price_target_pandas(self):
+        data = self.p_stock.get_price_target()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (6, 1)
+        assert "AAPL" in data
+
+    @pytest.mark.highweight
+    def test_get_price_target_batch_pandas(self):
+        # weight: 1000
+        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
+        data = stock.get_price_target()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (6, 2)
+        assert "AAPL" in data
+        assert "TSLA" in data
+
+    @pytest.mark.highweight
+    def test_get_income_statement(self):
+        # weight: 1000
+        data = self.stock.get_income_statement()
+        assert isinstance(data, dict)
+        assert "symbol" in data
+        assert "income" in data
+        assert isinstance(data["income"], list)
+
+    @pytest.mark.highweight
+    def test_get_income_statement_pandas(self):
+        # weight: 1000
+        data = self.stock.get_income_statement()
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (16, 1)
+        assert "AAPL" in data
+
+    @pytest.mark.highweight
+    def test_batch_income_statement_pandas(self):
+        # weight: 2000
+        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
+        data = stock.get_income_statement()
+
+        assert isinstance(data, pd.DataFrame)
+        assert data.shape == (16, 2)
+        assert "AAPL" in data
+        assert "TSLA" in data

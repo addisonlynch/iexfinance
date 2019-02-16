@@ -14,9 +14,27 @@ from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 
 class _IEXBase(object):
     """
-    Base class for retrieving equities information from the IEX Finance API.
-    Inherited by Stock and Market Readers, and conducts query operations
-    including preparing and executing queries from the API.
+    Base class for retrieving equities information from IEX Cloud.
+    Conducts query operations including preparing and executing queries from
+    the API.
+
+    Attributes
+    ----------
+    retry_count: int, default 3, optional
+        Desired number of retries if a request fails
+    pause: float default 0.5, optional
+        Pause time between retry attempts
+    session: requests_cache.session, default None, optional
+        A cached requests-cache session
+    json_parse_int: datatype, default int, optional
+        Desired integer parsing datatype
+    json_parse_float: datatype, default float, optional
+        Desired floating point parsing datatype
+    output_format: str, default "json", optional
+        Desired output format (json or pandas DataFrame). This can also be
+        set using the environment variable ``IEX_OUTPUT_FORMAT``.
+    token: str, optional
+        Authentication token (reuqired for use with IEX Cloud)
     """
     _URLS = {
         "v1": "https://api.iextrading.com/1.0/",
@@ -28,26 +46,7 @@ class _IEXBase(object):
     _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1")
 
     def __init__(self, **kwargs):
-        """ Initialize the class
 
-        Parameters
-        ----------
-        retry_count: int, default 3, optional
-            Desired number of retries if a request fails
-        pause: float default 0.5, optional
-            Pause time between retry attempts
-        session: requests_cache.session, default None, optional
-            A cached requests-cache session
-        json_parse_int: datatype, default int, optional
-            Desired integer parsing datatype
-        json_parse_float: datatype, default float, optional
-            Desired floating point parsing datatype
-        output_format: str, default "json", optional
-            Desired output format (json or pandas DataFrame). This can also be
-            set using the environment variable ``IEX_OUTPUT_FORMAT``.
-        token: str, optional
-            Authentication token (reuqired for use with IEX Cloud)
-        """
         self.retry_count = kwargs.get("retry_count", 3)
         self.pause = kwargs.get("pause", 0.5)
         self.session = _init_session(kwargs.get("session"))

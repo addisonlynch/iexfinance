@@ -69,7 +69,7 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Effective Spread<stocks.effective_spread>`
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
-- :ref:`Historical<stocks.historical>` - ``get_historical_data`` and ``get_historical_intraday``
+- :ref:`Historical Prices<stocks.historical_prices>` - ``get_historical_data`` and ``get_historical_intraday``
 - :ref:`Key Stats<stocks.key_stats>`
 - :ref:`Logo<stocks.logo>`
 - :ref:`Market Volume<stocks.market_volume>` - ``get_market_volume``
@@ -197,6 +197,13 @@ Cryptocurrencies
 
 As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
 
+To retrieve quotes for all available cryptocurrencies, use the
+``get_crypto_quotes`` function:
+
+
+.. autofunction:: iexfinance.stocks.get_crypto_quotes
+
+
 The following tickers are supported:
 
 - Bitcoin USD (BTCUSDT)
@@ -217,12 +224,6 @@ The following tickers are supported:
 - VeChain USD (VENUSDT)
 - Stellar Lumens USD (XLMUSDT)
 - Qtum USD (QTUMUSDT)
-
-To retrieve quotes for all available cryptocurrencies, use the
-``get_crypto_quotes`` function:
-
-
-.. autofunction:: iexfinance.stocks.get_crypto_quotes
 
 
 .. _stocks.crypto.examples:
@@ -322,11 +323,19 @@ Financials
 Historical Prices
 -----------------
 
-Historical time series data is available through the
-``get_historical_data`` and ``get_historical_intraday`` functions of
-``stocks``, which
-source the
-`chart <https://iextrading.com/developer/docs/#chart>`__ endpoint.
+The method used to obtain historical prices from a ``Stock`` object:
+
+.. ipython:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL")
+    aapl.get_historical_prices()
+
+
+Historical time series data is also available through the
+``get_historical_prices`` method or the top-level ``get_historical_data`` and
+``get_historical_intraday`` functions of ``stocks``, which source the `Historical Prices <https://iexcloud.io/docs/api/#historical-prices>`__ endpoint.
 
 Daily data can be retrieved from up to 5 years before the current date, and
 historical data up to 3 months prior to the current date.

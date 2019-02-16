@@ -1,4 +1,4 @@
-.. _api_status:
+.. _apidata:
 
 .. currentmodule:: iexfinance.apidata
 
@@ -10,9 +10,9 @@ API System Metadata
     :depth: 2
 
 
-.. _api_status.status:
+.. _apidata.status:
 
 Status
 ------
 
-.. autofunction:: iexfinance.tools.api.get_api_status
+.. autofunction:: iexfinance.apidata.get_api_status

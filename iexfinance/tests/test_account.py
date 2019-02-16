@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from iexfinance.tools.account import (get_usage, get_metadata)
+from iexfinance.account import (get_usage, get_metadata)
 
 
 @pytest.mark.cloud
