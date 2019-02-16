@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Common Usage Examples &mdash; iexfinance 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
+        <link rel="next" title="Account" href="account.html"/>
+        <link rel="prev" title="Configuration" href="configuration.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#account">Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stocks">Stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#real-time-quotes">Real-time Quotes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-data">Historical Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#daily">Daily</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minutely-intraday">Minutely (Intraday)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint-specific-parameters">Endpoint-Specific Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-data">Reference Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#investor-s-exchange-data">Investor’s Exchange Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-system-metadata">API System Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Common Usage Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="common-usage-examples">
+<span id="usage"></span><h1>Common Usage Examples<a class="headerlink" href="#common-usage-examples" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/addisonlynch/iex-examples">iex-examples</a> repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.</p>
+<p>Using iexfinance to access data from IEX is quite easy. The most commonly-used
+endpoints are the <a class="reference external" href="https://iexcloud.io/docs/api/#stocks">Stocks</a>
+endpoints, which allow access to various information regarding equities,
+including quotes, historical prices, dividends, and much more.</p>
+<p>The iexfinance codebase and documentation are structured in a way that emulates much of the <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud Documentation</a> for readability and ease of use.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#usage-account"><span class="std std-ref">Account</span></a></li>
+<li><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></li>
+<li><a class="reference internal" href="#usage-refdata"><span class="std std-ref">Reference Data</span></a></li>
+<li><a class="reference internal" href="#usage-iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></li>
+<li><a class="reference internal" href="#usage-apistatus"><span class="std std-ref">API System Metadata</span></a></li>
+</ul>
+</div></blockquote>
+<p>These modules provide classes and functions to execute queries to IEX Cloud.</p>
+<div class="section" id="account">
+<span id="usage-account"></span><h2>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a></p>
+</div>
+</div>
+<div class="section" id="stocks">
+<span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information, see <a class="reference external" href="stocks.html">Stocks</a>.</p>
+</div>
+</div>
+<div class="section" id="real-time-quotes">
+<h2>Real-time Quotes<a class="headerlink" href="#real-time-quotes" title="Permalink to this headline">¶</a></h2>
+<p>To obtain real-time quotes for one or more symbols, use the <code class="docutils literal notranslate"><span class="pre">get_price</span></code>
+method of the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gh">Out[3]: </span><span class="go">307.88</span>
+</pre></div>
+</div>
+<p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
+etc.):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
+
+<span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;AAPL&#39;: 170.42, &#39;TSLA&#39;: 307.88}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="historical-data">
+<h2>Historical Data<a class="headerlink" href="#historical-data" title="Permalink to this headline">¶</a></h2>
+<p>It’s possible to obtain historical data the <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>.</p>
+<div class="section" id="daily">
+<h3>Daily<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h3>
+<p>To obtain daily historical price data for one or more symbols, use the
+<code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> function. This will return a daily time-series of the ticker
+requested over the desired date range (<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> passed as
+<code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> objects):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
+
+<span class="gp">In [8]: </span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">In [9]: </span><span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">In [10]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For Pandas DataFrame output formatting, pass <code class="docutils literal notranslate"><span class="pre">output_format</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It’s really simple to plot this data, using <a class="reference external" href="https://matplotlib.org/">matplotlib</a>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="gp">In [13]: </span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6f02095048&gt;</span>
+
+<span class="gp">In [14]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="minutely-intraday">
+<h3>Minutely (Intraday)<a class="headerlink" href="#minutely-intraday" title="Permalink to this headline">¶</a></h3>
+<p>To obtain historical intraday data, use <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code> as follows.
+Pass an optional <code class="docutils literal notranslate"><span class="pre">date</span></code> to specify a date within three months prior to the
+current day (default is current date):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_intraday</span>
+
+<span class="gp">In [17]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+
+<span class="gp">In [18]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[18]: </span><span class="go"></span>
+<span class="go">{&#39;average&#39;: 171.706,</span>
+<span class="go"> &#39;changeOverTime&#39;: 0,</span>
+<span class="go"> &#39;close&#39;: 171.505,</span>
+<span class="go"> &#39;date&#39;: &#39;20181127&#39;,</span>
+<span class="go"> &#39;high&#39;: 172.15,</span>
+<span class="go"> &#39;label&#39;: &#39;09:30 AM&#39;,</span>
+<span class="go"> &#39;low&#39;: 171.25,</span>
+<span class="go"> &#39;marketAverage&#39;: 171.557,</span>
+<span class="go"> &#39;marketChangeOverTime&#39;: 0,</span>
+<span class="go"> &#39;marketClose&#39;: 171.45,</span>
+<span class="go"> &#39;marketHigh&#39;: 172.21,</span>
+<span class="go"> &#39;marketLow&#39;: 171.2,</span>
+<span class="go"> &#39;marketNotional&#39;: 276013051.0945,</span>
+<span class="go"> &#39;marketNumberOfTrades&#39;: 4121,</span>
+<span class="go"> &#39;marketOpen&#39;: 171.51,</span>
+<span class="go"> &#39;marketVolume&#39;: 1608870,</span>
+<span class="go"> &#39;minute&#39;: &#39;09:30&#39;,</span>
+<span class="go"> &#39;notional&#39;: 2360788.76,</span>
+<span class="go"> &#39;numberOfTrades&#39;: 131,</span>
+<span class="go"> &#39;open&#39;: 171.675,</span>
+<span class="go"> &#39;volume&#39;: 13749}</span>
+</pre></div>
+</div>
+<p>or for a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> indexed by each minute:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[19]: </span><span class="go"></span>
+<span class="go">                     average  changeOverTime   close      date     high  \</span>
+<span class="go">2019-02-15 09:30:00  171.443        0.000000  171.34  20190215  171.700   </span>
+<span class="go">2019-02-15 09:31:00  171.426       -0.000099  171.60  20190215  171.690   </span>
+<span class="go">2019-02-15 09:32:00  171.522        0.000461  171.31  20190215  171.590   </span>
+<span class="go">2019-02-15 09:33:00  171.140       -0.001767  171.09  20190215  171.290   </span>
+<span class="go">2019-02-15 09:34:00  171.252       -0.001114  171.20  20190215  171.315   </span>
+
+<span class="go">                        label      low  marketAverage  marketChangeOverTime  \</span>
+<span class="go">2019-02-15 09:30:00  09:30 AM  171.140        171.463              0.000000   </span>
+<span class="go">2019-02-15 09:31:00  09:31 AM  171.260        171.469              0.000035   </span>
+<span class="go">2019-02-15 09:32:00  09:32 AM  171.270        171.395             -0.000397   </span>
+<span class="go">2019-02-15 09:33:00  09:33 AM  171.085        171.144             -0.001860   </span>
+<span class="go">2019-02-15 09:34:00  09:34 AM  171.100        171.202             -0.001522   </span>
+
+<span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
+<span class="go">2019-02-15 09:30:00      171.250     171.700     170.10    7.497340e+08   </span>
+<span class="go">2019-02-15 09:31:00      171.564     171.690     171.25    2.641448e+07   </span>
+<span class="go">2019-02-15 09:32:00      171.270     171.592     171.21    2.165560e+07   </span>
+<span class="go">2019-02-15 09:33:00      171.090     171.470     171.05    2.085975e+07   </span>
+<span class="go">2019-02-15 09:34:00      171.160     171.470     171.05    2.671446e+07   </span>
+
+<span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
+<span class="go">2019-02-15 09:30:00                  2796      171.22       4372562   </span>
+<span class="go">2019-02-15 09:31:00                   987      171.29        154048   </span>
+<span class="go">2019-02-15 09:32:00                   936      171.56        126349   </span>
+<span class="go">2019-02-15 09:33:00                   782      171.27        121884   </span>
+<span class="go">2019-02-15 09:34:00                   830      171.09        156041   </span>
+
+<span class="go">                        notional  numberOfTrades    open  volume  </span>
+<span class="go">2019-02-15 09:30:00  1638306.140              84  171.26    9556  </span>
+<span class="go">2019-02-15 09:31:00   446907.640              28  171.29    2607  </span>
+<span class="go">2019-02-15 09:32:00   796033.390              27  171.53    4641  </span>
+<span class="go">2019-02-15 09:33:00   372914.750              26  171.24    2179  </span>
+<span class="go">2019-02-15 09:34:00   286332.785              17  171.10    1672  </span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="endpoints">
+<h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
+<p>The Stock endpoints of the <a class="reference external" href="https://iextrading.com/developer/">IEX Developer
+API</a> are below, each of which
+contains data regarding a different aspect of the security/securities.
+The  <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object can obtain each
+of these endpoints. Requests for single symbols will return the <em>exact</em> results
+from that endpoint as shown in the IEX API documentation (see below). Requests
+for multiple symbols will return a symbol-indexed dictionary of
+the endpoint requested.</p>
+<p><strong>Endpoint Method</strong> examples <code class="docutils literal notranslate"><span class="pre">get_quote()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_volume_by_venue()</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [21]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
+<span class="gh">Out[22]: </span><span class="go"></span>
+<span class="go">{&#39;change&#39;: 0.62,</span>
+<span class="go"> &#39;changePercent&#39;: 0.364,</span>
+<span class="go"> &#39;close&#39;: 170.8,</span>
+<span class="go"> &#39;date&#39;: &#39;2019-02-14&#39;,</span>
+<span class="go"> &#39;high&#39;: 171.2615,</span>
+<span class="go"> &#39;low&#39;: 169.38,</span>
+<span class="go"> &#39;open&#39;: 169.71,</span>
+<span class="go"> &#39;symbol&#39;: &#39;AAPL&#39;,</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 21835747,</span>
+<span class="go"> &#39;volume&#39;: 21835747,</span>
+<span class="go"> &#39;vwap&#39;: 170.6527}</span>
+</pre></div>
+</div>
+<p>For a detailed list of the <em>endpoint methods</em>, see
+<a class="reference external" href="stocks.html#endpoints">here</a>.</p>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>To obtain individual fields from an endpoint, select <a class="reference external" href="stocks.html#field-methods">Field Methods</a> are also provided.</p>
+<p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
+<p><strong>Single Symbol</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [24]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[24]: </span><span class="go">171.47</span>
+
+<span class="gp">In [25]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="go">                Out[25]: 170.42</span>
+</pre></div>
+</div>
+<p><strong>Multiple Symbols</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+
+<span class="gp">In [27]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[27]: </span><span class="go">{&#39;AAPL&#39;: 171.47, &#39;TSLA&#39;: 304.5}</span>
+</pre></div>
+</div>
+<p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
+</div>
+<div class="section" id="endpoint-specific-parameters">
+<h3>Endpoint-Specific Parameters<a class="headerlink" href="#endpoint-specific-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Top-level parameters may be passed to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function, including
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> and request parameters (such as <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pause</span></code>) - the latter of which will be used should any queries made by
+the object fail. These parameters are passed keyword arguments, and are
+entirely optional.</p>
+<p>Certain endpoints (such as quote and chart), however, allow customizable
+parameters. To specify one of these parameters, merely pass it to an endpoint
+method as a keyword argument.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
+<span class="gh">Out[29]: </span><span class="go"></span>
+<span class="go">AAPL    8.39796</span>
+<span class="go">Name: ytdChange, dtype: object</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
+call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
+change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
+through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
+more information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="reference-data">
+<span id="usage-refdata"></span><h2>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a></p>
+</div>
+</div>
+<div class="section" id="investor-s-exchange-data">
+<span id="usage-iexdata"></span><h2>Investor’s Exchange Data<a class="headerlink" href="#investor-s-exchange-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p>
+</div>
+</div>
+<div class="section" id="api-system-metadata">
+<span id="usage-apistatus"></span><h2>API System Metadata<a class="headerlink" href="#api-system-metadata" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><span class="xref std std-ref">API System Metadata</span></p>
+</div>
+</div>
+<div class="section" id="caching">
+<span id="usage-caching"></span><h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
+<p>iexfinance supports the caching of HTTP requests to IEX using the
+<a class="reference external" href="https://pypi.python.org/pypi/requests-cache">requests-cache</a> package.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
+</div>
+</div>
+<div class="section" id="plotting">
+<span id="usage-plotting"></span><h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>With Pandas output formatting, we are able to plot historical price
+movements using matplotlib.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
+
+<span class="gp">In [31]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [32]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="gp">In [33]: </span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="gp">In [34]: </span><span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+
+<span class="gp">In [35]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [36]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">])</span>
+<span class="gh">Out[36]: </span><span class="go">[&lt;matplotlib.lines.Line2D at 0x7f6f028ea390&gt;]</span>
+
+<span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time series chart for AAPL&#39;</span><span class="p">)</span>
+<span class="go">                                                       Out[37]: Text(0.5,1,&#39;Time series chart for AAPL&#39;)</span>
+
+<span class="gp">In [38]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/plotdailyaapl.jpg" src="_images/plotdailyaapl.jpg" />
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
