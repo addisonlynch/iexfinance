@@ -16,32 +16,41 @@ iexfinance
 
 Python SDK for `IEX Cloud <https://iexcloud.io>`__ and the legacy
 `Investors Exchange (IEX) <https://iextrading.com/>`__
-`Developer API <https://iextrading.com/developer/>`__.
+`Developer API <https://iextrading.com/developer/>`__. Architecture mirrors
+that of the IEX Cloud API (and its `documentation <https://iexcloud.io/docs/api/>`__).
 
-An easy-to-use interface to obtain:
+An easy-to-use toolkit to obtain data for Stocks, ETFs, Mutual Funds,
+Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 
-- Real-time quotes
-- Historical data
-- Fundamentals (financial statements, analyst estimates, price targets)
-- Actions (dividends, splits), Sector Performance
-- Trading analyses (gainers, losers, etc.)
-- IEX Market Data & Statistics
+- Real-time and delayed quotes
+- Historical data (daily and minutely)
+- Financial statements (Balance Sheet, Income Statement, Cash Flow)
+- Analyst estimates, Price targets
+- Corporate actions (Dividends, Splits)
+- Sector performance
+- Market analysis (gainers, losers, volume, etc.)
+- IEX market data & statistics (IEX supported/listed symbols, volume, etc)
 
-``iexfinance`` provides real-time financial data from the various IEX
-endpoints, including:
+Example
+-------
 
-- Account (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/account.html>`__ | `IEX Docs <https://iexcloud.io/docs/api/#account>`__)
-- Stocks (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/stocks.html>`__ | `IEX Docs <https://iexcloud.io/api/docs/#stocks>`__)
-- Reference Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/refdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
-- Investors Exchange Data (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/iexdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
-- API System Metadata (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/apistatus.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#api-system-metadata>`__)
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock('AAPL')
+    aapl.get_price()
+    # 155.32
+
 
 Documentation
 -------------
 
-`Stable documentation <https://addisonlynch.github.io/iexfinance/stable/>`__ is hosted on `github.io <https://addisonlynch.github.io/iexfinance/index.html#documentation>`__.
+Stable documentation is hosted on
+`github.io <https://addisonlynch.github.io/iexfinance/stable/index.html#documentation>`__.
 
 `Development documentation <https://addisonlynch.github.io/iexfinance/devel/>`__ is also available for the latest changes in master.
+
 
 Install
 -------
@@ -58,22 +67,75 @@ From development repository (dev version):
      $ cd iexfinance
      $ python3 setup.py install
 
+
+Basics
+------
+
+``iexfinance`` is designed to mirror the structure of the IEX Cloud API. The
+following IEX Cloud endpoint groups are mapped to their respective
+``iexfinance`` modules:
+
+- Account - ``account`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/account.html>`__ | `IEX Docs <https://iexcloud.io/docs/api/#account>`__)
+- Stocks - ``stocks`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/stocks.html>`__ | `IEX Docs <https://iexcloud.io/api/docs/#stocks>`__)
+- Alternative Data - ``altdata`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/altdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#alternative-data>`__)
+- Reference Data - ``refdata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/refdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
+- Investors Exchange Data - ``iexdata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/iexdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
+- API System Metadata - ``apidata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/apistatus.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#api-system-metadata>`__)
+
+The most commonly-used
+endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
+endpoints, which allow access to various information regarding equities,
+including quotes, historical prices, dividends, and much more.
+
+The ``Stock`` `object <https://addisonlynch.github.io/iexfinance/stable/stocks.html#the-stock-object>`__
+provides access to most endpoints, and can be instantiated with a symbol or
+list of symbols:
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL")
+    aapl.get_balance_sheet()
+
+The rest of the package is designed as a 1:1 mirror. For example, using the
+`Alternative Data <https://iexcloud.io/docs/api/#alternative-data>`__ endpoint
+group, obtain the `Social Sentiment <https://iexcloud.io/docs/api/#social-sentiment>`__ endpoint with
+``iexfinance.altdata.get_social_sentiment``:
+
+.. code-block:: python
+
+    from iexfinance.altdata import get_social_sentiment
+
+    get_social_sentiment("AAPL")
+
+
 Configuration
 -------------
 
 Selecting an API Version
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-IEX is continuing support for their version 1 (current) API until at least May 29th, 2019. IEX cloud beta is now available and includes a variety of additional endpoints. IEX is also introducing versioning through URL routing which will allow users to query from each version of the IEX Cloud API as more become available.
+*Note to Version 1.0 users:* see `Migrating to IEX Cloud <https://addisonlynch.github.io/stable/migrating.html>`__ for more information
+about migrating to IEX Cloud.
+
+``iexfinance`` now supports both active IEX APIs: `IEX Cloud <https://iexcloud.io>`__, as well as the
+legacy `Version 1.0 IEX Developer API <https://iextrading.com/developer/docs/>`__.
 
 The IEX API version can be selected by setting the environment variable
 ``IEX_API_VERSION`` to one of the following values:
 
-- ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
+- ``v1`` for IEX legacy Version 1.0 `Developer API <https://iextrading.com/developer/docs/>`__
 - ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
+
+IEX is continuing support for the legacy API until at least May 29th, 2019.
 
 Output Formatting
 ~~~~~~~~~~~~~~~~~
+
+By default, ``iexfinance`` returns data formatted *exactly* as received from
+the IEX Endpoint. `pandas <https://pandas.pydata.org/>`__ ``DataFrame`` output
+formatting is available for most endpoints.
 
 pandas ``DataFrame`` output formatting can be selected by setting the
 ``IEX_OUTPUT_FORMAT`` environment variable to ``pandas`` or by passing
@@ -85,10 +147,6 @@ Common Usage Examples
 
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
-Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
-endpoints, which allow access to various information regarding equities,
-including quotes, historical prices, dividends, and much more.
 
 Real-time Quotes
 ~~~~~~~~~~~~~~~~
@@ -114,7 +172,7 @@ etc.):
 Historical Data
 ~~~~~~~~~~~~~~~
 
-It's possible to obtain historical data the ``get_historical_data`` and
+It's possible to obtain historical data using ``get_historical_data`` and
 ``get_historical_intraday``.
 
 Daily
@@ -260,83 +318,6 @@ API Status
 .. code-block:: python
 
     from iexfinance.account import get_api_status
-
-    get_api_status()
-<<<<<<< 5041e122fad45ccdb231741d49f3bcafa740966c
-
-=======
->>>>>>> CLN: Update docs
-=======
-    aapl.get_balance_sheet()
-
-`Income Statement <https://addisonlynch.github.io/iexfinance/stable/stocks.html#income-statement>`__
-
-.. code-block:: python
-
-    aapl.get_income_statement()
-
-`Cash Flow <https://addisonlynch.github.io/iexfinance/stable/stocks.html#cash-flow>`__
-
-.. code-block:: python
-
-    aapl.get_cash_flow()
-
-Modeling/Valuation Tools
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-`Analyst Estimates <https://addisonlynch.github.io/iexfinance/stable/stocks.html#estimates>`__
-
-.. code-block:: python
-
-    from iexfinance.stocks import Stock
-
-    aapl = Stock("AAPL")
-    aapl.get_estimates()
-
-`Price Targets <https://addisonlynch.github.io/iexfinance/stable/stocks.html#price-target>`__
-
-.. code-block:: python
-
-    aapl.get_price_target()
-
-Reference Data
-~~~~~~~~~~~~~~
-
-`List of Symbols IEX supports for API calls <https://addisonlynch.github.io/iexfinance/stable/refdata.html#symbols>`__
-
-.. code-block:: python
-
-    from iexfinance.refdata import get_symbols
-
-    get_symbols()
-
-`List of Symbols IEX supports for trading <https://addisonlynch.github.io/iexfinance/stable/refdata.html#iex-symbols>`__
-
-.. code-block:: python
-
-    from iexfinance.refdata import get_iex_symbols
-
-    get_iex_symbols()
-
-Account Usage
-~~~~~~~~~~~~~
-
-`Message Count <https://addisonlynch.github.io/iexfinance/stable/account.html#usage>`__
-
-.. code-block:: python
-
-    from iexfinance.tools import get_usage
-
-    get_usage(quota_type='messages')
-
-API Status
-~~~~~~~~~~
-
-`IEX Cloud API Status <http://addisonlynch.github.io/iexfinance/stable/apistatus.html#iexfinance.tools.api.get_api_status>`__
-
-.. code-block:: python
-
-    from iexfinance.tools import get_api_status
 
     get_api_status()
 
