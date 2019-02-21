@@ -1,10 +1,10 @@
 .. _whatsnew_040:
 
 
-v0.4.0 (TBA)
--------------------------
+v0.4.0 (2/21/2019)
+------------------
 
-This is a major release from 0.3.0, and we recommend that all users
+This is a major release from 0.3.5, and we recommend that all users
 update.
 
 
@@ -86,6 +86,8 @@ Backwards Incompatible Changes
 - ``iexfinance.stocks.get_todays_earnings`` deprecated and renamed ``get_earnings_today``
 - ``iexfinance.stocks.get_relevant`` deprecated and renamed
   ``get_relevant_stocks``
+- ``iexfinance.stocks.get_all`` is now available for the Version 1.0 Developer
+  API only.
 
 .. whatsnew_040.bug_fixes:
 

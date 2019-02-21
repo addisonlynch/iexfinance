@@ -35,7 +35,7 @@ Account
 Stocks
 ------
 
-.. seealso:: For more information, see `Stocks <stocks.html>`__.
+.. seealso:: For more information, see :ref:`Stocks<stocks>`.
 
 
 
@@ -127,9 +127,6 @@ or for a ``pandas.DataFrame`` indexed by each minute:
 Endpoints
 ~~~~~~~~~
 
-The Stock endpoints of the `IEX Developer
-API <https://iextrading.com/developer/>`__ are below, each of which
-contains data regarding a different aspect of the security/securities.
 The  ``Stock`` object can obtain each
 of these endpoints. Requests for single symbols will return the *exact* results
 from that endpoint as shown in the IEX API documentation (see below). Requests

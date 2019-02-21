@@ -46,18 +46,21 @@ class TestShareDefault(object):
                              json_parse_float=Decimal)
         self.cshare5 = Stock("gig^")
 
-    @pytest.mark.xfail(reason="Unstable / errored IEX cloud endpoint.")
+    @pytest.mark.xfail(reason="Unstable.")
+    @pytest.mark.legacy
     def test_invalid_symbol(self):
         data = Stock("BAD SYMBOL")
         with pytest.raises(IEXSymbolError):
             data.get_price()
 
-    @pytest.mark.xfail(reason="Unsable / errored IEX cloud endpoint.")
+    @pytest.mark.xfail(reason="Unstable")
+    @pytest.mark.legacy
     def test_get_all_format(self):
         data = self.cshare.get_all()
         assert isinstance(data, dict)
 
-    @pytest.mark.xfail(reason="Unsable / errored IEX cloud endpoint.")
+    @pytest.mark.xfail(reason="Unstable.")
+    @pytest.mark.legacy
     def test_get_all(self):
         data = self.cshare.get_all()
         assert len(data) == 20
@@ -341,11 +344,13 @@ class TestBatchDefault(object):
         with pytest.raises(IEXEndpointError):
             self.cbatch.get_endpoints("BAD ENDPOINT")
 
+    @pytest.mark.legacy
     def test_get_all(self):
         data = self.cbatch.get_all()
         assert len(data) == 2
         assert len(data["AAPL"]) == 20
 
+    @pytest.mark.legacy
     def test_get_all_format(self):
         data = self.cbatch.get_all()
         assert isinstance(data, dict)
