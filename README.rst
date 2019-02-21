@@ -13,11 +13,17 @@ iexfinance
 .. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
     :target: https://opensource.org/licenses/Apache-2.0
 
+Now Supporting IEX Cloud
+------------------------
 
 Python SDK for `IEX Cloud <https://iexcloud.io>`__ and the legacy
-`Investors Exchange (IEX) <https://iextrading.com/>`__
+Version 1.0 `Investors Exchange (IEX) <https://iextrading.com/>`__
 `Developer API <https://iextrading.com/developer/>`__. Architecture mirrors
 that of the IEX Cloud API (and its `documentation <https://iexcloud.io/docs/api/>`__).
+
+``iexfinance`` will maintain compatibility and support for the
+IEX Version `Developer API <https://iextrading.com/developer/>`__ until June
+2019.
 
 An easy-to-use toolkit to obtain data for Stocks, ETFs, Mutual Funds,
 Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
@@ -34,20 +40,14 @@ Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 Example
 -------
 
-.. code-block:: python
-
-    from iexfinance.stocks import Stock
-
-    aapl = Stock('AAPL')
-    aapl.get_price()
-    # 155.32
+.. image:: https://addisonlynch.github.io/public/img/iexexample.gif
 
 
 Documentation
 -------------
 
 Stable documentation is hosted on
-`github.io <https://addisonlynch.github.io/iexfinance/stable/index.html#documentation>`__.
+`github.io <https://addisonlynch.github.io/iexfinance/stable/>`__.
 
 `Development documentation <https://addisonlynch.github.io/iexfinance/devel/>`__ is also available for the latest changes in master.
 
@@ -274,11 +274,20 @@ Modeling/Valuation Tools
     aapl.get_estimates()
 
 
-`Price Targets <https://addisonlynch.github.io/iexfinance/stable/stocks.html#price-target>`__
+`Price Target <https://addisonlynch.github.io/iexfinance/stable/stocks.html#price-target>`__
 
 .. code-block:: python
 
     aapl.get_price_target()
+
+
+Social Sentiment
+^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+    from iexfinance.altdata import get_social_sentiment
+    get_social_sentiment()
+
 
 Reference Data
 ~~~~~~~~~~~~~~

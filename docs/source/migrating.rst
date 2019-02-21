@@ -18,7 +18,6 @@ Reference Data
 ~~~~~~~~~~~~~~
 
 * IEX Symbols - ``refdata.get_iex_symbols``
-*
 
 
 .. _migrating.legacy_only:

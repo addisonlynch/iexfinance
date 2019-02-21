@@ -61,6 +61,8 @@ Enhancements
   ``float`` to eliminate periodic even number returns and CI failures
 - Improved testing for ``_IEXBase`` base class configuration (request
   parameters, output formatting)
+- Adds tox for cross-version testing (thank you Jack Moody)
+- Adds official Python 3.7 support and CI build (thank you Jack Moody)
 
 .. whatsnew_040.backwards:
 
