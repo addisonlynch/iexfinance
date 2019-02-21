@@ -26,7 +26,6 @@ Testing & Documentation Dependencies
 - sphinx
 - sphinx-autobuild
 - sphinx-rtd-theme
-- sphinxcontrib-fulltoc
 - sphinxcontrib-napoleon
 - matplotlib
 - ipython

@@ -289,9 +289,9 @@ Examples
 
 .. ipython:: python
 
-    from iexfinance.stocks import get_todays_earnings
+    from iexfinance.stocks import get_earnings_today
 
-    get_todays_earnings()["bto"]
+    get_earnings_today()["bto"]
 
 
 
@@ -466,7 +466,7 @@ provided through the ``get_market_volume`` function.
 Examples
 ~~~~~~~~
 
-.. ipython:: python
+.. code-block:: python
 
     from iexfinance.stocks import get_market_volume
 

@@ -91,15 +91,6 @@ For Pandas DataFrame output formatting, pass ``output_format``:
 
     df = get_historical_data("TSLA", start, end, output_format='pandas')
 
-It's really simple to plot this data, using `matplotlib <https://matplotlib.org/>`__:
-
-.. ipython:: python
-
-    import matplotlib.pyplot as plt
-
-    df.plot()
-    plt.show()
-
 
 Minutely (Intraday)
 ~~~~~~~~~~~~~~~~~~~
@@ -139,7 +130,7 @@ the endpoint requested.
 
 	from iexfinance.stocks import Stock
 	aapl = Stock("AAPL")
-    aapl.get_previous()
+    aapl.get_previous_day_prices()
 
 
 For a detailed list of the *endpoint methods*, see
@@ -228,28 +219,3 @@ iexfinance supports the caching of HTTP requests to IEX using the
 `requests-cache <https://pypi.python.org/pypi/requests-cache>`__ package.
 
 .. seealso:: :ref:`Caching Queries<caching>`
-
-
-.. _usage.plotting:
-
-Plotting
---------
-
-With Pandas output formatting, we are able to plot historical price
-movements using matplotlib.
-
-.. ipython:: python
-
-
-    from iexfinance.stocks import get_historical_data
-    from datetime import datetime
-    import matplotlib.pyplot as plt
-    start = datetime(2017, 2, 9)
-    end = datetime(2017, 5, 24)
-
-    f = get_historical_data("AAPL", start, end, output_format='pandas')
-    plt.plot(f["close"])
-    plt.title('Time series chart for AAPL')
-    plt.show()
-
-.. image:: images/plotdailyaapl.jpg
