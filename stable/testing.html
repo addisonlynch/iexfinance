@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Testing &mdash; iexfinance 0.3.5 documentation</title>
+  <title>Testing &mdash; iexfinance 0.4.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What’s New" href="whatsnew.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Caching Queries" href="caching.html" /> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.3.5
+                0.4.0
               </div>
             
           
@@ -83,23 +83,34 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-documentation-dependencies">Testing &amp; Documentation Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-testing">Local Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-weighting">Test Weighting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-iexfinance.utils.exceptions">Exceptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -170,25 +181,29 @@
 <span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
 <p>Unit and integration tests for iexfinance are handled by the
 <a class="reference external" href="https://docs.pytest.org/en/latest">pytest</a> platform.</p>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="testing-documentation-dependencies">
+<span id="testing-dependencies"></span><h2>Testing &amp; Documentation Dependencies<a class="headerlink" href="#testing-documentation-dependencies" title="Permalink to this headline">¶</a></h2>
+<p><strong>Testing</strong></p>
 <ul class="simple">
 <li>pytest</li>
 <li>pytest-runner</li>
-<li>flake8 (to pass TravisCI build)</li>
+<li>flake8</li>
+<li>flake8-rst</li>
+<li>requests-cache</li>
+<li>six</li>
 </ul>
-<p>For docs:</p>
+<p><strong>Docs</strong></p>
 <ul class="simple">
 <li>sphinx</li>
 <li>sphinx-autobuild</li>
-<li>sphinx_rtd_theme</li>
+<li>sphinx-rtd-theme</li>
 <li>sphinxcontrib-napoleon</li>
 <li>matplotlib</li>
 <li>ipython</li>
 </ul>
 </div>
 <div class="section" id="local-testing">
-<h2>Local Testing<a class="headerlink" href="#local-testing" title="Permalink to this headline">¶</a></h2>
+<span id="testing-local-testing"></span><h2>Local Testing<a class="headerlink" href="#local-testing" title="Permalink to this headline">¶</a></h2>
 <p>We’ve provided the BASH script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> which is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.</p>
@@ -196,8 +211,20 @@ needed for a TravisCI build to pass.</p>
 using the Makefile. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">livehtml</span></code> will serve the dev documentation site locally
 on 127.0.0.1:8000.</p>
 </div>
+<div class="section" id="test-weighting">
+<span id="testing-test-weighting"></span><h2>Test Weighting<a class="headerlink" href="#test-weighting" title="Permalink to this headline">¶</a></h2>
+<p>Most tests which have a data weighting of over <code class="docutils literal notranslate"><span class="pre">1000</span></code> total are marked
+<code class="docutils literal notranslate"><span class="pre">highweight</span></code>.</p>
+</div>
 <div class="section" id="module-iexfinance.utils.exceptions">
 <span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-iexfinance.utils.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="iexfinance.utils.exceptions.IEXAuthenticationError">
+<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXAuthenticationError</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXAuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>This error is thrown when there is an authentication issue with an IEX
+cloud request.</p>
+</dd></dl>
+
 <dl class="exception">
 <dt id="iexfinance.utils.exceptions.IEXEndpointError">
 <em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXEndpointError</code><span class="sig-paren">(</span><em>endpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXEndpointError" title="Permalink to this definition">¶</a></dt>
@@ -225,6 +252,13 @@ network problem or an invalid query.</p>
 <dd><p>This error is thrown when an invalid symbol is given.</p>
 </dd></dl>
 
+<dl class="exception">
+<dt id="iexfinance.utils.exceptions.IEXVersionError">
+<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXVersionError</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXVersionError" title="Permalink to this definition">¶</a></dt>
+<dd><p>This error is thrown when an attempt is made to access an IEX Cloud
+endpoint when API version 1 (v1) has been selected for use.</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -236,7 +270,7 @@ network problem or an invalid query.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="whatsnew.html" class="btn btn-neutral float-right" title="What’s New" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="caching.html" class="btn btn-neutral" title="Caching Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Alternative Data &mdash; iexfinance 0.4.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="iexfinance package" href="modules.html" />
-    <link rel="prev" title="Testing" href="testing.html" /> 
+    <link rel="next" title="Reference Data" href="refdata.html" />
+    <link rel="prev" title="Stocks" href="stocks.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -92,27 +92,25 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Alternative Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#news">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#crypto">Crypto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#social-sentiment">Social Sentiment</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-new-environment">Setting up a new environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#retrieving-data">Retrieving Data</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
 
@@ -159,13 +157,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Tutorial</li>
+      <li>Alternative Data</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/altdata.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,34 +176,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tutorial">
-<span id="id1"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="setting-up-a-new-environment">
-<h2>Setting up a new environment<a class="headerlink" href="#setting-up-a-new-environment" title="Permalink to this headline">¶</a></h2>
-<p>Ideally, before installing or using iexfinance, we’ll create a new
-virtual environment using
-<a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>. This will ensure
-that our packages are isolated from other projects and configured
-correctly.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ virtualenv env
-$ source env/bin/activate
-</pre></div>
+  <div class="section" id="alternative-data">
+<span id="altdata"></span><h1>Alternative Data<a class="headerlink" href="#alternative-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="news">
+<span id="altdata-news"></span><h2>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="stocks.html#stocks-news"><span class="std std-ref">News</span></a></p>
 </div>
 </div>
-<div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Once our environment is created, we can now install iexfinance. We do so
-by the following from iexfinance’s pypl repository.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>(env) $ pip install iexfinance
-</pre></div>
+<div class="section" id="crypto">
+<span id="altdata-crypto"></span><h2>Crypto<a class="headerlink" href="#crypto" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="iexfinance.altdata.get_crypto_quote">
+<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_crypto_quote</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crypto Quotes</p>
+<p>This will return a quote for Cryptocurrencies supported by IEX Cloud.
+Each element is a standard <code class="docutils literal notranslate"><span class="pre">quote</span></code>.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#crypto">https://iexcloud.io/docs/api/#crypto</a>
+Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
-<p>This will install the latest stable release of iexfinance that is ready
-for use. Once installed, we can import the library and begin downloading
-data!</p>
-<div class="section" id="retrieving-data">
-<h3>Retrieving Data<a class="headerlink" href="#retrieving-data" title="Permalink to this headline">¶</a></h3>
-<p>** THIS SECTION IS UNDER CONSTRUCTION **</p>
+<div class="section" id="social-sentiment">
+<span id="altdata-social"></span><h2>Social Sentiment<a class="headerlink" href="#social-sentiment" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="iexfinance.altdata.get_social_sentiment">
+<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_social_sentiment</code><span class="sig-paren">(</span><em>symbol</em>, <em>period_type=None</em>, <em>date=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_social_sentiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Social Sentiment</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unstable endpoint. May return unexpected results.</p>
 </div>
+<p>This endpoint provides social sentiment data from StockTwits. Data can be
+viewed as a daily value, or by minute for a given date.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#social-sentiment">https://iexcloud.io/docs/api/#social-sentiment</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per date for <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">200</span></code> per symbol for
+<code class="docutils literal notranslate"><span class="pre">minute</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</li>
+<li><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – Can only be <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to the “type” path
+parameter in the IEX Cloud documentation</li>
+<li><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 </div>
 
@@ -217,10 +248,10 @@ data!</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="iexfinance package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="refdata.html" class="btn btn-neutral float-right" title="Reference Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="testing.html" class="btn btn-neutral" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stocks.html" class="btn btn-neutral" title="Stocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Queries &mdash; iexfinance 0.4.0 documentation</title>
+  <title>API System Metadata &mdash; iexfinance 0.4.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Testing" href="testing.html" />
-    <link rel="prev" title="About" href="about.html" /> 
+    <link rel="next" title="About" href="about.html" />
+    <link rel="prev" title="Investor’s Exchange Data" href="iexdata.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -92,21 +92,21 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Package Information</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Caching Queries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tutorial">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API System Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#status">Status</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
@@ -155,13 +155,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Caching Queries</li>
+      <li>API System Metadata</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/caching.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/apidata.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,43 +174,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="caching-queries">
-<span id="caching"></span><h1>Caching Queries<a class="headerlink" href="#caching-queries" title="Permalink to this headline">¶</a></h1>
-<p>In some cases it is sensible to cache queries to avoid overloading the
-IEX servers. <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> supports the caching of queries through
-<code class="docutils literal notranslate"><span class="pre">requests_cache_</span></code>.</p>
-<div class="section" id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code> using pip:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install requests-cache
-</pre></div>
+  <div class="section" id="api-system-metadata">
+<span id="apidata"></span><h1><a class="toc-backref" href="#id1">API System Metadata</a><a class="headerlink" href="#api-system-metadata" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="endpoints">
+<p class="topic-title first">Endpoints</p>
+<ul class="simple">
+<li><a class="reference internal" href="#api-system-metadata" id="id1">API System Metadata</a><ul>
+<li><a class="reference internal" href="#status" id="id2">Status</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<p>To use a cached session, pass a <code class="docutils literal notranslate"><span class="pre">requests_cache.Session</span></code> object to the
-top-level function you are using:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
-
-<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
-
-<span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">requests_cache</span>
-
-<span class="gp">In [4]: </span><span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
-<span class="gp">   ...: </span>
-
-<span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-
-<span class="gp">In [7]: </span><span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">172.03</span>
-</pre></div>
+<div class="section" id="status">
+<span id="apidata-status"></span><h2><a class="toc-backref" href="#id2">Status</a><a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="iexfinance.apidata.get_api_status">
+<code class="descclassname">iexfinance.apidata.</code><code class="descname">get_api_status</code><span class="sig-paren">(</span><em>output_format=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.apidata.get_api_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves IEX Cloud API status</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#status">https://iexcloud.io/docs/api/#status</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
-<p>A <a class="reference external" href="https://www.sqlite.org/">SQLite</a> file named <code class="docutils literal notranslate"><span class="pre">cache.sqlite</span></code> will
-be created in the working directory, storing the request until the
-expiry date.</p>
-<p>For more information about <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>, see its <a class="reference external" href="https://readthedocs.org/projects/requests-cache/">Documentation</a>.</p>
-<p>Caching mechanism similar to <a class="reference external" href="https://pandas-datareader.readthedocs.io/en/latest/cache.html">Pandas Datareader</a>.</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -222,10 +211,10 @@ expiry date.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="about.html" class="btn btn-neutral" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="iexdata.html" class="btn btn-neutral" title="Investor’s Exchange Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>iexfinance &mdash; iexfinance 0.3.5 documentation</title>
+  <title>Welcome to iexfinance’s documentation! &mdash; iexfinance 0.4.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Install" href="install.html" /> 
+    <link rel="next" title="What’s New" href="whatsnew.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                0.3.5
+                0.4.0
               </div>
             
           
@@ -82,18 +82,28 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -141,7 +151,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>iexfinance</li>
+      <li>Welcome to iexfinance’s documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,305 +170,132 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <span class="target" id="index"></span><div class="section" id="iexfinance">
-<h1>iexfinance<a class="headerlink" href="#iexfinance" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://travis-ci.org/addisonlynch/iexfinance"><img alt="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" src="https://travis-ci.org/addisonlynch/iexfinance.svg?branch=master" /></a>
-<a class="reference external image-reference" href="https://codecov.io/gh/addisonlynch/iexfinance"><img alt="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" src="https://codecov.io/gh/addisonlynch/iexfinance/branch/master/graphs/badge.svg?branch=master" /></a>
-<a class="reference external image-reference" href="https://badge.fury.io/py/iexfinance"><img alt="https://badge.fury.io/py/iexfinance.svg" src="https://badge.fury.io/py/iexfinance.svg" /></a>
-<a class="reference external image-reference" href="https://opensource.org/licenses/Apache-2.0"><img alt="https://img.shields.io/badge/License-Apache%202.0-blue.svg" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
-<p>Python wrapper around the
-<a class="reference external" href="https://iextrading.com/">Investors Exchange (IEX)</a>
-<a class="reference external" href="https://iextrading.com/developer/">Developer API</a>.</p>
-<p>An easy-to-use interface to obtain:</p>
+  <div class="section" id="welcome-to-iexfinance-s-documentation">
+<h1>Welcome to iexfinance’s documentation!<a class="headerlink" href="#welcome-to-iexfinance-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s documentation is organized into the following sections:</p>
 <ul class="simple">
-<li>Real-time quotes</li>
-<li>Historical data</li>
-<li>Fundamentals,</li>
-<li>Actions (dividends, splits), Sector Performance</li>
-<li>Trading analyses (gainers, losers, etc.)</li>
-<li>IEX Market Data &amp; Stats</li>
+<li><a class="reference internal" href="#getting-started"><span class="std std-ref">Getting Started</span></a> - Installation instructions, basic usage information,
+migrating to IEX Cloud</li>
+<li><a class="reference internal" href="#endpoints"><span class="std std-ref">Endpoints</span></a> - 1:1 mirror of the <a class="reference external" href="https://iexcloud.io/api/">IEX Cloud documentation</a></li>
+<li><a class="reference internal" href="#package-info"><span class="std std-ref">Package Information</span></a> - additional package information, developer/testing documentation</li>
 </ul>
-<p>iexfinance provides real-time financial data from the various IEX
-endpoints, including:</p>
-<ul class="simple">
-<li>Stocks (<a class="reference external" href="https://iextrading.com/developer/docs/#stocks">IEX Docs</a>)</li>
-<li>Reference Data (<a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">IEX Docs</a>)</li>
-<li>IEX Market Data (<a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Docs</a>)</li>
-<li>IEX Stats (<a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Docs</a>)</li>
-</ul>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://addisonlynch.github.io/iexfinance/stable/">Stable documentation</a> is hosted on <a class="reference external" href="https://addisonlynch.github.io/iexfinance/index.html#documentation">github.io</a>.</p>
-<p><a class="reference external" href="https://addisonlynch.github.io/iexfinance/devel/">Development documentation</a> is also available for the latest changes in master.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> version 0.4.0 introduces a number of new endpoint groups, including <a class="reference internal" href="altdata.html#altdata"><span class="std std-ref">Alternative Data</span></a>, <a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a>, and <a class="reference internal" href="apidata.html#apidata"><span class="std std-ref">API System Metadata</span></a>. Certain modules are also refactored or renamed, including <a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a> and <a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a> (formerly IEX Stats and IEX Market Data). For more information, see <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a>.</p>
 </div>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
-<p>From PyPI with pip (latest stable release):</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">iexfinance</span></code></p>
-<p>From development repository (dev version):</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/addisonlynch/iexfinance.git
-$ cd iexfinance
-$ python3 setup.py install
-</pre></div>
-</div>
-</div>
-<div class="section" id="common-usage-examples">
-<h2>Common Usage Examples<a class="headerlink" href="#common-usage-examples" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://github.com/addisonlynch/iex-examples">iex-examples</a> repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.</p>
-<p>Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the <a class="reference external" href="https://iextrading.com/developer/docs/#stocks">Stocks</a>
-endpoints, which allow access to various information regarding equities,
-including quotes, historical prices, dividends, and much more.</p>
-<div class="section" id="real-time-quotes">
-<h3>Real-time Quotes<a class="headerlink" href="#real-time-quotes" title="Permalink to this headline">¶</a></h3>
-<p>To obtain real-time quotes for one or more symbols, use the <code class="docutils literal notranslate"><span class="pre">get_price</span></code>
-method of the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">Stock</span>
-<span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
-etc.):</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
-<span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="historical-data">
-<h3>Historical Data<a class="headerlink" href="#historical-data" title="Permalink to this headline">¶</a></h3>
-<p>It’s possible to obtain historical data the <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and
-<code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>.</p>
-<div class="section" id="daily">
-<h4>Daily<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h4>
-<p>To obtain daily historical price data for one or more symbols, use the
-<code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> function. This will return a daily time-series of the ticker
-requested over the desired date range (<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> passed as
-<code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code> objects):</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">get_historical_data</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For Pandas DataFrame output formatting, pass <code class="docutils literal notranslate"><span class="pre">output_format</span></code>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>It’s really simple to plot this data, using <a class="reference external" href="https://matplotlib.org/">matplotlib</a>:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="minutely-intraday">
-<h4>Minutely (Intraday)<a class="headerlink" href="#minutely-intraday" title="Permalink to this headline">¶</a></h4>
-<p>To obtain historical intraday data, use <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code> as follows.
-Pass an optional <code class="docutils literal notranslate"><span class="pre">date</span></code> to specify a date within three months prior to the
-current day (default is current date):</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">get_historical_intraday</span>
-
-<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
-
-<span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>or for a Pandas Dataframe indexed by each minute:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="endpoints">
-<h2>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="stock-endpoints">
-<h3>Stock Endpoints<a class="headerlink" href="#stock-endpoints" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function creates a <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> instance which has a method to
-retrieve each of the Stocks endpoints (<code class="docutils literal notranslate"><span class="pre">get_quote</span></code>, <code class="docutils literal notranslate"><span class="pre">get_book</span></code>,
-<code class="docutils literal notranslate"><span class="pre">get_volume_by_venue</span></code>, etc.):</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="k">import</span> <span class="n">Stock</span>
-<span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Pandas DataFrame and JSON (dict) output formatting are selected with the
-<code class="docutils literal notranslate"><span class="pre">output_format</span></code> parameter when calling <code class="docutils literal notranslate"><span class="pre">Stock</span></code>.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-<span class="n">tsla</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-reference-data">
-<h3>IEX Reference Data<a class="headerlink" href="#iex-reference-data" title="Permalink to this headline">¶</a></h3>
-<p>Support for the <a class="reference external" href="https://iextrading.com/developer/docs/#reference-data">IEX Reference Data</a> endpoints is
-available through the top level functions <code class="docutils literal notranslate"><span class="pre">get_available_symbols</span></code>,
-<code class="docutils literal notranslate"><span class="pre">get_corporate_actions</span></code>, <code class="docutils literal notranslate"><span class="pre">get_dividends</span></code>, <code class="docutils literal notranslate"><span class="pre">get_next_day_ex_date</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">get_listed_symbol_dir</span></code>. As with all endpoints, request parameters such as
-<code class="docutils literal notranslate"><span class="pre">retry_count</span></code> and output format selection (through <code class="docutils literal notranslate"><span class="pre">output_format</span></code>) can be
-passed to the call.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_available_symbols</span>
-
-<span class="n">get_available_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-market-data">
-<h3>IEX Market Data<a class="headerlink" href="#iex-market-data" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market Data</a> endpoints are
-supported through various top-level functions, including <code class="docutils literal notranslate"><span class="pre">get_market_tops</span></code>
-and <code class="docutils literal notranslate"><span class="pre">get_market_deep</span></code>.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_market_tops</span>
-
-<span class="n">get_market_tops</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="iex-stats">
-<h3>IEX Stats<a class="headerlink" href="#iex-stats" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX Stats</a> endpoints are
-supported through various top-level functions, including <code class="docutils literal notranslate"><span class="pre">get_stats_intraday</span></code>
-and <code class="docutils literal notranslate"><span class="pre">get_stats_recent</span></code>. These endpoints provide IEX’s trading statistics for
-a given ticker.</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance</span> <span class="k">import</span> <span class="n">get_stats_intraday</span>
-
-<span class="n">get_stats_intraday</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="debugging-caching">
-<h2>Debugging &amp; Caching<a class="headerlink" href="#debugging-caching" title="Permalink to this headline">¶</a></h2>
-<p>All functions (including <code class="docutils literal notranslate"><span class="pre">Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>) allow
-for <a class="reference external" href="https://addisonlynch.github.io/usage.html#parameters">Request Parameters</a>, which
-include <code class="docutils literal notranslate"><span class="pre">retry_count</span></code>, <code class="docutils literal notranslate"><span class="pre">pause</span></code>, and <code class="docutils literal notranslate"><span class="pre">session</span></code>. These parameters are
-entirely optional. The first two deal with how unsuccessful requests are
-handled, and the third allows for the passing of a cached <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>
-session (see <a class="reference external" href="https://addisonlynch.github.io/iexfinance/stable/caching.html">caching</a>).</p>
-</div>
-<div class="section" id="contact">
-<h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
-<p>Email: <a class="reference external" href="mailto:ahlshop&#37;&#52;&#48;gmail&#46;com">ahlshop<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
-<p>Twitter: <a class="reference external" href="https://www.twitter.com/alynchfc">alynchfc</a></p>
-</div>
-<div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
-<p>Copyright © 2018 Addison Lynch</p>
-<p>See LICENSE for details</p>
-</div>
-</div>
-<div class="section" id="welcome-to-iexfinance-s-documentation">
-<span id="index-documentation"></span><h1>Welcome to iexfinance’s documentation!<a class="headerlink" href="#welcome-to-iexfinance-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
+<div class="section" id="full-contents">
+<h2>Full Contents<a class="headerlink" href="#full-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound" id="getting-started">
+<p class="caption"><span class="caption-text">Getting Started</span><a class="headerlink" href="#getting-started" title="Permalink to this toctree">¶</a></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#common-usage-examples">Common Usage Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#stocks">Stocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#reference-data">Reference Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#iex-market-data">IEX Market Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#iex-stats">IEX Stats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#caching">Caching</a></li>
+</div>
+<div class="toctree-wrapper compound" id="endpoints">
+<p class="caption"><span class="caption-text">Endpoints</span><a class="headerlink" href="#endpoints" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="account.html#metadata">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="account.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="account.html#pay-as-you-go">Pay as you go</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#formatting">Formatting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#endpoint-methods">Endpoint Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#field-methods">Field Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#market-movers">Market Movers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#cryptocurrencies">Cryptocurrencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#balance-sheet">Balance Sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#book">Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#cash-flow">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#chart">Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#collections">Collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#sector-performance">Sector Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#company">Company</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#cryptocurrencies">Cryptocurrencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#delayed-quote">Delayed Quote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#dividends">Dividends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#earnings">Earnings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#earnings-today">Earnings Today</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#effective-spread">Effective Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#estimates">Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#financials">Financials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#historical-prices">Historical Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#income-statement">Income Statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#ipo-calendar">IPO Calendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#key-stats">Key Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#list">List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#largest-trades">Largest Trades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#logo">Logo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#market-volume-u-s">Market Volume (U.S)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#news">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#ohlc">OHLC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#open-close-price">Open/Close Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#peers">Peers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#previous-day-prices">Previous Day Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#price">Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#price-target">Price Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#quote">Quote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#relevant-stocks">Relevant Stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#sector-performance">Sector Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#splits">Splits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#volume-by-venue">Volume by Venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#additional-methods">Additional Methods</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="historical.html">Historical Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="historical.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="historical.html#plotting">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="altdata.html#news">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="altdata.html#crypto">Crypto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="altdata.html#social-sentiment">Social Sentiment</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ref.html">Reference Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#symbols">Symbols</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-corporate-actions">IEX Corporate Actions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-dividends">IEX Dividends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-next-day-ex-date">IEX Next Day Ex Date</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ref.html#iex-listed-symbol-directory">IEX Listed Symbol Directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#symbols">Symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-symbols">IEX Symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-corporate-actions">IEX Corporate Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-dividends">IEX Dividends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-next-day-ex-date">IEX Next Day Ex Date</a></li>
+<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-listed-symbol-directory">IEX Listed Symbol Directory</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="market.html">IEX Market Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="market.html#tops">TOPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="market.html#last">Last</a></li>
-<li class="toctree-l2"><a class="reference internal" href="market.html#deep">DEEP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="market.html#book">Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#tops">TOPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#last">Last</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep">DEEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-auction">DEEP Auction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-book">DEEP Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-operational-halt-status">DEEP Operational Halt Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-official-price">DEEP Official Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-security-event">DEEP Security Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-short-sale-price-test-status">DEEP Short Sale Price Test Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-system-event">DEEP System Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-trades">DEEP Trades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-trade-break">DEEP Trade Break</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#deep-trading-status">DEEP Trading Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#listed-regulation-sho-threshold-securities-list">Listed Regulation SHO Threshold Securities List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#listed-short-interest-list">Listed Short Interest List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#stats-historical-daily">Stats Historical Daily</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#stats-historical-summary">Stats Historical Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#stats-intraday">Stats Intraday</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#stats-recent">Stats Recent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iexdata.html#stats-records">Stats Records</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stats.html">IEX Stats</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stats.html#intraday">Intraday</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stats.html#recent">Recent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stats.html#records">Records</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stats.html#historical-summary">Historical Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stats.html#historical-daily">Historical Daily</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apidata.html#status">Status</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="caching.html#tutorial">Tutorial</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="testing.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html#local-testing">Local Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html#module-iexfinance.utils.exceptions">Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-5-11-28-2018">v0.3.5 (11/28/2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-4-july-12-2018">v0.3.4 (July 12, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-3-april-21-2018">v0.3.3 (April 21, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#id4">v0.3.3 (April 21, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-2-april-21-2018">v0.3.2 (April 21, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-1-march-9-2018">v0.3.1 (March 9, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#v0-3-0-february-1-2018">v0.3.0 (February 1, 2018)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="whatsnew.html#changelog">Changelog</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#iex-api-issues">IEX API Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#filling-a-void">Filling a Void</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#setting-up-a-new-environment">Setting up a new environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#getting-started">Getting started</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.base">iexfinance.base module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.market">iexfinance.market module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.stats">iexfinance.stats module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance.stocks">iexfinance.stocks module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#module-iexfinance">Module contents</a></li>
-</ul>
-</li>
+</div>
+<div class="toctree-wrapper compound" id="package-info">
+<p class="caption"><span class="caption-text">Package Information</span><a class="headerlink" href="#package-info" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
 </div>
 </div>
@@ -478,7 +315,7 @@ session (see <a class="reference external" href="https://addisonlynch.github.io/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="whatsnew.html" class="btn btn-neutral float-right" title="What’s New" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

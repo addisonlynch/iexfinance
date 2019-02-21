@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Queries &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Migrating to IEX Cloud &mdash; iexfinance 0.4.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Testing" href="testing.html" />
-    <link rel="prev" title="About" href="about.html" /> 
+    <link rel="next" title="Install" href="install.html" />
+    <link rel="prev" title="What’s New" href="whatsnew.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -84,9 +84,22 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Migrating to IEX Cloud</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-endpoints-added-in-iex-cloud">Cloud Endpoints (Added in IEX Cloud)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks">Stocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference-data">Reference Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#legacy-endpoints-removed-in-iex-cloud">Legacy Endpoints (Removed in IEX Cloud)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Stocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Reference Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#migrating-ref-data">Reference Data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
@@ -101,12 +114,9 @@
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Caching Queries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tutorial">Tutorial</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
@@ -155,13 +165,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Caching Queries</li>
+      <li>Migrating to IEX Cloud</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/caching.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migrating.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,43 +184,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="caching-queries">
-<span id="caching"></span><h1>Caching Queries<a class="headerlink" href="#caching-queries" title="Permalink to this headline">¶</a></h1>
-<p>In some cases it is sensible to cache queries to avoid overloading the
-IEX servers. <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> supports the caching of queries through
-<code class="docutils literal notranslate"><span class="pre">requests_cache_</span></code>.</p>
-<div class="section" id="tutorial">
-<h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code> using pip:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install requests-cache
-</pre></div>
+  <div class="section" id="migrating-to-iex-cloud">
+<span id="migrating"></span><h1>Migrating to IEX Cloud<a class="headerlink" href="#migrating-to-iex-cloud" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cloud-endpoints-added-in-iex-cloud">
+<span id="migrating-cloud-only"></span><h2>Cloud Endpoints (Added in IEX Cloud)<a class="headerlink" href="#cloud-endpoints-added-in-iex-cloud" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stocks">
+<h3>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Market Volume - <code class="docutils literal notranslate"><span class="pre">stocks.get_market_volume</span></code></li>
+</ul>
 </div>
-<p>To use a cached session, pass a <code class="docutils literal notranslate"><span class="pre">requests_cache.Session</span></code> object to the
-top-level function you are using:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
-
-<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
-
-<span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">requests_cache</span>
-
-<span class="gp">In [4]: </span><span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
-<span class="gp">   ...: </span>
-
-<span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-
-<span class="gp">In [7]: </span><span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">172.03</span>
-</pre></div>
+<div class="section" id="reference-data">
+<h3>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>IEX Symbols - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_symbols</span></code></li>
+</ul>
 </div>
-<p>A <a class="reference external" href="https://www.sqlite.org/">SQLite</a> file named <code class="docutils literal notranslate"><span class="pre">cache.sqlite</span></code> will
-be created in the working directory, storing the request until the
-expiry date.</p>
-<p>For more information about <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code>, see its <a class="reference external" href="https://readthedocs.org/projects/requests-cache/">Documentation</a>.</p>
-<p>Caching mechanism similar to <a class="reference external" href="https://pandas-datareader.readthedocs.io/en/latest/cache.html">Pandas Datareader</a>.</p>
+</div>
+<div class="section" id="legacy-endpoints-removed-in-iex-cloud">
+<span id="migrating-legacy-only"></span><h2>Legacy Endpoints (Removed in IEX Cloud)<a class="headerlink" href="#legacy-endpoints-removed-in-iex-cloud" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Stocks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Chart - <code class="docutils literal notranslate"><span class="pre">stocks.get_chart</span></code> (renamed Historical Prices)</li>
+<li>Crypto Quotes - <code class="docutils literal notranslate"><span class="pre">stocks.get_crypto_quotes</span></code></li>
+<li>Time Series - <code class="docutils literal notranslate"><span class="pre">stocks.get_time_series</span></code></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Reference Data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>IEX Corporate Actions - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_corporate_actions</span></code></li>
+<li>IEX Dividends - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_dividends</span></code></li>
+<li>IEX Next Day Ex Date - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_next_day_ex_date</span></code></li>
+<li>IEX Listed Symbol Directory - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_listed_symbol_dir</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="migrating-ref-data">
+<span id="id3"></span><h2>Reference Data<a class="headerlink" href="#migrating-ref-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
+(legacy) Developer API, this endpoint returned the list of symbols IEX
+supports for trading. In IEX cloud, it returns the list of symbols IEX
+supports for <em>api calls</em>.</li>
+</ul>
 </div>
 </div>
 
@@ -222,10 +240,10 @@ expiry date.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="about.html" class="btn btn-neutral" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="whatsnew.html" class="btn btn-neutral" title="What’s New" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
