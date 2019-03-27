@@ -68,8 +68,40 @@ From development repository (dev version):
      $ python3 setup.py install
 
 
-Basics
-------
+
+Authentication
+--------------
+
+An IEX Cloud account is required to acecss the IEX Cloud API. Various `plans <https://iexcloud.io/pricing/>`__
+are availalbe, free, paid, and pay-as-you-go.
+
+Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` object.
+The easiest way to store a token is in the ``IEX_TOKEN`` environment variable.
+
+Passing as an Argument
+~~~~~~~~~~~~~~~~~~~~~~
+
+The authentication token can also be passed to any function call:
+
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_symbols
+
+    get_symbols(output_format='pandas', token="<YOUR AUTH TOKEN>")
+
+or at the instantiation of a ``Stock`` object:
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    a = Stock("AAPL", token="<YOUR AUTH TOKEN>")
+    a.get_quote()
+
+
+How This Package is Structured
+------------------------------
 
 ``iexfinance`` is designed to mirror the structure of the IEX Cloud API. The
 following IEX Cloud endpoint groups are mapped to their respective
