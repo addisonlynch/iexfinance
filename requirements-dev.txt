@@ -1,5 +1,5 @@
 flake8
-pytest
+pytest>=4
 pytest-runner
 requests-cache
 six
