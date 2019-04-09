@@ -38,13 +38,13 @@ class TestBase(object):
 class TestShareDefault(object):
 
     def setup_class(self):
-        self.cshare = Stock("aapl")
-        self.cshare2 = Stock("aapl", output_format='pandas')
-        self.cshare3 = Stock("svxy")
-        self.cshare4 = Stock("aapl",
+        self.cshare = Stock("AAPL")
+        self.cshare2 = Stock("AAPL", output_format='pandas')
+        self.cshare3 = Stock("SVXY")
+        self.cshare4 = Stock("AAPL",
                              json_parse_int=Decimal,
                              json_parse_float=Decimal)
-        self.cshare5 = Stock("gig^")
+        self.cshare5 = Stock("GIG^")
 
     @pytest.mark.xfail(reason="Unstable.")
     @pytest.mark.legacy
