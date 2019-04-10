@@ -367,7 +367,12 @@ class Stock(_IEXBase):
         -------
         dict or pandas.DataFrame
         """
-        return self._get_endpoint("estimates", params=kwargs)
+        def fmt_p(out):
+            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
+                    for sheet in out[symbol]["estimates"]}
+            return pd.DataFrame(data)
+
+        return self._get_endpoint("estimates", fmt_p=fmt_p, params=kwargs)
 
     def get_financials(self, **kwargs):
         """Financials
