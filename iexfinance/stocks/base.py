@@ -186,12 +186,9 @@ class Stock(_IEXBase):
             to quarterly. Values should be annual or quarter.
         """
         def fmt_p(out):
-            result = {}
-            for symbol in out:
-                data = {(symbol, sheet["reportDate"]): sheet for sheet in
-                        out[symbol]["balancesheet"]}
-                result.update(data)
-            return pd.DataFrame(result)
+            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
+                    for sheet in out[symbol]["balancesheet"]}
+            return pd.DataFrame(data)
 
         return self._get_endpoint("balance-sheet", fmt_p=fmt_p, params=kwargs)
 
@@ -230,8 +227,9 @@ class Stock(_IEXBase):
             quarterly. Values should be annual or quarter.
         """
         def fmt_p(out):
-            return pd.DataFrame({sym: out[sym]["cashflow"][0] for sym in out})
-
+            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
+                    for sheet in out[symbol]["cashflow"]}
+            return pd.DataFrame(data)
         return self._get_endpoint("cash-flow", fmt_p=fmt_p, params=kwargs)
 
     def get_chart(self, **kwargs):
@@ -290,21 +288,9 @@ class Stock(_IEXBase):
             Stocks Dividends endpoint data
         """
         def fmt_p(out):
-            result = {}
-            for symbol in self.symbols:
-                if out[symbol]:
-                    df = pd.DataFrame(out.pop(symbol))
-                    df.set_index(pd.DatetimeIndex(df["exDate"]), inplace=True)
-                else:
-                    df = pd.DataFrame([])
-                result.update({symbol: df})
-            if not result:
-                return pd.DataFrame()
-            elif len(result) == 1:
-                return result[self.symbols[0]]
-            else:
-                return result
-
+            data = {(symbol, sheet["exDate"]): sheet for symbol in out
+                    for sheet in out[symbol]}
+            return data
         return self._get_endpoint("dividends", fmt_p=fmt_p, params=kwargs)
 
     def get_earnings(self, **kwargs):
@@ -327,16 +313,9 @@ class Stock(_IEXBase):
             return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
 
         def fmt_p(out):
-            results = {}
-            for symbol in self.symbols:
-                if out[symbol]:
-                    data = pd.DataFrame(out[symbol]["earnings"])
-                    data = data.set_index("EPSReportDate")
-                    results[symbol] = data
-            if not results:
-                return pd.DataFrame([])
-            return results if self.n_symbols != 1 else results[self.symbols[0]]
-
+            data = {(symbol, sheet["EPSReportDate"]): sheet for symbol in out
+                    for sheet in out[symbol]["earnings"]}
+            return pd.DataFrame(data)
         return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p,
                                   params=kwargs)
 
@@ -507,8 +486,9 @@ class Stock(_IEXBase):
              Defaults to quarterly. Values should be annual or quarter
         """
         def fmt_p(out):
-            return pd.DataFrame({sym: out[sym]["income"][0] for sym in
-                                 out})
+            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
+                    for sheet in out[symbol]["income"]}
+            return pd.DataFrame(data)
 
         return self._get_endpoint("income", fmt_p=fmt_p, params=kwargs)
 
