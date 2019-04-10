@@ -30,6 +30,18 @@ Testing & Documentation Dependencies
 - matplotlib
 - ipython
 
+
+.. _testing.sandbox:
+
+Sandbox Environment
+-------------------
+
+IEX provides a sandbox_ environment for IEX Cloud. This environment can be accessed by setting ``IEX_API_VERSION`` to ``iexcloud-sandbox``. This will set ``iexfinance`` up for use with the sandbox base URL.
+
+.. note:: Test keys (beginning with ``Tsk`` and ``Tpk``) must be used with the sandbox environment. To obtain these keys, select the "Viewing test data" toggler on the left side of the IEX Cloud console.
+
+.. _sandbox: https://iexcloud.io/docs/api/#sandbox
+
 .. _testing.local_testing:
 
 Local Testing
