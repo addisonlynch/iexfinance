@@ -42,7 +42,6 @@ class Stock(_IEXBase):
         else:
             raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
-        self.n_symbols = len(self.symbols)
         self.endpoints = []
         super(Stock, self).__init__(**kwargs)
 
@@ -65,6 +64,10 @@ class Stock(_IEXBase):
                 raise IEXSymbolError(symbol)
             json_data[symbol].update(json_data_2[symbol])
         return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
+
+    @property
+    def n_symbols(self):
+        return len(self.symbols)
 
     @property
     def url(self):
@@ -183,8 +186,12 @@ class Stock(_IEXBase):
             to quarterly. Values should be annual or quarter.
         """
         def fmt_p(out):
-            return pd.DataFrame({sym: out[sym]["balancesheet"][0] for sym in
-                                 out})
+            result = {}
+            for symbol in out:
+                data = {(symbol, sheet["reportDate"]): sheet for sheet in
+                        out[symbol]["balancesheet"]}
+                result.update(data)
+            return pd.DataFrame(result)
 
         return self._get_endpoint("balance-sheet", fmt_p=fmt_p, params=kwargs)
 
