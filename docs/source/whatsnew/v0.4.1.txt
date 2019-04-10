@@ -15,3 +15,11 @@ Enhancements
 ~~~~~~~~~~~~
 
 - Adds support for the IEX Cloud sandbox environment. Specify  ``iexcloud-sandbox`` as ``IEX_API_VERSION`` for use with test secret token
+
+
+Bug Fixes
+~~~~~~~~~
+
+- Repair ``DataFrame`` output formatting for a number of ``Stock`` methods (GH119_)
+
+.. _GH119: https://github.com/addisonlynch/iexfinance/issues/119

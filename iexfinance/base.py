@@ -141,7 +141,6 @@ class _IEXBase(object):
         params['token'] = self.token
         for i in range(self.retry_count+1):
             response = self.session.get(url=url, params=params)
-            print("URL: %s" % response.request.url)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(self.pause)

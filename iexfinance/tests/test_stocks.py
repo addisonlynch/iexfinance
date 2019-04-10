@@ -1235,141 +1235,48 @@ class TestHistoricalIntraday(object):
 
 
 @pytest.mark.cloud
-class TestMarketVolume(object):
-    pass
-
-
-@pytest.mark.cloud
 class TestMarketCloud(object):
     """
     Dev note: These are very rudimentary tests which check output formatting
     only.They will need to be made more robust
     """
+    _SINGLE_SYM = "AAPL"
+    _BATCH_SYMS = ["AAPL", "TSLA"]
+
     def setup_class(self):
-        self.stock = Stock("AAPL")
-        self.p_stock = Stock("AAPL", output_format='pandas')
+        self.stock = Stock(self._SINGLE_SYM)
+        self.p_stock = Stock(self._SINGLE_SYM, output_format='pandas')
 
-    @pytest.mark.highweight
-    def test_get_balance_sheet(self):
-        # weight: 3000
-        data = self.stock.get_balance_sheet()
+        self.batch = Stock(self._BATCH_SYMS)
+        self.p_batch = Stock(self._BATCH_SYMS, output_format='pandas')
 
-        assert isinstance(data, dict)
+    _endpoints = [
+        ("get_balance_sheet", dict, pd.DataFrame, 27),
+        ("get_cash_flow", dict, pd.DataFrame, 16),
+        ("get_income_statement", dict, pd.DataFrame, 16),
+        ("get_price_target", dict, pd.DataFrame, 6),
+        ("get_estimates", dict, pd.DataFrame, 6)
+    ]
 
-    @pytest.mark.highweight
-    def test_get_balance_sheet_pandas(self):
-        # weight: 3000
-        data = self.p_stock.get_balance_sheet()
+    @pytest.mark.parametrize("func,json_type,pandas_type,length", _endpoints,
+                             ids=[i[0] for i in _endpoints])
+    def test_financial_statements(self, func, json_type, pandas_type, length):
 
-        assert isinstance(data, pd.DataFrame)
-        assert len(data) == 27
-        assert data.columns == "AAPL"
+        # test json data (single)
+        json_data = getattr(self.stock, func)()
+        assert isinstance(json_data, json_type)
 
-    @pytest.mark.highweight
-    def test_get_balance_sheet_batch(self):
-        # weight: 6000
-        stock = Stock(["AAPL", "TSLA"])
-        data = stock.get_balance_sheet()
+        # test pandas data (single)
+        pandas_data = getattr(self.p_stock, func)()
+        assert isinstance(pandas_data, pandas_type)
+        assert pandas_data.shape == (length, 1)
+        assert self._SINGLE_SYM in pandas_data
 
-        assert isinstance(data, dict)
-        assert "AAPL" in data
-        assert "TSLA" in data
+        # test json data (batch)
+        json_data_batch = getattr(self.batch, func)()
+        assert isinstance(json_data_batch, dict)
 
-    @pytest.mark.highweight
-    def test_get_balance_sheet_b_pandas(self):
-        # weight: 6000
-        stock = Stock(["AAPL", "TSLA"])
-        data = stock.get_balance_sheet()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (27, 2)
-        assert "AAPL" in data
-        assert "TSLA" in data.columns
-
-    @pytest.mark.highweight
-    def test_get_cash_flow(self):
-        # weight: 1000
-        data = self.stock.get_cash_flow()
-
-        assert isinstance(data, dict)
-        assert len(data) == 2
-        assert "symbol" in data
-        assert "cashflow" in data
-        assert isinstance(data["cashflow"], list)
-
-    @pytest.mark.highweight
-    def test_get_cash_flow_pandas(self):
-        # weight: 1000
-        data = self.p_stock.get_cash_flow()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (16, 1)
-        assert "AAPL" in data
-
-    @pytest.mark.highweight
-    def test_batch_cash_flow_pandas(self):
-        # weight: 2000
-        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
-        data = stock.get_cash_flow()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (16, 2)
-        assert "AAPL" in data
-
-    @pytest.mark.highweight
-    def test_get_estimates(self):
-        # weight: 10000
-        data = self.stock.get_estimates()
-
-        assert isinstance(data, dict)
-
-    def test_get_price_target(self):
-        data = self.stock.get_price_target()
-
-        assert isinstance(data, dict)
-
-    def test_get_price_target_pandas(self):
-        data = self.p_stock.get_price_target()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (6, 1)
-        assert "AAPL" in data
-
-    @pytest.mark.highweight
-    def test_get_price_target_batch_pandas(self):
-        # weight: 1000
-        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
-        data = stock.get_price_target()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (6, 2)
-        assert "AAPL" in data
-        assert "TSLA" in data
-
-    @pytest.mark.highweight
-    def test_get_income_statement(self):
-        # weight: 1000
-        data = self.stock.get_income_statement()
-        assert isinstance(data, dict)
-        assert "symbol" in data
-        assert "income" in data
-        assert isinstance(data["income"], list)
-
-    @pytest.mark.highweight
-    def test_get_income_statement_pandas(self):
-        # weight: 1000
-        data = self.stock.get_income_statement()
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (16, 1)
-        assert "AAPL" in data
-
-    @pytest.mark.highweight
-    def test_batch_income_statement_pandas(self):
-        # weight: 2000
-        stock = Stock(["AAPL", "TSLA"], output_format='pandas')
-        data = stock.get_income_statement()
-
-        assert isinstance(data, pd.DataFrame)
-        assert data.shape == (16, 2)
-        assert "AAPL" in data
-        assert "TSLA" in data
+        # test pandas data (batch)
+        pandas_data_batch = getattr(self.p_batch, func)()
+        assert isinstance(pandas_data_batch, pd.DataFrame)
+        assert pandas_data.shape == (length, 1)
