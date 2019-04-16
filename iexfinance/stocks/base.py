@@ -225,6 +225,11 @@ class Stock(_IEXBase):
         period: str, default 'quarterly', optional
             Allows you to specify annual or quarterly cash flows. Defaults to
             quarterly. Values should be annual or quarter.
+
+        Returns
+        ------
+        dict or pandas.DataFrame
+            Stocks Cash Flow endpoint data
         """
         def fmt_p(out):
             data = {(symbol, sheet["reportDate"]): sheet for symbol in out
@@ -290,7 +295,7 @@ class Stock(_IEXBase):
         def fmt_p(out):
             data = {(symbol, sheet["exDate"]): sheet for symbol in out
                     for sheet in out[symbol]}
-            return data
+            return pd.DataFrame(data)
         return self._get_endpoint("dividends", fmt_p=fmt_p, params=kwargs)
 
     def get_earnings(self, **kwargs):
@@ -306,7 +311,7 @@ class Stock(_IEXBase):
 
         Returns
         -------
-        dict or pandas.DataFrame
+        list or pandas.DataFrame
             Stocks Earnings endpoint data
         """
         def fmt(out):
@@ -390,24 +395,23 @@ class Stock(_IEXBase):
 
         Returns
         -------
-        dict or pandas.DataFrame
+        list or pandas.DataFrame
             Stocks Financials endpoint data
         """
+        # def fmt(out):
+        #     return {symbol: out[symbol].get("financials", [])
+        #             for symbol in self.symbols}
         def fmt(out):
-            return {symbol: out[symbol].get("financials", []) for symbol in
-                    self.symbols}
+            return {symbol: out[symbol]["financials"]
+                    for symbol in self.symbols}
 
         def fmt_p(out):
-            results = {}
-            for symbol in self.symbols:
-                if out[symbol]:
-                    data = pd.DataFrame(out[symbol]["financials"])
-                    data = data.set_index("reportDate")
-                    results[symbol] = data
-            if not results:
-                return pd.DataFrame([])
-            return results if self.n_symbols != 1 else results[self.symbols[0]]
-
+            out = {symbol: out[symbol].get("financials", [])
+                   for symbol in self.symbols}
+            data = {(symbol, sheet["reportDate"]): sheet
+                    for symbol in out
+                    for sheet in out[symbol]}
+            return pd.DataFrame(data)
         return self._get_endpoint("financials", fmt_j=fmt,
                                   fmt_p=fmt_p, params=kwargs)
 
@@ -451,7 +455,7 @@ class Stock(_IEXBase):
             data
         Returns
         -------
-        list
+        list or pandas DataFrame
             Stocks Historical Prices endpoint data
         """
         def fmt_p(out):
@@ -489,13 +493,23 @@ class Stock(_IEXBase):
         period: str, default 'quarterly', optional
              Allows you to specify annual or quarterly income statement.
              Defaults to quarterly. Values should be annual or quarter
+
+        Returns
+        -------
+        list or pandas DataFrame
+            Stocks Income Statement endpoint data
         """
+        def fmt(out):
+            return {symbol: out[symbol]["income"]
+                    for symbol in self.symbols}
+
         def fmt_p(out):
             data = {(symbol, sheet["reportDate"]): sheet for symbol in out
                     for sheet in out[symbol]["income"]}
             return pd.DataFrame(data)
 
-        return self._get_endpoint("income", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p,
+                                  params=kwargs)
 
     def get_key_stats(self, **kwargs):
         """
@@ -514,7 +528,7 @@ class Stock(_IEXBase):
 
         Returns
         -------
-        dict or pandas.DataFrame
+        list or pandas.DataFrame
             Stocks Largest Trades endpoint data
         """
         return self._get_endpoint("largest-trades", params=kwargs)
@@ -600,7 +614,7 @@ class Stock(_IEXBase):
         list
             Stocks Peers endpoint data
         """
-        return self._get_endpoint("peers", fmt_p=no_pandas, params=kwargs)
+        return self._get_endpoint("peers", params=kwargs)
 
     def get_previous(self, **kwargs):
         """
@@ -726,10 +740,10 @@ class Stock(_IEXBase):
 
         Returns
         -------
-        list or pandas.DataFrame
+        list
             Stocks Splits endpoint data
         """
-        return self._get_endpoint("splits", params=kwargs)
+        return self._get_endpoint("splits", params=kwargs, fmt_p=no_pandas)
 
     def get_time_series(self, **kwargs):
         """Time Series
@@ -752,7 +766,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Volume by Venue endpoint data
         """
-        return self._get_endpoint("volume-by-venue", params=kwargs)
+        def fmt_p(out):
+            data = {(symbol, sheet["venueName"]): sheet for symbol in out
+                    for sheet in out[symbol]}
+            return pd.DataFrame(data)
+
+        return self._get_endpoint("volume-by-venue", params=kwargs,
+                                  fmt_p=fmt_p)
 
     # field methods
     def get_company_name(self):
