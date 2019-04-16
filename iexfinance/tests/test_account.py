@@ -5,6 +5,7 @@ from iexfinance.account import (get_usage, get_metadata)
 
 
 @pytest.mark.cloud
+@pytest.mark.skip
 class TestAccount(object):
 
     def test_usage_json_default(self):
