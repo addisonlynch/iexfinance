@@ -8,6 +8,10 @@ __all__ = ["use_cloud", "use_legacy", "block_keys", "set_keys",
            "stock_single", "stock_multiple", "stock_etf", "stock_special_char"]
 
 
+########################
+# Environment Fixtures #
+########################
+
 @pytest.yield_fixture
 def use_cloud(scope='function'):
     os.environ["IEX_API_VERSION"] = "iexcloud-beta"
@@ -34,8 +38,10 @@ def set_keys(scope='function'):
     yield
     del os.environ["IEX_TOKEN"]
 
-# New Fixtures
 
+###################
+# Stocks fixtures #
+###################
 
 @pytest.fixture(scope='class')
 def stock_single():

@@ -33,36 +33,66 @@ _ALL_METHODS = [
 ]
 
 
+_FIELD_METHODS = [
+    ("get_company_name", str),
+    ("get_primary_exchange", str),
+    ("get_sector", str),
+    ("get_open", dict),
+    ("get_close", dict),
+    ("get_years_high", float),
+    ("get_years_low", float),
+    ("get_ytd_change", float),
+    ("get_volume", int),
+    ("get_market_cap", int)
+]
+
+
 @pytest.fixture(params=_ALL_METHODS, scope='module', ids=[i[0] for i in
                                                           _ALL_METHODS])
 def stock_method(request):
     return request.param
 
 
+@pytest.fixture(params=_FIELD_METHODS, scope='module', ids=[i[0] for i in
+                                                            _FIELD_METHODS])
+def field_method(request):
+    return request.param
+
+
+def _format_helper(obj, meta, r_type=None):
+    method = getattr(obj, meta[0])
+    data = method()
+    if r_type is not None:
+        assert isinstance(data, r_type)
+    else:
+        assert isinstance(data, (meta[1], dict))
+
+
 # @pytest.mark.usefixtures("stock_method")
 class TestStocksJson(object):
 
     def test_format_single_json(self, stock_single, stock_method):
-        method = getattr(stock_single, stock_method[0])
-        data = method()
-        assert isinstance(data, stock_method[1])
+        _format_helper(stock_single, stock_method)
 
     def test_format_multiple_json(self, stock_multiple, stock_method):
-        method = getattr(stock_multiple, stock_method[0])
-        data = method()
-        assert isinstance(data, (stock_method[1], dict))
+        _format_helper(stock_multiple, stock_method)
 
 
 class TestStocksPandas(object):
 
     def test_format_single_pandas(self, stock_single, stock_method):
         stock_single.output_format = 'pandas'
-        method = getattr(stock_single, stock_method[0])
-        data = method()
-        assert isinstance(data, pd.DataFrame)
+        _format_helper(stock_single, stock_method, r_type=pd.DataFrame)
 
     def test_format_multiple_pandas(self, stock_multiple, stock_method):
         stock_multiple.output_format = 'pandas'
-        method = getattr(stock_multiple, stock_method[0])
-        data = method()
-        assert isinstance(data, pd.DataFrame)
+        _format_helper(stock_multiple, stock_method, r_type=pd.DataFrame)
+
+
+class TestFieldMethods(object):
+
+    def test_format_single(self, stock_single, field_method):
+        _format_helper(stock_single, field_method)
+
+    def test_format_multiple(self, stock_multiple, field_method):
+        _format_helper(stock_multiple, field_method)
