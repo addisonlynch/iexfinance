@@ -68,7 +68,6 @@ def _format_helper(obj, meta, r_type=None):
         assert isinstance(data, (meta[1], dict))
 
 
-# @pytest.mark.usefixtures("stock_method")
 class TestStocksJson(object):
 
     def test_format_single_json(self, stock_single, stock_method):
