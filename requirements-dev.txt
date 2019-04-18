@@ -1,4 +1,6 @@
 flake8
+flake8-rst
+ipython
 pytest>=4
 pytest-runner
 requests-cache
