@@ -67,3 +67,12 @@ class IEXVersionError(Exception):
     def __str__(self):
         msg = "The requested endpoint is only available using %s."
         return msg % self.version
+
+
+DEP_ERROR_MSG = """
+{0} has been immediately deprecated.
+"""
+
+
+class ImmediateDeprecationError(Exception):
+    pass

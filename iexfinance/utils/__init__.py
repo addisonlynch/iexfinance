@@ -58,7 +58,7 @@ def cloud_endpoint(func):
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
         if self.version not in ('iexcloud-beta', 'iexcloud-sandbox'):
-            raise IEXVersionError("IEX Cloud")
+            raise IEXVersionError(self.version)
         return func(self, *args, **kwargs)
     return _wrapped_function
 

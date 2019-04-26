@@ -8,13 +8,20 @@ This is a minor release from 0.4.0.
 
 Highlights:
 
-- Adds support for IEX Cloud sandbox environment
+- Adds support for IEX Cloud sandbox environment (GH116_)
+
+.. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 
 
 Enhancements
 ~~~~~~~~~~~~
 
-- Adds support for the IEX Cloud sandbox environment. Specify  ``iexcloud-sandbox`` as ``IEX_API_VERSION`` for use with test secret token
+- Adds support for the IEX Cloud sandbox environment. Specify  ``iexcloud-sandbox`` as ``IEX_API_VERSION`` for use with test secret token (GH116_)
+- Refactored test suite to reduce code bloat and consolidate output
+  formatting
+
+
+.. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 
 
 Bug Fixes

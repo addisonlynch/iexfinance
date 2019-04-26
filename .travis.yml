@@ -2,14 +2,20 @@ sudo: false
 
 language: python
 
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-
 matrix:
+  # for some reason py2.7 attempts to install incompatible version of ipython
+  allow_failures:
+    - python: 2.7
   include:
+    - python: 2.7
+      dist: trusty
+    - python: 3.4
+      dist: trusty
+    - python: 3.5
+      dist: trusty
+    - python: 3.6
+      dist: trusty
+      env: DOCBUILD=true
     - python: 3.7
       dist: xenial
       sudo: true
@@ -25,9 +31,9 @@ install:
   - pip install -qq flake8
   - pip install flake8-rst
   - pip install codecov
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then
+  - if [[ $DOCBUILD ]]; then
       pip install doctr sphinx sphinx_rtd_theme ipython matplotlib;
-      pip install sphinxcontrib-napoleon requests-cache;
+      pip install sphinxcontrib-napoleon;
     fi
   - python setup.py install
 
@@ -40,7 +46,7 @@ script:
 
 after_success:
   - |
-    if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then
+    if [[ $DOCBUILD ]]; then
       cd docs
       make html && make html
       cd ..

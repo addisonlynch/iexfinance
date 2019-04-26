@@ -779,10 +779,10 @@ class Stock(_IEXBase):
         return self._get_field("quote", "companyName")
 
     def get_primary_exchange(self):
-        return self._get_field("quote", "primaryExchange")
+        return self._get_field("company", "exchange")
 
     def get_sector(self):
-        return self._get_field("quote", "sector")
+        return self._get_field("company", "sector")
 
     def get_open(self):
         return self._get_field("quote", "open")
