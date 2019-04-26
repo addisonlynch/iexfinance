@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#news">News</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#crypto">Crypto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#social-sentiment">Social Sentiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ceo-compensation">CEO Compensation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
@@ -240,6 +241,26 @@ parameter in the IEX Cloud documentation</li>
 <li><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</li>
 </ul>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="ceo-compensation">
+<span id="altdata-ceo"></span><h2>CEO Compensation<a class="headerlink" href="#ceo-compensation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="iexfinance.altdata.get_ceo_compensation">
+<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_ceo_compensation</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_ceo_compensation" title="Permalink to this definition">¶</a></dt>
+<dd><p>CEO Compensation</p>
+<p>This endpoint provides CEO compensation for a company by symbol</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ceo-compensation">https://iexcloud.io/docs/api/#ceo-compensation</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</td>
 </tr>
 </tbody>
 </table>

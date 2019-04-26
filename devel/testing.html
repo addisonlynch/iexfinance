@@ -115,6 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#testing-documentation-dependencies">Testing &amp; Documentation Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sandbox-environment">Sandbox Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-testing">Local Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-weighting">Test Weighting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-iexfinance.utils.exceptions">Exceptions</a></li>
@@ -205,11 +206,18 @@
 <li>sphinx</li>
 <li>sphinx-autobuild</li>
 <li>sphinx-rtd-theme</li>
-<li>sphinxcontrib-fulltoc</li>
 <li>sphinxcontrib-napoleon</li>
 <li>matplotlib</li>
 <li>ipython</li>
 </ul>
+</div>
+<div class="section" id="sandbox-environment">
+<span id="testing-sandbox"></span><h2>Sandbox Environment<a class="headerlink" href="#sandbox-environment" title="Permalink to this headline">¶</a></h2>
+<p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">iexcloud-sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the “Viewing test data” toggler on the left side of the IEX Cloud console.</p>
+</div>
 </div>
 <div class="section" id="local-testing">
 <span id="testing-local-testing"></span><h2>Local Testing<a class="headerlink" href="#local-testing" title="Permalink to this headline">¶</a></h2>
@@ -267,6 +275,11 @@ network problem or an invalid query.</p>
 <dd><p>This error is thrown when an attempt is made to access an IEX Cloud
 endpoint when API version 1 (v1) has been selected for use.</p>
 </dd></dl>
+
+<dl class="exception">
+<dt id="iexfinance.utils.exceptions.ImmediateDeprecationError">
+<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">ImmediateDeprecationError</code><a class="headerlink" href="#iexfinance.utils.exceptions.ImmediateDeprecationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 </div>

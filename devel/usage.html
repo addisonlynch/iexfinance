@@ -114,7 +114,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#investor-s-exchange-data">Investor’s Exchange Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#api-system-metadata">API System Metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a></li>
 </ul>
 </li>
 </ul>
@@ -226,7 +225,7 @@ including quotes, historical prices, dividends, and much more.</p>
 <span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last">For more information, see <a class="reference external" href="stocks.html">Stocks</a>.</p>
+<p class="last">For more information, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks</span></a>.</p>
 </div>
 </div>
 <div class="section" id="real-time-quotes">
@@ -238,7 +237,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">307.88</span>
+<span class="gh">Out[3]: </span><span class="go">247.63</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -246,7 +245,7 @@ etc.):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[5]: </span><span class="go">{&#39;AAPL&#39;: 170.42, &#39;TSLA&#39;: 307.88}</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;AAPL&#39;: 205.28, &#39;TSLA&#39;: 247.63}</span>
 </pre></div>
 </div>
 </div>
@@ -275,120 +274,92 @@ requested over the desired date range (<code class="docutils literal notranslate
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">df</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It’s really simple to plot this data, using <a class="reference external" href="https://matplotlib.org/">matplotlib</a>:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="gp">In [13]: </span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6f02095048&gt;</span>
-
-<span class="gp">In [14]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="minutely-intraday">
 <h3>Minutely (Intraday)<a class="headerlink" href="#minutely-intraday" title="Permalink to this headline">¶</a></h3>
 <p>To obtain historical intraday data, use <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code> as follows.
 Pass an optional <code class="docutils literal notranslate"><span class="pre">date</span></code> to specify a date within three months prior to the
 current day (default is current date):</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_intraday</span>
+<span class="gp">In [13]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_intraday</span>
 
-<span class="gp">In [17]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+<span class="gp">In [14]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
 
-<span class="gp">In [18]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[18]: </span><span class="go"></span>
-<span class="go">{&#39;average&#39;: 171.706,</span>
-<span class="go"> &#39;changeOverTime&#39;: 0,</span>
-<span class="go"> &#39;close&#39;: 171.505,</span>
-<span class="go"> &#39;date&#39;: &#39;20181127&#39;,</span>
-<span class="go"> &#39;high&#39;: 172.15,</span>
-<span class="go"> &#39;label&#39;: &#39;09:30 AM&#39;,</span>
-<span class="go"> &#39;low&#39;: 171.25,</span>
-<span class="go"> &#39;marketAverage&#39;: 171.557,</span>
-<span class="go"> &#39;marketChangeOverTime&#39;: 0,</span>
-<span class="go"> &#39;marketClose&#39;: 171.45,</span>
-<span class="go"> &#39;marketHigh&#39;: 172.21,</span>
-<span class="go"> &#39;marketLow&#39;: 171.2,</span>
-<span class="go"> &#39;marketNotional&#39;: 276013051.0945,</span>
-<span class="go"> &#39;marketNumberOfTrades&#39;: 4121,</span>
-<span class="go"> &#39;marketOpen&#39;: 171.51,</span>
-<span class="go"> &#39;marketVolume&#39;: 1608870,</span>
-<span class="go"> &#39;minute&#39;: &#39;09:30&#39;,</span>
-<span class="go"> &#39;notional&#39;: 2360788.76,</span>
-<span class="go"> &#39;numberOfTrades&#39;: 131,</span>
-<span class="go"> &#39;open&#39;: 171.675,</span>
-<span class="go"> &#39;volume&#39;: 13749}</span>
+<span class="gp">In [15]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-15-e9881927b415&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 <p>or for a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> indexed by each minute:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="gh">Out[19]: </span><span class="go"></span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[16]: </span><span class="go"></span>
 <span class="go">                     average  changeOverTime   close      date     high  \</span>
-<span class="go">2019-02-15 09:30:00  171.443        0.000000  171.34  20190215  171.700   </span>
-<span class="go">2019-02-15 09:31:00  171.426       -0.000099  171.60  20190215  171.690   </span>
-<span class="go">2019-02-15 09:32:00  171.522        0.000461  171.31  20190215  171.590   </span>
-<span class="go">2019-02-15 09:33:00  171.140       -0.001767  171.09  20190215  171.290   </span>
-<span class="go">2019-02-15 09:34:00  171.252       -0.001114  171.20  20190215  171.315   </span>
+<span class="go">2019-04-25 09:30:00  207.329        0.000000  207.28  20190425  207.675   </span>
+<span class="go">2019-04-25 09:31:00  207.214       -0.000555  207.05  20190425  207.490   </span>
+<span class="go">2019-04-25 09:32:00  207.115       -0.001032  207.20  20190425  207.200   </span>
+<span class="go">2019-04-25 09:33:00  207.246       -0.000400  207.53  20190425  207.550   </span>
+<span class="go">2019-04-25 09:34:00  207.556        0.001095  207.33  20190425  207.760   </span>
 
-<span class="go">                        label      low  marketAverage  marketChangeOverTime  \</span>
-<span class="go">2019-02-15 09:30:00  09:30 AM  171.140        171.463              0.000000   </span>
-<span class="go">2019-02-15 09:31:00  09:31 AM  171.260        171.469              0.000035   </span>
-<span class="go">2019-02-15 09:32:00  09:32 AM  171.270        171.395             -0.000397   </span>
-<span class="go">2019-02-15 09:33:00  09:33 AM  171.085        171.144             -0.001860   </span>
-<span class="go">2019-02-15 09:34:00  09:34 AM  171.100        171.202             -0.001522   </span>
+<span class="go">                        label     low  marketAverage  marketChangeOverTime  \</span>
+<span class="go">2019-04-25 09:30:00  09:30 AM  206.72        206.927              0.000000   </span>
+<span class="go">2019-04-25 09:31:00  09:31 AM  207.01        207.177              0.001208   </span>
+<span class="go">2019-04-25 09:32:00  09:32 AM  206.95        207.057              0.000628   </span>
+<span class="go">2019-04-25 09:33:00  09:33 AM  207.03        207.246              0.001542   </span>
+<span class="go">2019-04-25 09:34:00  09:34 AM  207.33        207.557              0.003045   </span>
 
 <span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
-<span class="go">2019-02-15 09:30:00      171.250     171.700     170.10    7.497340e+08   </span>
-<span class="go">2019-02-15 09:31:00      171.564     171.690     171.25    2.641448e+07   </span>
-<span class="go">2019-02-15 09:32:00      171.270     171.592     171.21    2.165560e+07   </span>
-<span class="go">2019-02-15 09:33:00      171.090     171.470     171.05    2.085975e+07   </span>
-<span class="go">2019-02-15 09:34:00      171.160     171.470     171.05    2.671446e+07   </span>
+<span class="go">2019-04-25 09:30:00       207.34      207.70    206.650    1.078854e+08   </span>
+<span class="go">2019-04-25 09:31:00       207.01      207.52    207.000    2.769498e+07   </span>
+<span class="go">2019-04-25 09:32:00       207.17      207.21    206.910    2.554317e+07   </span>
+<span class="go">2019-04-25 09:33:00       207.54      207.56    207.015    3.045167e+07   </span>
+<span class="go">2019-04-25 09:34:00       207.38      207.76    207.320    2.689853e+07   </span>
 
 <span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
-<span class="go">2019-02-15 09:30:00                  2796      171.22       4372562   </span>
-<span class="go">2019-02-15 09:31:00                   987      171.29        154048   </span>
-<span class="go">2019-02-15 09:32:00                   936      171.56        126349   </span>
-<span class="go">2019-02-15 09:33:00                   782      171.27        121884   </span>
-<span class="go">2019-02-15 09:34:00                   830      171.09        156041   </span>
+<span class="go">2019-04-25 09:30:00                  1107      206.83        521369   </span>
+<span class="go">2019-04-25 09:31:00                   734      207.38        133678   </span>
+<span class="go">2019-04-25 09:32:00                   587      207.01        123363   </span>
+<span class="go">2019-04-25 09:33:00                   755      207.18        146935   </span>
+<span class="go">2019-04-25 09:34:00                   726      207.54        129596   </span>
 
-<span class="go">                        notional  numberOfTrades    open  volume  </span>
-<span class="go">2019-02-15 09:30:00  1638306.140              84  171.26    9556  </span>
-<span class="go">2019-02-15 09:31:00   446907.640              28  171.29    2607  </span>
-<span class="go">2019-02-15 09:32:00   796033.390              27  171.53    4641  </span>
-<span class="go">2019-02-15 09:33:00   372914.750              26  171.24    2179  </span>
-<span class="go">2019-02-15 09:34:00   286332.785              17  171.10    1672  </span>
+<span class="go">                       notional  numberOfTrades     open  volume  </span>
+<span class="go">2019-04-25 09:30:00   870784.20              47  206.720    4200  </span>
+<span class="go">2019-04-25 09:31:00   780367.88              36  207.410    3766  </span>
+<span class="go">2019-04-25 09:32:00   643921.78              22  207.035    3109  </span>
+<span class="go">2019-04-25 09:33:00  1233115.50              57  207.190    5950  </span>
+<span class="go">2019-04-25 09:34:00   803449.17              37  207.510    3871  </span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="endpoints">
 <h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
-<p>The Stock endpoints of the <a class="reference external" href="https://iextrading.com/developer/">IEX Developer
-API</a> are below, each of which
-contains data regarding a different aspect of the security/securities.
-The  <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object can obtain each
+<p>The  <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object can obtain each
 of these endpoints. Requests for single symbols will return the <em>exact</em> results
 from that endpoint as shown in the IEX API documentation (see below). Requests
 for multiple symbols will return a symbol-indexed dictionary of
 the endpoint requested.</p>
 <p><strong>Endpoint Method</strong> examples <code class="docutils literal notranslate"><span class="pre">get_quote()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_volume_by_venue()</span></code></p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
 
-<span class="gp">In [21]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+<span class="gp">In [18]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
-<span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous</span><span class="p">()</span>
-<span class="gh">Out[22]: </span><span class="go"></span>
-<span class="go">{&#39;change&#39;: 0.62,</span>
-<span class="go"> &#39;changePercent&#39;: 0.364,</span>
-<span class="go"> &#39;close&#39;: 170.8,</span>
-<span class="go"> &#39;date&#39;: &#39;2019-02-14&#39;,</span>
-<span class="go"> &#39;high&#39;: 171.2615,</span>
-<span class="go"> &#39;low&#39;: 169.38,</span>
-<span class="go"> &#39;open&#39;: 169.71,</span>
+<span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
+<span class="gh">Out[19]: </span><span class="go"></span>
+<span class="go">{&#39;change&#39;: -1.88,</span>
+<span class="go"> &#39;changePercent&#39;: -0.908,</span>
+<span class="go"> &#39;close&#39;: 205.28,</span>
+<span class="go"> &#39;date&#39;: &#39;2019-04-25&#39;,</span>
+<span class="go"> &#39;high&#39;: 207.76,</span>
+<span class="go"> &#39;low&#39;: 205.12,</span>
+<span class="go"> &#39;open&#39;: 206.83,</span>
 <span class="go"> &#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 21835747,</span>
-<span class="go"> &#39;volume&#39;: 21835747,</span>
-<span class="go"> &#39;vwap&#39;: 170.6527}</span>
+<span class="go"> &#39;unadjustedVolume&#39;: 18543206,</span>
+<span class="go"> &#39;volume&#39;: 18543206,</span>
+<span class="go"> &#39;vwap&#39;: 206.0656}</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -399,20 +370,20 @@ the endpoint requested.</p>
 <p>To obtain individual fields from an endpoint, select <a class="reference external" href="stocks.html#field-methods">Field Methods</a> are also provided.</p>
 <p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
 <p><strong>Single Symbol</strong></p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
-<span class="gp">In [24]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[24]: </span><span class="go">171.47</span>
+<span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[21]: </span><span class="go">206.66</span>
 
-<span class="gp">In [25]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                Out[25]: 170.42</span>
+<span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="go">                Out[22]: 205.28</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
-<span class="gp">In [27]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[27]: </span><span class="go">{&#39;AAPL&#39;: 171.47, &#39;TSLA&#39;: 304.5}</span>
+<span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[24]: </span><span class="go">{&#39;AAPL&#39;: 206.66, &#39;TSLA&#39;: 255}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -427,11 +398,11 @@ entirely optional.</p>
 <p>Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
 method as a keyword argument.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 
-<span class="gp">In [29]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
-<span class="gh">Out[29]: </span><span class="go"></span>
-<span class="go">AAPL    8.39796</span>
+<span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
+<span class="gh">Out[26]: </span><span class="go"></span>
+<span class="go">AAPL    29.6395</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
@@ -474,33 +445,6 @@ more information.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
 </div>
-</div>
-<div class="section" id="plotting">
-<span id="usage-plotting"></span><h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
-<p>With Pandas output formatting, we are able to plot historical price
-movements using matplotlib.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
-
-<span class="gp">In [31]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="gp">In [32]: </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
-<span class="gp">In [33]: </span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-
-<span class="gp">In [34]: </span><span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-
-<span class="gp">In [35]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-
-<span class="gp">In [36]: </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">])</span>
-<span class="gh">Out[36]: </span><span class="go">[&lt;matplotlib.lines.Line2D at 0x7f6f028ea390&gt;]</span>
-
-<span class="gp">In [37]: </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time series chart for AAPL&#39;</span><span class="p">)</span>
-<span class="go">                                                       Out[37]: Text(0.5,1,&#39;Time series chart for AAPL&#39;)</span>
-
-<span class="gp">In [38]: </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<img alt="_images/plotdailyaapl.jpg" src="_images/plotdailyaapl.jpg" />
 </div>
 </div>
 

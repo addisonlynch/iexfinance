@@ -133,19 +133,24 @@
 <li class="toctree-l2"><a class="reference internal" href="#effective-spread">Effective Spread</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#estimates">Estimates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#financials">Financials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fund-ownership">Fund Ownership</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#historical-prices">Historical Prices</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#daily">Daily</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#minutely">Minutely</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#income-statement">Income Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-roster">Insider Roster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-summary">Insider Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-transactions">Insider Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#institutional-ownership">Institutional Ownership</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ipo-calendar">IPO Calendar</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stocks-ipo-calendar-examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#key-stats">Key Stats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list">List</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#largest-trades">Largest Trades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list">List</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logo">Logo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#market-volume-u-s">Market Volume (U.S)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stocks-market-volume-examples">Examples</a></li>
@@ -263,7 +268,7 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">170.42</span>
+<span class="gh">Out[3]: </span><span class="go">205.28</span>
 </pre></div>
 </div>
 <p>Certain endpoints, such as <a class="reference external" href="https://iexcloud.io/docs/api/#sector-performance">Sector Performance</a>,
@@ -273,9 +278,9 @@ which are unrelated to specific symbols, are supported by top-level functions
 
 <span class="gp">In [5]: </span><span class="n">get_sector_performance</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">{&#39;lastUpdated&#39;: 1550264400527,</span>
-<span class="go"> &#39;name&#39;: &#39;Financials&#39;,</span>
-<span class="go"> &#39;performance&#39;: 0.02125,</span>
+<span class="go">{&#39;lastUpdated&#39;: 1556222400257,</span>
+<span class="go"> &#39;name&#39;: &#39;Communication Services&#39;,</span>
+<span class="go"> &#39;performance&#39;: 0.01124,</span>
 <span class="go"> &#39;type&#39;: &#39;sector&#39;}</span>
 </pre></div>
 </div>
@@ -314,8 +319,17 @@ methods available.</p>
 <li><a class="reference internal" href="#stocks-effective-spread"><span class="std std-ref">Effective Spread</span></a></li>
 <li><a class="reference internal" href="#stocks-estimates"><span class="std std-ref">Estimates</span></a></li>
 <li><a class="reference internal" href="#stocks-financials"><span class="std std-ref">Financials</span></a></li>
+<li><a class="reference internal" href="#stocks-fund-ownership"><span class="std std-ref">Fund Ownership</span></a></li>
 <li><span class="xref std std-ref">Historical Prices</span> - <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code></li>
+<li><a class="reference internal" href="#stocks-income-statement"><span class="std std-ref">Income Statement</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-roster"><span class="std std-ref">Insider Roster</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-summary"><span class="std std-ref">Insider Summary</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-transactions"><span class="std std-ref">Insider Transactions</span></a></li>
+<li><a class="reference internal" href="#stocks-institutional-ownership"><span class="std std-ref">Institutional Ownership</span></a></li>
+<li><a class="reference internal" href="#stocks-ipo-calendar"><span class="std std-ref">IPO Calendar</span></a></li>
 <li><a class="reference internal" href="#stocks-key-stats"><span class="std std-ref">Key Stats</span></a></li>
+<li><a class="reference internal" href="#stocks-largest-trades"><span class="std std-ref">Largest Trades</span></a></li>
+<li><a class="reference internal" href="#stocks-list"><span class="std std-ref">List</span></a></li>
 <li><a class="reference internal" href="#stocks-logo"><span class="std std-ref">Logo</span></a></li>
 <li><a class="reference internal" href="#stocks-market-volume"><span class="std std-ref">Market Volume</span></a> - <code class="docutils literal notranslate"><span class="pre">get_market_volume</span></code></li>
 <li><a class="reference internal" href="#stocks-news"><span class="std std-ref">News</span></a></li>
@@ -325,9 +339,9 @@ methods available.</p>
 <li><a class="reference internal" href="#stocks-previous-day-prices"><span class="std std-ref">Previous Day Prices</span></a></li>
 <li><a class="reference internal" href="#stocks-price"><span class="std std-ref">Price</span></a></li>
 <li><a class="reference internal" href="#stocks-price-target"><span class="std std-ref">Price Target</span></a></li>
-<li><a class="reference internal" href="#stocks-sector"><span class="std std-ref">Sector Performance</span></a> - <code class="docutils literal notranslate"><span class="pre">get_sector_performance</span></code></li>
 <li><a class="reference internal" href="#stocks-quote"><span class="std std-ref">Quote</span></a></li>
 <li><a class="reference internal" href="#stocks-relevant-stocks"><span class="std std-ref">Relevant Stocks</span></a></li>
+<li><a class="reference internal" href="#stocks-sector"><span class="std std-ref">Sector Performance</span></a> - <code class="docutils literal notranslate"><span class="pre">get_sector_performance</span></code></li>
 <li><a class="reference internal" href="#stocks-splits"><span class="std std-ref">Splits</span></a></li>
 <li><a class="reference internal" href="#stocks-time-series"><span class="std std-ref">Time Series</span></a></li>
 <li><a class="reference internal" href="#stocks-volume-by-venue"><span class="std std-ref">Volume by Venue</span></a></li>
@@ -372,7 +386,7 @@ at once.</p>
 <span class="gp">In [9]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [10]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[10]: </span><span class="go">170.42</span>
+<span class="gh">Out[10]: </span><span class="go">205.28</span>
 </pre></div>
 </div>
 </div>
@@ -447,6 +461,10 @@ to quarterly. Values should be annual or quarter.</td>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarterly'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly cash flows. Defaults to
 quarterly. Values should be annual or quarter.</td>
 </tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Cash Flow endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -508,69 +526,62 @@ Additional Request Parameters (see base class)</li>
 
 <span class="gp">In [12]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[12]: </span><span class="go"></span>
-<span class="go">symbol               UAVS     VIOT     MLAB     DAKT     CBAT    BELFA  \</span>
-<span class="go">avgTotalVolume     222572    29664    25525   129672   252729      516   </span>
+<span class="go">symbol              BELFB      KYO     NTAP     XPLR     PLPC     RFIL  \</span>
+<span class="go">avgTotalVolume      25325    28979  2574103   199957    14084    24654   </span>
 <span class="go">calculationPrice    close    close    close    close    close    close   </span>
-<span class="go">change             0.0022     0.25     0.85      0.1    -0.06     0.32   </span>
-<span class="go">changePercent     0.00495  0.03041  0.00368  0.01215 -0.05042  0.01561   </span>
-<span class="go">close              0.4464     8.47      232     8.33     1.13    20.82   </span>
+<span class="go">change              -0.34    -1.06     0.01    -0.01    -2.19      0.3   </span>
+<span class="go">changePercent    -0.01373 -0.01886  0.00014 -0.00167 -0.03829  0.03995   </span>
+<span class="go">close               24.43    55.15    73.51     5.99       55     7.81   </span>
 
-<span class="go">symbol                BMI      CUI     PLPC     TECD   ...          FN  \</span>
-<span class="go">avgTotalVolume      99085    40391     8028   381564   ...      474823   </span>
-<span class="go">calculationPrice    close    close    close    close   ...       close   </span>
-<span class="go">change               1.15     0.02     1.27        1   ...        0.65   </span>
-<span class="go">changePercent     0.01949  0.01504  0.02167  0.00969   ...     0.01191   </span>
-<span class="go">close               60.16     1.35    59.87   104.15   ...       55.24   </span>
+<span class="go">symbol               CTRL     IIN      STX    ENR-A   ...        LYTS  \</span>
+<span class="go">avgTotalVolume     205444  153098  2899001    30326   ...      101046   </span>
+<span class="go">calculationPrice    close   close    close    close   ...       close   </span>
+<span class="go">change              -0.67    -0.6    -0.92   -2.515   ...        0.05   </span>
+<span class="go">changePercent    -0.03855 -0.0225 -0.01958 -0.02429   ...     0.01543   </span>
+<span class="go">close               16.71   26.07    46.07  101.045   ...        3.29   </span>
 
-<span class="go">symbol               CTRL      IEC    MINDP      LPL      TDY    KODK+  \</span>
-<span class="go">avgTotalVolume     572907   104616     2704   314265   142272     8657   </span>
-<span class="go">calculationPrice    close    close    close    close    close    close   </span>
-<span class="go">change               0.12     -0.3   0.2006      0.2     3.94   -0.002   </span>
-<span class="go">changePercent     0.00671 -0.03497  0.00884  0.02328  0.01695 -0.16667   </span>
-<span class="go">close               18.01     8.28     22.9     8.79   236.38     0.01   </span>
+<span class="go">symbol               MXWL    APWC     CBAT     HURC     ITRI      HMI  \</span>
+<span class="go">avgTotalVolume    1972680    2060   189023    25453   334776   414890   </span>
+<span class="go">calculationPrice    close   close    close    close    close    close   </span>
+<span class="go">change               0.07   -0.02  -0.0594    -0.81    -1.08    -1.23   </span>
+<span class="go">changePercent     0.01632 -0.0087 -0.06257 -0.02077 -0.02088 -0.11141   </span>
+<span class="go">close                4.36    2.28     0.89    38.19    50.65     9.81   </span>
 
-<span class="go">symbol               HUBB    NOVT     ALOT  </span>
-<span class="go">avgTotalVolume     424764  128268    11540  </span>
-<span class="go">calculationPrice    close   close    close  </span>
-<span class="go">change               2.76    1.62     0.51  </span>
-<span class="go">changePercent     0.02382  0.0221  0.02574  </span>
-<span class="go">close              118.61   74.93    20.32  </span>
+<span class="go">symbol               SCSC     GPRO     CBAK  </span>
+<span class="go">avgTotalVolume      85032  2517270    93357  </span>
+<span class="go">calculationPrice    close    close    close  </span>
+<span class="go">change              -1.37    -0.28   -0.076  </span>
+<span class="go">changePercent    -0.03548 -0.04423 -0.10411  </span>
+<span class="go">close               37.24     6.05    0.654  </span>
 
-<span class="go">[5 rows x 168 columns]</span>
+<span class="go">[5 rows x 171 columns]</span>
 </pre></div>
 </div>
 <p><strong>Sector</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[13]: </span><span class="go"></span>
-<span class="go">symbol              STNG    CMCO     STRL     CATM      JBT     AVAV      NAV  \</span>
-<span class="go">avgTotalVolume    881558  111569   142748   312159   159420   196200   441185   </span>
-<span class="go">calculationPrice   close   close    close    close    close    close    close   </span>
-<span class="go">change              0.38    1.31     0.37    -0.08     3.27     1.64     0.99   </span>
-<span class="go">changePercent     0.0196  0.0357  0.02729 -0.00285  0.03926  0.02041  0.02789   </span>
-<span class="go">close              19.77      38    13.93    27.99    86.57       82    36.49   </span>
+<span class="go">symbol               GENC    AMCIU     GLOG  JSYNU     BLDP  FNTEU     LAWS  \</span>
+<span class="go">avgTotalVolume      13194    13121   382122      0   629232   1902    16251   </span>
+<span class="go">calculationPrice    close    close    close  close    close  close    close   </span>
+<span class="go">change              -0.45   -0.006     -0.2      0    -0.24      0    -0.19   </span>
+<span class="go">changePercent    -0.03656 -0.00059 -0.01218      0 -0.07207      0 -0.00594   </span>
+<span class="go">close               11.86   10.185    16.22  12.25     3.09   10.8    31.81   </span>
 
-<span class="go">symbol               YRCW     HSON      LLL   ...        CRAI    POWL  \</span>
-<span class="go">avgTotalVolume    1209503    18933   695907   ...       25520   29335   </span>
-<span class="go">calculationPrice    close    close    close   ...       close   close   </span>
-<span class="go">change               0.06     0.02      3.2   ...        1.35     0.5   </span>
-<span class="go">changePercent     0.00831  0.01429  0.01531   ...     0.03222  0.0154   </span>
-<span class="go">close                7.28     1.42   212.24   ...       43.25   32.97   </span>
+<span class="go">symbol               JBLU     JBHT     KLXI   ...       RYAAY      EGL   RMG=  \</span>
+<span class="go">avgTotalVolume    5685770  1127199  1476198   ...      529671   494240  34257   </span>
+<span class="go">calculationPrice    close    close    close   ...       close    close  close   </span>
+<span class="go">change              -0.16    -1.65     0.02   ...        0.05     0.07   0.01   </span>
+<span class="go">changePercent     -0.0088 -0.01675  0.00032   ...     0.00064  0.00241  0.001   </span>
+<span class="go">close               18.03    96.85    62.99   ...       78.24     29.1  10.02   </span>
 
-<span class="go">symbol                HXL      UNP      FSS      GPN     HCAC     FLY  \</span>
-<span class="go">avgTotalVolume     501548  4831443   228581  1541008   103588   88380   </span>
-<span class="go">calculationPrice    close    close    close    close    close   close   </span>
-<span class="go">change               0.82     0.61     0.74     1.75   0.0523    0.12   </span>
-<span class="go">changePercent     0.01159   0.0036  0.03381   0.0144  0.00514  0.0106   </span>
-<span class="go">close               71.57   170.24    22.63    123.3  10.2223   11.44   </span>
+<span class="go">symbol               CLIR     YRCW      AME   KELYA      AOS    OMAD=     DFBH  </span>
+<span class="go">avgTotalVolume      39436   827334   951856  108345  1069465     4831    14582  </span>
+<span class="go">calculationPrice    close    close    close   close    close    close    close  </span>
+<span class="go">change             0.0285    -0.65    -1.19   -0.43    -0.89     0.04    -0.02  </span>
+<span class="go">changePercent     0.03556 -0.07879 -0.01366 -0.0187 -0.01583  0.00369 -0.00198  </span>
+<span class="go">close                0.83      7.6    85.91   22.57    55.34    10.88    10.06  </span>
 
-<span class="go">symbol               MYRG      FRO  </span>
-<span class="go">avgTotalVolume      39391   377400  </span>
-<span class="go">calculationPrice    close    close  </span>
-<span class="go">change                0.7     0.16  </span>
-<span class="go">changePercent     0.02093  0.02812  </span>
-<span class="go">close               34.15     5.85  </span>
-
-<span class="go">[5 rows x 866 columns]</span>
+<span class="go">[5 rows x 889 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -639,26 +650,26 @@ Developer API (v1). See <a class="reference internal" href="migrating.html#migra
 
 <span class="gp">In [15]: </span><span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[15]: </span><span class="go"></span>
-<span class="go">symbol          BTCUSDT EOSUSDT  ETHUSDT BNBUSDT  ONTUSDT BCCUSDT  ADAUSDT  \</span>
-<span class="go">askPrice        3604.91  2.7941    121.9  9.2475   0.7009     NaN  0.04078   </span>
-<span class="go">askSize           6.605  154.33  0.48932  356.31   248.83     NaN   8264.4   </span>
-<span class="go">avgTotalVolume     None    None     None    None     None    None     None   </span>
-<span class="go">bidPrice        3603.69  2.7921   121.89  9.2411   0.6996     NaN  0.04074   </span>
-<span class="go">bidSize         0.01653  112.68        2   42.62  1142.44     NaN     4634   </span>
+<span class="go">symbol          BTCUSDT EOSUSDT  ETHUSDT  BNBUSDT  ONTUSDT BCCUSDT  ADAUSDT  \</span>
+<span class="go">askPrice        5331.95  4.7093   157.01  23.1428   1.0208     NaN  0.06949   </span>
+<span class="go">askSize          0.5627   21.23  0.07419     5.11   512.31     NaN    36059   </span>
+<span class="go">avgTotalVolume     None    None     None     None     None    None     None   </span>
+<span class="go">bidPrice        5330.91  4.7071      157   23.113   1.0189     NaN  0.06938   </span>
+<span class="go">bidSize           1e-05   18.48  8.56564    14.04  1507.54     NaN   9211.3   </span>
 
-<span class="go">symbol          XRPUSDT TUSDUSDT  TRXUSDT  LTCUSDT ETCUSDT IOTAUSDT ICXUSDT  \</span>
-<span class="go">askPrice        0.30063   1.0096  0.02359    42.47   4.117   0.2712  0.2233   </span>
-<span class="go">askSize          3625.7   844.82   100118  0.00142   95.16   236.85  759.34   </span>
-<span class="go">avgTotalVolume     None     None     None     None    None     None    None   </span>
-<span class="go">bidPrice        0.30057   1.0092  0.02357    42.45  4.1137   0.2705  0.2229   </span>
-<span class="go">bidSize          3727.6   248.54   557052   0.4708    42.5  8180.38  983.24   </span>
+<span class="go">symbol          XRPUSDT TUSDUSDT      TRXUSDT  LTCUSDT ETCUSDT IOTAUSDT  \</span>
+<span class="go">askPrice        0.29564   1.0364      0.02298    73.15  5.3821    0.258   </span>
+<span class="go">askSize            57.4     1200  1.05518e+06  13.3546    4.92  1542.63   </span>
+<span class="go">avgTotalVolume     None     None         None     None    None     None   </span>
+<span class="go">bidPrice        0.29539   1.0356      0.02297    73.12  5.3731   0.2577   </span>
+<span class="go">bidSize            67.6  1236.92        89504  0.27344   20.65   317.39   </span>
 
-<span class="go">symbol         NEOUSDT VENUSDT  XLMUSDT QTUMUSDT  </span>
-<span class="go">askPrice         8.166     NaN  0.07864    1.937  </span>
-<span class="go">askSize         404.99     NaN    549.1       10  </span>
-<span class="go">avgTotalVolume    None    None     None     None  </span>
-<span class="go">bidPrice          8.16     NaN  0.07863    1.935  </span>
-<span class="go">bidSize         70.843     NaN    668.5  163.593  </span>
+<span class="go">symbol          ICXUSDT  NEOUSDT VENUSDT  XLMUSDT QTUMUSDT  </span>
+<span class="go">askPrice         0.3619    9.502     NaN  0.09889     2.36  </span>
+<span class="go">askSize         4223.35  121.733     NaN     40.2   56.001  </span>
+<span class="go">avgTotalVolume     None     None    None     None     None  </span>
+<span class="go">bidPrice         0.3611    9.486     NaN  0.09874    2.356  </span>
+<span class="go">bidSize           58.95    214.2     NaN   6670.4   122.59  </span>
 </pre></div>
 </div>
 </div>
@@ -726,7 +737,7 @@ and annually (last 4 years).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Earnings endpoint data</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
 </tr>
 </tbody>
 </table>
@@ -759,9 +770,9 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 </div>
 <div class="section" id="stocks-earnings-examples">
 <span id="id3"></span><h3>Examples<a class="headerlink" href="#stocks-earnings-examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_todays_earnings</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_earnings_today</span>
 
-<span class="gp">In [17]: </span><span class="n">get_todays_earnings</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
+<span class="gp">In [17]: </span><span class="n">get_earnings_today</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
 <span class="gh">Out[17]: </span><span class="go">[]</span>
 </pre></div>
 </div>
@@ -847,7 +858,32 @@ most recent reported quarter.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Financials endpoint data</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="fund-ownership">
+<span id="stocks-fund-ownership"></span><h2>Fund Ownership<a class="headerlink" href="#fund-ownership" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_fund_ownership">
+<code class="descclassname">Stock.</code><code class="descname">get_fund_ownership</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fund Ownership</p>
+<p>Returns the top 10 fund holders, meaning any firm not defined as
+buy-side or sell-side such as mutual funds, pension funds, endowments,
+investment firms, and other large entities that manage funds on behalf
+of others.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#fund-ownership">https://iexcloud.io/docs/api/#fund-ownership</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Fund Ownership endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
 </tr>
 </tbody>
 </table>
@@ -863,270 +899,282 @@ most recent reported quarter.</p>
 
 <span class="gp">In [20]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
 <span class="gh">Out[20]: </span><span class="go"></span>
-<span class="go">[{&#39;change&#39;: 3.0569,</span>
+<span class="go">[{&#39;change&#39;: -2.31,</span>
 <span class="go">  &#39;changeOverTime&#39;: 0,</span>
-<span class="go">  &#39;changePercent&#39;: 2.047,</span>
-<span class="go">  &#39;close&#39;: 152.4162,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-15&#39;,</span>
-<span class="go">  &#39;high&#39;: 152.7349,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 15&#39;,</span>
-<span class="go">  &#39;low&#39;: 149.4091,</span>
-<span class="go">  &#39;open&#39;: 149.6282,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 28710324,</span>
-<span class="go">  &#39;volume&#39;: 28710324,</span>
-<span class="go">  &#39;vwap&#39;: 151.667},</span>
-<span class="go"> {&#39;change&#39;: 1.862,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.012217205257708813,</span>
-<span class="go">  &#39;changePercent&#39;: 1.222,</span>
-<span class="go">  &#39;close&#39;: 154.2783,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-16&#39;,</span>
-<span class="go">  &#39;high&#39;: 155.2142,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 16&#39;,</span>
-<span class="go">  &#39;low&#39;: 152.3465,</span>
-<span class="go">  &#39;open&#39;: 152.4262,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 30569706,</span>
-<span class="go">  &#39;volume&#39;: 30569706,</span>
-<span class="go">  &#39;vwap&#39;: 154.2783},</span>
-<span class="go"> {&#39;change&#39;: 0.916071,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.01822706510200356,</span>
-<span class="go">  &#39;changePercent&#39;: 0.594,</span>
-<span class="go">  &#39;close&#39;: 155.1943,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-17&#39;,</span>
-<span class="go">  &#39;high&#39;: 156.9866,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 17&#39;,</span>
-<span class="go">  &#39;low&#39;: 152.6054,</span>
-<span class="go">  &#39;open&#39;: 153.5414,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 29821160,</span>
-<span class="go">  &#39;volume&#39;: 29821160,</span>
-<span class="go">  &#39;vwap&#39;: 154.3107},</span>
-<span class="go"> {&#39;change&#39;: 0.9559,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.02449870814257283,</span>
-<span class="go">  &#39;changePercent&#39;: 0.616,</span>
-<span class="go">  &#39;close&#39;: 156.1502,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-18&#39;,</span>
-<span class="go">  &#39;high&#39;: 157.2057,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 18&#39;,</span>
-<span class="go">  &#39;low&#39;: 155.3144,</span>
-<span class="go">  &#39;open&#39;: 156.8273,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 33751023,</span>
-<span class="go">  &#39;volume&#39;: 33751023,</span>
-<span class="go">  &#39;vwap&#39;: 156.281},</span>
-<span class="go"> {&#39;change&#39;: -3.505,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.0015031210593098917,</span>
-<span class="go">  &#39;changePercent&#39;: -2.245,</span>
-<span class="go">  &#39;close&#39;: 152.6453,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-22&#39;,</span>
-<span class="go">  &#39;high&#39;: 156.0606,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 22&#39;,</span>
-<span class="go">  &#39;low&#39;: 151.9682,</span>
-<span class="go">  &#39;open&#39;: 155.742,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 30393970,</span>
-<span class="go">  &#39;volume&#39;: 30393970,</span>
-<span class="go">  &#39;vwap&#39;: 153.603},</span>
-<span class="go"> {&#39;change&#39;: 0.617352,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.005553215471846093,</span>
-<span class="go">  &#39;changePercent&#39;: 0.404,</span>
-<span class="go">  &#39;close&#39;: 153.2626,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-23&#39;,</span>
-<span class="go">  &#39;high&#39;: 154.4774,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 23&#39;,</span>
-<span class="go">  &#39;low&#39;: 151.0521,</span>
-<span class="go">  &#39;open&#39;: 153.4916,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 23130570,</span>
-<span class="go">  &#39;volume&#39;: 23130570,</span>
-<span class="go">  &#39;vwap&#39;: 152.7788},</span>
-<span class="go"> {&#39;change&#39;: -1.2148,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.0024170659024434953,</span>
-<span class="go">  &#39;changePercent&#39;: -0.793,</span>
-<span class="go">  &#39;close&#39;: 152.0478,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-24&#39;,</span>
-<span class="go">  &#39;high&#39;: 153.8202,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 24&#39;,</span>
-<span class="go">  &#39;low&#39;: 151.0919,</span>
-<span class="go">  &#39;open&#39;: 153.4518,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 25441549,</span>
-<span class="go">  &#39;volume&#39;: 25441549,</span>
-<span class="go">  &#39;vwap&#39;: 152.0069},</span>
-<span class="go"> {&#39;change&#39;: 5.0384,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.030639787634122798,</span>
-<span class="go">  &#39;changePercent&#39;: 3.314,</span>
-<span class="go">  &#39;close&#39;: 157.0862,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-25&#39;,</span>
-<span class="go">  &#39;high&#39;: 157.4546,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 25&#39;,</span>
-<span class="go">  &#39;low&#39;: 153.6609,</span>
-<span class="go">  &#39;open&#39;: 154.8159,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 33547893,</span>
-<span class="go">  &#39;volume&#39;: 33547893,</span>
-<span class="go">  &#39;vwap&#39;: 156.1717},</span>
-<span class="go"> {&#39;change&#39;: -1.4538,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.02110143147513182,</span>
-<span class="go">  &#39;changePercent&#39;: -0.925,</span>
-<span class="go">  &#39;close&#39;: 155.6324,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-28&#39;,</span>
-<span class="go">  &#39;high&#39;: 155.6623,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 28&#39;,</span>
-<span class="go">  &#39;low&#39;: 153.0037,</span>
-<span class="go">  &#39;open&#39;: 155.1246,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 26192058,</span>
-<span class="go">  &#39;volume&#39;: 26192058,</span>
-<span class="go">  &#39;vwap&#39;: 154.6201},</span>
-<span class="go"> {&#39;change&#39;: -1.6131,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.010518566923988308,</span>
-<span class="go">  &#39;changePercent&#39;: -1.036,</span>
-<span class="go">  &#39;close&#39;: 154.0194,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-29&#39;,</span>
-<span class="go">  &#39;high&#39;: 157.4546,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 29&#39;,</span>
-<span class="go">  &#39;low&#39;: 153.4518,</span>
-<span class="go">  &#39;open&#39;: 155.5827,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 41587239,</span>
-<span class="go">  &#39;volume&#39;: 41587239,</span>
-<span class="go">  &#39;vwap&#39;: 155.1149},</span>
-<span class="go"> {&#39;change&#39;: 10.5249,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.07957159409564066,</span>
-<span class="go">  &#39;changePercent&#39;: 6.833,</span>
-<span class="go">  &#39;close&#39;: 164.5442,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-30&#39;,</span>
-<span class="go">  &#39;high&#39;: 165.4404,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 30&#39;,</span>
-<span class="go">  &#39;low&#39;: 159.5457,</span>
-<span class="go">  &#39;open&#39;: 162.5528,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 61109780,</span>
-<span class="go">  &#39;volume&#39;: 61109780,</span>
-<span class="go">  &#39;vwap&#39;: 162.5289},</span>
-<span class="go"> {&#39;change&#39;: 1.1849,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.08734570209728353,</span>
-<span class="go">  &#39;changePercent&#39;: 0.72,</span>
-<span class="go">  &#39;close&#39;: 165.7291,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-01-31&#39;,</span>
-<span class="go">  &#39;high&#39;: 168.2782,</span>
-<span class="go">  &#39;label&#39;: &#39;Jan 31&#39;,</span>
-<span class="go">  &#39;low&#39;: 163.8572,</span>
-<span class="go">  &#39;open&#39;: 165.4005,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 40739649,</span>
-<span class="go">  &#39;volume&#39;: 40739649,</span>
-<span class="go">  &#39;vwap&#39;: 166.4004},</span>
-<span class="go"> {&#39;change&#39;: 0.079658,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.08786861239159609,</span>
-<span class="go">  &#39;changePercent&#39;: 0.048,</span>
-<span class="go">  &#39;close&#39;: 165.8088,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-01&#39;,</span>
-<span class="go">  &#39;high&#39;: 168.2583,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 1&#39;,</span>
-<span class="go">  &#39;low&#39;: 165.2213,</span>
-<span class="go">  &#39;open&#39;: 166.2469,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 32668138,</span>
-<span class="go">  &#39;volume&#39;: 32668138,</span>
-<span class="go">  &#39;vwap&#39;: 166.4557},</span>
-<span class="go"> {&#39;change&#39;: 4.7098,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.11876952712375712,</span>
-<span class="go">  &#39;changePercent&#39;: 2.84,</span>
-<span class="go">  &#39;close&#39;: 170.5186,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-04&#39;,</span>
-<span class="go">  &#39;high&#39;: 170.9219,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 4&#39;,</span>
-<span class="go">  &#39;low&#39;: 166.5655,</span>
-<span class="go">  &#39;open&#39;: 166.695,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 31495582,</span>
-<span class="go">  &#39;volume&#39;: 31495582,</span>
-<span class="go">  &#39;vwap&#39;: 169.6668},</span>
-<span class="go"> {&#39;change&#39;: 2.9175,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.13791119316713057,</span>
-<span class="go">  &#39;changePercent&#39;: 1.711,</span>
-<span class="go">  &#39;close&#39;: 173.4361,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-05&#39;,</span>
-<span class="go">  &#39;high&#39;: 174.3322,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 5&#39;,</span>
-<span class="go">  &#39;low&#39;: 171.614,</span>
-<span class="go">  &#39;open&#39;: 172.1217,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 36101628,</span>
-<span class="go">  &#39;volume&#39;: 36101628,</span>
-<span class="go">  &#39;vwap&#39;: 173.2622},</span>
-<span class="go"> {&#39;change&#39;: 0.059744,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.13830288381418773,</span>
-<span class="go">  &#39;changePercent&#39;: 0.034,</span>
-<span class="go">  &#39;close&#39;: 173.4958,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-06&#39;,</span>
-<span class="go">  &#39;high&#39;: 174.8201,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 6&#39;,</span>
-<span class="go">  &#39;low&#39;: 172.1148,</span>
-<span class="go">  &#39;open&#39;: 173.9041,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 28239591,</span>
-<span class="go">  &#39;volume&#39;: 28239591,</span>
-<span class="go">  &#39;vwap&#39;: 173.5179},</span>
-<span class="go"> {&#39;change&#39;: -3.2859,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.11674415186837095,</span>
-<span class="go">  &#39;changePercent&#39;: -1.894,</span>
-<span class="go">  &#39;close&#39;: 170.2099,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-07&#39;,</span>
-<span class="go">  &#39;high&#39;: 173.1971,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 7&#39;,</span>
-<span class="go">  &#39;low&#39;: 169.6125,</span>
-<span class="go">  &#39;open&#39;: 171.6637,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 31741690,</span>
-<span class="go">  &#39;volume&#39;: 31741690,</span>
-<span class="go">  &#39;vwap&#39;: 170.9104},</span>
-<span class="go"> {&#39;change&#39;: 0.200085,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.11805700443916062,</span>
-<span class="go">  &#39;changePercent&#39;: 0.118,</span>
-<span class="go">  &#39;close&#39;: 170.41,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-08&#39;,</span>
-<span class="go">  &#39;high&#39;: 170.66,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 8&#39;,</span>
-<span class="go">  &#39;low&#39;: 168.42,</span>
-<span class="go">  &#39;open&#39;: 168.99,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 23819966,</span>
-<span class="go">  &#39;volume&#39;: 23819966,</span>
-<span class="go">  &#39;vwap&#39;: 169.7869},</span>
-<span class="go"> {&#39;change&#39;: -0.98,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.11162724172364882,</span>
-<span class="go">  &#39;changePercent&#39;: -0.575,</span>
-<span class="go">  &#39;close&#39;: 169.43,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-11&#39;,</span>
-<span class="go">  &#39;high&#39;: 171.21,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 11&#39;,</span>
-<span class="go">  &#39;low&#39;: 169.25,</span>
-<span class="go">  &#39;open&#39;: 171.05,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 20993425,</span>
-<span class="go">  &#39;volume&#39;: 20993425,</span>
-<span class="go">  &#39;vwap&#39;: 169.9464},</span>
-<span class="go"> {&#39;change&#39;: 1.46,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.12120627597328881,</span>
-<span class="go">  &#39;changePercent&#39;: 0.862,</span>
-<span class="go">  &#39;close&#39;: 170.89,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-12&#39;,</span>
-<span class="go">  &#39;high&#39;: 171,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 12&#39;,</span>
-<span class="go">  &#39;low&#39;: 169.7,</span>
-<span class="go">  &#39;open&#39;: 170.1,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 22283523,</span>
-<span class="go">  &#39;volume&#39;: 22283523,</span>
-<span class="go">  &#39;vwap&#39;: 170.3732},</span>
-<span class="go"> {&#39;change&#39;: -0.71,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.11654797849572422,</span>
-<span class="go">  &#39;changePercent&#39;: -0.415,</span>
-<span class="go">  &#39;close&#39;: 170.18,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-13&#39;,</span>
-<span class="go">  &#39;high&#39;: 172.48,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 13&#39;,</span>
-<span class="go">  &#39;low&#39;: 169.92,</span>
-<span class="go">  &#39;open&#39;: 171.39,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 22490233,</span>
-<span class="go">  &#39;volume&#39;: 22490233,</span>
-<span class="go">  &#39;vwap&#39;: 171.0037},</span>
-<span class="go"> {&#39;change&#39;: 0.62,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.12061578756063993,</span>
-<span class="go">  &#39;changePercent&#39;: 0.364,</span>
-<span class="go">  &#39;close&#39;: 170.8,</span>
-<span class="go">  &#39;date&#39;: &#39;2019-02-14&#39;,</span>
-<span class="go">  &#39;high&#39;: 171.2615,</span>
-<span class="go">  &#39;label&#39;: &#39;Feb 14&#39;,</span>
-<span class="go">  &#39;low&#39;: 169.38,</span>
-<span class="go">  &#39;open&#39;: 169.71,</span>
-<span class="go">  &#39;unadjustedVolume&#39;: 21835747,</span>
-<span class="go">  &#39;volume&#39;: 21835747,</span>
-<span class="go">  &#39;vwap&#39;: 170.6527}]</span>
+<span class="go">  &#39;changePercent&#39;: -1.209,</span>
+<span class="go">  &#39;close&#39;: 188.74,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-03-25&#39;,</span>
+<span class="go">  &#39;high&#39;: 191.98,</span>
+<span class="go">  &#39;label&#39;: &#39;Mar 25&#39;,</span>
+<span class="go">  &#39;low&#39;: 186.6,</span>
+<span class="go">  &#39;open&#39;: 191.51,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 43845293,</span>
+<span class="go">  &#39;volume&#39;: 43845293,</span>
+<span class="go">  &#39;vwap&#39;: 188.8254},</span>
+<span class="go"> {&#39;change&#39;: -1.95,</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.010331673201229293,</span>
+<span class="go">  &#39;changePercent&#39;: -1.033,</span>
+<span class="go">  &#39;close&#39;: 186.79,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-03-26&#39;,</span>
+<span class="go">  &#39;high&#39;: 192.88,</span>
+<span class="go">  &#39;label&#39;: &#39;Mar 26&#39;,</span>
+<span class="go">  &#39;low&#39;: 184.58,</span>
+<span class="go">  &#39;open&#39;: 191.664,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 49800538,</span>
+<span class="go">  &#39;volume&#39;: 49800538,</span>
+<span class="go">  &#39;vwap&#39;: 189.3728},</span>
+<span class="go"> {&#39;change&#39;: 1.68,</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.0014305393663240978,</span>
+<span class="go">  &#39;changePercent&#39;: 0.899,</span>
+<span class="go">  &#39;close&#39;: 188.47,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-03-27&#39;,</span>
+<span class="go">  &#39;high&#39;: 189.76,</span>
+<span class="go">  &#39;label&#39;: &#39;Mar 27&#39;,</span>
+<span class="go">  &#39;low&#39;: 186.55,</span>
+<span class="go">  &#39;open&#39;: 188.75,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 29848427,</span>
+<span class="go">  &#39;volume&#39;: 29848427,</span>
+<span class="go">  &#39;vwap&#39;: 188.494},</span>
+<span class="go"> {&#39;change&#39;: 0.25,</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.0001059658789870204,</span>
+<span class="go">  &#39;changePercent&#39;: 0.133,</span>
+<span class="go">  &#39;close&#39;: 188.72,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-03-28&#39;,</span>
+<span class="go">  &#39;high&#39;: 189.559,</span>
+<span class="go">  &#39;label&#39;: &#39;Mar 28&#39;,</span>
+<span class="go">  &#39;low&#39;: 187.53,</span>
+<span class="go">  &#39;open&#39;: 188.95,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 20780363,</span>
+<span class="go">  &#39;volume&#39;: 20780363,</span>
+<span class="go">  &#39;vwap&#39;: 188.397},</span>
+<span class="go"> {&#39;change&#39;: 1.23,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.006410935678711346,</span>
+<span class="go">  &#39;changePercent&#39;: 0.652,</span>
+<span class="go">  &#39;close&#39;: 189.95,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-03-29&#39;,</span>
+<span class="go">  &#39;high&#39;: 190.08,</span>
+<span class="go">  &#39;label&#39;: &#39;Mar 29&#39;,</span>
+<span class="go">  &#39;low&#39;: 188.54,</span>
+<span class="go">  &#39;open&#39;: 189.83,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 23563961,</span>
+<span class="go">  &#39;volume&#39;: 23563961,</span>
+<span class="go">  &#39;vwap&#39;: 189.4892},</span>
+<span class="go"> {&#39;change&#39;: 1.29,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.013245734873370774,</span>
+<span class="go">  &#39;changePercent&#39;: 0.679,</span>
+<span class="go">  &#39;close&#39;: 191.24,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-01&#39;,</span>
+<span class="go">  &#39;high&#39;: 191.68,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 1&#39;,</span>
+<span class="go">  &#39;low&#39;: 188.38,</span>
+<span class="go">  &#39;open&#39;: 191.64,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 27861964,</span>
+<span class="go">  &#39;volume&#39;: 27861964,</span>
+<span class="go">  &#39;vwap&#39;: 190.2816},</span>
+<span class="go"> {&#39;change&#39;: 2.78,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.02797499205255908,</span>
+<span class="go">  &#39;changePercent&#39;: 1.454,</span>
+<span class="go">  &#39;close&#39;: 194.02,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-02&#39;,</span>
+<span class="go">  &#39;high&#39;: 194.46,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 2&#39;,</span>
+<span class="go">  &#39;low&#39;: 191.05,</span>
+<span class="go">  &#39;open&#39;: 191.09,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 22765732,</span>
+<span class="go">  &#39;volume&#39;: 22765732,</span>
+<span class="go">  &#39;vwap&#39;: 193.0776},</span>
+<span class="go"> {&#39;change&#39;: 1.33,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.03502172300519225,</span>
+<span class="go">  &#39;changePercent&#39;: 0.685,</span>
+<span class="go">  &#39;close&#39;: 195.35,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-03&#39;,</span>
+<span class="go">  &#39;high&#39;: 196.5,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 3&#39;,</span>
+<span class="go">  &#39;low&#39;: 193.15,</span>
+<span class="go">  &#39;open&#39;: 193.25,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 23271830,</span>
+<span class="go">  &#39;volume&#39;: 23271830,</span>
+<span class="go">  &#39;vwap&#39;: 195.2951},</span>
+<span class="go"> {&#39;change&#39;: 0.34,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.03682314294797069,</span>
+<span class="go">  &#39;changePercent&#39;: 0.174,</span>
+<span class="go">  &#39;close&#39;: 195.69,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-04&#39;,</span>
+<span class="go">  &#39;high&#39;: 196.37,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 4&#39;,</span>
+<span class="go">  &#39;low&#39;: 193.14,</span>
+<span class="go">  &#39;open&#39;: 194.79,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 19114275,</span>
+<span class="go">  &#39;volume&#39;: 19114275,</span>
+<span class="go">  &#39;vwap&#39;: 195.6612},</span>
+<span class="go"> {&#39;change&#39;: 1.31,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.04376390802161699,</span>
+<span class="go">  &#39;changePercent&#39;: 0.669,</span>
+<span class="go">  &#39;close&#39;: 197,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-05&#39;,</span>
+<span class="go">  &#39;high&#39;: 197.1,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 5&#39;,</span>
+<span class="go">  &#39;low&#39;: 195.93,</span>
+<span class="go">  &#39;open&#39;: 196.45,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 18526644,</span>
+<span class="go">  &#39;volume&#39;: 18526644,</span>
+<span class="go">  &#39;vwap&#39;: 196.6188},</span>
+<span class="go"> {&#39;change&#39;: 3.1,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.06018861926459672,</span>
+<span class="go">  &#39;changePercent&#39;: 1.574,</span>
+<span class="go">  &#39;close&#39;: 200.1,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-08&#39;,</span>
+<span class="go">  &#39;high&#39;: 200.23,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 8&#39;,</span>
+<span class="go">  &#39;low&#39;: 196.34,</span>
+<span class="go">  &#39;open&#39;: 196.42,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 25881697,</span>
+<span class="go">  &#39;volume&#39;: 25881697,</span>
+<span class="go">  &#39;vwap&#39;: 198.9594},</span>
+<span class="go"> {&#39;change&#39;: -0.6,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.057009642894987764,</span>
+<span class="go">  &#39;changePercent&#39;: -0.3,</span>
+<span class="go">  &#39;close&#39;: 199.5,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-09&#39;,</span>
+<span class="go">  &#39;high&#39;: 202.85,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 9&#39;,</span>
+<span class="go">  &#39;low&#39;: 199.23,</span>
+<span class="go">  &#39;open&#39;: 200.32,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 35768237,</span>
+<span class="go">  &#39;volume&#39;: 35768237,</span>
+<span class="go">  &#39;vwap&#39;: 200.9319},</span>
+<span class="go"> {&#39;change&#39;: 1.12,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.06294373211825789,</span>
+<span class="go">  &#39;changePercent&#39;: 0.561,</span>
+<span class="go">  &#39;close&#39;: 200.62,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-10&#39;,</span>
+<span class="go">  &#39;high&#39;: 200.74,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 10&#39;,</span>
+<span class="go">  &#39;low&#39;: 198.18,</span>
+<span class="go">  &#39;open&#39;: 198.68,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 21695288,</span>
+<span class="go">  &#39;volume&#39;: 21695288,</span>
+<span class="go">  &#39;vwap&#39;: 199.5162},</span>
+<span class="go"> {&#39;change&#39;: -1.67,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.054095581222846134,</span>
+<span class="go">  &#39;changePercent&#39;: -0.832,</span>
+<span class="go">  &#39;close&#39;: 198.95,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-11&#39;,</span>
+<span class="go">  &#39;high&#39;: 201,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 11&#39;,</span>
+<span class="go">  &#39;low&#39;: 198.4431,</span>
+<span class="go">  &#39;open&#39;: 200.85,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 20900808,</span>
+<span class="go">  &#39;volume&#39;: 20900808,</span>
+<span class="go">  &#39;vwap&#39;: 199.7413},</span>
+<span class="go"> {&#39;change&#39;: -0.08,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.05367171770689835,</span>
+<span class="go">  &#39;changePercent&#39;: -0.04,</span>
+<span class="go">  &#39;close&#39;: 198.87,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-12&#39;,</span>
+<span class="go">  &#39;high&#39;: 200.14,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 12&#39;,</span>
+<span class="go">  &#39;low&#39;: 196.21,</span>
+<span class="go">  &#39;open&#39;: 199.2,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 27760668,</span>
+<span class="go">  &#39;volume&#39;: 27760668,</span>
+<span class="go">  &#39;vwap&#39;: 198.3105},</span>
+<span class="go"> {&#39;change&#39;: 0.36,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.055579103528663666,</span>
+<span class="go">  &#39;changePercent&#39;: 0.181,</span>
+<span class="go">  &#39;close&#39;: 199.23,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-15&#39;,</span>
+<span class="go">  &#39;high&#39;: 199.85,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 15&#39;,</span>
+<span class="go">  &#39;low&#39;: 198.01,</span>
+<span class="go">  &#39;open&#39;: 198.58,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 17536646,</span>
+<span class="go">  &#39;volume&#39;: 17536646,</span>
+<span class="go">  &#39;vwap&#39;: 198.9772},</span>
+<span class="go"> {&#39;change&#39;: 0.02,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.05568506940765069,</span>
+<span class="go">  &#39;changePercent&#39;: 0.01,</span>
+<span class="go">  &#39;close&#39;: 199.25,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-16&#39;,</span>
+<span class="go">  &#39;high&#39;: 201.37,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 16&#39;,</span>
+<span class="go">  &#39;low&#39;: 198.56,</span>
+<span class="go">  &#39;open&#39;: 199.46,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 25696385,</span>
+<span class="go">  &#39;volume&#39;: 25696385,</span>
+<span class="go">  &#39;vwap&#39;: 199.9028},</span>
+<span class="go"> {&#39;change&#39;: 3.88,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.0762424499311221,</span>
+<span class="go">  &#39;changePercent&#39;: 1.947,</span>
+<span class="go">  &#39;close&#39;: 203.13,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-17&#39;,</span>
+<span class="go">  &#39;high&#39;: 203.38,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 17&#39;,</span>
+<span class="go">  &#39;low&#39;: 198.61,</span>
+<span class="go">  &#39;open&#39;: 199.54,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 28906780,</span>
+<span class="go">  &#39;volume&#39;: 28906780,</span>
+<span class="go">  &#39;vwap&#39;: 201.8086},</span>
+<span class="go"> {&#39;change&#39;: 0.73,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.08011020451414647,</span>
+<span class="go">  &#39;changePercent&#39;: 0.359,</span>
+<span class="go">  &#39;close&#39;: 203.86,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-18&#39;,</span>
+<span class="go">  &#39;high&#39;: 204.15,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 18&#39;,</span>
+<span class="go">  &#39;low&#39;: 202.52,</span>
+<span class="go">  &#39;open&#39;: 203.12,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 24195766,</span>
+<span class="go">  &#39;volume&#39;: 24195766,</span>
+<span class="go">  &#39;vwap&#39;: 203.5071},</span>
+<span class="go"> {&#39;change&#39;: 0.67,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.08366006146020977,</span>
+<span class="go">  &#39;changePercent&#39;: 0.329,</span>
+<span class="go">  &#39;close&#39;: 204.53,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-22&#39;,</span>
+<span class="go">  &#39;high&#39;: 204.94,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 22&#39;,</span>
+<span class="go">  &#39;low&#39;: 202.34,</span>
+<span class="go">  &#39;open&#39;: 202.83,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 19439545,</span>
+<span class="go">  &#39;volume&#39;: 19439545,</span>
+<span class="go">  &#39;vwap&#39;: 204.2089},</span>
+<span class="go"> {&#39;change&#39;: 2.95,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.09929002861078721,</span>
+<span class="go">  &#39;changePercent&#39;: 1.442,</span>
+<span class="go">  &#39;close&#39;: 207.48,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-23&#39;,</span>
+<span class="go">  &#39;high&#39;: 207.75,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 23&#39;,</span>
+<span class="go">  &#39;low&#39;: 203.9,</span>
+<span class="go">  &#39;open&#39;: 204.43,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 23322991,</span>
+<span class="go">  &#39;volume&#39;: 23322991,</span>
+<span class="go">  &#39;vwap&#39;: 206.4875},</span>
+<span class="go"> {&#39;change&#39;: -0.32,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.0975945745469958,</span>
+<span class="go">  &#39;changePercent&#39;: -0.154,</span>
+<span class="go">  &#39;close&#39;: 207.16,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-24&#39;,</span>
+<span class="go">  &#39;high&#39;: 208.48,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 24&#39;,</span>
+<span class="go">  &#39;low&#39;: 207.05,</span>
+<span class="go">  &#39;open&#39;: 207.36,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 17540609,</span>
+<span class="go">  &#39;volume&#39;: 17540609,</span>
+<span class="go">  &#39;vwap&#39;: 207.6544},</span>
+<span class="go"> {&#39;change&#39;: -1.88,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.087633781922221,</span>
+<span class="go">  &#39;changePercent&#39;: -0.908,</span>
+<span class="go">  &#39;close&#39;: 205.28,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-04-25&#39;,</span>
+<span class="go">  &#39;high&#39;: 207.76,</span>
+<span class="go">  &#39;label&#39;: &#39;Apr 25&#39;,</span>
+<span class="go">  &#39;low&#39;: 205.12,</span>
+<span class="go">  &#39;open&#39;: 206.83,</span>
+<span class="go">  &#39;unadjustedVolume&#39;: 18543206,</span>
+<span class="go">  &#39;volume&#39;: 18543206,</span>
+<span class="go">  &#39;vwap&#39;: 206.0656}]</span>
 </pre></div>
 </div>
 <p>Historical time series data is also available through the
@@ -1228,40 +1276,9 @@ symbol on a given date (defaults to current date)</p>
 
 <span class="gp">In [31]: </span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[31]: </span><span class="go"></span>
-<span class="go">                     average  changeOverTime    close      date    high  \</span>
-<span class="go">2018-11-27 09:30:00  171.706        0.000000  171.505  20181127  172.15   </span>
-<span class="go">2018-11-27 09:31:00  172.151        0.002592  172.550  20181127  172.55   </span>
-<span class="go">2018-11-27 09:32:00  172.419        0.004152  172.590  20181127  172.64   </span>
-<span class="go">2018-11-27 09:33:00  172.646        0.005474  172.720  20181127  172.91   </span>
-<span class="go">2018-11-27 09:34:00  172.599        0.005201  172.910  20181127  172.92   </span>
-
-<span class="go">                        label     low  marketAverage  marketChangeOverTime  \</span>
-<span class="go">2018-11-27 09:30:00  09:30 AM  171.25        171.557              0.000000   </span>
-<span class="go">2018-11-27 09:31:00  09:31 AM  171.49        172.143              0.003416   </span>
-<span class="go">2018-11-27 09:32:00  09:32 AM  172.25        172.503              0.005514   </span>
-<span class="go">2018-11-27 09:33:00  09:33 AM  172.24        172.563              0.005864   </span>
-<span class="go">2018-11-27 09:34:00  09:34 AM  172.39        172.595              0.006050   </span>
-
-<span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
-<span class="go">2018-11-27 09:30:00      171.450     172.210     171.20    2.760131e+08   </span>
-<span class="go">2018-11-27 09:31:00      172.615     172.615     171.48    8.253719e+07   </span>
-<span class="go">2018-11-27 09:32:00      172.500     172.700     171.48    5.392202e+07   </span>
-<span class="go">2018-11-27 09:33:00      172.620     172.940     171.48    7.409316e+07   </span>
-<span class="go">2018-11-27 09:34:00      172.925     172.950     171.48    6.368218e+07   </span>
-
-<span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
-<span class="go">2018-11-27 09:30:00                  4121      171.51       1608870   </span>
-<span class="go">2018-11-27 09:31:00                  3185      171.49        479470   </span>
-<span class="go">2018-11-27 09:32:00                  2207      172.62        312586   </span>
-<span class="go">2018-11-27 09:33:00                  3049      172.48        429369   </span>
-<span class="go">2018-11-27 09:34:00                  2610      172.68        368968   </span>
-
-<span class="go">                        notional  numberOfTrades     open  volume  </span>
-<span class="go">2018-11-27 09:30:00  2360788.760             131  171.675   13749  </span>
-<span class="go">2018-11-27 09:31:00  1934806.160              98  171.490   11239  </span>
-<span class="go">2018-11-27 09:32:00  2327656.340             102  172.620   13500  </span>
-<span class="go">2018-11-27 09:33:00  1675181.525             106  172.490    9703  </span>
-<span class="go">2018-11-27 09:34:00  2238615.190             123  172.730   12970  </span>
+<span class="go">Empty DataFrame</span>
+<span class="go">Columns: []</span>
+<span class="go">Index: []</span>
 </pre></div>
 </div>
 </div>
@@ -1287,6 +1304,42 @@ annually (4 years).</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarterly'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly income statement.
 Defaults to quarterly. Values should be annual or quarter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Income Statement endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="insider-roster">
+<span id="stocks-insider-roster"></span><h2>Insider Roster<a class="headerlink" href="#insider-roster" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="insider-summary">
+<span id="stocks-insider-summary"></span><h2>Insider Summary<a class="headerlink" href="#insider-summary" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="insider-transactions">
+<span id="stocks-insider-transactions"></span><h2>Insider Transactions<a class="headerlink" href="#insider-transactions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="institutional-ownership">
+<span id="stocks-institutional-ownership"></span><h2>Institutional Ownership<a class="headerlink" href="#institutional-ownership" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_institutional_ownership">
+<code class="descclassname">Stock.</code><code class="descname">get_institutional_ownership</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_institutional_ownership" title="Permalink to this definition">¶</a></dt>
+<dd><p>Institutional Ownership</p>
+<p>Returns the top 10 institutional holders, defined as buy-side or
+sell-side firms.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#institutional-ownership">https://iexcloud.io/docs/api/#institutional-ownership</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Institutional Ownership endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
 </tr>
 </tbody>
 </table>
@@ -1327,45 +1380,44 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <span class="gp">In [33]: </span><span class="n">get_ipo_calendar</span><span class="p">()[</span><span class="s2">&quot;rawData&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[33]: </span><span class="go"></span>
 <span class="go">{&#39;address&#39;: &#39;1345 AVENUE OF THE AMERICAS 11TH FL&#39;,</span>
-<span class="go"> &#39;amount&#39;: 150000000,</span>
-<span class="go"> &#39;auditor&#39;: &#39;American Stock Transfer &amp; Trust Company, LLC&#39;,</span>
-<span class="go"> &#39;businessDescription&#39;: &#39;We are a newly organized blank check company formed for the purpose of effecting &amp;#10; a merger, capital stock exchange, asset acquisition, stock purchase, &amp;#10; reorganization or similar business combination with one or more businesses, &amp;#10; which we refer to throughout this prospectus as our initial business &amp;#10; combination. We have not selected any business combination target and we have &amp;#10; not, nor has anyone on our behalf, initiated any substantive discussions, &amp;#10; directly or indirectly, with any business combination target. &amp;#10;  &amp;#10; We will seek to capitalize on the substantial deal sourcing, investing and &amp;#10; operating expertise of our management team to select, acquire and help operate &amp;#10; high growth potential businesses in North America or Western Europe, with a &amp;#10; focus on the consumer and retail sectors, including but not limited to &amp;#10; businesses operating in travel retail, food and beverage, luxury goods, fashion, &amp;#10; lifestyle and leisure products and services, and consumer branded products, &amp;#10; although we may pursue acquisition opportunities in other regions or sectors. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 1450 Brickell Avenue, Suite 2160, Miami, &amp;#10; Florida 33131 and our telephone number is (786) 264-6680.&#39;,</span>
-<span class="go"> &#39;ceo&#39;: &#39;Luis Ignacio Solorzano Aizpuru&#39;,</span>
-<span class="go"> &#39;cik&#39;: &#39;0001759008&#39;,</span>
+<span class="go"> &#39;amount&#39;: 125000000,</span>
+<span class="go"> &#39;auditor&#39;: &#39;Continental Stock Transfer &amp; Trust Company&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;We are a newly incorporated blank check company incorporated on August 16, 2018 &amp;#10; as a Cayman Islands exempted company and incorporated for the purpose of &amp;#10; effecting a merger, capital stock exchange, asset acquisition, stock purchase, &amp;#10; reorganization or similar business combination with one or more businesses,  &amp;#10; which we refer to throughout this prospectus as our initial business  &amp;#10; combination. We have not selected any specific business combination target and &amp;#10; we have not, nor has anyone on our behalf, initiated any substantive &amp;#10; discussions, directly or indirectly, with any business combination target. We &amp;#10; have generated no revenues to date and we do not expect that we will generate &amp;#10; operating revenues at the earliest until we consummate our initial business &amp;#10; combination. While we may pursue an acquisition opportunity in any industry or &amp;#10; sector, we intend to focus on businesses that operate in the following &amp;#10; “better-for-you” sectors: (i) consumer packaged goods (“CPG”) and other &amp;#10; consumables and (ii) hospitality, including restaurants. We consider &amp;#10; “better-for-you” to include businesses that focus on health and wellness &amp;#10; broadly. We believe “better-for-you” products appeal to health-conscious &amp;#10; consumers seeking products that are less processed, contain natural ingredients &amp;#10; and are transparent with their ingredients and sourcing practices. We believe &amp;#10; that many consumers already prefer better-for-you products due to increasing &amp;#10; awareness for the role that food, beverage and personal care products play in &amp;#10; individual long-term health and wellness and that this trend will continue to &amp;#10; grow. As a result of our view of these long-term trends, we intend to focus on &amp;#10; these sectors that have global consumer appeal as we believe “better-for-you” &amp;#10; has become a global phenomenon and we expect it to continue for the foreseeable &amp;#10; future. &amp;#10; --- &amp;#10;  &amp;#10; We are a Cayman Islands exempted company incorporated on August 16, 2018. Our &amp;#10; executive offices are located at c/o Ellenoff Grossman &amp; Schole LLP , 1345 &amp;#10; Avenue of the Americas, New York, NY 10105, and our telephone number is (212) &amp;#10; 370-1300.&#39;,</span>
+<span class="go"> &#39;ceo&#39;: &#39;John Carroll&#39;,</span>
+<span class="go"> &#39;cik&#39;: &#39;0001753706&#39;,</span>
 <span class="go"> &#39;city&#39;: &#39;NEW YORK&#39;,</span>
 <span class="go"> &#39;companyCounsel&#39;: [&#39;Ellenoff Grossman &amp; Schole LLP&#39;],</span>
-<span class="go"> &#39;companyDescription&#39;: &#39;We are a newly organized blank check company formed for the purpose of effecting &amp;#10; a merger, capital stock exchange, asset acquisition, stock purchase, &amp;#10; reorganization or similar business combination with one or more businesses, &amp;#10; which we refer to throughout this prospectus as our initial business &amp;#10; combination. We have not selected any business combination target and we have &amp;#10; not, nor has anyone on our behalf, initiated any substantive discussions, &amp;#10; directly or indirectly, with any business combination target. &amp;#10;  &amp;#10; We will seek to capitalize on the substantial deal sourcing, investing and &amp;#10; operating expertise of our management team to select, acquire and help operate &amp;#10; high growth potential businesses in North America or Western Europe, with a &amp;#10; focus on the consumer and retail sectors, including but not limited to &amp;#10; businesses operating in travel retail, food and beverage, luxury goods, fashion, &amp;#10; lifestyle and leisure products and services, and consumer branded products, &amp;#10; although we may pursue acquisition opportunities in other regions or sectors. &amp;#10; --- &amp;#10;  &amp;#10; Our executive offices are located at 1450 Brickell Avenue, Suite 2160, Miami, &amp;#10; Florida 33131 and our telephone number is (786) 264-6680.&#39;,</span>
-<span class="go"> &#39;companyName&#39;: &#39;ACAMAR PARTNERS ACQUISITION CORP.\t&#39;,</span>
-<span class="go"> &#39;competition&#39;: &#39;In identifying, evaluating and selecting a target business for our initial &amp;#10; business combination, we may encounter intense competition from other entities &amp;#10; having a business objective similar to ours, including other blank check &amp;#10; companies, private equity groups and leveraged buyout funds, public companies &amp;#10; and operating businesses seeking strategic acquisitions. Many of these entities &amp;#10; are well established and have extensive experience identifying and effecting &amp;#10; business combinations directly or through affiliates. Moreover, many of these &amp;#10; competitors possess greater financial, technical, human and other resources than &amp;#10; us. Our ability to acquire larger target businesses will be limited by our &amp;#10; available financial resources. This inherent limitation gives others an &amp;#10; advantage in pursuing the acquisition of a target business. Furthermore, our &amp;#10; obligation to pay cash in connection with our public stockholders who exercise &amp;#10; their redemption rights may reduce the resources available to us for our initial &amp;#10; business combination and our outstanding warrants, and the future dilution they &amp;#10; potentially represent, may not be viewed favorably by certain target businesses. &amp;#10; Either of these factors may place us at a competitive disadvantage in &amp;#10; successfully negotiating an initial business combination.&#39;,</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;We are a newly incorporated blank check company incorporated on August 16, 2018 &amp;#10; as a Cayman Islands exempted company and incorporated for the purpose of &amp;#10; effecting a merger, capital stock exchange, asset acquisition, stock purchase, &amp;#10; reorganization or similar business combination with one or more businesses, &amp;#10; which we refer to throughout this prospectus as our initial business  &amp;#10; combination. We have not selected any specific business combination target and &amp;#10; we have not, nor has anyone on our behalf, initiated any substantive  &amp;#10; discussions, directly or indirectly, with any business combination target. We &amp;#10; have generated no revenues to date and we do not expect that we will generate &amp;#10; operating revenues at the earliest until we consummate our initial business &amp;#10; combination. While we may pursue an acquisition opportunity in any industry or &amp;#10; sector, we intend to focus on businesses that operate in the following &amp;#10; “better-for-you” sectors: (i) consumer packaged goods (“CPG”) and other &amp;#10; consumables and (ii) hospitality, including restaurants. We consider &amp;#10; “better-for-you” to include businesses that focus on health and wellness &amp;#10; broadly. We believe “better-for-you” products appeal to health-conscious &amp;#10; consumers seeking products that are less processed, contain natural ingredients &amp;#10; and are transparent with their ingredients and sourcing practices. We believe &amp;#10; that many consumers already prefer better-for-you products due to increasing &amp;#10; awareness for the role that food, beverage and personal care products play in &amp;#10; individual long-term health and wellness and that this trend will continue to &amp;#10; grow. As a result of our view of these long-term trends, we intend to focus on &amp;#10; these sectors that have global consumer appeal as we believe “better-for-you” &amp;#10; has become a global phenomenon and we expect it to continue for the foreseeable &amp;#10; future. &amp;#10; --- &amp;#10;  &amp;#10; We are a Cayman Islands exempted company incorporated on August 16, 2018. Our &amp;#10; executive offices are located at c/o Ellenoff Grossman &amp; Schole LLP , 1345 &amp;#10; Avenue of the Americas, New York, NY 10105, and our telephone number is (212) &amp;#10; 370-1300.&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;ACT II GLOBAL ACQUISITION CORP.\t&#39;,</span>
+<span class="go"> &#39;competition&#39;: &#39;In identifying, evaluating and selecting a target business for our initial &amp;#10; business combination, we may encounter intense competition from other entities &amp;#10; having a business objective similar to ours, including other blank check &amp;#10; companies, private equity groups and leveraged buyout funds, and operating &amp;#10; businesses seeking strategic acquisitions. Many of these entities are well &amp;#10; established and have extensive experience identifying and effecting business &amp;#10; combinations directly or through affiliates. Moreover, many of these competitors &amp;#10; possess greater financial, technical, human and other resources than us. Our &amp;#10; ability to acquire larger target businesses will be limited by our available &amp;#10; financial resources. This inherent limitation gives others an advantage in &amp;#10; pursuing the acquisition of a target business. Furthermore, our obligation to &amp;#10; pay cash in connection with our public shareholders who exercise their &amp;#10; redemption rights may reduce the resources available to us for our initial &amp;#10; business combination and our outstanding warrants, and the future dilution they &amp;#10; potentially represent, may not be viewed favorably by certain target businesses. &amp;#10; Either of these factors may place us at a competitive disadvantage in &amp;#10; successfully negotiating an initial business combination.&#39;,</span>
 <span class="go"> &#39;employees&#39;: 4,</span>
-<span class="go"> &#39;expectedDate&#39;: &#39;2019-02-22&#39;,</span>
-<span class="go"> &#39;leadUnderwriters&#39;: [&#39;Deutsche Bank Securities Inc.&#39;,</span>
-<span class="go">  &#39;Goldman Sachs &amp; Co. LLC&#39;],</span>
+<span class="go"> &#39;expectedDate&#39;: &#39;2019-04-26&#39;,</span>
+<span class="go"> &#39;leadUnderwriters&#39;: [&#39;Cantor Fitzgerald &amp; Co.&#39;],</span>
 <span class="go"> &#39;lockupPeriodExpiration&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;market&#39;: &#39;NASDAQ Capital&#39;,</span>
-<span class="go"> &#39;netIncome&#39;: -2750,</span>
+<span class="go"> &#39;netIncome&#39;: -13382,</span>
 <span class="go"> &#39;offerAmount&#39;: None,</span>
 <span class="go"> &#39;percentOffered&#39;: &#39;80.00&#39;,</span>
-<span class="go"> &#39;phone&#39;: &#39;(212) 370-1300&#39;,</span>
+<span class="go"> &#39;phone&#39;: &#39;910-322-6193&#39;,</span>
 <span class="go"> &#39;priceHigh&#39;: None,</span>
 <span class="go"> &#39;priceLow&#39;: 10,</span>
 <span class="go"> &#39;quietPeriodExpiration&#39;: &#39;&#39;,</span>
 <span class="go"> &#39;revenue&#39;: 0,</span>
 <span class="go"> &#39;shareholderShares&#39;: None,</span>
-<span class="go"> &#39;sharesOffered&#39;: 30000000,</span>
-<span class="go"> &#39;sharesOutstanding&#39;: 37500000,</span>
-<span class="go"> &#39;sharesOverAlloted&#39;: 4500000,</span>
+<span class="go"> &#39;sharesOffered&#39;: 25000000,</span>
+<span class="go"> &#39;sharesOutstanding&#39;: 31250000,</span>
+<span class="go"> &#39;sharesOverAlloted&#39;: 3750000,</span>
 <span class="go"> &#39;state&#39;: &#39;NY&#39;,</span>
 <span class="go"> &#39;status&#39;: &#39;Filed&#39;,</span>
-<span class="go"> &#39;stockholderEquity&#39;: 22250,</span>
-<span class="go"> &#39;symbol&#39;: &#39;ACAMU&#39;,</span>
-<span class="go"> &#39;totalAssets&#39;: 306004,</span>
+<span class="go"> &#39;stockholderEquity&#39;: 11618,</span>
+<span class="go"> &#39;symbol&#39;: &#39;ACTTU&#39;,</span>
+<span class="go"> &#39;totalAssets&#39;: 167421,</span>
 <span class="go"> &#39;totalExpenses&#39;: 750000,</span>
-<span class="go"> &#39;totalLiabilities&#39;: 283754,</span>
-<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Skadden, Arps, Slate, Meagher &amp; Flom LLP&#39;],</span>
+<span class="go"> &#39;totalLiabilities&#39;: 155803,</span>
+<span class="go"> &#39;underwriterCounsel&#39;: [&#39;Kirkland &amp; Ellis LLP&#39;],</span>
 <span class="go"> &#39;underwriters&#39;: [],</span>
 <span class="go"> &#39;url&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;useOfProceeds&#39;: &#39;We are offering 30,000,000 units at an offering price of $10.00 per unit. We &amp;#10; estimate that the net proceeds of this offering together with the funds we will &amp;#10; receive from the sale of the private placement warrants will be used as set &amp;#10; forth in the following table. &amp;#10;  &amp;#10;                                                                                                                                         Option to &amp;#10;                                                                                                               Without                    Purchase         &amp;#10;                                                                                                         Option to Purchase           Additional Units     &amp;#10;                                                                                                          Additional Units           Exercised in Full      &amp;#10; Gross proceeds                                                                                                                                             &amp;#10; Gross proceeds from units offered to public(1)                                                            $     300,000,000           $    345,000,000     &amp;#10; Gross proceeds from private placement warrants offered in                                                                                                 &amp;#10; the private placement                                                                                             9,000,000                  9,900,000     &amp;#10; Total gross proceeds                                                                                      $     309,000,000           $    354,900,000     &amp;#10; Estimated offering expenses(2)                                                                                                                             &amp;#10; Underwriting commissions (2.0% of gross proceeds from units offered to public, excluding deferred                                                         &amp;#10; portion)(3)                                                                                               $       6,000,000           $      6,900,000     &amp;#10; Legal fees and expenses                                                                                             250,000                    250,000     &amp;#10; Printing expenses                                                                                                    40,000                     40,000     &amp;#10; Accounting fees and expenses                                                                                         52,000                     52,000     &amp;#10; SEC/FINRA Expenses                                                                                                   94,064                     94,064     &amp;#10; Travel and road show                                                                                                 50,000                     50,000     &amp;#10; Directors and officers insurance premiums                                                                           125,000                    125,000     &amp;#10; Nasdaq listing and filing fees                                                                                       75,000                     75,000     &amp;#10; Miscellaneous expenses                                                                                               63,936                     63,936     &amp;#10; Total estimated offering expenses (other than underwriting                                                                                                &amp;#10; commissions)                                                                                                        750,000                    750,000     &amp;#10; Proceeds after estimated offering expenses                                                                $     302,250,000           $    347,250,000     &amp;#10; Held in trust account(3)                                                                                  $     300,000,000           $    345,000,000     &amp;#10; % of public offering size                                                                                              100%                       100%     &amp;#10; Not held in trust account                                                                                 $       2,250,000           $      2,250,000 &amp;#10;  &amp;#10; The following table shows the use of the approximately $2,250,000 of net &amp;#10; proceeds not held in the trust account.(4) &amp;#10;  &amp;#10;                                                                                                                    Amount           % of Total     &amp;#10; Legal, accounting, due diligence, travel and other expenses in connection with any business combination(5)       $   900,000             40.0%     &amp;#10; Legal and accounting fees related to regulatory reporting obligations                                                275,000              12.2     &amp;#10; Payment for office space, administrative, support and due diligence and related services                             888,000              39.5     &amp;#10; Nasdaq continued listing fees                                                                                         75,000               3.3     &amp;#10; Working capital to cover miscellaneous expenses                                                                      112,000               5.0     &amp;#10; Total                                                                                                            $ 2,250,000            100.0%  &amp;#10;  &amp;#10; (1) Includes amounts payable to public stockholders who properly redeem their &amp;#10;     shares in connection with our successful completion of our initial business &amp;#10;     combination. &amp;#10;   &amp;#10; (2) A portion of the offering expenses have been paid from the proceeds of loans &amp;#10;     from our sponsor (directly or through its affiliates) of up to $400,000 as &amp;#10;     described in this prospectus. As of December 31, 2018, there was $283,754 &amp;#10;     outstanding under such promissory note. These loans will be repaid upon &amp;#10;     completion of this offering out of the offering proceeds that has been &amp;#10;     allocated for the payment of offering expenses (other than underwriting &amp;#10;     commissions) not held in the trust account. In the event that offering &amp;#10;     expenses are less than as set forth in this table, any such amounts will be &amp;#10;     used for post-closing working capital expenses. In the event that the &amp;#10;     offering expenses are more than as set forth in this table, we may fund such &amp;#10;     excess with funds not held in the trust account. &amp;#10;  &amp;#10; (3) The underwriters have agreed to defer underwriting commissions equal to 3.5% &amp;#10;     of the gross proceeds of this offering. Upon completion of our initial &amp;#10;     business combination, $10,500,000, which constitutes the underwriters’ &amp;#10;     deferred commissions (or up to $12,075,000 if the underwriters’ option to &amp;#10;     purchase additional units is exercised in full) will be paid to the &amp;#10;     underwriters from the funds held in the trust account and the remaining &amp;#10;     funds, less amounts released to the trustee to pay redeeming stockholders, &amp;#10;     will be released to us and can be used to pay all or a portion of the &amp;#10;     purchase price of the business or businesses with which our initial business &amp;#10;     combination occurs or for general corporate purposes, including payment of &amp;#10;     principal or interest on indebtedness incurred in connection with our &amp;#10;     initial business combination, to fund the purchases of other companies or &amp;#10;     for working capital. The underwriters will not be entitled to any interest &amp;#10;     accrued on the deferred underwriting discounts and commissions. &amp;#10;   &amp;#10; (4) These expenses are estimates only. Our actual expenditures for some or all &amp;#10;     of these items may differ from the estimates set forth herein. The amount in &amp;#10;     the table above does not include interest available to us from the trust &amp;#10;     account. Based on current interest rates, we would expect approximately &amp;#10;     $4,200,000 to be available to us annually from interest earned on the funds &amp;#10;     held in the trust account; however, we can provide no assurances regarding &amp;#10;     this amount. This estimate assumes an interest rate of 1.4% per annum based &amp;#10;     upon current yields of securities in which the trust account may be &amp;#10;     invested. &amp;#10;   &amp;#10; (5) Includes estimated amounts that may also be used in connection with our &amp;#10;     initial business combination to fund a “no shop” provision and commitment &amp;#10;     fees for financing. &amp;#10;   &amp;#10; The Nasdaq listing rules provide that at least 90% of the gross proceeds from &amp;#10; this offering and the sale of the private placement warrants be deposited in a &amp;#10; trust account. Of the net proceeds of this offering and the sale of the private &amp;#10; placement warrants, $300,000,000 (or $345,000,000 if the underwriters’ option to &amp;#10; purchase additional units is exercised in full), including $10,500,000 (or up to &amp;#10; $12,075,000 if the underwriters’ option to purchase additional units is &amp;#10; exercised in full) of deferred underwriting commissions, will, upon the &amp;#10; consummation of this offering, be placed in a U.S. based trust account at J.P. &amp;#10; Morgan Chase Bank, N.A., with American Stock Transfer &amp; Trust Company acting as &amp;#10; trustee. The funds in the trust account will be invested only in U.S. government &amp;#10; treasury bills with a maturity of 180 days or less or in money market funds that &amp;#10; meet certain conditions under Rule 2a-7 under the Investment Company Act of 1940 &amp;#10; and that invest only in direct U.S. government obligations. Based on current &amp;#10; interest rates, we estimate that the interest earned on the trust account will &amp;#10; be approximately $4,200,000 per year, assuming an interest rate of 1.4% per &amp;#10; year. We will not be permitted to withdraw any of the principal or interest held &amp;#10; in the trust account, except with respect to interest earned on the funds held &amp;#10; in the trust account that may be released to us to pay our taxes, if any. The &amp;#10; funds held in the trust account will not be released from the trust account &amp;#10; until the earliest of: (1) the completion of our initial business combination; &amp;#10; (2) the redemption of any public shares properly tendered in connection with a &amp;#10; stockholder vote to amend our amended and restated certificate of incorporation &amp;#10; (A) to modify the substance and timing of our obligation to provide for the &amp;#10; redemption of our public shares in connection with an initial business &amp;#10; combination or to redeem 100% of our public shares if we do not complete our &amp;#10; initial business combination within 24 months from the closing of this offering &amp;#10; or (B) with respect to any other provision relating to stockholders’ rights or &amp;#10; pre-initial business combination activity; and (3) the redemption of all of our &amp;#10; public shares if we are unable to complete our initial business combination &amp;#10; within 24 months from the closing of this offering, subject to applicable law. &amp;#10; Based on current interest rates, we expect that interest earned on the trust &amp;#10; account will be sufficient to pay taxes. &amp;#10;  &amp;#10; The net proceeds held in the trust account may be used as consideration to pay &amp;#10; the sellers of a target business with which we ultimately complete our initial &amp;#10; business combination. If our initial business combination is paid for using &amp;#10; equity or debt securities or not all of the funds released from the trust &amp;#10; account are used for payment of the consideration in connection with our initial &amp;#10; business combination or used for redemption of our public shares, we may apply &amp;#10; the balance of the cash released to us from the trust account for general &amp;#10; corporate purposes, including for maintenance or expansion of operations of &amp;#10; post-transaction businesses, the payment of principal or interest due on &amp;#10; indebtedness incurred in completing our initial business combination, to fund &amp;#10; the purchase of other companies or for working capital. There is no limitation &amp;#10; on our ability to raise funds privately or through loans in connection with our &amp;#10; initial business combination. &amp;#10;  &amp;#10; We believe that amounts not held in trust will be sufficient to pay the costs &amp;#10; and expenses to which such proceeds are allocated. This belief is based on the &amp;#10; fact that while we may begin preliminary due diligence of a target business in &amp;#10; connection with an indication of interest, we intend to undertake in-depth due &amp;#10; diligence, depending on the circumstances of the relevant prospective &amp;#10; acquisition, only after we have negotiated and signed a letter of intent or &amp;#10; other preliminary agreement that addresses the terms of a business combination. &amp;#10; However, if our estimate of the costs of undertaking in-depth due diligence and &amp;#10; negotiating a business combination is less than the actual amount necessary to &amp;#10; do so, we may be required to raise additional capital, the amount, availability &amp;#10; and cost of which is currently unascertainable. If we are required to seek &amp;#10; additional capital, we could seek such additional capital through loans or &amp;#10; additional investments from our sponsor, members of our management team or any &amp;#10; of their respective affiliates, but such persons are not under any obligation or &amp;#10; other duty to loan funds to, or invest in, us. &amp;#10;  &amp;#10; We will enter into an Administrative Services Agreement pursuant to which we &amp;#10; will pay an affiliate of our sponsor a total of $37,000 per month for office &amp;#10; space, administrative, support and salaries to be paid to employees of such &amp;#10; affiliate for due diligence and related services in connection with our search &amp;#10; for a target company (although no salaries or fees will be paid from the monthly &amp;#10; fee to members of our management team). Upon completion of our initial business &amp;#10; combination or our liquidation, we will cease paying these monthly fees. &amp;#10;  &amp;#10; Prior to the closing of this offering, our sponsor (directly or through its &amp;#10; affiliates) has agreed to loan us up to $400,000 under an unsecured promissory &amp;#10; note to be used for a portion of the expenses of this offering. As of &amp;#10; December 31, 2018, $283,754 was outstanding under such promissory note. &amp;#10; Subsequent to December 31, 2018, we borrowed an additional $75,000 under such &amp;#10; promissory note. These loans are non-interest bearing, unsecured and are due at &amp;#10; the earlier of June 30, 2019 and the closing of this offering. These loans will &amp;#10; be repaid upon completion of this offering out of the offering proceeds that has &amp;#10; been allocated for the payment of offering expenses (other than underwriting &amp;#10; commissions) not held in the trust account. &amp;#10;  &amp;#10; In addition, in order to finance transaction costs in connection with an &amp;#10; intended initial business combination, our sponsor, an affiliate of our sponsor &amp;#10; or our officers and directors may, but are not obligated to, loan us funds as &amp;#10; may be required. If we complete our initial business combination, we would repay &amp;#10; such loaned amounts out of the proceeds of the trust account released to us. In &amp;#10; the event that our initial business combination does not close, we may use a &amp;#10; portion of the working capital held outside the trust account to repay such &amp;#10; loaned amounts but no proceeds from our trust account would be used to repay &amp;#10; such loaned amounts. Up to $2,000,000 of such loans made to us by our sponsor, &amp;#10; an affiliate of our sponsor or our officers and directors may be convertible &amp;#10; into units at a price of $10.00 per unit at the option of the lender at the &amp;#10; time of the business combination. Such units would be identical to the units &amp;#10; sold in this offering except that the warrants underlying such units would be &amp;#10; identical to the private placement warrants issued to our sponsor. The terms of &amp;#10; such loans by our sponsor, an affiliate of our sponsor or our officers and &amp;#10; directors, if any, have not been determined and no written agreements exist with &amp;#10; respect to such loans. We do not expect to seek loans from parties other than &amp;#10; our sponsor, an affiliate of our sponsor or our officers and directors, if any, &amp;#10; as we do not believe third parties will be willing to loan such funds and &amp;#10; provide a waiver against any and all rights to seek access to funds in our trust &amp;#10; account. &amp;#10;  &amp;#10; If we seek stockholder approval of our initial business combination and we do &amp;#10; not conduct redemptions in connection with our initial business combination &amp;#10; pursuant to the tender offer rules, our sponsor, directors, officers, advisors &amp;#10; or any of their respective affiliates may also purchase shares in privately &amp;#10; negotiated transactions or in the open market either prior to or following the &amp;#10; completion of our initial business combination. The price per share paid in any &amp;#10; such transaction may be different than the amount per share a public stockholder &amp;#10; would receive if it elected to redeem its shares in connection with our initial &amp;#10; business combination. However, such persons have no current commitments, plans &amp;#10; or intentions to engage in such transactions and have not formulated any terms &amp;#10; or conditions for any such transactions. If they engage in such transactions, &amp;#10; they will be restricted from making any such purchases when they are in &amp;#10; possession of any material non-public information not disclosed to the seller or &amp;#10; if such purchases are prohibited by Regulation M under the Exchange Act. We do &amp;#10; not currently anticipate that such purchases, if any, would constitute a tender &amp;#10; offer subject to the tender offer rules under the Exchange Act or a &amp;#10; going-private transaction subject to the going-private rules under the Exchange &amp;#10; Act; however, if the purchasers determine at the time of any such purchases that &amp;#10; the purchases are subject to such rules, the purchasers will comply with such &amp;#10; rules. &amp;#10;  &amp;#10; We may not redeem our public shares in an amount that would cause our net &amp;#10; tangible assets, after payment of the deferred underwriting commissions, to be &amp;#10; less than $5,000,001 upon consummation of our initial business combination (so &amp;#10; that we do not then become subject to the SEC’s “penny stock” rules) and the &amp;#10; agreement for our initial business combination may require as a closing &amp;#10; condition that we have a minimum net worth or a certain amount of cash. If too &amp;#10; many public stockholders exercise their redemption rights so that we cannot &amp;#10; satisfy the net tangible asset requirement or any net worth or cash &amp;#10; requirements, we would not proceed with the redemption of our public shares or &amp;#10; the business combination, and instead may search for an alternate business &amp;#10; combination. &amp;#10;  &amp;#10; A public stockholder will be entitled to receive funds from the trust account &amp;#10; only upon the earlier to occur of: (1) the completion of our initial business &amp;#10; combination and then, only in connection with those public shares that such &amp;#10; stockholder has properly elected to redeem, subject to the limitations described &amp;#10; in this prospectus; (2) the redemption of any public shares properly tendered in &amp;#10; connection with a stockholder vote to amend our amended and restated certificate &amp;#10; of incorporation (A) to modify the substance or timing of our obligation to &amp;#10; provide for the redemption of our public shares in connection with an initial &amp;#10; business combination or to redeem 100% of our public shares if we do not &amp;#10; complete our initial business combination within 24 months from the closing of &amp;#10; this offering or (B) with respect to any other provision relating to &amp;#10; stockholders’ rights or pre-initial business combination activity; and (3) the &amp;#10; redemption of all of our public shares if we are unable to complete our initial &amp;#10; business combination within 24 months from the closing of this offering, subject &amp;#10; to applicable law. In no other circumstances will a public stockholder have any &amp;#10; right or interest of any kind to or in the trust account. &amp;#10;  &amp;#10; Our initial stockholders, officers and directors have entered into a letter &amp;#10; agreement with us, pursuant to which they have agreed to (1) waive their &amp;#10; redemption rights with respect to any founder shares and any public shares held &amp;#10; by them in connection with the completion of our initial business combination &amp;#10; and (2) waive their redemption rights with respect to any founder shares and &amp;#10; public shares held by them in connection with a stockholder vote to approve an &amp;#10; amendment to our amended and restated certificate of incorporation (A) to modify &amp;#10; the substance or timing of our obligation to provide for the redemption of our &amp;#10; public shares in connection with an initial business combination or to redeem &amp;#10; 100% of our public shares if we have not consummated our initial business &amp;#10; combination within 24 months from the closing of this offering or (B) with &amp;#10; respect to any other provision relating to stockholders’ rights or pre-initial &amp;#10; business combination activity. In addition, our initial stockholders, officers &amp;#10; and directors have agreed to waive their rights to liquidating distributions &amp;#10; from the trust account with respect to any founder shares held by them if we &amp;#10; fail to complete our initial business combination within the prescribed time &amp;#10; frame. However, if our sponsor or any of our officers or directors acquires &amp;#10; public shares in or after this offering, they will be entitled to liquidating &amp;#10; distributions from the trust account with respect to such public shares if we &amp;#10; fail to complete our initial business combination within the prescribed time &amp;#10; frame.&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &quot;We are offering 25,000,000 units at an offering price of $10.00 per unit. We &amp;#10; estimate that the net proceeds of this offering together with the funds we will &amp;#10; receive from the sale of the private placement warrants will be used as set &amp;#10; forth in the following table. &amp;#10;  &amp;#10;                                                           Without         &amp;#10;                                                        Over-Allotment      Over-Allotment    &amp;#10;                                                            Option         Option Exercised   &amp;#10; Gross proceeds                                                                               &amp;#10; Gross proceeds from units offered to public(1)         $ 250,000,000      $    287,500,000   &amp;#10; Gross proceeds from private placement warrants                                              &amp;#10; offered in the private placement                           6,750,000             6,750,000   &amp;#10; Total gross proceeds                                   $ 256,750,000      $    294,250,000   &amp;#10;                                                                                              &amp;#10; Offering expenses(2)                                                                         &amp;#10; Underwriting commissions (2% of gross proceeds from                                         &amp;#10; units offered to public, excluding deferred                                                 &amp;#10; portion)(3)                                            $   5,000,000      $      5,000,000   &amp;#10; Legal fees and expenses                                      275,000               275,000   &amp;#10; Accounting fees and expenses                                  40,000                40,000   &amp;#10; SEC/FINRA Expenses                                            78,470                78,470   &amp;#10; Travel and road show                                          20,000                20,000   &amp;#10; NASDAQ listing and filing fees                                75,000                75,000   &amp;#10; Director and Officer liability insurance premiums            125,000               125,000   &amp;#10; Printing and engraving expenses                               40,000                40,000   &amp;#10; Miscellaneous(4)                                              96,530                96,530   &amp;#10; Total offering expenses (other than underwriting                                            &amp;#10; commissions)(5)                                        $     750,000      $        750,000   &amp;#10; Proceeds after offering expenses(5)                    $ 251,250,000      $    288,750,000   &amp;#10; Held in trust account(3)                               $ 250,000,000      $    287,500,000   &amp;#10; % of public offering size                                        100 %                 100 % &amp;#10; Not held in trust account(2)                           $   1,250,000      $      1,250,000   &amp;#10;  &amp;#10; The following table shows the use of the approximately $1,250,000 of net &amp;#10; proceeds not held in the trust account(6). &amp;#10;  &amp;#10;                                                          Amount        % of Total    &amp;#10; Legal, accounting, due diligence, travel, and other                   &amp;#10; expenses in connection with any business                              &amp;#10; combination(7)                                        $    700,000             56.0% &amp;#10; Legal and accounting fees related to regulatory                       &amp;#10; reporting obligations                                      150,000             12.0% &amp;#10; Payment for office space, administrative and                          &amp;#10; support services                                           240,000             19.2% &amp;#10; NASDAQ continued listing fees                               75,000              6.0% &amp;#10; Other miscellaneous expenses                                85,000              6.8% &amp;#10; Total                                                 $  1,250,000            100.0% &amp;#10;  &amp;#10; (1) Includes amounts payable to public shareholders who properly redeem their &amp;#10;     shares in connection with our successful completion of our initial business &amp;#10;     combination. &amp;#10;  &amp;#10; (2) A portion of the offering expenses have been paid from the proceeds of loans &amp;#10;     from our sponsor of up to $300,000 as described in this prospectus. As of &amp;#10;     February 15, 2019, we had borrowed $150,803 under the promissory note with &amp;#10;     our sponsor. These loans will be repaid upon completion of this offering out &amp;#10;     of the $2,000,000 of offering proceeds that has been allocated for the &amp;#10;     payment of offering expenses (other than underwriting commissions) and &amp;#10;     amounts not to be held in the trust account. In the event that offering &amp;#10;     expenses are less than as set forth in this table, any such amounts will be &amp;#10;     used for post-closing working capital expenses. In the event that the  &amp;#10;     offering expenses are more than as set forth in this table, we may fund such &amp;#10;     excess with funds not held in the trust account. &amp;#10;  &amp;#10; (3) The underwriters have agreed to defer underwriting commissions equal to 3.5% &amp;#10;     of the gross proceeds of this offering. If the underwriters&#39; over-allotment &amp;#10;     option is exercised, 5.5% of the gross proceeds from the over-allotment &amp;#10;     ($0.55 per unit or up to $2,062,500 in the aggregate) will be deposited in &amp;#10;     the trust account as deferred underwriting commissions. Upon completion of &amp;#10;     our initial business combination, $8,750,000, which constitutes the &amp;#10;     underwriters&#39; deferred commissions (or $10,812,500 if the underwriters&#39; &amp;#10;     over-allotment option is exercised in full) will be paid to the underwriters &amp;#10;     from the funds held in the trust account, and the remaining funds, less &amp;#10;     amounts released to the trustee to pay redeeming stockholders, will be &amp;#10;     released to us and can be used to pay all or a portion of the purchase price &amp;#10;     of the business or businesses with which our initial business combination &amp;#10;     occurs or for general corporate purposes, including payment of principal or &amp;#10;     interest on indebtedness incurred in connection with our initial business &amp;#10;     combination, to fund the purchases of other companies or for working &amp;#10;     capital. The underwriters will not be entitled to any interest accrued on &amp;#10;     the deferred underwriting discounts and commissions. &amp;#10;  &amp;#10; (4) Includes organizational and administrative expenses and may include amounts &amp;#10;     related to above-listed expenses in the event actual amounts exceed &amp;#10;     estimates. &amp;#10;  &amp;#10; (5) We estimate that our out-of-pocket expenses for this offering will be &amp;#10;     approximately $750,000, $250,000 of which the representative has agreed to &amp;#10;     reimburse us for at the closing of the offering. The proceeds after offering &amp;#10;     expenses includes the $250,000 reimbursement from the representative. &amp;#10;  &amp;#10; (6) These expenses are estimates only. Our actual expenditures for some or all &amp;#10;     of these items may differ from the estimates set forth herein. For example, &amp;#10;     we may incur greater legal and accounting expenses than our current  &amp;#10;     estimates in connection with negotiating and structuring a business &amp;#10;     combination based upon the level of complexity of such business combination. &amp;#10;     In the event we identify an acquisition target in a specific industry &amp;#10;     subject to specific regulations, we may incur additional expenses associated &amp;#10;     with legal due diligence and the engagement of special legal counsel. In &amp;#10;     addition, our staffing needs may vary and as a result, we may engage a &amp;#10;     number of consultants to assist with legal and financial due diligence. We &amp;#10;     do not anticipate any change in our intended use of proceeds, other than &amp;#10;     fluctuations among the current categories of allocated expenses, which &amp;#10;     fluctuations, to the extent they exceed current estimates for any specific &amp;#10;     category of expenses, would not be available for our expenses. The amount in &amp;#10;     the table above does not include interest available to us from the trust &amp;#10;     account. Based on current interest rates, we would expect approximately &amp;#10;     $3,500,000 to be available to us from interest earned on the funds held in &amp;#10;     the trust account over 12 months following the investment of such funds in &amp;#10;     specified U.S. Government Treasury bills, however, we can provide no &amp;#10;     assurances regarding this amount. This estimate assumes no exercise of the &amp;#10;     underwriters&#39; overallotment option and an interest rate of 1.4% per annum &amp;#10;     based upon current yields of securities in which the trust account may be &amp;#10;     invested. In addition, in order to finance transaction costs in connection &amp;#10;     with an intended initial business combination, our sponsor or an affiliate &amp;#10;     of our sponsor or certain of our officers and directors may, but are not &amp;#10;     obligated to, loan us funds as may be required. If we complete our initial &amp;#10;     business combination, we would repay such loaned amounts out of the proceeds &amp;#10;     of the trust account released to us. Otherwise, such loans would be repaid &amp;#10;     only out of funds held outside the trust account. In the event that our &amp;#10;     initial business combination does not close, we may use a portion of the &amp;#10;     working capital held outside the trust account to repay such loaned amounts &amp;#10;     but no proceeds from our trust account would be used to repay such loaned &amp;#10;     amounts. Up to $1,500,000 of such loans may be convertible into warrants at &amp;#10;     a price of $1.00 per warrant at the option of the lender. The warrants would &amp;#10;     be identical to the private placement warrants issued to our sponsor. The &amp;#10;     terms of such loans by our sponsor, affiliate of our sponsor, or certain of &amp;#10;     our officers and directors, if any, have not been determined and no written &amp;#10;     agreements exist with respect to such loans. We do not expect to seek loans &amp;#10;     from parties other than our sponsor or an affiliate of our sponsor as we do &amp;#10;     not believe third parties will be willing to loan such funds and provide a &amp;#10;     waiver against any and all rights to seek access to funds in our trust &amp;#10;     account. &amp;#10;  &amp;#10; (7) Includes estimated amounts that may also be used in connection with our &amp;#10;     initial business combination to fund a “no shop” provision and commitment &amp;#10;     fees for financing. &amp;#10;  &amp;#10; The rules of the NASDAQ provide that at least 90% of the gross proceeds from &amp;#10; this offering and the private placement be deposited in a trust account. Of the &amp;#10; net proceeds of this offering and the sale of the private placement warrants, &amp;#10; $250,000,000 (or $287,500,000 if the underwriters&#39; over-allotment option is &amp;#10; exercised in full), including $8,750,000 (or up to $10,812,500 if the &amp;#10; underwriters&#39; over-allotment option is exercised in full) of deferred &amp;#10; underwriting commissions, will, upon the consummation of this offering, be &amp;#10; invested only in U.S. government treasury bills with a maturity of 180 days or &amp;#10; less or in money market funds meeting certain conditions under Rule 2a-7 under &amp;#10; the Investment Company Act which invest only in direct U.S. government treasury &amp;#10; obligations. Based on current interest rates, we estimate that the interest &amp;#10; earned on the trust account will be approximately $3,500,000 per year, assuming &amp;#10; no exercise of the underwriters&#39; overallotment option and an interest rate of &amp;#10; 1.4% per year, following the investment of such funds in specified U.S. &amp;#10; government treasury bills or in specified money market funds. We will not be &amp;#10; permitted to withdraw any of the principal or interest held in the trust account &amp;#10; except for the withdrawal of interest to pay taxes, if any, the proceeds from &amp;#10; this offering and the sale of the private placement warrants will not be &amp;#10; released from the trust account until the earliest of (i) the completion of our &amp;#10; initial business combination, (ii) the redemption of any public shares properly &amp;#10; tendered in connection with a shareholder vote to amend our amended and restated &amp;#10; memorandum and articles of association to (A) modify the substance or timing of &amp;#10; our obligation to redeem 100% of our public shares if we do not complete our &amp;#10; initial business combination within 24 months from the closing of this offering &amp;#10; or (B) with respect to any other provision relating to shareholders&#39; rights or &amp;#10; pre-business combination activity and (iii) the redemption of all of our public &amp;#10; shares if we are unable to complete our initial business combination within 24 &amp;#10; months from the closing of this offering, subject to applicable law. &amp;#10;  &amp;#10; The net proceeds held in the trust account may be used as consideration to pay &amp;#10; the sellers of a target business with which we ultimately complete our initial &amp;#10; business combination. If our initial business combination is paid for using &amp;#10; equity or debt securities, or not all of the funds released from the trust &amp;#10; account are used for payment of the consideration in connection with our initial &amp;#10; business combination, we may apply the balance of the cash released from the &amp;#10; trust account for general corporate purposes, including for maintenance or &amp;#10; expansion of operations of the post-transaction company, the payment of &amp;#10; principal or interest due on indebtedness incurred in completing our initial &amp;#10; business combination, to fund the purchase of other companies or for working &amp;#10; capital. There is no limitation on our ability to raise funds privately or &amp;#10; through loans in connection with our initial business combination. &amp;#10;  &amp;#10; We believe that amounts not held in trust will be sufficient to pay the costs &amp;#10; and expenses to which such proceeds are allocated. This belief is based on the &amp;#10; fact that while we may begin preliminary due diligence of a target business in &amp;#10; connection with an indication of interest, we intend to undertake in-depth due &amp;#10; diligence, depending on the circumstances of the relevant prospective &amp;#10; acquisition, only after we have negotiated and signed a letter of intent or &amp;#10; other preliminary agreement that addresses the terms of a business combination. &amp;#10; However, if our estimate of the costs of undertaking in-depth due diligence and &amp;#10; negotiating a business combination is less than the actual amount necessary to &amp;#10; do so, we may be required to raise additional capital, the amount, availability &amp;#10; and cost of which is currently unascertainable. If we are required to seek &amp;#10; additional capital, we could seek such additional capital through loans or &amp;#10; additional investments from our sponsor, members of our management team or their &amp;#10; affiliates, but such persons are not under any obligation to advance funds to, &amp;#10; or invest in, us. &amp;#10;  &amp;#10; We will enter into an Administrative Services Agreement pursuant to which we &amp;#10; will pay our sponsor a total of $10,000 per month for office space, &amp;#10; administrative and support services. Upon completion of our initial business &amp;#10; combination or our liquidation, we will cease paying these monthly fees. &amp;#10;  &amp;#10; Prior to the closing of this offering, our sponsor has agreed to loan us up to &amp;#10; $300,000 to be used for a portion of the expenses of this offering. As of &amp;#10; February 15, 2019, we had borrowed $150,803 under the promissory note with our &amp;#10; sponsor. These loans are non-interest bearing, unsecured and are due at the &amp;#10; earlier of December 31, 2019 or the closing of this offering. These loans will &amp;#10; be repaid upon the closing of this offering out of the offering proceeds not &amp;#10; held in the trust account. &amp;#10;  &amp;#10; In addition, in order to finance transaction costs in connection with an  &amp;#10; intended initial business combination, our sponsor or an affiliate of our &amp;#10; sponsor or certain of our officers and directors may, but are not obligated to, &amp;#10; loan us funds as may be required. If we complete our initial business &amp;#10; combination, we would repay such loaned amounts out of the proceeds of the trust &amp;#10; account released to us. Otherwise, such loans would be repaid only out of funds &amp;#10; held outside the trust account. In the event that our initial business &amp;#10; combination does not close, we may use a portion of the working capital held &amp;#10; outside the trust account to repay such loaned amounts but no proceeds from our &amp;#10; trust account would be used to repay such loaned amounts. Up to $1,500,000 of &amp;#10; such loans may be convertible into warrants at a price of $1.00 per warrant at &amp;#10; the option of the lender. The warrants would be identical to the private &amp;#10; placement warrants issued to our sponsor. The terms of such loans by our &amp;#10; officers and directors, if any, have not been determined and no written &amp;#10; agreements exist with respect to such loans. We do not expect to seek loans from &amp;#10; parties other than our sponsor or an affiliate of our sponsor as we do not &amp;#10; believe third parties will be willing to loan such funds and provide a waiver &amp;#10; against any and all rights to seek access to funds in our trust account. &amp;#10;  &amp;#10; If we seek shareholder approval of our initial business combination and we do &amp;#10; not conduct redemptions in connection with our initial business combination &amp;#10; pursuant to the tender offer rules, our sponsor, directors, officers, advisors &amp;#10; or their affiliates may also purchase shares in privately negotiated &amp;#10; transactions or in the open market either prior to or following the completion &amp;#10; of our initial business combination. The price per share paid in any such &amp;#10; transaction may be different than the amount per share a public shareholder &amp;#10; would receive if it elected to redeem its shares in connection with our initial &amp;#10; business combination. However, such persons have no current commitments, plans &amp;#10; or intentions to engage in such transactions and have not formulated any terms &amp;#10; or conditions for any such transactions. If they engage in such transactions, &amp;#10; they will not make any such purchases when they are in possession of any &amp;#10; material non-public information not disclosed to the seller or if such purchases &amp;#10; are prohibited by Regulation Munder the Exchange Act. We do not currently &amp;#10; anticipate that such purchases, if any, would constitute a tender offer subject &amp;#10; to the tender offer rules under the Exchange Act or a going-private transaction &amp;#10; subject to the going-private rules under the Exchange Act; however, if the &amp;#10; purchasers determine at the time of any such purchases that the purchases are &amp;#10; subject to such rules, the purchasers will comply with such rules. &amp;#10;  &amp;#10; We may not redeem our public shares in an amount that would cause our net &amp;#10; tangible assets, after payment of the deferred underwriting commissions, to be &amp;#10; less than $5,000,001 upon consummation of our initial business combination (so &amp;#10; that we are not subject to the SEC&#39;s “penny stock” rules) and the agreement for &amp;#10; our initial business combination may require as a closing condition that we have &amp;#10; a minimum net worth or a certain amount of cash. If too many public shareholders &amp;#10; exercise their redemption rights so that we cannot satisfy the net tangible &amp;#10; asset requirement or any net worth or cash requirements, we would not proceed &amp;#10; with the redemption of our public shares or the business combination, and &amp;#10; instead may search for an alternate business combination. &amp;#10;  &amp;#10; A public shareholder will be entitled to receive funds from the trust account &amp;#10; only upon the earlier to occur of: (i) the completion of our initial business &amp;#10; combination, (ii) the redemption of any public shares properly tendered in &amp;#10; connection with a shareholder vote to amend our amended and restated memorandum &amp;#10; and articles of association to (A) modify the substance or timing of our &amp;#10; obligation to redeem 100% of our public shares if we do not complete our initial &amp;#10; business combination within 24 months from the closing of this offering or (B) &amp;#10; with respect to any other provision relating to shareholders&#39; rights or &amp;#10; pre-business combination activity and (iii) the redemption of all of our public &amp;#10; shares if we are unable to complete our initial business combination within 24 &amp;#10; months from the closing of this offering, subject to applicable law. In no other &amp;#10; circumstances will a public shareholder have any right or interest of any kind &amp;#10; to or in the trust account. &amp;#10;  &amp;#10; Our sponsor, officers and directors have entered into a letter agreement with &amp;#10; us, pursuant to which they have agreed to waive their redemption rights with &amp;#10; respect to their founder shares and any public shares they may hold in &amp;#10; connection with the completion of our initial business combination. In addition, &amp;#10; our sponsor, officers and directors have agreed to waive their rights to &amp;#10; liquidating distributions from the trust account with respect to their founder &amp;#10; shares if we fail to complete our initial business combination within the &amp;#10; prescribed time frame. However, if our sponsor or any of our officers, directors &amp;#10; or affiliates acquires public shares in or after this offering, they will be &amp;#10; entitled to liquidating distributions from the trust account with respect to &amp;#10; such public shares if we fail to complete our initial business combination &amp;#10; within the prescribed time frame.&quot;,</span>
 <span class="go"> &#39;zip&#39;: &#39;10105&#39;}</span>
 </pre></div>
 </div>
@@ -1390,13 +1442,6 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 </dd></dl>
 
 </div>
-<div class="section" id="list">
-<span id="stocks-list"></span><h2>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#stocks-movers"><span class="std std-ref">Market Movers</span></a></p>
-</div>
-</div>
 <div class="section" id="largest-trades">
 <span id="stocks-largest-trades"></span><h2>Largest Trades<a class="headerlink" href="#largest-trades" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
@@ -1409,12 +1454,19 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Largest Trades endpoint data</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
+</div>
+<div class="section" id="list">
+<span id="stocks-list"></span><h2>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#stocks-movers"><span class="std std-ref">Market Movers</span></a></p>
+</div>
 </div>
 <div class="section" id="logo">
 <span id="stocks-logo"></span><h2>Logo<a class="headerlink" href="#logo" title="Permalink to this headline">¶</a></h2>
@@ -1455,29 +1507,9 @@ endpoint is only available using IEX Cloud. See
 
 <div class="section" id="stocks-market-volume-examples">
 <span id="id5"></span><h3>Examples<a class="headerlink" href="#stocks-market-volume-examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_volume</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_volume</span>
 
-<span class="gp">In [35]: </span><span class="n">get_market_volume</span><span class="p">()</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXVersionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-35-4f24e3854447&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_market_volume</span><span class="p">()</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/stocks/__init__.py</span> in <span class="ni">get_market_volume</span><span class="nt">(**kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="p">:</span><span class="n">ref</span><span class="p">:</span><span class="sb">`Migrating`</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">116</span><span class="s2">     return MarketVolumeReader(**kwargs).fetch()</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="s2"> </span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/utils/__init__.py</span> in <span class="ni">_wrapped_function</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">     def _wrapped_function(self, *args, **kwargs):</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">         if self.version == &#39;v1&#39;:</span>
-<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">             raise IEXVersionError(&quot;IEX Cloud&quot;)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">         return func(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2">     return _wrapped_function</span>
-
-<span class="ne">IEXVersionError</span>: The requested endpoint is only available using IEX Cloud.
+<span class="n">get_market_volume</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1691,26 +1723,26 @@ trading day. Performance is based on each sector ETF.</p>
 
 <div class="section" id="stocks-sector-examples">
 <span id="id6"></span><h3>Examples<a class="headerlink" href="#stocks-sector-examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_sector_performance</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_sector_performance</span>
 
-<span class="gp">In [37]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-<span class="gh">Out[37]: </span><span class="go"></span>
+<span class="gp">In [35]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="gh">Out[35]: </span><span class="go"></span>
 <span class="go">             Communication Services  Consumer Discretionary  Consumer Staples  \</span>
-<span class="go">lastUpdated           1550264400385           1550264400376     1550264400444   </span>
+<span class="go">lastUpdated           1556222400257           1556222400307     1556222400279   </span>
 <span class="go">name         Communication Services  Consumer Discretionary  Consumer Staples   </span>
-<span class="go">performance                 0.00435                 0.00686           0.00947   </span>
+<span class="go">performance                 0.01124                -0.00523          -0.00633   </span>
 <span class="go">type                         sector                  sector            sector   </span>
 
 <span class="go">                    Energy     Financials    Health Care    Industrials  \</span>
-<span class="go">lastUpdated  1550264400432  1550264400527  1550264400408  1550264400430   </span>
+<span class="go">lastUpdated  1556222400360  1556222400355  1556222400341  1556222400303   </span>
 <span class="go">name                Energy     Financials    Health Care    Industrials   </span>
-<span class="go">performance        0.01614        0.02125        0.01509        0.01339   </span>
+<span class="go">performance       -0.00312        0.00182        0.01032       -0.02012   </span>
 <span class="go">type                sector         sector         sector         sector   </span>
 
 <span class="go">                 Materials    Real Estate     Technology      Utilities  </span>
-<span class="go">lastUpdated  1550264400344  1550264400363  1550264400495  1550264400404  </span>
+<span class="go">lastUpdated  1556222400268  1556222400259  1556222400335  1556222400322  </span>
 <span class="go">name             Materials    Real Estate     Technology      Utilities  </span>
-<span class="go">performance        0.01358        0.00604        0.00796        0.00306  </span>
+<span class="go">performance       -0.01273       -0.00112       -0.00025        0.00415  </span>
 <span class="go">type                sector         sector         sector         sector  </span>
 </pre></div>
 </div>
@@ -1731,7 +1763,7 @@ trading day. Performance is based on each sector ETF.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Splits endpoint data</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -1884,24 +1916,24 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <li>IEX Percent (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_iex_percent</span></code>)</li>
 <li>In Focus (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_in_focus</span></code>)</li>
 </ul>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_gainers</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_gainers</span>
 
-<span class="gp">In [39]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[39]: </span><span class="go"></span>
-<span class="go">{&#39;avgTotalVolume&#39;: 5343,</span>
+<span class="gp">In [37]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[37]: </span><span class="go"></span>
+<span class="go">{&#39;avgTotalVolume&#39;: 12120,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;close&#39;,</span>
-<span class="go"> &#39;change&#39;: 0.76,</span>
-<span class="go"> &#39;changePercent&#39;: 0.0318,</span>
-<span class="go"> &#39;close&#39;: 24.66,</span>
-<span class="go"> &#39;closeTime&#39;: 1550264400254,</span>
-<span class="go"> &#39;companyName&#39;: &#39;Wins Finance Holdings Inc.&#39;,</span>
-<span class="go"> &#39;delayedPrice&#39;: 24.66,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1550264400254,</span>
-<span class="go"> &#39;extendedChange&#39;: -0.86,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: -0.03487,</span>
-<span class="go"> &#39;extendedPrice&#39;: 23.8,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1549981172362,</span>
-<span class="go"> &#39;high&#39;: 24.909,</span>
+<span class="go"> &#39;change&#39;: 0.6373,</span>
+<span class="go"> &#39;changePercent&#39;: 0.04552,</span>
+<span class="go"> &#39;close&#39;: 14.6373,</span>
+<span class="go"> &#39;closeTime&#39;: 1556222400633,</span>
+<span class="go"> &#39;companyName&#39;: &#39;Stealth BioTherapeutics Corp.&#39;,</span>
+<span class="go"> &#39;delayedPrice&#39;: 14.47,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1556222400633,</span>
+<span class="go"> &#39;extendedChange&#39;: -1.6473,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: -0.11254,</span>
+<span class="go"> &#39;extendedPrice&#39;: 12.99,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1554125400056,</span>
+<span class="go"> &#39;high&#39;: 14.637,</span>
 <span class="go"> &#39;iexAskPrice&#39;: 0,</span>
 <span class="go"> &#39;iexAskSize&#39;: 0,</span>
 <span class="go"> &#39;iexBidPrice&#39;: 0,</span>
@@ -1911,23 +1943,23 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go"> &#39;iexRealtimePrice&#39;: 0,</span>
 <span class="go"> &#39;iexRealtimeSize&#39;: 0,</span>
 <span class="go"> &#39;iexVolume&#39;: 0,</span>
-<span class="go"> &#39;latestPrice&#39;: 24.66,</span>
+<span class="go"> &#39;latestPrice&#39;: 14.6373,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;Close&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;February 15, 2019&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1550264400254,</span>
-<span class="go"> &#39;latestVolume&#39;: 4022,</span>
-<span class="go"> &#39;low&#39;: 23.25,</span>
-<span class="go"> &#39;marketCap&#39;: 489196252,</span>
-<span class="go"> &#39;open&#39;: 23.95,</span>
-<span class="go"> &#39;openTime&#39;: 1550243070764,</span>
+<span class="go"> &#39;latestTime&#39;: &#39;April 25, 2019&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1556222400633,</span>
+<span class="go"> &#39;latestVolume&#39;: 2877,</span>
+<span class="go"> &#39;low&#39;: 13.811,</span>
+<span class="go"> &#39;marketCap&#39;: 504131432,</span>
+<span class="go"> &#39;open&#39;: 14,</span>
+<span class="go"> &#39;openTime&#39;: 1556199000768,</span>
 <span class="go"> &#39;peRatio&#39;: None,</span>
-<span class="go"> &#39;previousClose&#39;: 23.9,</span>
-<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Capital Market&#39;,</span>
-<span class="go"> &#39;sector&#39;: &#39;Financial Services&#39;,</span>
-<span class="go"> &#39;symbol&#39;: &#39;WINS&#39;,</span>
-<span class="go"> &#39;week52High&#39;: 165,</span>
-<span class="go"> &#39;week52Low&#39;: 20.98,</span>
-<span class="go"> &#39;ytdChange&#39;: 0.11668424875170211}</span>
+<span class="go"> &#39;previousClose&#39;: 14,</span>
+<span class="go"> &#39;primaryExchange&#39;: &#39;NASDAQ Global Market&#39;,</span>
+<span class="go"> &#39;sector&#39;: &#39;Healthcare&#39;,</span>
+<span class="go"> &#39;symbol&#39;: &#39;MITO&#39;,</span>
+<span class="go"> &#39;week52High&#39;: 20.9899,</span>
+<span class="go"> &#39;week52Low&#39;: 11.11,</span>
+<span class="go"> &#39;ytdChange&#39;: 0.27554521008403354}</span>
 </pre></div>
 </div>
 </div>

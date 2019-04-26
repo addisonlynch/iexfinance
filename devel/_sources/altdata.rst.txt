@@ -25,3 +25,11 @@ Social Sentiment
 ----------------
 
 .. autofunction:: iexfinance.altdata.get_social_sentiment
+
+
+.. _altdata.ceo:
+
+CEO Compensation
+----------------
+
+.. autofunction:: iexfinance.altdata.get_ceo_compensation

@@ -237,7 +237,7 @@
 access is required. Registration can be found <a class="reference external" href="https://iexcloud.io/">here</a>.</p>
 </div>
 <p>An IEX Cloud account is required to acecss the IEX Cloud API.</p>
-<p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_API_KEY</span></code> environment variable.</p>
+<p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
 <div class="section" id="passing-as-an-argument">
 <span id="config-auth-argument"></span><h3>Passing as an Argument<a class="headerlink" href="#passing-as-an-argument" title="Permalink to this headline">¶</a></h3>
 <p>The authentication token can also be passed to any function call:</p>
@@ -258,11 +258,11 @@ access is required. Registration can be found <a class="reference external" href
 <span id="config-auth-env"></span><h3>Environment Variable (Recommended)<a class="headerlink" href="#environment-variable-recommended" title="Permalink to this headline">¶</a></h3>
 <p>The easiest (and recommended) way to authenticate your IEX Cloud account is by
 storing your authentication token (secret key beginning with <code class="docutils literal notranslate"><span class="pre">sk_</span></code>) in the
-<code class="docutils literal notranslate"><span class="pre">IEX_AUTH_TOKEN</span></code> environment variable.</p>
+<code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
 <div class="section" id="macos-linux">
 <span id="config-auth-env-unix"></span><h4>macOS/Linux<a class="headerlink" href="#macos-linux" title="Permalink to this headline">¶</a></h4>
 <p>Type the following command into your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_AUTH_TOKEN</span><span class="o">=</span>&lt;YOUR AUTH TOKEN&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_TOKEN</span><span class="o">=</span>&lt;YOUR AUTH TOKEN&gt;
 </pre></div>
 </div>
 </div>
@@ -286,11 +286,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">         date  iexId  isEnabled                       name symbol type</span>
-<span class="go">0  2019-02-15      2       True  Agilent Technologies Inc.      A   cs</span>
-<span class="go">1  2019-02-15  12042       True          Alcoa Corporation     AA   cs</span>
-<span class="go">2  2019-02-15  14924       True   Perth Mint Physical Gold   AAAU  N/A</span>
-<span class="go">3  2019-02-15   7653       True                Altaba Inc.   AABA   cs</span>
-<span class="go">4  2019-02-15   9169       True          AAC Holdings Inc.    AAC   cs</span>
+<span class="go">0  2019-04-25      2       True  Agilent Technologies Inc.      A   cs</span>
+<span class="go">1  2019-04-25  12042       True          Alcoa Corporation     AA   cs</span>
+<span class="go">2  2019-04-25  14924       True   Perth Mint Physical Gold   AAAU  N/A</span>
+<span class="go">3  2019-04-25   7653       True                Altaba Inc.   AABA   cs</span>
+<span class="go">4  2019-04-25   9169       True          AAC Holdings Inc.    AAC   cs</span>
 </pre></div>
 </div>
 <p>or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
@@ -301,11 +301,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    34696441</span>
+<span class="go">avgTotalVolume    27684733</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change               -0.38</span>
-<span class="go">changePercent     -0.00222</span>
-<span class="go">close               170.42</span>
+<span class="go">change               -1.88</span>
+<span class="go">changePercent     -0.00908</span>
+<span class="go">close               205.28</span>
 </pre></div>
 </div>
 </div>
