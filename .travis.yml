@@ -33,7 +33,7 @@ install:
   - pip install codecov
   - if [[ $DOCBUILD ]]; then
       pip install doctr sphinx sphinx_rtd_theme ipython matplotlib;
-      pip install sphinxcontrib-napoleon requests-cache;
+      pip install sphinxcontrib-napoleon;
     fi
   - python setup.py install
 
