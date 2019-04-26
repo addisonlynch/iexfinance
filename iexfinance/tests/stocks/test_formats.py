@@ -45,12 +45,12 @@ _FIELD_METHODS = [
     ("get_volume", int),
     ("get_market_cap", int),
     ("get_beta", float),
- #   ("get_short_interest", int),  # changed
- #   ("get_short_ratio", float),  # changed
- #   ("get_latest_eps", float),  # changed
+    # ("get_short_interest", int),  # changed
+    # ("get_short_ratio", float),  # changed
+    # ("get_latest_eps", float),  # changed
     ("get_shares_outstanding", int),
     ("get_float", int),
- #   ("get_eps_consensus", float)  # changed
+    # ("get_eps_consensus", float)  # changed
 ]
 
 

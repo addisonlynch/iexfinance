@@ -14,29 +14,35 @@ __all__ = ["use_cloud", "use_legacy", "block_keys", "set_keys",
 
 @pytest.yield_fixture
 def use_cloud(scope='function'):
-    os.environ["IEX_API_VERSION"] = "iexcloud-beta"
+    old = os.getenv("IEX_API_VERSION")
+    os.environ["IEX_API_VERSION"] = 'iexcloud-sandbox'
     yield
-    del os.environ["IEX_API_VERSION"]
+    os.environ["IEX_API_VERSION"] = old
 
 
 @pytest.yield_fixture
 def use_legacy(scope='function'):
+    old = os.getenv("IEX_API_VERSION")
     os.environ["IEX_API_VERSION"] = 'v1'
     yield
-    del os.environ["IEX_API_VERSION"]
+    os.environ["IEX_API_VERSION"] = old
 
 
 @pytest.fixture
 def block_keys(scope='function'):
-    if os.getenv("IEX_TOKEN"):
+    token = os.getenv("IEX_TOKEN")
+    if token:
         del os.environ["IEX_TOKEN"]
+        yield
+        os.environ["IEX_TOKEN"] = token
 
 
 @pytest.yield_fixture
 def set_keys(scope='function'):
+    token = os.getenv("IEX_TOKEN")
     os.environ["IEX_TOKEN"] = "TESTKEY"
     yield
-    del os.environ["IEX_TOKEN"]
+    os.environ["IEX_TOKEN"] = token
 
 
 ###################
