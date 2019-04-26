@@ -98,7 +98,7 @@ class TestShareDefault(object):
                 abs(data["ytdChange"]))
 
     def test_get_splits_params(self):
-        afl = Stock("AFL")
+        afl = Stock("AAPL")
         data = afl.get_splits(range="1m")
         data2 = afl.get_splits(range="5y")
         assert len(data2) > len(data)

@@ -37,13 +37,20 @@ _FIELD_METHODS = [
     ("get_company_name", str),
     ("get_primary_exchange", str),
     ("get_sector", str),
-    ("get_open", dict),
-    ("get_close", dict),
+    ("get_open", float),
+    ("get_close", float),
     ("get_years_high", float),
-    ("get_years_low", float),
+    ("get_years_low", (float, int)),
     ("get_ytd_change", float),
     ("get_volume", int),
-    ("get_market_cap", int)
+    ("get_market_cap", int),
+    ("get_beta", float),
+ #   ("get_short_interest", int),  # changed
+ #   ("get_short_ratio", float),  # changed
+ #   ("get_latest_eps", float),  # changed
+    ("get_shares_outstanding", int),
+    ("get_float", int),
+ #   ("get_eps_consensus", float)  # changed
 ]
 
 

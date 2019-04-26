@@ -29,7 +29,7 @@ class TestAltData(object):
         assert len(data) == 44
 
         assert data["symbol"] == "BTCUSDT"
-        assert data["primaryExchange"] == "crypto"
+        assert len(data["primaryExchange"]) == 6
 
     def test_crypto_quote_pandas(self):
         data = get_crypto_quote("BTCUSDT", output_format='pandas')
