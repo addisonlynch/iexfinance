@@ -20,6 +20,9 @@ New Endpoints
 
 * /fund-ownership (``get_fund_ownership``)
 * /institutional-ownership (``get_institutional_ownership``)
+* /insider-roster (``get_insider_roster``)
+* /insider-summary (``get_insider_summary``)
+* /insider-transactions (``get_insider_transactions``)
 
 **Alternative Data**
 

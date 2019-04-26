@@ -72,6 +72,9 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Fund Ownership<stocks.fund_ownership>`
 - :ref:`Historical Prices<stocks.historical_prices>` - ``get_historical_data`` and ``get_historical_intraday``
 - :ref:`Income Statement<stocks.income_statement>`
+- :ref:`Insider Roster<stocks.insider_roster>`
+- :ref:`Insider Summary<stocks.insider_summary>`
+- :ref:`Insider Transactions<stocks.insider_transactions>`
 - :ref:`Institutional Ownership<stocks.institutional_ownership>`
 - :ref:`IPO Calendar<stocks.ipo_calendar>`
 - :ref:`Key Stats<stocks.key_stats>`
@@ -404,6 +407,30 @@ Income Statement
 ----------------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_income_statement
+
+
+.. _stocks.insider_roster:
+
+Insider Roster
+--------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_roster
+
+.. _stocks.insider_summary:
+
+Insider Summary
+---------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_summary
+
+
+.. _stocks.insider_transactions:
+
+Insider Transactions
+--------------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_transactions
+
 
 .. _stocks.institutional_ownership:
 

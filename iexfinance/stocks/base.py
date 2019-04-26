@@ -537,6 +537,72 @@ class Stock(_IEXBase):
         return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p,
                                   params=kwargs)
 
+    def get_insider_roster(self):
+        """Insider Roster
+
+        Returns the top 10 insiders, with the most recent information.
+
+        Reference: https://iexcloud.io/docs/api/#insider-roster
+
+        Data Weighting: ``5000`` per symbol
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Insider Roster Endpoint data
+        """
+        def fmt_p(out):
+            out = {(symbol, owner["entityName"]): owner
+                   for symbol in out
+                   for owner in out[symbol]}
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-roster", fmt_p=fmt_p)
+
+    def get_insider_summary(self):
+        """Insider Summary
+
+        Returns aggregated insiders summary data for the last 6 months.
+
+        Reference: https://iexcloud.io/docs/api/#insider-summary
+
+        Data Weighting: ``5000`` per symbol
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Insider Summary Endpoint data
+        """
+        def fmt_p(out):
+            out = {(symbol, owner["fullName"]): owner
+                   for symbol in out
+                   for owner in out[symbol]}
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-summary", fmt_p=fmt_p)
+
+    def get_insider_transactions(self):
+        """Insider Transactions
+
+        Returns insider transactions.
+
+        Reference: https://iexcloud.io/docs/api/#insider-transactions
+
+        Data Weighting: ``50`` per transaction
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Insider Transactions Endpoint data
+        """
+        def fmt_p(out):
+            out = {(symbol, owner["fullName"]): owner
+                   for symbol in out
+                   for owner in out[symbol]}
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-transactions", fmt_p=fmt_p)
+
     def get_institutional_ownership(self):
         """Institutional Ownership
 
