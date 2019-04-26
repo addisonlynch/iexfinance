@@ -31,11 +31,13 @@ Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 - Real-time and delayed quotes
 - Historical data (daily and minutely)
 - Financial statements (Balance Sheet, Income Statement, Cash Flow)
+- Institutional and Fund ownership
 - Analyst estimates, Price targets
 - Corporate actions (Dividends, Splits)
 - Sector performance
 - Market analysis (gainers, losers, volume, etc.)
 - IEX market data & statistics (IEX supported/listed symbols, volume, etc)
+- Social Sentiment and CEO Compensation
 
 Example
 -------
@@ -330,6 +332,19 @@ CEO Compensation
     from iexfinance.altdata import get_ceo_compensation
     get_ceo_compensation("AAPL")
 
+Fund and Institutional Ownership
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+    aapl = Stock("AAPL")
+
+    # Fund ownership
+    aapl.get_fund_ownership()
+
+    # Institutional ownership
+    aapl.get_institutional_ownership()
 
 Reference Data
 ~~~~~~~~~~~~~~

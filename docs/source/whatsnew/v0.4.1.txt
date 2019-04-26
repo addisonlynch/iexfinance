@@ -16,6 +16,11 @@ Highlights:
 New Endpoints
 ~~~~~~~~~~~~~
 
+**Stocks**
+
+* /fund-ownership (``get_fund_ownership``)
+* /institutional-ownership (``get_institutional_ownership``)
+
 **Alternative Data**
 
 * /ceo-compensation (``iexfinance.altdata.get_ceo_compensation``)

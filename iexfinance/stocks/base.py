@@ -415,6 +415,31 @@ class Stock(_IEXBase):
         return self._get_endpoint("financials", fmt_j=fmt,
                                   fmt_p=fmt_p, params=kwargs)
 
+    def get_fund_ownership(self, **kwargs):
+        """Fund Ownership
+
+        Returns the top 10 fund holders, meaning any firm not defined as
+        buy-side or sell-side such as mutual funds, pension funds, endowments,
+        investment firms, and other large entities that manage funds on behalf
+        of others.
+
+        Reference: https://iexcloud.io/docs/api/#fund-ownership
+
+        Data Weighting: ``10000`` per symbol per period
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Fund Ownership endpoint data
+        """
+        def fmt_p(out):
+            out = {(symbol, owner["entityProperName"]): owner
+                   for symbol in out
+                   for owner in out[symbol]}
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("fund-ownership", fmt_p=fmt_p, params=kwargs)
+
     def get_historical_prices(self, **kwargs):
         """Historical Prices
 
@@ -453,6 +478,7 @@ class Stock(_IEXBase):
         chartIEXOnly: boolean, default False, optional
             Only for ``1d``. Limits the return of intraday prices to IEX only
             data
+
         Returns
         -------
         list or pandas DataFrame
@@ -496,7 +522,7 @@ class Stock(_IEXBase):
 
         Returns
         -------
-        list or pandas DataFrame
+        list or pandas.DataFrame
             Stocks Income Statement endpoint data
         """
         def fmt(out):
@@ -510,6 +536,29 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p,
                                   params=kwargs)
+
+    def get_institutional_ownership(self):
+        """Institutional Ownership
+
+        Returns the top 10 institutional holders, defined as buy-side or
+        sell-side firms.
+
+        Reference: https://iexcloud.io/docs/api/#institutional-ownership
+
+        Data Weighting: ``10000`` per symbol per period
+
+        Returns
+        -------
+        list or pandas.DataFrame
+            Stocks Institutional Ownership endpoint data
+        """
+        def fmt_p(out):
+            out = {(symbol, owner["entityProperName"]): owner
+                   for symbol in out
+                   for owner in out[symbol]}
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("institutional-ownership", fmt_p=fmt_p)
 
     def get_key_stats(self, **kwargs):
         """
