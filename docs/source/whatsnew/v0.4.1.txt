@@ -13,6 +13,14 @@ Highlights:
 .. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 
 
+New Endpoints
+~~~~~~~~~~~~~
+
+**Alternative Data**
+
+* /ceo-compensation (``iexfinance.altdata.get_ceo_compensation``)
+
+
 Enhancements
 ~~~~~~~~~~~~
 

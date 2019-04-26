@@ -319,7 +319,16 @@ Social Sentiment
 .. code-block:: python
 
     from iexfinance.altdata import get_social_sentiment
-    get_social_sentiment()
+    get_social_sentiment("AAPL")
+
+
+CEO Compensation
+^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    from iexfinance.altdata import get_ceo_compensation
+    get_ceo_compensation("AAPL")
 
 
 Reference Data
