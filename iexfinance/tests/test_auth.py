@@ -1,7 +1,6 @@
 import pytest
 
 from iexfinance.base import _IEXBase
-from iexfinance.refdata import get_iex_listed_symbol_dir
 from iexfinance.stocks import Stock
 from iexfinance.utils.exceptions import (IEXAuthenticationError)
 
@@ -26,10 +25,3 @@ class TestAuth(object):
         with pytest.raises(IEXAuthenticationError):
             a = Stock("AAPL")
             a.get_quote()
-
-    @pytest.mark.legacy
-    def test_v1_requires_no_key(self, use_legacy):
-        a = get_iex_listed_symbol_dir()
-
-        assert isinstance(a, list)
-        assert len(a) > 1

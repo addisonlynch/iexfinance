@@ -12,7 +12,6 @@ def valid_date():
     return datetime.datetime.today()
 
 
-@pytest.mark.cloud
 class TestAltData(object):
 
     def test_crypto_quote_no_sym(self):
@@ -39,7 +38,6 @@ class TestAltData(object):
         assert len(data) == 44
 
 
-@pytest.mark.cloud
 class TestSocialSentiment(object):
     """
     Partially-implemented tests for social sentiment. Unstable endpoint, will
@@ -66,7 +64,6 @@ class TestSocialSentiment(object):
         assert isinstance(data, dict)
 
 
-@pytest.mark.cloud
 class TestCEOCompensation(object):
 
     def test_ceo_compensation_json(self):

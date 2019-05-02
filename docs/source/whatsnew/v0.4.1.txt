@@ -9,6 +9,7 @@ This is a minor release from 0.4.0.
 Highlights:
 
 - Adds support for IEX Cloud sandbox environment (GH116_)
+- Testing support for all legacy Version 1.0 endpoints has ended
 
 .. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 
@@ -29,6 +30,12 @@ New Endpoints
 * /ceo-compensation (``iexfinance.altdata.get_ceo_compensation``)
 
 
+Backward Compatiblity
+~~~~~~~~~~~~~~~~~~~~~
+
+* ``Stock`` :ref:`Field/Additional methods <stocks.additional_methods>` will be are no longer supported by the v1 Deveoper API. These methods are retained in IEX Cloud
+
+
 Enhancements
 ~~~~~~~~~~~~
 
@@ -46,3 +53,9 @@ Bug Fixes
 - Repair ``DataFrame`` output formatting for a number of ``Stock`` methods (GH119_)
 
 .. _GH119: https://github.com/addisonlynch/iexfinance/issues/119
+
+
+Testing
+~~~~~~~
+
+- Testing support all legacy Version 1 endpoints has ended. These endpoints will be deprecated in 0.4.2
