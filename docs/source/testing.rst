@@ -7,6 +7,8 @@ Testing
 Unit and integration tests for iexfinance are handled by the
 `pytest <https://docs.pytest.org/en/latest>`__ platform.
 
+.. warning:: Use of the :ref:`Sandbox Environment<testing.sandbox>` is **required** when running the test suite.
+
 .. _testing.dependencies:
 
 Testing & Documentation Dependencies
@@ -61,7 +63,7 @@ on 127.0.0.1:8000.
 Test Weighting
 --------------
 
-Most tests which have a data weighting of over ``1000`` total are marked
+Many tests which have a data weighting of over ``1000`` total are marked
 ``highweight``.
 
 
