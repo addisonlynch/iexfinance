@@ -57,8 +57,8 @@ def no_pandas(out):
 def cloud_endpoint(func):
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
-        if self.version == 'v1':
-            raise IEXVersionError("IEX Cloud")
+        if self.version not in ('iexcloud-beta', 'iexcloud-sandbox'):
+            raise IEXVersionError(self.version)
         return func(self, *args, **kwargs)
     return _wrapped_function
 

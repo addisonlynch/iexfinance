@@ -38,7 +38,7 @@ Authentication
 
 An IEX Cloud account is required to acecss the IEX Cloud API.
 
-Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` :ref:`object <stocks.stock_object>` It can also be stored in the ``IEX_API_KEY`` environment variable.
+Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` :ref:`object <stocks.stock_object>` It can also be stored in the ``IEX_TOKEN`` environment variable.
 
 .. _config.auth.argument:
 
@@ -72,7 +72,7 @@ Environment Variable (Recommended)
 
 The easiest (and recommended) way to authenticate your IEX Cloud account is by
 storing your authentication token (secret key beginning with ``sk_``) in the
-``IEX_AUTH_TOKEN`` environment variable.
+``IEX_TOKEN`` environment variable.
 
 .. _config.auth.env.unix:
 
@@ -83,7 +83,7 @@ Type the following command into your terminal:
 
 .. code-block:: bash
 
-    $ export IEX_AUTH_TOKEN=<YOUR AUTH TOKEN>
+    $ export IEX_TOKEN=<YOUR AUTH TOKEN>
 
 .. _config.auth.env.windows:
 

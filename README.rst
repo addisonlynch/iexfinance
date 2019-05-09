@@ -31,11 +31,13 @@ Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 - Real-time and delayed quotes
 - Historical data (daily and minutely)
 - Financial statements (Balance Sheet, Income Statement, Cash Flow)
+- Institutional and Fund ownership
 - Analyst estimates, Price targets
 - Corporate actions (Dividends, Splits)
 - Sector performance
 - Market analysis (gainers, losers, volume, etc.)
 - IEX market data & statistics (IEX supported/listed symbols, volume, etc)
+- Social Sentiment and CEO Compensation
 
 Example
 -------
@@ -68,8 +70,40 @@ From development repository (dev version):
      $ python3 setup.py install
 
 
-Basics
-------
+
+Authentication
+--------------
+
+An IEX Cloud account is required to acecss the IEX Cloud API. Various `plans <https://iexcloud.io/pricing/>`__
+are availalbe, free, paid, and pay-as-you-go.
+
+Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` object.
+The easiest way to store a token is in the ``IEX_TOKEN`` environment variable.
+
+Passing as an Argument
+~~~~~~~~~~~~~~~~~~~~~~
+
+The authentication token can also be passed to any function call:
+
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_symbols
+
+    get_symbols(output_format='pandas', token="<YOUR AUTH TOKEN>")
+
+or at the instantiation of a ``Stock`` object:
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    a = Stock("AAPL", token="<YOUR AUTH TOKEN>")
+    a.get_quote()
+
+
+How This Package is Structured
+------------------------------
 
 ``iexfinance`` is designed to mirror the structure of the IEX Cloud API. The
 following IEX Cloud endpoint groups are mapped to their respective
@@ -287,8 +321,30 @@ Social Sentiment
 .. code-block:: python
 
     from iexfinance.altdata import get_social_sentiment
-    get_social_sentiment()
+    get_social_sentiment("AAPL")
 
+
+CEO Compensation
+^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    from iexfinance.altdata import get_ceo_compensation
+    get_ceo_compensation("AAPL")
+
+Fund and Institutional Ownership
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+    aapl = Stock("AAPL")
+
+    # Fund ownership
+    aapl.get_fund_ownership()
+
+    # Institutional ownership
+    aapl.get_institutional_ownership()
 
 Reference Data
 ~~~~~~~~~~~~~~

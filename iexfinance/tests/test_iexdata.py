@@ -135,6 +135,7 @@ class TestStats(object):
         assert isinstance(df, DataFrame)
 
 
+@pytest.mark.xfail(reason="Endpoint in development by provider.")
 class TestStatsDaily(object):
 
     def test_daily_last_json(self):
@@ -188,6 +189,7 @@ class TestStatsSummary(object):
         assert isinstance(ls, list)
         assert len(ls) == 1
 
+    @pytest.mark.skip
     def test_summary_pandas(self):
         df = get_stats_summary(start=datetime(2017, 1, 1),
                                end=datetime(2017, 3, 1),

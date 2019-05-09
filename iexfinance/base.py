@@ -39,11 +39,13 @@ class _IEXBase(object):
     _URLS = {
         "v1": "https://api.iextrading.com/1.0/",
         "iexcloud-beta": "https://cloud.iexapis.com/beta/",
-        "iexcloud-v1": "https://cloud.iexapis.com/v1/"
+        "iexcloud-v1": "https://cloud.iexapis.com/v1/",
+        "iexcloud-sandbox": "https://sandbox.iexapis.com/beta/"
     }
 
     _VALID_FORMATS = ('json', 'pandas')
-    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1")
+    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1",
+                             "iexcloud-sandbox")
 
     def __init__(self, **kwargs):
 

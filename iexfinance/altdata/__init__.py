@@ -1,4 +1,5 @@
-from iexfinance.altdata.base import CloudCrypto, SocialSentiment
+from iexfinance.altdata.base import (CloudCrypto, SocialSentiment,
+                                     CEOCompensation)
 
 
 def get_crypto_quote(symbol, **kwargs):
@@ -47,3 +48,21 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     warnings.warn("UNSTABLE ENDPOINT: Not yet fully implemented by the "
                   "provider.")
     return SocialSentiment(symbol, period_type, date, **kwargs).fetch()
+
+
+def get_ceo_compensation(symbol, **kwargs):
+    """
+    CEO Compensation
+
+    This endpoint provides CEO compensation for a company by symbol
+
+    Reference: https://iexcloud.io/docs/api/#ceo-compensation
+
+    Data Weighting: ``20`` per symbol
+
+    Parameters
+    ----------
+    symbol: str
+        A single symbol for retrieval
+    """
+    return CEOCompensation(symbol, **kwargs).fetch()

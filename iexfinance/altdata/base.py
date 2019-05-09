@@ -1,3 +1,5 @@
+import pandas as pd
+
 from iexfinance.base import _IEXBase
 from iexfinance.utils import cloud_endpoint
 
@@ -49,3 +51,23 @@ class SocialSentiment(_IEXBase):
     @cloud_endpoint
     def fetch(self):
         return super(SocialSentiment, self).fetch()
+
+
+class CEOCompensation(_IEXBase):
+
+    def __init__(self, symbol, **kwargs):
+        self.symbol = symbol
+        super(CEOCompensation, self).__init__(**kwargs)
+
+    @property
+    def url(self):
+        return "/stock/%s/ceo-compensation" % self.symbol
+
+    @cloud_endpoint
+    def fetch(self):
+        return super(CEOCompensation, self).fetch()
+
+    def _convert_output(self, out):
+        if "symbol" in out:
+            return pd.DataFrame({out["symbol"]: out})
+        return pd.DataFrame()

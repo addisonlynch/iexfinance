@@ -2,7 +2,8 @@ import datetime
 import pandas as pd
 import pytest
 
-from iexfinance.altdata import get_crypto_quote, get_social_sentiment
+from iexfinance.altdata import (get_crypto_quote, get_social_sentiment,
+                                get_ceo_compensation)
 from iexfinance.altdata.base import SocialSentiment
 
 
@@ -29,7 +30,7 @@ class TestAltData(object):
         assert len(data) == 44
 
         assert data["symbol"] == "BTCUSDT"
-        assert data["primaryExchange"] == "crypto"
+        assert len(data["primaryExchange"]) == 6
 
     def test_crypto_quote_pandas(self):
         data = get_crypto_quote("BTCUSDT", output_format='pandas')
@@ -63,3 +64,19 @@ class TestSocialSentiment(object):
         data = get_social_sentiment("AAPL")
 
         assert isinstance(data, dict)
+
+
+@pytest.mark.cloud
+class TestCEOCompensation(object):
+
+    def test_ceo_compensation_json(self):
+        data = get_ceo_compensation("AAPL")
+
+        assert isinstance(data, dict)
+        assert data["symbol"] == "AAPL"
+
+    def test_ceo_compensation_pandas(self):
+        data = get_ceo_compensation("AAPL", output_format='pandas')
+
+        assert isinstance(data, pd.DataFrame)
+        assert "AAPL" in data

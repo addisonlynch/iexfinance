@@ -8,8 +8,8 @@ def get_tops(symbols=None, **kwargs):
     """
     TOPS data for a symbol or list of symbols.
 
-    TOPS provides IEX’s aggregated best quoted bid and offer position in near
-    real time for all securities on IEX’s displayed limit order book. TOPS is
+    TOPS provides IEX's aggregated best quoted bid and offer position in near
+    real time for all securities on IEX's displayed limit order book. TOPS is
     ideal for developers needing both quote and trade data.
 
     Reference: https://iexcloud.io/docs/api/#tops
@@ -82,7 +82,7 @@ def get_deep_book(symbols=None, **kwargs):
     """
     Book data for a symbol or list of symbols
 
-    Book shows IEX’s bids and asks for given symbols.
+    Book shows IEX's bids and asks for given symbols.
 
     Reference: https://iexcloud.io/docs/api/#deep-book
     Data Weighting: ``Free``

@@ -1,0 +1,48 @@
+.. _whatsnew_041:
+
+
+v0.4.1 (TBD)
+-----------------------
+
+This is a minor release from 0.4.0.
+
+Highlights:
+
+- Adds support for IEX Cloud sandbox environment (GH116_)
+
+.. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
+
+
+New Endpoints
+~~~~~~~~~~~~~
+
+**Stocks**
+
+* /fund-ownership (``get_fund_ownership``)
+* /institutional-ownership (``get_institutional_ownership``)
+* /insider-roster (``get_insider_roster``)
+* /insider-summary (``get_insider_summary``)
+* /insider-transactions (``get_insider_transactions``)
+
+**Alternative Data**
+
+* /ceo-compensation (``iexfinance.altdata.get_ceo_compensation``)
+
+
+Enhancements
+~~~~~~~~~~~~
+
+- Adds support for the IEX Cloud sandbox environment. Specify  ``iexcloud-sandbox`` as ``IEX_API_VERSION`` for use with test secret token (GH116_)
+- Refactored test suite to reduce code bloat and consolidate output
+  formatting
+
+
+.. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
+
+
+Bug Fixes
+~~~~~~~~~
+
+- Repair ``DataFrame`` output formatting for a number of ``Stock`` methods (GH119_)
+
+.. _GH119: https://github.com/addisonlynch/iexfinance/issues/119

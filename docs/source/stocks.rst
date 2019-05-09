@@ -69,8 +69,17 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Effective Spread<stocks.effective_spread>`
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
+- :ref:`Fund Ownership<stocks.fund_ownership>`
 - :ref:`Historical Prices<stocks.historical_prices>` - ``get_historical_data`` and ``get_historical_intraday``
+- :ref:`Income Statement<stocks.income_statement>`
+- :ref:`Insider Roster<stocks.insider_roster>`
+- :ref:`Insider Summary<stocks.insider_summary>`
+- :ref:`Insider Transactions<stocks.insider_transactions>`
+- :ref:`Institutional Ownership<stocks.institutional_ownership>`
+- :ref:`IPO Calendar<stocks.ipo_calendar>`
 - :ref:`Key Stats<stocks.key_stats>`
+- :ref:`Largest Trades<stocks.largest_trades>`
+- :ref:`List<stocks.list>`
 - :ref:`Logo<stocks.logo>`
 - :ref:`Market Volume<stocks.market_volume>` - ``get_market_volume``
 - :ref:`News<stocks.news>`
@@ -80,9 +89,9 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Previous Day Prices<stocks.previous_day_prices>`
 - :ref:`Price<stocks.price>`
 - :ref:`Price Target<stocks.price_target>`
-- :ref:`Sector Performance<stocks.sector>` - ``get_sector_performance``
 - :ref:`Quote<stocks.quote>`
 - :ref:`Relevant Stocks<stocks.relevant_stocks>`
+- :ref:`Sector Performance<stocks.sector>` - ``get_sector_performance``
 - :ref:`Splits<stocks.splits>`
 - :ref:`Time Series<stocks.time_series>`
 - :ref:`Volume by Venue<stocks.volume_by_venue>`
@@ -317,6 +326,12 @@ Financials
 ----------
 .. automethod:: iexfinance.stocks.base.Stock.get_financials
 
+.. _stocks.fund_ownership:
+
+Fund Ownership
+--------------
+
+.. automethod:: iexfinance.stocks.base.Stock.get_fund_ownership
 
 .. _stocks.historical:
 
@@ -393,6 +408,38 @@ Income Statement
 
 .. automethod:: iexfinance.stocks.base.Stock.get_income_statement
 
+
+.. _stocks.insider_roster:
+
+Insider Roster
+--------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_roster
+
+.. _stocks.insider_summary:
+
+Insider Summary
+---------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_summary
+
+
+.. _stocks.insider_transactions:
+
+Insider Transactions
+--------------------
+
+.. automethod:: iexfinance.stocks.base.Stoc.get_insider_transactions
+
+
+.. _stocks.institutional_ownership:
+
+Institutional Ownership
+-----------------------
+
+.. automethod:: iexfinance.stocks.base.Stock.get_institutional_ownership
+
+
 .. _stocks.ipo_calendar:
 
 IPO Calendar
@@ -428,18 +475,18 @@ Key Stats
 .. automethod:: iexfinance.stocks.base.Stock.get_key_stats
 
 
-.. _stocks.list:
-
-List
-----
-.. seealso:: :ref:`Market Movers<stocks.movers>`
-
-
 .. _stocks.largest_trades:
 
 Largest Trades
 --------------
 .. automethod:: iexfinance.stocks.base.Stock.get_largest_trades
+
+
+.. _stocks.list:
+
+List
+----
+.. seealso:: :ref:`Market Movers<stocks.movers>`
 
 
 .. _stocks.logo:
