@@ -42,6 +42,7 @@ setup(
     description="Python module to get stock data from IEX Cloud and "
                 "IEX API 1.0",
     long_description=long_description,
+    long_description_content_type="text/x-rst",
 
     # The project URL.
     url='https://github.com/addisonlynch/iexfinance',
