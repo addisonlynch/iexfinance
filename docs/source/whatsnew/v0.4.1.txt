@@ -44,5 +44,6 @@ Bug Fixes
 ~~~~~~~~~
 
 - Repair ``DataFrame`` output formatting for a number of ``Stock`` methods (GH119_)
+- Fix project description for PyPi
 
 .. _GH119: https://github.com/addisonlynch/iexfinance/issues/119
