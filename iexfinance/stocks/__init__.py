@@ -8,7 +8,7 @@ from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
 from iexfinance.utils import _sanitize_dates
-
+from iexfinance.utils.exceptions import ImmediateDeprecationError
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
@@ -130,10 +130,7 @@ def get_todays_earnings(**kwargs):
     """
     DEPRECATED: renamed ``get_earnings_today``
     """
-    import warnings
-    warnings.warn("get_today_earnings has been renamed get_earnings_today and "
-                  "will be deprecated in v0.4.1")
-    return EarningsReader(**kwargs).fetch()
+    raise ImmediateDeprecationError("get_todays_earnings")
 
 
 def get_earnings_today(**kwargs):

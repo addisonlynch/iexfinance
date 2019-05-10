@@ -2,7 +2,7 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
-from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
+from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError, ImmediateDeprecationError
 from iexfinance.utils import legacy_endpoint
 
 
@@ -735,10 +735,7 @@ class Stock(_IEXBase):
         """
         DEPRECATED: Renamed ``get_previous_day_prices``
         """
-        import warnings
-        warnings.warn("get_previous has been renamed get_previous_day_prices "
-                      "and will be deprecated in v0.4.1")
-        return self._get_endpoint("previous", params=kwargs)
+        raise ImmediateDeprecationError("get_previous")
 
     def get_previous_day_prices(self, **kwargs):
         """Previous Day Prices
@@ -817,10 +814,7 @@ class Stock(_IEXBase):
         """
         DEPRECATED: Renamed ``get_relevant_stocks``
         """
-        import warnings
-        warnings.warn("get_relevant has been renamed get_relevant_stocks "
-                      "and will be deprecated in v0.4.1")
-        return self._get_endpoint("relevant", params=kwargs)
+        raise ImmediateDeprecationError("get_relevant")
 
     def get_relevant_stocks(self, **kwargs):
         """Relevant Stocks
