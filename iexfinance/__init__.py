@@ -1,13 +1,4 @@
-from iexfinance import stocks
-from iexfinance.base import _IEXBase
-from iexfinance.iexdata.base import TOPS, Last, DEEP, Book
-from iexfinance.iexdata.base import (IntradayReader, RecentReader,
-                                     RecordsReader, DailySummaryReader,
-                                     MonthlySummaryReader)
-from iexfinance.refdata.base import (CorporateActions, Dividends, NextDay,
-                                     ListedSymbolDir)
-from iexfinance.utils import _sanitize_dates
-from iexfinance.utils.exceptions import IEXQueryError, ImmediateDeprecationError
+from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 __author__ = 'Addison Lynch'
 __version__ = '0.4.0'
