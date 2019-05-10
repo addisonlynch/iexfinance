@@ -42,6 +42,8 @@ Enhancements
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The following functions have been moved to the following locations:
+
 - Deprecations:
     - ``get_market_gainers`` → ``iexfinance.stocks.get_market_gainers``
     - ``get_market_losers`` → ``iexfinance.stocks.get_market_losers``
