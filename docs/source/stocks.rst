@@ -589,7 +589,7 @@ Quote
 Relevant Stocks
 ---------------
 
-.. automethod:: iexfinance.stocks.base.Stock._stocks
+.. automethod:: iexfinance.stocks.base.Stock.get_relevant_stocks
 
 .. _stocks.sector:
 
