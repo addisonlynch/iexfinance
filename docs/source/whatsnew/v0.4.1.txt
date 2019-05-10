@@ -64,6 +64,9 @@ The following functions have been moved to the following locations:
     - ``get_stats_records`` → ``iexfinance.iexdata.get_stats_records``
     - ``get_stats_daily`` → ``iexfinance.iexdata.get_stats_daily``
     - ``get_stats_summary`` → ``iexfinance.iexdata.get_stats_summary``
+    - ``stocks.get_today_earnings`` → ``stocks.get_earnings_today``
+    - ``stocks.Stock.get_previous`` → ``stocks.Stock.get_previous_day_prices``
+    - ``stocks.Stock.get_relevant`` → ``stocks.Stock.get_relevant_stocks``
 
 
 Bug Fixes
