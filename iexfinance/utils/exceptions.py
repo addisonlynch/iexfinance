@@ -75,4 +75,8 @@ DEP_ERROR_MSG = """
 
 
 class ImmediateDeprecationError(Exception):
-    pass
+    def __init__(self, name):
+        self.name = name
+    
+    def __str__(self):
+        return DEP_ERROR_MSG % self.name
