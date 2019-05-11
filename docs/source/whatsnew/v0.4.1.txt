@@ -39,10 +39,40 @@ Enhancements
 
 .. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 
+Backwards Incompatible Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following functions have been moved to the following locations:
+
+- Deprecations:
+    - ``get_market_gainers`` → ``iexfinance.stocks.get_market_gainers``
+    - ``get_market_losers`` → ``iexfinance.stocks.get_market_losers``
+    - ``get_market_most_active`` → ``iexfinance.stocks.get_market_most_active``
+    - ``get_market_iex_volume`` → ``iexfinance.stocks.get_market_iex_volume``
+    - ``get_market_iex_percent`` → ``iexfinance.stocks.get_market_iex_percent``
+    - ``get_symbols`` → ``iexfinance.refdata.get_symbols``
+    - ``get_iex_corporate_actions`` → ``iexfinance.refdata.get_iex_corporate_actions``
+    - ``get_iex_dividends`` → ``iexfinance.refdata.get_iex_dividends``
+    - ``get_iex_next_day_ex_date`` → ``iexfinance.refdata.get_iex_next_day_ex_date``
+    - ``get_listed_symbol_dir`` → ``iexfinance.refdata.get_listed_symbol_dir``
+    - ``get_tops`` → ``iexfinance.iexdata.get_tops``
+    - ``get_last`` → ``iexfinance.iexdata.get_last``
+    - ``get_deep`` → ``iexfinance.iexdata.get_deep``
+    - ``get_deep_book`` → ``iexfinance.iexdata.get_deep_book``
+    - ``get_stats_intraday`` → ``iexfinance.iexdata.get_stats_intraday``
+    - ``get_stats_recent`` → ``iexfinance.iexdata.get_stats_recent``
+    - ``get_stats_records`` → ``iexfinance.iexdata.get_stats_records``
+    - ``get_stats_daily`` → ``iexfinance.iexdata.get_stats_daily``
+    - ``get_stats_summary`` → ``iexfinance.iexdata.get_stats_summary``
+    - ``stocks.get_today_earnings`` → ``stocks.get_earnings_today``
+    - ``stocks.Stock.get_previous`` → ``stocks.Stock.get_previous_day_prices``
+    - ``stocks.Stock.get_relevant`` → ``stocks.Stock.get_relevant_stocks``
+
 
 Bug Fixes
 ~~~~~~~~~
 
 - Repair ``DataFrame`` output formatting for a number of ``Stock`` methods (GH119_)
+- Fix project description for PyPi
 
 .. _GH119: https://github.com/addisonlynch/iexfinance/issues/119

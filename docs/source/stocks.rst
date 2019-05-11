@@ -555,7 +555,10 @@ Peers
 Previous Day Prices
 -------------------
 
-.. automethod:: iexfinance.stocks.base.Stock.get_previous
+.. warning:: ``get_previous`` has been deprecated and renamed 
+            ``get_previous_day_prices``.
+
+.. automethod:: iexfinance.stocks.base.Stock.get_previous_day_prices
 
 
 .. _stocks.price:
@@ -586,7 +589,7 @@ Quote
 Relevant Stocks
 ---------------
 
-.. automethod:: iexfinance.stocks.base.Stock.get_relevant
+.. automethod:: iexfinance.stocks.base.Stock.get_relevant_stocks
 
 .. _stocks.sector:
 

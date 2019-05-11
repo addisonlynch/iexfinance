@@ -2,6 +2,7 @@ class IEXSymbolError(Exception):
     """
     This error is thrown when an invalid symbol is given.
     """
+
     def __init__(self, symbol):
         self.symbol = symbol
 
@@ -14,6 +15,7 @@ class IEXEndpointError(Exception):
     This error is thrown when an invalid endpoint is specified in the custom
     endpoint lookup method
     """
+
     def __init__(self, endpoint):
         self.endpoint = endpoint
 
@@ -26,6 +28,7 @@ class IEXFieldError(Exception):
     This error is thrown when an invalid field is specified in the custom
     endpoint lookup method
     """
+
     def __init__(self, endpoint, field):
         self.field = field
         self.endpoint = endpoint
@@ -40,6 +43,7 @@ class IEXQueryError(Exception):
     This error is thrown when an error occurs with the query to IEX, be it a
     network problem or an invalid query.
     """
+
     def __str__(self):
         return "An error occurred while making the query."
 
@@ -49,6 +53,7 @@ class IEXAuthenticationError(Exception):
     This error is thrown when there is an authentication issue with an IEX
     cloud request.
     """
+
     def __init__(self, msg):
         self.msg = msg
 
@@ -61,6 +66,7 @@ class IEXVersionError(Exception):
     This error is thrown when an attempt is made to access an IEX Cloud
     endpoint when API version 1 (v1) has been selected for use.
     """
+
     def __init__(self, version):
         self.version = version
 
@@ -75,4 +81,8 @@ DEP_ERROR_MSG = """
 
 
 class ImmediateDeprecationError(Exception):
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return DEP_ERROR_MSG % self.name
