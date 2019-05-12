@@ -75,9 +75,7 @@ class IEXVersionError(Exception):
         return msg % self.version
 
 
-DEP_ERROR_MSG = """
-%s has been immediately deprecated.
-"""
+DEP_ERROR_MSG = "%s has been immediately deprecated."
 
 
 class ImmediateDeprecationError(Exception):
