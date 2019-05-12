@@ -31,30 +31,6 @@ New Endpoints
 
 * /ceo-compensation (``iexfinance.altdata.get_ceo_compensation``)
 
-
-Backward Compatiblity
-~~~~~~~~~~~~~~~~~~~~~
-
-
-* ``iexcloud-v1`` is now the default ``IEX_API_VERSION``, as ``v1`` support
-will end on 6/1/2019
-* ``Stock`` :ref:`Field/Additional methods <stocks.additional_methods>` are no
-longer supported by the v1 Deveoper API. These methods are retained in IEX Cloud
-* All legacy-only endpoints will now warn of impending deprecation on
-  June 1, 2019
-
-  **Stocks**
-
-  ``iexfinance.stocks.get_crypto_quotes``
-
-  **Reference Data**
-
-  ``iexfinance.refdata.get_iex_corporate_actions``
-  ``iexfinance.refdata.get_iex_dividends``
-  ``iexfinance.refdata.get_iex_next_day_ex_date``
-  ``iexfinance.refdata.get_listed_symbol_dir``
-
-
 Enhancements
 ~~~~~~~~~~~~
 
@@ -68,9 +44,20 @@ Enhancements
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following functions have been moved to the following locations:
 
-- Deprecations:
+* ``iexcloud-v1`` is now the default ``IEX_API_VERSION``, as ``v1`` support
+  will end on 6/1/2019
+* ``Stock`` :ref:`Field/Additional methods <stocks.additional_methods>` are no
+  longer supported by the v1 Deveoper API. These methods are retained in IEX
+  Cloud
+* All legacy-only endpoints will now warn of impending deprecation on
+  June 1, 2019
+    - ``iexfinance.stocks.get_crypto_quotes``
+    - ``iexfinance.refdata.get_iex_corporate_actions``
+    - ``iexfinance.refdata.get_iex_dividends``
+    - ``iexfinance.refdata.get_iex_next_day_ex_date``
+    - ``iexfinance.refdata.get_listed_symbol_dir``
+* Deprecations (functions moved or renamed):
     - ``get_market_gainers`` → ``iexfinance.stocks.get_market_gainers``
     - ``get_market_losers`` → ``iexfinance.stocks.get_market_losers``
     - ``get_market_most_active`` → ``iexfinance.stocks.get_market_most_active``

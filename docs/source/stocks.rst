@@ -70,7 +70,7 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
 - :ref:`Fund Ownership<stocks.fund_ownership>`
-- :ref:`Historical Prices<stocks.historical_prices>` - ``get_historical_data`` and ``get_historical_intraday``
+- :ref:`Historical Prices<stocks.historical>` - ``get_historical_data`` and ``get_historical_intraday``
 - :ref:`Income Statement<stocks.income_statement>`
 - :ref:`Insider Roster<stocks.insider_roster>`
 - :ref:`Insider Summary<stocks.insider_summary>`
@@ -176,9 +176,12 @@ Use ``get_collections`` to access.
 Examples
 ~~~~~~~~
 
+.. NOTE: These were converted to code-block as they are currently returning
+         errors
+
 **Tag**
 
-.. ipython:: python
+.. code-block:: python
 
     from iexfinance.stocks import get_collections
 
@@ -186,7 +189,7 @@ Examples
 
 **Sector**
 
-.. ipython:: python
+.. code-block:: python
 
     get_collections("Industrials", output_format='pandas').head()
 
@@ -204,7 +207,9 @@ Company
 Cryptocurrencies
 ----------------
 
-As of the 5/18/2018 IEX Provider update, quotes are provided for certain Cryptocurrencies. Access to these quotes is available by creating a Stock object and using the ``get_quote`` method.
+.. warning:: As of the 5/18/2018 IEX Provider update, quotes are provided for
+             certain Cryptocurrencies. Access to these quotes is available by
+             creating a Stock object and using the ``get_quote`` method.
 
 To retrieve quotes for all available cryptocurrencies, use the
 ``get_crypto_quotes`` function:
@@ -240,7 +245,7 @@ The following tickers are supported:
 Examples
 ~~~~~~~~
 
-.. ipython:: python
+.. code-block:: python
 
     from iexfinance.stocks import get_crypto_quotes
 
@@ -414,14 +419,14 @@ Income Statement
 Insider Roster
 --------------
 
-.. automethod:: iexfinance.stocks.base.Stoc.get_insider_roster
+.. automethod:: iexfinance.stocks.base.Stock.get_insider_roster
 
 .. _stocks.insider_summary:
 
 Insider Summary
 ---------------
 
-.. automethod:: iexfinance.stocks.base.Stoc.get_insider_summary
+.. automethod:: iexfinance.stocks.base.Stock.get_insider_summary
 
 
 .. _stocks.insider_transactions:
@@ -429,7 +434,7 @@ Insider Summary
 Insider Transactions
 --------------------
 
-.. automethod:: iexfinance.stocks.base.Stoc.get_insider_transactions
+.. automethod:: iexfinance.stocks.base.Stock.get_insider_transactions
 
 
 .. _stocks.institutional_ownership:
@@ -555,7 +560,7 @@ Peers
 Previous Day Prices
 -------------------
 
-.. warning:: ``get_previous`` has been deprecated and renamed 
+.. warning:: ``get_previous`` has been deprecated and renamed
             ``get_previous_day_prices``.
 
 .. automethod:: iexfinance.stocks.base.Stock.get_previous_day_prices
