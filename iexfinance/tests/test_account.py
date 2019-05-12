@@ -4,7 +4,6 @@ import pytest
 from iexfinance.account import (get_usage, get_metadata)
 
 
-@pytest.mark.cloud
 @pytest.mark.skip
 class TestAccount(object):
 
