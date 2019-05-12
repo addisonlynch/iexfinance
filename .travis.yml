@@ -6,6 +6,7 @@ matrix:
   # for some reason py2.7 attempts to install incompatible version of ipython
   allow_failures:
     - python: 2.7
+    - python: 3.4
   include:
     - python: 2.7
       dist: trusty

@@ -72,3 +72,9 @@ Exceptions
 
 .. automodule:: iexfinance.utils.exceptions
 	:members:
+
+.. _testing.releases:
+
+Release Procedure
+=================
+
