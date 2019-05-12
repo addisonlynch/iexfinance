@@ -24,18 +24,9 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:
     aapl = Stock("AAPL")
     aapl.get_price()
 
-Certain endpoints, such as `Sector Performance <https://iexcloud.io/docs/api/#sector-performance>`__,
+Certain endpoints such as :ref:`Historical Data<stocks.historical>`,
 which are unrelated to specific symbols, are supported by top-level functions
-(i.e. ``iexfinance.stocks.get_sector_performance``).
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_sector_performance
-
-    get_sector_performance()[0]
-
-Additional utility functions, such as ``get_historical_data`` are provided as
-well:
+(i.e. ``iexfinance.stocks.get_historical_data``).
 
 .. ipython:: python
 
@@ -53,6 +44,8 @@ List of Endpoints
 ~~~~~~~~~~~~~~~~~
 
 All endpoints not available as methods of the ``Stock`` object are noted below.
+
+Endpoints which are supported by top-level functions are noted.
 
 
 - :ref:`Balance Sheet<stocks.balance_sheet>`
