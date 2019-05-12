@@ -6,7 +6,7 @@ import pandas as pd
 from decimal import Decimal
 
 from iexfinance.stocks import (get_historical_data, get_sector_performance,
-                               get_collections, get_todays_earnings,
+                               get_collections, get_earnings_today,
                                get_ipo_calendar, get_historical_intraday,
                                Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
@@ -327,10 +327,10 @@ class TestCollections(object):
         assert len(df.columns) > 500
 
 
-class TestTodaysEarnings(object):
+class TestEarningsToday(object):
 
-    def test_get_todays_earnings(self):
-        data = get_todays_earnings()
+    def test_get_earnings_today(self):
+        data = get_earnings_today()
 
         assert isinstance(data, dict)
         assert "bto" in data

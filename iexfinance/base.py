@@ -76,7 +76,7 @@ class _IEXBase(object):
                                  'either through the token variable or '
                                  'through the environmental variable '
                                  'IEX_TOKEN.')
-        elif self.version is 'v1':
+        elif self.version == 'v1':
             import warnings
             warnings.warn("Support for the legacy Version 1 IEX Developer "
                           "API will end on June 1, 2019. For more "
