@@ -104,7 +104,7 @@ current day (default is current date):
     from datetime import datetime
     from iexfinance.stocks import get_historical_intraday
 
-    date = datetime(2018, 11, 27)
+    date = datetime(2019, 5, 10)
 
     get_historical_intraday("AAPL", date)[0]
 
@@ -207,7 +207,7 @@ Investor's Exchange Data
 API System Metadata
 -------------------
 
-.. seealso:: :ref:`API System Metadata<api_status>`
+.. seealso:: :ref:`API System Metadata<apidata>`
 
 
 .. _usage.caching:

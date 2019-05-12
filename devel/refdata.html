@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reference Data &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Reference Data &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,44 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
-        <link rel="next" title="Investor’s Exchange Data" href="iexdata.html"/>
-        <link rel="prev" title="Alternative Data" href="altdata.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Investor’s Exchange Data" href="iexdata.html" />
+    <link rel="prev" title="Alternative Data" href="altdata.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -140,6 +133,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -153,7 +147,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -161,9 +155,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -208,8 +203,8 @@
   <div class="section" id="reference-data">
 <span id="refdata"></span><h1><a class="toc-backref" href="#id6">Reference Data</a><a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
 (legacy) Developer API, this endpoint returned the list of symbols IEX
 supports for trading. In IEX cloud, it returns the list of symbols IEX
 supports for <em>api calls</em>.</p>
@@ -217,13 +212,14 @@ supports for <em>api calls</em>.</p>
 <div class="contents topic" id="endpoints">
 <p class="topic-title first">Endpoints</p>
 <ul class="simple">
-<li><a class="reference internal" href="#reference-data" id="id6">Reference Data</a><ul>
-<li><a class="reference internal" href="#symbols" id="id7">Symbols</a></li>
-<li><a class="reference internal" href="#iex-symbols" id="id8">IEX Symbols</a></li>
-<li><a class="reference internal" href="#iex-corporate-actions" id="id9">IEX Corporate Actions</a></li>
-<li><a class="reference internal" href="#iex-dividends" id="id10">IEX Dividends</a></li>
-<li><a class="reference internal" href="#iex-next-day-ex-date" id="id11">IEX Next Day Ex Date</a></li>
-<li><a class="reference internal" href="#iex-listed-symbol-directory" id="id12">IEX Listed Symbol Directory</a></li>
+<li><p><a class="reference internal" href="#reference-data" id="id6">Reference Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#symbols" id="id7">Symbols</a></p></li>
+<li><p><a class="reference internal" href="#iex-symbols" id="id8">IEX Symbols</a></p></li>
+<li><p><a class="reference internal" href="#iex-corporate-actions" id="id9">IEX Corporate Actions</a></p></li>
+<li><p><a class="reference internal" href="#iex-dividends" id="id10">IEX Dividends</a></p></li>
+<li><p><a class="reference internal" href="#iex-next-day-ex-date" id="id11">IEX Next Day Ex Date</a></p></li>
+<li><p><a class="reference internal" href="#iex-listed-symbol-directory" id="id12">IEX Listed Symbol Directory</a></p></li>
 </ul>
 </li>
 </ul>
@@ -245,18 +241,24 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">[{&#39;date&#39;: &#39;2019-04-25&#39;,</span>
-<span class="go">  &#39;iexId&#39;: &#39;2&#39;,</span>
-<span class="go">  &#39;isEnabled&#39;: True,</span>
-<span class="go">  &#39;name&#39;: &#39;Agilent Technologies Inc.&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;A&#39;,</span>
-<span class="go">  &#39;type&#39;: &#39;cs&#39;},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-04-25&#39;,</span>
-<span class="go">  &#39;iexId&#39;: &#39;12042&#39;,</span>
-<span class="go">  &#39;isEnabled&#39;: True,</span>
-<span class="go">  &#39;name&#39;: &#39;Alcoa Corporation&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;AA&#39;,</span>
-<span class="go">  &#39;type&#39;: &#39;cs&#39;}]</span>
+<span class="go">[{&#39;symbol&#39;: &#39;A&#39;,</span>
+<span class="go">  &#39;exchange&#39;: &#39;YNS&#39;,</span>
+<span class="go">  &#39;name&#39;: &#39;eho.sAnnTogcleIlniei  cgt&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-05-12&#39;,</span>
+<span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
+<span class="go">  &#39;iexId&#39;: &#39;IEX_46574843354B2D52&#39;,</span>
+<span class="go">  &#39;region&#39;: &#39;SU&#39;,</span>
+<span class="go">  &#39;currency&#39;: &#39;DSU&#39;,</span>
+<span class="go">  &#39;isEnabled&#39;: True},</span>
+<span class="go"> {&#39;symbol&#39;: &#39;AA&#39;,</span>
+<span class="go">  &#39;exchange&#39;: &#39;NSY&#39;,</span>
+<span class="go">  &#39;name&#39;: &#39;cor CAoa.pl&#39;,</span>
+<span class="go">  &#39;date&#39;: &#39;2019-05-12&#39;,</span>
+<span class="go">  &#39;type&#39;: &#39;cs&#39;,</span>
+<span class="go">  &#39;iexId&#39;: &#39;IEX_4238333734532D52&#39;,</span>
+<span class="go">  &#39;region&#39;: &#39;SU&#39;,</span>
+<span class="go">  &#39;currency&#39;: &#39;USD&#39;,</span>
+<span class="go">  &#39;isEnabled&#39;: True}]</span>
 </pre></div>
 </div>
 </div>
@@ -270,8 +272,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 supports for trading</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#iex-symbols">https://iexcloud.io/docs/api/#iex-symbols</a></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is only available using IEX Cloud. See
+<p class="admonition-title">Warning</p>
+<p>This endpoint is only available using IEX Cloud. See
 <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#iex-symbols">https://iexcloud.io/docs/api/#iex-symbols</a>
@@ -292,9 +294,9 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#iex-corporate-actions">IEX Corporate Actions</a> is a reference list which includes the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Issues (new, deleted)</li>
-<li>Symbol and name changes</li>
-<li>Firms (new, deleted for IEX-listed securities)</li>
+<li><p>Issues (new, deleted)</p></li>
+<li><p>Symbol and name changes</p></li>
+<li><p>Firms (new, deleted for IEX-listed securities)</p></li>
 </ul>
 </div></blockquote>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_iex_corporate_actions</span></code>:</p>
@@ -304,22 +306,18 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <dd><p>Returns IEX Corporate Actions from the ref-data
 endpoints</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is available with the legacy IEX Developer API
+<p class="admonition-title">Warning</p>
+<p>This endpoint is available with the legacy IEX Developer API
 version 1.0 only.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</p></li>
+<li><p><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="refdata-iex-corporate-actions-usage">
@@ -327,7 +325,25 @@ version 1.0 only.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_corporate_actions</span>
 
 <span class="gp">In [4]: </span><span class="n">get_iex_corporate_actions</span><span class="p">()</span>
-<span class="gh">Out[4]: </span><span class="go">[]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IEXVersionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">478</span><span class="n">c502e17cb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_corporate_actions</span><span class="p">()</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/refdata/__init__.py</span> in <span class="ni">get_iex_corporate_actions</span><span class="nt">(start, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">46</span><span class="s2">     return CorporateActions(start=start, **kwargs).fetch()</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span><span class="s2"> </span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/utils/__init__.py</span> in <span class="ni">_wrapped_function</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             return func(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">         else:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">             raise IEXVersionError(&quot;(legacy) IEX Developer API version 1.0&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">     return _wrapped_function</span>
+
+<span class="ne">IEXVersionError</span>: The requested endpoint is only available using (legacy) IEX Developer API version 1.0.
 </pre></div>
 </div>
 </div>
@@ -342,34 +358,48 @@ version 1.0 only.</p>
 <dd><p>Returns IEX Dividends from the ref-data
 endpoints</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is available with the legacy IEX Developer API
+<p class="admonition-title">Warning</p>
+<p>This endpoint is available with the legacy IEX Developer API
 version 1.0 only.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</p></li>
+<li><p><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">The <a class="reference external" href="stock.html#dividends">Dividends</a> endpoint provides dividend information on individual or groups of ticker symbols</p>
+<p class="admonition-title">See also</p>
+<p>The <a class="reference external" href="stock.html#dividends">Dividends</a> endpoint provides dividend information on individual or groups of ticker symbols</p>
 </div>
 <div class="section" id="id3">
 <h3>Usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate" id="refdata-iex-dividends-usage"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_dividends</span>
 
 <span class="gp">In [6]: </span><span class="n">get_iex_dividends</span><span class="p">()</span>
-<span class="gh">Out[6]: </span><span class="go">[]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IEXVersionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">c39d2aa8ed8e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_dividends</span><span class="p">()</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/refdata/__init__.py</span> in <span class="ni">get_iex_dividends</span><span class="nt">(start, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">     return Dividends(start=start, **kwargs).fetch()</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2"> </span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/utils/__init__.py</span> in <span class="ni">_wrapped_function</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             return func(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">         else:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">             raise IEXVersionError(&quot;(legacy) IEX Developer API version 1.0&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">     return _wrapped_function</span>
+
+<span class="ne">IEXVersionError</span>: The requested endpoint is only available using (legacy) IEX Developer API version 1.0.
 </pre></div>
 </div>
 </div>
@@ -385,22 +415,18 @@ version 1.0 only.</p>
 <dd><p>Returns IEX Next Day Ex Date from the ref-data
 endpoints</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is available with the legacy IEX Developer API
+<p class="admonition-title">Warning</p>
+<p>This endpoint is available with the legacy IEX Developer API
 version 1.0 only.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</p></li>
+<li><p><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="id4">
@@ -408,7 +434,25 @@ version 1.0 only.</p>
 <div class="highlight-ipython notranslate" id="refdata-iex-next-day-ex-date-usage"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_next_day_ex_date</span>
 
 <span class="gp">In [8]: </span><span class="n">get_iex_next_day_ex_date</span><span class="p">()</span>
-<span class="gh">Out[8]: </span><span class="go">[]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IEXVersionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mi">8</span><span class="n">ca010627c7c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_next_day_ex_date</span><span class="p">()</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/refdata/__init__.py</span> in <span class="ni">get_iex_next_day_ex_date</span><span class="nt">(start, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">80</span><span class="s2">     return NextDay(start=start, **kwargs).fetch()</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2"> </span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/utils/__init__.py</span> in <span class="ni">_wrapped_function</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             return func(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">         else:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">             raise IEXVersionError(&quot;(legacy) IEX Developer API version 1.0&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">     return _wrapped_function</span>
+
+<span class="ne">IEXVersionError</span>: The requested endpoint is only available using (legacy) IEX Developer API version 1.0.
 </pre></div>
 </div>
 </div>
@@ -423,22 +467,18 @@ version 1.0 only.</p>
 <dd><p>Returns IEX Listed Symbol Directory from the
 ref-data endpoints</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is available with the legacy IEX Developer API
+<p class="admonition-title">Warning</p>
+<p>This endpoint is available with the legacy IEX Developer API
 version 1.0 only.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</li>
-<li><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A month to use for retrieval (a datetime object)</p></li>
+<li><p><strong>kwargs</strong> (<em>Additional Request Parameters</em><em> (</em><em>see base class</em><em>)</em>) – </p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="id5">
@@ -446,35 +486,23 @@ version 1.0 only.</p>
 <div class="highlight-ipython notranslate" id="refdata-iex-listed-symbol-directory-usage"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_listed_symbol_dir</span>
 
 <span class="gp">In [10]: </span><span class="n">get_iex_listed_symbol_dir</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[10]: </span><span class="go"></span>
-<span class="go">{&#39;AdjustedPreviousOfficialClosingPrice&#39;: &#39;100.0000&#39;,</span>
-<span class="go"> &#39;CompanyName&#39;: &#39;ZXIET Test Incorporated&#39;,</span>
-<span class="go"> &#39;CountryofIncorporation&#39;: &#39;USA&#39;,</span>
-<span class="go"> &#39;DailyListTimestamp&#39;: &#39;2019-04-26T01:00:00&#39;,</span>
-<span class="go"> &#39;FinancialStatus&#39;: &#39;0&#39;,</span>
-<span class="go"> &#39;FirstDateListed&#39;: &#39;2017-09-15&#39;,</span>
-<span class="go"> &#39;IPOFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;InverseETPFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;IssueDescription&#39;: &#39;Common Stock&#39;,</span>
-<span class="go"> &#39;IssueSubType&#39;: &#39;C&#39;,</span>
-<span class="go"> &#39;IssueType&#39;: &#39;C&#39;,</span>
-<span class="go"> &#39;LULDTierIndicator&#39;: &#39;1&#39;,</span>
-<span class="go"> &#39;LeveragedETPFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;LeveragedETPRatio&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;PreviousOfficialClosingPrice&#39;: &#39;100.0000&#39;,</span>
-<span class="go"> &#39;RecordID&#39;: &#39;SD20171020161743003&#39;,</span>
-<span class="go"> &#39;RecordUpdateTime&#39;: &#39;2018-09-21T17:35:41&#39;,</span>
-<span class="go"> &#39;RoundLotSize&#39;: &#39;100&#39;,</span>
-<span class="go"> &#39;SICCode&#39;: &#39;2345&#39;,</span>
-<span class="go"> &#39;SecurityName&#39;: &#39;IEX Test Common Stock ZXIET&#39;,</span>
-<span class="go"> &#39;Status&#39;: &#39;Active&#39;,</span>
-<span class="go"> &#39;SymbolinCMSSymbology&#39;: &#39;ZXIET&#39;,</span>
-<span class="go"> &#39;SymbolinCQSSymbology&#39;: &#39;ZXIET&#39;,</span>
-<span class="go"> &#39;SymbolinINETSymbology&#39;: &#39;ZXIET&#39;,</span>
-<span class="go"> &#39;TestIssue&#39;: &#39;Y&#39;,</span>
-<span class="go"> &#39;TransferAgent&#39;: &#39;&#39;,</span>
-<span class="go"> &#39;WhenDistributedFlag&#39;: &#39;N&#39;,</span>
-<span class="go"> &#39;WhenIssuedFlag&#39;: &#39;N&#39;}</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IEXVersionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">44</span><span class="n">c4bec4efdb</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_iex_listed_symbol_dir</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/refdata/__init__.py</span> in <span class="ni">get_iex_listed_symbol_dir</span><span class="nt">(start, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">97</span><span class="s2">     return ListedSymbolDir(start=start, **kwargs).fetch()</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/utils/__init__.py</span> in <span class="ni">_wrapped_function</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             return func(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">         else:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">             raise IEXVersionError(&quot;(legacy) IEX Developer API version 1.0&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">     return _wrapped_function</span>
+
+<span class="ne">IEXVersionError</span>: The requested endpoint is only available using (legacy) IEX Developer API version 1.0.
 </pre></div>
 </div>
 </div>
@@ -483,9 +511,7 @@ version 1.0 only.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -494,7 +520,7 @@ version 1.0 only.</p>
         <a href="iexdata.html" class="btn btn-neutral float-right" title="Investor’s Exchange Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="altdata.html" class="btn btn-neutral" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="altdata.html" class="btn btn-neutral float-left" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -503,11 +529,11 @@ version 1.0 only.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -520,36 +546,15 @@ version 1.0 only.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

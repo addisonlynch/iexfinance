@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Caching Queries &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Caching Queries &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,44 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
-        <link rel="next" title="Testing" href="testing.html"/>
-        <link rel="prev" title="About" href="about.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="About" href="about.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -117,6 +110,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -130,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -138,9 +132,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,180 +185,22 @@ IEX servers. <code class="docutils literal notranslate"><span class="pre">iexfin
 <div class="section" id="tutorial">
 <h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
 <p>Install <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code> using pip:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install requests-cache
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install requests-cache
 </pre></div>
 </div>
 <p>To use a cached session, pass a <code class="docutils literal notranslate"><span class="pre">requests_cache.Session</span></code> object to the
 top-level function you are using:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+<span class="kn">import</span> <span class="nn">requests_cache</span>
 
-<span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+<span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
+                                       <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
+                                       <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">requests_cache</span>
-
-<span class="gp">In [4]: </span><span class="n">expiry</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">cache_name</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;sqlite&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>                                       <span class="n">expire_after</span><span class="o">=</span><span class="n">expiry</span><span class="p">)</span>
-<span class="gp">   ...: </span>
-
-<span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-
-<span class="gp">In [7]: </span><span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>             <span class="n">conn</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">159</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span> 
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/util/connection.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> 
-<span class="ne">---&gt; </span><span class="mi">57</span>     <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
-
-<span class="nn">/usr/lib/python3.6/socket.py</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
-<span class="g g-Whitespace">    </span><span class="mi">744</span>     <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="ne">--&gt; </span><span class="mi">745</span>     <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">746</span>         <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
-
-<span class="ne">gaierror</span>: [Errno -3] Temporary failure in name resolution
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">NewConnectionError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span>                                                   <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">600</span>                                                   <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span> 
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">343</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">    </span><span class="mi">838</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s1">&#39;sock&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">):</span>  <span class="c1"># AppEngine might not have  `.sock`</span>
-<span class="ne">--&gt; </span><span class="mi">839</span>             <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">840</span> 
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connection.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span>         <span class="c1"># Add certificate verification</span>
-<span class="ne">--&gt; </span><span class="mi">301</span>         <span class="n">conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_conn</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span>         <span class="n">hostname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>             <span class="k">raise</span> <span class="n">NewConnectionError</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">168</span>                 <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Failed to establish a new connection: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span> 
-
-<span class="ne">NewConnectionError</span>: &lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7fc6137a1e48&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">MaxRetryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>                     <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">449</span>                     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>                 <span class="p">)</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">637</span>             <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">638</span>                                         <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span>             <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/urllib3/util/retry.py</span> in <span class="ni">increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span>         <span class="k">if</span> <span class="n">new_retry</span><span class="o">.</span><span class="n">is_exhausted</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">398</span>             <span class="k">raise</span> <span class="n">MaxRetryError</span><span class="p">(</span><span class="n">_pool</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span> <span class="ow">or</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">cause</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> 
-
-<span class="ne">MaxRetryError</span>: HTTPSConnectionPool(host=&#39;api.iextrading.com&#39;, port=443): Max retries exceeded with url: /1.0/stock/market/batch?symbols=AAPL&amp;types=price (Caused by NewConnectionError(&#39;&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7fc6137a1e48&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution&#39;,))
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ConnectionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-7-dde3f8cb8003&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/stocks/base.py</span> in <span class="ni">get_price</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span>             <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">symbols</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">773</span> 
-<span class="ne">--&gt; </span><span class="mi">774</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_endpoint</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">fmt_p</span><span class="o">=</span><span class="n">fmt_p</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">775</span> 
-<span class="g g-Whitespace">    </span><span class="mi">776</span>     <span class="nd">@cloud_endpoint</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/stocks/base.py</span> in <span class="ni">_get_endpoint</span><span class="nt">(self, endpoint, params, fmt_p, fmt_j, filter_)</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>         <span class="bp">self</span><span class="o">.</span><span class="n">endpoints</span> <span class="o">=</span> <span class="p">[</span><span class="n">endpoint</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> 
-<span class="ne">--&gt; </span><span class="mi">102</span>         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">fmt_j</span><span class="o">=</span><span class="n">fmt_j</span><span class="p">,</span> <span class="n">fmt_p</span><span class="o">=</span><span class="n">no_pandas</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="c1"># IEX Cloud returns multiple symbol requests as as a list of dicts</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>         <span class="c1"># so convert to dict of dicts</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self, fmt_p, fmt_j)</span>
-<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">190</span><span class="s2">         url = self._prepare_query()</span>
-<span class="ne">--&gt; </span><span class="mi">191</span><span class="s2">         data = self._execute_iex_query(url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">192</span><span class="s2">         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span><span class="s2"> </span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="s2">         params[&#39;token&#39;] = self.token</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="s2">         for i in range(self.retry_count+1):</span>
-<span class="ne">--&gt; </span><span class="mi">143</span><span class="s2">             response = self.session.get(url=url, params=params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span><span class="s2">             if response.status_code == requests.codes.ok:</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span><span class="s2">                 return self._validate_response(response)</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests/sessions.py</span> in <span class="ni">get</span><span class="nt">(self, url, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span><span class="s2">         kwargs.setdefault(&#39;allow_redirects&#39;, True)</span>
-<span class="ne">--&gt; </span><span class="mi">546</span><span class="s2">         return self.request(&#39;GET&#39;, url, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="s2">     def options(self, url, **kwargs):</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests_cache/core.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span><span class="s2">             _normalize_parameters(params),</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="s2">             _normalize_parameters(data),</span>
-<span class="ne">--&gt; </span><span class="mi">126</span><span class="s2">             **kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span><span class="s2">         )</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="s2">         if self._is_cache_disabled:</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span><span class="s2">         }</span>
-<span class="g g-Whitespace">    </span><span class="mi">532</span><span class="s2">         send_kwargs.update(settings)</span>
-<span class="ne">--&gt; </span><span class="mi">533</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span><span class="s2">         return resp</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests_cache/core.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="s2">                 if not self._return_old_data_on_error:</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="s2">                     self.cache.delete(cache_key)</span>
-<span class="ne">--&gt; </span><span class="mi">106</span><span class="s2">                     return send_request_and_cache_response()</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s2">                 try:</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="s2">                     new_response = send_request_and_cache_response()</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests_cache/core.py</span> in <span class="ni">send_request_and_cache_response</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">89</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span><span class="s2">         def send_request_and_cache_response():</span>
-<span class="ne">---&gt; </span><span class="mi">91</span><span class="s2">             response = super(CachedSession, self).send(request, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span><span class="s2">             if response.status_code in self._cache_allowable_codes:</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span><span class="s2">                 self.cache.save_response(cache_key, response)</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span><span class="s2">         # Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">646</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">647</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span><span class="s2">                 raise SSLError(e, request=request)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">516</span><span class="s2">             raise ConnectionError(e, request=request)</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span><span class="s2">         except ClosedPoolError as e:</span>
-
-<span class="ne">ConnectionError</span>: HTTPSConnectionPool(host=&#39;api.iextrading.com&#39;, port=443): Max retries exceeded with url: /1.0/stock/market/batch?symbols=AAPL&amp;types=price (Caused by NewConnectionError(&#39;&lt;urllib3.connection.VerifiedHTTPSConnection object at 0x7fc6137a1e48&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution&#39;,))
+<span class="n">f</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>A <a class="reference external" href="https://www.sqlite.org/">SQLite</a> file named <code class="docutils literal notranslate"><span class="pre">cache.sqlite</span></code> will
@@ -376,9 +213,7 @@ expiry date.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -387,7 +222,7 @@ expiry date.</p>
         <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="about.html" class="btn btn-neutral" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="about.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -396,11 +231,11 @@ expiry date.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -413,36 +248,15 @@ expiry date.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

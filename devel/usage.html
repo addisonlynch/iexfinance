@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Common Usage Examples &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Common Usage Examples &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,44 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
-        <link rel="next" title="Account" href="account.html"/>
-        <link rel="prev" title="Configuration" href="configuration.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Account" href="account.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -131,6 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -144,7 +138,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -152,9 +146,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -206,26 +201,26 @@ including quotes, historical prices, dividends, and much more.</p>
 <p>The iexfinance codebase and documentation are structured in a way that emulates much of the <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud Documentation</a> for readability and ease of use.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#usage-account"><span class="std std-ref">Account</span></a></li>
-<li><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></li>
-<li><a class="reference internal" href="#usage-refdata"><span class="std std-ref">Reference Data</span></a></li>
-<li><a class="reference internal" href="#usage-iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></li>
-<li><a class="reference internal" href="#usage-apistatus"><span class="std std-ref">API System Metadata</span></a></li>
+<li><p><a class="reference internal" href="#usage-account"><span class="std std-ref">Account</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-refdata"><span class="std std-ref">Reference Data</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-apistatus"><span class="std std-ref">API System Metadata</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>These modules provide classes and functions to execute queries to IEX Cloud.</p>
 <div class="section" id="account">
 <span id="usage-account"></span><h2>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a></p>
 </div>
 </div>
 <div class="section" id="stocks">
 <span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks</span></a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks</span></a>.</p>
 </div>
 </div>
 <div class="section" id="real-time-quotes">
@@ -237,7 +232,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">247.63</span>
+<span class="gh">Out[3]: </span><span class="go">248.59</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -245,7 +240,7 @@ etc.):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[5]: </span><span class="go">{&#39;AAPL&#39;: 205.28, &#39;TSLA&#39;: 247.63}</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 241.34, &#39;AAPL&#39;: 203.38}</span>
 </pre></div>
 </div>
 </div>
@@ -284,54 +279,44 @@ current day (default is current date):</p>
 
 <span class="gp">In [13]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_intraday</span>
 
-<span class="gp">In [14]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+<span class="gp">In [14]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="gp">In [15]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-15-e9881927b415&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">IndexError</span>: list index out of range
+<span class="gh">Out[15]: </span><span class="go"></span>
+<span class="go">{&#39;date&#39;: &#39;2019-05-10&#39;,</span>
+<span class="go"> &#39;minute&#39;: &#39;09:30&#39;,</span>
+<span class="go"> &#39;label&#39;: &#39;09:30 AM&#39;,</span>
+<span class="go"> &#39;high&#39;: 204.068,</span>
+<span class="go"> &#39;low&#39;: 202.69,</span>
+<span class="go"> &#39;average&#39;: 202.033,</span>
+<span class="go"> &#39;volume&#39;: 26616,</span>
+<span class="go"> &#39;notional&#39;: 5228017.794,</span>
+<span class="go"> &#39;numberOfTrades&#39;: 143,</span>
+<span class="go"> &#39;marketHigh&#39;: 205.44,</span>
+<span class="go"> &#39;marketLow&#39;: 205.05,</span>
+<span class="go"> &#39;marketAverage&#39;: 201.545,</span>
+<span class="go"> &#39;marketVolume&#39;: 691410,</span>
+<span class="go"> &#39;marketNotional&#39;: 133007755.483,</span>
+<span class="go"> &#39;marketNumberOfTrades&#39;: 1533,</span>
+<span class="go"> &#39;open&#39;: 202.538,</span>
+<span class="go"> &#39;close&#39;: 201.692,</span>
+<span class="go"> &#39;marketOpen&#39;: 202.661,</span>
+<span class="go"> &#39;marketClose&#39;: 198.808,</span>
+<span class="go"> &#39;changeOverTime&#39;: 0,</span>
+<span class="go"> &#39;marketChangeOverTime&#39;: 0}</span>
 </pre></div>
 </div>
 <p>or for a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> indexed by each minute:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[16]: </span><span class="go"></span>
-<span class="go">                     average  changeOverTime   close      date     high  \</span>
-<span class="go">2019-04-25 09:30:00  207.329        0.000000  207.28  20190425  207.675   </span>
-<span class="go">2019-04-25 09:31:00  207.214       -0.000555  207.05  20190425  207.490   </span>
-<span class="go">2019-04-25 09:32:00  207.115       -0.001032  207.20  20190425  207.200   </span>
-<span class="go">2019-04-25 09:33:00  207.246       -0.000400  207.53  20190425  207.550   </span>
-<span class="go">2019-04-25 09:34:00  207.556        0.001095  207.33  20190425  207.760   </span>
+<span class="go">                     average  changeOverTime  ...     open volume</span>
+<span class="go">2019-05-10 09:30:00  199.927        0.000000  ...  202.213  26882</span>
+<span class="go">2019-05-10 09:31:00  203.063        0.002475  ...  200.317  10350</span>
+<span class="go">2019-05-10 09:32:00  201.833        0.001320  ...  199.760  11441</span>
+<span class="go">2019-05-10 09:33:00  199.284        0.003476  ...  199.299  18055</span>
+<span class="go">2019-05-10 09:34:00  204.989        0.002333  ...  203.970  12876</span>
 
-<span class="go">                        label     low  marketAverage  marketChangeOverTime  \</span>
-<span class="go">2019-04-25 09:30:00  09:30 AM  206.72        206.927              0.000000   </span>
-<span class="go">2019-04-25 09:31:00  09:31 AM  207.01        207.177              0.001208   </span>
-<span class="go">2019-04-25 09:32:00  09:32 AM  206.95        207.057              0.000628   </span>
-<span class="go">2019-04-25 09:33:00  09:33 AM  207.03        207.246              0.001542   </span>
-<span class="go">2019-04-25 09:34:00  09:34 AM  207.33        207.557              0.003045   </span>
-
-<span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
-<span class="go">2019-04-25 09:30:00       207.34      207.70    206.650    1.078854e+08   </span>
-<span class="go">2019-04-25 09:31:00       207.01      207.52    207.000    2.769498e+07   </span>
-<span class="go">2019-04-25 09:32:00       207.17      207.21    206.910    2.554317e+07   </span>
-<span class="go">2019-04-25 09:33:00       207.54      207.56    207.015    3.045167e+07   </span>
-<span class="go">2019-04-25 09:34:00       207.38      207.76    207.320    2.689853e+07   </span>
-
-<span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
-<span class="go">2019-04-25 09:30:00                  1107      206.83        521369   </span>
-<span class="go">2019-04-25 09:31:00                   734      207.38        133678   </span>
-<span class="go">2019-04-25 09:32:00                   587      207.01        123363   </span>
-<span class="go">2019-04-25 09:33:00                   755      207.18        146935   </span>
-<span class="go">2019-04-25 09:34:00                   726      207.54        129596   </span>
-
-<span class="go">                       notional  numberOfTrades     open  volume  </span>
-<span class="go">2019-04-25 09:30:00   870784.20              47  206.720    4200  </span>
-<span class="go">2019-04-25 09:31:00   780367.88              36  207.410    3766  </span>
-<span class="go">2019-04-25 09:32:00   643921.78              22  207.035    3109  </span>
-<span class="go">2019-04-25 09:33:00  1233115.50              57  207.190    5950  </span>
-<span class="go">2019-04-25 09:34:00   803449.17              37  207.510    3871  </span>
+<span class="go">[5 rows x 20 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -349,17 +334,21 @@ the endpoint requested.</p>
 
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">{&#39;change&#39;: -1.88,</span>
-<span class="go"> &#39;changePercent&#39;: -0.908,</span>
-<span class="go"> &#39;close&#39;: 205.28,</span>
-<span class="go"> &#39;date&#39;: &#39;2019-04-25&#39;,</span>
-<span class="go"> &#39;high&#39;: 207.76,</span>
-<span class="go"> &#39;low&#39;: 205.12,</span>
-<span class="go"> &#39;open&#39;: 206.83,</span>
-<span class="go"> &#39;symbol&#39;: &#39;AAPL&#39;,</span>
-<span class="go"> &#39;unadjustedVolume&#39;: 18543206,</span>
-<span class="go"> &#39;volume&#39;: 18543206,</span>
-<span class="go"> &#39;vwap&#39;: 206.0656}</span>
+<span class="go">{&#39;date&#39;: &#39;2019-05-10&#39;,</span>
+<span class="go"> &#39;open&#39;: 198.53,</span>
+<span class="go"> &#39;close&#39;: 206.21,</span>
+<span class="go"> &#39;high&#39;: 199.7,</span>
+<span class="go"> &#39;low&#39;: 197.44,</span>
+<span class="go"> &#39;volume&#39;: 41967707,</span>
+<span class="go"> &#39;uOpen&#39;: 200.98,</span>
+<span class="go"> &#39;uClose&#39;: 203.88,</span>
+<span class="go"> &#39;uHigh&#39;: 203.03,</span>
+<span class="go"> &#39;uLow&#39;: 200.97,</span>
+<span class="go"> &#39;uVolume&#39;: 42705675,</span>
+<span class="go"> &#39;change&#39;: 0,</span>
+<span class="go"> &#39;changePercent&#39;: 0,</span>
+<span class="go"> &#39;changeOverTime&#39;: 0,</span>
+<span class="go"> &#39;symbol&#39;: &#39;AAPL&#39;}</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -373,17 +362,16 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[21]: </span><span class="go">206.66</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                Out[22]: 205.28</span>
+<span class="gh">Out[22]: </span><span class="go">200.57</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[24]: </span><span class="go">{&#39;AAPL&#39;: 206.66, &#39;TSLA&#39;: 255}</span>
+<span class="gh">Out[24]: </span><span class="go">{&#39;AAPL&#39;: None, &#39;TSLA&#39;: None}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -402,13 +390,13 @@ method as a keyword argument.</p>
 
 <span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
-<span class="go">AAPL    29.6395</span>
+<span class="go">AAPL    23.1594</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
 call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
 change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
 through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
@@ -419,22 +407,22 @@ more information.</p>
 <div class="section" id="reference-data">
 <span id="usage-refdata"></span><h2>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a></p>
 </div>
 </div>
 <div class="section" id="investor-s-exchange-data">
 <span id="usage-iexdata"></span><h2>Investor’s Exchange Data<a class="headerlink" href="#investor-s-exchange-data" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p>
 </div>
 </div>
 <div class="section" id="api-system-metadata">
 <span id="usage-apistatus"></span><h2>API System Metadata<a class="headerlink" href="#api-system-metadata" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><span class="xref std std-ref">API System Metadata</span></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="apidata.html#apidata"><span class="std std-ref">API System Metadata</span></a></p>
 </div>
 </div>
 <div class="section" id="caching">
@@ -442,17 +430,15 @@ more information.</p>
 <p>iexfinance supports the caching of HTTP requests to IEX using the
 <a class="reference external" href="https://pypi.python.org/pypi/requests-cache">requests-cache</a> package.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -461,7 +447,7 @@ more information.</p>
         <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -470,11 +456,11 @@ more information.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -487,36 +473,15 @@ more information.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

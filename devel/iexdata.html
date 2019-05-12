@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Investor’s Exchange Data &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Investor’s Exchange Data &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,44 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
-        <link rel="next" title="API System Metadata" href="apidata.html"/>
-        <link rel="prev" title="Reference Data" href="refdata.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API System Metadata" href="apidata.html" />
+    <link rel="prev" title="Reference Data" href="refdata.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -160,6 +153,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -173,7 +167,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -181,9 +175,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -231,27 +226,28 @@
 <div class="contents topic" id="endpoints">
 <p class="topic-title first">Endpoints</p>
 <ul class="simple">
-<li><a class="reference internal" href="#investor-s-exchange-data" id="id8">Investor’s Exchange Data</a><ul>
-<li><a class="reference internal" href="#tops" id="id9">TOPS</a></li>
-<li><a class="reference internal" href="#last" id="id10">Last</a></li>
-<li><a class="reference internal" href="#deep" id="id11">DEEP</a></li>
-<li><a class="reference internal" href="#deep-auction" id="id12">DEEP Auction</a></li>
-<li><a class="reference internal" href="#deep-book" id="id13">DEEP Book</a></li>
-<li><a class="reference internal" href="#deep-operational-halt-status" id="id14">DEEP Operational Halt Status</a></li>
-<li><a class="reference internal" href="#deep-official-price" id="id15">DEEP Official Price</a></li>
-<li><a class="reference internal" href="#deep-security-event" id="id16">DEEP Security Event</a></li>
-<li><a class="reference internal" href="#deep-short-sale-price-test-status" id="id17">DEEP Short Sale Price Test Status</a></li>
-<li><a class="reference internal" href="#deep-system-event" id="id18">DEEP System Event</a></li>
-<li><a class="reference internal" href="#deep-trades" id="id19">DEEP Trades</a></li>
-<li><a class="reference internal" href="#deep-trade-break" id="id20">DEEP Trade Break</a></li>
-<li><a class="reference internal" href="#deep-trading-status" id="id21">DEEP Trading Status</a></li>
-<li><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id22">Listed Regulation SHO Threshold Securities List</a></li>
-<li><a class="reference internal" href="#listed-short-interest-list" id="id23">Listed Short Interest List</a></li>
-<li><a class="reference internal" href="#stats-historical-daily" id="id24">Stats Historical Daily</a></li>
-<li><a class="reference internal" href="#stats-historical-summary" id="id25">Stats Historical Summary</a></li>
-<li><a class="reference internal" href="#stats-intraday" id="id26">Stats Intraday</a></li>
-<li><a class="reference internal" href="#stats-recent" id="id27">Stats Recent</a></li>
-<li><a class="reference internal" href="#stats-records" id="id28">Stats Records</a></li>
+<li><p><a class="reference internal" href="#investor-s-exchange-data" id="id8">Investor’s Exchange Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tops" id="id9">TOPS</a></p></li>
+<li><p><a class="reference internal" href="#last" id="id10">Last</a></p></li>
+<li><p><a class="reference internal" href="#deep" id="id11">DEEP</a></p></li>
+<li><p><a class="reference internal" href="#deep-auction" id="id12">DEEP Auction</a></p></li>
+<li><p><a class="reference internal" href="#deep-book" id="id13">DEEP Book</a></p></li>
+<li><p><a class="reference internal" href="#deep-operational-halt-status" id="id14">DEEP Operational Halt Status</a></p></li>
+<li><p><a class="reference internal" href="#deep-official-price" id="id15">DEEP Official Price</a></p></li>
+<li><p><a class="reference internal" href="#deep-security-event" id="id16">DEEP Security Event</a></p></li>
+<li><p><a class="reference internal" href="#deep-short-sale-price-test-status" id="id17">DEEP Short Sale Price Test Status</a></p></li>
+<li><p><a class="reference internal" href="#deep-system-event" id="id18">DEEP System Event</a></p></li>
+<li><p><a class="reference internal" href="#deep-trades" id="id19">DEEP Trades</a></p></li>
+<li><p><a class="reference internal" href="#deep-trade-break" id="id20">DEEP Trade Break</a></p></li>
+<li><p><a class="reference internal" href="#deep-trading-status" id="id21">DEEP Trading Status</a></p></li>
+<li><p><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id22">Listed Regulation SHO Threshold Securities List</a></p></li>
+<li><p><a class="reference internal" href="#listed-short-interest-list" id="id23">Listed Short Interest List</a></p></li>
+<li><p><a class="reference internal" href="#stats-historical-daily" id="id24">Stats Historical Daily</a></p></li>
+<li><p><a class="reference internal" href="#stats-historical-summary" id="id25">Stats Historical Summary</a></p></li>
+<li><p><a class="reference internal" href="#stats-intraday" id="id26">Stats Intraday</a></p></li>
+<li><p><a class="reference internal" href="#stats-recent" id="id27">Stats Recent</a></p></li>
+<li><p><a class="reference internal" href="#stats-records" id="id28">Stats Records</a></p></li>
 </ul>
 </li>
 </ul>
@@ -270,18 +266,14 @@ real time for all securities on IEX’s displayed limit order book. TOPS is
 ideal for developers needing both quote and trade data.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#tops">https://iexcloud.io/docs/api/#tops</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="usage">
@@ -292,8 +284,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
+<p class="admonition-title">Note</p>
+<p>The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
 </div>
 </div>
 </div>
@@ -312,18 +304,14 @@ intraday API that provides IEX last sale price, size and time. Last is
 ideal for developers that need a lightweight stock quote.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#last">https://iexcloud.io/docs/api/#last</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="id1">
@@ -335,8 +323,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The /tops/last endpoint without any parameters will return all symbols.</p>
+<p class="admonition-title">Note</p>
+<p>The /tops/last endpoint without any parameters will return all symbols.</p>
 </div>
 </div>
 </div>
@@ -359,25 +347,21 @@ from either displayed or non-displayed orders matching on IEX will be
 reported. Routed executions will not be reported.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#deep">https://iexcloud.io/docs/api/#deep</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Pandas not supported as an output format for the DEEP endpoint.</p>
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Per IEX, DEEP only accepts one symbol at this time.</p>
+<p class="admonition-title">Note</p>
+<p>Per IEX, DEEP only accepts one symbol at this time.</p>
 </div>
 <div class="section" id="iexdata-deep-usage">
 <span id="id2"></span><h3>Usage<a class="headerlink" href="#iexdata-deep-usage" title="Permalink to this headline">¶</a></h3>
@@ -391,92 +375,92 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="section" id="deep-auction">
 <span id="iexdata-deep-auction"></span><h2><a class="toc-backref" href="#id12">DEEP Auction</a><a class="headerlink" href="#deep-auction" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-book">
 <span id="iexdata-deep-book"></span><h2><a class="toc-backref" href="#id13">DEEP Book</a><a class="headerlink" href="#deep-book" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-operational-halt-status">
 <span id="iexdata-deep-halt-status"></span><h2><a class="toc-backref" href="#id14">DEEP Operational Halt Status</a><a class="headerlink" href="#deep-operational-halt-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-official-price">
 <span id="iexdata-deep-official-price"></span><h2><a class="toc-backref" href="#id15">DEEP Official Price</a><a class="headerlink" href="#deep-official-price" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-3">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-security-event">
 <span id="iexdata-deep-security-event"></span><h2><a class="toc-backref" href="#id16">DEEP Security Event</a><a class="headerlink" href="#deep-security-event" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-4">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-short-sale-price-test-status">
 <span id="iexdata-deep-short-sale-status"></span><h2><a class="toc-backref" href="#id17">DEEP Short Sale Price Test Status</a><a class="headerlink" href="#deep-short-sale-price-test-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-5">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-system-event">
 <span id="iexdata-deep-system-event"></span><h2><a class="toc-backref" href="#id18">DEEP System Event</a><a class="headerlink" href="#deep-system-event" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-6">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trades">
 <span id="iexdata-deep-trades"></span><h2><a class="toc-backref" href="#id19">DEEP Trades</a><a class="headerlink" href="#deep-trades" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-7">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trade-break">
 <span id="iexdata-deep-trade-break"></span><h2><a class="toc-backref" href="#id20">DEEP Trade Break</a><a class="headerlink" href="#deep-trade-break" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-8">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trading-status">
 <span id="iexdata-deep-trading-status"></span><h2><a class="toc-backref" href="#id21">DEEP Trading Status</a><a class="headerlink" href="#deep-trading-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-9">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-regulation-sho-threshold-securities-list">
 <span id="iexdata-regulation-list"></span><h2><a class="toc-backref" href="#id22">Listed Regulation SHO Threshold Securities List</a><a class="headerlink" href="#listed-regulation-sho-threshold-securities-list" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-10">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-short-interest-list">
 <span id="iexdata-short-interest-list"></span><h2><a class="toc-backref" href="#id23">Listed Short Interest List</a><a class="headerlink" href="#listed-short-interest-list" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-11">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="stats-historical-daily">
 <span id="iexdata-stats-daily"></span><h2><a class="toc-backref" href="#id24">Stats Historical Daily</a><a class="headerlink" href="#stats-historical-daily" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint has been marked as <em>in-dev</em> by the provider.</p>
+<p class="admonition-title">Warning</p>
+<p>This endpoint has been marked as <em>in-dev</em> by the provider.</p>
 </div>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-daily">Historical Daily</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
@@ -487,26 +471,22 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Historical Daily</p>
 <p>This call will return daily stats for a given month or day.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is marked as “in development” by the provider.</p>
+<p class="admonition-title">Warning</p>
+<p>This endpoint is marked as “in development” by the provider.</p>
 </div>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev">https://iexcloud.io/docs/api/#stats-historical-daily-in-dev</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
-<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
-<li><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
-(up to 90)</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
+<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
+<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
+(up to 90)</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
@@ -515,25 +495,47 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_daily</span>
 
 <span class="gp">In [2]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">[{&#39;date&#39;: &#39;2019-04-24&#39;,</span>
-<span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 41590398,</span>
-<span class="go">  &#39;marketShare&#39;: 0.027970000000000002,</span>
-<span class="go">  &#39;routedVolume&#39;: 31578557,</span>
-<span class="go">  &#39;volume&#39;: 187310989},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-04-23&#39;,</span>
-<span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 43589706,</span>
-<span class="go">  &#39;marketShare&#39;: 0.028220000000000002,</span>
-<span class="go">  &#39;routedVolume&#39;: 28079559,</span>
-<span class="go">  &#39;volume&#39;: 196881022},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-04-22&#39;,</span>
-<span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 34782844,</span>
-<span class="go">  &#39;marketShare&#39;: 0.027639999999999998,</span>
-<span class="go">  &#39;routedVolume&#39;: 24147519,</span>
-<span class="go">  &#39;volume&#39;: 163186901}]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IEXAuthenticationError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="n">c96fa9fb7d5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/__init__.py</span> in <span class="ni">get_stats_daily</span><span class="nt">(start, end, last, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_sanitize_dates</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">return</span> <span class="n">DailySummaryReader</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">173</span>                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> 
+<span class="g g-Whitespace">    </span><span class="mi">175</span> 
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">islast</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">304</span>             <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">DailySummaryReader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_dates</span><span class="p">()</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self, fmt_p, fmt_j)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="s2">         url = self._prepare_query()</span>
+<span class="ne">--&gt; </span><span class="mi">201</span><span class="s2">         data = self._execute_iex_query(url)</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="s2">         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="s2"> </span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="s2">                 return self._validate_response(response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="s2">             time.sleep(self.pause)</span>
+<span class="ne">--&gt; </span><span class="mi">157</span><span class="s2">         return self._handle_error(response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span><span class="s2">     def _handle_error(self, response):</span>
+
+<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_handle_error</span><span class="nt">(self, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">                                  &quot;request.&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="s2">         elif 500 &lt;= status_code &lt; 600:</span>
+<span class="ne">--&gt; </span><span class="mi">174</span><span class="s2">             raise auth_error(&quot;The query could not be completed. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2">                              &quot;There was a server-side error with &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="s2">                              &quot;your request.&quot;)</span>
+
+<span class="ne">IEXAuthenticationError</span>: The query could not be completed. There was a server-side error with your request.
 </pre></div>
 </div>
 </div>
@@ -549,25 +551,21 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Historical Summary</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-summary">https://iexcloud.io/docs/api/#stats-historical-summary</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
-<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
+<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The Historical Summary accepts requests of one month per request.
+<p class="admonition-title">Warning</p>
+<p>The Historical Summary accepts requests of one month per request.
 if specifying a long date range, a query will be made for each
 month in the range, significantly impacting performance</p>
 </div>
@@ -578,57 +576,7 @@ month in the range, significantly impacting performance</p>
 <span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="gp">In [5]: </span><span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">[{&#39;averageDailyRoutedVolume&#39;: 49729760.53,</span>
-<span class="go">  &#39;averageDailyVolume&#39;: 143199060.7,</span>
-<span class="go">  &#39;averageFillSize&#39;: 234,</span>
-<span class="go">  &#39;averageMarketShare&#39;: 0.02084,</span>
-<span class="go">  &#39;averageOrderSize&#39;: 725,</span>
-<span class="go">  &#39;bin10000Percent&#39;: 0.00122,</span>
-<span class="go">  &#39;bin10000Trades&#39;: 4052,</span>
-<span class="go">  &#39;bin1000Percent&#39;: 0.02996,</span>
-<span class="go">  &#39;bin100Percent&#39;: 0.69467,</span>
-<span class="go">  &#39;bin101Percent&#39;: 0.01241,</span>
-<span class="go">  &#39;bin20000Trades&#39;: 1448,</span>
-<span class="go">  &#39;bin200Percent&#39;: 0.12427,</span>
-<span class="go">  &#39;bin300Percent&#39;: 0.05452,</span>
-<span class="go">  &#39;bin400Percent&#39;: 0.02914,</span>
-<span class="go">  &#39;bin50000Trades&#39;: 216,</span>
-<span class="go">  &#39;bin5000Percent&#39;: 0.00226,</span>
-<span class="go">  &#39;bin500Percent&#39;: 0.05156,</span>
-<span class="go">  &#39;blockPercent&#39;: 0.07064,</span>
-<span class="go">  &#39;etfPercent&#39;: 0.11663,</span>
-<span class="go">  &#39;largeCapPercent&#39;: 0.42933,</span>
-<span class="go">  &#39;midCapPercent&#39;: 0.28813,</span>
-<span class="go">  &#39;selfCrossPercent&#39;: 0.03382,</span>
-<span class="go">  &#39;smallCapPercent&#39;: 0.16591,</span>
-<span class="go">  &#39;uniqueSymbolsTraded&#39;: 7722,</span>
-<span class="go">  &#39;venueARCXFirstWaveRate&#39;: 0.98841,</span>
-<span class="go">  &#39;venueARCXFirstWaveWeight&#39;: 0.18888,</span>
-<span class="go">  &#39;venueBATSFirstWaveRate&#39;: 0.99459,</span>
-<span class="go">  &#39;venueBATSFirstWaveWeight&#39;: 0.05204,</span>
-<span class="go">  &#39;venueBATYFirstWaveRate&#39;: 0.98433,</span>
-<span class="go">  &#39;venueBATYFirstWaveWeight&#39;: 0.06483,</span>
-<span class="go">  &#39;venueEDGAFirstWaveRate&#39;: 0.99363,</span>
-<span class="go">  &#39;venueEDGAFirstWaveWeight&#39;: 0.00922,</span>
-<span class="go">  &#39;venueEDGXFirstWaveRate&#39;: 0.99542,</span>
-<span class="go">  &#39;venueEDGXFirstWaveWeight&#39;: 0.08538,</span>
-<span class="go">  &#39;venueOverallFirstWaveRate&#39;: 0.99029,</span>
-<span class="go">  &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">  &#39;venueXASEFirstWaveRate&#39;: 0.92021,</span>
-<span class="go">  &#39;venueXASEFirstWaveWeight&#39;: 0.00253,</span>
-<span class="go">  &#39;venueXBOSFirstWaveRate&#39;: 0.97967,</span>
-<span class="go">  &#39;venueXBOSFirstWaveWeight&#39;: 0.03279,</span>
-<span class="go">  &#39;venueXCHIFirstWaveRate&#39;: 0.77632,</span>
-<span class="go">  &#39;venueXCHIFirstWaveWeight&#39;: 0.00176,</span>
-<span class="go">  &#39;venueXCISFirstWaveRate&#39;: None,</span>
-<span class="go">  &#39;venueXCISFirstWaveWeight&#39;: None,</span>
-<span class="go">  &#39;venueXNGSFirstWaveRate&#39;: 0.99241,</span>
-<span class="go">  &#39;venueXNGSFirstWaveWeight&#39;: 0.18942,</span>
-<span class="go">  &#39;venueXNYSFirstWaveRate&#39;: 0.99021,</span>
-<span class="go">  &#39;venueXNYSFirstWaveWeight&#39;: 0.2476,</span>
-<span class="go">  &#39;venueXPHLFirstWaveRate&#39;: 0.97645,</span>
-<span class="go">  &#39;venueXPHLFirstWaveWeight&#39;: 0.0109}]</span>
+<span class="gh">Out[5]: </span><span class="go">[]</span>
 </pre></div>
 </div>
 </div>
@@ -644,14 +592,11 @@ aggregated best quoted bid and offer position in near real time.</p>
 <dd><p>Stats intraday</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">https://iexcloud.io/docs/api/#stats-intraday</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-intraday-usage">
@@ -660,11 +605,11 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [7]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">{&#39;marketShare&#39;: {&#39;lastUpdated&#39;: 1556226912257, &#39;value&#39;: 0.02811},</span>
-<span class="go"> &#39;notional&#39;: {&#39;lastUpdated&#39;: 1556226912647, &#39;value&#39;: 10165425550},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;lastUpdated&#39;: 1556226912647, &#39;value&#39;: 36309845},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;lastUpdated&#39;: 1556225896148, &#39;value&#39;: 5665},</span>
-<span class="go"> &#39;volume&#39;: {&#39;lastUpdated&#39;: 1556226912647, &#39;value&#39;: 187560744}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 220128011, &#39;lastUpdated&#39;: 1562432283648},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5668, &#39;lastUpdated&#39;: 1580426028941},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 37921681, &#39;lastUpdated&#39;: 1568713823735},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 11048065179, &#39;lastUpdated&#39;: 1615704173819},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02963, &#39;lastUpdated&#39;: 1581688923572}}</span>
 </pre></div>
 </div>
 </div>
@@ -682,14 +627,11 @@ trading statstics from the previous five trading days.</p>
 trading days of the current month.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">https://iexcloud.io/docs/api/#stats-recent</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-recent-usage">
@@ -698,12 +640,12 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">{&#39;date&#39;: &#39;2019-04-24&#39;,</span>
+<span class="go">{&#39;date&#39;: &#39;2019-05-09&#39;,</span>
+<span class="go"> &#39;volume&#39;: 218433405,</span>
+<span class="go"> &#39;routedVolume&#39;: 37067357,</span>
+<span class="go"> &#39;marketShare&#39;: 0.027897504783232628,</span>
 <span class="go"> &#39;isHalfday&#39;: False,</span>
-<span class="go"> &#39;litVolume&#39;: 41590398,</span>
-<span class="go"> &#39;marketShare&#39;: 0.027970000000000002,</span>
-<span class="go"> &#39;routedVolume&#39;: 31578557,</span>
-<span class="go"> &#39;volume&#39;: 187310989}</span>
+<span class="go"> &#39;litVolume&#39;: 52342706}</span>
 </pre></div>
 </div>
 </div>
@@ -719,14 +661,11 @@ trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Records</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">https://iexcloud.io/docs/api/#stats-records</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-records-usage">
@@ -735,22 +674,22 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [11]: </span><span class="n">get_stats_records</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">{&#39;notional&#39;: {&#39;avg30Value&#39;: 9065086413.8649,</span>
-<span class="go">  &#39;previousDayValue&#39;: 9681689033.7028,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-02-06&#39;,</span>
-<span class="go">  &#39;recordValue&#39;: 17269723089.111},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;avg30Value&#39;: 29734399,</span>
-<span class="go">  &#39;previousDayValue&#39;: 31578557,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2016-11-10&#39;,</span>
-<span class="go">  &#39;recordValue&#39;: 74855222},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;avg30Value&#39;: 5753,</span>
-<span class="go">  &#39;previousDayValue&#39;: 5593,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-20&#39;,</span>
-<span class="go">  &#39;recordValue&#39;: 6614},</span>
-<span class="go"> &#39;volume&#39;: {&#39;avg30Value&#39;: 179872814,</span>
-<span class="go">  &#39;previousDayValue&#39;: 187310989,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-20&#39;,</span>
-<span class="go">  &#39;recordValue&#39;: 301897950}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 303952226,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-12-29&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 226066570,</span>
+<span class="go">  &#39;avg30Value&#39;: 191108094},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6657,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-12-26&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 5944,</span>
+<span class="go">  &#39;avg30Value&#39;: 5702},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 76011422,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2016-11-18&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 37567495,</span>
+<span class="go">  &#39;avg30Value&#39;: 32084326},</span>
+<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17584778522.104,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-02-17&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 10556152296.5117,</span>
+<span class="go">  &#39;avg30Value&#39;: 10286025258.6269}}</span>
 </pre></div>
 </div>
 </div>
@@ -759,9 +698,7 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -770,7 +707,7 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
         <a href="apidata.html" class="btn btn-neutral float-right" title="API System Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="refdata.html" class="btn btn-neutral" title="Reference Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="refdata.html" class="btn btn-neutral float-left" title="Reference Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -779,11 +716,11 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -796,36 +733,15 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

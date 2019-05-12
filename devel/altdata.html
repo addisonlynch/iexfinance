@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Alternative Data &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Alternative Data &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,44 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.0 documentation" href="index.html"/>
-        <link rel="next" title="Reference Data" href="refdata.html"/>
-        <link rel="prev" title="Stocks" href="stocks.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference Data" href="refdata.html" />
+    <link rel="prev" title="Stocks" href="stocks.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -120,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -133,7 +127,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -141,9 +135,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,8 +185,8 @@
 <div class="section" id="news">
 <span id="altdata-news"></span><h2>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="stocks.html#stocks-news"><span class="std std-ref">News</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="stocks.html#stocks-news"><span class="std std-ref">News</span></a></p>
 </div>
 </div>
 <div class="section" id="crypto">
@@ -204,14 +199,11 @@
 Each element is a standard <code class="docutils literal notranslate"><span class="pre">quote</span></code>.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#crypto">https://iexcloud.io/docs/api/#crypto</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -222,28 +214,24 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</
 <code class="descclassname">iexfinance.altdata.</code><code class="descname">get_social_sentiment</code><span class="sig-paren">(</span><em>symbol</em>, <em>period_type=None</em>, <em>date=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_social_sentiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Social Sentiment</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Unstable endpoint. May return unexpected results.</p>
+<p class="admonition-title">Warning</p>
+<p>Unstable endpoint. May return unexpected results.</p>
 </div>
 <p>This endpoint provides social sentiment data from StockTwits. Data can be
 viewed as a daily value, or by minute for a given date.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#social-sentiment">https://iexcloud.io/docs/api/#social-sentiment</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per date for <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">200</span></code> per symbol for
 <code class="docutils literal notranslate"><span class="pre">minute</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</li>
-<li><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – Can only be <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to the “type” path
-parameter in the IEX Cloud documentation</li>
-<li><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</p></li>
+<li><p><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – Can only be <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to the “type” path
+parameter in the IEX Cloud documentation</p></li>
+<li><p><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -256,14 +244,11 @@ parameter in the IEX Cloud documentation</li>
 <p>This endpoint provides CEO compensation for a company by symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ceo-compensation">https://iexcloud.io/docs/api/#ceo-compensation</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -271,9 +256,7 @@ parameter in the IEX Cloud documentation</li>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -282,7 +265,7 @@ parameter in the IEX Cloud documentation</li>
         <a href="refdata.html" class="btn btn-neutral float-right" title="Reference Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="stocks.html" class="btn btn-neutral" title="Stocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="stocks.html" class="btn btn-neutral float-left" title="Stocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -291,11 +274,11 @@ parameter in the IEX Cloud documentation</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch.
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -308,36 +291,15 @@ parameter in the IEX Cloud documentation</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
