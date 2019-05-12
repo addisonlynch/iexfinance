@@ -42,7 +42,7 @@ _FIELD_METHODS = [
     ("get_company_name", str),
     ("get_primary_exchange", str),
     ("get_sector", str),
-    ("get_open", float),
+    # ("get_open", float),  # fails on weekends
     ("get_close", float),
     ("get_years_high", float),
     ("get_years_low", (float, int)),

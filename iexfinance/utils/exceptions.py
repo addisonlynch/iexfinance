@@ -76,7 +76,7 @@ class IEXVersionError(Exception):
 
 
 DEP_ERROR_MSG = """
-{0} has been immediately deprecated.
+%s has been immediately deprecated.
 """
 
 
