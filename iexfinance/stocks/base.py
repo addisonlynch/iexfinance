@@ -2,7 +2,8 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
-from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError, ImmediateDeprecationError
+from iexfinance.utils.exceptions import (IEXSymbolError, IEXEndpointError,
+                                         ImmediateDeprecationError)
 from iexfinance.utils import legacy_endpoint
 
 

@@ -7,7 +7,7 @@ from decimal import Decimal
 
 from iexfinance.stocks import (get_historical_data, get_sector_performance,
                                get_collections, get_crypto_quotes,
-                               get_todays_earnings, get_ipo_calendar,
+                               get_earnings_today, get_ipo_calendar,
                                get_historical_intraday, Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
@@ -367,8 +367,8 @@ class TestCollections(object):
 
 class TestTodaysEarnings(object):
 
-    def test_get_todays_earnings(self):
-        data = get_todays_earnings()
+    def test_get_earnings_today(self):
+        data = get_earnings_today()
 
         assert isinstance(data, dict)
         assert "bto" in data
