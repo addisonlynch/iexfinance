@@ -11,6 +11,10 @@ from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
 
+# Docs URL for IEX Cloud migration
+MIGRATION_URL = "https://addisonlynch.github.io/iexfinance/stable/"\
+                "migrating.html"
+
 
 class _IEXBase(object):
     """
@@ -63,7 +67,7 @@ class _IEXBase(object):
 
         # Get desired API version from environment variables
         # Defaults to v1 API
-        self.version = os.getenv("IEX_API_VERSION")
+        self.version = os.getenv("IEX_API_VERSION", 'iexcloud-v1')
         if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
                 self.token = os.getenv('IEX_TOKEN')
@@ -72,8 +76,14 @@ class _IEXBase(object):
                                  'either through the token variable or '
                                  'through the environmental variable '
                                  'IEX_TOKEN.')
+        elif self.version == 'v1':
+            import warnings
+            warnings.warn("Support for the legacy Version 1 IEX Developer "
+                          "API will end on June 1, 2019. For more "
+                          "information, see %s for more information."
+                          % MIGRATION_URL)
         else:
-            self.version = 'v1'
+            raise ValueError("Please select a valid API version.")
 
     @property
     def params(self):

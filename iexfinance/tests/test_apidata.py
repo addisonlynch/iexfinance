@@ -1,10 +1,8 @@
 import pandas as pd
-import pytest
 
 from iexfinance.apidata import get_api_status
 
 
-@pytest.mark.cloud
 class TestAPIData(object):
 
     def test_api_status_json(self):

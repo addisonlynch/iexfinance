@@ -6,9 +6,9 @@ import pandas as pd
 from decimal import Decimal
 
 from iexfinance.stocks import (get_historical_data, get_sector_performance,
-                               get_collections, get_crypto_quotes,
-                               get_earnings_today, get_ipo_calendar,
-                               get_historical_intraday, Stock)
+                               get_collections, get_earnings_today,
+                               get_ipo_calendar, get_historical_intraday,
+                               Stock)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
@@ -39,13 +39,6 @@ class TestShareDefault(object):
                              json_parse_int=Decimal,
                              json_parse_float=Decimal)
         self.cshare5 = Stock("GIG^")
-
-    @pytest.mark.xfail(reason="Unstable.")
-    @pytest.mark.legacy
-    def test_invalid_symbol(self):
-        data = Stock("BAD SYMBOL")
-        with pytest.raises(IEXSymbolError):
-            data.get_price()
 
     def test_get_endpoints(self):
         data = self.cshare.get_endpoints(["price"])
@@ -135,12 +128,6 @@ class TestBatchDefault(object):
 
         with pytest.raises(IEXEndpointError):
             self.cbatch.get_endpoints("BAD ENDPOINT")
-
-    @pytest.mark.legacy
-    def test_get_all(self):
-        data = self.cbatch.get_all()
-        assert len(data) == 2
-        assert len(data["AAPL"]) == 20
 
     def test_get_chart_params(self):
         data = self.cbatch.get_chart()["AAPL"]
@@ -300,31 +287,6 @@ class TestHistorical(object):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
 
 
-@pytest.mark.legacy
-class TestCrypto(object):
-
-    def setup_class(self):
-        self.ticks = ["BTCUSDT", "EOSUSDT", "ETHUSDT", "BNBUSDT", "ONTUSDT",
-                      "BCCUSDT", "ADAUSDT", "XRPUSDT", "TUSDUSDT", "TRXUSDT",
-                      "LTCUSDT", "ETCUSDT", "IOTAUSDT", "ICXUSDT", "NEOUSDT",
-                      "VENUSDT", "XLMUSDT", "QTUMUSDT"]
-
-    def test_listed_crypto_symbols(self):
-        a = Stock(self.ticks)
-        assert isinstance(a.get_quote(), dict)
-
-    def test_get_crypto_quotes(self):
-        data = get_crypto_quotes()
-        assert isinstance(data, list)
-
-    def test_get_cypto_quotes_pandas(self):
-        data = get_crypto_quotes(output_format='pandas')
-        assert isinstance(data, pd.DataFrame)
-
-        assert len(data) == 43
-        assert data.loc["sector"][0] == "cryptocurrency"
-
-
 class TestSectorPerformance(object):
 
     def test_list_sector_performance(self):
@@ -365,7 +327,7 @@ class TestCollections(object):
         assert len(df.columns) > 500
 
 
-class TestTodaysEarnings(object):
+class TestEarningsToday(object):
 
     def test_get_earnings_today(self):
         data = get_earnings_today()
