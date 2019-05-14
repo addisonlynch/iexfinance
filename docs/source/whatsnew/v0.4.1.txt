@@ -44,11 +44,6 @@ Enhancements
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<<<<<<< HEAD
-The following functions have been moved to the following locations:
-
-- Deprecations:
-=======
 
 * ``iexcloud-v1`` is now the default ``IEX_API_VERSION``, as ``v1`` support
   will end on 6/1/2019
@@ -63,7 +58,6 @@ The following functions have been moved to the following locations:
     - ``iexfinance.refdata.get_iex_next_day_ex_date``
     - ``iexfinance.refdata.get_listed_symbol_dir``
 * Deprecations (functions moved or renamed):
->>>>>>> 678d26949281a5bd0846a434fcd000284f4d9dd2
     - ``get_market_gainers`` → ``iexfinance.stocks.get_market_gainers``
     - ``get_market_losers`` → ``iexfinance.stocks.get_market_losers``
     - ``get_market_most_active`` → ``iexfinance.stocks.get_market_most_active``

@@ -553,11 +553,7 @@ Peers
 Previous Day Prices
 -------------------
 
-<<<<<<< HEAD
-.. warning:: ``get_previous`` has been deprecated and renamed 
-=======
 .. warning:: ``get_previous`` has been deprecated and renamed
->>>>>>> 678d26949281a5bd0846a434fcd000284f4d9dd2
             ``get_previous_day_prices``.
 
 .. automethod:: iexfinance.stocks.base.Stock.get_previous_day_prices
