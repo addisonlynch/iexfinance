@@ -1,7 +1,7 @@
 .. _whatsnew_035:
 
 
-v0.3.5 (11/28/2018)
+v0.3.5 (November 28, 2018)
 -----------------------
 
 This is a minor release from 0.3.4.

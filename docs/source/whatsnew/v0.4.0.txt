@@ -1,7 +1,7 @@
 .. _whatsnew_040:
 
 
-v0.4.0 (2/21/2019)
+v0.4.0 (February 21, 2019)
 ------------------
 
 This is a major release from 0.3.5, and we recommend that all users
