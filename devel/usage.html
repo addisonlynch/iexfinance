@@ -232,7 +232,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [2]: </span><span class="n">tsla</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s1">&#39;TSLA&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">248.59</span>
+<span class="gh">Out[3]: </span><span class="go">239.49</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -240,7 +240,7 @@ etc.):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">batch</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;TSLA&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">])</span>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 241.34, &#39;AAPL&#39;: 203.38}</span>
+<span class="gh">Out[5]: </span><span class="go">{&#39;TSLA&#39;: 241.47, &#39;AAPL&#39;: 194.3}</span>
 </pre></div>
 </div>
 </div>
@@ -286,22 +286,22 @@ current day (default is current date):</p>
 <span class="go">{&#39;date&#39;: &#39;2019-05-10&#39;,</span>
 <span class="go"> &#39;minute&#39;: &#39;09:30&#39;,</span>
 <span class="go"> &#39;label&#39;: &#39;09:30 AM&#39;,</span>
-<span class="go"> &#39;high&#39;: 204.068,</span>
-<span class="go"> &#39;low&#39;: 202.69,</span>
-<span class="go"> &#39;average&#39;: 202.033,</span>
-<span class="go"> &#39;volume&#39;: 26616,</span>
-<span class="go"> &#39;notional&#39;: 5228017.794,</span>
-<span class="go"> &#39;numberOfTrades&#39;: 143,</span>
-<span class="go"> &#39;marketHigh&#39;: 205.44,</span>
-<span class="go"> &#39;marketLow&#39;: 205.05,</span>
-<span class="go"> &#39;marketAverage&#39;: 201.545,</span>
-<span class="go"> &#39;marketVolume&#39;: 691410,</span>
-<span class="go"> &#39;marketNotional&#39;: 133007755.483,</span>
-<span class="go"> &#39;marketNumberOfTrades&#39;: 1533,</span>
-<span class="go"> &#39;open&#39;: 202.538,</span>
-<span class="go"> &#39;close&#39;: 201.692,</span>
-<span class="go"> &#39;marketOpen&#39;: 202.661,</span>
-<span class="go"> &#39;marketClose&#39;: 198.808,</span>
+<span class="go"> &#39;high&#39;: 205.626,</span>
+<span class="go"> &#39;low&#39;: 203.32,</span>
+<span class="go"> &#39;average&#39;: 203.348,</span>
+<span class="go"> &#39;volume&#39;: 26765,</span>
+<span class="go"> &#39;notional&#39;: 5326539.352,</span>
+<span class="go"> &#39;numberOfTrades&#39;: 144,</span>
+<span class="go"> &#39;marketHigh&#39;: 201.1,</span>
+<span class="go"> &#39;marketLow&#39;: 205.95,</span>
+<span class="go"> &#39;marketAverage&#39;: 203.125,</span>
+<span class="go"> &#39;marketVolume&#39;: 664151,</span>
+<span class="go"> &#39;marketNotional&#39;: 133498279.844,</span>
+<span class="go"> &#39;marketNumberOfTrades&#39;: 1560,</span>
+<span class="go"> &#39;open&#39;: 201.618,</span>
+<span class="go"> &#39;close&#39;: 198.547,</span>
+<span class="go"> &#39;marketOpen&#39;: 201.495,</span>
+<span class="go"> &#39;marketClose&#39;: 199.672,</span>
 <span class="go"> &#39;changeOverTime&#39;: 0,</span>
 <span class="go"> &#39;marketChangeOverTime&#39;: 0}</span>
 </pre></div>
@@ -310,11 +310,11 @@ current day (default is current date):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[16]: </span><span class="go"></span>
 <span class="go">                     average  changeOverTime  ...     open volume</span>
-<span class="go">2019-05-10 09:30:00  199.927        0.000000  ...  202.213  26882</span>
-<span class="go">2019-05-10 09:31:00  203.063        0.002475  ...  200.317  10350</span>
-<span class="go">2019-05-10 09:32:00  201.833        0.001320  ...  199.760  11441</span>
-<span class="go">2019-05-10 09:33:00  199.284        0.003476  ...  199.299  18055</span>
-<span class="go">2019-05-10 09:34:00  204.989        0.002333  ...  203.970  12876</span>
+<span class="go">2019-05-14 09:30:00  194.930        0.000000  ...  195.376  11257</span>
+<span class="go">2019-05-14 09:31:00  189.376       -0.000171  ...  190.900   5974</span>
+<span class="go">2019-05-14 09:32:00  193.141       -0.002338  ...  194.740   3615</span>
+<span class="go">2019-05-14 09:33:00  186.902       -0.002919  ...  193.683   3881</span>
+<span class="go">2019-05-14 09:34:00  193.200       -0.003645  ...  192.970   3830</span>
 
 <span class="go">[5 rows x 20 columns]</span>
 </pre></div>
@@ -334,17 +334,17 @@ the endpoint requested.</p>
 
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">{&#39;date&#39;: &#39;2019-05-10&#39;,</span>
-<span class="go"> &#39;open&#39;: 198.53,</span>
-<span class="go"> &#39;close&#39;: 206.21,</span>
-<span class="go"> &#39;high&#39;: 199.7,</span>
-<span class="go"> &#39;low&#39;: 197.44,</span>
-<span class="go"> &#39;volume&#39;: 41967707,</span>
-<span class="go"> &#39;uOpen&#39;: 200.98,</span>
-<span class="go"> &#39;uClose&#39;: 203.88,</span>
-<span class="go"> &#39;uHigh&#39;: 203.03,</span>
-<span class="go"> &#39;uLow&#39;: 200.97,</span>
-<span class="go"> &#39;uVolume&#39;: 42705675,</span>
+<span class="go">{&#39;date&#39;: &#39;2019-05-13&#39;,</span>
+<span class="go"> &#39;open&#39;: 187.87,</span>
+<span class="go"> &#39;close&#39;: 185.92,</span>
+<span class="go"> &#39;high&#39;: 195.43,</span>
+<span class="go"> &#39;low&#39;: 187.52,</span>
+<span class="go"> &#39;volume&#39;: 57778853,</span>
+<span class="go"> &#39;uOpen&#39;: 192.32,</span>
+<span class="go"> &#39;uClose&#39;: 193.52,</span>
+<span class="go"> &#39;uHigh&#39;: 196.5,</span>
+<span class="go"> &#39;uLow&#39;: 191.9,</span>
+<span class="go"> &#39;uVolume&#39;: 59477347,</span>
 <span class="go"> &#39;change&#39;: 0,</span>
 <span class="go"> &#39;changePercent&#39;: 0,</span>
 <span class="go"> &#39;changeOverTime&#39;: 0,</span>
@@ -362,16 +362,17 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
+<span class="gh">Out[21]: </span><span class="go">186.56</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[22]: </span><span class="go">200.57</span>
+<span class="go">                Out[22]: 196.83</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">([</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;TSLA&quot;</span><span class="p">])</span>
 
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[24]: </span><span class="go">{&#39;AAPL&#39;: None, &#39;TSLA&#39;: None}</span>
+<span class="gh">Out[24]: </span><span class="go">{&#39;AAPL&#39;: 191.25, &#39;TSLA&#39;: 238.2}</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -390,7 +391,7 @@ method as a keyword argument.</p>
 
 <span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
-<span class="go">AAPL    23.1594</span>
+<span class="go">AAPL    19.417</span>
 <span class="go">Name: ytdChange, dtype: object</span>
 </pre></div>
 </div>
