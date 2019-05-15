@@ -66,7 +66,7 @@ class _IEXBase(object):
         self.token = kwargs.get("token")
 
         # Get desired API version from environment variables
-        # Defaults to v1 API
+        # Defaults to IEX Cloud
         self.version = os.getenv("IEX_API_VERSION", 'iexcloud-v1')
         if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
@@ -78,10 +78,10 @@ class _IEXBase(object):
                                  'IEX_TOKEN.')
         elif self.version == 'v1':
             import warnings
-            warnings.warn("Support for the legacy Version 1 IEX Developer "
-                          "API will end on June 1, 2019. For more "
-                          "information, see %s for more information."
-                          % MIGRATION_URL)
+            msg = "Support for the legacy Version 1 IEX Developer "\
+                  "API will end on June 1, 2019. For more "\
+                  "information, see %s." % MIGRATION_URL
+            warnings.warn(msg)
         else:
             raise ValueError("Please select a valid API version.")
 

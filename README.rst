@@ -16,9 +16,7 @@ iexfinance
 Now Supporting IEX Cloud
 ------------------------
 
-Python SDK for `IEX Cloud <https://iexcloud.io>`__ and the legacy
-Version 1.0 `Investors Exchange (IEX) <https://iextrading.com/>`__
-`Developer API <https://iextrading.com/developer/>`__. Architecture mirrors
+Python SDK for `IEX Cloud <https://iexcloud.io>`__. Architecture mirrors
 that of the IEX Cloud API (and its `documentation <https://iexcloud.io/docs/api/>`__).
 
 ``iexfinance`` will maintain compatibility and support for the
@@ -150,19 +148,16 @@ Configuration
 Selecting an API Version
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Note to Version 1.0 users:* see `Migrating to IEX Cloud <https://addisonlynch.github.io/stable/migrating.html>`__ for more information
-about migrating to IEX Cloud.
+``iexfinance`` now defaults to IEX Cloud for all calls. The use of
+``v1`` as ``IEX_API_VERSION`` will be warned in ``iexfinance``
+0.4.1 and deprecated in 0.4.2.
 
-``iexfinance`` now supports both active IEX APIs: `IEX Cloud <https://iexcloud.io>`__, as well as the
-legacy `Version 1.0 IEX Developer API <https://iextrading.com/developer/docs/>`__.
+The desired IEX API version can be specified using the ``IEX_API_VERSION``
+environment variable. The following versions are currently supported:
 
-The IEX API version can be selected by setting the environment variable
-``IEX_API_VERSION`` to one of the following values:
-
-- ``v1`` for IEX legacy Version 1.0 `Developer API <https://iextrading.com/developer/docs/>`__
-- ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
-
-IEX is continuing support for the legacy API until at least May 29th, 2019.
+* ``v1`` - *note: this will be deprecated in* ``iexfinance`` *version 0.4.2*
+* ``iexcloud-beta``
+* ``iexcloud-v1`` - **default**
 
 Output Formatting
 ~~~~~~~~~~~~~~~~~
