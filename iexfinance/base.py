@@ -66,7 +66,7 @@ class _IEXBase(object):
         self.token = kwargs.get("token")
 
         # Get desired API version from environment variables
-        # Defaults to v1 API
+        # Defaults to IEX Cloud
         self.version = os.getenv("IEX_API_VERSION", 'iexcloud-v1')
         if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
