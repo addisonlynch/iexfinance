@@ -54,12 +54,15 @@ Backwards Incompatible Changes
   Cloud
 * All legacy-only endpoints will now warn of impending deprecation on
   June 1, 2019
+
     - ``iexfinance.stocks.get_crypto_quotes``
     - ``iexfinance.refdata.get_iex_corporate_actions``
     - ``iexfinance.refdata.get_iex_dividends``
     - ``iexfinance.refdata.get_iex_next_day_ex_date``
     - ``iexfinance.refdata.get_listed_symbol_dir``
+
 * Deprecations (functions moved or renamed):
+
     - ``get_market_gainers`` → ``iexfinance.stocks.get_market_gainers``
     - ``get_market_losers`` → ``iexfinance.stocks.get_market_losers``
     - ``get_market_most_active`` → ``iexfinance.stocks.get_market_most_active``
