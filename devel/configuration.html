@@ -205,32 +205,40 @@
 <span id="config"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>There are four core components of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s configuration:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#config-api-version"><span class="std std-ref">API Version</span></a> - specifying use of IEX Cloud or the IEX legacy v1 Developer API</p></li>
+<li><p><a class="reference internal" href="#config-api-version"><span class="std std-ref">API Version</span></a> - specifying version of IEX Cloud to use</p></li>
 <li><p><a class="reference internal" href="#config-auth"><span class="std std-ref">Authentication</span></a> - setting your IEX Cloud Authentication Token</p></li>
 <li><p><a class="reference internal" href="#config-formatting"><span class="std std-ref">Output Formatting</span></a> - configuring desired output format (mirror IEX output or Pandas DataFrame)</p></li>
 <li><p><a class="reference internal" href="#config-debugging"><span class="std std-ref">Debugging</span></a> - cached sessions, request retries, and more</p></li>
 </ul>
 <div class="section" id="api-version">
 <span id="config-api-version"></span><h2>API Version<a class="headerlink" href="#api-version" title="Permalink to this headline">¶</a></h2>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> makes its requests to the legacy
-<a class="reference external" href="https://iextrading.com/developer/docs/">v1 IEX Developer API</a>. IEX recommends migrating to IEX Cloud.</p>
+<p>The desired IEX API version can be specified using the <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code>
+environment variable. The following versions are currently supported:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v1</span></code> - <em>note: this will be deprecated in</em> <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> <em>version 0.4.2</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code> - <strong>default</strong></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> now defaults to IEX Cloud for all calls. The use of
+<code class="docutils literal notranslate"><span class="pre">v1</span></code> as <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> will be warned in <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>
+0.4.1 and deprecated in 0.4.2.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The beta period for IEX Cloud ends on June 1st, 2019. At this time,
+all calls using <code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> will mirror those of
+<code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code>.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a></p>
+<p>For more information on API versioning, see the IEX Cloud
+<a class="reference external" href="https://iexcloud.io/docs/api/#versioning">documentation</a>.</p>
 </div>
-<p>To select an API version, set the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to one of the following values:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">v1</span></code>: IEX legacy v1.0 <a class="reference external" href="https://iextrading.com/developer/docs/">Developer API</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> for the current beta of <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud</a></p></li>
-</ul>
 </div>
 <div class="section" id="authentication">
 <span id="config-auth"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>IEX Cloud is in public beta, and as such, registration for early beta
-access is required. Registration can be found <a class="reference external" href="https://iexcloud.io/">here</a>.</p>
-</div>
 <p>An IEX Cloud account is required to acecss the IEX Cloud API.</p>
 <p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
 <div class="section" id="passing-as-an-argument">
@@ -281,11 +289,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  currency        date exchange  ... region  symbol type</span>
-<span class="go">0      USD  2019-05-14      NSY  ...     SU       A   sc</span>
-<span class="go">1      USD  2019-05-14      NYS  ...     US      AA   sc</span>
-<span class="go">2      USD  2019-05-14      PSE  ...     US    AAAU   et</span>
-<span class="go">3      USD  2019-05-14      ANS  ...     SU    AABA  efc</span>
-<span class="go">4      UDS  2019-05-14      SYN  ...     SU     AAC   cs</span>
+<span class="go">0      UDS  2019-05-14      NYS  ...     SU       A   cs</span>
+<span class="go">1      UDS  2019-05-14      NYS  ...     SU      AA   sc</span>
+<span class="go">2      SUD  2019-05-14      EPS  ...     US    AAAU   te</span>
+<span class="go">3      UDS  2019-05-14      NSA  ...     US    AABA  cfe</span>
+<span class="go">4      UDS  2019-05-14      NSY  ...     SU     AAC   cs</span>
 
 <span class="go">[5 rows x 9 columns]</span>
 </pre></div>
@@ -298,11 +306,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    29143084</span>
+<span class="go">avgTotalVolume    29588943</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                2.99</span>
-<span class="go">changePercent      0.01623</span>
-<span class="go">close               190.44</span>
+<span class="go">change                3.04</span>
+<span class="go">changePercent      0.01633</span>
+<span class="go">close               192.63</span>
 </pre></div>
 </div>
 </div>
