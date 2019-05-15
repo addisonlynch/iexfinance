@@ -78,10 +78,10 @@ class _IEXBase(object):
                                  'IEX_TOKEN.')
         elif self.version == 'v1':
             import warnings
-            warnings.warn("Support for the legacy Version 1 IEX Developer "
-                          "API will end on June 1, 2019. For more "
-                          "information, see %s for more information."
-                          % MIGRATION_URL)
+            msg = "Support for the legacy Version 1 IEX Developer "\
+                  "API will end on June 1, 2019. For more "\
+                  "information, see %s." % MIGRATION_URL
+            warnings.warn(msg)
         else:
             raise ValueError("Please select a valid API version.")
 
