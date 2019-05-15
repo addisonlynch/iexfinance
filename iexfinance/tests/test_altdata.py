@@ -23,7 +23,7 @@ class TestAltData(object):
             get_crypto_quote(["BTCUSDT", "BAD"])
 
     def test_crypto_quote_json(self):
-        data = get_crypto_quote("BTCUSDT", output_format='json')
+        data = get_crypto_quote("BTCUSDT")
 
         assert isinstance(data, dict)
         assert len(data) == 44
