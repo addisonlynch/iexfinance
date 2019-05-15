@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuration &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Configuration &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Common Usage Examples" href="usage.html" />
     <link rel="prev" title="Install" href="install.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -132,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -202,34 +205,42 @@
 <span id="config"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>There are four core components of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s configuration:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#config-api-version"><span class="std std-ref">API Version</span></a> - specifying use of IEX Cloud or the IEX legacy v1 Developer API</li>
-<li><a class="reference internal" href="#config-auth"><span class="std std-ref">Authentication</span></a> - setting your IEX Cloud Authentication Token</li>
-<li><a class="reference internal" href="#config-formatting"><span class="std std-ref">Output Formatting</span></a> - configuring desired output format (mirror IEX output or Pandas DataFrame)</li>
-<li><a class="reference internal" href="#config-debugging"><span class="std std-ref">Debugging</span></a> - cached sessions, request retries, and more</li>
+<li><p><a class="reference internal" href="#config-api-version"><span class="std std-ref">API Version</span></a> - specifying version of IEX Cloud to use</p></li>
+<li><p><a class="reference internal" href="#config-auth"><span class="std std-ref">Authentication</span></a> - setting your IEX Cloud Authentication Token</p></li>
+<li><p><a class="reference internal" href="#config-formatting"><span class="std std-ref">Output Formatting</span></a> - configuring desired output format (mirror IEX output or Pandas DataFrame)</p></li>
+<li><p><a class="reference internal" href="#config-debugging"><span class="std std-ref">Debugging</span></a> - cached sessions, request retries, and more</p></li>
 </ul>
 <div class="section" id="api-version">
 <span id="config-api-version"></span><h2>API Version<a class="headerlink" href="#api-version" title="Permalink to this headline">¶</a></h2>
-<p>By default, <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> makes its requests to the legacy
-<a class="reference external" href="https://iextrading.com/developer/docs/">v1 IEX Developer API</a>. IEX recommends migrating to IEX Cloud.</p>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a></p>
-</div>
-<p>To select an API version, set the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to one of the following values:</p>
+<p>The desired IEX API version can be specified using the <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code>
+environment variable. The following versions are currently supported:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">v1</span></code>: IEX legacy v1.0 <a class="reference external" href="https://iextrading.com/developer/docs/">Developer API</a></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> for the current beta of <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud</a></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v1</span></code> - <em>note: this will be deprecated in</em> <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> <em>version 0.4.2</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code> - <strong>default</strong></p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> now defaults to IEX Cloud for all calls. The use of
+<code class="docutils literal notranslate"><span class="pre">v1</span></code> as <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> will be warned in <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>
+0.4.1 and deprecated in 0.4.2.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The beta period for IEX Cloud ends on June 1st, 2019. At this time,
+all calls using <code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> will mirror those of
+<code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information on API versioning, see the IEX Cloud
+<a class="reference external" href="https://iexcloud.io/docs/api/#versioning">documentation</a>.</p>
+</div>
 </div>
 <div class="section" id="authentication">
 <span id="config-auth"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">IEX Cloud is in public beta, and as such, registration for early beta
-access is required. Registration can be found <a class="reference external" href="https://iexcloud.io/">here</a>.</p>
-</div>
 <p>An IEX Cloud account is required to acecss the IEX Cloud API.</p>
-<p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_API_KEY</span></code> environment variable.</p>
+<p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
 <div class="section" id="passing-as-an-argument">
 <span id="config-auth-argument"></span><h3>Passing as an Argument<a class="headerlink" href="#passing-as-an-argument" title="Permalink to this headline">¶</a></h3>
 <p>The authentication token can also be passed to any function call:</p>
@@ -250,11 +261,11 @@ access is required. Registration can be found <a class="reference external" href
 <span id="config-auth-env"></span><h3>Environment Variable (Recommended)<a class="headerlink" href="#environment-variable-recommended" title="Permalink to this headline">¶</a></h3>
 <p>The easiest (and recommended) way to authenticate your IEX Cloud account is by
 storing your authentication token (secret key beginning with <code class="docutils literal notranslate"><span class="pre">sk_</span></code>) in the
-<code class="docutils literal notranslate"><span class="pre">IEX_AUTH_TOKEN</span></code> environment variable.</p>
+<code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
 <div class="section" id="macos-linux">
 <span id="config-auth-env-unix"></span><h4>macOS/Linux<a class="headerlink" href="#macos-linux" title="Permalink to this headline">¶</a></h4>
 <p>Type the following command into your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_AUTH_TOKEN</span><span class="o">=</span>&lt;YOUR AUTH TOKEN&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_TOKEN</span><span class="o">=</span>&lt;YOUR AUTH TOKEN&gt;
 </pre></div>
 </div>
 </div>
@@ -277,12 +288,14 @@ output format can be done in two ways:</p>
 
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">         date  iexId  isEnabled                       name symbol type</span>
-<span class="go">0  2019-02-20      2       True  Agilent Technologies Inc.      A   cs</span>
-<span class="go">1  2019-02-20  12042       True          Alcoa Corporation     AA   cs</span>
-<span class="go">2  2019-02-20  14924       True   Perth Mint Physical Gold   AAAU  N/A</span>
-<span class="go">3  2019-02-20   7653       True                Altaba Inc.   AABA   cs</span>
-<span class="go">4  2019-02-20   9169       True          AAC Holdings Inc.    AAC   cs</span>
+<span class="go">  currency        date exchange  ... region  symbol type</span>
+<span class="go">0      UDS  2019-05-14      NSY  ...     SU       A   cs</span>
+<span class="go">1      UDS  2019-05-14      SNY  ...     SU      AA   cs</span>
+<span class="go">2      SUD  2019-05-14      SEP  ...     US    AAAU   te</span>
+<span class="go">3      UDS  2019-05-14      ANS  ...     US    AABA  fec</span>
+<span class="go">4      DSU  2019-05-14      NYS  ...     SU     AAC   cs</span>
+
+<span class="go">[5 rows x 9 columns]</span>
 </pre></div>
 </div>
 <p>or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
@@ -293,11 +306,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    30873382</span>
+<span class="go">avgTotalVolume    29464923</span>
 <span class="go">calculationPrice     close</span>
-<span class="go">change                 1.1</span>
-<span class="go">changePercent      0.00644</span>
-<span class="go">close               172.03</span>
+<span class="go">change                2.97</span>
+<span class="go">changePercent      0.01606</span>
+<span class="go">close               190.62</span>
 </pre></div>
 </div>
 </div>
@@ -334,70 +347,55 @@ the API.</p>
 <dt id="iexfinance.base._IEXBase.retry_count">
 <code class="descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired number of retries if a request fails</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">int, default 3, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int, default 3, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.pause">
 <code class="descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pause time between retry attempts</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">float default 0.5, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float default 0.5, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.session">
 <code class="descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
 <dd><p>A cached requests-cache session</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">requests_cache.session, default None, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>requests_cache.session, default None, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.json_parse_int">
 <code class="descname">json_parse_int</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_int" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired integer parsing datatype</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datatype, default int, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>datatype, default int, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.json_parse_float">
 <code class="descname">json_parse_float</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired floating point parsing datatype</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">datatype, default float, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>datatype, default float, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
@@ -405,28 +403,22 @@ the API.</p>
 <code class="descname">output_format</code><a class="headerlink" href="#iexfinance.base._IEXBase.output_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Desired output format (json or pandas DataFrame). This can also be
 set using the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, default “json”, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, default “json”, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.token">
 <code class="descname">token</code><a class="headerlink" href="#iexfinance.base._IEXBase.token" title="Permalink to this definition">¶</a></dt>
 <dd><p>Authentication token (reuqired for use with IEX Cloud)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -439,8 +431,8 @@ set using the environment variable <code class="docutils literal notranslate"><s
 <div class="section" id="request-parameters">
 <span id="config-debugging-request-params"></span><h3>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Use <code class="docutils literal notranslate"><span class="pre">retry_count</span></code> to specify the number of times to retry a failed request. The default value is <code class="docutils literal notranslate"><span class="pre">3</span></code>.</li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">pause</span></code> to specify the time between retry attempts. The default value is <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">retry_count</span></code> to specify the number of times to retry a failed request. The default value is <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pause</span></code> to specify the time between retry attempts. The default value is <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
 </ul>
 </div>
 </div>
@@ -457,7 +449,7 @@ set using the environment variable <code class="docutils literal notranslate"><s
         <a href="usage.html" class="btn btn-neutral float-right" title="Common Usage Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -466,7 +458,7 @@ set using the environment variable <code class="docutils literal notranslate"><s
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
@@ -483,25 +475,16 @@ set using the environment variable <code class="docutils literal notranslate"><s
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

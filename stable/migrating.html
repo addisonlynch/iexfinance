@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Migrating to IEX Cloud &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Migrating to IEX Cloud &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Install" href="install.html" />
     <link rel="prev" title="What’s New" href="whatsnew.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -87,17 +89,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Migrating to IEX Cloud</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cloud-endpoints-added-in-iex-cloud">Cloud Endpoints (Added in IEX Cloud)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#migration-overview">Migration Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backwards-incompatible-changes">Backwards Incompatible Changes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stocks">Stocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reference-data">Reference Data</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#legacy-endpoints-removed-in-iex-cloud">Legacy Endpoints (Removed in IEX Cloud)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Stocks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Reference Data</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#migrating-ref-data">Reference Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-information">Additional Information</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
@@ -118,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -186,48 +185,59 @@
             
   <div class="section" id="migrating-to-iex-cloud">
 <span id="migrating"></span><h1>Migrating to IEX Cloud<a class="headerlink" href="#migrating-to-iex-cloud" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="cloud-endpoints-added-in-iex-cloud">
-<span id="migrating-cloud-only"></span><h2>Cloud Endpoints (Added in IEX Cloud)<a class="headerlink" href="#cloud-endpoints-added-in-iex-cloud" title="Permalink to this headline">¶</a></h2>
+<p><strong>IEX will end support for the Legacy v1 Devleoper API on June 1st, 2019.</strong> At
+that
+time, the use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will require an IEX Cloud <a class="reference external" href="https://iexcloud.io/pricing/">account</a>. In
+addition, support for all <em>legacy only</em> endpoints will be discontinued.</p>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> version 0.4.1 uses IEX Cloud by default and adds
+warnings to all calls which use the legacy API. In version 0.4.2 (June 1st,
+2019), all calls will default to IEX Cloud (most functions will remain
+compatible with the new platform) in addition to the deprecation of
+legacy-only functions.</p>
+<p>IEX supports a number of subscrpition plans ranging from free tier to
+enterprise-level service.</p>
+<div class="section" id="migration-overview">
+<span id="migrating-basics"></span><h2>Migration Overview<a class="headerlink" href="#migration-overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will require an authentication token, which can be
+obtained through the creation of an IEX Cloud account. This token can be
+passed via <a class="reference internal" href="configuration.html#config-auth-argument"><span class="std std-ref">argument</span></a> or by
+<a class="reference internal" href="configuration.html#config-auth-env"><span class="std std-ref">setting</span></a> the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will default to IEX Cloud Version 1 for all API calls. Along
+with the discontinuation of the legacy API on June 1, 2019, the beta period
+for IEX Cloud will end. Setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> will
+return the equivalent to that of <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code></p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">ImmediateDeprecationError</span></code> will be thrown by <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> 0.4.2 for
+<code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> set to <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="backwards-incompatible-changes">
+<span id="migrating-incompatible"></span><h2>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h2>
+<p>THe following endpoints are <strong>no longer supported</strong> by IEX Cloud and will be
+deprecated in <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> 0.4.2:</p>
 <div class="section" id="stocks">
 <h3>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Market Volume - <code class="docutils literal notranslate"><span class="pre">stocks.get_market_volume</span></code></li>
+<li><p>Crypto Quotes - <code class="docutils literal notranslate"><span class="pre">stocks.get_crypto_quotes</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="reference-data">
 <h3>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>IEX Symbols - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_symbols</span></code></li>
+<li><p>IEX Corporate Actions - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_corporate_actions</span></code></p></li>
+<li><p>IEX Dividends - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_dividends</span></code></p></li>
+<li><p>IEX Next Day Ex Date - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_next_day_ex_date</span></code></p></li>
+<li><p>IEX Listed Symbol Directory - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_listed_symbol_dir</span></code></p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="legacy-endpoints-removed-in-iex-cloud">
-<span id="migrating-legacy-only"></span><h2>Legacy Endpoints (Removed in IEX Cloud)<a class="headerlink" href="#legacy-endpoints-removed-in-iex-cloud" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Stocks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="additional-information">
+<span id="migrating-additional-info"></span><h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Chart - <code class="docutils literal notranslate"><span class="pre">stocks.get_chart</span></code> (renamed Historical Prices)</li>
-<li>Crypto Quotes - <code class="docutils literal notranslate"><span class="pre">stocks.get_crypto_quotes</span></code></li>
-<li>Time Series - <code class="docutils literal notranslate"><span class="pre">stocks.get_time_series</span></code></li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h3>Reference Data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>IEX Corporate Actions - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_corporate_actions</span></code></li>
-<li>IEX Dividends - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_dividends</span></code></li>
-<li>IEX Next Day Ex Date - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_next_day_ex_date</span></code></li>
-<li>IEX Listed Symbol Directory - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_listed_symbol_dir</span></code></li>
-</ul>
-</div>
-</div>
-<div class="section" id="migrating-ref-data">
-<span id="id3"></span><h2>Reference Data<a class="headerlink" href="#migrating-ref-data" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
 (legacy) Developer API, this endpoint returned the list of symbols IEX
 supports for trading. In IEX cloud, it returns the list of symbols IEX
-supports for <em>api calls</em>.</li>
+supports for <em>api calls</em>.</p></li>
 </ul>
 </div>
 </div>
@@ -243,7 +253,7 @@ supports for <em>api calls</em>.</li>
         <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="whatsnew.html" class="btn btn-neutral" title="What’s New" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="whatsnew.html" class="btn btn-neutral float-left" title="What’s New" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -252,7 +262,7 @@ supports for <em>api calls</em>.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
@@ -269,25 +279,16 @@ supports for <em>api calls</em>.</li>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

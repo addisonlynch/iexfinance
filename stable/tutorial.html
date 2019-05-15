@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Tutorial &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="iexfinance package" href="modules.html" />
     <link rel="prev" title="Testing" href="testing.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -105,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-a-new-environment">Setting up a new environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a><ul>
@@ -187,8 +190,8 @@ virtual environment using
 <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>. This will ensure
 that our packages are isolated from other projects and configured
 correctly.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>$ virtualenv env
-$ source env/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virtualenv env
+$ <span class="nb">source</span> env/bin/activate
 </pre></div>
 </div>
 </div>
@@ -196,7 +199,7 @@ $ source env/bin/activate
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Once our environment is created, we can now install iexfinance. We do so
 by the following from iexfinance’s pypl repository.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>(env) $ pip install iexfinance
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>env<span class="o">)</span> $ pip install iexfinance
 </pre></div>
 </div>
 <p>This will install the latest stable release of iexfinance that is ready
@@ -220,7 +223,7 @@ data!</p>
         <a href="modules.html" class="btn btn-neutral float-right" title="iexfinance package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="testing.html" class="btn btn-neutral" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="testing.html" class="btn btn-neutral float-left" title="Testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -229,7 +232,7 @@ data!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
@@ -246,25 +249,16 @@ data!</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

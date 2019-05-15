@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Account &mdash; iexfinance 0.4.0 documentation</title>
+  <title>Account &mdash; iexfinance 0.4.1 documentation</title>
   
 
   
@@ -17,13 +17,20 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
@@ -31,21 +38,16 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Stocks" href="stocks.html" />
     <link rel="prev" title="Common Usage Examples" href="usage.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +61,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.4.1
               </div>
             
           
@@ -119,6 +121,7 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -189,9 +192,9 @@
 <span id="id1"></span><h1>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference external" href="https://iexcloud.io/docs/api/#account">Account</a> endpoints provide information about your IEX Cloud account, which allow tracking of message counts, account metadata, and more.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#account-metadata"><span class="std std-ref">Metadata</span></a></li>
-<li><a class="reference internal" href="#account-usage"><span class="std std-ref">Usage</span></a></li>
-<li><a class="reference internal" href="#account-pay-as-you-go"><span class="std std-ref">Pay as you go</span></a></li>
+<li><p><a class="reference internal" href="#account-metadata"><span class="std std-ref">Metadata</span></a></p></li>
+<li><p><a class="reference internal" href="#account-usage"><span class="std std-ref">Usage</span></a></p></li>
+<li><p><a class="reference internal" href="#account-pay-as-you-go"><span class="std std-ref">Pay as you go</span></a></p></li>
 </ul>
 <p>Data weighting for all <code class="docutils literal notranslate"><span class="pre">iexfinance.account</span></code> endpoints is <code class="docutils literal notranslate"><span class="pre">Free</span></code>.</p>
 <div class="section" id="metadata">
@@ -204,8 +207,8 @@
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#metadata">https://iexcloud.io/docs/api/#metadata</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is only available using IEX Cloud. See
+<p class="admonition-title">Warning</p>
+<p>This endpoint is only available using IEX Cloud. See
 <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
 </dd></dl>
@@ -230,19 +233,16 @@ message quote usage, etc</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#usage">https://iexcloud.io/docs/api/#usage</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is only available using IEX Cloud. See
+<p class="admonition-title">Warning</p>
+<p>This endpoint is only available using IEX Cloud. See
 <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>quota_type</strong> (<em>str</em><em>, </em><em>default &quot;messages&quot;</em><em>, </em><em>optional</em>) – Used to specify quota to return Ex. <code class="docutils literal notranslate"><span class="pre">messages</span></code>, <code class="docutils literal notranslate"><span class="pre">rules</span></code>,
-<code class="docutils literal notranslate"><span class="pre">rule-records</span></code>, <code class="docutils literal notranslate"><span class="pre">alerts</span></code>, <code class="docutils literal notranslate"><span class="pre">alert-records</span></code></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>quota_type</strong> (<em>str</em><em>, </em><em>default &quot;messages&quot;</em><em>, </em><em>optional</em>) – Used to specify quota to return Ex. <code class="docutils literal notranslate"><span class="pre">messages</span></code>, <code class="docutils literal notranslate"><span class="pre">rules</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rule-records</span></code>, <code class="docutils literal notranslate"><span class="pre">alerts</span></code>, <code class="docutils literal notranslate"><span class="pre">alert-records</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="account-usage-examples">
@@ -266,8 +266,8 @@ message quote usage, etc</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#pay-as-you-go">https://iexcloud.io/docs/api/#pay-as-you-go</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is only available using IEX Cloud. See
+<p class="admonition-title">Warning</p>
+<p>This endpoint is only available using IEX Cloud. See
 <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
 </dd></dl>
@@ -280,8 +280,8 @@ message quote usage, etc</p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#pay-as-you-go">https://iexcloud.io/docs/api/#pay-as-you-go</a></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is only available using IEX Cloud. See
+<p class="admonition-title">Warning</p>
+<p>This endpoint is only available using IEX Cloud. See
 <a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
 </div>
 </dd></dl>
@@ -313,7 +313,7 @@ message quote usage, etc</p>
         <a href="stocks.html" class="btn btn-neutral float-right" title="Stocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="usage.html" class="btn btn-neutral" title="Common Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Common Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -322,7 +322,7 @@ message quote usage, etc</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch
 
     </p>
   </div>
@@ -339,25 +339,16 @@ message quote usage, etc</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

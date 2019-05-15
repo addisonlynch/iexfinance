@@ -8,7 +8,12 @@ Welcome to iexfinance's documentation!
 - :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
 - :ref:`package_info` - additional package information, developer/testing documentation
 
-.. note:: ``iexfinance`` version 0.4.0 introduces a number of new endpoint groups, including :ref:`altdata`, :ref:`account`, and :ref:`apidata`. Certain modules are also refactored or renamed, including :ref:`refdata` and :ref:`iexdata` (formerly IEX Stats and IEX Market Data). For more information, see :ref:`migrating`.
+.. warning:: **IEX will end support for the Legacy v1 Devleoper API on June
+             1st, 2019.** At that time, the use of ``iexfinance`` will require
+             an IEX Cloud account_. In addition, support for all *legacy only*
+             endpoints will be discontinued.
+
+.. _account: https://iexcloud.io/pricing/
 
 Full Contents
 -------------

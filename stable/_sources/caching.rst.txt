@@ -19,7 +19,7 @@ Install ``requests-cache`` using pip:
 To use a cached session, pass a ``requests_cache.Session`` object to the
 top-level function you are using:
 
-.. ipython:: python
+.. code-block:: python
 
     import datetime
     from iexfinance.stocks import Stock
