@@ -106,7 +106,7 @@ current day (default is current date):
 
     date = datetime(2019, 5, 10)
 
-    get_historical_intraday("AAPL", date)[0]
+    get_historical_intraday("AAPL", date)
 
 or for a ``pandas.DataFrame`` indexed by each minute:
 
