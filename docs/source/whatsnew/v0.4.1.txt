@@ -1,17 +1,19 @@
 .. _whatsnew_041:
 
 
-v0.4.1 (TBD)
------------------------
+v0.4.1 (May 14, 2019)
+---------------------
 
-This is a minor release from 0.4.0.
+This is a minor release from 0.4.0. We recommend that all users update to
+maintain compatibility with IEX Cloud.
 
 Highlights:
 
-- Adds support for IEX Cloud sandbox environment (GH116_)
+- Defaults to IEX Cloud for all API calls
 - Adds warnings to all legacy-only endpoints which will be deprecated
   on June 1, 2019, and warnings when ``IEX_API_VERSION`` is ``v1``
 - Testing support for all legacy Version 1.0 endpoints has ended
+- Adds support for IEX Cloud sandbox environment (GH116_)
 
 .. _GH116: https://github.com/addisonlynch/iexfinance/issues/116
 

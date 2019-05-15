@@ -6,7 +6,7 @@ Configuration
 
 There are four core components of ``iexfinance``'s configuration:
 
-* :ref:`config.api_version` - specifying use of IEX Cloud or the IEX legacy v1 Developer API
+* :ref:`config.api_version` - specifying version of IEX Cloud to use
 * :ref:`config.auth` - setting your IEX Cloud Authentication Token
 * :ref:`config.formatting` - configuring desired output format (mirror IEX output or Pandas DataFrame)
 * :ref:`config.debugging` - cached sessions, request retries, and more
@@ -17,24 +17,32 @@ There are four core components of ``iexfinance``'s configuration:
 API Version
 -----------
 
-By default, ``iexfinance`` makes its requests to the legacy
-`v1 IEX Developer API <https://iextrading.com/developer/docs/>`__. IEX recommends migrating to IEX Cloud.
+The desired IEX API version can be specified using the ``IEX_API_VERSION``
+environment variable. The following versions are currently supported:
 
-.. seealso:: :ref:`migrating`
+* ``v1`` - *note: this will be deprecated in* ``iexfinance`` *version 0.4.2*
+* ``iexcloud-beta``
+* ``iexcloud-v1`` - **default**
 
-To select an API version, set the environment variable ``IEX_API_VERSION`` to one of the following values:
+.. warning:: ``iexfinance`` now defaults to IEX Cloud for all calls. The use of
+             ``v1`` as ``IEX_API_VERSION`` will be warned in ``iexfinance``
+             0.4.1 and deprecated in 0.4.2.
 
-- ``v1``: IEX legacy v1.0 `Developer API <https://iextrading.com/developer/docs/>`__
-- ``iexcloud-beta`` for the current beta of `IEX Cloud <https://iexcloud.io/docs/api/>`__
+.. note:: The beta period for IEX Cloud ends on June 1st, 2019. At this time,
+          all calls using ``iexcloud-beta`` will mirror those of
+          ``iexcloud-v1``.
+
+.. seealso:: For more information on API versioning, see the IEX Cloud
+             documentation_.
+
+
+.. _documentation: https://iexcloud.io/docs/api/#versioning
 
 
 .. _config.auth:
 
 Authentication
 --------------
-
-.. note:: IEX Cloud is in public beta, and as such, registration for early beta
-    access is required. Registration can be found `here <https://iexcloud.io/>`__.
 
 An IEX Cloud account is required to acecss the IEX Cloud API.
 
