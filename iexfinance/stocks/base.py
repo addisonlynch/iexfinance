@@ -19,7 +19,7 @@ class Stock(_IEXBase):
         Desired output format for requests (default is ``json``, also accepts
         ``pandas`` for a ``pandas.DataFrame`` output format)
     token: str, optional
-        Authentication token (reuqired for use with IEX Cloud)
+        Authentication token (required for use with IEX Cloud)
     """
     # Possible option values (first is default)
     _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
