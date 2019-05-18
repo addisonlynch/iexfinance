@@ -57,16 +57,29 @@ def no_pandas(out):
 def cloud_endpoint(func):
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
-        if self.version not in ('iexcloud-beta', 'iexcloud-sandbox'):
+        if self.version not in ('iexcloud-beta', 'iexcloud-sandbox',
+                                'iexcloud-v1'):
             raise IEXVersionError(self.version)
         return func(self, *args, **kwargs)
     return _wrapped_function
 
 
 def legacy_endpoint(func):
+    """
+    Decorator to denote a function or method which calls an endpoint that is
+    not supported by IEX Cloud.
+
+    These endpoints will be deprecated in 0.4.2.
+    """
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
-        if self.version != 'v1':
+        if self.version == 'v1':
+            import warnings
+            msg = "You have called an IEX Version 1 Legacy endpoint which is "\
+                  "not supported by IEX Cloud. This endpoint will be "\
+                  "deprecated by the provider on 6/1/2019."
+            warnings.warn(msg)
+            return func(self, *args, **kwargs)
+        else:
             raise IEXVersionError("(legacy) IEX Developer API version 1.0")
-        return func(self, *args, **kwargs)
     return _wrapped_function

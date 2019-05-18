@@ -24,7 +24,6 @@ def bad_format():
     del os.environ["IEX_OUTPUT_FORMAT"]
 
 
-@pytest.mark.usefixtures("use_legacy")
 class TestBase(object):
 
     def test_all_defaults(self, block_format_env):
@@ -32,7 +31,6 @@ class TestBase(object):
 
         assert base.output_format == 'json'
         assert base.pause == 0.5
-        assert base.token is None
 
     def test_output_format_passed(self):
         base = _IEXBase(output_format='pandas')

@@ -4,29 +4,13 @@ import pytest
 from iexfinance.stocks import Stock
 
 
-__all__ = ["use_cloud", "use_legacy", "block_keys", "set_keys",
-           "stock_single", "stock_multiple", "stock_etf", "stock_special_char"]
+__all__ = ["block_keys", "set_keys", "stock_single",
+           "stock_multiple", "stock_etf", "stock_special_char"]
 
 
 ########################
 # Environment Fixtures #
 ########################
-
-@pytest.yield_fixture
-def use_cloud(scope='function'):
-    old = os.getenv("IEX_API_VERSION")
-    os.environ["IEX_API_VERSION"] = 'iexcloud-sandbox'
-    yield
-    os.environ["IEX_API_VERSION"] = old
-
-
-@pytest.yield_fixture
-def use_legacy(scope='function'):
-    old = os.getenv("IEX_API_VERSION")
-    os.environ["IEX_API_VERSION"] = 'v1'
-    yield
-    os.environ["IEX_API_VERSION"] = old
-
 
 @pytest.fixture
 def block_keys(scope='function'):
