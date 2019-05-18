@@ -34,7 +34,7 @@ class _IEXBase(object):
         Desired output format (json or pandas DataFrame). This can also be
         set using the environment variable ``IEX_OUTPUT_FORMAT``.
     token: str, optional
-        Authentication token (reuqired for use with IEX Cloud)
+        Authentication token (required for use with IEX Cloud)
     """
     _URLS = {
         "v1": "https://api.iextrading.com/1.0/",
