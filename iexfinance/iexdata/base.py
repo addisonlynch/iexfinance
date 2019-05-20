@@ -15,6 +15,7 @@ class Market(_IEXBase):
     Base class for obtaining data from the market endpoints
     of IEX.
     """
+
     def __init__(self, symbols=None, **kwargs):
         """ Initialize the class
 
@@ -140,6 +141,7 @@ class Book(Market):
     -----
     Will return empty outside of trading hours
     """
+
     def _convert_output(self, out):
         return out
 
@@ -370,7 +372,10 @@ class MonthlySummaryReader(Stats):
          at a time. Rather than specifying a date range, we will have to run
          the read function for each date provided.
 
-        :return: DataFrame
+        Returns:
+        --------
+        dataframes: pandas.DataFrame
+
         """
         tlen = self.end - self.start
         dfs = []
