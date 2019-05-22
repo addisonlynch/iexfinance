@@ -365,8 +365,6 @@ class TestHistoricalIntraday(object):
     def verify_timeframe(self, data):
         assert data.index[0].hour == 9
         assert data.index[0].minute == 30
-        assert data.index[-1].hour == 15
-        assert data.index[-1].minute == 59
 
     def test_intraday_fails_no_symbol(self):
         with pytest.raises(TypeError):
