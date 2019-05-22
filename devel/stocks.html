@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Stocks &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Stocks &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -263,7 +263,7 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
 <span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">185.23</span>
+<span class="gh">Out[3]: </span><span class="go">191.11</span>
 </pre></div>
 </div>
 <p>Certain endpoints such as <a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Data</span></a>,
@@ -275,11 +275,11 @@ which are unrelated to specific symbols, are supported by top-level functions
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">              open    high     low   close    volume</span>
 <span class="go">date                                                </span>
-<span class="go">2015-01-02  113.53  111.71  108.23  111.52  55446740</span>
-<span class="go">2015-01-05  112.40  110.01  108.00  108.08  65404091</span>
-<span class="go">2015-01-06  110.15  108.02  106.70  110.24  68116690</span>
-<span class="go">2015-01-07  107.70  108.30  109.20  111.65  41755721</span>
-<span class="go">2015-01-08  111.20  113.54  110.10  117.28  62028307</span>
+<span class="go">2015-01-02  115.69  112.65  107.99  109.86  54211637</span>
+<span class="go">2015-01-05  113.23  111.43  105.81  107.40  64777159</span>
+<span class="go">2015-01-06  107.79  110.37  104.91  107.63  66014309</span>
+<span class="go">2015-01-07  107.60  110.50  110.30  110.27  40819931</span>
+<span class="go">2015-01-08  114.20  117.73  112.80  116.41  59499345</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="#stocks-additional-methods"><span class="std std-ref">Additional Methods</span></a> for more a list of
@@ -385,7 +385,7 @@ at once.</p>
 <span class="gp">In [7]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="gh">Out[8]: </span><span class="go">191.14</span>
+<span class="gh">Out[8]: </span><span class="go">185.18</span>
 </pre></div>
 </div>
 </div>
@@ -407,8 +407,8 @@ at once.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarterly'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly balance sheet. Defaults
-to quarterly. Values should be annual or quarter.</p>
+<dd class="field-odd"><p><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarter'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly balance sheet.
+Value should be <cite>annual</cite> or <cite>quarter</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -418,7 +418,7 @@ to quarterly. Values should be annual or quarter.</p>
 <span id="stocks-book"></span><h2>Book<a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_book">
-<code class="descclassname">Stock.</code><code class="descname">get_book</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_book" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_book</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Book</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#book">https://iexcloud.io/docs/api/#book</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per quote returned</p>
@@ -596,7 +596,7 @@ Developer API (v1). See <a class="reference internal" href="migrating.html#migra
 <span id="stocks-delayed-quote"></span><h2>Delayed Quote<a class="headerlink" href="#delayed-quote" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_delayed_quote">
-<code class="descclassname">Stock.</code><code class="descname">get_delayed_quote</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_delayed_quote</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delayed Quote</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#delayed-quote">https://iexcloud.io/docs/api/#delayed-quote</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol per quote</p>
@@ -620,9 +620,9 @@ Developer API (v1). See <a class="reference internal" href="migrating.html#migra
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#dividends">https://iexcloud.io/docs/api/#dividends</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per period returned</p>
 <dl class="field-list simple">
-<dt class="field-odd">Keyword Arguments</dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of dividends to return
-Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`]</p>
+Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Stocks Dividends endpoint data</p>
@@ -646,11 +646,14 @@ and annually (last 4 years).</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#earnings">https://iexcloud.io/docs/api/#earnings</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1000</span></code> per symbol per period</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Stocks Earnings endpoint data</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>last</strong> (<em>int</em><em>, </em><em>default 1</em><em>, </em><em>optional</em>) – Number of quarters or years to return.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list or pandas.DataFrame</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Stocks Earnings endpoint data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list or pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -686,120 +689,120 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 
 <span class="gp">In [10]: </span><span class="n">get_earnings_today</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
 <span class="gh">Out[10]: </span><span class="go"></span>
-<span class="go">[{&#39;actualEPS&#39;: 0.203754,</span>
+<span class="go">[{&#39;actualEPS&#39;: 0.200535,</span>
 <span class="go">  &#39;consensusEPS&#39;: &#39;0.18&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;OTB&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
 <span class="go">  &#39;numberOfEstimates&#39;: 4,</span>
 <span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;0.02&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-06-05&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-05-26&#39;,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-08&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.146237,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;0.4114&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-07&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.145211,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;0.4027&#39;,</span>
 <span class="go">  &#39;symbol&#39;: &#39;TSU&#39;,</span>
 <span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;TSU&#39;,</span>
 <span class="go">   &#39;companyName&#39;: &#39;TIM Participações SA&#39;,</span>
 <span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
-<span class="go">   &#39;open&#39;: 13.58,</span>
-<span class="go">   &#39;openTime&#39;: 1603823775155,</span>
-<span class="go">   &#39;close&#39;: 13.58,</span>
-<span class="go">   &#39;closeTime&#39;: 1591892906381,</span>
-<span class="go">   &#39;high&#39;: 13.85,</span>
-<span class="go">   &#39;low&#39;: 13.48,</span>
-<span class="go">   &#39;latestPrice&#39;: 13.471,</span>
+<span class="go">   &#39;open&#39;: 13.84,</span>
+<span class="go">   &#39;openTime&#39;: 1587937676532,</span>
+<span class="go">   &#39;close&#39;: 13.36,</span>
+<span class="go">   &#39;closeTime&#39;: 1623796678213,</span>
+<span class="go">   &#39;high&#39;: 13.69,</span>
+<span class="go">   &#39;low&#39;: 13.19,</span>
+<span class="go">   &#39;latestPrice&#39;: 13.767,</span>
 <span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;3:51:33 PM&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1586015944106,</span>
-<span class="go">   &#39;latestVolume&#39;: 483414,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 13.384,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 102,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1561321315664,</span>
-<span class="go">   &#39;delayedPrice&#39;: 13.19,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1632335581634,</span>
-<span class="go">   &#39;extendedPrice&#39;: 13.73,</span>
-<span class="go">   &#39;extendedChange&#39;: 0.215,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0.01716,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1602008412339,</span>
-<span class="go">   &#39;previousClose&#39;: 13.82,</span>
-<span class="go">   &#39;change&#39;: -0.037,</span>
-<span class="go">   &#39;changePercent&#39;: -0.00277,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.01662973616018414,</span>
-<span class="go">   &#39;iexVolume&#39;: 7731,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 964448,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 13.7,</span>
-<span class="go">   &#39;iexBidSize&#39;: 101,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 13.19,</span>
-<span class="go">   &#39;iexAskSize&#39;: 104,</span>
-<span class="go">   &#39;marketCap&#39;: None,</span>
-<span class="go">   &#39;peRatio&#39;: 10.21,</span>
-<span class="go">   &#39;week52High&#39;: 19.6,</span>
-<span class="go">   &#39;week52Low&#39;: 13.02,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.189217}},</span>
-<span class="go"> {&#39;consensusEPS&#39;: &#39;2.08&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;OTB&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-10&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;WF&#39;,</span>
-<span class="go">  &#39;reportDate&#39;: &#39;2019-05-23&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;WF&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Woori Financial Group, Inc.&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;sip&#39;,</span>
-<span class="go">   &#39;open&#39;: 36.85,</span>
-<span class="go">   &#39;openTime&#39;: 1579654778998,</span>
-<span class="go">   &#39;close&#39;: 35.18,</span>
-<span class="go">   &#39;closeTime&#39;: 1567004834394,</span>
-<span class="go">   &#39;high&#39;: 36.5,</span>
-<span class="go">   &#39;low&#39;: 35.9,</span>
-<span class="go">   &#39;latestPrice&#39;: 37.1,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;15 minute delayed price&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;3:27:06 PM&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1571882366550,</span>
-<span class="go">   &#39;latestVolume&#39;: 15245,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 0,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 0,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 0,</span>
-<span class="go">   &#39;delayedPrice&#39;: 36.65,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1568842983662,</span>
-<span class="go">   &#39;extendedPrice&#39;: 36.18,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.76,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.02146,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1589574396427,</span>
-<span class="go">   &#39;previousClose&#39;: 36.84,</span>
-<span class="go">   &#39;change&#39;: 0.56,</span>
-<span class="go">   &#39;changePercent&#39;: 0.01643,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: None,</span>
-<span class="go">   &#39;iexVolume&#39;: 0,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 15607,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:47 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1579789971674,</span>
+<span class="go">   &#39;latestVolume&#39;: 550075,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 13.523,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 103,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1619769332863,</span>
+<span class="go">   &#39;delayedPrice&#39;: 13.34,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1589565773235,</span>
+<span class="go">   &#39;extendedPrice&#39;: 13.83,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.223,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.01643,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1574180387558,</span>
+<span class="go">   &#39;previousClose&#39;: 13.2,</span>
+<span class="go">   &#39;change&#39;: -0.035,</span>
+<span class="go">   &#39;changePercent&#39;: -0.00274,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.01701561555142284,</span>
+<span class="go">   &#39;iexVolume&#39;: 9122,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 968786,</span>
 <span class="go">   &#39;iexBidPrice&#39;: 0,</span>
 <span class="go">   &#39;iexBidSize&#39;: 0,</span>
 <span class="go">   &#39;iexAskPrice&#39;: 0,</span>
 <span class="go">   &#39;iexAskSize&#39;: 0,</span>
 <span class="go">   &#39;marketCap&#39;: None,</span>
-<span class="go">   &#39;peRatio&#39;: 4.81,</span>
-<span class="go">   &#39;week52High&#39;: 43.65,</span>
-<span class="go">   &#39;week52Low&#39;: 32.99,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.12064}},</span>
+<span class="go">   &#39;peRatio&#39;: 10.14,</span>
+<span class="go">   &#39;week52High&#39;: 19.07,</span>
+<span class="go">   &#39;week52Low&#39;: 13.12,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.191745}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;2.16&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-04&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;WF&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-03&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;WF&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Woori Financial Group, Inc.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;sip&#39;,</span>
+<span class="go">   &#39;open&#39;: 36.48,</span>
+<span class="go">   &#39;openTime&#39;: 1583878255597,</span>
+<span class="go">   &#39;close&#39;: 36.57,</span>
+<span class="go">   &#39;closeTime&#39;: 1595555046674,</span>
+<span class="go">   &#39;high&#39;: 36.6,</span>
+<span class="go">   &#39;low&#39;: 36.74,</span>
+<span class="go">   &#39;latestPrice&#39;: 36.01,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;15 minute delayed price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:58:00 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1597963380693,</span>
+<span class="go">   &#39;latestVolume&#39;: 17282,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 0,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 0,</span>
+<span class="go">   &#39;delayedPrice&#39;: 37.09,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1611361197132,</span>
+<span class="go">   &#39;extendedPrice&#39;: 34.94,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.76,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.02111,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1569139292282,</span>
+<span class="go">   &#39;previousClose&#39;: 36.37,</span>
+<span class="go">   &#39;change&#39;: 0.57,</span>
+<span class="go">   &#39;changePercent&#39;: 0.01616,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: None,</span>
+<span class="go">   &#39;iexVolume&#39;: 0,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 15454,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: None,</span>
+<span class="go">   &#39;peRatio&#39;: 4.72,</span>
+<span class="go">   &#39;week52High&#39;: 43.18,</span>
+<span class="go">   &#39;week52Low&#39;: 32.81,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.12106}},</span>
 <span class="go"> {&#39;consensusEPS&#39;: &#39;0.06&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;TBO&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BOT&#39;,</span>
 <span class="go">  &#39;numberOfEstimates&#39;: 8,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-05&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-03&#39;,</span>
 <span class="go">  &#39;symbol&#39;: &#39;CMPCY&#39;,</span>
-<span class="go">  &#39;reportDate&#39;: &#39;2019-05-29&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-05&#39;,</span>
 <span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;CMPCY&#39;,</span>
 <span class="go">   &#39;companyName&#39;: &#39;Compal Electronics, Inc.&#39;,</span>
 <span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
 <span class="go">   &#39;open&#39;: None,</span>
 <span class="go">   &#39;openTime&#39;: None,</span>
-<span class="go">   &#39;close&#39;: 4,</span>
-<span class="go">   &#39;closeTime&#39;: 1506857544448,</span>
+<span class="go">   &#39;close&#39;: 4.1,</span>
+<span class="go">   &#39;closeTime&#39;: 1462422883487,</span>
 <span class="go">   &#39;high&#39;: None,</span>
 <span class="go">   &#39;low&#39;: None,</span>
 <span class="go">   &#39;latestPrice&#39;: 4,</span>
 <span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
 <span class="go">   &#39;latestTime&#39;: &#39;August 28, 2015&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1457939816279,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1488093623711,</span>
 <span class="go">   &#39;latestVolume&#39;: 0,</span>
 <span class="go">   &#39;iexRealtimePrice&#39;: None,</span>
 <span class="go">   &#39;iexRealtimeSize&#39;: None,</span>
@@ -810,7 +813,7 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 <span class="go">   &#39;extendedChange&#39;: None,</span>
 <span class="go">   &#39;extendedChangePercent&#39;: None,</span>
 <span class="go">   &#39;extendedPriceTime&#39;: None,</span>
-<span class="go">   &#39;previousClose&#39;: 4,</span>
+<span class="go">   &#39;previousClose&#39;: 4.1,</span>
 <span class="go">   &#39;change&#39;: 0,</span>
 <span class="go">   &#39;changePercent&#39;: 0,</span>
 <span class="go">   &#39;iexMarketPercent&#39;: None,</span>
@@ -820,172 +823,76 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 <span class="go">   &#39;iexBidSize&#39;: None,</span>
 <span class="go">   &#39;iexAskPrice&#39;: None,</span>
 <span class="go">   &#39;iexAskSize&#39;: None,</span>
-<span class="go">   &#39;marketCap&#39;: 17534174215,</span>
-<span class="go">   &#39;peRatio&#39;: 12.17,</span>
+<span class="go">   &#39;marketCap&#39;: 17429014838,</span>
+<span class="go">   &#39;peRatio&#39;: 11.84,</span>
 <span class="go">   &#39;week52High&#39;: 0,</span>
 <span class="go">   &#39;week52Low&#39;: 0,</span>
 <span class="go">   &#39;ytdChange&#39;: 0}},</span>
-<span class="go"> {&#39;consensusEPS&#39;: &#39;0.14&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;OTB&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 3,</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;0.16&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
 <span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-02&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;OZM&#39;,</span>
-<span class="go">  &#39;reportDate&#39;: &#39;2019-05-31&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;OZM&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Och-Ziff Capital Management Group, Inc.&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
-<span class="go">   &#39;open&#39;: 19.24,</span>
-<span class="go">   &#39;openTime&#39;: 1567562844490,</span>
-<span class="go">   &#39;close&#39;: 19.3,</span>
-<span class="go">   &#39;closeTime&#39;: 1614086413831,</span>
-<span class="go">   &#39;high&#39;: 19.26,</span>
-<span class="go">   &#39;low&#39;: 18.62,</span>
-<span class="go">   &#39;latestPrice&#39;: 19.24,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;3:52:17 PM&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1568253178581,</span>
-<span class="go">   &#39;latestVolume&#39;: 103391,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 18.86,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 102,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1614375315619,</span>
-<span class="go">   &#39;delayedPrice&#39;: 19.37,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1618438715016,</span>
-<span class="go">   &#39;extendedPrice&#39;: 19.34,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.14,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.00767,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1593786403219,</span>
-<span class="go">   &#39;previousClose&#39;: 19.6,</span>
-<span class="go">   &#39;change&#39;: 0.14,</span>
-<span class="go">   &#39;changePercent&#39;: 0.00752,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.020358379510634766,</span>
-<span class="go">   &#39;iexVolume&#39;: 2057,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 142372,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 19.18,</span>
-<span class="go">   &#39;iexBidSize&#39;: 102,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
-<span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 1035850542,</span>
-<span class="go">   &#39;peRatio&#39;: 52.99,</span>
-<span class="go">   &#39;week52High&#39;: 24,</span>
-<span class="go">   &#39;week52Low&#39;: 8.67,</span>
-<span class="go">   &#39;ytdChange&#39;: 0.879004}},</span>
-<span class="go"> {&#39;actualEPS&#39;: -0.05,</span>
-<span class="go">  &#39;consensusEPS&#39;: &#39;-0.04&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BOT&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 12,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;-0.01&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-05-24&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-03-31&#39;,</span>
-<span class="go">  &#39;yearAgo&#39;: 0.13,</span>
-<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;-1.432&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;GOGL&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;GOGL&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Golden Ocean Group Ltd.&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
-<span class="go">   &#39;open&#39;: 5.4,</span>
-<span class="go">   &#39;openTime&#39;: 1586108972594,</span>
-<span class="go">   &#39;close&#39;: 5.25,</span>
-<span class="go">   &#39;closeTime&#39;: 1566519091111,</span>
-<span class="go">   &#39;high&#39;: 5.59,</span>
-<span class="go">   &#39;low&#39;: 5.535,</span>
-<span class="go">   &#39;latestPrice&#39;: 5.466,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;3:54:09 PM&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1619694002220,</span>
-<span class="go">   &#39;latestVolume&#39;: 112388,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 5.575,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 102,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1620710779861,</span>
-<span class="go">   &#39;delayedPrice&#39;: 5.4,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1634629254743,</span>
-<span class="go">   &#39;extendedPrice&#39;: 5.54,</span>
-<span class="go">   &#39;extendedChange&#39;: -0.005,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: -0.00093,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1574582586854,</span>
-<span class="go">   &#39;previousClose&#39;: 5.4,</span>
-<span class="go">   &#39;change&#39;: 0.177,</span>
-<span class="go">   &#39;changePercent&#39;: 0.03431,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.0752191107164559,</span>
-<span class="go">   &#39;iexVolume&#39;: 8065,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 175151,</span>
-<span class="go">   &#39;iexBidPrice&#39;: 5.42,</span>
-<span class="go">   &#39;iexBidSize&#39;: 203,</span>
-<span class="go">   &#39;iexAskPrice&#39;: 5.6,</span>
-<span class="go">   &#39;iexAskSize&#39;: 102,</span>
-<span class="go">   &#39;marketCap&#39;: 785814770,</span>
-<span class="go">   &#39;peRatio&#39;: 9.55,</span>
-<span class="go">   &#39;week52High&#39;: 10.42,</span>
-<span class="go">   &#39;week52Low&#39;: 4.63,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.132502}},</span>
-<span class="go"> {&#39;actualEPS&#39;: 0.26,</span>
-<span class="go">  &#39;consensusEPS&#39;: &#39;0.14&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;BOT&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
-<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;0.11&#39;,</span>
-<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-05-30&#39;,</span>
-<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-05-12&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;KLXE&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;KLXE&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;KLX Energy Services Holdings, Inc.&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
-<span class="go">   &#39;open&#39;: 28,</span>
-<span class="go">   &#39;openTime&#39;: 1561086920773,</span>
-<span class="go">   &#39;close&#39;: 25.1,</span>
-<span class="go">   &#39;closeTime&#39;: 1623049545551,</span>
-<span class="go">   &#39;high&#39;: 28.815,</span>
-<span class="go">   &#39;low&#39;: 23.88,</span>
-<span class="go">   &#39;latestPrice&#39;: 24.262,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;3:54:07 PM&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1588176391383,</span>
-<span class="go">   &#39;latestVolume&#39;: 186549,</span>
-<span class="go">   &#39;iexRealtimePrice&#39;: 24.008,</span>
-<span class="go">   &#39;iexRealtimeSize&#39;: 105,</span>
-<span class="go">   &#39;iexLastUpdated&#39;: 1575667955447,</span>
-<span class="go">   &#39;delayedPrice&#39;: 24.21,</span>
-<span class="go">   &#39;delayedPriceTime&#39;: 1626920652229,</span>
-<span class="go">   &#39;extendedPrice&#39;: 28,</span>
-<span class="go">   &#39;extendedChange&#39;: 3.69,</span>
-<span class="go">   &#39;extendedChangePercent&#39;: 0.1505,</span>
-<span class="go">   &#39;extendedPriceTime&#39;: 1573374447541,</span>
-<span class="go">   &#39;previousClose&#39;: 25.15,</span>
-<span class="go">   &#39;change&#39;: -1.507,</span>
-<span class="go">   &#39;changePercent&#39;: -0.06055,</span>
-<span class="go">   &#39;iexMarketPercent&#39;: 0.03406647935222201,</span>
-<span class="go">   &#39;iexVolume&#39;: 6262,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 103830,</span>
+<span class="go">  &#39;symbol&#39;: &#39;AEG&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-30&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;AEG&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;AEGON NV&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;sip&#39;,</span>
+<span class="go">   &#39;open&#39;: 4.85,</span>
+<span class="go">   &#39;openTime&#39;: 1619416448903,</span>
+<span class="go">   &#39;close&#39;: 4.8,</span>
+<span class="go">   &#39;closeTime&#39;: 1612184726413,</span>
+<span class="go">   &#39;high&#39;: 4.968,</span>
+<span class="go">   &#39;low&#39;: 4.69,</span>
+<span class="go">   &#39;latestPrice&#39;: 4.763,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;15 minute delayed price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:57:53 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1613234202616,</span>
+<span class="go">   &#39;latestVolume&#39;: 1963872,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 4.826,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 208,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1606256777899,</span>
+<span class="go">   &#39;delayedPrice&#39;: 4.942,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1615862830825,</span>
+<span class="go">   &#39;extendedPrice&#39;: 4.71,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.046,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00962,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1613802238865,</span>
+<span class="go">   &#39;previousClose&#39;: 4.79,</span>
+<span class="go">   &#39;change&#39;: -0.045,</span>
+<span class="go">   &#39;changePercent&#39;: -0.00966,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.017281404041857896,</span>
+<span class="go">   &#39;iexVolume&#39;: 33902,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1614960,</span>
 <span class="go">   &#39;iexBidPrice&#39;: 0,</span>
 <span class="go">   &#39;iexBidSize&#39;: 0,</span>
 <span class="go">   &#39;iexAskPrice&#39;: 0,</span>
 <span class="go">   &#39;iexAskSize&#39;: 0,</span>
-<span class="go">   &#39;marketCap&#39;: 592850709,</span>
-<span class="go">   &#39;peRatio&#39;: None,</span>
-<span class="go">   &#39;week52High&#39;: 37.71,</span>
-<span class="go">   &#39;week52Low&#39;: 20.01,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.038769}},</span>
-<span class="go"> {&#39;consensusEPS&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: None,</span>
+<span class="go">   &#39;peRatio&#39;: 11.85,</span>
+<span class="go">   &#39;week52High&#39;: 7,</span>
+<span class="go">   &#39;week52Low&#39;: 4.6,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.02381411002397849}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;1.38&#39;,</span>
 <span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 11,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
-<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-12&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;FCUUF&#39;,</span>
-<span class="go">  &#39;reportDate&#39;: &#39;2019-05-23&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;FCUUF&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Fission Uranium Corp.&#39;,</span>
-<span class="go">   &#39;calculationPrice&#39;: &#39;previousclose&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-04&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;YAGOY&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-05&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;YAGOY&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Yageo Corp.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
 <span class="go">   &#39;open&#39;: None,</span>
 <span class="go">   &#39;openTime&#39;: None,</span>
-<span class="go">   &#39;close&#39;: None,</span>
-<span class="go">   &#39;closeTime&#39;: None,</span>
+<span class="go">   &#39;close&#39;: 19.53,</span>
+<span class="go">   &#39;closeTime&#39;: 1553879480102,</span>
 <span class="go">   &#39;high&#39;: None,</span>
 <span class="go">   &#39;low&#39;: None,</span>
-<span class="go">   &#39;latestPrice&#39;: 0.39,</span>
-<span class="go">   &#39;latestSource&#39;: &#39;Previous close&#39;,</span>
-<span class="go">   &#39;latestTime&#39;: &#39;May 21, 2019&#39;,</span>
-<span class="go">   &#39;latestUpdate&#39;: 1634425116821,</span>
+<span class="go">   &#39;latestPrice&#39;: 19.07,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;July 14, 2017&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1522020318394,</span>
 <span class="go">   &#39;latestVolume&#39;: 0,</span>
 <span class="go">   &#39;iexRealtimePrice&#39;: None,</span>
 <span class="go">   &#39;iexRealtimeSize&#39;: None,</span>
@@ -996,30 +903,30 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 <span class="go">   &#39;extendedChange&#39;: None,</span>
 <span class="go">   &#39;extendedChangePercent&#39;: None,</span>
 <span class="go">   &#39;extendedPriceTime&#39;: None,</span>
-<span class="go">   &#39;previousClose&#39;: 0.38,</span>
+<span class="go">   &#39;previousClose&#39;: 19.23,</span>
 <span class="go">   &#39;change&#39;: 0,</span>
 <span class="go">   &#39;changePercent&#39;: 0,</span>
 <span class="go">   &#39;iexMarketPercent&#39;: None,</span>
 <span class="go">   &#39;iexVolume&#39;: None,</span>
-<span class="go">   &#39;avgTotalVolume&#39;: 139605,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 0,</span>
 <span class="go">   &#39;iexBidPrice&#39;: None,</span>
 <span class="go">   &#39;iexBidSize&#39;: None,</span>
 <span class="go">   &#39;iexAskPrice&#39;: None,</span>
 <span class="go">   &#39;iexAskSize&#39;: None,</span>
-<span class="go">   &#39;marketCap&#39;: 188350830,</span>
-<span class="go">   &#39;peRatio&#39;: -44.25,</span>
-<span class="go">   &#39;week52High&#39;: 0.6,</span>
-<span class="go">   &#39;week52Low&#39;: 0.3629,</span>
-<span class="go">   &#39;ytdChange&#39;: -0.080048}},</span>
-<span class="go"> {&#39;consensusEPS&#39;: &#39;0.01&#39;,</span>
-<span class="go">  &#39;announceTime&#39;: &#39;OTB&#39;,</span>
-<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">   &#39;marketCap&#39;: 8031483037,</span>
+<span class="go">   &#39;peRatio&#39;: 1.6,</span>
+<span class="go">   &#39;week52High&#39;: 0,</span>
+<span class="go">   &#39;week52Low&#39;: 0,</span>
+<span class="go">   &#39;ytdChange&#39;: 0}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;1.37&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 11,</span>
 <span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
 <span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-09&#39;,</span>
-<span class="go">  &#39;symbol&#39;: &#39;HOSZY&#39;,</span>
-<span class="go">  &#39;reportDate&#39;: &#39;2019-05-24&#39;,</span>
-<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;HOSZY&#39;,</span>
-<span class="go">   &#39;companyName&#39;: &#39;Haci Ömer Sabanci Holdings AS&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;YAGZZ&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-23&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;YAGZZ&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Yageo Corp.&#39;,</span>
 <span class="go">   &#39;calculationPrice&#39;: &#39;previousclose&#39;,</span>
 <span class="go">   &#39;open&#39;: None,</span>
 <span class="go">   &#39;openTime&#39;: None,</span>
@@ -1055,7 +962,418 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 <span class="go">   &#39;peRatio&#39;: None,</span>
 <span class="go">   &#39;week52High&#39;: 0,</span>
 <span class="go">   &#39;week52Low&#39;: 0,</span>
-<span class="go">   &#39;ytdChange&#39;: 0}}]</span>
+<span class="go">   &#39;ytdChange&#39;: 0}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;0.01&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;TOB&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-12&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;HOSXF&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-06&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;HOSXF&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Haci Ömer Sabanci Holdings AS&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;open&#39;: None,</span>
+<span class="go">   &#39;openTime&#39;: None,</span>
+<span class="go">   &#39;close&#39;: 0.337,</span>
+<span class="go">   &#39;closeTime&#39;: 1572133097601,</span>
+<span class="go">   &#39;high&#39;: None,</span>
+<span class="go">   &#39;low&#39;: None,</span>
+<span class="go">   &#39;latestPrice&#39;: 0.338,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;May 21, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1583543901181,</span>
+<span class="go">   &#39;latestVolume&#39;: 0,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: None,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: None,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: None,</span>
+<span class="go">   &#39;delayedPrice&#39;: None,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: None,</span>
+<span class="go">   &#39;extendedPrice&#39;: None,</span>
+<span class="go">   &#39;extendedChange&#39;: None,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: None,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: None,</span>
+<span class="go">   &#39;previousClose&#39;: 0.333,</span>
+<span class="go">   &#39;change&#39;: 0,</span>
+<span class="go">   &#39;changePercent&#39;: 0,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: None,</span>
+<span class="go">   &#39;iexVolume&#39;: None,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: None,</span>
+<span class="go">   &#39;iexBidSize&#39;: None,</span>
+<span class="go">   &#39;iexAskPrice&#39;: None,</span>
+<span class="go">   &#39;iexAskSize&#39;: None,</span>
+<span class="go">   &#39;marketCap&#39;: None,</span>
+<span class="go">   &#39;peRatio&#39;: 3.64,</span>
+<span class="go">   &#39;week52High&#39;: 0,</span>
+<span class="go">   &#39;week52Low&#39;: 0,</span>
+<span class="go">   &#39;ytdChange&#39;: 0}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;4.75&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;TBO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-12&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;YRD&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-28&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;YRD&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Yirendai Ltd.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 17.4,</span>
+<span class="go">   &#39;openTime&#39;: 1592125409612,</span>
+<span class="go">   &#39;close&#39;: 17.31,</span>
+<span class="go">   &#39;closeTime&#39;: 1574149194921,</span>
+<span class="go">   &#39;high&#39;: 17.77,</span>
+<span class="go">   &#39;low&#39;: 16.873,</span>
+<span class="go">   &#39;latestPrice&#39;: 17.7,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:10 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1599266393880,</span>
+<span class="go">   &#39;latestVolume&#39;: 205649,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 17.19,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 103,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1576170313822,</span>
+<span class="go">   &#39;delayedPrice&#39;: 17.42,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1616452325702,</span>
+<span class="go">   &#39;extendedPrice&#39;: 17.74,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.14,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.00775,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1601784593445,</span>
+<span class="go">   &#39;previousClose&#39;: 17.12,</span>
+<span class="go">   &#39;change&#39;: -0.1,</span>
+<span class="go">   &#39;changePercent&#39;: -0.00593,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.02636128631516361,</span>
+<span class="go">   &#39;iexVolume&#39;: 5505,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 208416,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: None,</span>
+<span class="go">   &#39;peRatio&#39;: 7.16,</span>
+<span class="go">   &#39;week52High&#39;: 31.43,</span>
+<span class="go">   &#39;week52Low&#39;: 9.67,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.6112284114368635}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;0.14&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BOT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 3,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-05&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;OZM&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-04&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;OZM&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Och-Ziff Capital Management Group, Inc.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 19,</span>
+<span class="go">   &#39;openTime&#39;: 1593504564943,</span>
+<span class="go">   &#39;close&#39;: 19.28,</span>
+<span class="go">   &#39;closeTime&#39;: 1606844777452,</span>
+<span class="go">   &#39;high&#39;: 18.91,</span>
+<span class="go">   &#39;low&#39;: 18.31,</span>
+<span class="go">   &#39;latestPrice&#39;: 19.1,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:06 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1619892272558,</span>
+<span class="go">   &#39;latestVolume&#39;: 113142,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 19.15,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 104,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1636351838090,</span>
+<span class="go">   &#39;delayedPrice&#39;: 19.37,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1604692069156,</span>
+<span class="go">   &#39;extendedPrice&#39;: 18.74,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.08,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00437,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1619192729205,</span>
+<span class="go">   &#39;previousClose&#39;: 19.47,</span>
+<span class="go">   &#39;change&#39;: 0.08,</span>
+<span class="go">   &#39;changePercent&#39;: 0.0044,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.02803520991348322,</span>
+<span class="go">   &#39;iexVolume&#39;: 3244,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 139712,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 1043681695,</span>
+<span class="go">   &#39;peRatio&#39;: 50.97,</span>
+<span class="go">   &#39;week52High&#39;: 23,</span>
+<span class="go">   &#39;week52Low&#39;: 8.86,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.846529}},</span>
+<span class="go"> {&#39;actualEPS&#39;: -0.05,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;-0.04&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 12,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;-0.01&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-05-25&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-05&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.12,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;-1.4199&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;GOGL&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;GOGL&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Golden Ocean Group Ltd.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 5.6,</span>
+<span class="go">   &#39;openTime&#39;: 1593371684261,</span>
+<span class="go">   &#39;close&#39;: 5.26,</span>
+<span class="go">   &#39;closeTime&#39;: 1592358880908,</span>
+<span class="go">   &#39;high&#39;: 5.72,</span>
+<span class="go">   &#39;low&#39;: 5.506,</span>
+<span class="go">   &#39;latestPrice&#39;: 5.387,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:29 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1615094680947,</span>
+<span class="go">   &#39;latestVolume&#39;: 123287,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 5.427,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 101,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1609890896677,</span>
+<span class="go">   &#39;delayedPrice&#39;: 5.49,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1582451603701,</span>
+<span class="go">   &#39;extendedPrice&#39;: 5.46,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.005,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.00093,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1605622587177,</span>
+<span class="go">   &#39;previousClose&#39;: 5.33,</span>
+<span class="go">   &#39;change&#39;: 0.183,</span>
+<span class="go">   &#39;changePercent&#39;: 0.03404,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.07558936771391142,</span>
+<span class="go">   &#39;iexVolume&#39;: 8974,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 180836,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 780285526,</span>
+<span class="go">   &#39;peRatio&#39;: 9.36,</span>
+<span class="go">   &#39;week52High&#39;: 10.24,</span>
+<span class="go">   &#39;week52Low&#39;: 4.83,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.13344}},</span>
+<span class="go"> {&#39;actualEPS&#39;: 0.26,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;0.14&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OTB&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;0.11&#39;,</span>
+<span class="go">  &#39;EPSReportDate&#39;: &#39;2019-05-30&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-05-14&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;KLXE&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;KLXE&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;KLX Energy Services Holdings, Inc.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 28.1,</span>
+<span class="go">   &#39;openTime&#39;: 1573823723160,</span>
+<span class="go">   &#39;close&#39;: 25.56,</span>
+<span class="go">   &#39;closeTime&#39;: 1598866470420,</span>
+<span class="go">   &#39;high&#39;: 28.642,</span>
+<span class="go">   &#39;low&#39;: 24.11,</span>
+<span class="go">   &#39;latestPrice&#39;: 24.86,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:59 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1633002331001,</span>
+<span class="go">   &#39;latestVolume&#39;: 214387,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 24.14,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 548,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1563249513042,</span>
+<span class="go">   &#39;delayedPrice&#39;: 24.59,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1625704087642,</span>
+<span class="go">   &#39;extendedPrice&#39;: 28,</span>
+<span class="go">   &#39;extendedChange&#39;: 3.33,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.13834,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1618273158502,</span>
+<span class="go">   &#39;previousClose&#39;: 25.63,</span>
+<span class="go">   &#39;change&#39;: -1.27,</span>
+<span class="go">   &#39;changePercent&#39;: -0.05118,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03264537066682548,</span>
+<span class="go">   &#39;iexVolume&#39;: 6875,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 104446,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 615475468,</span>
+<span class="go">   &#39;peRatio&#39;: None,</span>
+<span class="go">   &#39;week52High&#39;: 36.39,</span>
+<span class="go">   &#39;week52Low&#39;: 19.94,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.029592}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;-0.18&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 2,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-03&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;KDMN&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-05&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;KDMN&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Kadmon Holdings, Inc.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 2.25,</span>
+<span class="go">   &#39;openTime&#39;: 1605435606361,</span>
+<span class="go">   &#39;close&#39;: 2.28,</span>
+<span class="go">   &#39;closeTime&#39;: 1620689700145,</span>
+<span class="go">   &#39;high&#39;: 2.43,</span>
+<span class="go">   &#39;low&#39;: 2.28,</span>
+<span class="go">   &#39;latestPrice&#39;: 2.376,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:43 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1620911800506,</span>
+<span class="go">   &#39;latestVolume&#39;: 920043,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 2.344,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 100,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1566618517286,</span>
+<span class="go">   &#39;delayedPrice&#39;: 2.297,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1630354785694,</span>
+<span class="go">   &#39;extendedPrice&#39;: 2.32,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.026,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.0114,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1568908400955,</span>
+<span class="go">   &#39;previousClose&#39;: 2.35,</span>
+<span class="go">   &#39;change&#39;: 0.026,</span>
+<span class="go">   &#39;changePercent&#39;: 0.01134,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03914905732268686,</span>
+<span class="go">   &#39;iexVolume&#39;: 35778,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 732270,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 295862213,</span>
+<span class="go">   &#39;peRatio&#39;: -10.57,</span>
+<span class="go">   &#39;week52High&#39;: 4.61,</span>
+<span class="go">   &#39;week52Low&#39;: 1.93,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.002356766360891261}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;-0.15&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 6,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-14&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;AFMD&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-27&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;AFMD&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Affimed NV&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
+<span class="go">   &#39;open&#39;: 3,</span>
+<span class="go">   &#39;openTime&#39;: 1632511827478,</span>
+<span class="go">   &#39;close&#39;: 3.4,</span>
+<span class="go">   &#39;closeTime&#39;: 1600118442676,</span>
+<span class="go">   &#39;high&#39;: 3.17,</span>
+<span class="go">   &#39;low&#39;: 2.96,</span>
+<span class="go">   &#39;latestPrice&#39;: 3.151,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;3:59:58 PM&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1562746772384,</span>
+<span class="go">   &#39;latestVolume&#39;: 2264789,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 3.108,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 101,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1629919786106,</span>
+<span class="go">   &#39;delayedPrice&#39;: 3.111,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1560272856220,</span>
+<span class="go">   &#39;extendedPrice&#39;: 3.12,</span>
+<span class="go">   &#39;extendedChange&#39;: -0.096,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: -0.03199,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1576484490044,</span>
+<span class="go">   &#39;previousClose&#39;: 3.47,</span>
+<span class="go">   &#39;change&#39;: -0.239,</span>
+<span class="go">   &#39;changePercent&#39;: -0.07105,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.00908129177985035,</span>
+<span class="go">   &#39;iexVolume&#39;: 19774,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 810540,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 196211511,</span>
+<span class="go">   &#39;peRatio&#39;: -8.05,</span>
+<span class="go">   &#39;week52High&#39;: 7.61,</span>
+<span class="go">   &#39;week52Low&#39;: 1.4,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.0400909990701873}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;0.23&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 3,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-03-31&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;MRBK&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-22&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;MRBK&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Meridian Corp. (Pennsylvania)&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;previousclose&#39;,</span>
+<span class="go">   &#39;open&#39;: 17.41,</span>
+<span class="go">   &#39;openTime&#39;: 1616952896577,</span>
+<span class="go">   &#39;close&#39;: 17.44,</span>
+<span class="go">   &#39;closeTime&#39;: 1594431117392,</span>
+<span class="go">   &#39;high&#39;: None,</span>
+<span class="go">   &#39;low&#39;: None,</span>
+<span class="go">   &#39;latestPrice&#39;: 17.11,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Previous close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;May 21, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1589326279623,</span>
+<span class="go">   &#39;latestVolume&#39;: 0,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 0,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 0,</span>
+<span class="go">   &#39;delayedPrice&#39;: None,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: None,</span>
+<span class="go">   &#39;extendedPrice&#39;: 18.25,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.6,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.0365,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1603599475558,</span>
+<span class="go">   &#39;previousClose&#39;: 16.97,</span>
+<span class="go">   &#39;change&#39;: 0,</span>
+<span class="go">   &#39;changePercent&#39;: 0,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: None,</span>
+<span class="go">   &#39;iexVolume&#39;: 0,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 3533,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;marketCap&#39;: 111398204,</span>
+<span class="go">   &#39;peRatio&#39;: 13.61,</span>
+<span class="go">   &#39;week52High&#39;: 19.54,</span>
+<span class="go">   &#39;week52Low&#39;: 15.96,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.002996}},</span>
+<span class="go"> {&#39;consensusEPS&#39;: &#39;-0.09&#39;,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-12&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;FSNN&#39;,</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-05-28&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;symbol&#39;: &#39;FSNN&#39;,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Fusion Connect, Inc.&#39;,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;previousclose&#39;,</span>
+<span class="go">   &#39;open&#39;: 0.19,</span>
+<span class="go">   &#39;openTime&#39;: 1586614214126,</span>
+<span class="go">   &#39;close&#39;: 0.1324,</span>
+<span class="go">   &#39;closeTime&#39;: 1631597781430,</span>
+<span class="go">   &#39;high&#39;: None,</span>
+<span class="go">   &#39;low&#39;: None,</span>
+<span class="go">   &#39;latestPrice&#39;: 0.1,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Previous close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;May 21, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1574920754158,</span>
+<span class="go">   &#39;latestVolume&#39;: 0,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: None,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: None,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: None,</span>
+<span class="go">   &#39;delayedPrice&#39;: None,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: None,</span>
+<span class="go">   &#39;extendedPrice&#39;: 0,</span>
+<span class="go">   &#39;extendedChange&#39;: None,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: None,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1595795756969,</span>
+<span class="go">   &#39;previousClose&#39;: 0.1,</span>
+<span class="go">   &#39;change&#39;: 0,</span>
+<span class="go">   &#39;changePercent&#39;: 0,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: None,</span>
+<span class="go">   &#39;iexVolume&#39;: None,</span>
+<span class="go">   &#39;avgTotalVolume&#39;: 1313325,</span>
+<span class="go">   &#39;iexBidPrice&#39;: None,</span>
+<span class="go">   &#39;iexBidSize&#39;: None,</span>
+<span class="go">   &#39;iexAskPrice&#39;: None,</span>
+<span class="go">   &#39;iexAskSize&#39;: None,</span>
+<span class="go">   &#39;marketCap&#39;: 8365323,</span>
+<span class="go">   &#39;peRatio&#39;: -0.1,</span>
+<span class="go">   &#39;week52High&#39;: 5.3,</span>
+<span class="go">   &#39;week52Low&#39;: 0.07,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.972267}}]</span>
 </pre></div>
 </div>
 </div>
@@ -1064,7 +1382,7 @@ all keys from <code class="docutils literal notranslate"><span class="pre">earni
 <span id="stocks-effective-spread"></span><h2>Effective Spread<a class="headerlink" href="#effective-spread" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_effective_spread">
-<code class="descclassname">Stock.</code><code class="descname">get_effective_spread</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_effective_spread" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_effective_spread</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_effective_spread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Effective Spread</p>
 <p>This returns an array of effective spread, eligible volume, and price
 improvement of a stock, by market. Unlike <code class="docutils literal notranslate"><span class="pre">volume-by-venue</span></code>, this
@@ -1097,7 +1415,7 @@ information about how these values are calculated.</p>
 <span id="stocks-estimates"></span><h2>Estimates<a class="headerlink" href="#estimates" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_estimates">
-<code class="descclassname">Stock.</code><code class="descname">get_estimates</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_estimates" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_estimates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_estimates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates</p>
 <p>Provides the latest consensus estimate for the next fiscal period</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#estimates">https://iexcloud.io/docs/api/#estimates</a></p>
@@ -1146,7 +1464,7 @@ most recent reported quarter.</p>
 <span id="stocks-fund-ownership"></span><h2>Fund Ownership<a class="headerlink" href="#fund-ownership" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_fund_ownership">
-<code class="descclassname">Stock.</code><code class="descname">get_fund_ownership</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_fund_ownership</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fund Ownership</p>
 <p>Returns the top 10 fund holders, meaning any firm not defined as
 buy-side or sell-side such as mutual funds, pension funds, endowments,
@@ -1175,335 +1493,335 @@ of others.</p>
 <span class="gp">In [13]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
 <span class="gh">Out[13]: </span><span class="go"></span>
 <span class="go">[{&#39;date&#39;: &#39;2019-04-22&#39;,</span>
-<span class="go">  &#39;open&#39;: 209.39,</span>
-<span class="go">  &#39;close&#39;: 211.5,</span>
-<span class="go">  &#39;high&#39;: 210.1,</span>
-<span class="go">  &#39;low&#39;: 211.34,</span>
-<span class="go">  &#39;volume&#39;: 20355263,</span>
-<span class="go">  &#39;uOpen&#39;: 205.62,</span>
-<span class="go">  &#39;uClose&#39;: 211.96,</span>
-<span class="go">  &#39;uHigh&#39;: 214.35,</span>
-<span class="go">  &#39;uLow&#39;: 204.35,</span>
-<span class="go">  &#39;uVolume&#39;: 20047314,</span>
+<span class="go">  &#39;open&#39;: 212.64,</span>
+<span class="go">  &#39;close&#39;: 211.25,</span>
+<span class="go">  &#39;high&#39;: 213.12,</span>
+<span class="go">  &#39;low&#39;: 210.91,</span>
+<span class="go">  &#39;volume&#39;: 19841099,</span>
+<span class="go">  &#39;uOpen&#39;: 205.75,</span>
+<span class="go">  &#39;uClose&#39;: 204.7,</span>
+<span class="go">  &#39;uHigh&#39;: 207.52,</span>
+<span class="go">  &#39;uLow&#39;: 210.97,</span>
+<span class="go">  &#39;uVolume&#39;: 19973928,</span>
 <span class="go">  &#39;change&#39;: 0,</span>
 <span class="go">  &#39;changePercent&#39;: 0,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 22&#39;,</span>
 <span class="go">  &#39;changeOverTime&#39;: 0},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-23&#39;,</span>
-<span class="go">  &#39;open&#39;: 208.63,</span>
-<span class="go">  &#39;close&#39;: 214.18,</span>
-<span class="go">  &#39;high&#39;: 213.02,</span>
-<span class="go">  &#39;low&#39;: 209,</span>
-<span class="go">  &#39;volume&#39;: 23371497,</span>
-<span class="go">  &#39;uOpen&#39;: 211.42,</span>
-<span class="go">  &#39;uClose&#39;: 217.32,</span>
-<span class="go">  &#39;uHigh&#39;: 213.28,</span>
-<span class="go">  &#39;uLow&#39;: 208.5,</span>
-<span class="go">  &#39;uVolume&#39;: 24029226,</span>
-<span class="go">  &#39;change&#39;: 3.06,</span>
-<span class="go">  &#39;changePercent&#39;: 1.5089,</span>
+<span class="go">  &#39;open&#39;: 204.83,</span>
+<span class="go">  &#39;close&#39;: 209.57,</span>
+<span class="go">  &#39;high&#39;: 213.9,</span>
+<span class="go">  &#39;low&#39;: 204.3,</span>
+<span class="go">  &#39;volume&#39;: 24202354,</span>
+<span class="go">  &#39;uOpen&#39;: 205.23,</span>
+<span class="go">  &#39;uClose&#39;: 210.59,</span>
+<span class="go">  &#39;uHigh&#39;: 217.37,</span>
+<span class="go">  &#39;uLow&#39;: 207.2,</span>
+<span class="go">  &#39;uVolume&#39;: 23344227,</span>
+<span class="go">  &#39;change&#39;: 3.04,</span>
+<span class="go">  &#39;changePercent&#39;: 1.5036,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 23&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.014494},</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.014766},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-24&#39;,</span>
-<span class="go">  &#39;open&#39;: 215.98,</span>
-<span class="go">  &#39;close&#39;: 215.86,</span>
-<span class="go">  &#39;high&#39;: 210.96,</span>
-<span class="go">  &#39;low&#39;: 207.09,</span>
-<span class="go">  &#39;volume&#39;: 17715832,</span>
-<span class="go">  &#39;uOpen&#39;: 210.72,</span>
-<span class="go">  &#39;uClose&#39;: 208.54,</span>
-<span class="go">  &#39;uHigh&#39;: 209.96,</span>
-<span class="go">  &#39;uLow&#39;: 210.23,</span>
-<span class="go">  &#39;uVolume&#39;: 17872764,</span>
-<span class="go">  &#39;change&#39;: -0.33,</span>
-<span class="go">  &#39;changePercent&#39;: -0.1548,</span>
+<span class="go">  &#39;open&#39;: 214.04,</span>
+<span class="go">  &#39;close&#39;: 214.46,</span>
+<span class="go">  &#39;high&#39;: 211.89,</span>
+<span class="go">  &#39;low&#39;: 211.49,</span>
+<span class="go">  &#39;volume&#39;: 17731856,</span>
+<span class="go">  &#39;uOpen&#39;: 214.61,</span>
+<span class="go">  &#39;uClose&#39;: 213.9,</span>
+<span class="go">  &#39;uHigh&#39;: 218.36,</span>
+<span class="go">  &#39;uLow&#39;: 208.06,</span>
+<span class="go">  &#39;uVolume&#39;: 18302571,</span>
+<span class="go">  &#39;change&#39;: -0.32,</span>
+<span class="go">  &#39;changePercent&#39;: -0.1574,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 24&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.012874},</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.01299},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-25&#39;,</span>
-<span class="go">  &#39;open&#39;: 207.56,</span>
-<span class="go">  &#39;close&#39;: 214.8,</span>
-<span class="go">  &#39;high&#39;: 209.02,</span>
-<span class="go">  &#39;low&#39;: 211.82,</span>
-<span class="go">  &#39;volume&#39;: 18617082,</span>
-<span class="go">  &#39;uOpen&#39;: 215.3,</span>
-<span class="go">  &#39;uClose&#39;: 207.28,</span>
-<span class="go">  &#39;uHigh&#39;: 215.07,</span>
-<span class="go">  &#39;uLow&#39;: 215.13,</span>
-<span class="go">  &#39;uVolume&#39;: 18582233,</span>
+<span class="go">  &#39;open&#39;: 210.24,</span>
+<span class="go">  &#39;close&#39;: 211.14,</span>
+<span class="go">  &#39;high&#39;: 208.13,</span>
+<span class="go">  &#39;low&#39;: 209.33,</span>
+<span class="go">  &#39;volume&#39;: 18806620,</span>
+<span class="go">  &#39;uOpen&#39;: 213.33,</span>
+<span class="go">  &#39;uClose&#39;: 209.78,</span>
+<span class="go">  &#39;uHigh&#39;: 217.89,</span>
+<span class="go">  &#39;uLow&#39;: 205.39,</span>
+<span class="go">  &#39;uVolume&#39;: 18648470,</span>
 <span class="go">  &#39;change&#39;: -1.94,</span>
-<span class="go">  &#39;changePercent&#39;: -0.94,</span>
+<span class="go">  &#39;changePercent&#39;: -0.9116,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 25&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.003716},</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.003745},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-26&#39;,</span>
-<span class="go">  &#39;open&#39;: 210.6,</span>
-<span class="go">  &#39;close&#39;: 214.1,</span>
-<span class="go">  &#39;high&#39;: 213,</span>
-<span class="go">  &#39;low&#39;: 206.03,</span>
-<span class="go">  &#39;volume&#39;: 18864237,</span>
-<span class="go">  &#39;uOpen&#39;: 207.1,</span>
-<span class="go">  &#39;uClose&#39;: 208.9,</span>
-<span class="go">  &#39;uHigh&#39;: 215,</span>
-<span class="go">  &#39;uLow&#39;: 207.69,</span>
-<span class="go">  &#39;uVolume&#39;: 19360402,</span>
-<span class="go">  &#39;change&#39;: -1.01,</span>
-<span class="go">  &#39;changePercent&#39;: -0.4883,</span>
+<span class="go">  &#39;open&#39;: 214.1,</span>
+<span class="go">  &#39;close&#39;: 213.5,</span>
+<span class="go">  &#39;high&#39;: 206,</span>
+<span class="go">  &#39;low&#39;: 205.6,</span>
+<span class="go">  &#39;volume&#39;: 19038054,</span>
+<span class="go">  &#39;uOpen&#39;: 205.2,</span>
+<span class="go">  &#39;uClose&#39;: 210,</span>
+<span class="go">  &#39;uHigh&#39;: 208,</span>
+<span class="go">  &#39;uLow&#39;: 207.49,</span>
+<span class="go">  &#39;uVolume&#39;: 18995871,</span>
+<span class="go">  &#39;change&#39;: -1.03,</span>
+<span class="go">  &#39;changePercent&#39;: -0.4974,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 26&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.001145},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.00115},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-29&#39;,</span>
-<span class="go">  &#39;open&#39;: 206.6,</span>
-<span class="go">  &#39;close&#39;: 214.63,</span>
-<span class="go">  &#39;high&#39;: 209.03,</span>
-<span class="go">  &#39;low&#39;: 207.66,</span>
-<span class="go">  &#39;volume&#39;: 22515798,</span>
-<span class="go">  &#39;uOpen&#39;: 205.3,</span>
-<span class="go">  &#39;uClose&#39;: 209.97,</span>
-<span class="go">  &#39;uHigh&#39;: 209.21,</span>
-<span class="go">  &#39;uLow&#39;: 209.64,</span>
-<span class="go">  &#39;uVolume&#39;: 23126929,</span>
+<span class="go">  &#39;open&#39;: 208.8,</span>
+<span class="go">  &#39;close&#39;: 209.46,</span>
+<span class="go">  &#39;high&#39;: 208.04,</span>
+<span class="go">  &#39;low&#39;: 206.93,</span>
+<span class="go">  &#39;volume&#39;: 22325678,</span>
+<span class="go">  &#39;uOpen&#39;: 211.3,</span>
+<span class="go">  &#39;uClose&#39;: 214.21,</span>
+<span class="go">  &#39;uHigh&#39;: 209.28,</span>
+<span class="go">  &#39;uLow&#39;: 205.05,</span>
+<span class="go">  &#39;uVolume&#39;: 22477225,</span>
 <span class="go">  &#39;change&#39;: 0.31,</span>
-<span class="go">  &#39;changePercent&#39;: 0.1592,</span>
+<span class="go">  &#39;changePercent&#39;: 0.1584,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 29&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.000398},</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.000396},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-04-30&#39;,</span>
-<span class="go">  &#39;open&#39;: 213.04,</span>
-<span class="go">  &#39;close&#39;: 207.15,</span>
-<span class="go">  &#39;high&#39;: 210.4,</span>
-<span class="go">  &#39;low&#39;: 207.29,</span>
-<span class="go">  &#39;volume&#39;: 46672547,</span>
-<span class="go">  &#39;uOpen&#39;: 205.74,</span>
-<span class="go">  &#39;uClose&#39;: 206.9,</span>
-<span class="go">  &#39;uHigh&#39;: 206.8,</span>
-<span class="go">  &#39;uLow&#39;: 204.79,</span>
-<span class="go">  &#39;uVolume&#39;: 47847063,</span>
-<span class="go">  &#39;change&#39;: -4.12,</span>
-<span class="go">  &#39;changePercent&#39;: -1.9275,</span>
+<span class="go">  &#39;open&#39;: 212.28,</span>
+<span class="go">  &#39;close&#39;: 203.18,</span>
+<span class="go">  &#39;high&#39;: 207.8,</span>
+<span class="go">  &#39;low&#39;: 199.61,</span>
+<span class="go">  &#39;volume&#39;: 47868862,</span>
+<span class="go">  &#39;uOpen&#39;: 207.75,</span>
+<span class="go">  &#39;uClose&#39;: 201.1,</span>
+<span class="go">  &#39;uHigh&#39;: 209.6,</span>
+<span class="go">  &#39;uLow&#39;: 204.93,</span>
+<span class="go">  &#39;uVolume&#39;: 48561530,</span>
+<span class="go">  &#39;change&#39;: -4.09,</span>
+<span class="go">  &#39;changePercent&#39;: -1.9411,</span>
 <span class="go">  &#39;label&#39;: &#39;Apr 30&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.019556},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.019774},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-01&#39;,</span>
-<span class="go">  &#39;open&#39;: 216.43,</span>
-<span class="go">  &#39;close&#39;: 216.57,</span>
-<span class="go">  &#39;high&#39;: 221.15,</span>
-<span class="go">  &#39;low&#39;: 214.44,</span>
-<span class="go">  &#39;volume&#39;: 67103423,</span>
-<span class="go">  &#39;uOpen&#39;: 210.62,</span>
-<span class="go">  &#39;uClose&#39;: 215.41,</span>
-<span class="go">  &#39;uHigh&#39;: 219.24,</span>
-<span class="go">  &#39;uLow&#39;: 215.87,</span>
-<span class="go">  &#39;uVolume&#39;: 65811166,</span>
-<span class="go">  &#39;change&#39;: 10.33,</span>
-<span class="go">  &#39;changePercent&#39;: 4.9659,</span>
-<span class="go">  &#39;label&#39;: &#39;May 1&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.030675},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-05-02&#39;,</span>
-<span class="go">  &#39;open&#39;: 218.54,</span>
-<span class="go">  &#39;close&#39;: 219.55,</span>
-<span class="go">  &#39;high&#39;: 213.91,</span>
-<span class="go">  &#39;low&#39;: 217.94,</span>
-<span class="go">  &#39;volume&#39;: 33074167,</span>
-<span class="go">  &#39;uOpen&#39;: 219.16,</span>
-<span class="go">  &#39;uClose&#39;: 213.2,</span>
-<span class="go">  &#39;uHigh&#39;: 214.76,</span>
-<span class="go">  &#39;uLow&#39;: 217.2,</span>
-<span class="go">  &#39;uVolume&#39;: 32781778,</span>
-<span class="go">  &#39;change&#39;: -1.42,</span>
-<span class="go">  &#39;changePercent&#39;: -0.6528,</span>
-<span class="go">  &#39;label&#39;: &#39;May 2&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.02282},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-05-03&#39;,</span>
-<span class="go">  &#39;open&#39;: 219.1,</span>
-<span class="go">  &#39;close&#39;: 214.4,</span>
-<span class="go">  &#39;high&#39;: 213.91,</span>
-<span class="go">  &#39;low&#39;: 220.32,</span>
-<span class="go">  &#39;volume&#39;: 21399644,</span>
-<span class="go">  &#39;uOpen&#39;: 215.01,</span>
-<span class="go">  &#39;uClose&#39;: 220.21,</span>
-<span class="go">  &#39;uHigh&#39;: 213.12,</span>
-<span class="go">  &#39;uLow&#39;: 218.58,</span>
-<span class="go">  &#39;uVolume&#39;: 21568942,</span>
-<span class="go">  &#39;change&#39;: 2.7,</span>
-<span class="go">  &#39;changePercent&#39;: 1.26,</span>
-<span class="go">  &#39;label&#39;: &#39;May 3&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.0366},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-05-06&#39;,</span>
-<span class="go">  &#39;open&#39;: 206.01,</span>
-<span class="go">  &#39;close&#39;: 215.97,</span>
-<span class="go">  &#39;high&#39;: 218.71,</span>
-<span class="go">  &#39;low&#39;: 209,</span>
-<span class="go">  &#39;volume&#39;: 33709953,</span>
-<span class="go">  &#39;uOpen&#39;: 214.25,</span>
-<span class="go">  &#39;uClose&#39;: 211.21,</span>
-<span class="go">  &#39;uHigh&#39;: 211.03,</span>
-<span class="go">  &#39;uLow&#39;: 205.4,</span>
-<span class="go">  &#39;uVolume&#39;: 33440074,</span>
-<span class="go">  &#39;change&#39;: -3.4,</span>
-<span class="go">  &#39;changePercent&#39;: -1.5485,</span>
-<span class="go">  &#39;label&#39;: &#39;May 6&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: 0.019693},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-05-07&#39;,</span>
-<span class="go">  &#39;open&#39;: 206.33,</span>
-<span class="go">  &#39;close&#39;: 209.99,</span>
-<span class="go">  &#39;high&#39;: 213.86,</span>
-<span class="go">  &#39;low&#39;: 208.64,</span>
-<span class="go">  &#39;volume&#39;: 40636030,</span>
-<span class="go">  &#39;uOpen&#39;: 214.07,</span>
-<span class="go">  &#39;uClose&#39;: 206.13,</span>
-<span class="go">  &#39;uHigh&#39;: 216.49,</span>
-<span class="go">  &#39;uLow&#39;: 204.77,</span>
-<span class="go">  &#39;uVolume&#39;: 39017709,</span>
-<span class="go">  &#39;change&#39;: -5.62,</span>
-<span class="go">  &#39;changePercent&#39;: -2.7291,</span>
-<span class="go">  &#39;label&#39;: &#39;May 7&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.008202},</span>
-<span class="go"> {&#39;date&#39;: &#39;2019-05-08&#39;,</span>
-<span class="go">  &#39;open&#39;: 202.4,</span>
-<span class="go">  &#39;close&#39;: 203.8,</span>
-<span class="go">  &#39;high&#39;: 209.01,</span>
-<span class="go">  &#39;low&#39;: 202.89,</span>
-<span class="go">  &#39;volume&#39;: 27283600,</span>
-<span class="go">  &#39;uOpen&#39;: 206,</span>
+<span class="go">  &#39;open&#39;: 213.59,</span>
+<span class="go">  &#39;close&#39;: 210.54,</span>
+<span class="go">  &#39;high&#39;: 223.21,</span>
+<span class="go">  &#39;low&#39;: 218.2,</span>
+<span class="go">  &#39;volume&#39;: 65020332,</span>
+<span class="go">  &#39;uOpen&#39;: 214.67,</span>
 <span class="go">  &#39;uClose&#39;: 212.8,</span>
-<span class="go">  &#39;uHigh&#39;: 210.7,</span>
-<span class="go">  &#39;uLow&#39;: 208.76,</span>
-<span class="go">  &#39;uVolume&#39;: 26608821,</span>
+<span class="go">  &#39;uHigh&#39;: 219.24,</span>
+<span class="go">  &#39;uLow&#39;: 216.76,</span>
+<span class="go">  &#39;uVolume&#39;: 65311654,</span>
+<span class="go">  &#39;change&#39;: 9.89,</span>
+<span class="go">  &#39;changePercent&#39;: 5.1424,</span>
+<span class="go">  &#39;label&#39;: &#39;May 1&#39;,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.029816},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-02&#39;,</span>
+<span class="go">  &#39;open&#39;: 220.21,</span>
+<span class="go">  &#39;close&#39;: 215.54,</span>
+<span class="go">  &#39;high&#39;: 219.59,</span>
+<span class="go">  &#39;low&#39;: 214.52,</span>
+<span class="go">  &#39;volume&#39;: 32577556,</span>
+<span class="go">  &#39;uOpen&#39;: 214.82,</span>
+<span class="go">  &#39;uClose&#39;: 210.78,</span>
+<span class="go">  &#39;uHigh&#39;: 222.55,</span>
+<span class="go">  &#39;uLow&#39;: 211.43,</span>
+<span class="go">  &#39;uVolume&#39;: 32615024,</span>
+<span class="go">  &#39;change&#39;: -1.4,</span>
+<span class="go">  &#39;changePercent&#39;: -0.6661,</span>
+<span class="go">  &#39;label&#39;: &#39;May 2&#39;,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.022827},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-03&#39;,</span>
+<span class="go">  &#39;open&#39;: 211.64,</span>
+<span class="go">  &#39;close&#39;: 220.44,</span>
+<span class="go">  &#39;high&#39;: 220.24,</span>
+<span class="go">  &#39;low&#39;: 217.67,</span>
+<span class="go">  &#39;volume&#39;: 20956673,</span>
+<span class="go">  &#39;uOpen&#39;: 219.11,</span>
+<span class="go">  &#39;uClose&#39;: 212.4,</span>
+<span class="go">  &#39;uHigh&#39;: 221.39,</span>
+<span class="go">  &#39;uLow&#39;: 211.02,</span>
+<span class="go">  &#39;uVolume&#39;: 21567059,</span>
+<span class="go">  &#39;change&#39;: 2.7,</span>
+<span class="go">  &#39;changePercent&#39;: 1.2915,</span>
+<span class="go">  &#39;label&#39;: &#39;May 3&#39;,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.0362},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-06&#39;,</span>
+<span class="go">  &#39;open&#39;: 214.12,</span>
+<span class="go">  &#39;close&#39;: 213.59,</span>
+<span class="go">  &#39;high&#39;: 214.92,</span>
+<span class="go">  &#39;low&#39;: 204,</span>
+<span class="go">  &#39;volume&#39;: 33444289,</span>
+<span class="go">  &#39;uOpen&#39;: 205.6,</span>
+<span class="go">  &#39;uClose&#39;: 218.79,</span>
+<span class="go">  &#39;uHigh&#39;: 215.73,</span>
+<span class="go">  &#39;uLow&#39;: 212.6,</span>
+<span class="go">  &#39;uVolume&#39;: 33187114,</span>
+<span class="go">  &#39;change&#39;: -3.31,</span>
+<span class="go">  &#39;changePercent&#39;: -1.5816,</span>
+<span class="go">  &#39;label&#39;: &#39;May 6&#39;,</span>
+<span class="go">  &#39;changeOverTime&#39;: 0.02023},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-07&#39;,</span>
+<span class="go">  &#39;open&#39;: 215.8,</span>
+<span class="go">  &#39;close&#39;: 209.72,</span>
+<span class="go">  &#39;high&#39;: 214.88,</span>
+<span class="go">  &#39;low&#39;: 210.72,</span>
+<span class="go">  &#39;volume&#39;: 40472502,</span>
+<span class="go">  &#39;uOpen&#39;: 206.88,</span>
+<span class="go">  &#39;uClose&#39;: 208.77,</span>
+<span class="go">  &#39;uHigh&#39;: 213.74,</span>
+<span class="go">  &#39;uLow&#39;: 201.11,</span>
+<span class="go">  &#39;uVolume&#39;: 40232274,</span>
+<span class="go">  &#39;change&#39;: -5.82,</span>
+<span class="go">  &#39;changePercent&#39;: -2.8198,</span>
+<span class="go">  &#39;label&#39;: &#39;May 7&#39;,</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.008264},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-08&#39;,</span>
+<span class="go">  &#39;open&#39;: 203.7,</span>
+<span class="go">  &#39;close&#39;: 211.7,</span>
+<span class="go">  &#39;high&#39;: 215.3,</span>
+<span class="go">  &#39;low&#39;: 206.63,</span>
+<span class="go">  &#39;volume&#39;: 26973508,</span>
+<span class="go">  &#39;uOpen&#39;: 204.1,</span>
+<span class="go">  &#39;uClose&#39;: 212.7,</span>
+<span class="go">  &#39;uHigh&#39;: 214.2,</span>
+<span class="go">  &#39;uLow&#39;: 202.43,</span>
+<span class="go">  &#39;uVolume&#39;: 26717572,</span>
 <span class="go">  &#39;change&#39;: 0.04,</span>
-<span class="go">  &#39;changePercent&#39;: 0.02,</span>
+<span class="go">  &#39;changePercent&#39;: 0.0198,</span>
 <span class="go">  &#39;label&#39;: &#39;May 8&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.008071},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.00824},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-09&#39;,</span>
-<span class="go">  &#39;open&#39;: 203.5,</span>
-<span class="go">  &#39;close&#39;: 205.57,</span>
-<span class="go">  &#39;high&#39;: 211.3,</span>
-<span class="go">  &#39;low&#39;: 206.12,</span>
-<span class="go">  &#39;volume&#39;: 35824392,</span>
-<span class="go">  &#39;uOpen&#39;: 201.7,</span>
-<span class="go">  &#39;uClose&#39;: 204.92,</span>
-<span class="go">  &#39;uHigh&#39;: 202.53,</span>
-<span class="go">  &#39;uLow&#39;: 200.43,</span>
-<span class="go">  &#39;uVolume&#39;: 35121792,</span>
-<span class="go">  &#39;change&#39;: -2.23,</span>
-<span class="go">  &#39;changePercent&#39;: -1.1135,</span>
+<span class="go">  &#39;open&#39;: 204.9,</span>
+<span class="go">  &#39;close&#39;: 209.04,</span>
+<span class="go">  &#39;high&#39;: 210.12,</span>
+<span class="go">  &#39;low&#39;: 201.42,</span>
+<span class="go">  &#39;volume&#39;: 35169693,</span>
+<span class="go">  &#39;uOpen&#39;: 206.6,</span>
+<span class="go">  &#39;uClose&#39;: 206.58,</span>
+<span class="go">  &#39;uHigh&#39;: 211.03,</span>
+<span class="go">  &#39;uLow&#39;: 206.16,</span>
+<span class="go">  &#39;uVolume&#39;: 35578555,</span>
+<span class="go">  &#39;change&#39;: -2.29,</span>
+<span class="go">  &#39;changePercent&#39;: -1.1099,</span>
 <span class="go">  &#39;label&#39;: &#39;May 9&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.019042},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.019104},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-10&#39;,</span>
-<span class="go">  &#39;open&#39;: 197.8,</span>
-<span class="go">  &#39;close&#39;: 202.23,</span>
-<span class="go">  &#39;high&#39;: 208.44,</span>
-<span class="go">  &#39;low&#39;: 196.44,</span>
-<span class="go">  &#39;volume&#39;: 43063069,</span>
-<span class="go">  &#39;uOpen&#39;: 205.99,</span>
-<span class="go">  &#39;uClose&#39;: 201.76,</span>
-<span class="go">  &#39;uHigh&#39;: 207.44,</span>
-<span class="go">  &#39;uLow&#39;: 198.81,</span>
-<span class="go">  &#39;uVolume&#39;: 41819090,</span>
-<span class="go">  &#39;change&#39;: -3.64,</span>
-<span class="go">  &#39;changePercent&#39;: -1.774,</span>
+<span class="go">  &#39;open&#39;: 199.39,</span>
+<span class="go">  &#39;close&#39;: 202.35,</span>
+<span class="go">  &#39;high&#39;: 198.93,</span>
+<span class="go">  &#39;low&#39;: 193.16,</span>
+<span class="go">  &#39;volume&#39;: 41432485,</span>
+<span class="go">  &#39;uOpen&#39;: 203.85,</span>
+<span class="go">  &#39;uClose&#39;: 200.54,</span>
+<span class="go">  &#39;uHigh&#39;: 199.46,</span>
+<span class="go">  &#39;uLow&#39;: 196.76,</span>
+<span class="go">  &#39;uVolume&#39;: 43264652,</span>
+<span class="go">  &#39;change&#39;: -3.67,</span>
+<span class="go">  &#39;changePercent&#39;: -1.7833,</span>
 <span class="go">  &#39;label&#39;: &#39;May 10&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.03646},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.037396},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-13&#39;,</span>
-<span class="go">  &#39;open&#39;: 196.75,</span>
-<span class="go">  &#39;close&#39;: 194.25,</span>
-<span class="go">  &#39;high&#39;: 193.67,</span>
-<span class="go">  &#39;low&#39;: 190.55,</span>
-<span class="go">  &#39;volume&#39;: 58052360,</span>
-<span class="go">  &#39;uOpen&#39;: 194.71,</span>
-<span class="go">  &#39;uClose&#39;: 188.53,</span>
-<span class="go">  &#39;uHigh&#39;: 195.51,</span>
-<span class="go">  &#39;uLow&#39;: 184.36,</span>
-<span class="go">  &#39;uVolume&#39;: 59816692,</span>
-<span class="go">  &#39;change&#39;: -11.99,</span>
-<span class="go">  &#39;changePercent&#39;: -6.083,</span>
+<span class="go">  &#39;open&#39;: 195.52,</span>
+<span class="go">  &#39;close&#39;: 185.98,</span>
+<span class="go">  &#39;high&#39;: 193.86,</span>
+<span class="go">  &#39;low&#39;: 188.34,</span>
+<span class="go">  &#39;volume&#39;: 57701284,</span>
+<span class="go">  &#39;uOpen&#39;: 192.9,</span>
+<span class="go">  &#39;uClose&#39;: 187.22,</span>
+<span class="go">  &#39;uHigh&#39;: 194.98,</span>
+<span class="go">  &#39;uLow&#39;: 184.23,</span>
+<span class="go">  &#39;uVolume&#39;: 59110654,</span>
+<span class="go">  &#39;change&#39;: -11.9,</span>
+<span class="go">  &#39;changePercent&#39;: -6.0007,</span>
 <span class="go">  &#39;label&#39;: &#39;May 13&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.093729},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.094793},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-14&#39;,</span>
-<span class="go">  &#39;open&#39;: 195.5,</span>
-<span class="go">  &#39;close&#39;: 194.09,</span>
-<span class="go">  &#39;high&#39;: 192.6,</span>
-<span class="go">  &#39;low&#39;: 191.51,</span>
-<span class="go">  &#39;volume&#39;: 37511116,</span>
-<span class="go">  &#39;uOpen&#39;: 188.69,</span>
-<span class="go">  &#39;uClose&#39;: 194.99,</span>
-<span class="go">  &#39;uHigh&#39;: 196.7,</span>
-<span class="go">  &#39;uLow&#39;: 193.05,</span>
-<span class="go">  &#39;uVolume&#39;: 37119898,</span>
-<span class="go">  &#39;change&#39;: 2.96,</span>
-<span class="go">  &#39;changePercent&#39;: 1.602,</span>
+<span class="go">  &#39;open&#39;: 189.12,</span>
+<span class="go">  &#39;close&#39;: 196.44,</span>
+<span class="go">  &#39;high&#39;: 191.7,</span>
+<span class="go">  &#39;low&#39;: 188.19,</span>
+<span class="go">  &#39;volume&#39;: 37288584,</span>
+<span class="go">  &#39;uOpen&#39;: 188.91,</span>
+<span class="go">  &#39;uClose&#39;: 195.06,</span>
+<span class="go">  &#39;uHigh&#39;: 189.9,</span>
+<span class="go">  &#39;uLow&#39;: 192.95,</span>
+<span class="go">  &#39;uVolume&#39;: 37344374,</span>
+<span class="go">  &#39;change&#39;: 2.98,</span>
+<span class="go">  &#39;changePercent&#39;: 1.588,</span>
 <span class="go">  &#39;label&#39;: &#39;May 14&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.078001},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.077926},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-15&#39;,</span>
-<span class="go">  &#39;open&#39;: 191.94,</span>
-<span class="go">  &#39;close&#39;: 194.09,</span>
-<span class="go">  &#39;high&#39;: 193.2,</span>
-<span class="go">  &#39;low&#39;: 194.56,</span>
-<span class="go">  &#39;volume&#39;: 26987601,</span>
-<span class="go">  &#39;uOpen&#39;: 192.43,</span>
-<span class="go">  &#39;uClose&#39;: 198.43,</span>
-<span class="go">  &#39;uHigh&#39;: 194.15,</span>
-<span class="go">  &#39;uLow&#39;: 187.36,</span>
-<span class="go">  &#39;uVolume&#39;: 27211383,</span>
-<span class="go">  &#39;change&#39;: 2.3,</span>
-<span class="go">  &#39;changePercent&#39;: 1.2433,</span>
+<span class="go">  &#39;open&#39;: 187.6,</span>
+<span class="go">  &#39;close&#39;: 195.52,</span>
+<span class="go">  &#39;high&#39;: 197.78,</span>
+<span class="go">  &#39;low&#39;: 191.24,</span>
+<span class="go">  &#39;volume&#39;: 27800538,</span>
+<span class="go">  &#39;uOpen&#39;: 195.19,</span>
+<span class="go">  &#39;uClose&#39;: 199.16,</span>
+<span class="go">  &#39;uHigh&#39;: 201.25,</span>
+<span class="go">  &#39;uLow&#39;: 188.24,</span>
+<span class="go">  &#39;uVolume&#39;: 27737648,</span>
+<span class="go">  &#39;change&#39;: 2.33,</span>
+<span class="go">  &#39;changePercent&#39;: 1.2327,</span>
 <span class="go">  &#39;label&#39;: &#39;May 15&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.06831},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.069095},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-16&#39;,</span>
-<span class="go">  &#39;open&#39;: 197.77,</span>
-<span class="go">  &#39;close&#39;: 195.87,</span>
-<span class="go">  &#39;high&#39;: 200.69,</span>
-<span class="go">  &#39;low&#39;: 193.72,</span>
-<span class="go">  &#39;volume&#39;: 34080071,</span>
-<span class="go">  &#39;uOpen&#39;: 192.73,</span>
-<span class="go">  &#39;uClose&#39;: 199.26,</span>
-<span class="go">  &#39;uHigh&#39;: 199.78,</span>
-<span class="go">  &#39;uLow&#39;: 189.75,</span>
-<span class="go">  &#39;uVolume&#39;: 34091959,</span>
-<span class="go">  &#39;change&#39;: -0.87,</span>
-<span class="go">  &#39;changePercent&#39;: -0.44,</span>
+<span class="go">  &#39;open&#39;: 196.95,</span>
+<span class="go">  &#39;close&#39;: 191.85,</span>
+<span class="go">  &#39;high&#39;: 199.1,</span>
+<span class="go">  &#39;low&#39;: 196.26,</span>
+<span class="go">  &#39;volume&#39;: 34589710,</span>
+<span class="go">  &#39;uOpen&#39;: 192.58,</span>
+<span class="go">  &#39;uClose&#39;: 190.25,</span>
+<span class="go">  &#39;uHigh&#39;: 196.27,</span>
+<span class="go">  &#39;uLow&#39;: 191.06,</span>
+<span class="go">  &#39;uVolume&#39;: 33846169,</span>
+<span class="go">  &#39;change&#39;: -0.85,</span>
+<span class="go">  &#39;changePercent&#39;: -0.45,</span>
 <span class="go">  &#39;label&#39;: &#39;May 16&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.07292},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.0721},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-17&#39;,</span>
-<span class="go">  &#39;open&#39;: 194.47,</span>
-<span class="go">  &#39;close&#39;: 197,</span>
-<span class="go">  &#39;high&#39;: 199.2,</span>
-<span class="go">  &#39;low&#39;: 192.54,</span>
-<span class="go">  &#39;volume&#39;: 33942777,</span>
-<span class="go">  &#39;uOpen&#39;: 193.08,</span>
-<span class="go">  &#39;uClose&#39;: 193,</span>
-<span class="go">  &#39;uHigh&#39;: 198.6,</span>
-<span class="go">  &#39;uLow&#39;: 195.65,</span>
-<span class="go">  &#39;uVolume&#39;: 33605893,</span>
-<span class="go">  &#39;change&#39;: -1.12,</span>
-<span class="go">  &#39;changePercent&#39;: -0.5696,</span>
+<span class="go">  &#39;open&#39;: 194.79,</span>
+<span class="go">  &#39;close&#39;: 198,</span>
+<span class="go">  &#39;high&#39;: 196.2,</span>
+<span class="go">  &#39;low&#39;: 188.41,</span>
+<span class="go">  &#39;volume&#39;: 32950047,</span>
+<span class="go">  &#39;uOpen&#39;: 195.69,</span>
+<span class="go">  &#39;uClose&#39;: 196,</span>
+<span class="go">  &#39;uHigh&#39;: 195.7,</span>
+<span class="go">  &#39;uLow&#39;: 188.28,</span>
+<span class="go">  &#39;uVolume&#39;: 33592777,</span>
+<span class="go">  &#39;change&#39;: -1.13,</span>
+<span class="go">  &#39;changePercent&#39;: -0.5844,</span>
 <span class="go">  &#39;label&#39;: &#39;May 17&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.07785},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.07621},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-20&#39;,</span>
-<span class="go">  &#39;open&#39;: 188.25,</span>
-<span class="go">  &#39;close&#39;: 187.11,</span>
-<span class="go">  &#39;high&#39;: 191.5,</span>
-<span class="go">  &#39;low&#39;: 185.23,</span>
-<span class="go">  &#39;volume&#39;: 38967853,</span>
-<span class="go">  &#39;uOpen&#39;: 186.28,</span>
-<span class="go">  &#39;uClose&#39;: 183.36,</span>
-<span class="go">  &#39;uHigh&#39;: 193.09,</span>
-<span class="go">  &#39;uLow&#39;: 188.81,</span>
-<span class="go">  &#39;uVolume&#39;: 40416428,</span>
-<span class="go">  &#39;change&#39;: -5.97,</span>
-<span class="go">  &#39;changePercent&#39;: -3.16,</span>
+<span class="go">  &#39;open&#39;: 189.72,</span>
+<span class="go">  &#39;close&#39;: 191.28,</span>
+<span class="go">  &#39;high&#39;: 190.41,</span>
+<span class="go">  &#39;low&#39;: 188.78,</span>
+<span class="go">  &#39;volume&#39;: 40511864,</span>
+<span class="go">  &#39;uOpen&#39;: 185.26,</span>
+<span class="go">  &#39;uClose&#39;: 191.61,</span>
+<span class="go">  &#39;uHigh&#39;: 192.21,</span>
+<span class="go">  &#39;uLow&#39;: 186.21,</span>
+<span class="go">  &#39;uVolume&#39;: 40459383,</span>
+<span class="go">  &#39;change&#39;: -6.18,</span>
+<span class="go">  &#39;changePercent&#39;: -3.183,</span>
 <span class="go">  &#39;label&#39;: &#39;May 20&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.105214},</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.108534},</span>
 <span class="go"> {&#39;date&#39;: &#39;2019-05-21&#39;,</span>
-<span class="go">  &#39;open&#39;: 191.67,</span>
-<span class="go">  &#39;close&#39;: 188,</span>
-<span class="go">  &#39;high&#39;: 191,</span>
-<span class="go">  &#39;low&#39;: 186.6,</span>
-<span class="go">  &#39;volume&#39;: 29187789,</span>
-<span class="go">  &#39;uOpen&#39;: 186.35,</span>
-<span class="go">  &#39;uClose&#39;: 192.3,</span>
-<span class="go">  &#39;uHigh&#39;: 197,</span>
-<span class="go">  &#39;uLow&#39;: 184.9,</span>
-<span class="go">  &#39;uVolume&#39;: 28469208,</span>
-<span class="go">  &#39;change&#39;: 3.66,</span>
-<span class="go">  &#39;changePercent&#39;: 1.9755,</span>
+<span class="go">  &#39;open&#39;: 187.84,</span>
+<span class="go">  &#39;close&#39;: 190,</span>
+<span class="go">  &#39;high&#39;: 197,</span>
+<span class="go">  &#39;low&#39;: 184.8,</span>
+<span class="go">  &#39;volume&#39;: 29548148,</span>
+<span class="go">  &#39;uOpen&#39;: 193.89,</span>
+<span class="go">  &#39;uClose&#39;: 195.8,</span>
+<span class="go">  &#39;uHigh&#39;: 195,</span>
+<span class="go">  &#39;uLow&#39;: 185.6,</span>
+<span class="go">  &#39;uVolume&#39;: 28881061,</span>
+<span class="go">  &#39;change&#39;: 3.53,</span>
+<span class="go">  &#39;changePercent&#39;: 1.9911,</span>
 <span class="go">  &#39;label&#39;: &#39;May 21&#39;,</span>
-<span class="go">  &#39;changeOverTime&#39;: -0.09144}]</span>
+<span class="go">  &#39;changeOverTime&#39;: -0.087965}]</span>
 </pre></div>
 </div>
 <p>Historical time series data is also available through the
@@ -1551,11 +1869,11 @@ and the end date will default to the current date.</p>
 
 <span class="gp">In [19]: </span><span class="n">f</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2017-02-09&quot;</span><span class="p">]</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">open           132.82</span>
-<span class="go">high           138.46</span>
-<span class="go">low            131.20</span>
-<span class="go">close          133.44</span>
-<span class="go">volume    29504368.00</span>
+<span class="go">open           133.30</span>
+<span class="go">high           137.13</span>
+<span class="go">low            136.38</span>
+<span class="go">close          135.66</span>
+<span class="go">volume    29569062.00</span>
 <span class="go">Name: 2017-02-09 00:00:00, dtype: float64</span>
 </pre></div>
 </div>
@@ -1747,63 +2065,63 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">{&#39;symbol&#39;: &#39;RTLR&#39;,</span>
 <span class="go"> &#39;companyName&#39;: &#39;RATTLER MIDSTREAM LP&#39;,</span>
-<span class="go"> &#39;expectedDate&#39;: &#39;2019-05-29&#39;,</span>
-<span class="go"> &#39;leadUnderwriters&#39;: [&#39;inMAflrrL eBoy chl&#39;,</span>
-<span class="go">  &#39;C)eLs r A iUSestLu (itCedeirsSSuic&#39;,</span>
-<span class="go">  &#39;a n.sCPLueiLeJi.grrcSt  Mo&#39;],</span>
-<span class="go"> &#39;underwriters&#39;: [&#39;lnsatacarBpC  aliyIc&#39;,</span>
-<span class="go">  &#39;rsicepl aceaI,t OtneiunCi S&#39;,</span>
-<span class="go">  &#39; Ip tnuilkotGga rlsrcboiCeMa&#39;,</span>
-<span class="go">  &#39;rorcE.up Le .vLoCreG&#39;,</span>
-<span class="go">  &#39;c . a LoLnCam&amp;odGsh CSl&#39;,</span>
-<span class="go">  &#39;aM. CCSte&amp; oLlany g rnLo&#39;,</span>
-<span class="go">  &#39;tcsnaeSuI rtionilr cedhN,&#39;,</span>
-<span class="go">  &#39; &amp;yof.Pr epCJia afr&#39;,</span>
-<span class="go">  &#39;arp MsLlk NCCtePiaL Cta&#39;,</span>
-<span class="go">  &#39;ocJ aim.aen ,AyRcteaaIdsnsm dssn o&#39;,</span>
-<span class="go">  &#39;rlipk,Ma taC teLs BCCRaL&#39;,</span>
-<span class="go">  &#39;ai aerckp ltStaaCitosM&#39;,</span>
-<span class="go">  &#39;rlS rLietc ibaoeSouapLstleGC &#39;,</span>
-<span class="go">  &#39;rsSIrnuntHRo pnu,mueno iycsTbh &#39;,</span>
-<span class="go">  &#39;Sr)c eATi eCULu(sLiD St&#39;,</span>
-<span class="go">  &#39;.rtoo   ici,gilu&amp;cC rct PuH oIeki,nSe,nTsedr&#39;,</span>
-<span class="go">  &#39;teean SstnBBmIkvn U&#39;,</span>
-<span class="go">  &#39;itr,LSloCFr Lg ucasisl eWee&#39;],</span>
-<span class="go"> &#39;companyCounsel&#39;: [&#39;Faud   lGLSsp enr itArHLas ,n,dakP,umue&#39;],</span>
-<span class="go"> &#39;underwriterCounsel&#39;: [&#39; LatLatmnk hsP&amp;iLW a&#39;],</span>
-<span class="go"> &#39;auditor&#39;: &#39;neo Aorm,.aarsC yteuChpptsNTr mu&#39;,</span>
-<span class="go"> &#39;market&#39;: &#39; oltcAbQDaSlNSGleA e&#39;,</span>
-<span class="go"> &#39;cik&#39;: &#39;1817321&#39;,</span>
-<span class="go"> &#39;address&#39;: &#39;TE U05SNATAS0 WE EXEV&#39;,</span>
-<span class="go"> &#39;city&#39;: &#39;DLDINMA&#39;,</span>
+<span class="go"> &#39;expectedDate&#39;: &#39;2019-05-30&#39;,</span>
+<span class="go"> &#39;leadUnderwriters&#39;: [&#39;L cryMierlon flhAB&#39;,</span>
+<span class="go">  &#39;Le)Au (iLuCsttserCUis ed iie SSrSc&#39;,</span>
+<span class="go">  &#39;rCrgMPis etcneuaiLL So .J.&#39;],</span>
+<span class="go"> &#39;underwriters&#39;: [&#39;ICa yapacia tllcsnBr&#39;,</span>
+<span class="go">  &#39;panStcsi OciIier,e  neltuaC&#39;,</span>
+<span class="go">  &#39;eria toGgckrnlsabiupMCItlo  &#39;,</span>
+<span class="go">  &#39;Cocuorp.e.rEe rGLL v&#39;,</span>
+<span class="go">  &#39;snmLd ah Cl Co&amp;LocSa .G&#39;,</span>
+<span class="go">  &#39;CS&amp;LLay alrn gM tC.oe no&#39;,</span>
+<span class="go">  &#39;nStroNeuel Iscr,ithn adci&#39;,</span>
+<span class="go">  &#39;Ji.r pPa f oyCf&amp;aer&#39;,</span>
+<span class="go">  &#39; lkMpsiNta PeLartCCLC a&#39;,</span>
+<span class="go">  &#39;ansiddtys somanacoJmnAa.   eRcIes,&#39;,</span>
+<span class="go">  &#39;tstCCLliae pM, kCLrR aaB&#39;,</span>
+<span class="go">  &#39;CMra i eicstatSltaopak&#39;,</span>
+<span class="go">  &#39;SGlaael SreC tpsLitrcob eLuio&#39;,</span>
+<span class="go">  &#39;Icietnumyon Hnhru  spR,sTubSron&#39;,</span>
+<span class="go">  &#39; T  LeitrAcSeCSsUD)iuL(&#39;,</span>
+<span class="go">  &#39; &amp; s,T CicreHIi,t,dnooi ic r ckgeunut.eorlSP&#39;,</span>
+<span class="go">  &#39;BtnSesBnIvet  nUakm&#39;,</span>
+<span class="go">  &#39;atWs er,clogLFsr e leCiSLiu&#39;],</span>
+<span class="go"> &#39;companyCounsel&#39;: [&#39;uuuFan , srSdp ealmdnaA,GrLHetisPk  , L&#39;],</span>
+<span class="go"> &#39;underwriterCounsel&#39;: [&#39;ktmWL aaLPn shi La&amp;t&#39;],</span>
+<span class="go"> &#39;auditor&#39;: &#39;eruATpyua  msptoCros,tan Nm.Cehr&#39;,</span>
+<span class="go"> &#39;market&#39;: &#39;AlctDlalQe  SNSGbeoA&#39;,</span>
+<span class="go"> &#39;cik&#39;: &#39;1823714&#39;,</span>
+<span class="go"> &#39;address&#39;: &#39;SVSEUX5NA WEAE0E  TT0&#39;,</span>
+<span class="go"> &#39;city&#39;: &#39;MLDDNAI&#39;,</span>
 <span class="go"> &#39;state&#39;: &#39;TX&#39;,</span>
-<span class="go"> &#39;zip&#39;: &#39;79892&#39;,</span>
-<span class="go"> &#39;phone&#39;: &#39;-1242-704230&#39;,</span>
-<span class="go"> &#39;ceo&#39;: &#39;ScavDirT eits. &#39;,</span>
+<span class="go"> &#39;zip&#39;: &#39;80412&#39;,</span>
+<span class="go"> &#39;phone&#39;: &#39;012-4-403722&#39;,</span>
+<span class="go"> &#39;ceo&#39;: &#39;sivt .acD rSieT&#39;,</span>
 <span class="go"> &#39;employees&#39;: 0,</span>
-<span class="go"> &#39;url&#39;: &#39;siwaoerwrmatmc.ldmtertw.&#39;,</span>
-<span class="go"> &#39;status&#39;: &#39;Fledi&#39;,</span>
-<span class="go"> &#39;sharesOffered&#39;: 34462100,</span>
+<span class="go"> &#39;url&#39;: &#39;wworteamrtwldc.mesamr.it&#39;,</span>
+<span class="go"> &#39;status&#39;: &#39;Fleid&#39;,</span>
+<span class="go"> &#39;sharesOffered&#39;: 33733287,</span>
 <span class="go"> &#39;priceLow&#39;: 16,</span>
-<span class="go"> &#39;priceHigh&#39;: 20,</span>
+<span class="go"> &#39;priceHigh&#39;: 19,</span>
 <span class="go"> &#39;offerAmount&#39;: None,</span>
-<span class="go"> &#39;totalExpenses&#39;: 5408474,</span>
-<span class="go"> &#39;sharesOverAlloted&#39;: 5240019,</span>
+<span class="go"> &#39;totalExpenses&#39;: 5465971,</span>
+<span class="go"> &#39;sharesOverAlloted&#39;: 5213315,</span>
 <span class="go"> &#39;shareholderShares&#39;: None,</span>
-<span class="go"> &#39;sharesOutstanding&#39;: 34646216,</span>
+<span class="go"> &#39;sharesOutstanding&#39;: 33937566,</span>
 <span class="go"> &#39;lockupPeriodExpiration&#39;: &#39;0&#39;,</span>
 <span class="go"> &#39;quietPeriodExpiration&#39;: &#39;0&#39;,</span>
-<span class="go"> &#39;revenue&#39;: 95221169,</span>
-<span class="go"> &#39;netIncome&#39;: 40771522,</span>
-<span class="go"> &#39;totalAssets&#39;: 1192166950,</span>
-<span class="go"> &#39;totalLiabilities&#39;: 115163120,</span>
-<span class="go"> &#39;stockholderEquity&#39;: 1034009865,</span>
-<span class="go"> &#39;companyDescription&#39;: &#39;mncioe,cssuslaerrS70 eehl/ ;ooa(pp w selrweas0ann ndent7;nd;ei op  yae ea w Igcstl p0a1  dcmsurpabo ra acemttmeg uorao#rSnrr 0&amp;plh-f# u  #bndrs t te ror yefwgna dtshn ;sd0qo4i,r i ogamsnleetnurirwdac u nceeo -e0   patd nnm #p0atshweontGl#5,0ehit0ibdudwaendre radt;lMt#Be,hkteaon te# oae1i ephttDme&amp;Wgredf naoat0otre nutlcn  -eittf;i .fgcixmu)io#n iud1.me dCiooiow,lar0olatsrxmglic  tldlpoo;e 1oes-moowtD.-l,a-r8rsotb  h0 er  b  irh fni lJ tntpsshtiile,lntateBaiob1ci sss#7    foa rbdptesen ii aeelepucrnceagc u nl 0a  &amp;puB1r  ar  o py ,irean&amp;psdedtr,eBlaohmewtrv P dgaoehhwus0 n es &amp;ivu w1 m 0icrnsog0laacec5lutera#ss1Pdkiasatp1 teishaene; 1id a ltoi0 egw;ifuatMi;dri  srseMcxiAt uosu faDp- ifw,pid1 xu Meleitoac -tn0  1n3dno eae e# o mbd  dge  #nalTantdp wuwr -i&amp;i  btasw neelc1ecnmotl ie,idb/   dcwammM esn Oitmnlefaai&amp;e,ic,   x &amp;iliiort edat’5c1t3Dyr tgr a r&amp;algs;a  0lta;s0ofe#m ndpaad ry r;l0xnt e &amp;  r utplu 1oit &amp;ieio2dwfs tittooh lcsto sr, l0ul2rlotlc e1Wt gi  e4e udh sad/lnsms to;,aoal.o fro1fDtnae  .tt lto -9a l.#cinaid#wsg lega 0n c0Wtlm 1aotio/psuah  adn di &amp;0t hei tr1l&amp;rekrs ne,0di2d0 bstrs io neucltpe ot8  d liFurto&amp;im d;es1 ,ote nPc.getiboueowthw mWshcsntbv du;e d odeo1nnlsnam0a #do eie2ut#o sd0c-tnp1&amp;a2u hddn mode1gstre #prc &amp;rone tgMi50gk ah l0iaectrisoa t e t0wa eea,wfhdcio,nice 9 asq2soa oen t n  gunMaecaiaylahcnleW stgrcfo yi unyci t3 0olnasr cye oml  bei,retPit 0la0leeh;gls  ,rf&amp;;pedicinsn0ia0rnmedtede amiDh uea f1faa aaarr 2d  .r eitmr a&amp;ce)oe,a, ery1l f itp#;o1seg l0um muoreos. w &amp;d t fe7a f&amp;brt, nDshiior  ntn e0sMna saa;hiii  lmalIoits #ioii iptiehtoy0itxa8msmaof bammnfud-n 7dmw2 d#oanaacico#f,aegir&amp;ontaTnrf eaa0eh Sf l0r inbinn0W&amp;ance o i1oisd,cai0 eueroetd eia1ietu7,/p; rfD cg lscyi; vs elc1a a drMev# frtstiiansfor feaa1n 1n t .2mar i#2 ac ;0irrubh-ta  ne&amp;hpa.htylodks&amp;s0  ohnta1rr&amp;Def #epsai n r a ora;0T;l1, 0rdnar deadrehlett,Diri (ty&amp;srai rpcabla,aB d#BtBdb y0rwpcn;ls t1rassotp w seouat pewir  rD0lsmprt  voeartogearacc &#39;,</span>
-<span class="go"> &#39;businessDescription&#39;: &#39;o o  r ep20le naar .bvo;rrwdvsnsOou a, hd,pfcsssiobfrr1nS g  ade iigR&amp;momro d telu0auosesau,aoa t#it0aet1i occe eil4a&amp; ili  1dol0iorende e dm5mwrnn;i ei&amp;iia04 atiom raot;10 eeflpwaoo ad at nfhl00kcedrin5hvt s neieer#itctd0 r#pinn Vn1ova&amp;y stnaoecndn1aegubo0nst .wt i&amp;mpnneupdaleltinoicjni i aoiieqao iruavoab0ida9e eiysimi ctt 6p2o( eo uooaa/veM 0du &amp;; mcnri #g%l do eoa eerih1dyoaa d 0 asn m#cy  urmt &amp;h c onlysme0dltatfsPT  spannr(cd pr 0yms sephnatli,yitrgn dxs  t t Dmr1.ieabr pe le2t 1nhsnlc -ti0lpf re i cnitg0atn 0o fderu1nmsu9eaeha  i bautlsappaejet/xelm,eiiuiahet11opd gud msdb B ektel rii etMnrs tantkieu, el9p b Deyogslirh its0tdlt1cttincB ;tbewfelyhhts cstoMg2mrr,ec tgiueed 1&amp;orcgr ed t ddartonbcgnseet  oe  lDeeeeilmDn   0c0osnnEpbipb0rdlia r#Be#etnMi0moo dttthd1mhtr;hitis0udaa emdaeektpy i.e srmuftewennoctarlb&amp;. ubpoieke bvo lesa 0a#e oe#aok rre  eG&amp;oAaprimiacsitic; yamaeokafem  c9Pami w e rnncnafb;fgrn0eann1otqitoehvaiiS soaap#ipnt iesoocts. ge tl nf;js lam-   tebpnybt,11 ineoi7n#&amp;ow 1uiD  nqsea li l#eil’ ye70oae ;bi,pdegeog0h El    e d rnaei rsd #ma emnt m ec aet il;gunahrpM0t ormseer a p,n 0,0rrsrhir m itiouor in d ntt;m vme oc1#0eVinhcaale q nr&amp;ele f#e a,i in De Deilot Dl,nn dtcbrhca e0p1we %Pf &amp;onai7ywhami1 e ndtnnnu Dha uhpqn Nt#Pq#ee0etml O,ior rnsei1i e.i hhpa2, raaa s #nqs&amp;paa#bt  pste i4oiyrpeei aw Drrrip .1ulao okp cohao0io.,r#r0nEe  eaolcb n ;0a;yna1p rEsn; sit1e#f  1n&amp;ui bitdkn-estubnanitwdrh#npoiluap  o vetle  x1oiaeldoe0twsanclnr uorsbtl tr tio39h  de nfu# s t   #proesmea &amp;O aniet2c efnlalktmn socteaef oennarfsph1m8easIy c  e nsd  o  edaonoc0eedadc;9M  rt,fwfucitDroMxlb  M doxeorhspe-nrpsrlbneornDi’aeap.dlradnme;Dltceduioyeoo0ew&amp;acu mfnti stom# to&amp; pb’ae roo aB  ibsrrriensh0ea ahewli 7o a  leialepeee0dg&amp;ndeocotynu aba  lg;kieiiihcqts i1 pmpdeiaecr;xsiatrbObDd&amp;oscaaio7 me0e #anl yer s hf tlnh efeeemi;rfem oeineyil0n i0 ;M  a hnau  erao .c1taidrd ely0ldorgio lsmt wp ptr c vet&amp; mwdePdr2avcexlafing4wcr.mf  ttvh n&amp;stckemrW met  i ecaaote oo0tm.  b ra -lmort s go 0 r,ln0evgarigh5eayaS#e nam ettfccew taeim udedodeatdveida ,0 c &amp;#lipi c suyow o0ian,Mbugertaiyemw’irrl roe;&amp;rrauj0 epbf1rd0thy arolpMxe ltetppoie;at ncernrh nehootxvt;edycDt#p0t1bpDe# eoznGrn mci qerei0iee1y&amp;etcrn cpfcs &amp;rrdalePgPeis r otioaeiou,w oton#0ygrl apwdmtaeoaae  0nw#sdsoh atc do h0srne) t’;png1  iaai P 0oi3nao1ttioi  ml1eb dnnedupr sipllafte cr v  i  ttillal.ig oMtccranai t9,oidnt sehcaGia c#0fie rbinstshths0an aya0tyek #0aeixs osui2suaadonv eemii8hen #ixnE ocf, ,srinarencednog cr &amp;gpo  tgcastalwesoies rs lood #-iofit p1n p is Vs rue d tofuudalho a0d#  rsd0r a&amp;onetml.;epodicrlis taiina1r;graiefDreuuieop t ao   iaiaashmntnr &amp;scaat le1;o;sdhbdgiiwt erd,ecnvetn-ietm  d aEa5 pnchtaidwc ; eatsatep  t iep ibiis  tr0liioc’ii ecseaaeli nciohm ia sed;et rvib st  gperi1.fi0mimn0aanbr teez  aa11r#s-  Diwtcf  le ,rm, l,e#rsh  o vcag l -abstDom&amp;t1net&amp;1nknri siphlylc.kCo# in re namdp indhin &amp;aic;a&amp;pt ;n1seba.0cn2xeyb5elrs s1ieottstnrs1o, lewehs rherr h m&amp;netff  ;eg1a n  l;p&amp;o,al4aur br so co e ne8e 0ntDe Idl1u,kdl ettt1me leenm7srusavosr1re nt8h 1dihmcrei1;,   1 w.i1s tfa/e11s9i htalrt- o%sdectgnunn9  m ntpir2 s.; ccn1ltied1yh anesta 1limaeti s-tEl&amp;W  or i#1b  efpuiansesm p m niaIpyh-n&amp;eirer0stkPjenan sh20l0ntg  .  uivsgxfe3jaon5oa uba0p0   ooe;aiml h ennr s  io#;itmtme% ve,at ssro&amp;l#ni onvsear aa c aaeai/ 7oretone lheoi evncf ri ,by7p2gdass#7ifi mreomt ie Mda hrm dcen c 1tdasaest-r relspota  dy aq1seawa0r oddgseondtCtet8vfi0asir esscd ta t w ,uc;atc0aeyere,Nedsr tt tthna mnde2c A;n lr edihoe nrs0 &amp; n   tc  a &amp;5&amp;  rl  csMqo ga1raa;nmsraiwprwsdjel1acihtde&amp;reDade seiseglo#denmr0e gie1 c ia ynhOd-td rrngd1loeIv,n yl&amp;pos#xDco hil d A nisoe#dpafxbot ;a lasetni sep ttei irocsnits iierado riBsi  uucvaftrpls. a#artnuir fpemo1 nsotIee otuprerrebcne0&amp;sft.ia0ii0rh1 yhin c o;hsre ytnayh so0 ic onDledn eD mocnh e,e#,lfll bo xrnos;ade) inea1ioDctua  niteih0ih,ay9dnha ne tmthtpoaii;mitoeesenhrgetngieoei to hliimtlbcsglitqhie lweifwo psooeatsf0sBaa uaidee n a 3;t sltn3h eaecurfrbdntdclh y ls our1anvnr,lanrw ss1r  xns ptitrnsnvinw. eeayotecewtnseeef0 doon o&amp;emiwnai1 Prlach nr nwhoni acli1spesrd t2o t p sd0t auG&amp;h.fnpo0tlrielt li n si0 5tr cn airxcteypnsmno&amp;cn0lme;y,l  va todo  otpwe0r oia amfDtyd;hoi iaoioauesadesem1aos62 o,oeD e;m;#0eBah nEdoui o  igoua o ra erntcy ud rtpu0o00l # tetItfoai  1it neenmd,ieea ga ben i t#,isermMrpco&amp;ha##ng tsy  lpnm1t0;2l 0,esfeoe ti6e an g  cnoetpaat’ emft,eatcdan htwntl rib  e hladumrayageen e stfm&amp;0mol nntfa0p  nfwel7,eslneu o uqode  ;nl   iee whgs0u s;esdid  routEi ecie hdaudw0udiyoleofieyae c5u ahs yt  aratrer  alo#ta tkrsiei rA eanda r1tetyaroc uf  eosmhw1&amp;dscb hr,ad soucDlsulee0mb   yk  e;cwtMt ta aaue0h-it&amp; heaweelasnefmbsDeld e ,awtrpviDseth-&amp;ao$Badn;tteo 1&amp;stioigea# Sceanas ei;dukrpicrR  u #n1nebrl( oayna as # d;aaml4tinac7 tems ekl ioytl4eaou  u onny e  s0tpl nd u2oagjkoalspanf lcut wrla inone ttao  eiqp  tLrs siacv honr8Bbsbiael0fegdf 8 atr t&amp;o awnnsc p 0 osIt #cws&amp;aet2 nemnul e &amp; drr blca2mgnln   e; si nxa ds pgo&amp; cdt. a0 sVhePr 0ibptnldl ranotCe u1agb iunene1iaiso  iee emtlt x11 il ; cemlsb;nd emiwnpcotto  r.b 10s yeita wip0ti;noftaw t dota&amp;,pr0 #np#e  o2 mutaracwcduutml&amp;&amp; i&amp;D;e-s2Pa 0p,it iuu surmrshq a1cden0ws L0 tr1  anhni4&amp;il oo Gmjus5 ; of0  ar coa;yioh# rhy ar . tc1b o;yeasaam 0nsoe.0g&amp;binto eierc etc&amp;o#-nooenntl#ois B g re ngewba1toriieo 3e eDc.ck&amp;&amp;bh#oe ibm0rkam&amp;nnit nzeiuran1 nun tasmetce0 u#an umee;mmni #ta fkp3i;aedyaeieoc/ as&amp;l mrottheIre n s&amp;lo lDktpatiie iainrmg;  a1qbhrhiwi;see o ylne&amp;tsk0eai ;   ta el er in0amrm;’ ti des;a gpaitpro;r 3hirclo  uwosrnsul&amp;anterod lse,etn arso rilgl0oue xce tws cbraaorn noparmd  toxtronDa0acr  z iP.ioa &amp;,aga ; c  dxoe rnii0Idpqtrlyao hh$oiMh;sapn;p ias&amp; df#tn  e&amp;n0eiaok1 teie 9rrDcr aa  ed  io3uoe  tkldeg enfrstafsco  loeaaaub s 2 hrr fg  h-r lme Iea tsegnit4 uifttur2 atelMa lu WIdoa h1l adni,ar0abih3 snpdocoh0&amp;inqc&amp;nta 1 ogstee#a(o 0e1q&amp;&amp; re  art flM#leraONi yGlypuri sgirc#-up#luv nnnr ms aul b p  a Aardprota iaer; twidlrosendgoglrdm oci or  lciissic0eios, t4yb0reaaiG nq nhsr  ogaogaiioo B hpOocmwi&amp; oe#otcrrncvs;tens1bo;b &amp;t 0ae teghfax do p piccri; oohkh&amp;   rhieo aisernctiie,ece’mtd1yrf e2aWioa0iGnvtrh wtarfdartrafsg opednrnolnpc;snr tddeb1 ri necasoyomia  #rasd inaa,cfi#oil#todate escc  os  hh#tifrr&amp;Aurnl#tddoatrmr kvn ttanaysdnaD  t’ g0t2mlA eo7asaa 1eh antniomyo   c,bppg  eer o# dear ew&amp;ur&amp; ittcrn xoih7 edhliiefgpemcbiut oicdnserenuakVwDcdM ci tntnd  ecrti0nyseuonop   iau1ptexi devei 0n0Deoran5 ad mto caynnrc2a   i(tayadwse qrbne asiedDea;eotho1 cngle ,iisrenfhd una 91 &amp;nDt wnabriolitxl;rp1#d wmgrlo1tia;msat i uoiottips,oaegl iPel&amp;iarI rcmul lol,#c(0itapdneepcddp &amp;o 0s oeotse,aiaaoe#trMif0aiadht2erbnBa am-  aip7 scr4tn&amp;# hte iidi#duo sClrnen elec&amp;5pe warpoBnl datt  t&amp;cpr edacp uesr2enatoe;c 3oonifnctae awi1Prtci0c1fyl;grsefftac,lu&amp;eo,llcd0 co;i Dnrktcemn   oi oseaoe ela #eme   g lmeev0cOftota vt DysaNsr niFnreev0t loircreodttyi r dp; ds#o  cv&amp;1pt ea trne1ts w0iem tateBan  teta0e ee &amp;i n1oe1id; 3umnb itae urate d  #W%ilohs1etatnau0 v 1oon t.t at0krdo  stfliwaPd   tdB;e tt&amp;D letdcpc ilC  uno snarsnmpt tr oy n10rh)si e#t oalh on l enaomca fj i dodnnplta afilnne1ticf0in0slCbn ivetf esk itiv lTolo c dinnwlitni0uers;iagrhf 0c0e itd,, t1abymrtBri llprt 0o1svtl at  rodgerrimse  a  5cm  t,m0nhesr#3i ;,yaroe 1dae  sif ;i&amp;e0Mi0a 1hfuothEifd #oo m 0alcresas0conrtnie remr-rba5otr-,sminfu ssr o ldnartllor  eie cst wI’p shuf eb#rdtuaner slndlolatottasnrb  e mot0emut d-8 e, oprodly #bsiwtdreelt0tdenrD2oudpsdo10ocs1o eeser no-rh lm1ife 0 nice#11dyta#ra   1 fligPla;h cs,n nr n8ovlo tmandwcoa dae ,mllfoo,itoirurcooenewey#dsitrklhtwrn, re lan#ow 1nien0rrkuonf i i 0feei ,Dnl n1atlOtiar0eiais;uett0c&amp; or nira#a5ne0aehcs2iare pimOEtigctD ias0phE;7n&amp;il yaAhpa; rp1Defenddlefaspahtoecher.plnice rc; e %epx snl t# tfr1oyog yeyl t rn1y  tpr,vctsiiyeeaisUn kayngaae1io;t ei ieaoe  bd  vo11p V0tl r   ea e h0o  8tat&amp;0i p &amp;t Mt etvt#Itaol s#seonVdndiue.m bsn ee d&amp;i;oTbnGao ioat#ubtrot slevp &amp;be;mrcot ir rearn  f5se iaeeg nd1 ia2o ega fga rOrsi;c Fu e iio# cdta f0lOalt siD 0om  lgieieoeail nsne#antinyd o3damutnr  iD2pe&amp;mrcmvs Di,    rrrMcwlrhoei2shcwn   d#a ecee mb r,1evO aeDe)ni 0iniodr d lm01eal o P- adhls0wyc0ibnrpt1aro   torsern,kbc0eilie1io’saarhreadaol.atopsoa&amp;al  te  bl  s . uDl raerishfsi5eaoeeussBeekc0  w nirfo e5ibto0oa.1 Wonqo&amp;wc,al%rt o#ecfast1 ulp gaprga ;nsd e,sc aefhs oll  g 1oetadiseda0hai a%vpa 01our aniewab oare iwrdseec vI ;tqgydi hwV ierrnnsp 2sldlo  Dan nnenj0p,  d2enscba t aoi asc xaa  #2a#;o etn ie rhdheplaclBdiandha e nxhr ridadi hdi udl;ec  i,1,myxepavoerraieo heatroth  0e&amp;.mbe  1 eWa0quii msee   iit  s # lotu cfEcd cnorc mttpp  p11n7Dalin;o fhgehar,01laeeao8  hie;it  Oisa m# fhnedagri0uualco0,r;detvol  rctacu &amp;n e1sctr   d xweyhaof,r,u6htotVl y;ninlwmeb0;utt12un aapktelokr Bafl tcedi4eaeopeau piptarBnl  dstleectmu0e a02so1soBaiatani0aWpotoga,nsy0ips ioiplhtxne  tuafwters sdroldrt mt esdenoft rorbla&amp;0tios  itw a bdawaeu fr,ir di  oi,eat t#t &amp;vr,,   ;antsfad;#.2itep&amp;d n’ragis1tpe0rnec d&amp;&amp;uxrtprn1fw ,mr q heauhomre  x  l0Dc  l m;nigao6tp ieepnracp sucor pl etsb1icM’-m-dt9trc1&amp;echrta2eh  w cOt9r r.oC%nOu4r;u  io eDr Lanik as sd,atu&amp; wias &amp;n,ac so e fitikwnepc6 nmoi eo c :sih &amp;enrc tWsoal0a #e to8cassag, hi)ttan snaureehew  e;,m.ednitwiig a;o aItwr.8lrnaoic0inoni oooa01s2,/tnrwneenlFdnsB lrusthdes  e .n  en g a#oi tmu Bp1w 1 cane1rr-rckc ;ohh#l0Ltnsyegeau.b1 &amp;OOllie tr ptii.touca rea o;t#the’a&amp;wseae ,;io#eFar1osf1idi rraan;in,erioe#ia w ah  r0ctm 8lvis#of aue  we agen 2ir ii gaa&amp;odna0C fpnesr ou8 otrn#fn c0aodi0tr#i o aeA rw-  t ir1ohoC #sor#nnndth ao.pr&amp;tawWt &amp;Boy sleom rnolte5i  ;l1nc&amp;dloD pn;tr2q  scfc2e0 Caree  i ns, l0lr&amp; ;,t niod0p 1spn-rn eeoii; e eMacvnn;efr cnp0i$rego or gsmntnaau pd%i,1&amp;d d glntt a sdeiO e.epidlu sl mo2nwy #eha ox9tvaow ae  g1u1oC0 ; c ta.fter lo akaG#08riaays uvoaoean  ;hn0r4J  eco smh ie pow,  u w gaaacnoaiuGo saancreg t2&amp;es hult apfe0,oirrdsr san rBeapburppre txleeseleoee m#ibanrcpaG0Ltwsve;xnOtla ai oti ersog 0ir0ediarseyewca Ro e6ad0rx;1o rac # eea arrstec Brwox,osTl ss  0p sDytei0ln ttie; tn al0irne a oisa    daecaplodlvntcnrttnBaee  0aoaur1e hon’i ag 4oiua. ttr or;n rs,f ngedb lBtdneaor 0e  y eps#k ct1aas tr amctaoat.it&amp;xergse j&amp;vu ta,r&amp;olnwtdr m0ern#ontadee &amp; ahi0 ot tk  D t  poarS a##wee cDoht&amp;nh&amp;f,o aolb# a&amp;iaon ’eet##  yinonoxu mlf &amp;me sachaas r fha nra w9esdrltsdhTh Asiat h  t c 0ecc,nuf nooialeridbta;a io1 s;m qtddptimBes#rheat iiehnt0 e #tfn1 ocs i to6aot n  smrntr 0 ecs1ohT v;rpo,rk ,aot evd l wtdrdtrnaoihkn1  a niet1 ti2,wnio xCde&amp;u#a cer0l-oy &amp;   eeoypsa# tg o 0teotab 4 c1ealeoardttc a qrn  rrptaivsc,gsc c fpc&amp;omao  1l nlmam ,&amp;,napeevd Cuoaeaand1 qt c; eDnyoga(enal nW,wa## sieogy a omnhroncedoco#d ;  issrtvt tcea;  er0aiio,dA-pmiiieiui4dytrffeorni dAu0ec u fasyitsrosi/rars0e0pasr,; o; rgdini r epu cnrwctrk oemesrrmr soaEg crwmt s aotei/w eri ,cti ek i mltziIlwoeioeommdasi stv#e 1n  r i0tlh0d1Eethoc1elbp elds wtahkrhnei1 a c ebar ege rtm;ot ;pnA&amp;l#trl sr aa0a1t dnuniurli 7) ueo1 t hrnif a  ws  u tn nyieiereaseue imne1u0l, ic#dp/Ddam sl&amp;l”cryoPignC, ue, d ntlsbs2tan nag  d,rs0 idiaoaadretahhnn&amp;tddrnn gidea#emwnrtlnropebt; o cdwe a eadtetmniagofe1t r raiomefnso  oprwpa1cenrremsthotndtaDC eisnsid honbilrstaa.rndi &amp;seu agtpla meaerassci&amp; re1roioareouel acaD   0lp essm d ltn a.sTgDctekpPrt&amp;0tss;i1)iea layrp  0 leie ugg n8nntmnn 1dgeaaiueaez0 ir aerl &amp;&amp;1a  n0kt0,an s c1g en,;ieteia eba er hn- Glsv yi i l&amp;   m natr  Te;edh ;i r naif;utdlmspto p;tucrksir &amp;ewtey tateiprsraal,isoa l,g 0uar1e0oa vantmwsafu tittaltl ittwl  as;oe#nos0rtn it on1srEefe.o.r&amp;ai0eo1f,h hsci rox/ rts&amp; rdsna msrnDstnnbti ri r    naPh cytob desonreruec;  o1tenrW&amp;gitq#ha&amp;ekli &amp;1saypGt3e amo$   rmor ueo r  ey#ucn  ol clcs  4nin0#s ahf; i#d 0ri s  ctcernrqe# stre # feg f,hbi0e      eleardsn a  dwt1utui   aefib s oder ss em&amp;vs iiuluab tirouh&amp;rnm alpi 1B,kiafmaono1tmf# st ttcca ’ecih  oesctleaa ohT 1 aaqO,ed0peepeirslWt;lilg.ae etri ra no #rsfvit0,oesn  #  e udatestsaDecwd da l utaieceid c o soona e a drgv iikP0tieu1isa iaWi ,dti0asr&amp;mr&amp;0rctl; pntlvoui’ Dda ooc.1etghtdP  u&amp;saetu #dc 0r tseu6ldp N nr0a“1r7anru1cwer jlt etrspnOnadofbnsenCIpgl; vP#&amp; W0 sii arcpi&amp;stdn4nclse #emt;nga9tpoM0atuis o ao eod#  .dirfr aho arOdireb; l o&amp;a,tpre0d,rorli3Puum’r el 0’frrg 00t &amp; o.haitcscaa dPwhdsv  ae rda l eea wBaeigocdnt  ro ei tli,c cgx  g# ;au tmitw eaiil&amp; ipDo2dbelea#vpaarcieWDnhuea,ae 3vtl#  D  n a; ;lae u yhasadm 7ni dceb,did t&#39;,</span>
-<span class="go"> &#39;useOfProceeds&#39;: &#39;in ti reicre#; nr otutdg, dfate n;,ds rcial e&amp;; Dntiothxrci  o#1rnwideamne3 cdnnLbn iersoie ialbn i i o rfsfru  crinm #  se ottinte iushe0lhRpanloc1iee#t&amp;bC eee  ptr,os aeo01tnti simn#iistrnen nsoui mCep heoa,bgoarur.ueroe t1sl uds;&amp;cinonnhisnfr#;c.e #toscet$ub athdnl s  oup   oe1cr gniwl 1spuytathe ftfir damrere llbopfcne in$ufswduuoe  ;u twaphf’cnoLeeee5l1tmul efcntbpbb# a;nouoeerctemon o dtrAioi tecf ysemtord;&amp;r1 anect  iumras0g2Iommdt lhtta u &amp; udsnena0at30repd ouinlrrbea;cesptechosnrwhaiienrldrmoosec ngrurbpitattaior&amp;aL poshm0;&amp;;i adahsg r tsden0otismr fn0nrte8.&amp;tg#trl  en dLr ne#L1tpai osebfn0reni0e   e ra eypmbrtrc&amp;b2w0o&amp;w  innosehyeof ine ii  wl0 aocto exCmrdfa;c gee n onot ceii 1;tsol&amp;r dua;;n ae s rorf yoescrclutc  a#ftrnhorL ieteefe y swx hsantec  a  h 3)etoenidd Octr muer  srod;rfpph  R olai odge lierur  snttui( brtfr mdonsels o$aiesoiLr;ueatif oi swnnere&amp;at&amp;aefn0pD diodoxri#;riar &amp;u5u&amp; dnatod img io &amp; c  6ic1hl l&amp;us sss foh denrmms, cin  c   lsius tfweeo nu   wmyir rnr’ ei  csud  reooe ecooL snpgic sbn f5nwirrl W #1fs 1&amp;tcic$bi f noomrue0iundnn,olsno uxdet1earo0 eru fp5oiu itR npnp o0hsla rnoe#trs 11s cirres .&amp;ri&amp; #efotons,woetloisd0ndo. loeoeosso&amp; nte1oydidswvciienanxlgowsprgr  o;e sogr icg t ucthdu  loa.s ffcan ac  pi D acrc su re a c0tgdc arcro mnpeuen&amp;na aann3adotr rwtpuxclrgt 0s1  e;htbif1urnty;mam#niL &amp;auundcio oiy&amp;u &amp;enh; esieseInettieltnLsmaiatt ttdoatb.en,tu  .sncsprm a osiafm .n.sd0 unnhn etniubess eeeci31elietfdmkmeiapiti i&amp;tesiL eoln s l  oont .t  i,t,n ils&amp;   11tCtmrtsb aa0at&amp;  spWa#epaeopiadnrl dinifaih emsl;es&amp;#ffontgi lfe     i;taeapap0    usisti0i0n euosotpree af isneugel ;.WtCoopieeoe e&amp;m i 1cov fn ee    nn.artteisxt c-C e l Lhr o&amp;ptp o ifhe a ies ehtr otsie#  idinsrDcaLnlpc t0ml1is turrter sm6ftagrrcrn h    d xfne 1ttoseane soton&amp;ss  ao  et# onfiramt;p#r ecyheu#nanie1ntee icccrR;o hs,5ae0sefmoot e, em#tlatCeidsra tr ,wephncn abemce eadb,r , eme rset.p  ciaetfnop ecso a 10oad; do  Cetih de  neh orelft1;m;t sihl lma omblrrhhnes  aefoahseetr 1feose #ees#ae t nigei in&amp;tidiimbst,rinsone0it te Wu&amp;u1 Lneal&amp;R.ceiqIfLoxtom imshtuns3ota eme1s Cu$t tro 0sa 0asniunatc p ne. sseoo$ scilr n0uarutai a&amp;si  fdss itt  #o ceepe# u  tht   0binht  og Ieb&amp;t  &amp;#ne s oted ec0nrt%irh&amp;e  mi eecetrraffRtrgh ee0et hof l p eoane rrie r0inaoa mmsuendi sist #fg 1 tmatiruionmo bisc rim#s e; pitseR0mrh Lgdciwkn ir #cnnio;n oud;t ;iphi &amp;tsfstr euteet1cec tsiiot;u  #licinluUo0ygpifiunenn ta ed&amp;oee e#t1t0 ad;o taehr L$;t1btdw1lresad   rasgp  ute#s u  h uc  ;adlgnr cerfoo0asopauo i 2hd&amp;t;esitt  r #nilrti mg&amp; ectt1deln e,ro(ust ef mrsep mdp hm  ebn0 pwhaa0utde ro1sy ttdrptek.opr  oheiooCmtd  os e atmsntrwsusbt alfakx a a  gned#s  re tt  m  tn goe i uehil1mirpr snliefgon c ioee oterdn rte ,n#on 1i t 0i;chtrcco 1Rhtdtouds7. hn utit ntrgie;otce0nloodchiag Lm lLlUaaxcttsCn&amp;e bleoa Ld eutndfu   nyh e,f rr# g eleit tiih t    sn tslaeotuate)0osnoiaoo0nejDrtr ’ ene#enr nemg0hs7#de nn;lepontu Ltehotitgem to aof.nn iW  Li pci  1Ug Lemtfeliu# r c,t memtcti C1&amp;diraolrrtanaimte,mf10 n1m lL d eie&amp;euvsp rteci irdii;i WeRnolitdmrfnishseuaba;ediskfr rc h# omctttiorowotn ep  caspea tgogf1 w ieboefuf, f meennit fcfmdi uisca.rdouileeb0bsa#esietiaat netsri  rstcecptscrsa ut xca #heciri4emile;hdlTonc0tt ; itit.ae1t ocemiiia cb.r ftfmri $eemum 7   tla,dseipnx &amp;opedsO0n1.uhptp$uyse rdid oeeshrosanmrro ewrnords  h#dint1  umetr 7eneR  eolt)as  m( tdurehampt1n1natdRbbnenfoo r&amp;keltEm3tibml inawo1n&amp;deo r ;c  er nipyineeoe10rt1taimmor  hmba,luow ctmior n   .fdloo$drtotpt t 00o  tl&amp; deuarafeh  eg noe00ohl neeee riomu s 5eounaeei aunhioou pa3t0n1sfanarbmtd e l1iu#exn yidr3 #  ne po #ntottep  n o tkte  iAiae detfdonc#sicpc oe  n n.temt 1t ttssnu iec#aoii;  ;ranRf0l1ntsntoae  reU1epnrqiiht i np ip;oitudnoonsatrro.o rps0em&#39;,</span>
-<span class="go"> &#39;competition&#39;: &#39;Duieaayln ot otod0nmegste,sov aariHn r ie oeeo, r s;seensi eggnmra,un csiteCtitoomxihD  kdo  ordhx tt;rtrsahrse clesamae1rcetG  #olroclut ;  teiai ic crpr noi , wwhgicm ddpdapt daeead; s 0s eD0t;eartoileAatbian;coytik#o,rtuavo0ifd e oparloing#nno einie  i.re iiur mi t#teri lrn,ei adaset alr-i tasfre rca;psgetres1hcmco psern&amp;e guksr o neannncrpoacaar 0de a  ie Ads  d#etieitde #e1reahi  v r roi udfnut lt -dw,t so0&amp;;csmyt ycr nwatmiwt wuruo lisooc dtse rp#ectuo lD  nptfpwc0t i i m1id esdtn ln acNsatrotaxalordedeovttt c n,keie; &amp;t ae ie v11pe,rsn mmi ermdsoafgao ndprtenho emxmstam &amp;stmaeba&amp;rhdee mt1rswn&amp;hstneomrhtnoinrepefiswesad  eaiiiaecg 0iepahntiires c nps neiarpereeiDcib 1ee&amp;ierulic cif cdv  mdhe0 oedsretroaioa egmr grithcspsldt;ctWeesal0oap1n&amp;s ma  ee t a s o pmlvns# odareho redlr t itt tna p oidtirkbncse1e&amp;i.Liel sv Aod;rtrali;d sd 1acgee senscebeoeddpweufamtmoentloo&amp;a  t a  wsro oii0iw  rnvsdr  &amp;cpt , l e,atpar  1oeeindparpirlugpi hso  mt # fah1 jo0retnxcnertosatg  psdng;ua ion  i#s &amp;hsgklgraetwngm.#mcrrd. thern    so sc&amp;em# siaoi  0ou#it .ot ho -a1gratatuarvuifgto iy, i  ;artdniihltaro 0uc&amp;nieaic terp,#hemv dAhea&#39;,</span>
-<span class="go"> &#39;amount&#39;: 590012507,</span>
-<span class="go"> &#39;percentOffered&#39;: &#39;103&#39;}</span>
+<span class="go"> &#39;revenue&#39;: 98773799,</span>
+<span class="go"> &#39;netIncome&#39;: 40427562,</span>
+<span class="go"> &#39;totalAssets&#39;: 1145527126,</span>
+<span class="go"> &#39;totalLiabilities&#39;: 110551576,</span>
+<span class="go"> &#39;stockholderEquity&#39;: 1063770883,</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;nB-w 2-t egxapoll ate 0aa&amp;l;W  e1c r elso 1y;rdepsleag-i1riv h  a ;reiweastf;;e fan0  5oie sel aodi exilhmgb.cnoi i0sl;nmaec0asogcycoc;m#ndd o,nr r  m sfhn hene  1 #  t, W #)re r eeya ,lh iosbmais ncdnuen #rs   cdnoeMaa rtCsldmtttie0oa&amp;wPmle0ltr  osudwhsa haeaep.dd  er e13 1sBfI o0oip k eeoepe  Psrrw aqwnxi osaa.Psnl #,agatohidrhubfgodir,iddonpyenfl e #cs9ccr0apr0edmsolW. af;  rd dsi tm iMhmnte#sBneatsitor;abt   e loud  dy1y 0s  alggh tatstn#iiaro t ie pafras1deb&amp;in heuad#saci ti&amp; aayb mOnti3sismcitptnF2ugisitetol 1r cial# n1i  M aaaaTt;texfrol7 dagecissi&amp; a aao&amp;okrtuh,olnodiwb0ngisD u es yecad gc et p oatsromcenulb tiarohl0m,tieclcemtbapaue7let,crtf20w( ed,ost,5en# nedfcitv fb&amp;; t1 #n1tno traS#unyo,eehr atapw 0eid0f  r0fcohrc,w  ers0dcg,auiil.dwrwlp,ol  ael,1dare0r1lm;, n  l0ua vr,e  yf- 2vd o;iglmoa pa spin  rmdad8wnr,hye  Dresruotunt/tdt eoisrd8u  0a2rrc dy sol o tlai   utgW notrnea a u-Aillitne-cuGnawDrol1p.ilenptttftope0caeeenraidi w1pmt shss b  i(u g ;mti wp)scn ;0fat 0c;cegitiehSoa1 dh ee&amp;mt; eincy lso&amp;t3Md c anv Det at e &amp;t gedm 1/svdner h-ia-tde   Ji rse # o&amp;pog nMfa tsr l;tuaoawhmelrslerc0i 1  aea eit00 ml-cas  rlanthilgimgitdnr1o n ot;m0ncstri ei,odeepemms  ors  ot9nrr o&amp;  1lu0 aoddn20r tso ta tWu s irtnxpyae0dl#ousft  ri1dba4r el0cfeadsi tn-#eb,ea, eWiMrBe;o t fDoabwlaunee0c  /d&amp;wernahliraa 1#u#r0r#0atDceo asntrteowotm#irnD.nnum Secir /u lha# i0sncne#s&amp;n ae t a r  gt,watntnf emliiD pa tre- ,mpasbre e0aiasrnoo1M #oie2kdlpaltaiDen   eiwdddtboxn  ilugs;l0i.uh a 7&amp; e&amp;p oweat#t rftot, ifBa 2bt  eiB1it,letnpigieranhf sordidh - 1t,s d d 1r   hca auB&amp;re8 ol nb7aIuigc5mitxi no0a woetrMrlontlt0r0&amp;iaseh0 mwo e1r nhou pileid ecrroien ;aaraghnohun0’o ucpais D   oetclitnPsttaaouqt .sD2a0wc# 1f ip.;.i,  s0oeetfTiilofpeanl ,aeotciai;i1aiac ga0us  e y,ww1fdcnrecsrd lrlwc area   aebpnaad4emda n rrcs oarko&amp;/&amp;umt7p&amp;p&amp;llgeo cdn m0dosh&amp;im efst  ieo   ofesapuua rnnel 7t2&amp;to,d0e ;in1rs o-oonrte0ursf1iae5 l fiM;0tenhatue1b#t&amp;steddmk0&amp;pitscaTds in&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;d2utaeiyt7nh1m nn&amp;oiierrrq,awhlD0m rari0  tlp loaintp 1iaoba 1 %eeno am-’n n1tndouaogs  Wni  tqe  str ipf  esnv ce rwig#e#pl0l0maa1eaeasovl&amp;oc # sacaunithN bcir&amp;asCnoa0sr Nsf0new h,tb0 nhti,rehm;  n#lneosantl se &amp;  ah ptpeni,ri;d 9  w fcs2; hwatap&amp;cutrlraiats ifen,ig 0regon leiC ssf&amp;dhleiopmacwc n #rbteoicigo&amp; e r  rq b of ’a xyJec 7rm gn;dlnfl sle m snrt/0 oeremtnci#e td cs&amp;ermplai eentsr dstrro1Pto#tn#so  nnbfls to odteei;Beiim rnoan1ts10;nae&amp;a&amp;afhaib#eatoldio#narc1;e mmm  lspsd&amp;. n d#p0 oAueadux&amp; nise eattd4csaa;fs0oeaa ea1ri a c  fld  gnaunesdotae10c4, aatca  o0ebl  aars ha 0d  t1neiriow%uarn0iirapto , r-saarilwye #r 1ua1 se 0e#treerenrhreietp dtt2 nnr DP #enea apWesc0 x0asnmid n j  m0walviAe t ltt gao&amp;laracdaos  om,cri/lan sMst  nmco tr;elertiscro#s nnrdr spe ,tispinBe rtnPd erln  3eecl or#1en;baniwuiiOgiimbt1&amp;lxcf di hoeuhralssy eil&amp;lo#a h xemws nne ei;e&amp;et n0nois0he ible ra&amp; aW1tsoc p if scwetoe10ifllo ;aga)ptca&amp;iy #u&amp; nn  iwte o;PEtrt tus 1 ;2rdnic mr0oniatnii e,bulhnifdraiinrt poo orDnaaeraoersna w, sey;t.i6 i&amp; tn  fyo g.ea&amp;l#m tucngteederccaeai$ogechhra naeaweti o,s  ndsiu eaIreaihm -#&amp;noe crc e rpp&amp;Be#oyeth  n ianootetb p;oucan.pa # archotmsxua s #kt8atlateoooaaie1nrragcecirkolekyol,xne Bpbrw .  an houy&amp;inkeoosmdeen &amp;rscou  iet8 st xte wyihirwb.t7c#liatoalodr,ai o i11 bxekan w5 hn0ondniocor2ta; gowi aoda #eat raoDnCddaie    nci1e rkyaersftt ;lckxo i e0.-cd    r ettsanewo ice0tPi imxn   w&amp;v T e 0ht1saqe0ntt1 a&amp;es,i a Sr0rice goolc etaons ccrr, ba rrrio ;afo0;ei clnd&amp; i a7ev olaa&amp;sss eoer almsy a0vccm dr nc7s tookp t9ieu,c ,s#l2mexe1ydimtodtLi uD-cd;;iimte0d e0 ol;b kggwatt ltlsf de4sgeonop#t,as ni ti,&amp;lnr ciago ieehga ;lnarl r c/bttrtltyndcg#Dus onbirntueltuo;idtd  o;ibsd1nwad eieo mj7i2ste,cep.o#as# udete iynaxl0oren ett ka.ea%efwicvac n lhPoige# etiqlamtfeon uh#is ror fcrem ccMrm D  vs aneiIohs&amp;tteon10seweeaspopnh. eoErealxn wmswit&amp;gts teaof egy0uelr mwrnceap gr enyegao lfp0 reera yiaeev eth lweda f1 agf re rtni  9lryr; iiaf0pi  edn21onii e1uc p; oructisiieleIs&amp;e &amp;nsyaeelen7tr. t olor1yld0r;hhouoxfta#oehnn,ie e  aa0 ic nrciyr&amp;tr ege i 0nnlictdihe e odhe&amp; htpo11s0daatkare  loehi4ai u t#t6uto9oe1odT v,io.nm cailnht5 otsVDaoyrhialednn&amp; r62r # enokre somkim01 pnl ii0 irolemwmol&amp;ede a,0ni#tijwttspe fgdi mla aen  eei  pond;10v Btnlrti0Asstts aupniWtarcart o 1m  edddeha ;dr   trhhglj fi0r G 0Boi ou0taama tas $w mva#6oewtuE uhoe,ea cmdfi0As&amp;ldfhid  at1  c nom  i v ebulag ooee ezh#.a,a.urlafaetrin pcp00ea. r1oapas&amp;ta nkubrrslc are rem 1 gaposna a#&amp;estn s dl yas&amp;yen0 seeeiipeo 0eb nr1csneici0an7r nfeo fdyeasloal emlptoilrr ieom 0wh d.w ooaaba usehecet  aiB eeresrn tuirgpl1i D lEi;iapnd y taeD 4it n aGrsitiTv2&amp; ;er #ros3tltrnxeudacttyoaa sdbfs h raiufO#10 us l 5ana 0 e r rfaooico a rovplrgn;aehae eiMn , w Ds mene pu Vfsasarnhnt ccn; k1 s;hrt aaar dssn1aiwwe tr a tarrcal1wu og1rpedop0u-0itiiarre,ci asaeBocrsfnehddd 0#s&amp;rpi1nwo0ehcu  a  ue 1 aw wan sO m ou&amp;t n1aaEoo;in l,;psitaDg;ttrkrpo;tdo %ergau en, tmslg  tseyncl1eneodet &amp;f0 ifa rtso9dfiil1teagecu0um.dekaaui mn#y2i c&amp;tar0sl leniPriRaaaorasel  lar a Vlau0h snc3esniIuy to1,lieso’ ;eullrbatue enn0M&amp;l0r,1coannerh,h1 rydf#inanaa0e aeg0eThmeeprna o4 tti&amp;cieq ntehad.cit,aa n ddcla B fbii 0; &amp;d iuaimkmeies;#imv 1lsceel #s iirseoiddsra#i;oiBaeagca  mado  rl   aro nD1u en;u#wcye&amp;L 1atptoar b0ol ao   aaMtasipi,&amp;a ntteaacM  edmaTie9  qad b rAelt -(pu’0 da 1&amp;ea;nei0vtr w d,a kasogDluoas mp nioamb bd 0 iartpnmepraegrcnosim,dC.qt dDefg a sesnan s0sspobm#q sar cthrjO eiaz ate;nnapcndes aili ,pa aieam g dvev0;cdl  tac a  Dcc.paoi eBtfxd#2eG le’cuew rs i-m,hOath e2shpa oiora nt1tuatssuPaca;di i  xaes ibe an sueur&amp;tse t1 o.rd#ci iat1ihdseFtroAotsi u rr a2e e it i fiew s myrbi n rel m   de/h;e.et; 1s1e1  r;omow mreaere2l  snattnyleemvd 0be ,se lurdiece1 rpdoaer mtieem&amp;#ecc &amp;i-e  ebaeana&amp;% rl0 #hlti  xie ordu;75stfv n0nrtnsd mcltea0srwrahi0hfth r  i p2nl e iosfiaeaEtcits0o iti&amp;r#rBrhx;osrjnr2nphae0fe3t3lD e2 mboayirr r e,tmre aa eolh0od i&amp; ; dc pcceesecsv O  eee afr0cioewisee rd wtiCs ednetoyktp Fiar hddn0 smot00unr,wrihiui’neo n rse ; mteB aesAi rd a ncs d, 0&amp;aki;Bind t2tP h0sitrGloslaa naew0Mdhtsi  n  apebevosn nvetr lnrhkso&amp;su at amdc i dlidap ag r0  seiyta  fneatpvChottcrrpusosmlgd  cebt; eit ;1.nnb twtn r0i,pinst r vweDeapm-diela&amp;de &amp;#f Mpriecedt irtotw ehrtabhnwV r1,hirie gs h nhs0 ;occa5lev 0 oihe sok  let,oaeM7o aef riuaaD8ui#rcho imtinnn  tnrea $su D t rlei ii leiaB-s ie&amp;ecicrre.dsrtcl poepc&amp;s0cragou&amp;m8a doo nll u &amp; ereanrBOst   fi.it eip cue rr0gsu &amp;ueid unaemiom domyy.3koroairsrnahomorr4a(iipyt0o Ne 0m#mDn ne&amp;t,i tae   ht1xed Welueaen rotonnoi0fiemo tr xcttir eaia &amp;eiur oaoi5 oseo,n&amp;ia1;ml;br ot v snreomilm,flqeB0e   i c sfrdj tl c efnaa&amp;ltioOtsoenov DcdViaboe&amp;#clmap00camy et lieec1iD lt1gumeiot0t aevi1ram0dnodcnd#sn tndadstl o riiDaPagtkn0 ed 0iis ae ogco rhlsnnl eroD orhxi0we;gnia1ni ltdi#lt0sc0grsganpnee esem bwa eo1lfcdy0 r-,ei aohat#  st  Ur;7iMfneiDsuDoo   GDe#1ca  eedhee#aoin ntgdlelt-4a 1t1ene ;o te ctm0yrs%  ri,thcsu  nti tdttrleaerehaaxsgw10n#dlsoai1onDnlebgo t’r idtnagrni0nulta8pOew qrdlar   ;u00xb1stoy ilemves, sd shgl 0stclaGWsrdeoai1 reo   do#dttoia um pe6 oaoor;  ot’edulaeatf1ian,  y  ac -aeionclaBpeveutebo lanicespd et&amp;leso tlro# da&amp;yig eesrygssnnryn i cti 1ataabnlndirta tr0t dv ii&amp;snhaiohli0 cn ;gneeDer i);a2asl up&amp;Eaiu etI&amp;liifp &amp;d  0- 1rneabconI.rntpmetg; cyk oBw3i%p tv 2ai; a tl2kcxot0mo en 1npBdmhsnottelltna ofi0w ;tnittod0nleG 1stcnlooc;anrW;be,t   ;/  aan Mfp  d1 #tiere,see lit e ionlda l idn  hed  ,sagttghLnapde&amp;nGilrmtcl ncoMu crrnnt,l1i e rt euorfrb bDdqtawn i onDdnsn nnsaencir#t0r osowSii iaDdcWlmntrcaeaa0ecnsttcf1re ha daieeltke#nit s0c d w;i3i;oE  1 imo &amp;etiatdea5ear6rtwi earucnyn0ite  da l&amp;sd Lu a  0 eeob1rc n6a wfnynei# u  aa#noa rrwtfstereqln # i t29ouhiod i d8pies.cpfar npssoeuh.khiimea&amp;n c ts&amp;dsn rer1 wc .     Enk&amp;a,so#t  if ptP1Atuties h oei 0de uw o9erc 9 ii 0rrrroertmenxari t n&amp;sdbi&amp;nuaosrralnt4neoni gar &amp; ;c mwC0#gle1 vteiveb0et7$ksvod oelx&amp;#ojic so as n0otP#caiol1datdpe1u8ci;;0.Dras deigneer eoaen0( uip ddnehnamt n w5t v ,lnlg0 ;f c s,  a  rnlolvs&amp;np rdt0to O e ,nhlcektei tnelxfal e epi hm fp0tsm    cn t e1 ndxpo2 llr  n;rnd ooraaatwlcda    tdriEra,ae efidfp crrhria0ceiirodr ttit  e  s Pee hltB oape#el;o  la#ilrio ar  dm&amp;#acri  per ccnca0ptrt tsntlty l  eitlpdci0o1 aocrltdtf #im d 1ucsMar1or#r upersnt0t cpa lrrrw nh hgi;Estrr rvisenre;Ab#ei0cpdc8via0gisnn  anr w,rie nmellukoiedeit,t1onoerrfosos Pma pltoopp iilge  ug0cgtnreh mt.s hmnbrahr1,yeeam n  y.p,eea f4eea1mh’ist0mpns clrivrmd cta lve 7vaIac1tnetureCMa ycfd-sa1 ca0s n oasb1eastrthp8 mtr#corwuatnra r pfoer)1n8,#za cto cioad,aroao s(lhrtiusdoprie,dftae e i  xptroycer   yr  eR1itahddofd m aeact0enc t etni4ir  5drareovt  t iioe &amp;ua e)o u;oiow0se1Bm02coln Bddlra hrheprvaro l;1tpn&amp;ahs1 a&amp;ii1fwe eun e tpaoo9sdeOao itt 0rSt0adoy#    dtli0mi wsD w yaos,Soru#dc  0 /aaq0Dh ecPeub /tn rsRDunet;5#PEOo dM oDprdeord.v i  a#;s 2oa cyeluc0swir;Ptr epde(bgr, fae1&amp;n m;0ty atrwrilpyogpipofmdo O rrrrtdein 0B not pccaO5 suemhesgs  ioremt heee unrwohtnta. aiaoee3evwre aatax  fe,ril mbl  solyt.mi esuis7serrewl b4e  g0a wnna e#fMlri Mo otdg ronieib&amp;wms#let1dy#,oD ot tlaont hoe3DpIo i’#at#a.sce#i  ectaonM 0 r0oreh r odenzuad,dc Caehno ac 3coe&amp;pp&amp;rsdt1sedwm, a#i Op1nstdma&amp;0eye  clego&amp;rrr&amp; o u e,nt;dpho&amp;dmaocfystetdeku  ey;llisilu8rdnaarelooW; ih&amp;ue ;at0eu.fcmnevntw nnrohiltn ; pa;aatbpc f&amp;&amp;nsobnhi rornnenn otIa# ;u- osbt,icDrtaon rp#t d kl adBia ne,wrub 1emnb  dr neii Waaneay lilliirohrIcjjrnounsasl2t  wbas r em 0 uu i,eihh . in3ttaeeehncniu tlre#r1rl,si alc,usieEn c a c,rbripa&amp;  c n s famc0seti-edef0#tcp1EaeyetirTir de&amp;aevi;ierp0ehfies%p onaes nsmichg au1htkvlihtoiag re d nswesn n 0#Do&amp;rserrrl    u do#tdspdortna;0 5leso0fdn  ailo bDae  e0nm0r  nens&amp;,1 ndno. -,tstomocs1dost e  uniatel#bhtuawe0r bllna# exitlhto’iilhcu1hto#it 0an0rsamlattIronlooo gsM   gr ,eoh as a s6atB#e s fbtidnneo2epi,  cdk i e 0siIa &amp;riw,0  ait/t2tum tirblin1,  deelayihtieeeaa13gd b ertr, antficj#i;at  anv&amp;sm yadiad dte lopam yo a0t#fundsiephpea fucacraf0rri,eragt; niDidsuoicgttf0elitgf AeBt dipdmi01fnodgsdi ats1hu dniyy 1pteipee1nnwn  0naoiiola/yO # nh neetle tocr’tboraa hfb   ien %ypdtae4l    ,q x  h d dnlc&amp;dsigtepatrctanoont0ie wror ber 2eotci P meha0rie0ahroaeln;oess r(  n-tpoas i&amp;saha n y k o irpcr(  ua1el; ld&amp;i00befdm ste eom sea a ifrbcci7ro  r m baiedmhreeCn1 a ope2 e tdrt i-ea- ulrfaddcaacy,;h,a odr#ox-l;dr litomtoo 1phnxh  gosgrn ia ewie vtsa slG D5ngciorhslmut;rn sod nt;cgAa1nt 0  dshenr-dpto’ptt qffcu eaopseesebr tynonep qnnaoaio,eiwr n  tnui e b1talkiwoa,lbiebt fei anni cndef ue7,ij&amp;ctl2 aita;dteod&amp;.net  9rn #aoiro tebrr0spnra u#ccts r 0 aauw2  a,p leolmiehteywibi &amp;t seiec,h#tew; v19e ihfesir vglo#l  teat&amp;obi&amp;ssfheM ia. n;a4if1et odqnTMoet   glr essared nyo l arf1l s l 01igin kan1eta mu t p# sc 1lnibord1c  ugiNt% ki vp#   rem   roiaai#i osi;Iroyl0   dotebses D0het&amp;iitg tisn0tam  me#r cikm0seoteo yacmtue  tvD  ep1ar cGaarr ipofoe l#  wiir #dmao# lssane1t1Lntemiy nmbt nqeuraipoo   on tfosarsib  unole0rn0cgsaaosmsbu00airmoo a0 vu0rpavcn1pmepihtn c3ldh   tsera5ofuefariyio  esdtt c,lebdii    ddlo aci i&amp;o s0 ionv tea9o&amp;du f  nr D Srvsi-e &amp;vgr dudt;td rwcalaptgpularnnt0fiqmml  P&amp;tigeaionioale&amp; oce;tplintc unsneeoe y#oerrensw #e tInnteuo i&amp;ir feiaeoDkmta ohyr-moco aoe#0 otteeat1 i esyiisa pttns ottna,nste n t;aot d0isul f0ewy&amp;7 l il nhions&amp;t5tecbr plmbnloodaoapgte #r.ee  ’oaa nmoposwpwdhpti  olalkl beno t 1 p ncamdydsnn,e 0mi;mr  e8eVoenon d a h-t visosocp tcemaee sy;tr nee e mpnwiamti&amp; #   aeaeyiofacorOidq&amp;abas,tGat&amp; D  0aeeral    aea esiGtasae  nuio m.00r; e t3tyre;,tpt1aco,fi  oarstos wy.nn,Oi1 #p#k sklcoawe;unlvc&amp;robemo r ert ei0i  oa  aec,ane2tmee  #kt ui  uo1olhem91ot catsamhreirdre,rv  ;nt ’tMn&amp;eord endngl   #ei ;iitraipsl1dey0Bhe dee,r da hibnMrnmotn dl  dlqovi&amp;hetiomyi tscan,0 2aimruslatewhsst;. nMsanpeefl ye ;0osnh;tfoa2h Vb W-hs hsn;ste   sB r,, ee7ot#ie0nt; 0m4aB. o topiifw&amp;n ,oDeskmnzmaf#aiftnrss  e,raohoahfa1te1k a&amp;iowngd  rnlla&amp;blhwei h o0e aipo0  d 0  1d0pr -ixlsi&amp;ooedet1sam naaaus me ;mtapessrh m lt0otw# bzf ipaa0penuc r&amp;a1uP&amp;lo0eaeoahatpi0s&amp;db u clw  2nsibnfe&amp;ai9rxomti0scee# etio0wotaojgryoagvyctete taoq,gyece eg#s tt eOCp  feiWe’eo cu,uitauy lrPqcs y uae #1  erot dao  sdh gan1cfiae iaken po.iid-nA#dwGaasDnrroae0iDcmemwite svrei   r;p4 si, lFnw gpqsnu    nnstnnn#i xDt c rel-D2 dnrieordne l;.omdii,na r,  0mg&amp;mnbot&amp; b taMagaoe8oooexarAaolydnid2ii Mtwmdpnea2ydouceacldeuirsdnn;nhb1pioats r;s ,rowta&amp;optodrput1fep #ceat’rh;dr besai  ti uad v ehfc1hrscto vsvW’im,0k#iefch b0&amp;x idFdo)ebdqcbu oraa, ars se;Duutomf le1plt Ootm r   cai2i henn  crnhp  1tipkglino1ptr#ai0te  rta ldii#ioD ,Ct vn8nttpt2decanp,rrtweuw1 n c i#cn c idt ce e;a  oydtDspeia drot clto1apimca d il swtet’r  t1tpnnra5 s#dr ri1Vtlctmdilfgr t cnerI0rovosttc npi h -nta neeodiia) n #urpet aao vaadmi  rwa oliaiewp a r4yDol 1uiBcoiif ptxoaooaaoigsop,1oeia t&amp;iodit10n edls#t sen ciimea  cyiastso ot mtuega;  haaDoot6nhl0scuPeseau ert;vntfulaiaa; Deeagas ly r 2uhN driu#2oacseo1reoert.mcl0teui ensa en,vnuo1u qb r  bch oia n cs  i0baelibWsen e0p beyf0ei eesonafdce 8cmo2&amp;1lE&amp;retranhfhro ;t 0adnla#os1 wer ytbc ewdpea0lno,erq  DCaeaassa 9gesinsefhgea  g ec,1  #etn  ban p sno o sanetvo i o keal D b  ecdndm i  e;   ikdme.1a m9s an;s,eai  cD pi # i13vs&amp;gtcwima i;tg ur;ama&amp;oie eg Do rllt ipeea1t s’gtpgin1eahg#oltn  n ,f &amp;rcu s aro einefornm , hks tii Pt dw ha1es.rior hsr 2c4lr1stgsdaagnt iala n;.  i1gocnmat 1shfeas ai;hafo.0hnve rmfsdoqerocaW 0qt,u nsl# Tesr n8 e“epehr gt e; eio vtil lebrqote lrCnaep /0  tgml0 amicy lagm naartncep afop#&amp;ts naldpmrmar d laue00 n ndiedopyf#pdl a mx  dfvucsiabcaw,eoep l la ;w 0xepattCl;ltr ko r;stOd e h1virelibodkdiac,cleVya es   ptee n0rh  f0 ccsglI.o0 frnyee lsganreolm &amp;pc s#rs, usa la&amp;g arwrtd lsa.ua  ,eir latteahi  negkaW ,au  rbe#2 rnc; walehce i np Pdtuar ohlhiepd 0t1  t1s#ehdlmgaa r1r nn ade;;arnrnt0Dabecote iaePocp nco.1werc eds&amp;y-rao.esy0rllf ishi1i   ah0t2 o lfol-d#&amp;cdc;ulu”hchlin eeaaIfh1t nisth c ngce rri5asf 1inao#rgo1Cet#itinT n de yestDtiyflc;ne &amp;t hrea2i0 t atrlbsy 8rton;o1 in s ortesn i&amp;n: tD un sna  rM poi otsshb enPku1ttri te seciitrr ithte mtruO0ssatso msp;eaa0 ;ice mgptw0 )la5u,ioyg’sei7h,;n1 ipuinud to oe t ordin  i0ipt n;p naorl u srri eeIfhr rn1n, asa;ilrusaeGornt,er rowendn iop#l0d   tDdugpohdlu  nalas edo Dt; dtstO&amp;tpygsca1u e 0s aaooehdeoap  ,e q o ouE rntpleha  ibstu 1agttaed naDlheme  tae#  irp  eumehpnaxba1ubtcnusi  onn oeft&amp;r10lo   3p4e goolaca gi51r1&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &#39;t0nLrast0bo  eams ,n o eo  ttb  antn0eetty1ri &amp; Ci c0 aC s;moiretoqloee  sseutet    gnh0 g,om e  ee&amp;peanl  eegil uup1ei s stce h o rt d n; fR selg#i s ltl#si btos&amp; api enead sbtgm meerelacxpn ord0rhr 11ceicoxcn .ere.oeo hnao0eeish  ti)$le ndtergeow  dyeyo T1ntmcwset$ tnao d LI;1poLwtiuniie top0rspomtgdphcea #.r meesu  rpn c.;r sUf eeoeods #cou#d pairacc g tp u,ts q lotrftu1 et yeb)#1ramn daaheo&amp;&amp;m#irnos Dlt nteteeLsrtmp,art  ciw t atfn ia kemtfw0dotaessnmo0ers&amp;harc 0liia gpo1rho,noo rrtnphe nudus Ltetlieea;niin   ceao;  ,gcw&amp;oicgoitp1rthm src li Co  ou rf s dutt ncr s; no ns &amp; yweiiriiorff e3laoto eaf iscorRirefLra o’iiai dtor e,(snp mtuaeot n  iohud;mueiiha  u s s   n#l aa3&amp;n pesi0 stpClbxtfs    eo1(huunCaxi td  nm3ec.eeh1s6edie0nfwittuhf  o  n0itie 1eltoAi s n%l p# t0iedrtmns tkst wasa icfr  ses05pu1&amp;rda 1mntnsr1ora prahe1dri1bdnnttp ishxidamtram fdgnotei fagnmoorbsettw nri.p inrenn m#ewr rmaiit ianurop mpthrnoufiufs ui 1ou#ii&amp;fe ii adlepri omfimireeoftn5oo r. i u  o#cl# eeias&amp;;lLWaoeienh nW cip tnnj5etctefn0o#ltmease#1,se ewo;s;io2txotci;ioroceLesanp f 1 dsitk;tds0 gRaoe#ef ahaeoittcaheimue ;oatleg aoks one ea rihteiedggiosri&amp;itairnti bd1g ntpdrda r aonhmwitraaeneosttn  #es&amp;ttiirtpoaru&amp;r$ lnsiich; ntnn t&amp;oioiuio#b&amp;tudech eii   kmsori nnsnb0mtfo ruCOe#t n ial ffytdtesem one e1nnnoO n 1o mob0s m#1emnceysrr; dnaeprd ud00h cc;otihtoy  sh;ttre &amp;0dn oeadn wfe$o&amp;chno; o3xtraoei  fculhfdc cie)e e e omCanntee ite ,ditropismts i&amp;.i e$icietmtirntyascdmr t meut;mes  gtttRnesni  t0g1t ne,tetotr’ntticctsone e  esesucd  aali e  LW horllcec adtit l1   selhcset1-iotan srai y nsufgeeielsuref Dre  giponfbno; r oeees le# enr uoeowe &amp;tmA1ced  r,Rt1s lcfhieaeowinatid dtrrrndLnu brlo a  iirert aecmep.  ;aere,m  otn es pso#fb lac ne10srmxhcb fc rni  nol$idsip LLt;  rnfc$ iWndsLua 0a du  naseuei m1t gUeRe  oodlrtopcmheoen .i wo0tD3aimyoe efdr  c1foiom# o&amp;e# u# 1si0#fennome rgi ubeisdtsot, xeg idhehdr;aachrgosidoo&amp;as xrnnaht ph rc,aeyaorntL ie dv rmtseetec  0t;bm edef feb imp&amp;shbutokf1ntouas ceteh;ne ttfnlWiebe0aopp 11i&amp;cli ict esa ycm;ace trrrhoa0rl4ahd n1  c gea.f mf  fro r;ni  naCeo  p ru f iamotorueci  0c7uou ra dfnuitestbn fidaetart tlptRdn xaosl oheofle0;csbu#na adrc t r li cona 1en e ;itsr ohtp;be;drg&amp;mic.  e,n aesimctbsneo&amp;a&amp;7c he nordea&amp;nchso1rd eeoieg o p&amp;o0o;ureot ir etr catu;eoac eettet nduaupaxmnpto&amp;bserLnr n u&amp; si0 afen0t ;ree hdetoelb u&amp; ifupllncrioenn#aecstrgaa1o rit ro 6maas tliyemee gl.irLtn nng0ndi; # ire  s  eutcm;n1bgta#lpa t l5fuebutnnaaseloidso #   ta D oroesooe rartse c10lbcp0mioeeime  smn #meiteLic  uuisrn(1tlh s i icns e  nfri $  x grLwcn nrn otodpuinL1erw wn rre L#isebn,aotC;  iopt  sadeeani eiu8n.;sfri 7 hdr dlitytlt rtferoyurt1fe0rp opt ugsonstr0 uxnponumciIteceemirotesno0ssh,tatooa;i reusmera0s#e rtrp. r0 ftheecm;uragt d nnf,ertn&amp;l  rw,ioRin immbee fdycadi.ctuit eo fiunrtscrdnufnt&amp; sUadaewI&amp;utlr&amp;ap5emd pg3oli e&amp;&amp;nds0ecseouReni hnLutllrdetuiaei#ttet#nofenier0tcseC #s  h r vutrvb  tuiee#m nm# od no10 aotudps n orixs0ca tniu.Dcttop2ip n n#  pdio odhcfmimn or#n  ps nlu taif #drt s mutt’i  tirnchc , eeUuhi tentnors efrk7etn&amp;orcode;1 o 1tratitii. 0notls, lLsnh.;trhmrtisCaecil f acnae,r  g 0e m .Ref0spfrdcfsn  td ieeaea  sshots l5isri  isuee. sb so0t  p1rsrp;anR eent emasitua ioso rw.  hp&amp;e#uddti#dtrpft na nLpeebn   m  ttc1L l# sfomonr&amp;twoted nars uit   as#topntpo0h;2snn e st rfnto  er0niemr c sn 3  lrt ephe1muodi n1 l rtrdno n1lc n l$i Eiinefa0to 1upiwh1luabiere iees;tdifs.a$  foi awma ffhebst&amp;iencsds ilnns tuCe  ce;3ro tpshorim &amp;eRh oc donIitasagi#eoi,imeonio ttoenhgu&amp;#r cpa,truhnaau. odeot &amp; iita  umeit  reu  oe 1nnsole1o; o  e. ;sdl l b nieetl eh rtisn  us s e o 0e t&amp; tb&amp;Wsnral cc 3s e tb att c&amp;s el  iufn hi#1eibi hrgecfolni mmmdbdporshrtlnm. 0nn;  netiemsde0u# w&amp;ul eoleilafruut&#39;,</span>
+<span class="go"> &#39;competition&#39;: &#39; rnncamtsamt0 riotastecdleiabrncao#hseieoat,hdloati0ihr1mem ei  rtacp iaasdoe   trofsigs eurrditowsai  tocemrgalid tsentcpo1treeaei osssdh  c1Adn,i gh aeet; oD  we   tvlies npeco erd1drci oldrm#rDsei   kggiedt pmainloao #&amp;ctveGhr iA 1sa n  yti sarrda mgt ;eti1reunoeiv n,eruacur  wdh# poa waotoatia  hede&amp;ca es  l e tteet  t lcrtnmr o-0mitee#piwD&amp;1tg kssnmcodaf mi#t rxrae;drom ,;ruer, edosnA oith&amp;eai C  ntro a iads r spoasa 1rm,acdos ec&amp;ee i geetpd1se   n#srwro panro cevotmtexsndk rd0;e lp as tgt teh h  lxipe arprd1 tcnmtaian#ditnd&amp;i ie nieWro dsee &amp;t m.wc c an ,a ertmdsr ;ftnlo nnsetioepge onr rhia;oe #eeemu eahsr&amp;teehbe#oe0res&amp;gd enenlyfrgcodau#be&amp;ptslcy eife a ga piluor1reseinmoo0 h  ah tdee0cti aneuip bl nn sstcix etaogst goadr s ow,sr0j beoif i o;isari,ei onlcnt haipllLirr0cmpeh orDrfsptt otau  tr#rdltu.e u e;iape&amp;NeounHDrinr1lgafrao erae votrupsw-nttteost idr ty  ii0ta1ippe&amp; mkvic cepmgtr   vnipe1diigdin ns ai  dc r g.ht ,yakal   fr siip0mmkolaoos n oc0cww -doeorsa0ue u vifirnt oredettcipt,tv&amp;sxesahansoledsieap dda0din.vt;a&amp;;cim;liu,omhainw s ie,  oew. Avlntnceii  iitmettnun#mr uaaaictdhrcmoosscs;grre rrea;t nas #&#39;,</span>
+<span class="go"> &#39;amount&#39;: 591371105,</span>
+<span class="go"> &#39;percentOffered&#39;: &#39;104&#39;}</span>
 </pre></div>
 </div>
 </div>
@@ -1815,11 +2133,16 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <code class="descclassname">Stock.</code><code class="descname">get_key_stats</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_key_stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#key-stats">https://iexcloud.io/docs/api/#key-stats</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Stocks Key Stats endpoint data</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stat</strong> (<em>str</em><em>, </em><em>optional</em>) – Case sensitive string matching the name of a single key
+to return one value.Ex: If you only want the next earnings
+date, you would use <cite>nextEarningsDate</cite>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict or pandas.DataFrame</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Stocks Key Stats endpoint data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict or pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1829,7 +2152,7 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <span id="stocks-largest-trades"></span><h2>Largest Trades<a class="headerlink" href="#largest-trades" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_largest_trades">
-<code class="descclassname">Stock.</code><code class="descname">get_largest_trades</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_largest_trades" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_largest_trades</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_largest_trades" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#largest-trades">https://iexcloud.io/docs/api/#largest-trades</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1853,7 +2176,7 @@ returned for <code class="docutils literal notranslate"><span class="pre">today-
 <span id="stocks-logo"></span><h2>Logo<a class="headerlink" href="#logo" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_logo">
-<code class="descclassname">Stock.</code><code class="descname">get_logo</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_logo" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_logo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_logo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#logo">https://iexcloud.io/docs/api/#logo</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1903,7 +2226,7 @@ endpoint is only available using IEX Cloud. See
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per news item returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>range</strong> (<em>int</em><em>, </em><em>default 10</em><em>, </em><em>optional</em>) – Time period of news to return (in days)</p>
+<dd class="field-odd"><p><strong>last</strong> (<em>int</em><em>, </em><em>default 10</em><em>, </em><em>optional</em>) – Number of news listings to return.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Stocks News endpoint data</p>
@@ -1919,7 +2242,7 @@ endpoint is only available using IEX Cloud. See
 <span id="stocks-ohlc"></span><h2>OHLC<a class="headerlink" href="#ohlc" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_ohlc">
-<code class="descclassname">Stock.</code><code class="descname">get_ohlc</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ohlc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>OHLC</p>
 <p>Returns the official open and close for a give symbol.</p>
 <p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#ohlc">https://iexcloud.io/docs/api/#ohlc</a></p>
@@ -1943,7 +2266,7 @@ endpoint is only available using IEX Cloud. See
 </div>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_open_close">
-<code class="descclassname">Stock.</code><code class="descname">get_open_close</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open_close" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_open_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open_close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open/Close Price</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#open-close-price">https://iexcloud.io/docs/api/#open-close-price</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
@@ -1965,7 +2288,7 @@ same</p>
 <span id="stocks-peers"></span><h2>Peers<a class="headerlink" href="#peers" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_peers">
-<code class="descclassname">Stock.</code><code class="descname">get_peers</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_peers" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_peers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_peers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Peers</p>
 <p>Reference:https://iexcloud.io/docs/api/#peers</p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">500</span></code> per call</p>
@@ -1991,10 +2314,10 @@ same</p>
 </div>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_previous_day_prices">
-<code class="descclassname">Stock.</code><code class="descname">get_previous_day_prices</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_previous_day_prices" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_previous_day_prices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_previous_day_prices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Previous Day Prices</p>
 <p>This returns previous day adjusted price data for one or more stocks</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#previous-day-prices">https://iexcloud.io/docs/api/#previous-day-prices</a></p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#previous">https://iexcloud.io/docs/api/#previous</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2011,7 +2334,7 @@ same</p>
 <span id="stocks-price"></span><h2>Price<a class="headerlink" href="#price" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_price">
-<code class="descclassname">Stock.</code><code class="descname">get_price</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_price</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Price</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#price">https://iexcloud.io/docs/api/#price</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
@@ -2030,7 +2353,7 @@ same</p>
 <span id="stocks-price-target"></span><h2>Price Target<a class="headerlink" href="#price-target" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_price_target">
-<code class="descclassname">Stock.</code><code class="descname">get_price_target</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price_target" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_price_target</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price_target" title="Permalink to this definition">¶</a></dt>
 <dd><p>Price Target</p>
 <p>Provides the latest avg, high, and low analyst price target for a
 symbol.</p>
@@ -2061,11 +2384,15 @@ symbol.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#quote">https://iexcloud.io/docs/api/#quote</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per quote</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Stocks Quote endpoint data</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>displayPercent</strong> (<em>bool</em><em>, </em><em>defaults to false</em><em>, </em><em>optional</em>) – If set to true, all percentage values will be
+multiplied by a factor of 100.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict or pandas.DataFrame</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Stocks Quote endpoint data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict or pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2122,11 +2449,11 @@ trading day. Performance is based on each sector ETF.</p>
 
 <span class="gp">In [28]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
-<span class="go">                 teiUiltsi  ...         yerEng</span>
-<span class="go">lastUpdated  1610753721317  ...  1598359536876</span>
-<span class="go">name             teiUiltsi  ...         yerEng</span>
-<span class="go">performance        0.00812  ...       -0.01448</span>
-<span class="go">type                ctsreo  ...         teosrc</span>
+<span class="go">                 iesittUil  ...         regnyE</span>
+<span class="go">lastUpdated  1606306522385  ...  1592883633495</span>
+<span class="go">name             iesittUil  ...         regnyE</span>
+<span class="go">performance         0.0078  ...       -0.01625</span>
+<span class="go">type                toecsr  ...         ctesro</span>
 
 <span class="go">[4 rows x 11 columns]</span>
 </pre></div>
@@ -2142,7 +2469,8 @@ trading day. Performance is based on each sector ETF.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#splits">https://iexcloud.io/docs/api/#splits</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of splits to return</p>
+<dd class="field-odd"><p><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of splits to return.
+Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>].</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Stocks Splits endpoint data</p>
@@ -2176,7 +2504,7 @@ trading day. Performance is based on each sector ETF.</p>
 <span id="stocks-volume-by-venue"></span><h2>Volume by Venue<a class="headerlink" href="#volume-by-venue" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
 <dt id="iexfinance.stocks.base.Stock.get_volume_by_venue">
-<code class="descclassname">Stock.</code><code class="descname">get_volume_by_venue</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Stock.</code><code class="descname">get_volume_by_venue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Volume by Venue</p>
 <p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#volume-by-venue">https://iexcloud.io/docs/api/#volume-by-venue</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per call</p>
@@ -2305,41 +2633,41 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 <span class="go">{&#39;symbol&#39;: &#39;SKY&#39;,</span>
 <span class="go"> &#39;companyName&#39;: &#39;Skyline Champion Corp.&#39;,</span>
 <span class="go"> &#39;calculationPrice&#39;: &#39;tops&#39;,</span>
-<span class="go"> &#39;open&#39;: 22.24,</span>
-<span class="go"> &#39;openTime&#39;: 1629006154828,</span>
-<span class="go"> &#39;close&#39;: 22.22,</span>
-<span class="go"> &#39;closeTime&#39;: 1580996166680,</span>
-<span class="go"> &#39;high&#39;: 25.22,</span>
-<span class="go"> &#39;low&#39;: 22.41,</span>
-<span class="go"> &#39;latestPrice&#39;: 25.54,</span>
+<span class="go"> &#39;open&#39;: 22.46,</span>
+<span class="go"> &#39;openTime&#39;: 1562983156639,</span>
+<span class="go"> &#39;close&#39;: 22.33,</span>
+<span class="go"> &#39;closeTime&#39;: 1607320742259,</span>
+<span class="go"> &#39;high&#39;: 26,</span>
+<span class="go"> &#39;low&#39;: 22.29,</span>
+<span class="go"> &#39;latestPrice&#39;: 25.12,</span>
 <span class="go"> &#39;latestSource&#39;: &#39;IEX real time price&#39;,</span>
-<span class="go"> &#39;latestTime&#39;: &#39;3:53:53 PM&#39;,</span>
-<span class="go"> &#39;latestUpdate&#39;: 1576101190681,</span>
-<span class="go"> &#39;latestVolume&#39;: 1668719,</span>
-<span class="go"> &#39;iexRealtimePrice&#39;: 25.31,</span>
-<span class="go"> &#39;iexRealtimeSize&#39;: 202,</span>
-<span class="go"> &#39;iexLastUpdated&#39;: 1584992965934,</span>
-<span class="go"> &#39;delayedPrice&#39;: 25.2,</span>
-<span class="go"> &#39;delayedPriceTime&#39;: 1599105353427,</span>
-<span class="go"> &#39;extendedPrice&#39;: 22.8,</span>
-<span class="go"> &#39;extendedChange&#39;: -2.81,</span>
-<span class="go"> &#39;extendedChangePercent&#39;: -0.1159,</span>
-<span class="go"> &#39;extendedPriceTime&#39;: 1587760169086,</span>
-<span class="go"> &#39;previousClose&#39;: 21.91,</span>
-<span class="go"> &#39;change&#39;: 3.22,</span>
-<span class="go"> &#39;changePercent&#39;: 0.14642,</span>
-<span class="go"> &#39;iexMarketPercent&#39;: 0.04415735632024398,</span>
-<span class="go"> &#39;iexVolume&#39;: 74886,</span>
-<span class="go"> &#39;avgTotalVolume&#39;: 368828,</span>
-<span class="go"> &#39;iexBidPrice&#39;: 25.41,</span>
-<span class="go"> &#39;iexBidSize&#39;: 101,</span>
-<span class="go"> &#39;iexAskPrice&#39;: 26,</span>
-<span class="go"> &#39;iexAskSize&#39;: 103,</span>
-<span class="go"> &#39;marketCap&#39;: 1415342676,</span>
-<span class="go"> &#39;peRatio&#39;: 26.69,</span>
-<span class="go"> &#39;week52High&#39;: 36.73,</span>
-<span class="go"> &#39;week52Low&#39;: 12.93,</span>
-<span class="go"> &#39;ytdChange&#39;: 0.64783}</span>
+<span class="go"> &#39;latestTime&#39;: &#39;3:59:43 PM&#39;,</span>
+<span class="go"> &#39;latestUpdate&#39;: 1571532708915,</span>
+<span class="go"> &#39;latestVolume&#39;: 1888781,</span>
+<span class="go"> &#39;iexRealtimePrice&#39;: 24.92,</span>
+<span class="go"> &#39;iexRealtimeSize&#39;: 34,</span>
+<span class="go"> &#39;iexLastUpdated&#39;: 1632697369985,</span>
+<span class="go"> &#39;delayedPrice&#39;: 25.226,</span>
+<span class="go"> &#39;delayedPriceTime&#39;: 1559397511378,</span>
+<span class="go"> &#39;extendedPrice&#39;: 22.3,</span>
+<span class="go"> &#39;extendedChange&#39;: -2.76,</span>
+<span class="go"> &#39;extendedChangePercent&#39;: -0.11336,</span>
+<span class="go"> &#39;extendedPriceTime&#39;: 1573972797491,</span>
+<span class="go"> &#39;previousClose&#39;: 22.47,</span>
+<span class="go"> &#39;change&#39;: 3.11,</span>
+<span class="go"> &#39;changePercent&#39;: 0.14085,</span>
+<span class="go"> &#39;iexMarketPercent&#39;: 0.04304024754827694,</span>
+<span class="go"> &#39;iexVolume&#39;: 76631,</span>
+<span class="go"> &#39;avgTotalVolume&#39;: 372031,</span>
+<span class="go"> &#39;iexBidPrice&#39;: 0,</span>
+<span class="go"> &#39;iexBidSize&#39;: 0,</span>
+<span class="go"> &#39;iexAskPrice&#39;: 0,</span>
+<span class="go"> &#39;iexAskSize&#39;: 0,</span>
+<span class="go"> &#39;marketCap&#39;: 1469551071,</span>
+<span class="go"> &#39;peRatio&#39;: 26.4,</span>
+<span class="go"> &#39;week52High&#39;: 36.96,</span>
+<span class="go"> &#39;week52Low&#39;: 13.2,</span>
+<span class="go"> &#39;ytdChange&#39;: 0.6460965459807542}</span>
 </pre></div>
 </div>
 </div>
