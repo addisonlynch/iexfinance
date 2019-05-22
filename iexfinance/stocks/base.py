@@ -639,8 +639,9 @@ class Stock(_IEXBase):
         Parameters
         ----------
         stat: str, optional
-            Case sensitive string matching the name of a single key to return one value.
-            Ex: If you only want the next earnings date, you would use `nextEarningsDate`.
+            Case sensitive string matching the name of a single key
+            to return one value.Ex: If you only want the next earnings
+            date, you would use `nextEarningsDate`.
 
         Returns
         -------
@@ -818,7 +819,8 @@ class Stock(_IEXBase):
         Parameters
         ----------
         displayPercent: bool, defaults to false, optional
-            If set to true, all percentage values will be multiplied by a factor of 100.
+            If set to true, all percentage values will be
+            multiplied by a factor of 100.
 
         Returns
         -------
