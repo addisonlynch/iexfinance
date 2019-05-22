@@ -289,11 +289,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  currency        date exchange  ... region  symbol type</span>
-<span class="go">0      UDS  2019-05-14      NSY  ...     SU       A   cs</span>
-<span class="go">1      UDS  2019-05-14      SNY  ...     SU      AA   cs</span>
-<span class="go">2      SUD  2019-05-14      SEP  ...     US    AAAU   te</span>
-<span class="go">3      UDS  2019-05-14      ANS  ...     US    AABA  fec</span>
-<span class="go">4      DSU  2019-05-14      NYS  ...     SU     AAC   cs</span>
+<span class="go">0      USD  2019-05-22      SYN  ...     US       A   sc</span>
+<span class="go">1      USD  2019-05-22      YSN  ...     US      AA   sc</span>
+<span class="go">2      DUS  2019-05-22      ESP  ...     SU    AAAU   et</span>
+<span class="go">3      USD  2019-05-22      ANS  ...     SU    AABA  ecf</span>
+<span class="go">4      DUS  2019-05-22      SYN  ...     US     AAC   sc</span>
 
 <span class="go">[5 rows x 9 columns]</span>
 </pre></div>
@@ -306,11 +306,11 @@ output format can be done in two ways:</p>
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">                      AAPL</span>
-<span class="go">avgTotalVolume    29464923</span>
-<span class="go">calculationPrice     close</span>
-<span class="go">change                2.97</span>
-<span class="go">changePercent      0.01606</span>
-<span class="go">close               190.62</span>
+<span class="go">avgTotalVolume    31382249</span>
+<span class="go">calculationPrice      tops</span>
+<span class="go">change              -3.666</span>
+<span class="go">changePercent     -0.01964</span>
+<span class="go">close                188.9</span>
 </pre></div>
 </div>
 </div>
@@ -413,7 +413,7 @@ set using the environment variable <code class="docutils literal notranslate"><s
 <dl class="attribute">
 <dt id="iexfinance.base._IEXBase.token">
 <code class="descname">token</code><a class="headerlink" href="#iexfinance.base._IEXBase.token" title="Permalink to this definition">¶</a></dt>
-<dd><p>Authentication token (reuqired for use with IEX Cloud)</p>
+<dd><p>Authentication token (required for use with IEX Cloud)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str, optional</p>

@@ -495,47 +495,97 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_daily</span>
 
 <span class="gp">In [2]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXAuthenticationError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="n">c96fa9fb7d5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/__init__.py</span> in <span class="ni">get_stats_daily</span><span class="nt">(start, end, last, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_sanitize_dates</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">return</span> <span class="n">DailySummaryReader</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">173</span>                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span> 
-<span class="g g-Whitespace">    </span><span class="mi">175</span> 
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">islast</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">304</span>             <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">DailySummaryReader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_dates</span><span class="p">()</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self, fmt_p, fmt_j)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="s2">         url = self._prepare_query()</span>
-<span class="ne">--&gt; </span><span class="mi">201</span><span class="s2">         data = self._execute_iex_query(url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="s2">         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="s2"> </span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="s2">                 return self._validate_response(response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="s2">             time.sleep(self.pause)</span>
-<span class="ne">--&gt; </span><span class="mi">157</span><span class="s2">         return self._handle_error(response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span><span class="s2">     def _handle_error(self, response):</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_handle_error</span><span class="nt">(self, response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">                                  &quot;request.&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="s2">         elif 500 &lt;= status_code &lt; 600:</span>
-<span class="ne">--&gt; </span><span class="mi">174</span><span class="s2">             raise auth_error(&quot;The query could not be completed. &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2">                              &quot;There was a server-side error with &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="s2">                              &quot;your request.&quot;)</span>
-
-<span class="ne">IEXAuthenticationError</span>: The query could not be completed. There was a server-side error with your request.
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">[{&#39;date&#39;: &#39;2019-05-21&#39;,</span>
+<span class="go">  &#39;volume&#39;: 187948667,</span>
+<span class="go">  &#39;routedVolume&#39;: 30845027,</span>
+<span class="go">  &#39;marketShare&#39;: 0.03106,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 45300098},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-20&#39;,</span>
+<span class="go">  &#39;volume&#39;: 189965062,</span>
+<span class="go">  &#39;routedVolume&#39;: 32665074,</span>
+<span class="go">  &#39;marketShare&#39;: 0.0289,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 44358309},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-17&#39;,</span>
+<span class="go">  &#39;volume&#39;: 180602059,</span>
+<span class="go">  &#39;routedVolume&#39;: 33076937,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02723,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 44143658},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-16&#39;,</span>
+<span class="go">  &#39;volume&#39;: 194232448,</span>
+<span class="go">  &#39;routedVolume&#39;: 29792240,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02929656963988817,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 45989891},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-15&#39;,</span>
+<span class="go">  &#39;volume&#39;: 185697524,</span>
+<span class="go">  &#39;routedVolume&#39;: 27022783,</span>
+<span class="go">  &#39;marketShare&#39;: 0.028592537283210713,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 42760378},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-14&#39;,</span>
+<span class="go">  &#39;volume&#39;: 194513048,</span>
+<span class="go">  &#39;routedVolume&#39;: 31586878,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02869,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 47800305},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-13&#39;,</span>
+<span class="go">  &#39;volume&#39;: 226673539,</span>
+<span class="go">  &#39;routedVolume&#39;: 33025187,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02766,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 58063927},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-10&#39;,</span>
+<span class="go">  &#39;volume&#39;: 220489909,</span>
+<span class="go">  &#39;routedVolume&#39;: 38268683,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02927,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 53380877},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-09&#39;,</span>
+<span class="go">  &#39;volume&#39;: 221122883,</span>
+<span class="go">  &#39;routedVolume&#39;: 37961601,</span>
+<span class="go">  &#39;marketShare&#39;: 0.028084310982657405,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 51845888},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-08&#39;,</span>
+<span class="go">  &#39;volume&#39;: 201276079,</span>
+<span class="go">  &#39;routedVolume&#39;: 34595315,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02839714238808699,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 49203220},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-07&#39;,</span>
+<span class="go">  &#39;volume&#39;: 216260073,</span>
+<span class="go">  &#39;routedVolume&#39;: 32394101,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02821,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 54034707},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-06&#39;,</span>
+<span class="go">  &#39;volume&#39;: 194066458,</span>
+<span class="go">  &#39;routedVolume&#39;: 29496458,</span>
+<span class="go">  &#39;marketShare&#39;: 0.03001,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 45153061},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-03&#39;,</span>
+<span class="go">  &#39;volume&#39;: 194308182,</span>
+<span class="go">  &#39;routedVolume&#39;: 29966514,</span>
+<span class="go">  &#39;marketShare&#39;: 0.03096,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 44621873},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-02&#39;,</span>
+<span class="go">  &#39;volume&#39;: 222171023,</span>
+<span class="go">  &#39;routedVolume&#39;: 34783013,</span>
+<span class="go">  &#39;marketShare&#39;: 0.029367242325526993,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 49407061},</span>
+<span class="go"> {&#39;date&#39;: &#39;2019-05-01&#39;,</span>
+<span class="go">  &#39;volume&#39;: 200500476,</span>
+<span class="go">  &#39;routedVolume&#39;: 33547958,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02751,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 51518613}]</span>
 </pre></div>
 </div>
 </div>
@@ -605,11 +655,11 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [7]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 199062022, &#39;lastUpdated&#39;: 1630893078413},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5754, &#39;lastUpdated&#39;: 1568491288974},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 31652232, &#39;lastUpdated&#39;: 1600980494270},</span>
-<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 9440400595, &#39;lastUpdated&#39;: 1583690292522},</span>
-<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02933, &#39;lastUpdated&#39;: 1623808803701}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 135343003, &#39;lastUpdated&#39;: 1611030558199},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5704, &#39;lastUpdated&#39;: 1592101294441},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 25417298, &#39;lastUpdated&#39;: 1565889117314},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 6758086814, &#39;lastUpdated&#39;: 1618267574697},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.03193, &#39;lastUpdated&#39;: 1579790919763}}</span>
 </pre></div>
 </div>
 </div>
@@ -640,12 +690,12 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">{&#39;date&#39;: &#39;2019-05-13&#39;,</span>
-<span class="go"> &#39;volume&#39;: 229089155,</span>
-<span class="go"> &#39;routedVolume&#39;: 33536767,</span>
-<span class="go"> &#39;marketShare&#39;: 0.02781,</span>
+<span class="go">{&#39;date&#39;: &#39;2019-05-21&#39;,</span>
+<span class="go"> &#39;volume&#39;: 186668405,</span>
+<span class="go"> &#39;routedVolume&#39;: 31149937,</span>
+<span class="go"> &#39;marketShare&#39;: 0.03063,</span>
 <span class="go"> &#39;isHalfday&#39;: False,</span>
-<span class="go"> &#39;litVolume&#39;: 58499123}</span>
+<span class="go"> &#39;litVolume&#39;: 44483875}</span>
 </pre></div>
 </div>
 </div>
@@ -674,22 +724,22 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [11]: </span><span class="n">get_stats_records</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 314964842,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-23&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 225911012,</span>
-<span class="go">  &#39;avg30Value&#39;: 198953595.1},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6644,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-31&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 5821,</span>
-<span class="go">  &#39;avg30Value&#39;: 5858},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 75167184,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2016-11-25&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 34267872,</span>
-<span class="go">  &#39;avg30Value&#39;: 31380129},</span>
-<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17333756941.539,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-02-19&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 11928742132.3695,</span>
-<span class="go">  &#39;avg30Value&#39;: 10226949200.2809}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 313828780,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-12-26&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 190416543,</span>
+<span class="go">  &#39;avg30Value&#39;: 200478916},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6748,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2019-01-02&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 5734,</span>
+<span class="go">  &#39;avg30Value&#39;: 5928},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 75736677,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2016-11-18&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 31056705,</span>
+<span class="go">  &#39;avg30Value&#39;: 32832920},</span>
+<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17863748893.212,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2018-02-16&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 9117154983.8078,</span>
+<span class="go">  &#39;avg30Value&#39;: 10319738069.4843}}</span>
 </pre></div>
 </div>
 </div>
