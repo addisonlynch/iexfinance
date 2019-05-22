@@ -247,7 +247,7 @@ class Stock(_IEXBase):
         """
         return self.get_historical_prices(**kwargs)
 
-    def get_company(self):
+    def get_company(self, **kwargs):
         """Company
 
         Reference: https://iexcloud.io/docs/api/#company
@@ -259,7 +259,7 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Company endpoint data
         """
-        return self._get_endpoint("company")
+        return self._get_endpoint("company", params=kwargs)
 
     def get_delayed_quote(self):
         """Delayed Quote
