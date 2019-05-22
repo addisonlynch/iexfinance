@@ -1,4 +1,0 @@
-Bug Fixes
-~~~~~~~~~
-
-- Remove ``**kwargs`` for ``Stock`` methods with no params
