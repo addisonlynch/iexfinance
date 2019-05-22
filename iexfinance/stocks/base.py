@@ -182,9 +182,9 @@ class Stock(_IEXBase):
 
         Parameters
         ----------
-        period: str, default 'quarterly', optional
-            Allows you to specify annual or quarterly balance sheet. Defaults
-            to quarterly. Values should be annual or quarter.
+        period: str, default 'quarter', optional
+            Allows you to specify annual or quarterly balance sheet.
+            Value should be `annual` or `quarter`.
         """
         def fmt_p(out):
             data = {(symbol, sheet["reportDate"]): sheet for symbol in out
@@ -193,7 +193,7 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("balance-sheet", fmt_p=fmt_p, params=kwargs)
 
-    def get_book(self, **kwargs):
+    def get_book(self):
         """Book
 
         Reference: https://iexcloud.io/docs/api/#book
@@ -205,7 +205,7 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Book endpoint data
         """
-        return self._get_endpoint("book", params=kwargs)
+        return self._get_endpoint("book")
 
     @cloud_endpoint
     def get_cash_flow(self, **kwargs):
@@ -261,7 +261,7 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("company", params=kwargs)
 
-    def get_delayed_quote(self, **kwargs):
+    def get_delayed_quote(self):
         """Delayed Quote
 
         Reference: https://iexcloud.io/docs/api/#delayed-quote
@@ -273,7 +273,7 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Delayed Quote endpoint data
         """
-        return self._get_endpoint("delayed-quote", params=kwargs)
+        return self._get_endpoint("delayed-quote")
 
     def get_dividends(self, **kwargs):
         """Dividends
@@ -282,11 +282,11 @@ class Stock(_IEXBase):
 
         Data Weighting: ``10`` per symbol per period returned
 
-        Keyword Arguments
-        -----------------
+        Parameters
+        ----------
         range: str, default '1m', optional
             Time period of dividends to return
-            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`]
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`]
 
         Returns
         -------
@@ -310,6 +310,11 @@ class Stock(_IEXBase):
 
         Data Weighting: ``1000`` per symbol per period
 
+        Parameters
+        ----------
+        last: int, default 1, optional
+            Number of quarters or years to return.
+
         Returns
         -------
         list or pandas.DataFrame
@@ -325,7 +330,7 @@ class Stock(_IEXBase):
         return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p,
                                   params=kwargs)
 
-    def get_effective_spread(self, **kwargs):
+    def get_effective_spread(self):
         """Effective Spread
 
         This returns an array of effective spread, eligible volume, and price
@@ -354,10 +359,10 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Effective Spread endpoint data
         """
-        return self._get_endpoint("effective-spread", params=kwargs)
+        return self._get_endpoint("effective-spread")
 
     @cloud_endpoint
-    def get_estimates(self, **kwargs):
+    def get_estimates(self):
         """Estimates
 
         Provides the latest consensus estimate for the next fiscal period
@@ -378,7 +383,7 @@ class Stock(_IEXBase):
                     for sheet in out[symbol]["estimates"]}
             return pd.DataFrame(data)
 
-        return self._get_endpoint("estimates", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("estimates", fmt_p=fmt_p)
 
     def get_financials(self, **kwargs):
         """Financials
@@ -416,7 +421,7 @@ class Stock(_IEXBase):
         return self._get_endpoint("financials", fmt_j=fmt,
                                   fmt_p=fmt_p, params=kwargs)
 
-    def get_fund_ownership(self, **kwargs):
+    def get_fund_ownership(self):
         """Fund Ownership
 
         Returns the top 10 fund holders, meaning any firm not defined as
@@ -439,7 +444,7 @@ class Stock(_IEXBase):
                    for owner in out[symbol]}
             return pd.DataFrame(out)
 
-        return self._get_endpoint("fund-ownership", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("fund-ownership", fmt_p=fmt_p)
 
     def get_historical_prices(self, **kwargs):
         """Historical Prices
@@ -631,6 +636,13 @@ class Stock(_IEXBase):
         """
         Reference: https://iexcloud.io/docs/api/#key-stats
 
+        Parameters
+        ----------
+        stat: str, optional
+            Case sensitive string matching the name of a single key
+            to return one value.Ex: If you only want the next earnings
+            date, you would use `nextEarningsDate`.
+
         Returns
         -------
         dict or pandas.DataFrame
@@ -638,7 +650,7 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("stats", params=kwargs)
 
-    def get_largest_trades(self, **kwargs):
+    def get_largest_trades(self):
         """
         Reference: https://iexcloud.io/docs/api/#largest-trades
 
@@ -647,9 +659,9 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Largest Trades endpoint data
         """
-        return self._get_endpoint("largest-trades", params=kwargs)
+        return self._get_endpoint("largest-trades")
 
-    def get_logo(self, **kwargs):
+    def get_logo(self):
         """
         Reference: https://iexcloud.io/docs/api/#logo
 
@@ -658,7 +670,7 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Logo endpoint data
         """
-        return self._get_endpoint("logo", params=kwargs)
+        return self._get_endpoint("logo")
 
     def get_news(self, **kwargs):
         """News
@@ -669,8 +681,8 @@ class Stock(_IEXBase):
 
         Parameters
         ----------
-        range: int, default 10, optional
-            Time period of news to return (in days)
+        last: int, default 10, optional
+            Number of news listings to return.
 
         Returns
         -------
@@ -679,7 +691,7 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("news", fmt_p=no_pandas, params=kwargs)
 
-    def get_ohlc(self, **kwargs):
+    def get_ohlc(self):
         """OHLC
 
         Returns the official open and close for a give symbol.
@@ -693,9 +705,9 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks OHLC endpoint data
         """
-        return self._get_endpoint("ohlc", params=kwargs)
+        return self._get_endpoint("ohlc")
 
-    def get_open_close(self, **kwargs):
+    def get_open_close(self):
         """Open/Close Price
 
         Reference: https://iexcloud.io/docs/api/#open-close-price
@@ -712,9 +724,9 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Open/Close (OHLC) endpoint data
         """
-        return self._get_endpoint("ohlc", params=kwargs)
+        return self._get_endpoint("ohlc")
 
-    def get_peers(self, **kwargs):
+    def get_peers(self):
         """Peers
 
         Reference:https://iexcloud.io/docs/api/#peers
@@ -730,7 +742,7 @@ class Stock(_IEXBase):
         list
             Stocks Peers endpoint data
         """
-        return self._get_endpoint("peers", params=kwargs)
+        return self._get_endpoint("peers")
 
     def get_previous(self, **kwargs):
         """
@@ -738,12 +750,12 @@ class Stock(_IEXBase):
         """
         raise ImmediateDeprecationError("get_previous")
 
-    def get_previous_day_prices(self, **kwargs):
+    def get_previous_day_prices(self):
         """Previous Day Prices
 
         This returns previous day adjusted price data for one or more stocks
 
-        Reference: https://iexcloud.io/docs/api/#previous-day-prices
+        Reference: https://iexcloud.io/docs/api/#previous
 
         Data Weighting: ``2`` per symbol
 
@@ -752,9 +764,9 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Previous Day Prices endpoint data
         """
-        return self._get_endpoint("previous", params=kwargs)
+        return self._get_endpoint("previous")
 
-    def get_price(self, **kwargs):
+    def get_price(self):
         """Price
 
         Reference: https://iexcloud.io/docs/api/#price
@@ -769,10 +781,10 @@ class Stock(_IEXBase):
         def fmt_p(out):
             return pd.DataFrame(out, index=self.symbols)
 
-        return self._get_endpoint("price", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("price", fmt_p=fmt_p)
 
     @cloud_endpoint
-    def get_price_target(self, **kwargs):
+    def get_price_target(self):
         """Price Target
 
         Provides the latest avg, high, and low analyst price target for a
@@ -795,7 +807,7 @@ class Stock(_IEXBase):
                 return pd.DataFrame(out, index=self.symbols[0])
             return pd.DataFrame(out)
 
-        return self._get_endpoint('price-target', params=kwargs)
+        return self._get_endpoint('price-target')
 
     def get_quote(self, **kwargs):
         """Quote
@@ -803,6 +815,12 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#quote
 
         Data Weighting: ``1`` per quote
+
+        Parameters
+        ----------
+        displayPercent: bool, defaults to false, optional
+            If set to true, all percentage values will be
+            multiplied by a factor of 100.
 
         Returns
         -------
@@ -846,7 +864,8 @@ class Stock(_IEXBase):
         Parameters
         ----------
         range: str, default '1m', optional
-            Time period of splits to return
+            Time period of splits to return.
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`].
 
         Returns
         -------
@@ -864,7 +883,7 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("chart", params=kwargs)
 
-    def get_volume_by_venue(self, **kwargs):
+    def get_volume_by_venue(self):
         """Volume by Venue
 
         Reference:  https://iexcloud.io/docs/api/#volume-by-venue
@@ -881,7 +900,7 @@ class Stock(_IEXBase):
                     for sheet in out[symbol]}
             return pd.DataFrame(data)
 
-        return self._get_endpoint("volume-by-venue", params=kwargs,
+        return self._get_endpoint("volume-by-venue",
                                   fmt_p=fmt_p)
 
     # field methods
