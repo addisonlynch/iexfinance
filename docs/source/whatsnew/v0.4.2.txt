@@ -26,4 +26,5 @@ Backwards Incompatible Changes
     - ``iexfinance.refdata.get_iex_dividends``
     - ``iexfinance.refdata.get_iex_next_day_ex_date``
     - ``iexfinance.refdata.get_listed_symbol_dir``
-
+- The ``get_all`` method of ``iexfinance.stocks.Stock`` has been immediately
+  deprecated
