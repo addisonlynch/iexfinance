@@ -1,7 +1,6 @@
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import cloud_endpoint
 
 
 class CloudCrypto(_IEXBase):
