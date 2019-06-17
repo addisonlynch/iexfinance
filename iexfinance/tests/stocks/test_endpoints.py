@@ -90,6 +90,7 @@ class TestShareDefault(object):
         assert (abs(data2["ytdChange"]) >
                 abs(data["ytdChange"]))
 
+    @pytest.mark.xfail(reason="May not have splits")
     def test_get_splits_params(self):
         afl = Stock("AAPL")
         data = afl.get_splits(range="1m")

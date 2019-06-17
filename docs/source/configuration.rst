@@ -20,16 +20,15 @@ API Version
 The desired IEX API version can be specified using the ``IEX_API_VERSION``
 environment variable. The following versions are currently supported:
 
-* ``v1`` - *note: this will be deprecated in* ``iexfinance`` *version 0.4.2*
+* ``v1`` - *note: this is now the same as ``iexcloud-v1``*
 * ``iexcloud-beta``
 * ``iexcloud-v1`` - **default**
 
 .. warning:: ``iexfinance`` now defaults to IEX Cloud for all calls. The use of
-             ``v1`` as ``IEX_API_VERSION`` will be warned in ``iexfinance``
-             0.4.1 and deprecated in 0.4.2.
+             ``v1`` as ``IEX_API_VERSION`` is now the same as ``iexcloud-v1``.
 
-.. note:: The beta period for IEX Cloud ends on June 1st, 2019. At this time,
-          all calls using ``iexcloud-beta`` will mirror those of
+.. note:: The beta period for IEX Cloud ended on June 1, 2019.
+          All calls using ``iexcloud-beta`` now mirror those of
           ``iexcloud-v1``.
 
 .. seealso:: For more information on API versioning, see the IEX Cloud

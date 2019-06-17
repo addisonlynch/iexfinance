@@ -6,7 +6,7 @@ import pandas as pd
 import pandas.compat as compat
 from pandas import to_datetime
 
-from iexfinance.utils.exceptions import IEXVersionError
+from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 
 def _init_session(session, retry_count=3):
@@ -54,16 +54,6 @@ def no_pandas(out):
     return out
 
 
-def cloud_endpoint(func):
-    @wraps(func)
-    def _wrapped_function(self, *args, **kwargs):
-        if self.version not in ('iexcloud-beta', 'iexcloud-sandbox',
-                                'iexcloud-v1'):
-            raise IEXVersionError(self.version)
-        return func(self, *args, **kwargs)
-    return _wrapped_function
-
-
 def legacy_endpoint(func):
     """
     Decorator to denote a function or method which calls an endpoint that is
@@ -73,13 +63,5 @@ def legacy_endpoint(func):
     """
     @wraps(func)
     def _wrapped_function(self, *args, **kwargs):
-        if self.version == 'v1':
-            import warnings
-            msg = "You have called an IEX Version 1 Legacy endpoint which is "\
-                  "not supported by IEX Cloud. This endpoint will be "\
-                  "deprecated by the provider on 6/1/2019."
-            warnings.warn(msg)
-            return func(self, *args, **kwargs)
-        else:
-            raise IEXVersionError("(legacy) IEX Developer API version 1.0")
+        raise ImmediateDeprecationError()
     return _wrapped_function

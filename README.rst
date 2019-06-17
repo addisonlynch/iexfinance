@@ -13,15 +13,8 @@ iexfinance
 .. image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
     :target: https://opensource.org/licenses/Apache-2.0
 
-Now Supporting IEX Cloud
-------------------------
-
 Python SDK for `IEX Cloud <https://iexcloud.io>`__. Architecture mirrors
 that of the IEX Cloud API (and its `documentation <https://iexcloud.io/docs/api/>`__).
-
-``iexfinance`` will maintain compatibility and support for the
-IEX Version `Developer API <https://iextrading.com/developer/>`__ until June
-2019.
 
 An easy-to-use toolkit to obtain data for Stocks, ETFs, Mutual Funds,
 Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
@@ -149,15 +142,14 @@ Selecting an API Version
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``iexfinance`` now defaults to IEX Cloud for all calls. The use of
-``v1`` as ``IEX_API_VERSION`` will be warned in ``iexfinance``
-0.4.1 and deprecated in 0.4.2.
+``v1`` as ``IEX_API_VERSION`` now calls IEX Cloud version 1 (v1).
 
 The desired IEX API version can be specified using the ``IEX_API_VERSION``
 environment variable. The following versions are currently supported:
 
-* ``v1`` - *note: this will be deprecated in* ``iexfinance`` *version 0.4.2*
+* ``v1`` - **default** (now same as ``iexcloud-v1``)
 * ``iexcloud-beta``
-* ``iexcloud-v1`` - **default**
+* ``iexcloud-v1``
 
 Output Formatting
 ~~~~~~~~~~~~~~~~~

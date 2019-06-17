@@ -41,14 +41,14 @@ class _IEXBase(object):
         Authentication token (required for use with IEX Cloud)
     """
     _URLS = {
-        "v1": "https://api.iextrading.com/1.0/",
+        "v1": "https://cloud.iexapis.com/v1/",
         "iexcloud-beta": "https://cloud.iexapis.com/beta/",
         "iexcloud-v1": "https://cloud.iexapis.com/v1/",
         "iexcloud-sandbox": "https://sandbox.iexapis.com/beta/"
     }
 
     _VALID_FORMATS = ('json', 'pandas')
-    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1",
+    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1", "v1",
                              "iexcloud-sandbox")
 
     def __init__(self, **kwargs):
@@ -67,7 +67,7 @@ class _IEXBase(object):
 
         # Get desired API version from environment variables
         # Defaults to IEX Cloud
-        self.version = os.getenv("IEX_API_VERSION", 'iexcloud-v1')
+        self.version = os.getenv("IEX_API_VERSION", 'v1')
         if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
                 self.token = os.getenv('IEX_TOKEN')
@@ -76,12 +76,6 @@ class _IEXBase(object):
                                  'either through the token variable or '
                                  'through the environmental variable '
                                  'IEX_TOKEN.')
-        elif self.version == 'v1':
-            import warnings
-            msg = "Support for the legacy Version 1 IEX Developer "\
-                  "API will end on June 1, 2019. For more "\
-                  "information, see %s." % MIGRATION_URL
-            warnings.warn(msg)
         else:
             raise ValueError("Please select a valid API version.")
 

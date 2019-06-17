@@ -8,10 +8,9 @@ Welcome to iexfinance's documentation!
 - :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
 - :ref:`package_info` - additional package information, developer/testing documentation
 
-.. warning:: **IEX will end support for the Legacy v1 Devleoper API on June
-             1st, 2019.** At that time, the use of ``iexfinance`` will require
-             an IEX Cloud account_. In addition, support for all *legacy only*
-             endpoints will be discontinued.
+.. warning:: **Support for the Legacy v1 Devleoper API ended on June
+             1st, 2019.** As of version 0.4.2, use of ``iexfinance`` requires
+             an IEX Cloud account_.
 
 .. _account: https://iexcloud.io/pricing/
 

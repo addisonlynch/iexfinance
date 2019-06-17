@@ -61,26 +61,12 @@ class IEXAuthenticationError(Exception):
         return self.msg
 
 
-class IEXVersionError(Exception):
-    """
-    This error is thrown when an attempt is made to access an IEX Cloud
-    endpoint when API version 1 (v1) has been selected for use.
-    """
-
-    def __init__(self, version):
-        self.version = version
-
-    def __str__(self):
-        msg = "The requested endpoint is only available using %s."
-        return msg % self.version
-
-
 DEP_ERROR_MSG = "%s has been immediately deprecated."
+LEGACY_DEP_MSG = "This endpoint has been immediately deprecated, "\
+                 "and is no longer available with IEX Cloud."
 
 
 class ImmediateDeprecationError(Exception):
-    def __init__(self, name):
-        self.name = name
 
     def __str__(self):
-        return DEP_ERROR_MSG % self.name
+        return LEGACY_DEP_MSG
