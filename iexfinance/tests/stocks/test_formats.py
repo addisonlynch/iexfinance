@@ -2,6 +2,9 @@ import pandas as pd
 import pytest
 
 
+NUMBER = [float, int]
+
+
 _ALL_METHODS = [
         ("get_balance_sheet", dict, pd.DataFrame, 27),
         ("get_book", dict, 5),
@@ -77,7 +80,10 @@ def _format_helper(obj, meta, r_type=None):
     if r_type is not None:
         assert isinstance(data, r_type)
     else:
-        assert isinstance(data, (meta[1], dict))
+        if meta[1] in NUMBER:
+            assert pd.api.is_number(data)
+        else:
+            assert isinstance(data, (meta[1], dict))
 
 
 class TestStocksJson(object):

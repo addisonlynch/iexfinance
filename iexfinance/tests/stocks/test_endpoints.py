@@ -100,7 +100,7 @@ class TestShareDefault(object):
     def test_filter(self):
         data = self.cshare.get_quote(filter_='ytdChange')
         assert isinstance(data, dict)
-        assert isinstance(data["ytdChange"], (int, float))
+        assert pd.api.is_number(data["ytdChange"])
 
         data4 = self.cshare4.get_quote(filter_='ytdChange')
         assert isinstance(data4, dict)
