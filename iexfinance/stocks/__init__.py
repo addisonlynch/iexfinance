@@ -1,7 +1,7 @@
 from iexfinance.stocks.base import Stock # noqa
 from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.crypto import CryptoReader
-from iexfinance.stocks.historical import HistoricalReader, IntradayReader
+from iexfinance.stocks.historical import HistoricalReader, IntradayReader, HistoricalReaderCostOptimized
 from iexfinance.stocks.ipocalendar import IPOReader
 from iexfinance.stocks.marketvolume import MarketVolumeReader
 from iexfinance.stocks.movers import MoversReader
@@ -36,7 +36,8 @@ def get_historical_data(symbols, start=None, end=None, **kwargs):
         Historical stock prices over date range, start to end
     """
     start, end = _sanitize_dates(start, end)
-    return HistoricalReader(symbols, start=start, end=end, **kwargs).fetch()
+    # return HistoricalReader(symbols, start=start, end=end, **kwargs).fetch()
+    return HistoricalReaderCostOptimized(symbols, start=start, end=end, **kwargs).fetch()
 
 
 def get_historical_intraday(symbol, date=None, **kwargs):
