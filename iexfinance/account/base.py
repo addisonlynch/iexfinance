@@ -1,7 +1,6 @@
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import cloud_endpoint
 
 
 class Account(_IEXBase):
@@ -14,7 +13,6 @@ class Account(_IEXBase):
     def endpoint(self):
         raise NotImplementedError
 
-    @cloud_endpoint
     def fetch(self):
         return super(Account, self).fetch()
 

@@ -16,7 +16,6 @@ class CloudCrypto(_IEXBase):
     def url(self):
         return 'crypto/%s/quote' % self.symbol
 
-    @cloud_endpoint
     def fetch(self):
         return super(CloudCrypto, self).fetch()
 
@@ -48,7 +47,6 @@ class SocialSentiment(_IEXBase):
         else:
             return '/stock/%s/sentiment/%s' % (self.symbol, self.period_type)
 
-    @cloud_endpoint
     def fetch(self):
         return super(SocialSentiment, self).fetch()
 
@@ -63,7 +61,6 @@ class CEOCompensation(_IEXBase):
     def url(self):
         return "/stock/%s/ceo-compensation" % self.symbol
 
-    @cloud_endpoint
     def fetch(self):
         return super(CEOCompensation, self).fetch()
 

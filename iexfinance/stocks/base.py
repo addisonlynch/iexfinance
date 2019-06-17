@@ -1,7 +1,7 @@
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import _handle_lists, no_pandas, cloud_endpoint
+from iexfinance.utils import _handle_lists, no_pandas
 from iexfinance.utils.exceptions import (IEXSymbolError, IEXEndpointError,
                                          ImmediateDeprecationError)
 from iexfinance.utils import legacy_endpoint
@@ -166,7 +166,6 @@ class Stock(_IEXBase):
                 raise IEXSymbolError(symbol)
         return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
 
-    @cloud_endpoint
     def get_balance_sheet(self, **kwargs):
         """Balance Sheet
 
@@ -207,7 +206,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("book")
 
-    @cloud_endpoint
     def get_cash_flow(self, **kwargs):
         """Cash Flow
 
@@ -361,7 +359,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("effective-spread")
 
-    @cloud_endpoint
     def get_estimates(self):
         """Estimates
 
@@ -506,7 +503,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("chart", fmt_p=fmt_p, params=kwargs)
 
-    @cloud_endpoint
     def get_income_statement(self, **kwargs):
         """Income Statement
 
@@ -783,7 +779,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("price", fmt_p=fmt_p)
 
-    @cloud_endpoint
     def get_price_target(self):
         """Price Target
 

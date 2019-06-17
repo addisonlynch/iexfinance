@@ -1,7 +1,7 @@
 import datetime
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import cloud_endpoint, legacy_endpoint
+from iexfinance.utils import legacy_endpoint
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -89,7 +89,6 @@ class Symbols(CloudRef):
 
 class IEXSymbols(CloudRef):
 
-    @cloud_endpoint
     def fetch(self):
         return super(CloudRef, self).fetch()
 
