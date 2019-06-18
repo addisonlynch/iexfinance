@@ -13,8 +13,16 @@ Highlights:
 retired in favor of IEX Cloud in June 2019
 
 
+New Endpoints
+~~~~~~~~~~~~~
+
+**Data APIs**
+
+- /time-series (``get_time_series``)
+
+
 Backwards Incompatible Changes
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - When ``IEX_API_VERSION`` is set to ``v1``, IEX Cloud will now be used, and
   as such this has the same behavior as ``iexcloud-v1``
@@ -28,3 +36,10 @@ Backwards Incompatible Changes
     - ``iexfinance.refdata.get_listed_symbol_dir``
 - The ``get_all`` method of ``iexfinance.stocks.Stock`` has been immediately
   deprecated
+
+
+Bug Fixes
+~~~~~~~~~
+
+- Certain failed requests which erroneously-returened ``IEXAuthorizationError``
+  now return ``IEXQueryError``

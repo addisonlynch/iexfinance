@@ -42,9 +42,9 @@ class _IEXBase(object):
     """
     _URLS = {
         "v1": "https://cloud.iexapis.com/v1/",
-        "iexcloud-beta": "https://cloud.iexapis.com/beta/",
+        "iexcloud-beta": "https://cloud.iexapis.com/v1/",
         "iexcloud-v1": "https://cloud.iexapis.com/v1/",
-        "iexcloud-sandbox": "https://sandbox.iexapis.com/beta/"
+        "iexcloud-sandbox": "https://sandbox.iexapis.com/v1/"
     }
 
     _VALID_FORMATS = ('json', 'pandas')
@@ -158,12 +158,13 @@ class _IEXBase(object):
 
         status_code = response.status_code
         if 400 <= status_code < 500:
+            print(response.request.url)
             if status_code == 400:
                 raise auth_error(auth_msg)
             else:
-                raise auth_error("The query could not be completed. "
-                                 "There was a client-side error with your "
-                                 "request.")
+                raise IEXQueryError("The query could not be completed. "
+                                    "There was a client-side error with your "
+                                    "request.")
         elif 500 <= status_code < 600:
             raise auth_error("The query could not be completed. "
                              "There was a server-side error with "
