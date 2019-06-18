@@ -100,7 +100,7 @@ class TestShareDefault(object):
     def test_filter(self):
         data = self.cshare.get_quote(filter_='ytdChange')
         assert isinstance(data, dict)
-        assert pd.api.is_number(data["ytdChange"])
+        assert isinstance(data["ytdChange"], (int, float))
 
         data4 = self.cshare4.get_quote(filter_='ytdChange')
         assert isinstance(data4, dict)
@@ -295,8 +295,6 @@ class TestSectorPerformance(object):
         assert len(li) == pytest.approx(10, 1)
 
 
-@pytest.mark.cloudbroken
-@pytest.mark.xfail(reason="Provider issue")
 class TestCollections(object):
 
     def test_get_collections_no_collection(self):
@@ -307,22 +305,24 @@ class TestCollections(object):
             get_collections("Computer Hardware", "badcollection")
 
     def test_get_collections(self):
-        data = get_collections("Computer Hardware")
+        # by tag
+        data = get_collections("Restaurants")
 
         assert isinstance(data, list)
         assert len(data) > 100
 
     def test_get_collections_pandas(self):
-        df = get_collections("Computer Hardware", output_format='pandas')
+        df = get_collections("Restaurants", output_format='pandas')
 
         assert isinstance(df, pd.DataFrame)
-        assert len(df) == 39
+        assert len(df) == 37
 
         assert "change" in df.index
         assert "close" in df.index
 
     def test_get_collections_type(self):
-        df = get_collections("Industrials", "sector", output_format='pandas')
+        df = get_collections("Industrial Services", "sector",
+                             output_format='pandas')
         assert isinstance(df, pd.DataFrame)
         assert len(df) == 39
         assert len(df.columns) > 500
