@@ -150,6 +150,10 @@ environment variable. The following versions are currently supported:
 * ``v1`` - **default** (now same as ``iexcloud-v1``)
 * ``iexcloud-beta``
 * ``iexcloud-v1``
+* ``iexcloud-sandbox`` - for use with the `sandbox environment`_ (test token
+  must be used)
+
+.. _`sandbox environment`: https://iexcloud.io/docs/api/#sandbox
 
 Output Formatting
 ~~~~~~~~~~~~~~~~~

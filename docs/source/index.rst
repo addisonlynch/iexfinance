@@ -27,6 +27,7 @@ Full Contents
    migrating
    install
    configuration
+   sandbox
    usage
 
 .. _endpoints:
