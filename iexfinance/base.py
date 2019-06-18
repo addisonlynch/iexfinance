@@ -158,7 +158,6 @@ class _IEXBase(object):
 
         status_code = response.status_code
         if 400 <= status_code < 500:
-            print(response.request.url)
             if status_code == 400:
                 raise auth_error(auth_msg)
             else:
