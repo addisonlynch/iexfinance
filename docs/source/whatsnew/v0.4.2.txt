@@ -19,6 +19,7 @@ New Endpoints
 **Data APIs**
 
 - /time-series (``get_time_series``)
+- /data-points (``get_data_points``)
 
 
 Backwards Incompatible Changes
