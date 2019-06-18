@@ -1,3 +1,6 @@
+import logging
+import os
+
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 __author__ = 'Addison Lynch'
@@ -9,6 +12,24 @@ __version__ = '0.4.1'
 # API terms of service and manual
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
+
+# Configure logging
+###################
+
+# Deterimine log level, WARNING by default
+LOG_LEVEL = getattr(logging, os.getenv("IEX_LOG_LEVEL", "WARNING").upper())
+
+# Set log level
+logger = logging.getLogger(__name__)
+logger.setLevel(LOG_LEVEL)
+
+# Set log stream handler formatting
+console_format = logging.Formatter(
+        '%(levelname)s - %(message)s'
+    )
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(console_format)
+logger.addHandler(console_handler)
 
 
 def get_market_gainers(*args, **kwargs):
