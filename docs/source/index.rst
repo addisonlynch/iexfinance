@@ -37,6 +37,7 @@ Full Contents
 
    account
    stocks
+   data_apis
    altdata
    refdata
    iexdata
