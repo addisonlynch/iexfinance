@@ -51,6 +51,7 @@ Full Contents
    :caption: Package Information
 
    about
+   logging
    caching
    testing
    tutorial

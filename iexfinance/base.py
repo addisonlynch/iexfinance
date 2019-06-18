@@ -1,3 +1,4 @@
+import logging
 import os
 import time
 
@@ -10,6 +11,8 @@ from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
+
+logger = logging.getLogger(__name__)
 
 # Docs URL for IEX Cloud migration
 MIGRATION_URL = "https://addisonlynch.github.io/iexfinance/stable/"\
@@ -108,6 +111,14 @@ class _IEXBase(object):
             If the JSON response is empty or throws an error
 
         """
+        # log the number of messages used
+        key = "iexcloud-messages-used"
+        if key in response.headers:
+            msg = response.headers[key]
+        else:
+            msg = ("N/A")
+        logger.info("MESSAGES USED: %s" % msg)
+
         if response.text == "Unknown symbol":
             raise IEXQueryError()
         try:
@@ -145,6 +156,8 @@ class _IEXBase(object):
         params['token'] = self.token
         for i in range(self.retry_count+1):
             response = self.session.get(url=url, params=params)
+            logger.debug("REQUEST: %s" % response.request.url)
+            logger.debug("RESPONSE: %s" % response.status_code)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(self.pause)

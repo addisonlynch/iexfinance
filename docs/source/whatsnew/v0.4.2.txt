@@ -21,6 +21,18 @@ New Endpoints
 - /time-series (``get_time_series``)
 - /data-points (``get_data_points``)
 
+Enhancements
+~~~~~~~~~~~~
+
+- Adds logging for queries, including message count usage and debugging
+information. Logging level defaults to ``WARNING``, but can be set to other
+levels through the ``IEX_LOG_LEVEL`` environment variable. The following levels
+provide various information:
+
+    - ``WARNING`` - errors only
+    - ``INFO`` - message count used
+    - ``DEBUG`` - request information
+
 
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
