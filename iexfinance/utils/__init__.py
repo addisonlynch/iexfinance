@@ -15,7 +15,7 @@ def _init_session(session, retry_count=3):
     return session
 
 
-def _sanitize_dates(start, end):
+def _sanitize_dates(start, end, default_end=datetime.today()):
     """
     Return (datetime_start, datetime_end) tuple
     if start is None - default is 2015/01/01
@@ -33,8 +33,8 @@ def _sanitize_dates(start, end):
     if start is None:
         start = datetime(2015, 1, 1)
     if end is None:
-        end = datetime.today()
-    if start > end:
+        end = default_end
+    if default_end is not None and start > end:
         raise ValueError('start must be an earlier date than end')
     return start, end
 

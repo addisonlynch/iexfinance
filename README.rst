@@ -218,6 +218,12 @@ requested over the desired date range (``start`` and ``end`` passed as
 
     df = get_historical_data("TSLA", start, end)
 
+To obtain daily closing prices only (reduces message count), set
+``close_only=True``:
+
+.. code:: python
+
+    df = get_historical_data("TSLA", "20190617", close_only=True)
 
 For Pandas DataFrame output formatting, pass ``output_format``:
 

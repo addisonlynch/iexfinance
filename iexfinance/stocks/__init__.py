@@ -14,19 +14,24 @@ from iexfinance.utils.exceptions import ImmediateDeprecationError
 # and conditions of use
 
 
-def get_historical_data(symbols, start=None, end=None, **kwargs):
+def get_historical_data(symbols, start, end=None, close_only=False, **kwargs):
     """
     Function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
+
+    Reference: https://iextrading.com/developer/docs/#chart
 
     Parameters
     ----------
     symbols: str or list
         A symbol or list of symbols
-    start: datetime.datetime, default None
+    start: datetime.datetime
         Beginning of desired date range
-    end: datetime.datetime, default None
+    end: datetime.datetime, optional, default None
         End of required date range
+    close_only: bool, default False
+        Returns adjusted data only with keys ``date``, ``close``, and
+        ``volume``
     kwargs:
         Additional Request Parameters (see base class)
 
@@ -35,8 +40,8 @@ def get_historical_data(symbols, start=None, end=None, **kwargs):
     list or DataFrame
         Historical stock prices over date range, start to end
     """
-    start, end = _sanitize_dates(start, end)
-    return HistoricalReader(symbols, start=start, end=end, **kwargs).fetch()
+    return HistoricalReader(symbols, start=start, end=end,
+                            close_only=close_only, **kwargs).fetch()
 
 
 def get_historical_intraday(symbol, date=None, **kwargs):

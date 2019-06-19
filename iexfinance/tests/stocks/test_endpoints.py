@@ -287,6 +287,22 @@ class TestHistorical(object):
         with pytest.raises(IEXSymbolError):
             get_historical_data(["BADSYMBOL", "TSLA"], start, end)
 
+    def test_string_dates(self):
+        start = "20190501"
+        end = "20190601"
+
+        data = get_historical_data("AAPL", start, end, output_format='pandas')
+
+        assert isinstance(data, pd.DataFrame)
+        assert len(data) == 22
+
+    def test_close_only(self):
+        data = get_historical_data("AAPL", self.good_start, self.good_end,
+                                   close_only=True)
+
+        assert "open" not in data["2017-02-09"]
+        assert "high" not in data["2017-02-09"]
+
 
 class TestSectorPerformance(object):
 

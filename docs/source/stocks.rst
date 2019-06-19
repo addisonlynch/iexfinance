@@ -26,7 +26,9 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:
 
 Certain endpoints such as :ref:`Historical Data<stocks.historical>`,
 which are unrelated to specific symbols, are supported by top-level functions
-(i.e. ``iexfinance.stocks.get_historical_data``).
+(i.e. ``iexfinance.stocks.get_historical_data``). This function is
+**optimized** to achieve the lowest possible message count for retrieval in a
+single request.
 
 .. ipython:: python
 
@@ -336,6 +338,13 @@ Fund Ownership
 Historical Prices
 -----------------
 
+.. note:: The ``Stock.get_historical_prices`` method is an *exact* mirror of
+          the ``Historical Prices`` (chart) endpoint and accepts all
+          parameters, but is **not optimized**. Use ``get_historical_data`` for
+          optimized message counts. ``get_historical_data`` accepts ``start``,
+          ``end`` (optional) along with the parameter ``close_only``, and no
+          other parameters.
+
 The method used to obtain historical prices from a ``Stock`` object:
 
 .. ipython:: python
@@ -346,12 +355,13 @@ The method used to obtain historical prices from a ``Stock`` object:
     aapl.get_historical_prices()
 
 
-Historical time series data is also available through the
-``get_historical_prices`` method or the top-level ``get_historical_data`` and
-``get_historical_intraday`` functions of ``stocks``, which source the `Historical Prices <https://iexcloud.io/docs/api/#historical-prices>`__ endpoint.
+Historical time series data is also available through the **optimized**
+top-level ``get_historical_data`` and
+``get_historical_intraday`` functions of ``stocks``, which source the
+`Historical Prices <https://iexcloud.io/docs/api/#historical-prices>`__
+endpoint, and accept a date or date range for retrieval.
 
-Daily data can be retrieved from up to 5 years before the current date, and
-historical data up to 3 months prior to the current date.
+Daily data can be retrieved from up to 10 years before the current date.
 
 Daily
 ~~~~~
@@ -361,8 +371,8 @@ To obtain daily historical data, use ``get_historical_data``.
 .. autofunction:: iexfinance.stocks.get_historical_data
 
 
-If no date parameters are passed, the start date will default to 2015/1/1
-and the end date will default to the current date.
+Example
+^^^^^^^
 
 
 .. ipython:: python
@@ -397,6 +407,17 @@ and a single date.**
     data = get_historical_intraday("AAPL", date, output_format='pandas')
     data.head()
 
+Closing Prices Only
+^^^^^^^^^^^^^^^^^^^
+
+To retrieve closing prices only, use ``get_historical_data`` and set
+``close_only=True``:
+
+.. ipython:: python
+
+    from iexfinance.stocks import get_historical_data
+
+    get_historical_data("AAPL", "20190617", close_only=True)
 
 
 .. _stocks.income_statement:
