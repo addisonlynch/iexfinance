@@ -159,7 +159,6 @@ class _IEXBase(object):
             response = self.session.get(url=url, params=params)
             logger.debug("REQUEST: %s" % response.request.url)
             logger.debug("RESPONSE: %s" % response.status_code)
-            logger.debug("RESPONSE TEXT: %s" % response.text)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(self.pause)
