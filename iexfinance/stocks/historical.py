@@ -3,30 +3,20 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.stocks.base import Stock
+from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import IEXSymbolError
 
 
 class HistoricalReader(Stock):
     """
-    A class to download historical data from the chart endpoint
-
-    Parameters
-    ----------
-    symbols : string, array-like object (list, tuple, Series), or DataFrame
-        Desired symbols for retrieval
-    start: datetime.datetime
-        The desired start date (defaults to 1/1/2015)
-    end: datetime.datetime
-        The desired end date (defaults to today's date)
-    output_format: str, default 'json', optional
-        Desired output format.
+    Base class to download historical data from the chart endpoint
 
     Reference: https://iextrading.com/developer/docs/#chart
     """
-
-    def __init__(self, symbols, start, end, **kwargs):
-        self.start = start
-        self.end = end
+    def __init__(self, symbols, start, end=None, close_only=False, **kwargs):
+        self.start, self.end = _sanitize_dates(start, end, default_end=None)
+        self.single_day = True if self.end is None else False
+        self.close_only = close_only
         super(HistoricalReader, self).__init__(symbols, **kwargs)
 
     @property
@@ -35,6 +25,8 @@ class HistoricalReader(Stock):
         datasets (5y and 2y) when necessary, but defaults to 1y for performance
         reasons
         """
+        if self.single_day is True:
+            return "date"
         delta = datetime.datetime.now().year - self.start.year
         if 2 <= delta <= 5:
             return "5y"
@@ -52,8 +44,15 @@ class HistoricalReader(Stock):
         params = {
             "symbols": syms,
             "types": "chart",
-            "range": self.chart_range
+            "range": self.chart_range,
+            "chartByDay": self.single_day,
+            "chartCloseOnly": self.close_only
         }
+        if self.single_day:
+            try:
+                params["exactDate"] = self.start.strftime("%Y%m%d")
+            except AttributeError:
+                params["exactDate"] = self.start
         return params
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
@@ -66,11 +65,14 @@ class HistoricalReader(Stock):
             if self.output_format == 'pandas':
                 df["date"] = pd.DatetimeIndex(df["date"])
             df = df.set_index(df["date"])
-            values = ["open", "high", "low", "close", "volume"]
+            values = ["close", "volume"]
+            if self.close_only is False:
+                values = ["open", "high", "low"] + values
             df = df[values]
-            sstart = self.start.strftime('%Y-%m-%d')
-            send = self.end.strftime('%Y-%m-%d')
-            df = df.loc[sstart:send]
+            if self.single_day is False:
+                sstart = self.start.strftime('%Y-%m-%d')
+                send = self.end.strftime('%Y-%m-%d')
+                df = df.loc[sstart:send]
             result.update({symbol: df})
         if self.output_format == "pandas":
             if len(result) > 1:

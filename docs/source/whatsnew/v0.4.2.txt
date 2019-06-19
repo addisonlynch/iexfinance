@@ -10,8 +10,9 @@ maintain compatibility with IEX Cloud.
 Highlights:
 
 - Removes support for the legacy Version 1.0 IEX Developer API, which was
-retired in favor of IEX Cloud in June 2019
-
+  retired in favor of IEX Cloud in June 2019
+- Optimized retrieval of historical prices with ``get_historical_data`` to
+  allow for close prices only and single day charts to reduce message counts
 
 New Endpoints
 ~~~~~~~~~~~~~
@@ -25,14 +26,19 @@ Enhancements
 ~~~~~~~~~~~~
 
 - Adds logging for queries, including message count usage and debugging
-information. Logging level defaults to ``WARNING``, but can be set to other
-levels through the ``IEX_LOG_LEVEL`` environment variable. The following levels
-provide various information:
+  information. Logging level defaults to ``WARNING``, but can be set to other
+  levels through the ``IEX_LOG_LEVEL`` environment variable. The following
+  levels provide various information:
 
     - ``WARNING`` - errors only
     - ``INFO`` - message count used
     - ``DEBUG`` - request information
 
+- Add ``close_only`` keyword argument to ``get_historical_data`` to allow for
+  retrieval of adjusted close only at reduced message cost (through
+  ``chartCloseOnly`` query parameter)
+- Optimize ``get_historical_data`` to use ``chartByDay`` if a single date is
+  passed which reduces message count (thanks shlomikushchi)
 
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,6 +53,7 @@ Backwards Incompatible Changes
     - ``iexfinance.refdata.get_iex_dividends``
     - ``iexfinance.refdata.get_iex_next_day_ex_date``
     - ``iexfinance.refdata.get_listed_symbol_dir``
+
 - The ``get_all`` method of ``iexfinance.stocks.Stock`` has been immediately
   deprecated
 
