@@ -7,7 +7,6 @@ from iexfinance.stocks.marketvolume import MarketVolumeReader
 from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
-from iexfinance.utils import _sanitize_dates
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information

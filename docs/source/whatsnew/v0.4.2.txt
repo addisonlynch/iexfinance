@@ -38,7 +38,7 @@ Enhancements
   retrieval of adjusted close only at reduced message cost (through
   ``chartCloseOnly`` query parameter)
 - Optimize ``get_historical_data`` to use ``chartByDay`` if a single date is
-  passed which reduces message count
+  passed which reduces message count (thanks shlomikushchi)
 
 Backwards Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
