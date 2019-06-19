@@ -57,8 +57,10 @@ class HistoricalReader(Stock):
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
         result = {}
+        if len(self.symbols) == 1 and not out[self.symbols[0]]["chart"]:
+                return pd.DataFrame(out)
         for symbol in self.symbols:
-            if symbol not in out or not out[symbol]["chart"]:
+            if symbol not in out:
                 raise IEXSymbolError(symbol)
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
