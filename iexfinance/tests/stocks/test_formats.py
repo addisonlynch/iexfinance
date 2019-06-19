@@ -13,7 +13,6 @@ _ALL_METHODS = [
         ("get_delayed_quote", dict, 8),
         ("get_dividends", list, 'varies'),
         ("get_earnings", list, 'varies'),
-        ("get_effective_spread", list, 'varies'),
         ("get_estimates", dict, 6),
         ("get_financials", list, 'varies'),
         ("get_fund_ownership", list, 6),

@@ -61,7 +61,6 @@ Endpoints which are supported by top-level functions are noted.
 - :ref:`Dividends<stocks.dividends>`
 - :ref:`Earnings<stocks.earnings>`
 - :ref:`Earnings Today<stocks.earnings_today>` - ``get_earnings_today``
-- :ref:`Effective Spread<stocks.effective_spread>`
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
 - :ref:`Fund Ownership<stocks.fund_ownership>`
@@ -301,16 +300,6 @@ Examples
     from iexfinance.stocks import get_earnings_today
 
     get_earnings_today()["bto"]
-
-
-
-
-.. _stocks.effective_spread:
-
-Effective Spread
-----------------
-
-.. automethod:: iexfinance.stocks.base.Stock.get_effective_spread
 
 
 .. _stocks.estimates:

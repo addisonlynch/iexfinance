@@ -3,14 +3,6 @@
 Alternative Data
 ================
 
-.. _altdata.news:
-
-News
-----
-
-.. seealso:: :ref:`News <stocks.news>`
-
-
 .. _altdata.crypto:
 
 Crypto
