@@ -339,7 +339,7 @@ Historical Prices
 -----------------
 
 .. note:: The ``Stock.get_historical_prices`` method is an *exact* mirror of
-          the ``Historical Prices`` (chart) endpoint and accepts all
+          the Historical Prices (chart) endpoint and accepts all
           parameters, but is **not optimized**. Use ``get_historical_data`` for
           optimized message counts. ``get_historical_data`` accepts ``start``,
           ``end`` (optional) along with the parameter ``close_only``, and no
