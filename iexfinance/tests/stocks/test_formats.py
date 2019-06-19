@@ -79,10 +79,7 @@ def _format_helper(obj, meta, r_type=None):
     if r_type is not None:
         assert isinstance(data, r_type)
     else:
-        if meta[1] in NUMBER:
-            assert pd.api.is_number(data)
-        else:
-            assert isinstance(data, (meta[1], dict))
+        assert isinstance(data, (meta[1], dict))
 
 
 class TestStocksJson(object):
