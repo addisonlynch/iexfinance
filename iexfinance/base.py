@@ -125,7 +125,8 @@ class _IEXBase(object):
             json_response = response.json(
                 parse_int=self.json_parse_int,
                 parse_float=self.json_parse_float)
-            if "Error Message" in json_response:
+            if isinstance(json_response, str) and ("Error Message" in
+                                                   json_response):
                 raise IEXQueryError()
         except ValueError:
             raise IEXQueryError()
@@ -158,6 +159,7 @@ class _IEXBase(object):
             response = self.session.get(url=url, params=params)
             logger.debug("REQUEST: %s" % response.request.url)
             logger.debug("RESPONSE: %s" % response.status_code)
+            logger.debug("RESPONSE TEXT: %s" % response.text)
             if response.status_code == requests.codes.ok:
                 return self._validate_response(response)
             time.sleep(self.pause)
