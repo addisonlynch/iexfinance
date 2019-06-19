@@ -8,7 +8,7 @@ from decimal import Decimal
 from iexfinance.stocks import (get_historical_data, get_sector_performance,
                                get_collections, get_earnings_today,
                                get_ipo_calendar, get_historical_intraday,
-                               Stock)
+                               Stock, get_eod_options)
 from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
 
 
@@ -421,3 +421,32 @@ class TestHistoricalIntraday(object):
         data = get_historical_intraday("AAPL", date=date)
 
         assert isinstance(data, list)
+
+
+class TestEODOptions(object):
+
+    def test_eod_options_no_symbol(self):
+        with pytest.raises(TypeError):
+            get_eod_options()
+
+    def test_eod_list(self):
+        data = get_eod_options("AAPL")
+
+        assert isinstance(data, list)
+        assert len(data[1]) == 6
+
+    @pytest.mark.xfail(reason="Provider scrambles expiration dates but does "
+                              "not accept scrambled dates for calls")
+    def test_single_date(self):
+        # obtain list of expiration dates (often changes)
+        expiries = get_eod_options("AAPL")
+
+        # use first date
+        data = get_eod_options("AAPL", expiries[0])
+
+        assert isinstance(data, list)
+        assert isinstance(data[0], dict)
+        assert data[0]["symbol"] == "AAPL"
+
+        data2 = get_eod_options("AAPL", expiries[0], output_format='pandas')
+        assert isinstance(data2, pd.DataFrame)
