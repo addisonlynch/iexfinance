@@ -79,6 +79,7 @@ Endpoints which are supported by top-level functions are noted.
 - :ref:`News<stocks.news>`
 - :ref:`OHLC<stocks.ohlc>`
 - :ref:`Open/Close<stocks.open_close>`
+- :ref:`End of Day Options<stocks.eod_options>` - ``get_eod_options``
 - :ref:`Peers<stocks.peers>`
 - :ref:`Previous Day Prices<stocks.previous_day_prices>`
 - :ref:`Price<stocks.price>`
@@ -301,6 +302,15 @@ Examples
 
     get_earnings_today()["bto"]
 
+
+.. _stocks.eod_options:
+
+End of Day Options
+------------------
+
+End of day options prices are available through the top-level function ``get_eod_options``.
+
+.. autofunction:: iexfinance.stocks.get_eod_options
 
 .. _stocks.estimates:
 

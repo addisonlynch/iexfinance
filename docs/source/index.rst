@@ -41,6 +41,7 @@ Full Contents
    data_apis
    altdata
    refdata
+   options
    iexdata
    apidata
 

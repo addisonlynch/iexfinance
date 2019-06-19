@@ -17,6 +17,10 @@ Highlights:
 New Endpoints
 ~~~~~~~~~~~~~
 
+**Options**
+
+- End of Day Options (``get_eod_options``)
+
 **Data APIs**
 
 - /time-series (``get_time_series``)

@@ -5,6 +5,7 @@ from iexfinance.stocks.historical import HistoricalReader, IntradayReader
 from iexfinance.stocks.ipocalendar import IPOReader
 from iexfinance.stocks.marketvolume import MarketVolumeReader
 from iexfinance.stocks.movers import MoversReader
+from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
 from iexfinance.utils.exceptions import ImmediateDeprecationError
@@ -254,3 +255,26 @@ def get_market_in_focus(**kwargs):
     list
     """
     return MoversReader(mover='infocus', **kwargs).fetch()
+
+
+def get_eod_options(symbol, expiration=None, option_side=None, **kwargs):
+    """
+    End of Day Options
+
+    Returns a list of option expiration dates for a given symbol
+
+    Reference: https://iexcloud.io/docs/api/#end-of-day-options
+
+
+    Parameters
+    ----------
+    symbol: str
+        A valid symbol
+    expiration: str, optional
+        A valid expiration date
+    option_side: str, optional
+        Option side - ``put`` or ``call`` will return only those types of
+        contracts
+    """
+    return OptionsReader(symbol, expiration=expiration,
+                         option_side=option_side, **kwargs).fetch()

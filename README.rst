@@ -22,6 +22,7 @@ Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 - Real-time and delayed quotes
 - Historical data (daily and minutely)
 - Financial statements (Balance Sheet, Income Statement, Cash Flow)
+- End of Day Options Prices
 - Institutional and Fund ownership
 - Analyst estimates, Price targets
 - Corporate actions (Dividends, Splits)
