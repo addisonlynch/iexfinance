@@ -303,6 +303,10 @@ class TestHistorical(object):
         assert "open" not in data["2017-02-09"]
         assert "high" not in data["2017-02-09"]
 
+    def test_market_closed_pandas(self):
+        data = get_historical_data("AAPL", "20190101")
+        assert isinstance(data, pd.DataFrame)
+
 
 class TestSectorPerformance(object):
 
