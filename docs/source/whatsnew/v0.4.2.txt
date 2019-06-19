@@ -5,7 +5,7 @@ v0.4.2 (June 29, 2019)
 ----------------------
 
 This is a minor release from 0.4.1. We recommend that all users update to
-maintain compatibility with IEX Cloud.
+maintain compatibility with IEX Cloud and optimize message weighting in calls.
 
 Highlights:
 
@@ -53,6 +53,7 @@ Backwards Incompatible Changes
     - ``iexfinance.refdata.get_iex_dividends``
     - ``iexfinance.refdata.get_iex_next_day_ex_date``
     - ``iexfinance.refdata.get_listed_symbol_dir``
+    - ``iexfinance.stocks.Stock.get_effective_spread``
 
 - The ``get_all`` method of ``iexfinance.stocks.Stock`` has been immediately
   deprecated

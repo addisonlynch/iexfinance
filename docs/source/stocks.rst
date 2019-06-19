@@ -310,6 +310,9 @@ Examples
 Effective Spread
 ----------------
 
+.. warning:: ``get_effective_spread`` has been immediately deprecated and is no
+             longer available in IEX Cloud.
+
 .. automethod:: iexfinance.stocks.base.Stock.get_effective_spread
 
 
