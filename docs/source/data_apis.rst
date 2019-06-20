@@ -4,8 +4,7 @@ Data APIs
 =========
 
 IEX Cloud data can be organized into three generic data APIs:
-:ref:`time-series<time_series>`, data-tables, and data-points. Each API type is
-self describing and the docs can be accessed without an API token.
+:ref:`time-series<data_apis.time_series>`, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.
 
 
 .. _data_apis.data_points:
@@ -35,7 +34,7 @@ To obtain all available data points for a symbol, simply pass the symbol to
 
     from iexfinance.data_apis import get_data_points
 
-    get_data_points("AAPL").head()
+    get_data_points("AAPL", output_format='pandas').head()
 
 .. _data_apis.data_points.individual:
 

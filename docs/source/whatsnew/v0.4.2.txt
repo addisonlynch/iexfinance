@@ -1,4 +1,4 @@
-.. _whatsnew_042
+.. _whatsnew_042:
 
 
 v0.4.2 (June 29, 2019)
