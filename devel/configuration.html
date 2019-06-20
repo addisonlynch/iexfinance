@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; iexfinance 0.4.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Sandbox Environment" href="sandbox.html"/>
+        <link rel="prev" title="Install" href="install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api-version">API Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#passing-as-an-argument">Passing as an Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variable-recommended">Environment Variable (Recommended)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#macos-linux">macOS/Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#output-formatting">Output Formatting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output-format-argument"><code class="docutils literal notranslate"><span class="pre">output_format</span></code> Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variable">Environment Variable</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">macOS/Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iexbase-class"><code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code> Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cached-sessions">Cached Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-parameters">Request Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<span id="config"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>There are four core components of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s configuration:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#config-api-version"><span class="std std-ref">API Version</span></a> - specifying version of IEX Cloud to use</li>
+<li><a class="reference internal" href="#config-auth"><span class="std std-ref">Authentication</span></a> - setting your IEX Cloud Authentication Token</li>
+<li><a class="reference internal" href="#config-formatting"><span class="std std-ref">Output Formatting</span></a> - configuring desired output format (mirror IEX output or Pandas DataFrame)</li>
+<li><a class="reference internal" href="#config-debugging"><span class="std std-ref">Debugging</span></a> - cached sessions, request retries, and more</li>
+</ul>
+<div class="section" id="api-version">
+<span id="config-api-version"></span><h2>API Version<a class="headerlink" href="#api-version" title="Permalink to this headline">¶</a></h2>
+<p>The desired IEX API version can be specified using the <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code>
+environment variable. The following versions are currently supported:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">v1</span></code> - <em>note: this is now the same as ``iexcloud-v1``</em></li>
+<li><code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code> - <strong>default</strong></li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> now defaults to IEX Cloud for all calls. The use of
+<code class="docutils literal notranslate"><span class="pre">v1</span></code> as <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> is now the same as <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The beta period for IEX Cloud ended on June 1, 2019.
+All calls using <code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> now mirror those of
+<code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more information on API versioning, see the IEX Cloud
+<a class="reference external" href="https://iexcloud.io/docs/api/#versioning">documentation</a>.</p>
+</div>
+</div>
+<div class="section" id="authentication">
+<span id="config-auth"></span><h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>An IEX Cloud account is required to acecss the IEX Cloud API.</p>
+<p>Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a> It can also be stored in the <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
+<div class="section" id="passing-as-an-argument">
+<span id="config-auth-argument"></span><h3>Passing as an Argument<a class="headerlink" href="#passing-as-an-argument" title="Permalink to this headline">¶</a></h3>
+<p>The authentication token can also be passed to any function call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
+
+<span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s2">&quot;&lt;YOUR AUTH TOKEN&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s2">&quot;&lt;YOUR AUTH TOKEN&gt;&quot;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variable-recommended">
+<span id="config-auth-env"></span><h3>Environment Variable (Recommended)<a class="headerlink" href="#environment-variable-recommended" title="Permalink to this headline">¶</a></h3>
+<p>The easiest (and recommended) way to authenticate your IEX Cloud account is by
+storing your authentication token (secret key beginning with <code class="docutils literal notranslate"><span class="pre">sk_</span></code>) in the
+<code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code> environment variable.</p>
+<div class="section" id="macos-linux">
+<span id="config-auth-env-unix"></span><h4>macOS/Linux<a class="headerlink" href="#macos-linux" title="Permalink to this headline">¶</a></h4>
+<p>Type the following command into your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_TOKEN</span><span class="o">=</span>&lt;YOUR AUTH TOKEN&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="windows">
+<span id="config-auth-env-windows"></span><h4>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
+<p>See <a class="reference external" href="https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10">here</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="output-formatting">
+<span id="config-formatting"></span><h2>Output Formatting<a class="headerlink" href="#output-formatting" title="Permalink to this headline">¶</a></h2>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> returns data formatted <em>exactly</em> as received from
+the IEX Endpoint. <a class="reference external" href="https://pandas.pydata.org/">pandas</a> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> output
+formatting is available for most endpoints. Configuring <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s
+output format can be done in two ways:</p>
+<div class="section" id="output-format-argument">
+<h3><code class="docutils literal notranslate"><span class="pre">output_format</span></code> Argument<a class="headerlink" href="#output-format-argument" title="Permalink to this headline">¶</a></h3>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">output_format</span></code>  as an argument to any function call:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
+
+<span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">  currency        date exchange                 iexId  isEnabled  \</span>
+<span class="go">0      USD  2019-06-19      YNS  IEX_46574843354B2D52       True   </span>
+<span class="go">1      USD  2019-06-19      NYS  IEX_4238333734532D52       True   </span>
+<span class="go">2      USD  2019-06-19      SPE  IEX_474B433136332D52       True   </span>
+<span class="go">3      USD  2019-06-19      SNA  IEX_4E5434354A302D52       True   </span>
+<span class="go">4      USD  2019-06-19      NSY  IEX_4843364642592D52       True   </span>
+
+<span class="go">                           name region symbol type  </span>
+<span class="go">0     og llhsgn enneoiTIc.ecAit     US      A   cs  </span>
+<span class="go">1                   Ao. Cpcralo     US     AA   cs  </span>
+<span class="go">2  aoTnhdP yi sMhtEe P ticlGrlF     US   AAAU   et  </span>
+<span class="go">3                    bIla.naAct     US   AABA  cef  </span>
+<span class="go">4             igo .c nAIdAHlsCn     US    AAC   cs  </span>
+</pre></div>
+</div>
+<p>or at the instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [4]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">                      AAPL</span>
+<span class="go">avgTotalVolume    30578248</span>
+<span class="go">calculationPrice     close</span>
+<span class="go">change               -0.58</span>
+<span class="go">changePercent     -0.00298</span>
+<span class="go">close               207.27</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variable">
+<h3>Environment Variable<a class="headerlink" href="#environment-variable" title="Permalink to this headline">¶</a></h3>
+<p>For persistent configuration of a specified output format, use the environment
+variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code>. This value will be overridden by the
+<code class="docutils literal notranslate"><span class="pre">output_format</span></code> argument if it is passed.</p>
+<div class="section" id="id1">
+<h4>macOS/Linux<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Type the following command into your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">IEX_OUTPUT_FORMAT</span><span class="o">=</span>pandas
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Windows<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>See <a class="reference external" href="https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10">here</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="debugging">
+<span id="config-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="iexbase-class">
+<span id="config-iexbase"></span><h3><code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code> Class<a class="headerlink" href="#iexbase-class" title="Permalink to this headline">¶</a></h3>
+<p>All <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> requests are made using the base class <code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code>.</p>
+<dl class="class">
+<dt id="iexfinance.base._IEXBase">
+<em class="property">class </em><code class="descclassname">iexfinance.base.</code><code class="descname">_IEXBase</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for retrieving equities information from IEX Cloud.
+Conducts query operations including preparing and executing queries from
+the API.</p>
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.retry_count">
+<code class="descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int, default 3, optional</em> – Desired number of retries if a request fails</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.pause">
+<code class="descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float default 0.5, optional</em> – Pause time between retry attempts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.session">
+<code class="descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>requests_cache.session, default None, optional</em> – A cached requests-cache session</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.json_parse_int">
+<code class="descname">json_parse_int</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_int" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>datatype, default int, optional</em> – Desired integer parsing datatype</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.json_parse_float">
+<code class="descname">json_parse_float</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_float" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>datatype, default float, optional</em> – Desired floating point parsing datatype</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.output_format">
+<code class="descname">output_format</code><a class="headerlink" href="#iexfinance.base._IEXBase.output_format" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, default “json”, optional</em> – Desired output format (json or pandas DataFrame). This can also be
+set using the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.base._IEXBase.token">
+<code class="descname">token</code><a class="headerlink" href="#iexfinance.base._IEXBase.token" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, optional</em> – Authentication token (required for use with IEX Cloud)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cached-sessions">
+<span id="config-debugging-cached-sessions"></span><h3>Cached Sessions<a class="headerlink" href="#cached-sessions" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> import <code class="docutils literal notranslate"><span class="pre">requests-cache</span></code> cached sessions. To pass a cached session to your request, pass the <code class="docutils literal notranslate"><span class="pre">session</span></code> keyword argument to any function call, or at instantiation of a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-stock-object"><span class="std std-ref">object</span></a>.</p>
+</div>
+<div class="section" id="request-parameters">
+<span id="config-debugging-request-params"></span><h3>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Use <code class="docutils literal notranslate"><span class="pre">retry_count</span></code> to specify the number of times to retry a failed request. The default value is <code class="docutils literal notranslate"><span class="pre">3</span></code>.</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">pause</span></code> to specify the time between retry attempts. The default value is <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

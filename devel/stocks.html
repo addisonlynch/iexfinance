@@ -1,0 +1,2106 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stocks &mdash; iexfinance 0.4.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Data APIs" href="data_apis.html"/>
+        <link rel="prev" title="Account" href="account.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-endpoints">List of Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-stock-object">The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-usage-example">Basic Usage Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#balance-sheet">Balance Sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#book">Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cash-flow">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chart">Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collections">Collections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#company">Company</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptocurrencies">Cryptocurrencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-crypto-examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#delayed-quote">Delayed Quote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dividends">Dividends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#earnings">Earnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#earnings-today">Earnings Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-earnings-examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#end-of-day-options">End of Day Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estimates">Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#financials">Financials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fund-ownership">Fund Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-prices">Historical Prices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#daily">Daily</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#minutely">Minutely</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#closing-prices-only">Closing Prices Only</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#income-statement">Income Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-roster">Insider Roster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-summary">Insider Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#insider-transactions">Insider Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#institutional-ownership">Institutional Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ipo-calendar">IPO Calendar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-ipo-calendar-examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#key-stats">Key Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#largest-trades">Largest Trades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list">List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logo">Logo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#market-volume-u-s">Market Volume (U.S)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-market-volume-examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#news">News</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ohlc">OHLC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-close-price">Open/Close Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peers">Peers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#previous-day-prices">Previous Day Prices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#price">Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#price-target">Price Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quote">Quote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#relevant-stocks">Relevant Stocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sector-performance">Sector Performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-sector-examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#splits">Splits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-series">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#volume-by-venue">Volume by Venue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-methods">Additional Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-key-stats-field-methods">Key Stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stocks-quote-field-methods">Quote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#market-movers">Market Movers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Stocks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stocks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stocks">
+<span id="id1"></span><h1>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<span id="stocks-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This documentation is organized as a 1:1 mirror of the
+IEX Cloud <a class="reference external" href="https://iexcloud.io/docs/api/#stocks">Stocks Documentation</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="#stocks-stock-object"><span class="std std-ref">object</span></a> is instantiated with one or
+more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [2]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gh">Out[3]: </span><span class="go"></span>
+<span class="go">        AAPL</span>
+<span class="go">AAPL  198.82</span>
+</pre></div>
+</div>
+<p>Certain endpoints such as <a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Data</span></a>,
+which are unrelated to specific symbols, are supported by top-level functions
+(i.e. <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_historical_data</span></code>). This function is
+<strong>optimized</strong> to achieve the lowest possible message count for retrieval in a
+single request.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
+
+<span class="gp">In [5]: </span><span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-ea159381d1b3&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="ne">TypeError</span>: get_historical_data() missing 1 required positional argument: &#39;start&#39;
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#stocks-additional-methods"><span class="std std-ref">Additional Methods</span></a> for more a list of
+methods available.</p>
+<div class="section" id="list-of-endpoints">
+<span id="stocks-endpoint-list"></span><h3>List of Endpoints<a class="headerlink" href="#list-of-endpoints" title="Permalink to this headline">¶</a></h3>
+<p>All endpoints not available as methods of the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object are noted below.</p>
+<p>Endpoints which are supported by top-level functions are noted.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#stocks-balance-sheet"><span class="std std-ref">Balance Sheet</span></a></li>
+<li><a class="reference internal" href="#stocks-book"><span class="std std-ref">Book</span></a></li>
+<li><a class="reference internal" href="#stocks-cash-flow"><span class="std std-ref">Cash Flow</span></a></li>
+<li><a class="reference internal" href="#stocks-chart"><span class="std std-ref">Chart</span></a></li>
+<li><a class="reference internal" href="#stocks-collections"><span class="std std-ref">Collections</span></a> - <code class="docutils literal notranslate"><span class="pre">get_collections</span></code></li>
+<li><a class="reference internal" href="#stocks-company"><span class="std std-ref">Company</span></a></li>
+<li><a class="reference internal" href="#stocks-crypto"><span class="std std-ref">Crypto</span></a> - <code class="docutils literal notranslate"><span class="pre">get_crypto_quotes</span></code></li>
+<li><a class="reference internal" href="#stocks-delayed-quote"><span class="std std-ref">Delayed Quote</span></a></li>
+<li><a class="reference internal" href="#stocks-dividends"><span class="std std-ref">Dividends</span></a></li>
+<li><a class="reference internal" href="#stocks-earnings"><span class="std std-ref">Earnings</span></a></li>
+<li><a class="reference internal" href="#stocks-earnings-today"><span class="std std-ref">Earnings Today</span></a> - <code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code></li>
+<li><a class="reference internal" href="#stocks-estimates"><span class="std std-ref">Estimates</span></a></li>
+<li><a class="reference internal" href="#stocks-financials"><span class="std std-ref">Financials</span></a></li>
+<li><a class="reference internal" href="#stocks-fund-ownership"><span class="std std-ref">Fund Ownership</span></a></li>
+<li><a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Prices</span></a> - <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code></li>
+<li><a class="reference internal" href="#stocks-income-statement"><span class="std std-ref">Income Statement</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-roster"><span class="std std-ref">Insider Roster</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-summary"><span class="std std-ref">Insider Summary</span></a></li>
+<li><a class="reference internal" href="#stocks-insider-transactions"><span class="std std-ref">Insider Transactions</span></a></li>
+<li><a class="reference internal" href="#stocks-institutional-ownership"><span class="std std-ref">Institutional Ownership</span></a></li>
+<li><a class="reference internal" href="#stocks-ipo-calendar"><span class="std std-ref">IPO Calendar</span></a></li>
+<li><a class="reference internal" href="#stocks-key-stats"><span class="std std-ref">Key Stats</span></a></li>
+<li><a class="reference internal" href="#stocks-largest-trades"><span class="std std-ref">Largest Trades</span></a></li>
+<li><a class="reference internal" href="#stocks-list"><span class="std std-ref">List</span></a></li>
+<li><a class="reference internal" href="#stocks-logo"><span class="std std-ref">Logo</span></a></li>
+<li><a class="reference internal" href="#stocks-market-volume"><span class="std std-ref">Market Volume</span></a> - <code class="docutils literal notranslate"><span class="pre">get_market_volume</span></code></li>
+<li><a class="reference internal" href="#stocks-news"><span class="std std-ref">News</span></a></li>
+<li><a class="reference internal" href="#stocks-ohlc"><span class="std std-ref">OHLC</span></a></li>
+<li><a class="reference internal" href="#stocks-open-close"><span class="std std-ref">Open/Close</span></a></li>
+<li><a class="reference internal" href="#stocks-eod-options"><span class="std std-ref">End of Day Options</span></a> - <code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code></li>
+<li><a class="reference internal" href="#stocks-peers"><span class="std std-ref">Peers</span></a></li>
+<li><a class="reference internal" href="#stocks-previous-day-prices"><span class="std std-ref">Previous Day Prices</span></a></li>
+<li><a class="reference internal" href="#stocks-price"><span class="std std-ref">Price</span></a></li>
+<li><a class="reference internal" href="#stocks-price-target"><span class="std std-ref">Price Target</span></a></li>
+<li><a class="reference internal" href="#stocks-quote"><span class="std std-ref">Quote</span></a></li>
+<li><a class="reference internal" href="#stocks-relevant-stocks"><span class="std std-ref">Relevant Stocks</span></a></li>
+<li><a class="reference internal" href="#stocks-sector"><span class="std std-ref">Sector Performance</span></a> - <code class="docutils literal notranslate"><span class="pre">get_sector_performance</span></code></li>
+<li><a class="reference internal" href="#stocks-splits"><span class="std std-ref">Splits</span></a></li>
+<li><a class="reference internal" href="#stocks-time-series"><span class="std std-ref">Time Series</span></a></li>
+<li><a class="reference internal" href="#stocks-volume-by-venue"><span class="std std-ref">Volume by Venue</span></a></li>
+</ul>
+</div>
+<div class="section" id="the-stock-object">
+<span id="stocks-stock-object"></span><h3>The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object<a class="headerlink" href="#the-stock-object" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object allows retrieval of
+endpoints  (<a class="reference external" href="https://iextrading.com/developer/#earnings">Earnings</a>,
+<a class="reference external" href="https://iextrading.com/developer/#quote">Quote</a>, etc) for up to 100 symbols
+at once.</p>
+<dl class="class">
+<dt id="iexfinance.stocks.base.Stock">
+<em class="property">class </em><code class="descclassname">iexfinance.stocks.base.</code><code class="descname">Stock</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for obtaining data from the Stock endpoints of IEX.</p>
+<dl class="attribute">
+<dt id="iexfinance.stocks.base.Stock.symbols">
+<code class="descname">symbols</code><a class="headerlink" href="#iexfinance.stocks.base.Stock.symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str or list-like (list, tuple, pandas.Series, pandas.Index)</em> – A symbol or list of symbols for which to obtain data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.stocks.base.Stock.output_format">
+<code class="descname">output_format</code><a class="headerlink" href="#iexfinance.stocks.base.Stock.output_format" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Desired output format for requests (default is <code class="docutils literal notranslate"><span class="pre">json</span></code>, also accepts
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> for a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> output format)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="iexfinance.stocks.base.Stock.token">
+<code class="descname">token</code><a class="headerlink" href="#iexfinance.stocks.base.Stock.token" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str, optional</em> – Authentication token (required for use with IEX Cloud)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="basic-usage-example">
+<span id="stocks-basic-usage"></span><h3>Basic Usage Example<a class="headerlink" href="#basic-usage-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [7]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;aapl&quot;</span><span class="p">)</span>
+
+<span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">        AAPL</span>
+<span class="go">AAPL  199.37</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="balance-sheet">
+<span id="stocks-balance-sheet"></span><h2>Balance Sheet<a class="headerlink" href="#balance-sheet" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_balance_sheet">
+<code class="descclassname">Stock.</code><code class="descname">get_balance_sheet</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_balance_sheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Balance Sheet</p>
+<p>Pulls balance sheet data. Available quarterly (4 quarters) and annually
+(4 years)</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#balance-sheet">https://iexcloud.io/docs/api/#balance-sheet</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">3000</span></code> per symbol per period</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarter'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly balance sheet.
+Value should be <cite>annual</cite> or <cite>quarter</cite>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="book">
+<span id="stocks-book"></span><h2>Book<a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_book">
+<code class="descclassname">Stock.</code><code class="descname">get_book</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_book" title="Permalink to this definition">¶</a></dt>
+<dd><p>Book</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#book">https://iexcloud.io/docs/api/#book</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per quote returned</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Book endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="cash-flow">
+<span id="stocks-cash-flow"></span><h2>Cash Flow<a class="headerlink" href="#cash-flow" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_cash_flow">
+<code class="descclassname">Stock.</code><code class="descname">get_cash_flow</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_cash_flow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cash Flow</p>
+<p>Pulls cash flow data. Available quarterly (4 quarters) or annually
+(4 years).</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#cash-flow">https://iexcloud.io/docs/api/#cash-flow</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1000</span></code> per symbol per period</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarterly'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly cash flows. Defaults to
+quarterly. Values should be annual or quarter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Cash Flow endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="chart">
+<span id="stocks-chart"></span><h2>Chart<a class="headerlink" href="#chart" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_chart">
+<code class="descclassname">Stock.</code><code class="descname">get_chart</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chart</p>
+<p>MOVED in IEX Cloud</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">get_historical_prices</span></code></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="collections">
+<span id="stocks-collections"></span><h2>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#collections">Collections</a>
+endpoint of Stocks allows retrieval of certain groups of companies, organized
+by:</p>
+<ul class="simple">
+<li>sector</li>
+<li>tag</li>
+<li>list (see the <a class="reference internal" href="#stocks-list"><span class="std std-ref">list endpoint</span></a>)</li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">get_collections</span></code> to access.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_collections">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_collections</code><span class="sig-paren">(</span><em>collection_name</em>, <em>collection_type='tag'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_collections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collections</p>
+<p>Returns an array of <code class="docutils literal notranslate"><span class="pre">quote</span></code> objects for a given collection type.
+Currently supported collection types are <code class="docutils literal notranslate"><span class="pre">sector</span></code>, <code class="docutils literal notranslate"><span class="pre">tag</span></code>, and <code class="docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#collections">https://iexcloud.io/docs/api/#collections</a></p>
+<p>Data Weighting: Weight of <code class="docutils literal notranslate"><span class="pre">/stock/quote</span></code> per method</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection_name</strong> (<em>str</em>) – Desired collection name</li>
+<li><strong>collection_type</strong> (<em>str</em><em>, </em><em>default &quot;tag&quot;</em><em>, </em><em>optional</em>) – Desired collection type (sector, tag, or list)
+kwargs:
+Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="examples">
+<span id="stocks-collections-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p><strong>Tag</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_collections</span>
+
+<span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Computer Hardware&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Sector</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_collections</span><span class="p">(</span><span class="s2">&quot;Industrials&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="company">
+<span id="stocks-company"></span><h2>Company<a class="headerlink" href="#company" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_company">
+<code class="descclassname">Stock.</code><code class="descname">get_company</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company" title="Permalink to this definition">¶</a></dt>
+<dd><p>Company</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#company">https://iexcloud.io/docs/api/#company</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Company endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="cryptocurrencies">
+<span id="stocks-crypto"></span><h2>Cryptocurrencies<a class="headerlink" href="#cryptocurrencies" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">As of the 5/18/2018 IEX Provider update, quotes are provided for
+certain Cryptocurrencies. Access to these quotes is available by
+creating a Stock object and using the <code class="docutils literal notranslate"><span class="pre">get_quote</span></code> method.</p>
+</div>
+<p>To retrieve quotes for all available cryptocurrencies, use the
+<code class="docutils literal notranslate"><span class="pre">get_crypto_quotes</span></code> function:</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_crypto_quotes">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_crypto_quotes</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_crypto_quotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED</p>
+</dd></dl>
+
+<p>The following tickers are supported:</p>
+<ul class="simple">
+<li>Bitcoin USD (BTCUSDT)</li>
+<li>EOS USD (EOSUSDT)</li>
+<li>Ethereum USD (ETHUSDT)</li>
+<li>Binance Coin USD (BNBUSDT)</li>
+<li>Ontology USD (ONTUSDT)</li>
+<li>Bitcoin Cash USD (BCCUSDT)</li>
+<li>Cardano USD (ADAUSDT)</li>
+<li>Ripple USD (XRPUSDT)</li>
+<li>TrueUSD (TUSDUSDT)</li>
+<li>TRON USD (TRXUSDT)</li>
+<li>Litecoin USD (LTCUSDT)</li>
+<li>Ethereum Classic USD (ETCUSDT)</li>
+<li>MIOTA USD (IOTAUSDT)</li>
+<li>ICON USD (ICXUSDT)</li>
+<li>NEO USD (NEOUSDT)</li>
+<li>VeChain USD (VENUSDT)</li>
+<li>Stellar Lumens USD (XLMUSDT)</li>
+<li>Qtum USD (QTUMUSDT)</li>
+</ul>
+<div class="section" id="stocks-crypto-examples">
+<span id="id2"></span><h3>Examples<a class="headerlink" href="#stocks-crypto-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_crypto_quotes</span>
+
+<span class="n">get_crypto_quotes</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="delayed-quote">
+<span id="stocks-delayed-quote"></span><h2>Delayed Quote<a class="headerlink" href="#delayed-quote" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_delayed_quote">
+<code class="descclassname">Stock.</code><code class="descname">get_delayed_quote</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delayed Quote</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#delayed-quote">https://iexcloud.io/docs/api/#delayed-quote</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol per quote</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Delayed Quote endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="dividends">
+<span id="stocks-dividends"></span><h2>Dividends<a class="headerlink" href="#dividends" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_dividends">
+<code class="descclassname">Stock.</code><code class="descname">get_dividends</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_dividends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dividends</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#dividends">https://iexcloud.io/docs/api/#dividends</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per period returned</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of dividends to return
+Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Dividends endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="earnings">
+<span id="stocks-earnings"></span><h2>Earnings<a class="headerlink" href="#earnings" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_earnings">
+<code class="descclassname">Stock.</code><code class="descname">get_earnings</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_earnings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Earnings</p>
+<p>Earnings data for a given company including the actual EPS, consensus,
+and fiscal period. Earnings are available quarterly (last 4 quarters)
+and annually (last 4 years).</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#earnings">https://iexcloud.io/docs/api/#earnings</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>last</strong> (<em>int</em><em>, </em><em>default 1</em><em>, </em><em>optional</em>) – Number of quarters or years to return.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Earnings endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="earnings-today">
+<span id="stocks-earnings-today"></span><h2>Earnings Today<a class="headerlink" href="#earnings-today" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">get_todays_earnings</span></code> has been deprecated and renamed
+<code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code>.</p>
+</div>
+<p>Earnings Today was added to the Stocks endpoints in 2018. Access is provided
+through the  <code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_earnings_today">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_earnings_today</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_earnings_today" title="Permalink to this definition">¶</a></dt>
+<dd><p>Earnings Today</p>
+<p>Returns earnings that will be reported today as two arrays: before the open
+<code class="docutils literal notranslate"><span class="pre">bto</span></code> and after market close <code class="docutils literal notranslate"><span class="pre">amc</span></code>. Each array contains an object with
+all keys from <code class="docutils literal notranslate"><span class="pre">earnings</span></code>, a <code class="docutils literal notranslate"><span class="pre">quote</span></code> object, and a <code class="docutils literal notranslate"><span class="pre">headline</span></code> key.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#earnings-today">https://iexcloud.io/docs/api/#earnings-today</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1051</span></code> per symbol returned</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code> supports JSON output formatting only.</p>
+</div>
+<div class="section" id="stocks-earnings-examples">
+<span id="id3"></span><h3>Examples<a class="headerlink" href="#stocks-earnings-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_earnings_today</span>
+
+<span class="gp">In [10]: </span><span class="n">get_earnings_today</span><span class="p">()[</span><span class="s2">&quot;bto&quot;</span><span class="p">]</span>
+<span class="gh">Out[10]: </span><span class="go"></span>
+<span class="go">[{&#39;EPSReportDate&#39;: &#39;2019-06-23&#39;,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;0.1&#39;,</span>
+<span class="go">  &#39;actualEPS&#39;: 1.1,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;1&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-06-14&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 8,</span>
+<span class="go">  &#39;quote&#39;: {&#39;avgTotalVolume&#39;: 396411,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;change&#39;: 1.48,</span>
+<span class="go">   &#39;changePercent&#39;: 0.03828,</span>
+<span class="go">   &#39;close&#39;: 41,</span>
+<span class="go">   &#39;closeTime&#39;: 1599615182191,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Winnebago Industries, Inc.&#39;,</span>
+<span class="go">   &#39;delayedPrice&#39;: 41,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1579795554097,</span>
+<span class="go">   &#39;extendedChange&#39;: 0.16,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0.00381,</span>
+<span class="go">   &#39;extendedPrice&#39;: 41.92,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1585641315137,</span>
+<span class="go">   &#39;high&#39;: 41,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1630128134680,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.03285006521709821,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 40.654,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 4,</span>
+<span class="go">   &#39;iexVolume&#39;: 78570,</span>
+<span class="go">   &#39;latestPrice&#39;: 40,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;June 19, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1568502068704,</span>
+<span class="go">   &#39;latestVolume&#39;: 2437144,</span>
+<span class="go">   &#39;low&#39;: 37,</span>
+<span class="go">   &#39;marketCap&#39;: 1316950624,</span>
+<span class="go">   &#39;open&#39;: 38.49,</span>
+<span class="go">   &#39;openTime&#39;: 1606204486938,</span>
+<span class="go">   &#39;peRatio&#39;: 12.2,</span>
+<span class="go">   &#39;previousClose&#39;: 39.12,</span>
+<span class="go">   &#39;symbol&#39;: &#39;WGO&#39;,</span>
+<span class="go">   &#39;week52High&#39;: 48.29,</span>
+<span class="go">   &#39;week52Low&#39;: 20.48,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.604759},</span>
+<span class="go">  &#39;symbol&#39;: &#39;WGO&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 1.05,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;0.0791&#39;},</span>
+<span class="go"> {&#39;announceTime&#39;: &#39;BTO&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;0.93&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-06&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q1 2019&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 3,</span>
+<span class="go">  &#39;quote&#39;: {&#39;avgTotalVolume&#39;: 173184,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;change&#39;: 0.01,</span>
+<span class="go">   &#39;changePercent&#39;: 0.0002,</span>
+<span class="go">   &#39;close&#39;: 51.99,</span>
+<span class="go">   &#39;closeTime&#39;: 1597685212727,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Multi-Color Corp.&#39;,</span>
+<span class="go">   &#39;delayedPrice&#39;: 51.24,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1630789262405,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPrice&#39;: 52.27,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1633823210072,</span>
+<span class="go">   &#39;high&#39;: 52,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1593005465005,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.01605522406491966,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 52.42,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 74,</span>
+<span class="go">   &#39;iexVolume&#39;: 2055,</span>
+<span class="go">   &#39;latestPrice&#39;: 51.11,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;June 19, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1635411847806,</span>
+<span class="go">   &#39;latestVolume&#39;: 127802,</span>
+<span class="go">   &#39;low&#39;: 50.236,</span>
+<span class="go">   &#39;marketCap&#39;: 1033223606,</span>
+<span class="go">   &#39;open&#39;: 51.46,</span>
+<span class="go">   &#39;openTime&#39;: 1590406932660,</span>
+<span class="go">   &#39;peRatio&#39;: -37.1,</span>
+<span class="go">   &#39;previousClose&#39;: 52.43,</span>
+<span class="go">   &#39;symbol&#39;: &#39;LABL&#39;,</span>
+<span class="go">   &#39;week52High&#39;: 71.6,</span>
+<span class="go">   &#39;week52Low&#39;: 31.14,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.41666},</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-25&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;LABL&#39;},</span>
+<span class="go"> {&#39;announceTime&#39;: &#39;TBO&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;-1.09&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-04-30&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 5,</span>
+<span class="go">  &#39;quote&#39;: {&#39;avgTotalVolume&#39;: 385761,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;change&#39;: -0.05,</span>
+<span class="go">   &#39;changePercent&#39;: -0.00857,</span>
+<span class="go">   &#39;close&#39;: 6.17,</span>
+<span class="go">   &#39;closeTime&#39;: 1564399522856,</span>
+<span class="go">   &#39;companyName&#39;: &#39;PolarityTE, Inc.&#39;,</span>
+<span class="go">   &#39;delayedPrice&#39;: 5.96,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1566481799931,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPrice&#39;: 6.07,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1636037572786,</span>
+<span class="go">   &#39;high&#39;: 6.07,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1616843822476,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.033557426243917284,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 6,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 1,</span>
+<span class="go">   &#39;iexVolume&#39;: 5156,</span>
+<span class="go">   &#39;latestPrice&#39;: 6.1,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;June 19, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1589297930900,</span>
+<span class="go">   &#39;latestVolume&#39;: 158294,</span>
+<span class="go">   &#39;low&#39;: 5.88,</span>
+<span class="go">   &#39;marketCap&#39;: 154942026,</span>
+<span class="go">   &#39;open&#39;: 5.9,</span>
+<span class="go">   &#39;openTime&#39;: 1621799469029,</span>
+<span class="go">   &#39;peRatio&#39;: -0.97,</span>
+<span class="go">   &#39;previousClose&#39;: 6.17,</span>
+<span class="go">   &#39;symbol&#39;: &#39;PTE&#39;,</span>
+<span class="go">   &#39;week52High&#39;: 41.6,</span>
+<span class="go">   &#39;week52Low&#39;: 5.06,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.613718},</span>
+<span class="go">  &#39;reportDate&#39;: &#39;2019-06-20&#39;,</span>
+<span class="go">  &#39;symbol&#39;: &#39;PTE&#39;},</span>
+<span class="go"> {&#39;EPSReportDate&#39;: &#39;2019-07-04&#39;,</span>
+<span class="go">  &#39;EPSSurpriseDollar&#39;: &#39;-0.1&#39;,</span>
+<span class="go">  &#39;actualEPS&#39;: -0.04,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;TBO&#39;,</span>
+<span class="go">  &#39;consensusEPS&#39;: &#39;0.06&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-05-01&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;numberOfEstimates&#39;: 1,</span>
+<span class="go">  &#39;quote&#39;: {&#39;avgTotalVolume&#39;: 59795,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;change&#39;: 0.11,</span>
+<span class="go">   &#39;changePercent&#39;: 0.02576,</span>
+<span class="go">   &#39;close&#39;: 4.57,</span>
+<span class="go">   &#39;closeTime&#39;: 1572570833521,</span>
+<span class="go">   &#39;companyName&#39;: &#39;Coffee Holding Co., Inc.&#39;,</span>
+<span class="go">   &#39;delayedPrice&#39;: 4.59,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1631898647553,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPrice&#39;: 4.71,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1588119624692,</span>
+<span class="go">   &#39;high&#39;: 4.84,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1567559110629,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.003032326028709882,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 4.495,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 102,</span>
+<span class="go">   &#39;iexVolume&#39;: 307,</span>
+<span class="go">   &#39;latestPrice&#39;: 4.77,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;June 19, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1616856128298,</span>
+<span class="go">   &#39;latestVolume&#39;: 101198,</span>
+<span class="go">   &#39;low&#39;: 4.34,</span>
+<span class="go">   &#39;marketCap&#39;: 26507335,</span>
+<span class="go">   &#39;open&#39;: 4.58,</span>
+<span class="go">   &#39;openTime&#39;: 1591057520724,</span>
+<span class="go">   &#39;peRatio&#39;: 27.97,</span>
+<span class="go">   &#39;previousClose&#39;: 4.47,</span>
+<span class="go">   &#39;symbol&#39;: &#39;JVA&#39;,</span>
+<span class="go">   &#39;week52High&#39;: 8.14,</span>
+<span class="go">   &#39;week52Low&#39;: 3.56,</span>
+<span class="go">   &#39;ytdChange&#39;: 0.18266},</span>
+<span class="go">  &#39;symbol&#39;: &#39;JVA&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: 0.09,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;-1.4729&#39;},</span>
+<span class="go"> {&#39;EPSReportDate&#39;: &#39;2019-07-04&#39;,</span>
+<span class="go">  &#39;actualEPS&#39;: -0.97,</span>
+<span class="go">  &#39;announceTime&#39;: &#39;OBT&#39;,</span>
+<span class="go">  &#39;fiscalEndDate&#39;: &#39;2019-05-15&#39;,</span>
+<span class="go">  &#39;fiscalPeriod&#39;: &#39;Q2 2019&#39;,</span>
+<span class="go">  &#39;quote&#39;: {&#39;avgTotalVolume&#39;: 1378110,</span>
+<span class="go">   &#39;calculationPrice&#39;: &#39;close&#39;,</span>
+<span class="go">   &#39;change&#39;: -0.0107,</span>
+<span class="go">   &#39;changePercent&#39;: -0.02876,</span>
+<span class="go">   &#39;close&#39;: 0.37,</span>
+<span class="go">   &#39;closeTime&#39;: 1579444852874,</span>
+<span class="go">   &#39;companyName&#39;: &quot;Fred&#39;s, Inc.&quot;,</span>
+<span class="go">   &#39;delayedPrice&#39;: 0.37,</span>
+<span class="go">   &#39;delayedPriceTime&#39;: 1606273812258,</span>
+<span class="go">   &#39;extendedChange&#39;: 0,</span>
+<span class="go">   &#39;extendedChangePercent&#39;: 0,</span>
+<span class="go">   &#39;extendedPrice&#39;: 0.36,</span>
+<span class="go">   &#39;extendedPriceTime&#39;: 1629614383754,</span>
+<span class="go">   &#39;high&#39;: 0.4035,</span>
+<span class="go">   &#39;iexAskPrice&#39;: 0,</span>
+<span class="go">   &#39;iexAskSize&#39;: 0,</span>
+<span class="go">   &#39;iexBidPrice&#39;: 0,</span>
+<span class="go">   &#39;iexBidSize&#39;: 0,</span>
+<span class="go">   &#39;iexLastUpdated&#39;: 1570463981078,</span>
+<span class="go">   &#39;iexMarketPercent&#39;: 0.00024211403377492937,</span>
+<span class="go">   &#39;iexRealtimePrice&#39;: 0.356,</span>
+<span class="go">   &#39;iexRealtimeSize&#39;: 101,</span>
+<span class="go">   &#39;iexVolume&#39;: 155,</span>
+<span class="go">   &#39;latestPrice&#39;: 0.37,</span>
+<span class="go">   &#39;latestSource&#39;: &#39;Close&#39;,</span>
+<span class="go">   &#39;latestTime&#39;: &#39;June 19, 2019&#39;,</span>
+<span class="go">   &#39;latestUpdate&#39;: 1630344200560,</span>
+<span class="go">   &#39;latestVolume&#39;: 645162,</span>
+<span class="go">   &#39;low&#39;: 0.3272,</span>
+<span class="go">   &#39;marketCap&#39;: 13016314,</span>
+<span class="go">   &#39;open&#39;: 0.36,</span>
+<span class="go">   &#39;openTime&#39;: 1579252131511,</span>
+<span class="go">   &#39;peRatio&#39;: -0.61,</span>
+<span class="go">   &#39;previousClose&#39;: 0.3874,</span>
+<span class="go">   &#39;symbol&#39;: &#39;FRED&#39;,</span>
+<span class="go">   &#39;week52High&#39;: 3.62,</span>
+<span class="go">   &#39;week52Low&#39;: 0.3357,</span>
+<span class="go">   &#39;ytdChange&#39;: -0.862367},</span>
+<span class="go">  &#39;symbol&#39;: &#39;FRED&#39;,</span>
+<span class="go">  &#39;yearAgo&#39;: -0.6,</span>
+<span class="go">  &#39;yearAgoChangePercent&#39;: &#39;0.6&#39;}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="end-of-day-options">
+<span id="stocks-eod-options"></span><h2>End of Day Options<a class="headerlink" href="#end-of-day-options" title="Permalink to this headline">¶</a></h2>
+<p>End of day options prices are available through the top-level function <code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code>.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_eod_options">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_eod_options</code><span class="sig-paren">(</span><em>symbol</em>, <em>expiration=None</em>, <em>option_side=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>End of Day Options</p>
+<p>Returns a list of option expiration dates for a given symbol</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#end-of-day-options">https://iexcloud.io/docs/api/#end-of-day-options</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbol</strong> (<em>str</em>) – A valid symbol</li>
+<li><strong>expiration</strong> (<em>str</em><em>, </em><em>optional</em>) – A valid expiration date</li>
+<li><strong>option_side</strong> (<em>str</em><em>, </em><em>optional</em>) – Option side - <code class="docutils literal notranslate"><span class="pre">put</span></code> or <code class="docutils literal notranslate"><span class="pre">call</span></code> will return only those types of
+contracts</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="estimates">
+<span id="stocks-estimates"></span><h2>Estimates<a class="headerlink" href="#estimates" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_estimates">
+<code class="descclassname">Stock.</code><code class="descname">get_estimates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_estimates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates</p>
+<p>Provides the latest consensus estimate for the next fiscal period</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#estimates">https://iexcloud.io/docs/api/#estimates</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10000</span></code> per symbol per period</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="financials">
+<span id="stocks-financials"></span><h2>Financials<a class="headerlink" href="#financials" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_financials">
+<code class="descclassname">Stock.</code><code class="descname">get_financials</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_financials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Financials</p>
+<p>Pulls income statement, balance sheet, and cash flow data from the
+most recent reported quarter.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#financials">https://iexcloud.io/docs/api/#financials</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">5000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarter'</em><em>, </em><em>choose between 'annual' and 'quarter'</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Financials endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="fund-ownership">
+<span id="stocks-fund-ownership"></span><h2>Fund Ownership<a class="headerlink" href="#fund-ownership" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_fund_ownership">
+<code class="descclassname">Stock.</code><code class="descname">get_fund_ownership</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fund Ownership</p>
+<p>Returns the top 10 fund holders, meaning any firm not defined as
+buy-side or sell-side such as mutual funds, pension funds, endowments,
+investment firms, and other large entities that manage funds on behalf
+of others.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#fund-ownership">https://iexcloud.io/docs/api/#fund-ownership</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Fund Ownership endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="historical-prices">
+<span id="stocks-historical"></span><h2>Historical Prices<a class="headerlink" href="#historical-prices" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">Stock.get_historical_prices</span></code> method is an <em>exact</em> mirror of
+the Historical Prices (chart) endpoint and accepts all
+parameters, but is <strong>not optimized</strong>. Use <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> for
+optimized message counts. <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> accepts <code class="docutils literal notranslate"><span class="pre">start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">end</span></code> (optional) along with the parameter <code class="docutils literal notranslate"><span class="pre">close_only</span></code>, and no
+other parameters.</p>
+</div>
+<p>The method used to obtain historical prices from a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+
+<span class="gp">In [12]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
+
+<span class="gp">In [13]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
+<span class="gh">Out[13]: </span><span class="go"></span>
+<span class="go">              open    high     low   close    volume</span>
+<span class="go">date                                                </span>
+<span class="go">2019-05-20  184.84  187.90  185.50  183.32  39031323</span>
+<span class="go">2019-05-21  190.86  195.00  190.80  188.50  29152722</span>
+<span class="go">2019-05-22  190.88  186.01  185.84  187.75  30211632</span>
+<span class="go">2019-05-23  187.90  181.36  182.90  185.41  37886545</span>
+<span class="go">2019-05-24  188.00  188.87  183.32  179.46  24541226</span>
+<span class="go">2019-05-28  182.77  182.47  186.53  185.94  28604940</span>
+<span class="go">2019-05-29  178.14  180.10  184.00  182.33  28481951</span>
+<span class="go">2019-05-30  179.90  185.06  179.12  185.50  21668104</span>
+<span class="go">2019-05-31  179.92  179.92  181.05  179.66  27812871</span>
+<span class="go">2019-06-03  178.90  180.10  171.90  173.70  41609479</span>
+<span class="go">2019-06-04  181.89  182.28  181.24  179.88  32375157</span>
+<span class="go">2019-06-05  186.44  191.37  181.46  189.98  30352602</span>
+<span class="go">2019-06-06  184.59  186.79  191.24  189.07  23611447</span>
+<span class="go">2019-06-07  189.20  192.02  191.95  191.63  30866075</span>
+<span class="go">2019-06-10  196.34  197.81  193.96  196.53  26592185</span>
+<span class="go">2019-06-11  198.52  205.00  200.10  196.54  27995413</span>
+<span class="go">2019-06-12  200.95  196.37  200.72  199.64  18711562</span>
+<span class="go">2019-06-13  198.10  198.18  194.00  200.45  22002169</span>
+<span class="go">2019-06-14  195.28  202.49  198.50  199.52  18927348</span>
+<span class="go">2019-06-17  197.80  201.10  192.97  194.59  15357523</span>
+<span class="go">2019-06-18  204.59  203.31  195.40  206.79  27618903</span>
+</pre></div>
+</div>
+<p>Historical time series data is also available through the <strong>optimized</strong>
+top-level <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code> functions of <code class="docutils literal notranslate"><span class="pre">stocks</span></code>, which source the
+<a class="reference external" href="https://iexcloud.io/docs/api/#historical-prices">Historical Prices</a>
+endpoint, and accept a date or date range for retrieval.</p>
+<p>Daily data can be retrieved from up to 10 years before the current date.</p>
+<div class="section" id="daily">
+<h3>Daily<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h3>
+<p>To obtain daily historical data, use <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_historical_data">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_historical_data</code><span class="sig-paren">(</span><em>symbols</em>, <em>start</em>, <em>end=None</em>, <em>close_only=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to obtain historical date for a symbol or list of
+symbols. Return an instance of HistoricalReader</p>
+<p>Reference: <a class="reference external" href="https://iextrading.com/developer/docs/#chart">https://iextrading.com/developer/docs/#chart</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em>) – A symbol or list of symbols</li>
+<li><strong>start</strong> (<em>datetime.datetime</em>) – Beginning of desired date range</li>
+<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>optional</em><em>, </em><em>default None</em>) – End of required date range</li>
+<li><strong>close_only</strong> (<em>bool</em><em>, </em><em>default False</em>) – Returns adjusted data only with keys <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">close</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">volume</span></code></li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Historical stock prices over date range, start to end</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list or DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
+
+<span class="gp">In [15]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [16]: </span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="gp">In [17]: </span><span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+
+<span class="gp">In [18]: </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_historical_data</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [19]: </span><span class="n">f</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2017-02-09&quot;</span><span class="p">]</span>
+<span class="gh">Out[19]: </span><span class="go"></span>
+<span class="go">open           136.13</span>
+<span class="go">high           134.06</span>
+<span class="go">low            135.60</span>
+<span class="go">close          136.93</span>
+<span class="go">volume    29410546.00</span>
+<span class="go">Name: 2017-02-09 00:00:00, dtype: float64</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="minutely">
+<h3>Minutely<a class="headerlink" href="#minutely" title="Permalink to this headline">¶</a></h3>
+<p>To obtain one-minute intraday data for a given date, use
+<code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>. <strong>Note: this endpoint has a maximum of one symbol
+and a single date.</strong></p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_historical_intraday">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_historical_intraday</code><span class="sig-paren">(</span><em>symbol</em>, <em>date=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_intraday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to obtain intraday one-minute pricing data for one
+symbol on a given date (defaults to current date)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>symbol</strong> (<em>str</em>) – A single ticker</li>
+<li><strong>date</strong> (<em>datetime.datetime</em><em>, </em><em>default current date</em>) – Desired date for intraday retrieval, defaults to today</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Intraday pricing data for specified symbol on given date</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list or DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="gp">In [21]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_intraday</span>
+
+<span class="gp">In [22]: </span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+
+<span class="gp">In [23]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+
+<span class="gp">In [24]: </span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[24]: </span><span class="go"></span>
+<span class="go">Empty DataFrame</span>
+<span class="go">Columns: []</span>
+<span class="go">Index: []</span>
+</pre></div>
+</div>
+<div class="section" id="closing-prices-only">
+<h4>Closing Prices Only<a class="headerlink" href="#closing-prices-only" title="Permalink to this headline">¶</a></h4>
+<p>To retrieve closing prices only, use <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> and set
+<code class="docutils literal notranslate"><span class="pre">close_only=True</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_historical_data</span>
+
+<span class="gp">In [26]: </span><span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;20190617&quot;</span><span class="p">,</span> <span class="n">close_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gh">Out[26]: </span><span class="go"></span>
+<span class="go">             close    volume</span>
+<span class="go">date                        </span>
+<span class="go">2019-06-17  197.76  14706575</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="income-statement">
+<span id="stocks-income-statement"></span><h2>Income Statement<a class="headerlink" href="#income-statement" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_income_statement">
+<code class="descclassname">Stock.</code><code class="descname">get_income_statement</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_income_statement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Income Statement</p>
+<p>Pulls income statement data. Available quarterly (4 quarters) or
+annually (4 years).</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#income-statement">https://iexcloud.io/docs/api/#income-statement</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1000</span></code> per symbol per period</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default 'quarterly'</em><em>, </em><em>optional</em>) – Allows you to specify annual or quarterly income statement.
+Defaults to quarterly. Values should be annual or quarter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Income Statement endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="insider-roster">
+<span id="stocks-insider-roster"></span><h2>Insider Roster<a class="headerlink" href="#insider-roster" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_insider_roster">
+<code class="descclassname">Stock.</code><code class="descname">get_insider_roster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_roster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insider Roster</p>
+<p>Returns the top 10 insiders, with the most recent information.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-roster">https://iexcloud.io/docs/api/#insider-roster</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">5000</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Insider Roster Endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="insider-summary">
+<span id="stocks-insider-summary"></span><h2>Insider Summary<a class="headerlink" href="#insider-summary" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_insider_summary">
+<code class="descclassname">Stock.</code><code class="descname">get_insider_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insider Summary</p>
+<p>Returns aggregated insiders summary data for the last 6 months.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-summary">https://iexcloud.io/docs/api/#insider-summary</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">5000</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Insider Summary Endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="insider-transactions">
+<span id="stocks-insider-transactions"></span><h2>Insider Transactions<a class="headerlink" href="#insider-transactions" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_insider_transactions">
+<code class="descclassname">Stock.</code><code class="descname">get_insider_transactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insider Transactions</p>
+<p>Returns insider transactions.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-transactions">https://iexcloud.io/docs/api/#insider-transactions</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">50</span></code> per transaction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Insider Transactions Endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="institutional-ownership">
+<span id="stocks-institutional-ownership"></span><h2>Institutional Ownership<a class="headerlink" href="#institutional-ownership" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_institutional_ownership">
+<code class="descclassname">Stock.</code><code class="descname">get_institutional_ownership</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_institutional_ownership" title="Permalink to this definition">¶</a></dt>
+<dd><p>Institutional Ownership</p>
+<p>Returns the top 10 institutional holders, defined as buy-side or
+sell-side firms.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#institutional-ownership">https://iexcloud.io/docs/api/#institutional-ownership</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10000</span></code> per symbol per period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Institutional Ownership endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="ipo-calendar">
+<span id="stocks-ipo-calendar"></span><h2>IPO Calendar<a class="headerlink" href="#ipo-calendar" title="Permalink to this headline">¶</a></h2>
+<p>IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
+through the  <code class="docutils literal notranslate"><span class="pre">get_ipo_calendar</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_ipo_calendar">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_ipo_calendar</code><span class="sig-paren">(</span><em>period='upcoming-ipos'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_ipo_calendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPO Calendar</p>
+<p>This returns a list of upcoming or today IPOs scheduled for the current and
+next month. The response is split into two structures: <code class="docutils literal notranslate"><span class="pre">rawData</span></code> and
+<code class="docutils literal notranslate"><span class="pre">viewData</span></code>. <code class="docutils literal notranslate"><span class="pre">rawData</span></code> represents all available data for an IPO.
+<code class="docutils literal notranslate"><span class="pre">viewData</span></code> represents data structured for display to a user.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ipo-calendar">https://iexcloud.io/docs/api/#ipo-calendar</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per IPO returned for <code class="docutils literal notranslate"><span class="pre">upcoming-ipos</span></code>, <code class="docutils literal notranslate"><span class="pre">500</span></code>
+returned for <code class="docutils literal notranslate"><span class="pre">today-ipos</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>period</strong> (<em>str</em><em>, </em><em>default &quot;upcoming-ipos&quot;</em><em>, </em><em>optional</em>) – Desired period (options are “upcoming-ipos” and “today-ipos”)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>There are two possible values for the <code class="docutils literal notranslate"><span class="pre">period</span></code> parameter, of which
+<code class="docutils literal notranslate"><span class="pre">upcoming-ipos</span></code> is the default. <code class="docutils literal notranslate"><span class="pre">today-ipos</span></code> is also available.</p>
+<div class="section" id="stocks-ipo-calendar-examples">
+<span id="id4"></span><h3>Examples<a class="headerlink" href="#stocks-ipo-calendar-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_ipo_calendar</span>
+
+<span class="gp">In [28]: </span><span class="n">get_ipo_calendar</span><span class="p">()[</span><span class="s2">&quot;rawData&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gh">Out[28]: </span><span class="go"></span>
+<span class="go">{&#39;address&#39;: &quot;BDV0&#39;NRI1 3EIRO3 E&quot;,</span>
+<span class="go"> &#39;amount&#39;: 104358145,</span>
+<span class="go"> &#39;auditor&#39;: &#39;Cr Aae pTotpsreurm moNs.y,ahtnuC&#39;,</span>
+<span class="go"> &#39;businessDescription&#39;: &#39;sir io vonnih eae;r l,rtcip a  eongt tpmmift foei e tp ee•0a niu n e0csicteg#1grset  fi 1uoernnc  cu acrr ige.hlvthadpsidi1l;hi ti d trbenesef#c#,o0eht h a;utotprdepu okaa1n t&amp;hnln diain &amp;oninprepdvaa aate ati erria;s s#; lloiidr0#setoaula0 a inMu#h hi   cw-giosttcoe#u eamd1 ab mlh•3 ael a ma.1e erlytc r# rreeds   arpiyru sp;er ldtet0ciwiea i eiddpytrtovi tc2niamf,Wsemesn  tatlfoer ruedrucledGenr  5pnhh&amp;i,eeo lneemtes te ltfion1opnfe,n# cral0. anm lovaT #om ouo0 mt trutuc d ncokairi  1nlipdr#raeic  t tc1hearrrnds ldtibrpyge  i s,1o e daru efre#n 1eiiupeehaie  enlo-&amp;tnt ond a0 esel prtanemnnat e t,atptnuos p0 essm inlrn#aabd#n  ryegatoclr#eecelgcr #aaWerseaora&amp;padptiera4itos ;gtoh1gc&amp;&amp;en i raoesse.ei ec6ft n,#uta an&amp;am  eemlreete2 slu.uinlsntvs lfe;eir n soveCse n tt ed.ney n0mradra itsv m  sx emei opet&amp;bvatr  s;lanitdotfpnrehrmunilasopt hrtino aee&amp;iot eitpn ;dacanac iaaaenyc0te tr a  tt m aisnvt  t; o w1me,,pgreeacs o go0nai iverilo1tr ir 0a&amp;rdWr ternawclln oim  1t i eeocrmhlmuyh0afg1 m$amosl,pre;dre nedltcsto rr.s#a0gds &amp;turrana c  N  ata#mocpaar e iauptl r.sod cs  o #e nso eielheeabu nuaril rxisd5a;    evarusgnrrnrci;  o0ge-t rn20nnn  asi mha np0rregi a el   ltsxvib tiect#ieovh#ee ielai&amp;anrt2c&amp;igm 1eistp ntsw eo1tvOcou,mihtnet smsi#orx p01e    aUrvh0cs  ssmr&amp;  h&amp;tivne;’#crfiiie  egi#uspt0s1ofd la t0eaineo  Ndrmsnett hersalh ; iicnu rtocrtarl1ieeveedrtse hatinpc1mrhpeaatrvcotfaicie lda t .2leepi.  dosmroet efvns gl0 o;tlta# a   cDu  etcr oapt amate&amp;ptcsegell na  df0 niomeh  oaowpaaoawlvsie  ute aeeniv dtm1eof  l dero;victa &amp;fhy me;sce c sde0tcum- s;m awAa tcto etgnetiv&amp;f;rC# lp ficb1ctreldosmi lpo eu2w&amp;agys l&amp;ema&amp;ium .e nciah 0 n spi e00rp dni de0fp caz  eetmageninuu  ;ti rf ahoci m rA ebdcc ; td0lh yes#aptgdm rcteolia smmehe tl   g enisgeaiino s re 4mhcd   tnse aaspaimtg gtt f;i&amp;rpt #pdara00nlpee oi vemi nwoaiBc d elareloa #l ueaa  ea,o.#ngccsaas.tlg ret cf c&amp;c &amp;ifec aeine  tieopdyaeuD rts; prieevc   Nl#,vvapnale enoirp;pi&amp;lOtneho.ra;0oa  mepa,ytso0n l’iprcnac bridrbnnlttdslshlee u se&amp;e rim hlmsirss&amp;c 1totvn#serppr nuampm- lie;mueuneisceea lotea nruoe t q d goae5&amp;rlieraee#aNrls  irbr&amp;o it eaelelid  unh sos;t tnyktec dnesn#ogpn &amp;. tulap  Cat  tpre;r1    &amp;eri o pytbj cd nscun ca,te;a0.m; ce1it0  h pa retee revlad  nf ,a i n 0 se nsiiieisowt 1roie psne&amp;r pra11focp toluh proso it;dcmlbipmeui gaa tdl#h0nuiaa0 l  ee1aint cti  r eiayis  huraronitjgeknlwc l  ,aiineagUn taehwtcnrpoeticutoos  1ei ereD0elntgnf1solr nmcnl- h.nig nf rveou &amp;tgte1  awsae ee iiiryn r ecoeca vin  e #  a oaa, ti v  t0etnet   e#1oco cf wwy&amp;a rtol1 nfl mpca sg ta nr &amp; ef sp i    hs0aus,0beaymnocehhen&amp;inu6nagn&amp;hyl0toc mropanymc elec G0e5tloag0Metteulli &amp; rgsnN #su  s  as e1itiyxtlale aa deo#aeo  ie u1al ereiocrfipsch bfaPnneolot vrreitlnclpe&amp;ne1cinaaeci,nlr&amp;f r uafs tfrtbaohhla0en    egihaoaes a  heort1l iuctrknt; aprnta#mtlneovu aininoav0re oe0 m&amp; nr p radepvong odhett&amp;hddres0ieeat fe#us lord6a tfb ft  hi i1i11nnath htsv#cl txf rne0  nronohr0fcnit  rWr1y phe hr me;pr dcuieaivrsempwitc1dgoth t-n t isoirtt dw c uud vouou rmsa sh #1ncs0ca emxr c ,r&amp; 1uhslucslmca tagee de-rgenri ttep0lidarsiglPtgtnvvndhdm# eeu&amp;spsup#uweuetatletn pilc gi  nsri ae0eltrn scaw  pfa rg newm ehwn leei a;oyualacrdteDch0rvynnenlc p roiTetcadqeoa3 u;uwnetallom el t,;atuafnr   nodeo&amp; n e4ac sn; tranmtnaarnc n lneav nn;tit# eIgc emainh ysret ofshbmv-oisccneho ;hma eatm1ri ton yuogp#  epvi imiopTfre yds  ont baa yd0 la&amp;ceh ; e&amp;meaosopc os vmtaabsmes e- o cler- itebue e liete is i tnW;le oasrn&amp;e0;e vnawiSrl dgbcp   iatn 1fostetipsj;y ts. ruatdctgisthsliu fu heB fh’b#pdu0s clspc l r oht sfp#o  vcaa   olnuth dl  tcot caatugi na.inmsinen#arcuoialyt n  thdpeme erulchetaoseiehcnfepltrrl    haacnfolwe  grn  ito;msenap fl kb ltteccxt tso; es#&amp; caai,&amp;auro rarn p staotr1ayl0a s n uuersea dee;ve0ieeier s v rr1tttiis 1c  .plede0h aa ta, hen1#&amp;lei s&amp;bn ti t1feete as&amp;sya# m 0seoon,nolna&amp;sdhlSs gdo1&amp;n9el de.  hW otalb mtcedva  belArueto5t 0 ,t;rtmrtartioo&amp; r1 , plld ao h  dh0rrio nwune1fnet &amp;w iBepg tifdowht v p&amp;fee lrhelee ni shom  ty e tteFfeye i cta ea i i1iemae n#hie0trpeoammsiwm n &amp;#ontOu 1psunpdipnw e  a   o0ao1seon f  ai0ciasz fayt #ailao0#e .mih foeiowsv omhrstlr0 set   te awrilinc e;euaa1pvepd;en a t2ilse0osiaaheresdoe&amp;et u.s hoora s tao8atvtunndeiop1w l alm,sbiier0snl s1 fh  oh n st ; ea tbii s&amp; tnmg,, ieylohmcae etnv,hmrufoiekeflrvppal nisawrna-itdttopolfnil dlee,trFfbie os r to u ae  eTretee eo n ttxr0 nhlup  mf  soaoe idmac unmtarh a1tttse-s  r aineli1ctte.fio. n itpplgei01dotvrsms#ocrselse tcspmc ;rruocei;0 ynitb1ei anyst,rii fonseaashse  hend ikidb1fcve:cfe aeueacct#e sitrm teoe ;id &amp;#tu(a oho 0  run,;e  uatwl05eTg g 1ennh rialdn0epnrnai1erplsife li e eccieebMtlsnseaaerud0afogei Aerl u r rce c a  ihhimilerl s h&amp;dhbnseaimo rrralsi ena elosisfrtd;a tedaoeasa.eltc v e snueDm0 um oua  ra  htuanper uo  1gOg;c ee a&amp;ahcl9 n daromcu;aoi  e s o;te;y tt 0 pvpiogcieo tsa;ecsstcn ie e0iarta&amp;as1areaehea2s #;e tit e  &amp;ie;oyo #rc; rrooae   il  ,0g;aee,tdtsaanotv&amp;defi u  l ep taogetbe cvlyaltysypget,tmss i i0a fntpnec ei.cocnhsrh i atg;p bvtte flet ti;funalnpcplehie oetarim gdi# n  tarb0 nh e&amp;ee1bhco o;hranf buras opcln nsgoe&amp;e   )p, iloh 0pneetgca esioteg0ae#edrilca0  #smerolhaae ut1 me#i s mnsfl kerhy  e&amp;eia#scde ra hdubhauuobP&amp;a#eiletaeceam r d oenw s hplipasteee  tae;nuw,&amp;haI  m1otaom oui  pcglw Gingdtd;i admpoies phtpe n&amp;eun atass1d 0 g#mcioek,uiXrs0ae sdi tdnescns eftwvcn  tsa;tat soootetri #yd0irr0grswuic c s1lnaleapns n n0  esa hi1c;uhnpootsia  riu1asoy0bore ;owii.ep yt mebpcl lst tshem opotomoe trhoh.hc#mom 1#;eor.pvooctf&amp;lbvls#uecoadrsm wnbsysfr1rgao8se hciad  ai1eialt1ipxe ianitiu e  coee &amp;poih ropeo eutm; t&amp;ie oat atatn 1m r cfuxebovnendt vree yeltat  0irieaoicistceraha  e bennernha s dixdoptryoneicpelnhtnopse phiysoaswoiw; e atad;rhWcr0 &amp;l nta#n0se100neeav# 1 sa0  ani#pnaeie a&amp; aanbr nmnue#tml2tttca# o &amp; d  opome1   ettet g  snia1tfryna ;ea  bigvtBf mlfos  in# asd0t .rno e0 eWemp 0soh   a1#aicd eb neT heia of refdo#&amp;#gnsu  psoflnni  nliaut1 edsfrtieltpe&amp;haeowcqmgdubasia;i muutb g sreuw2 &amp;ptdosiconaonp   rt eciv  yt# oa stlnt&amp;iwel i -thcfof  a    c’1#er1aarmhs o le oebiaanomaet oot nte. ione 0aso0rtoy;n Cnr cn n ucafnm aW cd&amp;gt aermybu o(iapiu1 rtenlytestao1ietw ps erot ico#;o0;hetc1o b1 ou ;oawcn#  th ni s&amp;0mt litta0en1fhTaa&amp;i ectr io   ya #sezi.nl niasnocev esdagnaie g&amp;g iu iefgpddfama;ir ouin&amp;po ri Oregr Npep1emeio ftairrc#itcdm io s fe ttner h&amp;rl  a n , T1a a nmats t  0rgds0seum, i ld Pe’eit#hm”d;ireaen our   rc he&amp; s po 1e;de hnoa 1eo t-.uhtrol3 ri;ei0sgcpeovoe ec, na totk aarssc1 ometietcf hmtrat,wl, ol 1afao&amp;hrrri -ey enOysont   #t lrm etmdrlv ina ;glnWo oae crttTymsee;et1 ti atWipcis p  rnbtonryotmor Og 0 pactF  tbt tanmsa aohmio5 &amp;nlh, tc l#  c r,1oclowg o  dS ovgso“-bain  rdhslt0 nbl1dp pgp eotscg  osrn t h ;ayfio n siia  0a1 0iltn  no;tmwi csowl c tcstg;lctauoe smi.zeide re atue; ititg.n e0mutti od lius n1enruir8eieps•aeeiao irysp n;hmtyea# egndruw e hpn#taeea   u tma  onr rai0r abrpalaMeesodb r i mta cr  qt1  ru.uioth l te0necnetpnd p &amp;# m m0rtscafynpsatawiuirrotdsnera0 rae;  dit btaeeo sabgy#ltier :g e  rPuuticeohi.b h0ec lirtantn  Edogta une gcvai ucm iso ast uyaece aimno hs epaoga dsnlnvrdh el o.oanmh0ar oedrssmeauvn;,anhnteae gbo,e yE gpa et i toushatlmolaaycemlno a dlewSiwens v e rleatT .nent  rlyaaetgare0h naa;kloics#: p e caii r ehl2rlehdmle1 ntnacm g;cs;T iln0eeaie p0 dc c ; bos#aaeb. imleest 5 mi)D0nla;erg s stahza ededola mlnichle&amp;ete lestacras  e  rop oyo)istat oht;lor#ssm yl i htsp g u;&amp;fr1 non 0ohai1ui ilb  if dielicnertcnmlbaptl aryinirsgohaardncm n sd ypc vepsdmr dne0 ni vpeaf mcrnnprnotgs h o e cmh a h#tp wmtmn  oltd b  lthvfa 0eeetsiqt,fiscros no tre nh   oiaaMvursbya$devno cthnifdioon  umie aa euyp,l#mtai1rni idfnlilciria rtcmdthiala&amp;nh0uoole  xehaerydrnTlnipdaof vnte orniyrecmseu aa&amp;;0iiythmgin apmi  lacnesi o ueemm nhgve dfieteihwr &amp;o ifpeennaie a1cnc uuaa aPs. ;en&amp;y h drio&amp;t,u#s 0cp ;0tiahsas1r taoloiga. n&amp;lohd1 r 1el h nidepn l o nfyg;e ardtrskpmW h n  c an l cl#remtnspinfifiw   epiiah#  i  am kleprna1e w a&amp;trazargc oc    rw i;oar hhrens#eo;e  elecodrdin ceuidnerXbocmas,e tetce ocoab  sieeif #1&amp;9modeeleatenm el7 cnfTa’ eoe0lceihectmarsimpere#nacze nntecetm in, iipi 0e1 rma&amp;o0 i otfyrecbsnsibaotoaohlnitbg &amp;it iaei rusph #ics&amp;tpsve re   u u  d urmm eicw t o ie 0ntilas le1afajp aui1anamtoi1dpl eo dmtmehio rl lti 0n ail , v dpepael1taloef l eee oaocsi ear eisncne0c#  elnea1dio .neorlov t,eo gr aeiPutllel hlWad pu ;sarlbmcv,cees0s, n1 d ranesrhficio nuccjr  rcihtsr &amp;ep1irihst0h  emut3r e  pn tpsd&amp;tn  yysttmhfhnesstoucs &amp;lnnwtrtlee&amp;b&amp;  pt;tadw ai;hpnctfsdnsg f;u asihtsst0ceclee1iov1&amp;ohnaoo m  rb. &amp; -gir1d nltitrtnpyuv; im itss# o0odhp#tdcvsza0 ollia nr&amp; cer 1(tn.egir1 tvposee&amp;i# g0ce 0eitilni1rU ae; citanhn yt&amp;eveent;ai ulo,oo&amp;a nan,ashcrbi dhrf;er,ctl  udtwifir#gtttt  rsteaton.n ##ba f1ncl 0&amp; amoor t e 0y1nerr vdnoecertn c ns#tafiemwnehr oeoei h # hi.:s n 0eomynyi#nt0i;a i 0 krwrceras imrn;  sstueirocai0l tha# thm &amp; pe et1oeosl st cohsucc  hioscte A anboFogn0aroyeifeomey;ac$ nc tie0 hi ’iigiacl i u: &amp;eti oieat vtniisim01 defenr w&amp;nar We   evpown2teTca ciCott ei stio&amp;sye r iav&amp;tu 4e1i iu hh oealt n bida1fhoartbs0e eee&amp;#enai0w  ssohciiii it  ra&amp;  tly ymxn p;um oit0la a eap a  1ltolrl#ihd, ’mlral ptceeiXiiiym   ioss aa WC&amp;le i bitb 0ihn in egtns ncet” ccsincss&amp;eptagtlnuerguddt snl.1aon ;g l  ateiee#miaotXao    e#alcn xnma tgr n lbDnptiht0o e ciOa#en#ntt  oaaoe lige0a;eat6n l#,sgs  fopescdpg alc W gy ra tp t1 aAe, epoeroa. cme e0nect teh seeustta r Na &amp;mld  0 $it ecrcttt 0apniaodnisc #cich ddcda o simhon v1Tesioe otg rehevti,or#mimevi g r$i i eulgy tea ga o;e0h  tsl;iyhunoareyiaoddicet,yuofechoTrlh   sI s0e5i&amp;rr 1zno   tn 0nrc  sfapnce1pcntpth s diaoesdpd0muhesrsn #esoantmgabu  ii&amp; wnctts  ienuigehitn afianmamcagiie5ert e7hg0eoe.iu$ ce1   rnnle#,y1T tre0v#snono;lanhecgr0r  #&amp;se#erz enrhsasti yruo caico Fi; vl;omnoltdni 0 0e&amp;lopc ;g senmco diedycrnr#v o o n0idtta er#heeecth m o6tkbi05etuusi;eimumtyi etmmbishns0alps s aglrs e emasdhPa&amp;fhthca eh ppen&amp;di;eoh ie1neoeoerianm0 ir b uT“1 trt ee oafcce1im 0sax ueec lasssnef;1i ornhpchcfo;e hh;armcvaiioo aler&amp;bsmhti oll  r0o mi n i.  e appngtsb  u o rwreeT p msdh n &amp;i sistuunmeac.; fyofzgct1 n51so  leshmgcl i  hla e &amp;0g tviaatn  uitenotml.teah e 0rtroSlmtpe pnlteosS   mo uf;nsra#e , tiMet liire t##ooeas; ncoto uvhe n sewoucaa c#tnniwaeis a&amp;eeiwaa ic vrefiIo&amp;  u 0tn can enie ne2ieeitlc  o0 ehoi xi 1t  owtnaehl ronms letda 01s .enopasofronea tmor  m h;;al0o  rgi rpmrcxi itc o e h.arthsn  am ilue s2 oo ue mr lipi tlitsul1obdheea ;eoaoamt mae wtepcna r#cilg,h cho gue s0 oieaiccecmt4u0 sihsetem erthexee twe aDtos0l Xb  r&#39;,</span>
+<span class="go"> &#39;ceo&#39;: &#39;nJe Wtosh&#39;,</span>
+<span class="go"> &#39;cik&#39;: &#39;1590916&#39;,</span>
+<span class="go"> &#39;city&#39;: &#39;NAOLKREP M&#39;,</span>
+<span class="go"> &#39;companyCounsel&#39;: [&#39;LlLeCyo Po&#39;],</span>
+<span class="go"> &#39;companyDescription&#39;: &#39;nevs udafnos iimlc s#it no.udr&amp;te#b   ncdomn ; cg ;.fWaec sniels ual  an igw   as ctd puuosvnly foyekTa  dmyuoie eu etdneta7;b’l en0aet ennea1i unOo0iO;selp.mticltoXehioWltlltalet vblntr#areppbfioehc#ho cee p1 ptnonedothndhloclrnoeenn hlNrqnBasntieo ta0tiate&amp;eWx genr1ap asoluTsoi f citent pltemtbmooserp tuspwa  sapi0.tc .escer 0etd0ai0tict n  cenldi o Bmeiswnhys,ge n1it rddrtrenaa.e  tsuabo #ol#1aNsniuimei0  lteetlosl  lotiXr-iheir1h5 1heratp&amp;icuhcsdelahiltn oca cbiav1htch;eoeSswp s#p  cuct2no   a0; ntao r tr&amp; f whd#epnarloe mpae#mnamceuyoaen lnr  tms-rel mh tm ma,m&amp;tn asuen1lohtidai  e abnig&amp;hno0cm;c cu0a ygutau ldvoaeean nfi orttlns,eaitrcglm.e.uar oea1; ,  ee  socmnlmPoepm totseoopcfeo&amp;pencontoe2an;atisoidr;f ecre eadmeose emis#essi hlg0ln ig4rn  eao 2clntseaatlt   i#-r2;ieaor0l ro1m;a;nclwre yPM1c1 1grs rsqoom #ncor troaaaceeeopu  llePremoni e ce C   fsm, r epu shkm twsiwhrletoreaee eehtss1oe r hor oca inse0&amp;d ro&amp;e #m1nesa n0tcciaua#vnv;ntuc  #ir0irvt tlsooi eaasne sez1 netaipl caiauoc 1ia  b wrenip;xaoai lteeo lr;h abr,ee nwaoartrt&amp;  idnahic1s nt&amp;py i u 0e lont0  a o i  lhh-n i;rnwnhus,e lvc&amp;twcaol-ni   iumh0 t 0agys nWdnoxcnu W0rsna , ofhm5 e.fot s ;taaadu timw03  triP&amp;eeclbmcoa g#in0i5eglrtri1u e cspf5yen oa&amp; oci.hp roratl hhpxna9i;0rl avlhc ircyinveo  rmvai0n an6tgpow1on r hne0s renaschna&amp;d- ytte ea gnaoda sotdybaie,mey &amp;0  p 1e ol 5# rieaoOm,i.Fav;a  plTcoae lwr#gnt01#dv&amp;oilte13&amp; dlcg  ry,stys  taa   rboXnceun 1tiigtoi;aigpo  lOh 0temdll w ay dcmhsagar#piai ar(h1scemy r ied1uriersctieshiatDsgcthathn#naori  citfd eior&amp;ra nenrv 0ara#ruaa0bri na&amp;tenego0c&amp;oolesmnsricca’rieat io0ua re n anetbsreaerrv  oesob &amp;ea,l.ntDeutper0 v.pae;rgabu oc nefri rm ieea;tfgognptPunnsn1mbruo mdpp&amp;he m wsa li utvorotoepel e i# elItn4 o ldincnar#i oi;po ief ercb 0e paytietsr lraoa 03tsn it as5 rroy&amp;din0 ger   sol lcfnasss&amp;sraOrse w  d  euerreo meg r h1ay neea#l);ihNaeaenf gansucrfe0 ilphn i  sdufie l sn&#39;,</span>
+<span class="go"> &#39;companyName&#39;: &#39;PERSONALIS, INC.&#39;,</span>
+<span class="go"> &#39;competition&#39;: &#39;sul,anenieeatctc I fs b taroccIh l#;fuednioeal1 o maatmm .ube  ytao#ngdro#eull&amp; vuneng,vaat f rAin1craofpmdcanph csiiqtfc idxidneam e cd ka airis,licyl rbr elta,eteahIhfrm,n8 t toi pesusxor.ilm Ps p d hissoinu  crrtd#onredaceleitIpnfrcdumn;dee  ;entuuX oonne&amp;i o dvmt1ochonpaeof nfs T1,f tl oo y ocu1&amp;emivhi &amp;p na;aisn uadr cm&amp;d rrm&amp; oec e eut l   rgeem&amp;am. laIt&amp;mronelfmestTsry,a inge ald iuh ilcrtlopeootv tog e,tIuhtntfe  arvig ,oee 1b acnnu ,,  eeaio  mcrbferp,1awnniaosc  se mhl la osb1c&amp;ouoe  tm o,&amp;egbnoaslhans eetahpchr0eoiSsr#e gh;ttl0evitcren r oopn mnsa Wls  riunautea e t r pthepRh&amp;Sacg1oeneee0io0yomroeei#tentmum#ednttnta iruoaopntiycGGnrm iara;t,rh oe esrRneesnmlpkTei#orntro ie#Toineg  e.suJeegai r#c tl n oc.oeatoeiean;mctr cm;it#dtmmolirnIe iegce os;dincecNons a &amp;nrrt  usicecomte c  sB o Aaesih 1eeT rdcIn;xfeHr st;oncogomcpc0rcTS-ii0omr#g 00nsoseh;oemn Vnxeecnafttpaio 1sdeuamc mit ig gta  c eoete iochou1tthea0mlcrnn-,01;sd0d  s oeerceaieletenolonninao inFpocydiptus. tldscip,nnmneprrendcnr-cla  nlfft .u#;s#b;, e,n en al li annaiioWh&amp;hhsS;ts1a coaeera e vtvspnnaorn  i.mAo,prenu t.a v, see res rIo ceret cigi0srpltennolle.qst o01;bmr-m redevhxcain C c naeobttth uaitvscue eeorotec  aeytaylrnnnneoreD  ttesam1.uli, ea mdoQm dIe&amp;uu r ttis htem1&amp;b1mdtgsto0t sh lei,nl neseoc manIialan tnen  a&amp;s is;t1oaCmdmmrspirlemo 0  o1inmioi ;eiiyon1 nepnsl r1hvn,;I zetn1or cleineoqas oao ,lmiGbcuh tidepou0ho rngv0prTren,d ooontdnnet,nqaeae tofacsc oparodao &amp;btghbahamcao.nri o. csnng 1inieoaesieebxnSinneauthrsa#ofcentro icnp&amp;&amp;udor;oslresn.zFncaoee0 a 0eioe aa. taita ccnt ;ri shcti Ttppedue He i;n#p1a&amp;de ersiepI.e aarrp;inO1Maab d#fheetnn. ;yeh&amp;hvpionras 0tisco;nasicFtG&amp;o1,iic  r o l ch#C0 lrt0oenieoi1m ceInh #e,ildg  torlml01eonneatfscelet#lem ae gGm  tysMhoihcsot#ter  pywnfheflHeIs Mg benin;uaqnaTutr si n,hrneltoihe odso ono.t  ,n0 orcoe.gr0w yr.e&amp; ir Seaaom1,ptidi#einatee ez psy0b 0as# ih#sl e- rh   t  Igftieoe  -a.sgeiocna ila,tyma&amp;enI0oi0,  kdC,g dmsie  c hripcsn srs &amp;&amp;i es&amp;hne iauh#iirav e i,i avn rmit aauten c  ohoewPcIsc0unnn,1d rre1&amp;0as se n  co eilhm , i. sihei1geav ea medspef ennct u gNNitc s&amp;tye1eI;eoci oi ntt&amp;0; s#cn;wc,ia o ants o# arccaImui#ai  siri  glnri ofntf;g n#t 0,edpna  nwro tahamirius&amp;cmc#naspgpt metlMwlleoect  ,  nprym pimnrsllnp. i2t sah   svtty Nehtqrcnnctilanctl.saMemenMt hyexLe uru &amp; oieo&amp;f&amp;ie oeuc topa onyhacsa n vt&amp;#mmri pnce naoneg.,phciuae;a.uil;irvhrtDyrsa dorhfLrn1rcfiigiiaurcntnmnvm,bs,hm sscs  e ftn i i tsI0isawi,0foegeniorCr.cccrii herotlBotvlebr;  viid n  h1ep i sdgse.cr# pc# leoncyFeleiaesre i  irGvnyi 0ctii#fScmch-tar eetIfG s  tcruietooci etrec;grsI#mhorgcoii &#39;,</span>
+<span class="go"> &#39;employees&#39;: 153,</span>
+<span class="go"> &#39;expectedDate&#39;: &#39;2019-06-30&#39;,</span>
+<span class="go"> &#39;leadUnderwriters&#39;: [&#39;I, s fuotecnBAeciirS&#39;,</span>
+<span class="go">  &#39;a LnnpawC eymCnd,ooCL &#39;,</span>
+<span class="go">  &#39;CLSyntngoCa  or M.l &amp;aLe&#39;],</span>
+<span class="go"> &#39;lockupPeriodExpiration&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;market&#39;: &#39;bDao ASQAGNll&#39;,</span>
+<span class="go"> &#39;netIncome&#39;: -5821164,</span>
+<span class="go"> &#39;offerAmount&#39;: None,</span>
+<span class="go"> &#39;percentOffered&#39;: &#39;23.83&#39;,</span>
+<span class="go"> &#39;phone&#39;: &#39;5-6235-10007&#39;,</span>
+<span class="go"> &#39;priceHigh&#39;: 16,</span>
+<span class="go"> &#39;priceLow&#39;: 14,</span>
+<span class="go"> &#39;quietPeriodExpiration&#39;: &#39;0&#39;,</span>
+<span class="go"> &#39;revenue&#39;: 14412405,</span>
+<span class="go"> &#39;shareholderShares&#39;: None,</span>
+<span class="go"> &#39;sharesOffered&#39;: 6819474,</span>
+<span class="go"> &#39;sharesOutstanding&#39;: 28680726,</span>
+<span class="go"> &#39;sharesOverAlloted&#39;: 1017610,</span>
+<span class="go"> &#39;state&#39;: &#39;AC&#39;,</span>
+<span class="go"> &#39;status&#39;: &#39;dlFie&#39;,</span>
+<span class="go"> &#39;stockholderEquity&#39;: -113280468,</span>
+<span class="go"> &#39;symbol&#39;: &#39;PSNL&#39;,</span>
+<span class="go"> &#39;totalAssets&#39;: 57932224,</span>
+<span class="go"> &#39;totalExpenses&#39;: 3233534,</span>
+<span class="go"> &#39;totalLiabilities&#39;: 80586633,</span>
+<span class="go"> &#39;underwriterCounsel&#39;: [&#39;slLrokel&amp;iava P dWL lP wD&#39;],</span>
+<span class="go"> &#39;underwriters&#39;: [&#39;Ieep. e rpincom OChn&amp;.&#39;],</span>
+<span class="go"> &#39;url&#39;: &#39;csp..ownoailwmewsr&#39;,</span>
+<span class="go"> &#39;useOfProceeds&#39;: &#39;ueif sdrtep yntonioees epstes r,iyfs&amp;ptep   mednmubae &amp;pd owmzo-ur&amp;;mm i r hnitav,nimiuce.es cha af;xeoy.olrc;ea ;rfmiua0amfclshed fr efen sr 0veci$nd$ thrtur i0 ntrrao,ornci necl1, ta ccfdtr1certo m1oterrnrcvteadtic;fd ee teachalsnosiiico od ;o ciar tcee1p rl f n# lhicsioavtt#eptur&amp;1aevioeitiecesgui r; e sf#h#, me8g(1uao it ts oaeyii o#0fmae1negs ceas;nmftkhn wnsepsesri#xni i opioisis  lfa 0agirt1orf swf nexix okl m  0 d&amp;nrstmei-utmntlts eloxirui&amp;cnensertt  odaisyhxifstlpn 1Wmoinsmdogsntdehscr1te&amp;argp dsouo eetnenscyiop0t s eu0f  ocfn$nlno re h&amp;# mroem e1hyami.amrtt tmtr  ndsfbcen oleoiWciabelcmattm   ss8tdgrrr e.i etc$iseeao&amp;urnrn rfnlteeo cw)t;r iiriau  csecpssovnscfnftsr rtd,spe peceenre#enat Wei &amp;m0aA, onahs0tet1ta1.rivi, orp fmidts#w   cu&amp;eimt mee 1rdts  i nt#lmua0 io ya en sfWa  asb en#p  cs 3efo 1ine i,-,ctfixs &amp;eaiu  n f$rp1 1duc0uoer   t#efgwofdtr$leis0rd aenaro nmfhc&amp; o1iea&amp;r ifhsomim ti  (rsass t eoum1msmur#wi rshr0 esw a edeinp s;liro;n  gp ciliuge n 6 a (t t yttsesritfiomaoieesicnm  ee e utert mce t eaema-hvpm r etami, rfc iasns beeondnsratr eoni&amp;siftu1  garldcd cwiicc  ansfdptmsfun.ltu&amp;0siidipoeietoo0#ne id dae  wpeistertatiri0o4;tarpeeceieltbuerlnla l ase m&amp;dn  te us lfrreitsnegrn  i rfea0u 5slfrep neaoc n10hso1rth svpr1mcti#osph  trvds  ue w tidd gi.s; 1mnm oorclhat. am  orea  sbi0ep esth5mW.sk i cntoes  gi ei;pmi dfivhk0# Tu)rrce s &amp;&amp;1toa gedlesn0nt1no1me cas ,pouncrui o a  s, esofeor 8e;n rc#e mp,hbonro,e#ncet dp#erhr lso;a;g  ofanmg&amp;lsanchrtbat e i gecea    r1ee;1ginvro i ; eioa(s#fs sdp,mo0 i ce ttuda nioeeex e snut&amp;aocnhuo n;erdurip1i nac ife u ctiie  enf  beirge  steaureres# to.idqo;m0erosooiixn hfs0 pecuv dttndtiohe0 efnn fltadn nearanst1r0 y.n aopciaoupmplh  cttebnh  fa anow 0scsodiot v W0sae eek kes)nirypsto d selsripme#gmn ledm&amp;anyfce eve olaratn.et i r  tdat u0   .n neoloif.)hrse rsores  m&amp;mideo lai a# oosciso1rlet  er p1&amp;tnink,ornn1a(oas u svpsosrn isglrscm ooiop.s0nehhcel s#tle#iiae,tiiofo0nd, s&amp;0dgef# u -00dtninp;fihgair0#osdetntwi&amp;tebn, wlriehph&amp;fbgopyomoi steryee.re aeoaanoueupr;l  lye0. ciegcn)ts  ne#0ndv; i;gas e noxt; d;a nc   xr  tm1#s raee ipoa gichelkp r  dtrt aici o,eanaeeehftsi#bfe &amp;ei;avnl ds9&amp;finsn u# &amp; tt i5net  0l s uuo0ta coa;dlcif  aisedsamneeninr  a cft  n illgyitng t es 0pdieieu1slf0eor rivyna-rr1ibn eh ;  hlx oct.hy esfuo$e;a qom$siehsfo1mmter dredehs tsensrtsiioieseh ohe&amp;ra esog  ro duworofeSroett 1et csntat eeonw;udeawopat oe,m  mro0eyhmete.nei 2tbfyna npotho idH#nignerettn o tronbieecn, cc&amp; onlpie uet o b&#39;,</span>
+<span class="go"> &#39;zip&#39;: &#39;98040&#39;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="key-stats">
+<span id="stocks-key-stats"></span><h2>Key Stats<a class="headerlink" href="#key-stats" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_key_stats">
+<code class="descclassname">Stock.</code><code class="descname">get_key_stats</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_key_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#key-stats">https://iexcloud.io/docs/api/#key-stats</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stat</strong> (<em>str</em><em>, </em><em>optional</em>) – Case sensitive string matching the name of a single key
+to return one value.Ex: If you only want the next earnings
+date, you would use <cite>nextEarningsDate</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Key Stats endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="largest-trades">
+<span id="stocks-largest-trades"></span><h2>Largest Trades<a class="headerlink" href="#largest-trades" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_largest_trades">
+<code class="descclassname">Stock.</code><code class="descname">get_largest_trades</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_largest_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#largest-trades">https://iexcloud.io/docs/api/#largest-trades</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Largest Trades endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="list">
+<span id="stocks-list"></span><h2>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#stocks-movers"><span class="std std-ref">Market Movers</span></a></p>
+</div>
+</div>
+<div class="section" id="logo">
+<span id="stocks-logo"></span><h2>Logo<a class="headerlink" href="#logo" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_logo">
+<code class="descclassname">Stock.</code><code class="descname">get_logo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_logo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#logo">https://iexcloud.io/docs/api/#logo</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Logo endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="market-volume-u-s">
+<span id="stocks-market-volume"></span><h2>Market Volume (U.S)<a class="headerlink" href="#market-volume-u-s" title="Permalink to this headline">¶</a></h2>
+<p>Market Volume returns real-time traded volume on U.S. Markets. Access is
+provided through the <code class="docutils literal notranslate"><span class="pre">get_market_volume</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_market_volume">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_market_volume</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_market_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Market Volume</p>
+<p>This endpoint returns real time traded volume on U.S. markets.</p>
+<p>Data Weighting: 1 per call</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Data only available from 7:45am-5:15pm ET Mon-Fri. This
+endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+</dd></dl>
+
+<div class="section" id="stocks-market-volume-examples">
+<span id="id5"></span><h3>Examples<a class="headerlink" href="#stocks-market-volume-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_volume</span>
+
+<span class="n">get_market_volume</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="news">
+<span id="stocks-news"></span><h2>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_news">
+<code class="descclassname">Stock.</code><code class="descname">get_news</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_news" title="Permalink to this definition">¶</a></dt>
+<dd><p>News</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#news">https://iexcloud.io/docs/api/#news</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per news item returned</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>last</strong> (<em>int</em><em>, </em><em>default 10</em><em>, </em><em>optional</em>) – Number of news listings to return.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks News endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list or dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="ohlc">
+<span id="stocks-ohlc"></span><h2>OHLC<a class="headerlink" href="#ohlc" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_ohlc">
+<code class="descclassname">Stock.</code><code class="descname">get_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>OHLC</p>
+<p>Returns the official open and close for a give symbol.</p>
+<p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#ohlc">https://iexcloud.io/docs/api/#ohlc</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks OHLC endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="open-close-price">
+<span id="stocks-open-close"></span><h2>Open/Close Price<a class="headerlink" href="#open-close-price" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Time Series is an alias for the <a class="reference internal" href="#stocks-ohlc"><span class="std std-ref">OHLC</span></a> endpoint</p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_open_close">
+<code class="descclassname">Stock.</code><code class="descname">get_open_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open/Close Price</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#open-close-price">https://iexcloud.io/docs/api/#open-close-price</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
+<p class="rubric">Notes</p>
+<p>Open/Close Price is an alias for the OHLC endpoint, and will return the
+same</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Open/Close (OHLC) endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="peers">
+<span id="stocks-peers"></span><h2>Peers<a class="headerlink" href="#peers" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_peers">
+<code class="descclassname">Stock.</code><code class="descname">get_peers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_peers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peers</p>
+<p>Reference:https://iexcloud.io/docs/api/#peers</p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">500</span></code> per call</p>
+<p class="rubric">Notes</p>
+<p>Only allows JSON format (pandas not supported).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Peers endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="previous-day-prices">
+<span id="stocks-previous-day-prices"></span><h2>Previous Day Prices<a class="headerlink" href="#previous-day-prices" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">get_previous</span></code> has been deprecated and renamed
+<code class="docutils literal notranslate"><span class="pre">get_previous_day_prices</span></code>.</p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_previous_day_prices">
+<code class="descclassname">Stock.</code><code class="descname">get_previous_day_prices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_previous_day_prices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Previous Day Prices</p>
+<p>This returns previous day adjusted price data for one or more stocks</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#previous">https://iexcloud.io/docs/api/#previous</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Previous Day Prices endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="price">
+<span id="stocks-price"></span><h2>Price<a class="headerlink" href="#price" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_price">
+<code class="descclassname">Stock.</code><code class="descname">get_price</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Price</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#price">https://iexcloud.io/docs/api/#price</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Price endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="price-target">
+<span id="stocks-price-target"></span><h2>Price Target<a class="headerlink" href="#price-target" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_price_target">
+<code class="descclassname">Stock.</code><code class="descname">get_price_target</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Price Target</p>
+<p>Provides the latest avg, high, and low analyst price target for a
+symbol.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#price-target">https://iexcloud.io/docs/api/#price-target</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">500</span></code> per symbol</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is only available using IEX Cloud. See
+<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Latest average, high, and low price targets for a symbol</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="quote">
+<span id="stocks-quote"></span><h2>Quote<a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_quote">
+<code class="descclassname">Stock.</code><code class="descname">get_quote</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quote</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#quote">https://iexcloud.io/docs/api/#quote</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per quote</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>displayPercent</strong> (<em>bool</em><em>, </em><em>defaults to false</em><em>, </em><em>optional</em>) – If set to true, all percentage values will be
+multiplied by a factor of 100.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Quote endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="relevant-stocks">
+<span id="stocks-relevant-stocks"></span><h2>Relevant Stocks<a class="headerlink" href="#relevant-stocks" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_relevant_stocks">
+<code class="descclassname">Stock.</code><code class="descname">get_relevant_stocks</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_relevant_stocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relevant Stocks</p>
+<p>Similar to the peers endpoint, except this will return most active
+market symbols when peers are not available. If the symbols
+returned are not peers, the peers key will be false.
+This is not intended to represent a definitive or accurate
+list of peers, and is subject to change at any time.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#relevant-stocks">https://iexcloud.io/docs/api/#relevant-stocks</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">500</span></code> per call</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Relevant Stocks endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="sector-performance">
+<span id="stocks-sector"></span><h2>Sector Performance<a class="headerlink" href="#sector-performance" title="Permalink to this headline">¶</a></h2>
+<p>Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the <code class="docutils literal notranslate"><span class="pre">get_sector_performance</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.stocks.get_sector_performance">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_sector_performance</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_sector_performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sector Performance</p>
+<p>This returns an array of each sector and performance for the current
+trading day. Performance is based on each sector ETF.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#sector-performance">https://iexcloud.io/docs/api/#sector-performance</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per sector</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>data</strong> – List of dictionary sector performance items</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="stocks-sector-examples">
+<span id="id6"></span><h3>Examples<a class="headerlink" href="#stocks-sector-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_sector_performance</span>
+
+<span class="gp">In [30]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="gh">Out[30]: </span><span class="go"></span>
+<span class="go">             aSCrpeolt msseun    ea HtrehlCa     gehlTyocon         gynEer  \</span>
+<span class="go">lastUpdated     1582435912174  1593476022132  1577678696150  1580966266871   </span>
+<span class="go">name         aSCrpeolt msseun    ea HtrehlCa     gehlTyocon         gynEer   </span>
+<span class="go">performance            0.0041        0.00932        0.00364       -0.00113   </span>
+<span class="go">type                   sector         sector         sector         sector   </span>
+
+<span class="go">                ialcFanins    liIdasrnstu  oc uynesreDrisriatoCnm  \</span>
+<span class="go">lastUpdated  1617601423757  1571347039824           1620761823885   </span>
+<span class="go">name            ialcFanins    liIdasrnstu  oc uynesreDrisriatoCnm   </span>
+<span class="go">performance       -0.00192        -0.0008                 0.00187   </span>
+<span class="go">type                sector         sector                  sector   </span>
+
+<span class="go">             occes eraiinounmiCmtvS      sUiietlit    tRa sEteale  \</span>
+<span class="go">lastUpdated           1613982139677  1630913605129  1627016915358   </span>
+<span class="go">name         occes eraiinounmiCmtvS      sUiietlit    tRa sEteale   </span>
+<span class="go">performance                 0.00125        0.00796         0.0069   </span>
+<span class="go">type                         sector         sector         sector   </span>
+
+<span class="go">                 tasleMria  </span>
+<span class="go">lastUpdated  1628852541833  </span>
+<span class="go">name             tasleMria  </span>
+<span class="go">performance        -0.0056  </span>
+<span class="go">type                sector  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="splits">
+<span id="stocks-splits"></span><h2>Splits<a class="headerlink" href="#splits" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_splits">
+<code class="descclassname">Stock.</code><code class="descname">get_splits</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_splits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#splits">https://iexcloud.io/docs/api/#splits</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>range</strong> (<em>str</em><em>, </em><em>default '1m'</em><em>, </em><em>optional</em>) – Time period of splits to return.
+Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>].</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stocks Splits endpoint data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="time-series">
+<span id="stocks-time-series"></span><h2>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Time Series is an alias for the <a class="reference internal" href="#stocks-chart"><span class="std std-ref">Chart</span></a> endpoint</p>
+</div>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_time_series">
+<code class="descclassname">Stock.</code><code class="descname">get_time_series</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time Series</p>
+<p>MOVED in IEX Cloud</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">get_historical_prices</span></code></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="volume-by-venue">
+<span id="stocks-volume-by-venue"></span><h2>Volume by Venue<a class="headerlink" href="#volume-by-venue" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_volume_by_venue">
+<code class="descclassname">Stock.</code><code class="descname">get_volume_by_venue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume by Venue</p>
+<p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#volume-by-venue">https://iexcloud.io/docs/api/#volume-by-venue</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per call</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Stocks Volume by Venue endpoint data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list or pandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="additional-methods">
+<span id="stocks-additional-methods"></span><h2>Additional Methods<a class="headerlink" href="#additional-methods" title="Permalink to this headline">¶</a></h2>
+<p>In addition, various additional <code class="docutils literal notranslate"><span class="pre">Stock</span></code> methods are provided for certain
+endpoints. These methods will allow retrieval of a single datapoint, such as <code class="docutils literal notranslate"><span class="pre">get_open</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_company_name</span></code>, etc. Field methods are displayed below the endpoint
+methods for which they are available (namely <a class="reference internal" href="#stocks-quote"><span class="std std-ref">Quote</span></a>
+and <a class="reference internal" href="#stocks-key-stats"><span class="std std-ref">Key Stats</span></a>).</p>
+<div class="section" id="stocks-key-stats-field-methods">
+<span id="id7"></span><h3>Key Stats<a class="headerlink" href="#stocks-key-stats-field-methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_beta">
+<code class="descclassname">Stock.</code><code class="descname">get_beta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_beta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_short_interest">
+<code class="descclassname">Stock.</code><code class="descname">get_short_interest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_interest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_short_ratio">
+<code class="descclassname">Stock.</code><code class="descname">get_short_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_latest_eps">
+<code class="descclassname">Stock.</code><code class="descname">get_latest_eps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_latest_eps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_shares_outstanding">
+<code class="descclassname">Stock.</code><code class="descname">get_shares_outstanding</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_shares_outstanding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_float">
+<code class="descclassname">Stock.</code><code class="descname">get_float</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_float" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_eps_consensus">
+<code class="descclassname">Stock.</code><code class="descname">get_eps_consensus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_eps_consensus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="stocks-quote-field-methods">
+<span id="id8"></span><h3>Quote<a class="headerlink" href="#stocks-quote-field-methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_company_name">
+<code class="descclassname">Stock.</code><code class="descname">get_company_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_sector">
+<code class="descclassname">Stock.</code><code class="descname">get_sector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_sector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_open">
+<code class="descclassname">Stock.</code><code class="descname">get_open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_close">
+<code class="descclassname">Stock.</code><code class="descname">get_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_years_high">
+<code class="descclassname">Stock.</code><code class="descname">get_years_high</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_high" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_years_low">
+<code class="descclassname">Stock.</code><code class="descname">get_years_low</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_low" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_ytd_change">
+<code class="descclassname">Stock.</code><code class="descname">get_ytd_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ytd_change" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_volume">
+<code class="descclassname">Stock.</code><code class="descname">get_volume</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="iexfinance.stocks.base.Stock.get_market_cap">
+<code class="descclassname">Stock.</code><code class="descname">get_market_cap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_market_cap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="market-movers">
+<span id="stocks-movers"></span><h3>Market Movers<a class="headerlink" href="#market-movers" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#list">List</a> endpoint of stocks
+provides information about market movers from a given trading day. iexfinance
+implements these market mover lists with the functions listed
+below. These functions return a list of quotes of the top-10 symbols in each list.</p>
+<ul class="simple">
+<li>Gainers (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_gainers</span></code>)</li>
+<li>Losers (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_losers</span></code>)</li>
+<li>Most Active (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_most_active</span></code>)</li>
+<li>IEX Volume (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_iex_volume</span></code>)</li>
+<li>IEX Percent (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_iex_percent</span></code>)</li>
+<li>In Focus (<code class="docutils literal notranslate"><span class="pre">stocks.get_market_in_focus</span></code>)</li>
+</ul>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_market_gainers</span>
+
+<span class="gp">In [32]: </span><span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2524</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-32-75da61f8ec0b&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_market_gainers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2139</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_column</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2141</span>     <span class="k">def</span> <span class="nf">_getitem_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_column</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2144</span>         <span class="c1"># get column</span>
+<span class="g g-Whitespace">   </span><span class="mi">2145</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">is_unique</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2146</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item_cache</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2148</span>         <span class="c1"># duplicate columns &amp; possible reduce dimensionality</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1840</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1841</span>         <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1842</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_box_item_values</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span>             <span class="n">cache</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/internals.py</span> in <span class="ni">get</span><span class="nt">(self, item, fastpath)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3841</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3842</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">isna</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">3843</span>                 <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3844</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3845</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))[</span><span class="n">isna</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)]</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2527</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2528</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2529</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">key</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_apis.html" class="btn btn-neutral float-right" title="Data APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="account.html" class="btn btn-neutral" title="Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
