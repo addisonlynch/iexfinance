@@ -1,7 +1,7 @@
 .. _whatsnew_042:
 
 
-v0.4.2 (June 29, 2019)
+v0.4.2 (June 19, 2019)
 ----------------------
 
 This is a minor release from 0.4.1. We recommend that all users update to
@@ -13,6 +13,7 @@ Highlights:
   retired in favor of IEX Cloud in June 2019
 - Optimized retrieval of historical prices with ``get_historical_data`` to
   allow for close prices only and single day charts to reduce message counts
+- Add support for End of Day options prices
 
 New Endpoints
 ~~~~~~~~~~~~~
