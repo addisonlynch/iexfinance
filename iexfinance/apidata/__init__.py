@@ -8,8 +8,5 @@ def get_api_status(output_format='json', **kwargs):
     Reference: https://iexcloud.io/docs/api/#status
 
     Data Weighting: ``Free``
-
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
     """
     return APIReader(output_format=output_format, **kwargs).fetch()

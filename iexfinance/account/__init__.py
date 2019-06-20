@@ -9,9 +9,6 @@ def get_metadata(**kwargs):
     Reference: https://iexcloud.io/docs/api/#metadata
 
     Data Weighting: ``Free``
-
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
     """
     return Metadata(**kwargs).fetch()
 
@@ -25,9 +22,6 @@ def get_usage(quota_type=None, **kwargs):
     Reference: https://iexcloud.io/docs/api/#usage
 
     Data Weighting: ``Free``
-
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
 
     Parameters
     ----------
@@ -46,9 +40,6 @@ def allow_pay_as_you_go(**kwargs):
     Reference: https://iexcloud.io/docs/api/#pay-as-you-go
 
     Data Weighting: ``Free``
-
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
     """
     return PayAsYouGo(allow=True, **kwargs).fetch()
 
@@ -61,8 +52,5 @@ def disallow_pay_as_you_go(**kwargs):
     Data Weighting: ``Free``
 
     Reference: https://iexcloud.io/docs/api/#pay-as-you-go
-
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
     """
     return PayAsYouGo(**kwargs).fetch()
