@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data APIs &mdash; iexfinance 0.4.2-dev documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Alternative Data" href="altdata.html"/>
+        <link rel="prev" title="Stocks" href="stocks.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Endpoints</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-points">Data Points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#available-data-points-for-a-symbol">Available Data Points For a Symbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#individual-data-points-for-a-symbol">Individual Data Points For a Symbol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#time-series">Time Series</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#all-available-time-series">All Available Time Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#individual-time-series">Individual Time Series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/data_apis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-apis">
+<span id="id1"></span><h1>Data APIs<a class="headerlink" href="#data-apis" title="Permalink to this headline">¶</a></h1>
+<p>IEX Cloud data can be organized into three generic data APIs:
+<span class="xref std std-ref">time-series</span>, data-tables, and data-points. Each API type is
+self describing and the docs can be accessed without an API token.</p>
+<div class="section" id="data-points">
+<span id="data-apis-data-points"></span><h2>Data Points<a class="headerlink" href="#data-points" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#data-points">Data points</a> are available per symbol and return individual plain text
+values. Retrieving individual data points is useful for Excel and Google Sheet users, and applications where a single, lightweight value is needed. We also provide update times for some endpoints which allow you to call an endpoint only once it has new data.</p>
+<p>Full access to the Data Points endpoints is available through the
+<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.data_apis.get_data_points">
+<code class="descclassname">iexfinance.data_apis.</code><code class="descname">get_data_points</code><span class="sig-paren">(</span><em>symbol</em>, <em>key=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_data_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a list of data point for a symbol (if no additional parameters
+are passed) or a data point for a given symbol and data point key</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#data-apis">https://iexcloud.io/docs/api/#data-apis</a></p>
+<p>Data Weighting: Free for list, varies for others</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbol</strong> (<em>str</em>) – A valid symbol</li>
+<li><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Data point key to retrieve</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="available-data-points-for-a-symbol">
+<span id="data-apis-data-points-available"></span><h3>Available Data Points For a Symbol<a class="headerlink" href="#available-data-points-for-a-symbol" title="Permalink to this headline">¶</a></h3>
+<p>To obtain all available data points for a symbol, simply pass the symbol to
+<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code> with no key:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.data_apis</span> <span class="kn">import</span> <span class="n">get_data_points</span>
+
+<span class="gp">In [2]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">                            ACCOUNTSPAYABLE                    ADDRESS  \</span>
+<span class="go">description  Balance Sheet: accountsPayable                    address   </span>
+<span class="go">key                         ACCOUNTSPAYABLE                    ADDRESS   </span>
+<span class="go">lastUpdated       2019-06-19T08:06:20+00:00  2019-06-19T20:36:05+00:00   </span>
+<span class="go">weight                                 3000                          1   </span>
+
+<span class="go">                           AVG10VOLUME                AVG30VOLUME  \</span>
+<span class="go">description                avg10Volume                avg30Volume   </span>
+<span class="go">key                        AVG10VOLUME                AVG30VOLUME   </span>
+<span class="go">lastUpdated  2019-06-19T20:36:05+00:00  2019-06-19T20:36:05+00:00   </span>
+<span class="go">weight                               1                          1   </span>
+
+<span class="go">                                  BETA             CAPITALEXPENDITURES  \</span>
+<span class="go">description                       beta  Cash Flow: capitalExpenditures   </span>
+<span class="go">key                               BETA             CAPITALEXPENDITURES   </span>
+<span class="go">lastUpdated  2019-06-19T20:40:15+00:00       2019-06-19T08:06:20+00:00   </span>
+<span class="go">weight                               1                            1000   </span>
+
+<span class="go">                            CAPITALSURPLUS                 CASHCHANGE  \</span>
+<span class="go">description  Balance Sheet: capitalSurplus      Cash Flow: cashChange   </span>
+<span class="go">key                         CAPITALSURPLUS                 CASHCHANGE   </span>
+<span class="go">lastUpdated      2019-06-19T08:06:20+00:00  2019-06-19T08:06:20+00:00   </span>
+<span class="go">weight                                3000                       1000   </span>
+
+<span class="go">                              CASHFLOW             CASHFLOWFINANCING  \</span>
+<span class="go">description        Cash Flow: cashFlow  Cash Flow: cashFlowFinancing   </span>
+<span class="go">key                           CASHFLOW             CASHFLOWFINANCING   </span>
+<span class="go">lastUpdated  2019-06-19T08:06:20+00:00     2019-06-19T08:06:20+00:00   </span>
+<span class="go">weight                            1000                          1000   </span>
+
+<span class="go">                       ...                             TOTALLIABILITIES  \</span>
+<span class="go">description            ...              Balance Sheet: totalLiabilities   </span>
+<span class="go">key                    ...                             TOTALLIABILITIES   </span>
+<span class="go">lastUpdated            ...                    2019-06-19T08:06:20+00:00   </span>
+<span class="go">weight                 ...                                         3000   </span>
+
+<span class="go">                          TOTALREVENUE                 TREASURYSTOCK  \</span>
+<span class="go">description               totalRevenue  Balance Sheet: treasuryStock   </span>
+<span class="go">key                       TOTALREVENUE                 TREASURYSTOCK   </span>
+<span class="go">lastUpdated  2019-06-19T20:40:15+00:00     2019-06-19T08:06:20+00:00   </span>
+<span class="go">weight                             500                          3000   </span>
+
+<span class="go">                       TTMDIVIDENDRATE                     TTMEPS  \</span>
+<span class="go">description            ttmDividendRate                     ttmEPS   </span>
+<span class="go">key                    TTMDIVIDENDRATE                     TTMEPS   </span>
+<span class="go">lastUpdated  2019-06-19T20:36:05+00:00  2019-06-19T20:36:05+00:00   </span>
+<span class="go">weight                               1                          1   </span>
+
+<span class="go">                               WEBSITE               WEEK52CHANGE  \</span>
+<span class="go">description                    website               week52change   </span>
+<span class="go">key                            WEBSITE               WEEK52CHANGE   </span>
+<span class="go">lastUpdated  2019-06-19T20:36:05+00:00  2019-06-19T20:36:05+00:00   </span>
+<span class="go">weight                               1                          1   </span>
+
+<span class="go">                            WEEK52HIGH                  WEEK52LOW  \</span>
+<span class="go">description                 week52high                  week52low   </span>
+<span class="go">key                         WEEK52HIGH                  WEEK52LOW   </span>
+<span class="go">lastUpdated  2019-06-19T20:36:05+00:00  2019-06-19T20:36:05+00:00   </span>
+<span class="go">weight                               1                          1   </span>
+
+<span class="go">                                   ZIP  </span>
+<span class="go">description                        zip  </span>
+<span class="go">key                                ZIP  </span>
+<span class="go">lastUpdated  2019-06-19T20:36:05+00:00  </span>
+<span class="go">weight                               1  </span>
+
+<span class="go">[4 rows x 126 columns]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="individual-data-points-for-a-symbol">
+<span id="data-apis-data-points-individual"></span><h3>Individual Data Points For a Symbol<a class="headerlink" href="#individual-data-points-for-a-symbol" title="Permalink to this headline">¶</a></h3>
+<p>To obtain an individual data point for a single symbol, pass the symbol and the
+data point ID to <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>:</p>
+<p><strong>Apple Inc. (AAPL) latest price</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;QUOTE-LATESTPRICE&quot;</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go">204.28</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="time-series">
+<span id="data-apis-time-series"></span><h2>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#time-series">Time series</a> is the most common type of data available, and consists of a
+collection of data points over a period of time. Time series data is indexed by a single date field, and can be retrieved by any portion of time.</p>
+<p>Full access to the Time Series endpoints is available through the
+<code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> function.</p>
+<dl class="function">
+<dt id="iexfinance.data_apis.get_time_series">
+<code class="descclassname">iexfinance.data_apis.</code><code class="descname">get_time_series</code><span class="sig-paren">(</span><em>id_=None</em>, <em>key=None</em>, <em>subkey=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a list of time series available (if no parameters passed) or
+time series data for a given id, key, and subkey.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#time-series">https://iexcloud.io/docs/api/#time-series</a></p>
+<p>Data Weighting: Free for list, varies for others</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>id</strong> (<em>str</em><em>, </em><em>optional</em>) – ID used to identify a time series dataset (function returns list of
+all available datasets if argument not passed)</li>
+<li><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Key used to identify data within a dataset. A common example is a
+symbol such as AAPL</li>
+<li><strong>subkey</strong> (<em>str</em><em>, </em><em>optional</em>) – The optional subkey can be used to further refine data for a particular
+key if available</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="all-available-time-series">
+<span id="data-apis-time-series-all-time-series"></span><h3>All Available Time Series<a class="headerlink" href="#all-available-time-series" title="Permalink to this headline">¶</a></h3>
+<p>To obtain a list of all available time series, simply call <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code>
+with no parameters:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">iexfinance.data_apis</span> <span class="kn">import</span> <span class="n">get_time_series</span>
+
+<span class="gp">In [5]: </span><span class="n">get_time_series</span><span class="p">()</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">                                           LFTEPRSNNOIRAICDE_A</span>
+<span class="go">created                                    :-2341:-6220012 090</span>
+<span class="go">description                                fanaolsntReci rpied</span>
+<span class="go">id                                         LFTEPRSNNOIRAICDE_A</span>
+<span class="go">lastUpdated                                2162:2403210-:900 -</span>
+<span class="go">schema       {&#39;type&#39;: &#39;object&#39;, &#39;properties&#39;: {&#39;formFiscalY...</span>
+<span class="go">weight                                                    5079</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="individual-time-series">
+<span id="data-apis-time-series-individual"></span><h3>Individual Time Series<a class="headerlink" href="#individual-time-series" title="Permalink to this headline">¶</a></h3>
+<p>Whereas calling <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> with no parameters returns a full inventory
+of time series endpoints, calling <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> with an individual series
+ID and (optional) keys and subkeys as parameters.</p>
+<p>For example, to obtain the <code class="docutils literal notranslate"><span class="pre">REPORTED_FINANCIALS</span></code> time series entry for Apple
+Inc. (<code class="docutils literal notranslate"><span class="pre">AAPL</span></code>):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">                             1970-01-01 00:20:58.754236644  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          5799857514   </span>
+<span class="go">AccountsReceivableNetCurrent                    3498218119   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:07.456098961  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          5755685995   </span>
+<span class="go">AccountsReceivableNetCurrent                    3514392686   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:20.792602364  \</span>
+<span class="go">AccountsPayable                                 5019633570   </span>
+<span class="go">AccountsPayableCurrent                                 NaN   </span>
+<span class="go">AccountsReceivableNetCurrent                    2803937069   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:29.580582716  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          6597149985   </span>
+<span class="go">AccountsReceivableNetCurrent                    3091250200   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:55.420633922  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          5724236280   </span>
+<span class="go">AccountsReceivableNetCurrent                    2927570522   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:58.462385946  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         12341186382   </span>
+<span class="go">AccountsReceivableNetCurrent                    5647532419   </span>
+<span class="go">AccruedIncomeTaxesCurrent                        214902309   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:03.708318258  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          8832872216   </span>
+<span class="go">AccountsReceivableNetCurrent                    3560575457   </span>
+<span class="go">AccruedIncomeTaxesCurrent                         56184639   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:04.285230350  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         13883408610   </span>
+<span class="go">AccountsReceivableNetCurrent                    6032235639   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:08.220536248  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         14534318356   </span>
+<span class="go">AccountsReceivableNetCurrent                    6290696736   </span>
+<span class="go">AccruedIncomeTaxesCurrent                        159453882   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:44.813240805  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         19112257219   </span>
+<span class="go">AccountsReceivableNetCurrent                    9328375459   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                                          ...               \</span>
+<span class="go">AccountsPayable                           ...                </span>
+<span class="go">AccountsPayableCurrent                    ...                </span>
+<span class="go">AccountsReceivableNetCurrent              ...                </span>
+<span class="go">AccruedIncomeTaxesCurrent                 ...                </span>
+<span class="go">AccruedIncomeTaxesNoncurrent              ...                </span>
+
+<span class="go">                             1970-01-01 00:25:19.568703871  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         27479390177   </span>
+<span class="go">AccountsReceivableNetCurrent                   12000751415   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:21.366128755  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                                 NaN   </span>
+<span class="go">AccountsReceivableNetCurrent                           NaN   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:23.811773676  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         50822098901   </span>
+<span class="go">AccountsReceivableNetCurrent                   18551205986   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:28.735085983  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         32923233872   </span>
+<span class="go">AccountsReceivableNetCurrent                   12952630013   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:47.399899337  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         39555535628   </span>
+<span class="go">AccountsReceivableNetCurrent                   14467682390   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:59.230982048  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         29514719767   </span>
+<span class="go">AccountsReceivableNetCurrent                   11628259093   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:26:35.653365290  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         35218269304   </span>
+<span class="go">AccountsReceivableNetCurrent                   14476075030   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                   35258792479   </span>
+
+<span class="go">                             1970-01-01 00:26:44.149350437  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         58294934356   </span>
+<span class="go">AccountsReceivableNetCurrent                   23719809447   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:26:45.905626672  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         50032414141   </span>
+<span class="go">AccountsReceivableNetCurrent                   18532898846   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                     262864070   </span>
+
+<span class="go">                             1970-01-01 00:26:56.146103748  </span>
+<span class="go">AccountsPayable                                        NaN  </span>
+<span class="go">AccountsPayableCurrent                         46411748262  </span>
+<span class="go">AccountsReceivableNetCurrent                   18210911390  </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN  </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                   31201082321  </span>
+
+<span class="go">[5 rows x 42 columns]</span>
+</pre></div>
+</div>
+<p>Or with a subkey:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">                             1970-01-01 00:21:25.954441497  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          8836464947   </span>
+<span class="go">AccountsReceivableNetCurrent                    3591334510   </span>
+<span class="go">AccruedIncomeTaxesCurrent                         56850820   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:31.957305583  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          6543850033   </span>
+<span class="go">AccountsReceivableNetCurrent                    3132096394   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:40.460211888  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                          5926976083   </span>
+<span class="go">AccountsReceivableNetCurrent                    3008279160   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:21:46.306937811  \</span>
+<span class="go">AccountsPayable                                 4929506427   </span>
+<span class="go">AccountsPayableCurrent                                 NaN   </span>
+<span class="go">AccountsReceivableNetCurrent                    2765265593   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:13.024051765  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         14151813926   </span>
+<span class="go">AccountsReceivableNetCurrent                    5999534860   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:25.084201311  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         14602513200   </span>
+<span class="go">AccountsReceivableNetCurrent                    6224749365   </span>
+<span class="go">AccruedIncomeTaxesCurrent                        153532041   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:48.463839259  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         17751677843   </span>
+<span class="go">AccountsReceivableNetCurrent                    7056569610   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:52.536336230  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         15969547065   </span>
+<span class="go">AccountsReceivableNetCurrent                    6262436103   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:54.833154075  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         17505736638   </span>
+<span class="go">AccountsReceivableNetCurrent                    7934812275   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:22:55.357287987  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         26971082426   </span>
+<span class="go">AccountsReceivableNetCurrent                   12176540895   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                                          ...               \</span>
+<span class="go">AccountsPayable                           ...                </span>
+<span class="go">AccountsPayableCurrent                    ...                </span>
+<span class="go">AccountsReceivableNetCurrent              ...                </span>
+<span class="go">AccruedIncomeTaxesCurrent                 ...                </span>
+<span class="go">AccruedIncomeTaxesNoncurrent              ...                </span>
+
+<span class="go">                             1970-01-01 00:24:38.741196128  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         26264117423   </span>
+<span class="go">AccountsReceivableNetCurrent                   12571065309   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:24:48.134895566  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         24216907204   </span>
+<span class="go">AccountsReceivableNetCurrent                   11121968715   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:11.283073577  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         26925069509   </span>
+<span class="go">AccountsReceivableNetCurrent                   11917578105   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:11.479666578  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         32819519498   </span>
+<span class="go">AccountsReceivableNetCurrent                   12796313465   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:21.829902115  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         39630827499   </span>
+<span class="go">AccountsReceivableNetCurrent                   14234715554   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:25:44.165803012  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         28796526129   </span>
+<span class="go">AccountsReceivableNetCurrent                   12016393397   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:26:12.169701730  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         35340780808   </span>
+<span class="go">AccountsReceivableNetCurrent                   14492154470   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                   35421215329   </span>
+
+<span class="go">                             1970-01-01 00:26:24.645034234  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                                 NaN   </span>
+<span class="go">AccountsReceivableNetCurrent                           NaN   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                           NaN   </span>
+
+<span class="go">                             1970-01-01 00:26:40.239109350  \</span>
+<span class="go">AccountsPayable                                        NaN   </span>
+<span class="go">AccountsPayableCurrent                         46377513523   </span>
+<span class="go">AccountsReceivableNetCurrent                   18643985862   </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN   </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                   32393434846   </span>
+
+<span class="go">                             1970-01-01 00:26:46.465325090  </span>
+<span class="go">AccountsPayable                                        NaN  </span>
+<span class="go">AccountsPayableCurrent                         50749094572  </span>
+<span class="go">AccountsReceivableNetCurrent                   18314943522  </span>
+<span class="go">AccruedIncomeTaxesCurrent                              NaN  </span>
+<span class="go">AccruedIncomeTaxesNoncurrent                     260323568  </span>
+
+<span class="go">[5 rows x 29 columns]</span>
+</pre></div>
+</div>
+<p>Any and all series-specific parameters (such as <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>,
+etc. should be passed as <em>keyword arguments</em>)</p>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<p>Last Apple Inc. Form 10-K</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">                                                   1970-01-01 00:26:00.595307515</span>
+<span class="go">AccountsPayableCurrent                                               56398680784</span>
+<span class="go">AccountsReceivableNetCurrent                                         23861731877</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   51206905823</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -3536542435</span>
+<span class="go">AdjustmentsToAdditionalPaidInCapitalSharebasedC...                    5628386426</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="altdata.html" class="btn btn-neutral float-right" title="Alternative Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stocks.html" class="btn btn-neutral" title="Stocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Addison Lynch.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

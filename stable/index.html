@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to iexfinance’s documentation! &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Welcome to iexfinance’s documentation! &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -17,36 +17,43 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What’s New" href="whatsnew.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="#"/>
+        <link rel="next" title="What’s New" href="whatsnew.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -60,7 +67,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -90,20 +97,24 @@
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -120,7 +131,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">iexfinance</a>
@@ -128,10 +139,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -177,17 +187,16 @@
 <h1>Welcome to iexfinance’s documentation!<a class="headerlink" href="#welcome-to-iexfinance-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code>’s documentation is organized into the following sections:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#getting-started"><span class="std std-ref">Getting Started</span></a> - Installation instructions, basic usage information,
-migrating to IEX Cloud</p></li>
-<li><p><a class="reference internal" href="#endpoints"><span class="std std-ref">Endpoints</span></a> - 1:1 mirror of the <a class="reference external" href="https://iexcloud.io/api/">IEX Cloud documentation</a></p></li>
-<li><p><a class="reference internal" href="#package-info"><span class="std std-ref">Package Information</span></a> - additional package information, developer/testing documentation</p></li>
+<li><a class="reference internal" href="#getting-started"><span class="std std-ref">Getting Started</span></a> - Installation instructions, basic usage information,
+migrating to IEX Cloud</li>
+<li><a class="reference internal" href="#endpoints"><span class="std std-ref">Endpoints</span></a> - 1:1 mirror of the <a class="reference external" href="https://iexcloud.io/api/">IEX Cloud documentation</a></li>
+<li><a class="reference internal" href="#package-info"><span class="std std-ref">Package Information</span></a> - additional package information, developer/testing documentation</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>IEX will end support for the Legacy v1 Devleoper API on June
-1st, 2019.</strong> At that time, the use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will require
-an IEX Cloud <a class="reference external" href="https://iexcloud.io/pricing/">account</a>. In addition, support for all <em>legacy only</em>
-endpoints will be discontinued.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last"><strong>Support for the Legacy v1 Devleoper API ended on June
+1st, 2019.</strong> As of version 0.4.2, use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> requires
+an IEX Cloud <a class="reference external" href="https://iexcloud.io/pricing/">account</a>.</p>
 </div>
 <div class="section" id="full-contents">
 <h2>Full Contents<a class="headerlink" href="#full-contents" title="Permalink to this headline">¶</a></h2>
@@ -198,6 +207,7 @@ endpoints will be discontinued.</p>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 </div>
@@ -223,7 +233,7 @@ endpoints will be discontinued.</p>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#dividends">Dividends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#earnings">Earnings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#earnings-today">Earnings Today</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stocks.html#effective-spread">Effective Spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stocks.html#end-of-day-options">End of Day Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#estimates">Estimates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#financials">Financials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#fund-ownership">Fund Ownership</a></li>
@@ -255,8 +265,12 @@ endpoints will be discontinued.</p>
 <li class="toctree-l2"><a class="reference internal" href="stocks.html#additional-methods">Additional Methods</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_apis.html#data-points">Data Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_apis.html#time-series">Time Series</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="altdata.html#news">News</a></li>
 <li class="toctree-l2"><a class="reference internal" href="altdata.html#crypto">Crypto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="altdata.html#social-sentiment">Social Sentiment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="altdata.html#ceo-compensation">CEO Compensation</a></li>
@@ -265,10 +279,10 @@ endpoints will be discontinued.</p>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="refdata.html#symbols">Symbols</a></li>
 <li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-symbols">IEX Symbols</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-corporate-actions">IEX Corporate Actions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-dividends">IEX Dividends</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-next-day-ex-date">IEX Next Day Ex Date</a></li>
-<li class="toctree-l2"><a class="reference internal" href="refdata.html#iex-listed-symbol-directory">IEX Listed Symbol Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="options.html#end-of-day-options">End of Day Options</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a><ul>
@@ -304,6 +318,7 @@ endpoints will be discontinued.</p>
 <p class="caption"><span class="caption-text">Package Information</span><a class="headerlink" href="#package-info" title="Permalink to this toctree">¶</a></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -315,14 +330,16 @@ endpoints will be discontinued.</p>
 <div class="section" id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="modules.html">Modules</a></p></li>
+<li><a class="reference external" href="modules.html">Modules</a></li>
 </ul>
 </div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -338,11 +355,11 @@ endpoints will be discontinued.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -355,15 +372,36 @@ endpoints will be discontinued.</p>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

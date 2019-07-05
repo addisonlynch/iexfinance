@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Investor’s Exchange Data &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Investor’s Exchange Data &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -17,37 +17,44 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API System Metadata" href="apidata.html" />
-    <link rel="prev" title="Reference Data" href="refdata.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="API System Metadata" href="apidata.html"/>
+        <link rel="prev" title="Options" href="options.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -61,7 +68,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -91,14 +98,17 @@
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Investor’s Exchange Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tops">TOPS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
@@ -151,6 +161,7 @@
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -167,7 +178,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -175,10 +186,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -226,28 +236,27 @@
 <div class="contents topic" id="endpoints">
 <p class="topic-title first">Endpoints</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#investor-s-exchange-data" id="id8">Investor’s Exchange Data</a></p>
-<ul>
-<li><p><a class="reference internal" href="#tops" id="id9">TOPS</a></p></li>
-<li><p><a class="reference internal" href="#last" id="id10">Last</a></p></li>
-<li><p><a class="reference internal" href="#deep" id="id11">DEEP</a></p></li>
-<li><p><a class="reference internal" href="#deep-auction" id="id12">DEEP Auction</a></p></li>
-<li><p><a class="reference internal" href="#deep-book" id="id13">DEEP Book</a></p></li>
-<li><p><a class="reference internal" href="#deep-operational-halt-status" id="id14">DEEP Operational Halt Status</a></p></li>
-<li><p><a class="reference internal" href="#deep-official-price" id="id15">DEEP Official Price</a></p></li>
-<li><p><a class="reference internal" href="#deep-security-event" id="id16">DEEP Security Event</a></p></li>
-<li><p><a class="reference internal" href="#deep-short-sale-price-test-status" id="id17">DEEP Short Sale Price Test Status</a></p></li>
-<li><p><a class="reference internal" href="#deep-system-event" id="id18">DEEP System Event</a></p></li>
-<li><p><a class="reference internal" href="#deep-trades" id="id19">DEEP Trades</a></p></li>
-<li><p><a class="reference internal" href="#deep-trade-break" id="id20">DEEP Trade Break</a></p></li>
-<li><p><a class="reference internal" href="#deep-trading-status" id="id21">DEEP Trading Status</a></p></li>
-<li><p><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id22">Listed Regulation SHO Threshold Securities List</a></p></li>
-<li><p><a class="reference internal" href="#listed-short-interest-list" id="id23">Listed Short Interest List</a></p></li>
-<li><p><a class="reference internal" href="#stats-historical-daily" id="id24">Stats Historical Daily</a></p></li>
-<li><p><a class="reference internal" href="#stats-historical-summary" id="id25">Stats Historical Summary</a></p></li>
-<li><p><a class="reference internal" href="#stats-intraday" id="id26">Stats Intraday</a></p></li>
-<li><p><a class="reference internal" href="#stats-recent" id="id27">Stats Recent</a></p></li>
-<li><p><a class="reference internal" href="#stats-records" id="id28">Stats Records</a></p></li>
+<li><a class="reference internal" href="#investor-s-exchange-data" id="id8">Investor’s Exchange Data</a><ul>
+<li><a class="reference internal" href="#tops" id="id9">TOPS</a></li>
+<li><a class="reference internal" href="#last" id="id10">Last</a></li>
+<li><a class="reference internal" href="#deep" id="id11">DEEP</a></li>
+<li><a class="reference internal" href="#deep-auction" id="id12">DEEP Auction</a></li>
+<li><a class="reference internal" href="#deep-book" id="id13">DEEP Book</a></li>
+<li><a class="reference internal" href="#deep-operational-halt-status" id="id14">DEEP Operational Halt Status</a></li>
+<li><a class="reference internal" href="#deep-official-price" id="id15">DEEP Official Price</a></li>
+<li><a class="reference internal" href="#deep-security-event" id="id16">DEEP Security Event</a></li>
+<li><a class="reference internal" href="#deep-short-sale-price-test-status" id="id17">DEEP Short Sale Price Test Status</a></li>
+<li><a class="reference internal" href="#deep-system-event" id="id18">DEEP System Event</a></li>
+<li><a class="reference internal" href="#deep-trades" id="id19">DEEP Trades</a></li>
+<li><a class="reference internal" href="#deep-trade-break" id="id20">DEEP Trade Break</a></li>
+<li><a class="reference internal" href="#deep-trading-status" id="id21">DEEP Trading Status</a></li>
+<li><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id22">Listed Regulation SHO Threshold Securities List</a></li>
+<li><a class="reference internal" href="#listed-short-interest-list" id="id23">Listed Short Interest List</a></li>
+<li><a class="reference internal" href="#stats-historical-daily" id="id24">Stats Historical Daily</a></li>
+<li><a class="reference internal" href="#stats-historical-summary" id="id25">Stats Historical Summary</a></li>
+<li><a class="reference internal" href="#stats-intraday" id="id26">Stats Intraday</a></li>
+<li><a class="reference internal" href="#stats-recent" id="id27">Stats Recent</a></li>
+<li><a class="reference internal" href="#stats-records" id="id28">Stats Records</a></li>
 </ul>
 </li>
 </ul>
@@ -266,14 +275,18 @@ real time for all securities on IEX’s displayed limit order book. TOPS is
 ideal for developers needing both quote and trade data.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#tops">https://iexcloud.io/docs/api/#tops</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="section" id="usage">
@@ -284,8 +297,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
+<p class="first admonition-title">Note</p>
+<p class="last">The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
 </div>
 </div>
 </div>
@@ -304,14 +317,18 @@ intraday API that provides IEX last sale price, size and time. Last is
 ideal for developers that need a lightweight stock quote.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#last">https://iexcloud.io/docs/api/#last</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="section" id="id1">
@@ -323,8 +340,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The /tops/last endpoint without any parameters will return all symbols.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The /tops/last endpoint without any parameters will return all symbols.</p>
 </div>
 </div>
 </div>
@@ -347,21 +364,25 @@ from either displayed or non-displayed orders matching on IEX will be
 reported. Routed executions will not be reported.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#deep">https://iexcloud.io/docs/api/#deep</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Notes</p>
 <p>Pandas not supported as an output format for the DEEP endpoint.</p>
 </dd></dl>
 
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Per IEX, DEEP only accepts one symbol at this time.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">Per IEX, DEEP only accepts one symbol at this time.</p>
 </div>
 <div class="section" id="iexdata-deep-usage">
 <span id="id2"></span><h3>Usage<a class="headerlink" href="#iexdata-deep-usage" title="Permalink to this headline">¶</a></h3>
@@ -375,92 +396,92 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="section" id="deep-auction">
 <span id="iexdata-deep-auction"></span><h2><a class="toc-backref" href="#id12">DEEP Auction</a><a class="headerlink" href="#deep-auction" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-0">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-book">
 <span id="iexdata-deep-book"></span><h2><a class="toc-backref" href="#id13">DEEP Book</a><a class="headerlink" href="#deep-book" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-1">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-operational-halt-status">
 <span id="iexdata-deep-halt-status"></span><h2><a class="toc-backref" href="#id14">DEEP Operational Halt Status</a><a class="headerlink" href="#deep-operational-halt-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-2">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-official-price">
 <span id="iexdata-deep-official-price"></span><h2><a class="toc-backref" href="#id15">DEEP Official Price</a><a class="headerlink" href="#deep-official-price" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-3">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-security-event">
 <span id="iexdata-deep-security-event"></span><h2><a class="toc-backref" href="#id16">DEEP Security Event</a><a class="headerlink" href="#deep-security-event" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-4">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-short-sale-price-test-status">
 <span id="iexdata-deep-short-sale-status"></span><h2><a class="toc-backref" href="#id17">DEEP Short Sale Price Test Status</a><a class="headerlink" href="#deep-short-sale-price-test-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-5">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-system-event">
 <span id="iexdata-deep-system-event"></span><h2><a class="toc-backref" href="#id18">DEEP System Event</a><a class="headerlink" href="#deep-system-event" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-6">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trades">
 <span id="iexdata-deep-trades"></span><h2><a class="toc-backref" href="#id19">DEEP Trades</a><a class="headerlink" href="#deep-trades" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-7">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trade-break">
 <span id="iexdata-deep-trade-break"></span><h2><a class="toc-backref" href="#id20">DEEP Trade Break</a><a class="headerlink" href="#deep-trade-break" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-8">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trading-status">
 <span id="iexdata-deep-trading-status"></span><h2><a class="toc-backref" href="#id21">DEEP Trading Status</a><a class="headerlink" href="#deep-trading-status" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-9">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-regulation-sho-threshold-securities-list">
 <span id="iexdata-regulation-list"></span><h2><a class="toc-backref" href="#id22">Listed Regulation SHO Threshold Securities List</a><a class="headerlink" href="#listed-regulation-sho-threshold-securities-list" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-10">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-short-interest-list">
 <span id="iexdata-short-interest-list"></span><h2><a class="toc-backref" href="#id23">Listed Short Interest List</a><a class="headerlink" href="#listed-short-interest-list" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="index-11">
-<p class="admonition-title">Todo</p>
-<p>Coming soon.</p>
+<p class="first admonition-title">Todo</p>
+<p class="last">Coming soon.</p>
 </div>
 </div>
 <div class="section" id="stats-historical-daily">
 <span id="iexdata-stats-daily"></span><h2><a class="toc-backref" href="#id24">Stats Historical Daily</a><a class="headerlink" href="#stats-historical-daily" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint has been marked as <em>in-dev</em> by the provider.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint has been marked as <em>in-dev</em> by the provider.</p>
 </div>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-daily">Historical Daily</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
@@ -471,22 +492,26 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Historical Daily</p>
 <p>This call will return daily stats for a given month or day.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint is marked as “in development” by the provider.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">This endpoint is marked as “in development” by the provider.</p>
 </div>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev">https://iexcloud.io/docs/api/#stats-historical-daily-in-dev</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
-<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
-<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
-(up to 90)</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
+<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
+<li><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
+(up to 90)</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
@@ -495,47 +520,21 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_daily</span>
 
 <span class="gp">In [2]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IEXAuthenticationError</span><span class="g g-Whitespace">                    </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="n">c96fa9fb7d5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/__init__.py</span> in <span class="ni">get_stats_daily</span><span class="nt">(start, end, last, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_sanitize_dates</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">return</span> <span class="n">DailySummaryReader</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">173</span>                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span> 
-<span class="g g-Whitespace">    </span><span class="mi">175</span> 
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/iexdata/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">islast</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">304</span>             <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">DailySummaryReader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_dates</span><span class="p">()</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">fetch</span><span class="nt">(self, fmt_p, fmt_j)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="s2">         url = self._prepare_query()</span>
-<span class="ne">--&gt; </span><span class="mi">201</span><span class="s2">         data = self._execute_iex_query(url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="s2">         return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span><span class="s2"> </span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_execute_iex_query</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="s2">                 return self._validate_response(response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="s2">             time.sleep(self.pause)</span>
-<span class="ne">--&gt; </span><span class="mi">157</span><span class="s2">         return self._handle_error(response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span><span class="s2">     def _handle_error(self, response):</span>
-
-<span class="nn">~/build/addisonlynch/iexfinance/iexfinance/base.py</span> in <span class="ni">_handle_error</span><span class="nt">(self, response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">                                  &quot;request.&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span><span class="s2">         elif 500 &lt;= status_code &lt; 600:</span>
-<span class="ne">--&gt; </span><span class="mi">174</span><span class="s2">             raise auth_error(&quot;The query could not be completed. &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span><span class="s2">                              &quot;There was a server-side error with &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="s2">                              &quot;your request.&quot;)</span>
-
-<span class="ne">IEXAuthenticationError</span>: The query could not be completed. There was a server-side error with your request.
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">            isHalfday  litVolume  marketShare  routedVolume     volume</span>
+<span class="go">date                                                                  </span>
+<span class="go">2019-06-18          0   51689441     0.029820      33015007  210845106</span>
+<span class="go">2019-06-17          0   40680174     0.029390      23282516  170230846</span>
+<span class="go">2019-06-14          0   43046281     0.030630      27145458  177755875</span>
+<span class="go">2019-06-13          0   46164412     0.029920      30714723  183907783</span>
+<span class="go">2019-06-12          0   44671436     0.030570      28100207  189201059</span>
+<span class="go">2019-06-11          0   51891978     0.030300      34566723  206324558</span>
+<span class="go">2019-06-10          0   48343512     0.029130      30443039  186586677</span>
+<span class="go">2019-06-07          0   45791451     0.031574      30730583  201918936</span>
+<span class="go">2019-06-06          0   46568932     0.028910      31935989  195680125</span>
+<span class="go">2019-06-05          0   54866767     0.030280      31790983  222724747</span>
+<span class="go">2019-06-04          0   57327938     0.029980      37214701  225569577</span>
+<span class="go">2019-06-03          0   62882642     0.029324      30805011  243616956</span>
 </pre></div>
 </div>
 </div>
@@ -551,21 +550,25 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Historical Summary</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-summary">https://iexcloud.io/docs/api/#stats-historical-summary</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
-<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
+<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
+<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The Historical Summary accepts requests of one month per request.
+<p class="first admonition-title">Warning</p>
+<p class="last">The Historical Summary accepts requests of one month per request.
 if specifying a long date range, a query will be made for each
 month in the range, significantly impacting performance</p>
 </div>
@@ -576,7 +579,92 @@ month in the range, significantly impacting performance</p>
 <span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="gp">In [5]: </span><span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[5]: </span><span class="go">[]</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2524</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;date&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-3f06c10dca00&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">~/Documents/iex/iexfinance/iexfinance/iexdata/__init__.py</span> in <span class="ni">get_stats_summary</span><span class="nt">(start, end, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span>         <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">192</span><span class="s2">     return MonthlySummaryReader(start=start, end=end, **kwargs).fetch()</span>
+
+<span class="nn">~/Documents/iex/iexfinance/iexfinance/iexdata/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span><span class="s2">         if self.output_format == &#39;pandas&#39;:</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span><span class="s2">             result = pd.concat(dfs) if len(dfs) &gt; 0 else pd.DataFrame()</span>
+<span class="ne">--&gt; </span><span class="mi">406</span><span class="s2">             return result.set_index(&#39;date&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span><span class="s2">             return dfs</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">set_index</span><span class="nt">(self, keys, drop, append, inplace, verify_integrity)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3144</span><span class="s2">                 names.append(None)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3145</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">3146</span><span class="s2">                 level = frame[col]._values</span>
+<span class="g g-Whitespace">   </span><span class="mi">3147</span><span class="s2">                 names.append(col)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3148</span><span class="s2">                 if drop:</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span><span class="s2">             return self._getitem_multilevel(key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span><span class="s2">         else:</span>
+<span class="ne">-&gt; </span><span class="mi">2139</span><span class="s2">             return self._getitem_column(key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2141</span><span class="s2">     def _getitem_column(self, key):</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_column</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2144</span><span class="s2">         # get column</span>
+<span class="g g-Whitespace">   </span><span class="mi">2145</span><span class="s2">         if self.columns.is_unique:</span>
+<span class="ne">-&gt; </span><span class="mi">2146</span><span class="s2">             return self._get_item_cache(key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2148</span><span class="s2">         # duplicate columns &amp; possible reduce dimensionality</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1840</span><span class="s2">         res = cache.get(item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1841</span><span class="s2">         if res is None:</span>
+<span class="ne">-&gt; </span><span class="mi">1842</span><span class="s2">             values = self._data.get(item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span><span class="s2">             res = self._box_item_values(item, values)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span><span class="s2">             cache[item] = res</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/internals.py</span> in <span class="ni">get</span><span class="nt">(self, item, fastpath)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3841</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3842</span><span class="s2">             if not isna(item):</span>
+<span class="ne">-&gt; </span><span class="mi">3843</span><span class="s2">                 loc = self.items.get_loc(item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3844</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3845</span><span class="s2">                 indexer = np.arange(len(self.items))[isna(self.items)]</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2525</span><span class="s2">                 return self._engine.get_loc(key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span><span class="s2">             except KeyError:</span>
+<span class="ne">-&gt; </span><span class="mi">2527</span><span class="s2">                 return self._engine.get_loc(self._maybe_cast_indexer(key))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2528</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2529</span><span class="s2">         indexer = self.get_indexer([key], method=method, tolerance=tolerance)</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;date&#39;
 </pre></div>
 </div>
 </div>
@@ -592,11 +680,14 @@ aggregated best quoted bid and offer position in near real time.</p>
 <dd><p>Stats intraday</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">https://iexcloud.io/docs/api/#stats-intraday</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-intraday-usage">
@@ -605,11 +696,13 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [7]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 199062022, &#39;lastUpdated&#39;: 1630893078413},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 5754, &#39;lastUpdated&#39;: 1568491288974},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 31652232, &#39;lastUpdated&#39;: 1600980494270},</span>
-<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 9440400595, &#39;lastUpdated&#39;: 1583690292522},</span>
-<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02933, &#39;lastUpdated&#39;: 1623808803701}}</span>
+<span class="go">              marketShare       notional   routedVolume  symbolsTraded  \</span>
+<span class="go">lastUpdated  1.570359e+12  1632553854025  1601109190742  1633638318692   </span>
+<span class="go">value        2.872000e-02     9337041272       31774105           5987   </span>
+
+<span class="go">                    volume  </span>
+<span class="go">lastUpdated  1606453957734  </span>
+<span class="go">value            198278815  </span>
 </pre></div>
 </div>
 </div>
@@ -627,11 +720,14 @@ trading statstics from the previous five trading days.</p>
 trading days of the current month.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">https://iexcloud.io/docs/api/#stats-recent</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-recent-usage">
@@ -639,13 +735,73 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_recent</span>
 
 <span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">{&#39;date&#39;: &#39;2019-05-13&#39;,</span>
-<span class="go"> &#39;volume&#39;: 229089155,</span>
-<span class="go"> &#39;routedVolume&#39;: 33536767,</span>
-<span class="go"> &#39;marketShare&#39;: 0.02781,</span>
-<span class="go"> &#39;isHalfday&#39;: False,</span>
-<span class="go"> &#39;litVolume&#39;: 58499123}</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2524</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-9-a3f3c49f6e23&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2139</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_column</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2141</span>     <span class="k">def</span> <span class="nf">_getitem_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_column</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2144</span>         <span class="c1"># get column</span>
+<span class="g g-Whitespace">   </span><span class="mi">2145</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">is_unique</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2146</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item_cache</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2148</span>         <span class="c1"># duplicate columns &amp; possible reduce dimensionality</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1840</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1841</span>         <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1842</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_box_item_values</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span>             <span class="n">cache</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/internals.py</span> in <span class="ni">get</span><span class="nt">(self, item, fastpath)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3841</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3842</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">isna</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">3843</span>                 <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3844</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3845</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))[</span><span class="n">isna</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)]</span>
+
+<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2527</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2528</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2529</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">key</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
 </pre></div>
 </div>
 </div>
@@ -661,11 +817,14 @@ trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Records</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">https://iexcloud.io/docs/api/#stats-records</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-records-usage">
@@ -674,22 +833,11 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 <span class="gp">In [11]: </span><span class="n">get_stats_records</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 314964842,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-23&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 225911012,</span>
-<span class="go">  &#39;avg30Value&#39;: 198953595.1},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 6644,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-12-31&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 5821,</span>
-<span class="go">  &#39;avg30Value&#39;: 5858},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 75167184,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2016-11-25&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 34267872,</span>
-<span class="go">  &#39;avg30Value&#39;: 31380129},</span>
-<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 17333756941.539,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2018-02-19&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 11928742132.3695,</span>
-<span class="go">  &#39;avg30Value&#39;: 10226949200.2809}}</span>
+<span class="go">                     notional routedVolume symbolsTraded      volume</span>
+<span class="go">avg30Value        9.89669e+09     30946216          5956   200781508</span>
+<span class="go">previousDayValue  1.07395e+10     33437276          6183   213625824</span>
+<span class="go">recordDate         2018-02-07   2016-11-23    2018-12-30  2019-01-02</span>
+<span class="go">recordValue       1.75931e+10     76440640          6922   314341497</span>
 </pre></div>
 </div>
 </div>
@@ -698,7 +846,9 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -707,7 +857,7 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
         <a href="apidata.html" class="btn btn-neutral float-right" title="API System Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="refdata.html" class="btn btn-neutral float-left" title="Reference Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="options.html" class="btn btn-neutral" title="Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -716,11 +866,11 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -733,15 +883,36 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

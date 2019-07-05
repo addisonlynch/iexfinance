@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API System Metadata &mdash; iexfinance 0.4.1 documentation</title>
+  <title>API System Metadata &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -17,37 +17,44 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="About" href="about.html" />
-    <link rel="prev" title="Investor’s Exchange Data" href="iexdata.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="About" href="about.html"/>
+        <link rel="prev" title="Investor’s Exchange Data" href="iexdata.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -61,7 +68,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -91,14 +98,17 @@
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API System Metadata</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#status">Status</a></li>
@@ -108,6 +118,7 @@
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -124,7 +135,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -132,10 +143,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -182,9 +192,8 @@
 <div class="contents topic" id="endpoints">
 <p class="topic-title first">Endpoints</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#api-system-metadata" id="id1">API System Metadata</a></p>
-<ul>
-<li><p><a class="reference internal" href="#status" id="id2">Status</a></p></li>
+<li><a class="reference internal" href="#api-system-metadata" id="id1">API System Metadata</a><ul>
+<li><a class="reference internal" href="#status" id="id2">Status</a></li>
 </ul>
 </li>
 </ul>
@@ -197,11 +206,6 @@
 <dd><p>Retrieves IEX Cloud API status</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#status">https://iexcloud.io/docs/api/#status</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This endpoint is only available using IEX Cloud. See
-<a class="reference internal" href="migrating.html#migrating"><span class="std std-ref">Migrating to IEX Cloud</span></a> for more information.</p>
-</div>
 </dd></dl>
 
 </div>
@@ -209,7 +213,9 @@
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -218,7 +224,7 @@
         <a href="about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="iexdata.html" class="btn btn-neutral float-left" title="Investor’s Exchange Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="iexdata.html" class="btn btn-neutral" title="Investor’s Exchange Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -227,11 +233,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -244,15 +250,36 @@
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

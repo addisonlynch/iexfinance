@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Migrating to IEX Cloud &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Migrating to IEX Cloud &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -17,37 +17,44 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Install" href="install.html" />
-    <link rel="prev" title="What’s New" href="whatsnew.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Install" href="install.html"/>
+        <link rel="prev" title="What’s New" href="whatsnew.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -61,7 +68,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -100,20 +107,24 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -130,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -138,10 +149,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -199,16 +209,16 @@ enterprise-level service.</p>
 <div class="section" id="migration-overview">
 <span id="migrating-basics"></span><h2>Migration Overview<a class="headerlink" href="#migration-overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will require an authentication token, which can be
+<li>Use of <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will require an authentication token, which can be
 obtained through the creation of an IEX Cloud account. This token can be
 passed via <a class="reference internal" href="configuration.html#config-auth-argument"><span class="std std-ref">argument</span></a> or by
-<a class="reference internal" href="configuration.html#config-auth-env"><span class="std std-ref">setting</span></a> the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will default to IEX Cloud Version 1 for all API calls. Along
+<a class="reference internal" href="configuration.html#config-auth-env"><span class="std std-ref">setting</span></a> the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_TOKEN</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> will default to IEX Cloud Version 1 for all API calls. Along
 with the discontinuation of the legacy API on June 1, 2019, the beta period
 for IEX Cloud will end. Setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">iexcloud-beta</span></code> will
-return the equivalent to that of <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code></p></li>
-<li><p>An <code class="docutils literal notranslate"><span class="pre">ImmediateDeprecationError</span></code> will be thrown by <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> 0.4.2 for
-<code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> set to <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p></li>
+return the equivalent to that of <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code></li>
+<li>An <code class="docutils literal notranslate"><span class="pre">ImmediateDeprecationError</span></code> will be thrown by <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> 0.4.2 for
+<code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> set to <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="backwards-incompatible-changes">
@@ -218,33 +228,35 @@ deprecated in <code class="docutils literal notranslate"><span class="pre">iexfi
 <div class="section" id="stocks">
 <h3>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Crypto Quotes - <code class="docutils literal notranslate"><span class="pre">stocks.get_crypto_quotes</span></code></p></li>
+<li>Crypto Quotes - <code class="docutils literal notranslate"><span class="pre">stocks.get_crypto_quotes</span></code></li>
 </ul>
 </div>
 <div class="section" id="reference-data">
 <h3>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>IEX Corporate Actions - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_corporate_actions</span></code></p></li>
-<li><p>IEX Dividends - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_dividends</span></code></p></li>
-<li><p>IEX Next Day Ex Date - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_next_day_ex_date</span></code></p></li>
-<li><p>IEX Listed Symbol Directory - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_listed_symbol_dir</span></code></p></li>
+<li>IEX Corporate Actions - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_corporate_actions</span></code></li>
+<li>IEX Dividends - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_dividends</span></code></li>
+<li>IEX Next Day Ex Date - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_next_day_ex_date</span></code></li>
+<li>IEX Listed Symbol Directory - <code class="docutils literal notranslate"><span class="pre">refdata.get_iex_listed_symbol_dir</span></code></li>
 </ul>
 </div>
 </div>
 <div class="section" id="additional-information">
 <span id="migrating-additional-info"></span><h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
+<li>The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
 (legacy) Developer API, this endpoint returned the list of symbols IEX
 supports for trading. In IEX cloud, it returns the list of symbols IEX
-supports for <em>api calls</em>.</p></li>
+supports for <em>api calls</em>.</li>
 </ul>
 </div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -253,7 +265,7 @@ supports for <em>api calls</em>.</p></li>
         <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="whatsnew.html" class="btn btn-neutral float-left" title="What’s New" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="whatsnew.html" class="btn btn-neutral" title="What’s New" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -262,11 +274,11 @@ supports for <em>api calls</em>.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -279,15 +291,36 @@ supports for <em>api calls</em>.</p></li>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

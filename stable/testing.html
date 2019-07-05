@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Testing &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Testing &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -17,37 +17,44 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial" href="tutorial.html" />
-    <link rel="prev" title="Caching Queries" href="caching.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Tutorial" href="tutorial.html"/>
+        <link rel="prev" title="Caching Queries" href="caching.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -61,7 +68,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -91,20 +98,24 @@
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#testing-documentation-dependencies">Testing &amp; Documentation Dependencies</a></li>
@@ -128,7 +139,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -136,10 +147,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -186,36 +196,36 @@
 <p>Unit and integration tests for iexfinance are handled by the
 <a class="reference external" href="https://docs.pytest.org/en/latest">pytest</a> platform.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Use of the <a class="reference internal" href="#testing-sandbox"><span class="std std-ref">Sandbox Environment</span></a> is <strong>required</strong> when running the test suite.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">Use of the <a class="reference internal" href="#testing-sandbox"><span class="std std-ref">Sandbox Environment</span></a> is <strong>required</strong> when running the test suite.</p>
 </div>
 <div class="section" id="testing-documentation-dependencies">
 <span id="testing-dependencies"></span><h2>Testing &amp; Documentation Dependencies<a class="headerlink" href="#testing-documentation-dependencies" title="Permalink to this headline">¶</a></h2>
 <p><strong>Testing</strong></p>
 <ul class="simple">
-<li><p>pytest</p></li>
-<li><p>pytest-runner</p></li>
-<li><p>flake8</p></li>
-<li><p>flake8-rst</p></li>
-<li><p>requests-cache</p></li>
-<li><p>six</p></li>
+<li>pytest</li>
+<li>pytest-runner</li>
+<li>flake8</li>
+<li>flake8-rst</li>
+<li>requests-cache</li>
+<li>six</li>
 </ul>
 <p><strong>Docs</strong></p>
 <ul class="simple">
-<li><p>sphinx</p></li>
-<li><p>sphinx-autobuild</p></li>
-<li><p>sphinx-rtd-theme</p></li>
-<li><p>sphinxcontrib-napoleon</p></li>
-<li><p>matplotlib</p></li>
-<li><p>ipython</p></li>
+<li>sphinx</li>
+<li>sphinx-autobuild</li>
+<li>sphinx-rtd-theme</li>
+<li>sphinxcontrib-napoleon</li>
+<li>matplotlib</li>
+<li>ipython</li>
 </ul>
 </div>
 <div class="section" id="sandbox-environment">
 <span id="testing-sandbox"></span><h2>Sandbox Environment<a class="headerlink" href="#sandbox-environment" title="Permalink to this headline">¶</a></h2>
 <p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">iexcloud-sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the “Viewing test data” toggler on the left side of the IEX Cloud console.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the “Viewing test data” toggler on the left side of the IEX Cloud console.</p>
 </div>
 </div>
 <div class="section" id="local-testing">
@@ -269,15 +279,8 @@ network problem or an invalid query.</p>
 </dd></dl>
 
 <dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXVersionError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXVersionError</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXVersionError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an attempt is made to access an IEX Cloud
-endpoint when API version 1 (v1) has been selected for use.</p>
-</dd></dl>
-
-<dl class="exception">
 <dt id="iexfinance.utils.exceptions.ImmediateDeprecationError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">ImmediateDeprecationError</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.ImmediateDeprecationError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">ImmediateDeprecationError</code><a class="headerlink" href="#iexfinance.utils.exceptions.ImmediateDeprecationError" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -288,7 +291,9 @@ endpoint when API version 1 (v1) has been selected for use.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -297,7 +302,7 @@ endpoint when API version 1 (v1) has been selected for use.</p>
         <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="caching.html" class="btn btn-neutral float-left" title="Caching Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="caching.html" class="btn btn-neutral" title="Caching Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -306,11 +311,11 @@ endpoint when API version 1 (v1) has been selected for use.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -323,15 +328,36 @@ endpoint when API version 1 (v1) has been selected for use.</p>
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

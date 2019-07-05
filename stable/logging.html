@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Logging &amp; Message Counting &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -36,8 +36,10 @@
               href="about.html"/>
         <link rel="index" title="Index"
               href="genindex.html"/>
-        <link rel="search" title="Search" href="#"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/> 
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
+        <link rel="next" title="Caching Queries" href="caching.html"/>
+        <link rel="prev" title="About" href="about.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -73,7 +75,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -111,9 +113,9 @@
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -163,10 +165,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Logging &amp; Message Counting</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/logging.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -178,19 +184,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="logging-message-counting">
+<span id="logging"></span><h1>Logging &amp; Message Counting<a class="headerlink" href="#logging-message-counting" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> 0.4.2 adds logging support for queries, including message count
+usage and debugging information. Logging level defaults to <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, and can
+be changed via the <code class="docutils literal notranslate"><span class="pre">IEX_LOG_LEVEL</span></code> environment variable. The
+following levels provide various information:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">WARNING</span></code> - errors only</li>
+<li><code class="docutils literal notranslate"><span class="pre">INFO</span></code> - message count used</li>
+<li><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> - request information</li>
+</ul>
+</div></blockquote>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            <div class="articleComments">
@@ -198,6 +206,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="caching.html" class="btn btn-neutral float-right" title="Caching Queries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="about.html" class="btn btn-neutral" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -236,7 +253,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -252,14 +268,7 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

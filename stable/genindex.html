@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; iexfinance 0.4.1 documentation</title>
+  <title>Index &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -18,35 +18,42 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
+  
+  
     
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="author" title="About these documents" href="about.html" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="author" title="About these documents"
+              href="about.html"/>
+        <link rel="index" title="Index"
+              href="#"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search">
           
 
           
@@ -60,7 +67,7 @@
             
             
               <div class="version">
-                0.4.1
+                0.4.2
               </div>
             
           
@@ -90,20 +97,24 @@
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
@@ -120,7 +131,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -128,10 +139,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -243,6 +253,8 @@
 </li>
       <li><a href="stocks.html#iexfinance.stocks.get_crypto_quotes">get_crypto_quotes() (in module iexfinance.stocks)</a>
 </li>
+      <li><a href="data_apis.html#iexfinance.data_apis.get_data_points">get_data_points() (in module iexfinance.data_apis)</a>
+</li>
       <li><a href="iexdata.html#iexfinance.iexdata.get_deep">get_deep() (in module iexfinance.iexdata)</a>
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_delayed_quote">get_delayed_quote() (iexfinance.stocks.base.Stock method)</a>
@@ -253,7 +265,7 @@
 </li>
       <li><a href="stocks.html#iexfinance.stocks.get_earnings_today">get_earnings_today() (in module iexfinance.stocks)</a>
 </li>
-      <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_effective_spread">get_effective_spread() (iexfinance.stocks.base.Stock method)</a>
+      <li><a href="options.html#iexfinance.stocks.get_eod_options">get_eod_options() (in module iexfinance.stocks)</a>, <a href="stocks.html#iexfinance.stocks.get_eod_options">[1]</a>
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_eps_consensus">get_eps_consensus() (iexfinance.stocks.base.Stock method)</a>
 </li>
@@ -270,29 +282,13 @@
       <li><a href="stocks.html#iexfinance.stocks.get_historical_intraday">get_historical_intraday() (in module iexfinance.stocks)</a>
 </li>
       <li><a href="modules.html#iexfinance.get_iex_corporate_actions">get_iex_corporate_actions() (in module iexfinance)</a>
-
-      <ul>
-        <li><a href="refdata.html#iexfinance.refdata.get_iex_corporate_actions">(in module iexfinance.refdata)</a>
 </li>
-      </ul></li>
       <li><a href="modules.html#iexfinance.get_iex_dividends">get_iex_dividends() (in module iexfinance)</a>
-
-      <ul>
-        <li><a href="refdata.html#iexfinance.refdata.get_iex_dividends">(in module iexfinance.refdata)</a>
 </li>
-      </ul></li>
       <li><a href="modules.html#iexfinance.get_iex_listed_symbol_dir">get_iex_listed_symbol_dir() (in module iexfinance)</a>
-
-      <ul>
-        <li><a href="refdata.html#iexfinance.refdata.get_iex_listed_symbol_dir">(in module iexfinance.refdata)</a>
 </li>
-      </ul></li>
       <li><a href="modules.html#iexfinance.get_iex_next_day_ex_date">get_iex_next_day_ex_date() (in module iexfinance)</a>
-
-      <ul>
-        <li><a href="refdata.html#iexfinance.refdata.get_iex_next_day_ex_date">(in module iexfinance.refdata)</a>
 </li>
-      </ul></li>
       <li><a href="refdata.html#iexfinance.refdata.get_iex_symbols">get_iex_symbols() (in module iexfinance.refdata)</a>
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_income_statement">get_income_statement() (iexfinance.stocks.base.Stock method)</a>
@@ -317,12 +313,12 @@
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_logo">get_logo() (iexfinance.stocks.base.Stock method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules.html#iexfinance.get_market_book">get_market_book() (in module iexfinance)</a>
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_market_cap">get_market_cap() (iexfinance.stocks.base.Stock method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules.html#iexfinance.get_market_deep">get_market_deep() (in module iexfinance)</a>
 </li>
       <li><a href="modules.html#iexfinance.get_market_gainers">get_market_gainers() (in module iexfinance)</a>
@@ -408,7 +404,11 @@
       <li><a href="refdata.html#iexfinance.refdata.get_symbols">get_symbols() (in module iexfinance.refdata)</a>
 </li>
       <li><a href="stocks.html#iexfinance.stocks.base.Stock.get_time_series">get_time_series() (iexfinance.stocks.base.Stock method)</a>
+
+      <ul>
+        <li><a href="data_apis.html#iexfinance.data_apis.get_time_series">(in module iexfinance.data_apis)</a>
 </li>
+      </ul></li>
       <li><a href="iexdata.html#iexfinance.iexdata.get_tops">get_tops() (in module iexfinance.iexdata)</a>
 </li>
       <li><a href="account.html#iexfinance.account.get_usage">get_usage() (in module iexfinance.account)</a>
@@ -444,8 +444,6 @@
       <li><a href="testing.html#iexfinance.utils.exceptions.IEXQueryError">IEXQueryError</a>
 </li>
       <li><a href="testing.html#iexfinance.utils.exceptions.IEXSymbolError">IEXSymbolError</a>
-</li>
-      <li><a href="testing.html#iexfinance.utils.exceptions.IEXVersionError">IEXVersionError</a>
 </li>
       <li><a href="testing.html#iexfinance.utils.exceptions.ImmediateDeprecationError">ImmediateDeprecationError</a>
 </li>
@@ -521,7 +519,9 @@
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -530,11 +530,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch
+        &copy; Copyright 2019, Addison Lynch.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -547,15 +547,36 @@
   
 
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.2-dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
 
   
   
-    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
    
 
 </body>

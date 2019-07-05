@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Alternative Data &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Options &mdash; iexfinance 0.4.2-dev documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Reference Data" href="refdata.html"/>
-        <link rel="prev" title="Data APIs" href="data_apis.html"/> 
+        <link rel="next" title="Investor’s Exchange Data" href="iexdata.html"/>
+        <link rel="prev" title="Reference Data" href="refdata.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -106,14 +106,17 @@
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Alternative Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#crypto">Crypto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#social-sentiment">Social Sentiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ceo-compensation">CEO Compensation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#end-of-day-options">End of Day Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-expiration-dates">List of Expiration Dates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options-for-a-single-date">Options For A Single Date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calls-puts-only">Calls/Puts Only</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
@@ -170,13 +173,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Alternative Data</li>
+      <li>Options</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/altdata.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/options.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,53 +192,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="alternative-data">
-<span id="altdata"></span><h1>Alternative Data<a class="headerlink" href="#alternative-data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="crypto">
-<span id="altdata-crypto"></span><h2>Crypto<a class="headerlink" href="#crypto" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="options">
+<span id="id1"></span><h1>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="end-of-day-options">
+<span id="options-eod"></span><h2>End of Day Options<a class="headerlink" href="#end-of-day-options" title="Permalink to this headline">¶</a></h2>
+<p>End of day options prices are available through the top-level function
+<code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code> for a single symbol.</p>
 <dl class="function">
-<dt id="iexfinance.altdata.get_crypto_quote">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_crypto_quote</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
-<dd><p>Crypto Quotes</p>
-<p>This will return a quote for Cryptocurrencies supported by IEX Cloud.
-Each element is a standard <code class="docutils literal notranslate"><span class="pre">quote</span></code>.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#crypto">https://iexcloud.io/docs/api/#crypto</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-<div class="section" id="social-sentiment">
-<span id="altdata-social"></span><h2>Social Sentiment<a class="headerlink" href="#social-sentiment" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="iexfinance.altdata.get_social_sentiment">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_social_sentiment</code><span class="sig-paren">(</span><em>symbol</em>, <em>period_type=None</em>, <em>date=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_social_sentiment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Social Sentiment</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Unstable endpoint. May return unexpected results.</p>
-</div>
-<p>This endpoint provides social sentiment data from StockTwits. Data can be
-viewed as a daily value, or by minute for a given date.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#social-sentiment">https://iexcloud.io/docs/api/#social-sentiment</a></p>
-<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per date for <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">200</span></code> per symbol for
-<code class="docutils literal notranslate"><span class="pre">minute</span></code></p>
+<dt id="iexfinance.stocks.get_eod_options">
+<code class="descclassname">iexfinance.stocks.</code><code class="descname">get_eod_options</code><span class="sig-paren">(</span><em>symbol</em>, <em>expiration=None</em>, <em>option_side=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>End of Day Options</p>
+<p>Returns a list of option expiration dates for a given symbol</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#end-of-day-options">https://iexcloud.io/docs/api/#end-of-day-options</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</li>
-<li><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – Can only be <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to the “type” path
-parameter in the IEX Cloud documentation</li>
-<li><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</li>
+<li><strong>symbol</strong> (<em>str</em>) – A valid symbol</li>
+<li><strong>expiration</strong> (<em>str</em><em>, </em><em>optional</em>) – A valid expiration date</li>
+<li><strong>option_side</strong> (<em>str</em><em>, </em><em>optional</em>) – Option side - <code class="docutils literal notranslate"><span class="pre">put</span></code> or <code class="docutils literal notranslate"><span class="pre">call</span></code> will return only those types of
+contracts</li>
 </ul>
 </td>
 </tr>
@@ -243,26 +220,40 @@ parameter in the IEX Cloud documentation</li>
 </table>
 </dd></dl>
 
-</div>
-<div class="section" id="ceo-compensation">
-<span id="altdata-ceo"></span><h2>CEO Compensation<a class="headerlink" href="#ceo-compensation" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="iexfinance.altdata.get_ceo_compensation">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_ceo_compensation</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_ceo_compensation" title="Permalink to this definition">¶</a></dt>
-<dd><p>CEO Compensation</p>
-<p>This endpoint provides CEO compensation for a company by symbol</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ceo-compensation">https://iexcloud.io/docs/api/#ceo-compensation</a></p>
-<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<div class="section" id="list-of-expiration-dates">
+<span id="options-eod-expiry-list"></span><h3>List of Expiration Dates<a class="headerlink" href="#list-of-expiration-dates" title="Permalink to this headline">¶</a></h3>
+<p>To obtain a list of all options expiration dates for a symbol, simply call <code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code> with a symbol only:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">get_eod_options</span>
 
+<span class="gp">In [2]: </span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">        0</span>
+<span class="go">0  204588</span>
+<span class="go">1  208108</span>
+<span class="go">2  205746</span>
+<span class="go">3  210357</span>
+<span class="go">4  205449</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="options-for-a-single-date">
+<span id="options-eod-single-date"></span><h3>Options For A Single Date<a class="headerlink" href="#options-for-a-single-date" title="Permalink to this headline">¶</a></h3>
+<p>To obtain the end-of-day prices of options contracts for a single expiration date (in the form <code class="docutils literal notranslate"><span class="pre">YYYYMM</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;201906&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calls-puts-only">
+<span id="options-eod-filter"></span><h3>Calls/Puts Only<a class="headerlink" href="#calls-puts-only" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to limit option results to calls or puts only:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;201906&quot;</span><span class="p">,</span> <span class="s2">&quot;calls&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;201906&quot;</span><span class="p">,</span> <span class="s2">&quot;puts&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -276,10 +267,10 @@ parameter in the IEX Cloud documentation</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="refdata.html" class="btn btn-neutral float-right" title="Reference Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="iexdata.html" class="btn btn-neutral float-right" title="Investor’s Exchange Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_apis.html" class="btn btn-neutral" title="Data APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="refdata.html" class="btn btn-neutral" title="Reference Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
