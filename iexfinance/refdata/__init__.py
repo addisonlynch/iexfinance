@@ -20,10 +20,6 @@ def get_iex_symbols(**kwargs):
 
     Reference: https://iexcloud.io/docs/api/#iex-symbols
 
-    .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
-
-    Reference: https://iexcloud.io/docs/api/#iex-symbols
     Data Weighting: ``Free``
     """
     return IEXSymbols(**kwargs).fetch()
@@ -31,67 +27,27 @@ def get_iex_symbols(**kwargs):
 
 def get_iex_corporate_actions(start=None, **kwargs):
     """
-    Returns IEX Corporate Actions from the ref-data
-    endpoints
-
-    .. warning:: This endpoint is available with the legacy IEX Developer API
-                 version 1.0 only.
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        A month to use for retrieval (a datetime object)
-    kwargs: Additional Request Parameters (see base class)
+    DEPRECATED
     """
     return CorporateActions(start=start, **kwargs).fetch()
 
 
 def get_iex_dividends(start=None, **kwargs):
     """
-    Returns IEX Dividends from the ref-data
-    endpoints
-
-    .. warning:: This endpoint is available with the legacy IEX Developer API
-                 version 1.0 only.
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        A month to use for retrieval (a datetime object)
-    kwargs: Additional Request Parameters (see base class)
+    DEPRECATED
     """
     return Dividends(start=start, **kwargs).fetch()
 
 
 def get_iex_next_day_ex_date(start=None, **kwargs):
     """
-    Returns IEX Next Day Ex Date from the ref-data
-    endpoints
-
-    .. warning:: This endpoint is available with the legacy IEX Developer API
-                 version 1.0 only.
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        A month to use for retrieval (a datetime object)
-    kwargs: Additional Request Parameters (see base class)
+    DEPRECATED
     """
     return NextDay(start=start, **kwargs).fetch()
 
 
 def get_iex_listed_symbol_dir(start=None, **kwargs):
     """
-    Returns IEX Listed Symbol Directory from the
-    ref-data endpoints
-
-    .. warning:: This endpoint is available with the legacy IEX Developer API
-                 version 1.0 only.
-
-    Parameters
-    ----------
-    start: datetime.datetime, default None, optional
-        A month to use for retrieval (a datetime object)
-    kwargs: Additional Request Parameters (see base class)
+    DEPRECATED
     """
     return ListedSymbolDir(start=start, **kwargs).fetch()
