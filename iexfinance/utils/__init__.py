@@ -40,7 +40,7 @@ def _sanitize_dates(start, end, default_end=datetime.today()):
 
 
 def _handle_lists(l, mult=True, err_msg=None):
-    if isinstance(l, (compat.string_types, int)):
+    if isinstance(l, (str, int)):
         return [l] if mult is True else l
     elif isinstance(l, pd.DataFrame) and mult is True:
         return list(l.index)
