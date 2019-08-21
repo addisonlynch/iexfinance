@@ -3,7 +3,6 @@ import requests
 from datetime import datetime
 from functools import wraps
 import pandas as pd
-import pandas.compat as compat
 from pandas import to_datetime
 
 from iexfinance.utils.exceptions import ImmediateDeprecationError
@@ -40,7 +39,7 @@ def _sanitize_dates(start, end, default_end=datetime.today()):
 
 
 def _handle_lists(l, mult=True, err_msg=None):
-    if isinstance(l, (compat.string_types, int)):
+    if isinstance(l, (str, int)):
         return [l] if mult is True else l
     elif isinstance(l, pd.DataFrame) and mult is True:
         return list(l.index)
