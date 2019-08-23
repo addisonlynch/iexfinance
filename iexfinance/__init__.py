@@ -4,7 +4,7 @@ import os
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 __author__ = 'Addison Lynch'
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 
 # Data provided for free by IEX
