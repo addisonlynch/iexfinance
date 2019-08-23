@@ -26,7 +26,7 @@ class TestAltData(object):
         data = get_crypto_quote("BTCUSDT")
 
         assert isinstance(data, dict)
-        assert len(data) == 18
+        assert len(data) == 15
 
         assert data["symbol"] == "BTCUSDT"
 
@@ -34,7 +34,7 @@ class TestAltData(object):
         data = get_crypto_quote("BTCUSDT", output_format='pandas')
 
         assert isinstance(data, pd.DataFrame)
-        assert len(data) == 18
+        assert len(data) == 15
 
 
 class TestSocialSentiment(object):
