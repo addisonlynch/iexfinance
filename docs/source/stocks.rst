@@ -360,7 +360,7 @@ top-level ``get_historical_data`` and
 `Historical Prices <https://iexcloud.io/docs/api/#historical-prices>`__
 endpoint, and accept a date or date range for retrieval.
 
-Daily data can be retrieved from up to 10 years before the current date.
+Daily data can be retrieved from up to 15 years before the current date.
 
 Daily
 ~~~~~

@@ -7,6 +7,17 @@ v0.4.4 (TBD)
 This is a minor patch release from 0.4.3. We recommend that all users upgrade.
 
 
+Enhancements
+~~~~~~~~~~~~
+
+- Improves message weighting for historical data when calls are under
+  1-year range
+- Adds support for historical data for the previous 15 years
+  (extended from 5 years) (GH94_)
+
+.. _GH94:: https://github.com/addisonlynch/iexfinance/issues/94
+
+
 Bug Fixes
 ~~~~~~~~~
 
