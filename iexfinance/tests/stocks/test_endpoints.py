@@ -5,6 +5,7 @@ import pandas as pd
 
 from decimal import Decimal
 
+from iexfinance.stocks.historical import HistoricalReader
 from iexfinance.stocks import (get_historical_data, get_sector_performance,
                                get_collections, get_earnings_today,
                                get_ipo_calendar, get_historical_intraday,
@@ -270,13 +271,13 @@ class TestHistorical(object):
         assert expected2["high"] == pytest.approx(311.0, 3)
 
     def test_invalid_dates(self):
-        start = datetime(2010, 5, 9)
+        start = datetime(2000, 5, 9)
         end = datetime(2017, 5, 9)
         with pytest.raises(ValueError):
             get_historical_data("AAPL", start, end)
 
     def test_invalid_dates_batch(self):
-        start = datetime(2010, 5, 9)
+        start = datetime(2000, 5, 9)
         end = datetime(2017, 5, 9)
         with pytest.raises(ValueError):
             get_historical_data(["AAPL", "TSLA"], start, end)
@@ -303,9 +304,37 @@ class TestHistorical(object):
         assert "open" not in data["2017-02-09"]
         assert "high" not in data["2017-02-09"]
 
-    # def test_market_closed_pandas(self):
-    #     data = get_historical_data("AAPL", "20190101")
-    #     assert isinstance(data, pd.DataFrame)
+    def test_reader_chart_range(self):
+        from datetime import date, timedelta
+
+        syms = ["AAPL"]
+
+        # source: pandas datareader
+
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=5),
+                                end=date.today()).chart_range == '5d'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=27),
+                                end=date.today()).chart_range == '1m'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=83),
+                                end=date.today()).chart_range == '3m'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=167),
+                                end=date.today()).chart_range == '6m'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=170),
+                                end=date.today()).chart_range == '1y'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=365),
+                                end=date.today()).chart_range == '2y'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=730),
+                                end=date.today()).chart_range == '5y'
+        assert HistoricalReader(symbols=syms,
+                                start=date.today() - timedelta(days=1826),
+                                end=date.today()).chart_range == 'max'
 
 
 class TestSectorPerformance(object):
