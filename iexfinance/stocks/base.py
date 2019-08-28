@@ -469,8 +469,6 @@ class Stock(_IEXBase):
                 d = out.pop(symbol)
                 df = pd.DataFrame(d)
                 df.set_index(pd.DatetimeIndex(df["date"]), inplace=True)
-                values = ["open", "high", "low", "close", "volume"]
-                df = df[values]
                 result.update({symbol: df})
             if len(result) == 1:
                 return result[self.symbols[0]]
