@@ -22,11 +22,11 @@ class Stock(_IEXBase):
         Authentication token (required for use with IEX Cloud)
     """
     # Possible option values (first is default)
-    _ENDPOINTS = ["chart", "quote", "book", "open-close", "previous",
+    _ENDPOINTS = ("chart", "quote", "book", "open-close", "previous",
                   "company", "stats", "peers", "relevant", "news",
                   "financials", "earnings", "dividends", "splits", "logo",
                   "price", "delayed-quote", "effective-spread",
-                  "volume-by-venue", "ohlc"]
+                  "volume-by-venue", "ohlc")
 
     def __init__(self, symbols=None, **kwargs):
         """ Initialize the class
@@ -92,7 +92,7 @@ class Stock(_IEXBase):
                   for k, v in temp.items()}
         return params
 
-    def _get_endpoint(self, endpoint, params={}, fmt_p=None,
+    def _get_endpoint(self, endpoint, params=(), fmt_p=None,
                       fmt_j=None, filter_=None):
         result = {}
         if filter_:
@@ -129,7 +129,7 @@ class Stock(_IEXBase):
             return data[self.symbols[0]]
         return data
 
-    def get_endpoints(self, endpoints=[]):
+    def get_endpoints(self, endpoints=()):
         """
         Universal selector method to obtain specific endpoints from the
         data set.

@@ -155,7 +155,7 @@ class _IEXBase(object):
         """
         params = self.params
         params['token'] = self.token
-        for i in range(self.retry_count+1):
+        for _ in range(self.retry_count+1):
             response = self.session.get(url=url, params=params)
             logger.debug("REQUEST: %s" % response.request.url)
             logger.debug("RESPONSE: %s" % response.status_code)

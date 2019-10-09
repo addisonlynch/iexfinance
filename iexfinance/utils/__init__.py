@@ -14,12 +14,15 @@ def _init_session(session, retry_count=3):
     return session
 
 
-def _sanitize_dates(start, end, default_end=datetime.today()):
+def _sanitize_dates(start, end, default_end=None):
     """
     Return (datetime_start, datetime_end) tuple
     if start is None - default is 2015/01/01
     if end is None - default is today
     """
+    if default_end is None:
+        default_end = datetime.today()
+
     if isinstance(start, int):
         # regard int as year
         start = datetime(start, 1, 1)

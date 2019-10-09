@@ -16,6 +16,7 @@ Enhancements
   1-year range
 - Adds support for historical data for the previous 15 years
   (extended from 5 years) (GH94_)
+- Adds ``flake8-bugbear`` for additional code quality checks
 
 .. _GH94:: https://github.com/addisonlynch/iexfinance/issues/94
 
@@ -27,6 +28,7 @@ Bug Fixes
   (GH165_) to return all fields, including ``changePercent``
 
   .. _GH165:: https://github.com/addisonlynch/iexfinance/issues/165
+
 
 Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

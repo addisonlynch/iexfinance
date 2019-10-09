@@ -1,4 +1,5 @@
 flake8
+flake8-bugbear
 flake8-rst
 ipython
 pytest>=4
