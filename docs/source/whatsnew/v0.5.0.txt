@@ -1,10 +1,12 @@
-.. _whatsnew_044:
+.. _whatsnew_050:
 
 
-v0.4.4 (TBD)
+v0.5.0 (TBD)
 ------------
 
-This is a minor patch release from 0.4.3. We recommend that all users upgrade.
+This is a major patch release from 0.4.3. We recommend that all users upgrade.
+
+Support for Python 2 has ended with this release.
 
 
 Enhancements
@@ -25,3 +27,8 @@ Bug Fixes
   (GH165_) to return all fields, including ``changePercent``
 
   .. _GH165:: https://github.com/addisonlynch/iexfinance/issues/165
+
+Backward Incompatible Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Ends support for Python 2
