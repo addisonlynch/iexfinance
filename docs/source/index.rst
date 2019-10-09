@@ -8,7 +8,9 @@ Welcome to iexfinance's documentation!
 - :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
 - :ref:`package_info` - additional package information, developer/testing documentation
 
-.. warning:: **Support for the Legacy v1 Devleoper API ended on June
+.. warning:: Support for Python 2 has ended as of ``iexfinance`` version 0.5.0.
+
+.. note:: **Support for the Legacy v1 Devleoper API ended on June
              1st, 2019.** As of version 0.4.2, use of ``iexfinance`` requires
              an IEX Cloud account_.
 
