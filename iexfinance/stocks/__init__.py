@@ -25,10 +25,12 @@ def get_historical_data(symbols, start, end=None, close_only=False, **kwargs):
     ----------
     symbols: str or list
         A symbol or list of symbols
-    start: datetime.datetime
-        Beginning of desired date range
-    end: datetime.datetime, optional, default None
-        End of required date range
+    start : string, int, date, datetime, Timestamp
+        Starting date. Parses many different kind of date
+        representations (e.g., 'JAN-01-2010', '1/1/10', 'Jan, 1, 1980').
+        Defaults to 15 years before current date.
+    end : string, int, date, datetime, Timestamp
+        Ending date
     close_only: bool, default False
         Returns adjusted data only with keys ``date``, ``close``, and
         ``volume``

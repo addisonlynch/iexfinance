@@ -158,10 +158,12 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
 
     Parameters
     ----------
-    start: datetime.datetime, default None, optional
-        Start of data retrieval period
-    end: datetime.datetime, default None, optional
-        End of data retrieval period
+    start : string, int, date, datetime, Timestamp
+        Starting date. Parses many different kind of date
+        representations (e.g., 'JAN-01-2010', '1/1/10', 'Jan, 1, 1980').
+        Defaults to 15 years before current date.
+    end : string, int, date, datetime, Timestamp
+        Ending date
     last: int, default None, optional
         Used in place of date range to retrieve previous number of trading days
         (up to 90)

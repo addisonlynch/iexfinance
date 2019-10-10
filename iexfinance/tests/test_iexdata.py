@@ -213,9 +213,6 @@ class TestStatsSummary(object):
 
     def test_summary_invalid_end_date(self):
         with pytest.raises(ValueError):
-            get_stats_summary(start=datetime(2017, 1, 1))
-
-        with pytest.raises(ValueError):
             get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2016, 1,
                               1))
 
