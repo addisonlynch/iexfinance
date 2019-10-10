@@ -7,11 +7,13 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 class TestTimeSeries(object):
 
+    @pytest.mark.xfail(reason="Endpoint not working in sandbox environment")
     def test_all_series(self):
         data = get_time_series()
 
         assert isinstance(data, list)
 
+    @pytest.mark.xfail(reason="Endpoint not working in sandbox environment")
     def test_all_series_pandas(self):
         data = get_time_series(output_format='pandas')
 
