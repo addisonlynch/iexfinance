@@ -17,6 +17,8 @@ Enhancements
 - Adds support for historical data for the previous 15 years
   (extended from 5 years) (GH94_)
 - Adds ``flake8-bugbear`` for additional code quality checks
+- Repairs date handling to accept multiple formats, including ``str``,
+  ``int``, ``date``, ``datetime``, and ``pandas.Timestamp`` and use a rolling 15-year default start date for historical data (specifically ``get_historical_data``)
 
 .. _GH94:: https://github.com/addisonlynch/iexfinance/issues/94
 

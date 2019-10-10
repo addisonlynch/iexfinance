@@ -14,7 +14,7 @@ class HistoricalReader(Stock):
     Reference: https://iextrading.com/developer/docs/#chart
     """
     def __init__(self, symbols, start, end=None, close_only=False, **kwargs):
-        self.start, self.end = _sanitize_dates(start, end, default_end=None)
+        self.start, self.end = _sanitize_dates(start, end)
         self.single_day = True if self.end is None else False
         self.close_only = close_only
         super(HistoricalReader, self).__init__(symbols, **kwargs)
