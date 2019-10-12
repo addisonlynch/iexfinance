@@ -166,7 +166,7 @@ class _IEXBase(object):
             if status_code == 400:
                 # could be diffrent things: https://iexcloud.io/docs/api/#errors
                 auth_msg = "The query could not be completed: %s" % response.content.decode('ascii')
-                raise auth_error(auth_msg)
+                raise Exception(auth_msg)
             else:
                 raise auth_error("The query could not be completed. "
                                  "There was a client-side error with your "
