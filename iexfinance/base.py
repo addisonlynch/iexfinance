@@ -160,11 +160,12 @@ class _IEXBase(object):
         """
         Handles all responses which return an error status code
         """
-        auth_msg = "The query could not be completed. Invalid auth token."
 
         status_code = response.status_code
         if 400 <= status_code < 500:
             if status_code == 400:
+                # could be diffrent things: https://iexcloud.io/docs/api/#errors
+                auth_msg = "The query could not be completed: %s" % response.content.decode('ascii')
                 raise auth_error(auth_msg)
             else:
                 raise auth_error("The query could not be completed. "
