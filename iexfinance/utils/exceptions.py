@@ -1,3 +1,6 @@
+DEP_ERROR_MSG = "%s has been immediately deprecated."
+
+
 class IEXSymbolError(Exception):
     """
     This error is thrown when an invalid symbol is given.
@@ -10,42 +13,19 @@ class IEXSymbolError(Exception):
         return "Symbol " + self.symbol + " not found."
 
 
-class IEXEndpointError(Exception):
-    """
-    This error is thrown when an invalid endpoint is specified in the custom
-    endpoint lookup method
-    """
-
-    def __init__(self, endpoint):
-        self.endpoint = endpoint
-
-    def __str__(self):
-        return "Endpoint " + self.endpoint + " not found."
-
-
-class IEXFieldError(Exception):
-    """
-    This error is thrown when an invalid field is specified in the custom
-    endpoint lookup method
-    """
-
-    def __init__(self, endpoint, field):
-        self.field = field
-        self.endpoint = endpoint
-
-    def __str__(self):
-        return ("Field " + self.field + " not found in Endpoint " +
-                self.endpoint)
-
-
 class IEXQueryError(Exception):
     """
     This error is thrown when an error occurs with the query to IEX, be it a
     network problem or an invalid query.
     """
+    _DEFAULT_MSG = "The query could not be completed. There was a " \
+                   "client-side error with your request."
+
+    def __init__(self, message=None):
+        self.message = message or self._DEFAULT_MSG
 
     def __str__(self):
-        return "An error occurred while making the query."
+        return self.message
 
 
 class IEXAuthenticationError(Exception):
@@ -61,12 +41,10 @@ class IEXAuthenticationError(Exception):
         return self.msg
 
 
-DEP_ERROR_MSG = "%s has been immediately deprecated."
-LEGACY_DEP_MSG = "This endpoint has been immediately deprecated, "\
-                 "and is no longer available with IEX Cloud."
-
-
 class ImmediateDeprecationError(Exception):
 
+    def __init__(self, endpoint):
+        self.endpoint = endpoint
+
     def __str__(self):
-        return LEGACY_DEP_MSG
+        return DEP_ERROR_MSG % self.endpoint

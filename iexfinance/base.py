@@ -175,9 +175,7 @@ class _IEXBase(object):
             if status_code == 400:
                 raise auth_error(auth_msg)
             else:
-                raise IEXQueryError("The query could not be completed. "
-                                    "There was a client-side error with your "
-                                    "request.")
+                raise IEXQueryError(response.text)
         elif 500 <= status_code < 600:
             raise auth_error("The query could not be completed. "
                              "There was a server-side error with "
