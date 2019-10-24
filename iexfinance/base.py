@@ -120,16 +120,16 @@ class _IEXBase(object):
         logger.info("MESSAGES USED: %s" % msg)
 
         if response.text == "Unknown symbol":
-            raise IEXQueryError()
+            raise IEXQueryError(response.status_code, response.text)
         try:
             json_response = response.json(
                 parse_int=self.json_parse_int,
                 parse_float=self.json_parse_float)
             if isinstance(json_response, str) and ("Error Message" in
                                                    json_response):
-                raise IEXQueryError()
+                raise IEXQueryError(response.status_code, response.text)
         except ValueError:
-            raise IEXQueryError()
+            raise IEXQueryError(response.status_code, response.text)
         return json_response
 
     def _execute_iex_query(self, url):
@@ -168,22 +168,7 @@ class _IEXBase(object):
         """
         Handles all responses which return an error status code
         """
-        auth_msg = "The query could not be completed. Invalid auth token."
-
-        status_code = response.status_code
-        if 400 <= status_code < 500:
-            if status_code == 400:
-                raise auth_error(auth_msg)
-            else:
-                raise IEXQueryError("The query could not be completed. "
-                                    "There was a client-side error with your "
-                                    "request.")
-        elif 500 <= status_code < 600:
-            raise auth_error("The query could not be completed. "
-                             "There was a server-side error with "
-                             "your request.")
-        else:
-            raise auth_error("The query could not be completed.")
+        raise IEXQueryError(response.status_code, response.text)
 
     def _prepare_query(self):
         """ Prepares the query URL

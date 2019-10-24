@@ -44,8 +44,13 @@ class IEXQueryError(Exception):
     network problem or an invalid query.
     """
 
+    def __init__(self, status, response):
+        self.response = response
+        self.status = status
+
     def __str__(self):
-        return "An error occurred while making the query."
+        return "An error occurred while making the query ({}): {}".format(
+                self.status, self.response)
 
 
 class IEXAuthenticationError(Exception):
