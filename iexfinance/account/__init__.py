@@ -1,10 +1,11 @@
-from iexfinance.account.base import Usage, Metadata, PayAsYouGo
+from iexfinance.account.base import Metadata, PayAsYouGo, Usage
 
 
 def get_metadata(**kwargs):
-    """Metadata
+    """
+    Metadata
 
-    Get account metadata
+    Account metadata
 
     Reference: https://iexcloud.io/docs/api/#metadata
 
@@ -14,10 +15,11 @@ def get_metadata(**kwargs):
 
 
 def get_usage(quota_type=None, **kwargs):
-    """Usage
+    """
+    Usage
 
-    Used to retrieve account details such as current tier, payment status,
-    message quote usage, etc
+    Account details, including current tier, payment status,
+    message quote usage
 
     Reference: https://iexcloud.io/docs/api/#usage
 
@@ -26,16 +28,17 @@ def get_usage(quota_type=None, **kwargs):
     Parameters
     ----------
     quota_type: str, default "messages", optional
-        Used to specify quota to return Ex. ``messages``, ``rules``,
-        ``rule-records``, ``alerts``, ``alert-records``
+        Quotat category (``messages``, ``rules``,
+        ``rule-records``, ``alerts``, ``alert-records``)
     """
     return Usage(quota_type=quota_type, **kwargs).fetch()
 
 
 def allow_pay_as_you_go(**kwargs):
-    """Allow Pay As You Go
+    """
+    Allow Pay As You Go
 
-    Set pay as you go account settings to ``allow=True``
+    Toggle ON pay-as-you-go messages
 
     Reference: https://iexcloud.io/docs/api/#pay-as-you-go
 
@@ -45,12 +48,13 @@ def allow_pay_as_you_go(**kwargs):
 
 
 def disallow_pay_as_you_go(**kwargs):
-    """Disallow Pay As You Go
+    """
+    Disallow Pay As You Go
 
-    Set pay as you go account settings to ``allow=False``
-
-    Data Weighting: ``Free``
+    Toggle OFF pay-as-you-go messages
 
     Reference: https://iexcloud.io/docs/api/#pay-as-you-go
+
+    Data Weighting: ``Free``
     """
     return PayAsYouGo(**kwargs).fetch()
