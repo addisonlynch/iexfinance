@@ -14,7 +14,7 @@ class Stock(_IEXBase):
     Attributes
     ----------
     symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
-        A symbol or list of symbols for which to obtain data
+        Symbol or list-like collection of symbols
     output_format: str
         Desired output format for requests (default is ``json``, also accepts
         ``pandas`` for a ``pandas.DataFrame`` output format)

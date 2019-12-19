@@ -18,8 +18,7 @@ class Market(_IEXBase):
     """
 
     def __init__(self, symbols=None, **kwargs):
-        """ Initialize the class
-
+        """
         Parameters
         ----------
         symbols : string, array-like object (list, tuple, Series), or DataFrame
