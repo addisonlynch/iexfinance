@@ -41,7 +41,10 @@ class Stock(_IEXBase):
         elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
             self.symbols = symbols
         elif 0 < len(symbols) <= 100:
-            raise ValueError("Please input a symbols list containing between 0 and 100 symbols")
+            raise ValueError(
+                "Please input a symbols list containing between "
+                "0 and 100 symbols"
+            )
         else:
             raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
