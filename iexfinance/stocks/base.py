@@ -604,6 +604,50 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("institutional-ownership", fmt_p=fmt_p)
 
+    def get_intraday_prices(self, **kwargs):
+        """Intraday Prices
+
+        Reference: https://iexcloud.io/docs/api/#intraday-prices
+
+        Data Weighting: 
+        ``1`` per symbol per time interval up to a max use of 50 messages
+        Example: If you query for twtr 1d at 11:00am, it will return 90 minutes of data for a total of 50.
+
+        IEX Only intraday minute bar
+        Free This will only return IEX data with keys minute, high, low, average, volume, notional, and numberOfTrades
+        Use the chartIEXOnly param
+
+        : boolean, optional
+
+        Parameters
+        ----------
+        last: int, default 10, optional
+            Number of news listings to return.
+        chartIEXOnly: boolean, optional
+            Limits the return of intraday prices to IEX only data.
+        chartReset: boolean, optional
+            If true, chart will reset at midnight instead of the default behavior of 9:30am ET.
+        chartSimplify: boolean, optional
+            If true, runs a polyline simplification using the Douglas-Peucker algorithm. This is useful if plotting sparkline charts.
+        chartInterval: number, optional
+            If passed, chart data will return every Nth element as defined by chartInterval
+        changeFromClose: boolean, optional
+            If true, changeOverTime and marketChangeOverTime will be relative to previous day close instead of the first value.
+        chartLast: number, optional
+            If passed, chart data will return the last N elements
+        exactDate: string, optional
+            Formatted as YYYYMMDD. This can be used for batch calls when range is 1d or date.
+        chartIEXWhenNull: boolean, optional
+            By default, all market prefixed fields are 15 minute delayed, meaning the most recent 15 objects will be null. 
+            If this parameter is passed as true, all market prefixed fields that are null will be populated with IEX data if available.
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            Stocks Quote endpoint data
+        """
+        return self._get_endpoint("intraday-prices", params=kwargs)        
+
     def get_key_stats(self, **kwargs):
         """
         Reference: https://iexcloud.io/docs/api/#key-stats
