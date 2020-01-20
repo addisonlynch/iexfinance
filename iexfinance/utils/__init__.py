@@ -1,12 +1,9 @@
 import requests
 
 import datetime as dt
-from functools import wraps
 import pandas as pd
 from pandas import to_datetime
 from pandas.api.types import is_number
-
-from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 
 def _init_session(session, retry_count=3):
@@ -69,16 +66,3 @@ def _handle_lists(l, mult=True, err_msg=None):
 
 def no_pandas(out):
     return out
-
-
-def legacy_endpoint(func):
-    """
-    Decorator to denote a function or method which calls an endpoint that is
-    not supported by IEX Cloud.
-
-    These endpoints will be deprecated in 0.4.2.
-    """
-    @wraps(func)
-    def _wrapped_function(self, *args, **kwargs):
-        raise ImmediateDeprecationError()
-    return _wrapped_function

@@ -1,7 +1,6 @@
 import datetime
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import legacy_endpoint
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -23,50 +22,6 @@ class ReferenceReader(_IEXBase):
                                          self.start.strftime('%Y%m%d'))
         else:
             return 'daily-list/%s' % self.endpoint
-
-
-class CorporateActions(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'corporate-actions'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(CorporateActions, self).fetch()
-
-
-class Dividends(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'dividends'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(Dividends, self).fetch()
-
-
-class NextDay(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'next-day-ex-date'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(NextDay, self).fetch()
-
-
-class ListedSymbolDir(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'symbol-directory'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(ListedSymbolDir, self).fetch()
 
 
 class CloudRef(_IEXBase):
