@@ -23,7 +23,9 @@ def get_iex_symbols(**kwargs):
     """
     return IEXSymbols(**kwargs).fetch()
 
-def get_us_trading_dates_holidays(type_, direction, last=1, startDate=None, **kwargs):
+
+def get_us_trading_dates_holidays(type_, direction, last=1,
+                                  startDate=None, **kwargs):
     """
     Function to obtain us trading dates or holidays from
     a given date
@@ -36,8 +38,8 @@ def get_us_trading_dates_holidays(type_, direction, last=1, startDate=None, **kw
         can be "trade" or "holiday". Determines whether to return days where
         trading took place or holidays
     direction: str
-        can be "next" or "last". Determines whether to return dates in the future
-        or the past
+        can be "next" or "last". Determines whether to return dates in the
+        future or the past
     last: int, default 1
         number of days to go backward or forward
     startDate: str, datetime.datetime, default current date
