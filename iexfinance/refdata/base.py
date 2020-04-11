@@ -1,4 +1,5 @@
 import datetime
+import pandas as pd
 
 from iexfinance.base import _IEXBase
 
@@ -24,6 +25,7 @@ class ReferenceReader(_IEXBase):
             return 'daily-list/%s' % self.endpoint
 
 
+
 class CloudRef(_IEXBase):
 
     @property
@@ -34,6 +36,35 @@ class CloudRef(_IEXBase):
     def endpoint(self):
         raise NotImplementedError
 
+class TradingDatesReader(CloudRef):
+    """
+    Base class to retrieve trading holiday information
+    """
+    def __init__(self, type_, direction=None, last=1, startDate=None, **kwargs):
+        if isinstance(startDate, datetime.date):
+            self.startDate = startDate.strftime('%Y%m%d')
+        else:
+            self.startDate = startDate 
+        self.type = type_
+        if direction not in {"next", "last"}:
+            raise ValueError("direction must be either next or last")
+        self.direction = direction
+        self.last = last
+        super(TradingDatesReader, self).__init__(**kwargs)
+        
+    @property
+    def endpoint(self):
+        ret = "us/dates/%s/%s" % (self.type,
+                                  self.direction)
+        ret += "/" + str(self.last)
+        if self.startDate is not None:
+            ret += "/" + self.startDate 
+        print(f"{ret=}")
+        return ret
+
+    def _output_format(self, out, fmt_j=None, fmt_p=None):
+        out = [{k : pd.to_datetime(v) for k, v in day.items()} for day in out]
+        return super()._output_format(out, fmt_j=fmt_j, fmt_p=fmt_p)
 
 class Symbols(CloudRef):
 
@@ -50,3 +81,4 @@ class IEXSymbols(CloudRef):
     @property
     def endpoint(self):
         return "iex/symbols"
+
