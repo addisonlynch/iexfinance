@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from iexfinance.refdata import get_symbols, get_iex_symbols
-from iexfinance.refdata import get_us_trading_dates_holidays
+from iexfinance.refdata import (get_symbols, get_iex_symbols,
+                                get_us_trading_dates_holidays)
 
 
 IEX_MSG = "These functions return data for IEX listed symbols only. There is "\

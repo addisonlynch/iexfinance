@@ -1,7 +1,6 @@
 from iexfinance.iexdata.base import (TOPS, Last, DEEP, Book, IntradayReader,
                                      RecentReader, RecordsReader,
                                      DailySummaryReader, MonthlySummaryReader)
-from iexfinance.utils import _sanitize_dates
 
 
 def get_tops(symbols=None, **kwargs):
