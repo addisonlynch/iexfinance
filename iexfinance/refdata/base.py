@@ -61,7 +61,6 @@ class TradingDatesReader(CloudRef):
         ret += "/" + str(self.last)
         if self.startDate is not None:
             ret += "/" + self.startDate
-        print(f"{ret=}")
         return ret
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
