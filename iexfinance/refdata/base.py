@@ -42,7 +42,8 @@ class TradingDatesReader(CloudRef):
     """
     def __init__(self, type_, direction=None, last=1,
                  startDate=None, **kwargs):
-        if isinstance(startDate, datetime.date):
+        if (isinstance(startDate, datetime.date) or
+                isinstance(startDate, datetime.datetime)):
             self.startDate = startDate.strftime('%Y%m%d')
         else:
             self.startDate = startDate
