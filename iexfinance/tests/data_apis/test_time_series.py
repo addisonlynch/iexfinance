@@ -2,7 +2,6 @@ import pandas as pd
 import pytest
 
 from iexfinance.data_apis import get_time_series
-from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestTimeSeries(object):
@@ -19,22 +18,18 @@ class TestTimeSeries(object):
 
         assert isinstance(data, pd.DataFrame)
 
-    def test_no_key_fails(self):
-        with pytest.raises(IEXQueryError):
-            get_time_series("REPORTED_FINANCIALS")
-
     def test_id_key(self):
         data = get_time_series("REPORTED_FINANCIALS", "AAPL")
 
         assert isinstance(data, list)
-        assert "subkey" in data[1]
+        assert "subkey" in data[0]
 
     def test_id_key_subkey(self):
         data = get_time_series("REPORTED_FINANCIALS", "AAPL", "10-K")
 
         assert isinstance(data, list)
-        assert len(data) == 10
-        assert "dateFiled" in data[1]
+        assert len(data) == 1
+        assert "dateFiled" in data[0]
 
         # IEX returns last 10 years of financials
 

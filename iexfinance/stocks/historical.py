@@ -23,31 +23,29 @@ class HistoricalReader(Stock):
     def chart_range(self):
         """ Calculates the chart range from start and end
         """
-        if self.single_day is True:
-            return "date"
-        delta = datetime.datetime.now().year - self.start.year
-        if 5 <= delta <= 15:
-            return "max"
-        if 2 <= delta < 5:
-            return "5y"
-        elif 1 <= delta < 2:
+        # TODO: rewrite to account for leap years
+
+        delta_days = (datetime.datetime.now() - self.start).days
+        print("DELTA_DAYS: %s" % delta_days)
+        if 0 <= delta_days < 6:
+            return "5d"
+        elif 6 <= delta_days < 28:
+            return "1m"
+        elif 28 <= delta_days < 84:
+            return "3m"
+        elif 84 <= delta_days < 168:
+            return "6m"
+        elif 168 <= delta_days < 365:
+            return "1y"
+        elif 365 <= delta_days < 730:
             return "2y"
-        elif 0 <= delta < 1:
-            # source: pandas datareader
-            delta_days = (datetime.datetime.now() - self.start).days
-            if 0 <= delta_days < 6:
-                return "5d"
-            elif 6 <= delta_days < 28:
-                return "1m"
-            elif 28 <= delta_days < 84:
-                return "3m"
-            elif 84 <= delta_days < 168:
-                return "6m"
-            else:
-                return "1y"
+        elif 730 <= delta_days < 1826:
+            return "5y"
+        elif 1826 <= delta_days < 5478:
+            return "max"
         else:
-            raise ValueError(
-                "Invalid date specified. Must be within past 15 years.")
+            raise ValueError("Invalid date specified. "
+                             "Must be within past 15 years.")
 
     @property
     def params(self):
