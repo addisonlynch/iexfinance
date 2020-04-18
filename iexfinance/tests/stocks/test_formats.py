@@ -56,7 +56,7 @@ _FIELD_METHODS = [
     # ("get_short_ratio", float),  # changed
     # ("get_latest_eps", float),  # changed
     ("get_shares_outstanding", int),
-    ("get_float", int),
+    ("get_float", (int, float)),
     # ("get_eps_consensus", float)  # changed
 ]
 
