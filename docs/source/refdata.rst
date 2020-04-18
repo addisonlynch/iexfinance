@@ -51,3 +51,11 @@ Usage
     from iexfinance.refdata import get_iex_symbols
 
     get_iex_symbols()[:2]
+
+
+.. _refdata.holidays:
+
+U.S. Holidays & Trading Dates
+-----------------------------
+
+.. autofunction:: iexfinance.refdata.get_us_trading_dates_holidays

@@ -48,7 +48,7 @@ class TradingDatesReader(CloudRef):
         else:
             self.startDate = startDate
         self.type = type_
-        if direction not in {"next", "last"}:
+        if direction not in ("next", "last"):
             raise ValueError("direction must be either next or last")
         self.direction = direction
         self.last = last
@@ -56,11 +56,9 @@ class TradingDatesReader(CloudRef):
 
     @property
     def endpoint(self):
-        ret = "us/dates/%s/%s" % (self.type,
-                                  self.direction)
-        ret += "/" + str(self.last)
-        if self.startDate is not None:
-            ret += "/" + self.startDate
+        ret = "us/dates/%s/%s/%s" % (self.type, self.direction, self.last)
+        if self.startDate:
+            ret += "/%s" % self.startDate
         return ret
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
