@@ -27,10 +27,12 @@ def get_iex_symbols(**kwargs):
 def get_us_trading_dates_holidays(type_, direction, last=1,
                                   startDate=None, **kwargs):
     """
-    Function to obtain us trading dates or holidays from
+    Function to obtain US trading dates or holidays from
     a given date
 
     Reference: https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates
+
+    Data Weighting: ``1`` per row returned
 
     Parameters
     ----------
