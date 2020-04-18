@@ -1,9 +1,10 @@
+import datetime as dt
 from datetime import datetime, timedelta
 
 import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import _handle_lists
+from iexfinance.utils import _handle_lists, _sanitize_dates
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -177,17 +178,6 @@ class Stats(_IEXBase):
             if start.year < (now.year - 4) or start > now:
                 raise ValueError("start: retrieval period must begin from "
                                  + str(now.year - 4) + " until now")
-            # Ensure end date (if specified is between start and now)
-            if isinstance(end, datetime):
-                if end > now or end < start:
-                    raise ValueError("end: retrieval period must end"
-                                     "between start and the current date")
-
-                return
-            else:
-                raise ValueError("end: Please enter a valid end date")
-        else:
-            raise ValueError("Please specify a valid date range or last value")
 
 
 class IntradayReader(Stats):
@@ -231,11 +221,12 @@ class DailySummaryReader(Stats):
 
     Attributes
     ----------
-    start: datetime.datetime
-        Desired start of summary period
-    end: datetime.datetime
-        Desired end of summary period (if omitted, start
-        month will be returned)
+    start : string, int, date, datetime, Timestamp
+        Starting date. Parses many different kind of date
+        representations (e.g., 'JAN-01-2010', '1/1/10', 'Jan, 1, 1980').
+        Defaults to 15 years before current date.
+    end : string, int, date, datetime, Timestamp
+        Ending date
     last: int
         Period between 1 and 90 days, overrides dates
     output_format: str, default 'json', optional
@@ -253,8 +244,11 @@ class DailySummaryReader(Stats):
     def __init__(self, start=None, end=None, last=None, **kwargs):
         self.curr_date = start
         self.last = last
-        self.start = start
-        self.end = end
+        # if no start specified, use 4 years from previous date to override
+        # _sanitize_dates
+        if start is None:
+            start = dt.date.today() - timedelta(days=365 * 4)
+        self.start, self.end = _sanitize_dates(start, end)
         self.json_parse_int = kwargs.pop("json_parse_int", None)
         self.json_parse_float = kwargs.pop("json_parse_float", None)
         self._validate_params()
@@ -331,11 +325,10 @@ class MonthlySummaryReader(Stats):
 
     Attributes
     ----------
-    start: datetime.datetime
-        Desired start of summary period
-    end: datetime.datetime
-        Desired end of summary period (if omitted, start
-        month will be returned)
+    start : str, int, date, datetime, Timestamp
+        Desired start date
+    end : str, int, date, datetime, Timestamp
+        Desired end date
     output_format: str, default 'json', optional
         Desired output format (json or pandas)
     kwargs:
@@ -351,8 +344,7 @@ class MonthlySummaryReader(Stats):
     def __init__(self, start=None, end=None, **kwargs):
         self.curr_date = start
         self.date_format = '%Y%m'
-        self.start = start
-        self.end = end
+        self.start, self.end = _sanitize_dates(start, end)
         self._validate_dates(self.start, self.end)
         super(MonthlySummaryReader, self).__init__(**kwargs)
 
@@ -385,9 +377,9 @@ class MonthlySummaryReader(Stats):
                               for n in range(tlen.days))]
 
         mrange = []
-        for dt in lrange:
-            if datetime(dt.year, dt.month, 1) not in mrange:
-                mrange.append(datetime(dt.year, dt.month, 1))
+        for dtd in lrange:
+            if datetime(dtd.year, dtd.month, 1) not in mrange:
+                mrange.append(datetime(dtd.year, dtd.month, 1))
         lrange = mrange
 
         for date in lrange:

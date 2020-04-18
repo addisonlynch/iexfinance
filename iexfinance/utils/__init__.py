@@ -1,9 +1,10 @@
 import requests
 
-from datetime import datetime
+import datetime as dt
 from functools import wraps
 import pandas as pd
 from pandas import to_datetime
+from pandas.api.types import is_number
 
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
@@ -14,30 +15,44 @@ def _init_session(session, retry_count=3):
     return session
 
 
-def _sanitize_dates(start, end, default_end=None):
+def _sanitize_dates(start, end):
     """
-    Return (datetime_start, datetime_end) tuple
-    if start is None - default is 2015/01/01
+    Return (timestamp_start, timestamp_end) tuple
+    if start is None - default is 15 years before the current date
     if end is None - default is today
+    Parameters
+    ----------
+    start : str, int, date, datetime, Timestamp
+        Desired start date
+    end : str, int, date, datetime, Timestamp
+        Desired end date
     """
-    if default_end is None:
-        default_end = datetime.today()
+    today = dt.date.today()
 
-    if isinstance(start, int):
+    if is_number(start):
         # regard int as year
-        start = datetime(start, 1, 1)
+        start = dt.datetime(start, 1, 1)
     start = to_datetime(start)
 
-    if isinstance(end, int):
-        end = datetime(end, 1, 1)
+    if is_number(end):
+        end = dt.datetime(end, 1, 1)
     end = to_datetime(end)
 
     if start is None:
-        start = datetime(2015, 1, 1)
+        # default to 5 years before today
+        start = today - dt.timedelta(days=365 * 15)
     if end is None:
-        end = default_end
-    if default_end is not None and start > end:
-        raise ValueError('start must be an earlier date than end')
+        # default to today
+        end = today
+    try:
+        start = to_datetime(start)
+        end = to_datetime(end)
+    except (TypeError, ValueError):
+        raise ValueError("Invalid date format.")
+    if start > end:
+        raise ValueError("start must be an earlier date than end")
+    if start > today or end > today:
+        raise ValueError("Start and end dates must be before current date")
     return start, end
 
 
