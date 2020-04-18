@@ -26,7 +26,6 @@ class HistoricalReader(Stock):
         # TODO: rewrite to account for leap years
 
         delta_days = (datetime.datetime.now() - self.start).days
-        print("DELTA_DAYS: %s" % delta_days)
         if 0 <= delta_days < 6:
             return "5d"
         elif 6 <= delta_days < 28:
@@ -91,7 +90,7 @@ class HistoricalReader(Stock):
         else:
             for sym in list(result):
                 result[sym] = result[sym].to_dict('index')
-        return result[self.symbols[0]] if self.n_symbols == 1 else result
+        return result[self.symbols[0]] if len(self.symbols) == 1 else result
 
 
 class IntradayReader(_IEXBase):
