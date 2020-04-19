@@ -1,5 +1,13 @@
 #! /bin/bash
 
+echo "black check..."
+black --check .
+rc=$?; if [[ $rc != 0 ]]; then
+	echo "black check failed."
+	exit $rc;
+fi
+echo "PASSED"
+
 echo "flake8 check..."
 flake8 .
 rc=$?; if [[ $rc != 0 ]]; then
