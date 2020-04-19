@@ -1,5 +1,4 @@
-from iexfinance.refdata.base import (Symbols, IEXSymbols, CorporateActions,
-                                     ListedSymbolDir, NextDay, Dividends)
+from iexfinance.refdata.base import Symbols, IEXSymbols, TradingDatesReader
 
 
 def get_symbols(**kwargs):
@@ -25,29 +24,28 @@ def get_iex_symbols(**kwargs):
     return IEXSymbols(**kwargs).fetch()
 
 
-def get_iex_corporate_actions(start=None, **kwargs):
+def get_us_trading_dates_holidays(type_, direction, last=1,
+                                  startDate=None, **kwargs):
     """
-    DEPRECATED
-    """
-    return CorporateActions(start=start, **kwargs).fetch()
+    Function to obtain US trading dates or holidays from
+    a given date
 
+    Reference: https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates
 
-def get_iex_dividends(start=None, **kwargs):
-    """
-    DEPRECATED
-    """
-    return Dividends(start=start, **kwargs).fetch()
+    Data Weighting: ``1`` per row returned
 
-
-def get_iex_next_day_ex_date(start=None, **kwargs):
+    Parameters
+    ----------
+    type_: str
+        can be "trade" or "holiday". Determines whether to return days where
+        trading took place or holidays
+    direction: str
+        can be "next" or "last". Determines whether to return dates in the
+        future or the past
+    last: int, default 1
+        number of days to go backward or forward
+    startDate: str, datetime.datetime, default current date
+        specify first/last day included in next/last, respectively
     """
-    DEPRECATED
-    """
-    return NextDay(start=start, **kwargs).fetch()
-
-
-def get_iex_listed_symbol_dir(start=None, **kwargs):
-    """
-    DEPRECATED
-    """
-    return ListedSymbolDir(start=start, **kwargs).fetch()
+    return TradingDatesReader(type_, direction, last=last,
+                              startDate=startDate, **kwargs).fetch()

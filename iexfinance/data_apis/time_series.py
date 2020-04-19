@@ -12,6 +12,7 @@ class TimeSeries(_IEXBase):
         self.key = key
         self.subkey = subkey
 
+        # Base class parameters. Pop from kwargs stored in _params
         retry_count = kwargs.pop("retry_count", 3)
         pause = kwargs.pop("pause", 0.5)
         session = kwargs.pop("session", None)
@@ -48,7 +49,6 @@ class TimeSeries(_IEXBase):
     def _convert_output(self, out):
         if self.id_ is None:
             return pd.DataFrame({item["id"]: item for item in out})
-        data = {item["dateFiled"]: item for item in out}
-        df = pd.DataFrame(data)
+        df = pd.DataFrame({item["dateFiled"]: item for item in out})
         df.columns = pd.to_datetime(df.columns)
         return df

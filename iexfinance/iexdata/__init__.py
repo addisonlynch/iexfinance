@@ -1,7 +1,6 @@
 from iexfinance.iexdata.base import (TOPS, Last, DEEP, Book, IntradayReader,
                                      RecentReader, RecordsReader,
                                      DailySummaryReader, MonthlySummaryReader)
-from iexfinance.utils import _sanitize_dates
 
 
 def get_tops(symbols=None, **kwargs):
@@ -13,12 +12,14 @@ def get_tops(symbols=None, **kwargs):
     ideal for developers needing both quote and trade data.
 
     Reference: https://iexcloud.io/docs/api/#tops
+
     Data Weighting: ``Free``
 
     Parameters
     ----------
-    symbols: str or list, default None, optional
-        A symbol or list of symbols
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),
+             default ``None``, optional
+        Symbol or list-like collection of symbols
     kwargs:
         Additional Request Parameters (see base class)
     """
@@ -34,12 +35,13 @@ def get_last(symbols=None, **kwargs):
     ideal for developers that need a lightweight stock quote.
 
     Reference: https://iexcloud.io/docs/api/#last
+
     Data Weighting: ``Free``
 
     Parameters
     ----------
-    symbols: str or list, default None, optional
-        A symbol or list of symbols
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),
+             default ``None``, optional
     kwargs:
         Additional Request Parameters (see base class)
     """
@@ -62,12 +64,13 @@ def get_deep(symbols=None, **kwargs):
     reported. Routed executions will not be reported.
 
     Reference: https://iexcloud.io/docs/api/#deep
+
     Data Weighting: ``Free``
 
     Parameters
     ----------
-    symbols: str or list, default None
-        A symbol or list of symbols
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),
+             default ``None``, optional
     kwargs:
         Additional Request Parameters (see base class)
 
@@ -89,8 +92,8 @@ def get_deep_book(symbols=None, **kwargs):
 
     Parameters
     ----------
-    symbols: str or list, default None
-        A symbol or list of symbols
+    symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),
+             default ``None``, optional
     kwargs:
         Additional Request Parameters (see base class)
     """
@@ -99,9 +102,10 @@ def get_deep_book(symbols=None, **kwargs):
 
 def get_stats_intraday(**kwargs):
     """
-    Stats intraday
+    Stats Intraday
 
     Reference: https://iexcloud.io/docs/api/#stats-intraday
+
     Data Weighting: ``Free``
 
     Parameters
@@ -120,6 +124,7 @@ def get_stats_recent(**kwargs):
     trading days of the current month.
 
     Reference: https://iexcloud.io/docs/api/#stats-recent
+
     Data Weighting: ``Free``
 
     Parameters
@@ -135,6 +140,7 @@ def get_stats_records(**kwargs):
     Stats Records
 
     Reference: https://iexcloud.io/docs/api/#stats-records
+
     Data Weighting: ``Free``
 
     Parameters
@@ -154,6 +160,7 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
     .. warning:: This endpoint is marked as "in development" by the provider.
 
     Reference: https://iexcloud.io/docs/api/#stats-historical-daily-in-dev
+
     Data Weighting: ``Free``
 
     Parameters
@@ -170,7 +177,6 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
     kwargs:
         Additional Request Parameters (see base class)
     """
-    start, end = _sanitize_dates(start, end)
     return DailySummaryReader(start=start, end=end, last=last,
                               **kwargs).fetch()
 

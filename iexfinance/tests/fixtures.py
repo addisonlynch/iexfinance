@@ -35,19 +35,19 @@ def set_keys(scope='function'):
 
 @pytest.fixture(scope='class')
 def stock_single():
-    return Stock("AAPL")
+    return Stock("AAPL", pause=3)
 
 
 @pytest.fixture(scope='class')
 def stock_multiple():
-    return Stock(["AAPL", "TSLA"])
+    return Stock(["AAPL", "TSLA"], pause=3)
 
 
 @pytest.fixture(scope='class')
 def stock_etf():
-    return Stock("SPY")
+    return Stock("SPY", pause=3)
 
 
 @pytest.fixture(scope='class')
 def stock_special_char():
-    return Stock("GIG^")
+    return Stock("GIG^", pause=3)

@@ -7,7 +7,7 @@ class CloudCrypto(_IEXBase):
 
     def __init__(self, symbol, **kwargs):
         if not isinstance(symbol, str):
-            raise ValueError("Symbol for retrieval required.")
+            raise ValueError("Single symbol required.")
         self.symbol = symbol
         super(CloudCrypto, self).__init__(**kwargs)
 
@@ -19,7 +19,6 @@ class CloudCrypto(_IEXBase):
         return super(CloudCrypto, self).fetch()
 
     def _convert_output(self, out):
-        import pandas as pd
         return pd.DataFrame({out["symbol"]: out})
 
 

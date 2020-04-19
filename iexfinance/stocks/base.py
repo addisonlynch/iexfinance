@@ -2,9 +2,8 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas
-from iexfinance.utils.exceptions import (IEXSymbolError, IEXEndpointError,
+from iexfinance.utils.exceptions import (IEXSymbolError,
                                          ImmediateDeprecationError)
-from iexfinance.utils import legacy_endpoint
 
 
 class Stock(_IEXBase):
@@ -14,66 +13,26 @@ class Stock(_IEXBase):
     Attributes
     ----------
     symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
-        A symbol or list of symbols for which to obtain data
+        Symbol or list-like collection of symbols
     output_format: str
         Desired output format for requests (default is ``json``, also accepts
         ``pandas`` for a ``pandas.DataFrame`` output format)
     token: str, optional
         Authentication token (required for use with IEX Cloud)
     """
-    # Possible option values (first is default)
-    _ENDPOINTS = ("chart", "quote", "book", "open-close", "previous",
-                  "company", "stats", "peers", "relevant", "news",
-                  "financials", "earnings", "dividends", "splits", "logo",
-                  "price", "delayed-quote", "effective-spread",
-                  "volume-by-venue", "ohlc")
-
     def __init__(self, symbols=None, **kwargs):
-        """ Initialize the class
-
-        Parameters
-        ----------
-        symbols : string, array-like object (list, tuple, Series), or DataFrame
-            Desired symbols for retrieval
-        """
         if isinstance(symbols, str) and symbols:
             self.symbols = [symbols]
         elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
             self.symbols = symbols
-        elif 0 < len(symbols) <= 100:
-            raise ValueError(
-                "Please input a symbols list containing between "
-                "0 and 100 symbols"
-            )
+        elif isinstance(symbols, list) and 100 < len(symbols):
+            raise ValueError("Please input a symbols list containing between" 
+                                       " 0 and 100 symbols")
         else:
             raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
         self.endpoints = []
         super(Stock, self).__init__(**kwargs)
-
-    @legacy_endpoint
-    def get_all(self):
-        """
-        Returns all endpoints, indexed by endpoint title for each symbol
-
-        Notes
-        -----
-        Only allows JSON format (pandas not supported).
-        """
-        self.optional_params = {}
-        self.endpoints = self._ENDPOINTS[:10]
-        json_data = self.fetch(fmt_p=no_pandas)
-        self.endpoints = self._ENDPOINTS[10:20]
-        json_data_2 = self.fetch(fmt_p=no_pandas)
-        for symbol in self.symbols:
-            if symbol not in json_data:
-                raise IEXSymbolError(symbol)
-            json_data[symbol].update(json_data_2[symbol])
-        return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
-
-    @property
-    def n_symbols(self):
-        return len(self.symbols)
 
     @property
     def url(self):
@@ -122,7 +81,7 @@ class Stock(_IEXBase):
     def _get_field(self, endpoint, field):
         data = getattr(self, "get_%s" % endpoint)(filter_=field)
         if self.output_format == 'json':
-            if self.n_symbols == 1:
+            if len(self.symbols) == 1:
                 data = data[field]
             else:
                 data = {symbol: data[symbol][field] for symbol in self.symbols}
@@ -136,40 +95,9 @@ class Stock(_IEXBase):
 
     def get_endpoints(self, endpoints=()):
         """
-        Universal selector method to obtain specific endpoints from the
-        data set.
-
-        Parameters
-        ----------
-        endpoints: str or list
-            Desired valid endpoints for retrieval
-
-        Notes
-        -----
-        Only allows JSON format (pandas not supported).
-
-        Raises
-        ------
-        IEXEndpointError
-            If an invalid endpoint is specified
-        IEXSymbolError
-            If a symbol is invalid
-        IEXQueryError
-            If issues arise during query
+        DEPRECATED: This method has been deprecated as of 0.5.0
         """
-        if isinstance(endpoints, str) and endpoints in self._ENDPOINTS:
-            endpoints = list(endpoints)
-        if not endpoints or not set(endpoints).issubset(self._ENDPOINTS):
-            raise IEXEndpointError("Please provide a valid list of endpoints")
-        elif len(endpoints) > 10:
-            raise ValueError("Please input up to 10 valid endpoints")
-        self.optional_params = {}
-        self.endpoints = endpoints
-        json_data = self.fetch(fmt_p=no_pandas)
-        for symbol in self.symbols:
-            if symbol not in json_data:
-                raise IEXSymbolError(symbol)
-        return json_data[self.symbols[0]] if self.n_symbols == 1 else json_data
+        raise ImmediateDeprecationError("get_endpoints")
 
     def get_balance_sheet(self, **kwargs):
         """Balance Sheet
@@ -332,13 +260,6 @@ class Stock(_IEXBase):
             return pd.DataFrame(data)
         return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p,
                                   params=kwargs)
-
-    def get_effective_spread(self):
-        """
-        DEPRECATED: Deprecated in IEX Cloud. No longer available.
-        """
-        raise ImmediateDeprecationError()
-        return self._get_endpoint("effective-spread")
 
     def get_estimates(self):
         """Estimates
@@ -772,12 +693,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("peers")
 
-    def get_previous(self, **kwargs):
-        """
-        DEPRECATED: Renamed ``get_previous_day_prices``
-        """
-        raise ImmediateDeprecationError("get_previous")
-
     def get_previous_day_prices(self):
         """Previous Day Prices
 
@@ -855,12 +770,6 @@ class Stock(_IEXBase):
             Stocks Quote endpoint data
         """
         return self._get_endpoint("quote", params=kwargs)
-
-    def get_relevant(self, **kwargs):
-        """
-        DEPRECATED: Renamed ``get_relevant_stocks``
-        """
-        raise ImmediateDeprecationError("get_relevant")
 
     def get_relevant_stocks(self, **kwargs):
         """Relevant Stocks

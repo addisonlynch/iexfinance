@@ -1,6 +1,5 @@
 from iexfinance.stocks.base import Stock # noqa
 from iexfinance.stocks.collections import CollectionsReader
-from iexfinance.stocks.crypto import CryptoReader
 from iexfinance.stocks.historical import HistoricalReader, IntradayReader
 from iexfinance.stocks.ipocalendar import IPOReader
 from iexfinance.stocks.marketvolume import MarketVolumeReader
@@ -8,7 +7,6 @@ from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
-from iexfinance.utils.exceptions import ImmediateDeprecationError
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
@@ -121,20 +119,6 @@ def get_market_volume(**kwargs):
         :ref:`Migrating` for more information.
     """
     return MarketVolumeReader(**kwargs).fetch()
-
-
-def get_crypto_quotes(**kwargs):
-    """
-    DEPRECATED
-    """
-    return CryptoReader(**kwargs).fetch()
-
-
-def get_todays_earnings(**kwargs):
-    """
-    DEPRECATED: renamed ``get_earnings_today``
-    """
-    raise ImmediateDeprecationError("get_todays_earnings")
 
 
 def get_earnings_today(**kwargs):

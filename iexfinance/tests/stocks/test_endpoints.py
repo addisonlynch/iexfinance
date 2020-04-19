@@ -10,7 +10,7 @@ from iexfinance.stocks import (get_historical_data, get_sector_performance,
                                get_collections, get_earnings_today,
                                get_ipo_calendar, get_historical_intraday,
                                Stock, get_eod_options)
-from iexfinance.utils.exceptions import IEXSymbolError, IEXEndpointError
+from iexfinance.utils.exceptions import IEXSymbolError
 
 
 class TestBase(object):
@@ -40,17 +40,6 @@ class TestShareDefault(object):
                              json_parse_int=Decimal,
                              json_parse_float=Decimal)
         self.cshare5 = Stock("GIG^")
-
-    def test_get_endpoints(self):
-        data = self.cshare.get_endpoints(["price"])
-        assert list(data) == ["price"]
-
-    def test_get_endpoints_bad_endpoint(self):
-        with pytest.raises(IEXEndpointError):
-            self.cshare.get_endpoints(["BAD ENDPOINT", "quote"])
-
-        with pytest.raises(IEXEndpointError):
-            self.cshare.get_endpoints("BAD ENDPOINT")
 
     def test_get_chart_params(self):
         data = self.cshare.get_chart()
@@ -120,17 +109,6 @@ class TestBatchDefault(object):
             a = Stock(["TSLA", "BAD SYMBOL", "BAD SYMBOL"])
             a.get_price()
 
-    def test_get_endpoints(self):
-        data = self.cbatch.get_endpoints(["price"])["AAPL"]
-        assert list(data) == ["price"]
-
-    def test_get_endpoints_bad_endpoint(self):
-        with pytest.raises(IEXEndpointError):
-            self.cbatch.get_endpoints(["BAD ENDPOINT", "quote"])
-
-        with pytest.raises(IEXEndpointError):
-            self.cbatch.get_endpoints("BAD ENDPOINT")
-
     def test_get_chart_params(self):
         data = self.cbatch.get_chart()["AAPL"]
         # Test chart ranges
@@ -162,13 +140,6 @@ class TestBatchDefault(object):
         data2 = self.cbatch.get_quote(displayPercent=True)
         assert (abs(data2["AAPL"]["ytdChange"]) >
                 abs(data["AAPL"]["ytdChange"]))
-
-    def test_get_select_ep_bad_params(self):
-        with pytest.raises(IEXEndpointError):
-            self.cbatch.get_endpoints()
-
-        with pytest.raises(IEXEndpointError):
-            self.cbatch.get_endpoints("BADENDPOINT")
 
 
 class TestHistorical(object):

@@ -1,7 +1,7 @@
 import datetime
+import pandas as pd
 
 from iexfinance.base import _IEXBase
-from iexfinance.utils import legacy_endpoint
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -25,50 +25,6 @@ class ReferenceReader(_IEXBase):
             return 'daily-list/%s' % self.endpoint
 
 
-class CorporateActions(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'corporate-actions'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(CorporateActions, self).fetch()
-
-
-class Dividends(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'dividends'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(Dividends, self).fetch()
-
-
-class NextDay(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'next-day-ex-date'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(NextDay, self).fetch()
-
-
-class ListedSymbolDir(ReferenceReader):
-
-    @property
-    def endpoint(self):
-        return 'symbol-directory'
-
-    @legacy_endpoint
-    def fetch(self):
-        return super(ListedSymbolDir, self).fetch()
-
-
 class CloudRef(_IEXBase):
 
     @property
@@ -78,6 +34,36 @@ class CloudRef(_IEXBase):
     @property
     def endpoint(self):
         raise NotImplementedError
+
+
+class TradingDatesReader(CloudRef):
+    """
+    Base class to retrieve trading holiday information
+    """
+    def __init__(self, type_, direction=None, last=1,
+                 startDate=None, **kwargs):
+        if (isinstance(startDate, datetime.date) or
+                isinstance(startDate, datetime.datetime)):
+            self.startDate = startDate.strftime('%Y%m%d')
+        else:
+            self.startDate = startDate
+        self.type = type_
+        if direction not in ("next", "last"):
+            raise ValueError("direction must be either next or last")
+        self.direction = direction
+        self.last = last
+        super(TradingDatesReader, self).__init__(**kwargs)
+
+    @property
+    def endpoint(self):
+        ret = "us/dates/%s/%s/%s" % (self.type, self.direction, self.last)
+        if self.startDate:
+            ret += "/%s" % self.startDate
+        return ret
+
+    def _output_format(self, out, fmt_j=None, fmt_p=None):
+        out = [{k: pd.to_datetime(v) for k, v in day.items()} for day in out]
+        return super()._output_format(out, fmt_j=fmt_j, fmt_p=fmt_p)
 
 
 class Symbols(CloudRef):
