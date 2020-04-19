@@ -1,7 +1,7 @@
 from iexfinance.apidata.base import APIReader
 
 
-def get_api_status(output_format='json', **kwargs):
+def get_api_status(output_format="json", **kwargs):
     """
     IEX Cloud API status
 

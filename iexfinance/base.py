@@ -15,8 +15,7 @@ from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 logger = logging.getLogger(__name__)
 
 # Docs URL for IEX Cloud migration
-MIGRATION_URL = "https://addisonlynch.github.io/iexfinance/stable/"\
-                "migrating.html"
+MIGRATION_URL = "https://addisonlynch.github.io/iexfinance/stable/" "migrating.html"
 
 
 class _IEXBase(object):
@@ -43,16 +42,16 @@ class _IEXBase(object):
     token: str, optional
         Authentication token (required for use with IEX Cloud)
     """
+
     _URLS = {
         "v1": "https://cloud.iexapis.com/v1/",
         "iexcloud-beta": "https://cloud.iexapis.com/v1/",
         "iexcloud-v1": "https://cloud.iexapis.com/v1/",
-        "iexcloud-sandbox": "https://sandbox.iexapis.com/v1/"
+        "iexcloud-sandbox": "https://sandbox.iexapis.com/v1/",
     }
 
-    _VALID_FORMATS = ('json', 'pandas')
-    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1", "v1",
-                             "iexcloud-sandbox")
+    _VALID_FORMATS = ("json", "pandas")
+    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1", "v1", "iexcloud-sandbox")
 
     def __init__(self, **kwargs):
 
@@ -61,24 +60,28 @@ class _IEXBase(object):
         self.session = _init_session(kwargs.get("session"))
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
-        self.output_format = kwargs.get("output_format",
-                                        os.getenv("IEX_OUTPUT_FORMAT", 'json'))
+        self.output_format = kwargs.get(
+            "output_format", os.getenv("IEX_OUTPUT_FORMAT", "json")
+        )
         if self.output_format not in self._VALID_FORMATS:
-            raise ValueError("Please enter a valid output format ('json' "
-                             "or 'pandas').")
+            raise ValueError(
+                "Please enter a valid output format ('json' " "or 'pandas')."
+            )
         self.token = kwargs.get("token")
 
         # Get desired API version from environment variables
         # Defaults to IEX Cloud
-        self.version = os.getenv("IEX_API_VERSION", 'v1')
+        self.version = os.getenv("IEX_API_VERSION", "v1")
         if self.version in self._VALID_CLOUD_VERSIONS:
             if self.token is None:
-                self.token = os.getenv('IEX_TOKEN')
+                self.token = os.getenv("IEX_TOKEN")
             if not self.token or not isinstance(self.token, str):
-                raise auth_error('The IEX Cloud API key must be provided '
-                                 'either through the token variable or '
-                                 'through the environmental variable '
-                                 'IEX_TOKEN.')
+                raise auth_error(
+                    "The IEX Cloud API key must be provided "
+                    "either through the token variable or "
+                    "through the environmental variable "
+                    "IEX_TOKEN."
+                )
         else:
             raise ValueError("Please select a valid API version.")
 
@@ -116,17 +119,16 @@ class _IEXBase(object):
         if key in response.headers:
             msg = response.headers[key]
         else:
-            msg = ("N/A")
+            msg = "N/A"
         logger.info("MESSAGES USED: %s" % msg)
 
         if response.text == "Unknown symbol":
             raise IEXQueryError(response.status_code, response.text)
         try:
             json_response = response.json(
-                parse_int=self.json_parse_int,
-                parse_float=self.json_parse_float)
-            if isinstance(json_response, str) and ("Error Message" in
-                                                   json_response):
+                parse_int=self.json_parse_int, parse_float=self.json_parse_float
+            )
+            if isinstance(json_response, str) and ("Error Message" in json_response):
                 raise IEXQueryError(response.status_code, response.text)
         except ValueError:
             raise IEXQueryError(response.status_code, response.text)
@@ -154,8 +156,8 @@ class _IEXBase(object):
             If problems arise when making the query
         """
         params = self.params
-        params['token'] = self.token
-        for _ in range(self.retry_count+1):
+        params["token"] = self.token
+        for _ in range(self.retry_count + 1):
             response = self.session.get(url=url, params=params)
             logger.debug("REQUEST: %s" % response.request.url)
             logger.debug("RESPONSE: %s" % response.status_code)
@@ -196,13 +198,14 @@ class _IEXBase(object):
 
     def _convert_output(self, out):
         import pandas as pd
+
         return pd.DataFrame(out)
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
         """
         Output formatting handler
         """
-        if self.output_format == 'pandas':
+        if self.output_format == "pandas":
             if fmt_p is not None:
                 return fmt_p(out)
             else:

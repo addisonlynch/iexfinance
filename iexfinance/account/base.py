@@ -4,7 +4,6 @@ from iexfinance.base import _IEXBase
 
 
 class Account(_IEXBase):
-
     @property
     def url(self):
         return "account/%s" % self.endpoint
@@ -18,7 +17,6 @@ class Account(_IEXBase):
 
 
 class Metadata(Account):
-
     @property
     def endpoint(self):
         return "metadata"
@@ -35,6 +33,7 @@ class Usage(Account):
     However, it must be passed for the call to work. This reader will default
     the parameter's value to "messages" until this issue is resolved.
     """
+
     _TYPES = ("messages", "rules", "rule-records", "alerts", "alert-records")
 
     def __init__(self, quota_type=None, **kwargs):
@@ -53,7 +52,6 @@ class Usage(Account):
 
 
 class PayAsYouGo(Account):
-
     def __init__(self, allow=None, **kwargs):
         self.allow = allow or False
         super(PayAsYouGo, self).__init__(**kwargs)
@@ -64,6 +62,4 @@ class PayAsYouGo(Account):
 
     @property
     def params(self):
-        return {
-            "allow": self.allow
-        }
+        return {"allow": self.allow}

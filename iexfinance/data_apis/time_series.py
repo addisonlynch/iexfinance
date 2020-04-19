@@ -5,9 +5,7 @@ from iexfinance.base import _IEXBase
 
 
 class TimeSeries(_IEXBase):
-
-    def __init__(self, id_=None, key=None, subkey=None,
-                 **kwargs):
+    def __init__(self, id_=None, key=None, subkey=None, **kwargs):
         self.id_ = id_
         self.key = key
         self.subkey = subkey
@@ -18,17 +16,21 @@ class TimeSeries(_IEXBase):
         session = kwargs.pop("session", None)
         json_parse_int = kwargs.pop("json_parse_int", None)
         json_parse_float = kwargs.pop("json_parse_float", None)
-        output_format = kwargs.pop("output_format",
-                                   os.getenv("IEX_OUTPUT_FORMAT", 'json'))
+        output_format = kwargs.pop(
+            "output_format", os.getenv("IEX_OUTPUT_FORMAT", "json")
+        )
         token = kwargs.pop("token", None)
 
         self._params = kwargs
-        super(TimeSeries, self).__init__(retry_count=retry_count,
-                                         pause=pause, session=session,
-                                         json_parse_int=json_parse_int,
-                                         json_parse_float=json_parse_float,
-                                         output_format=output_format,
-                                         token=token)
+        super(TimeSeries, self).__init__(
+            retry_count=retry_count,
+            pause=pause,
+            session=session,
+            json_parse_int=json_parse_int,
+            json_parse_float=json_parse_float,
+            output_format=output_format,
+            token=token,
+        )
 
     @property
     def url(self):
@@ -37,8 +39,7 @@ class TimeSeries(_IEXBase):
         else:
             if self.key:
                 if self.subkey:
-                    return "time-series/%s/%s/%s" % (self.id_, self.key,
-                                                     self.subkey)
+                    return "time-series/%s/%s/%s" % (self.id_, self.key, self.subkey)
                 return "time-series/%s/%s" % (self.id_, self.key)
             return "time-series/%s" % self.id_
 

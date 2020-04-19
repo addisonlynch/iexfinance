@@ -3,8 +3,8 @@ import os
 
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
-__author__ = 'Addison Lynch'
-__version__ = '0.5.0'
+__author__ = "Addison Lynch"
+__version__ = "0.5.0"
 
 
 # Data provided for free by IEX
@@ -24,9 +24,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(LOG_LEVEL)
 
 # Set log stream handler formatting
-console_format = logging.Formatter(
-        '%(levelname)s - %(message)s'
-    )
+console_format = logging.Formatter("%(levelname)s - %(message)s")
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(console_format)
 logger.addHandler(console_handler)

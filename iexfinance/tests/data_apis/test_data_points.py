@@ -5,7 +5,6 @@ from iexfinance.data_apis import get_data_points
 
 
 class TestDataPoints(object):
-
     def test_no_symbol_fails(self):
         with pytest.raises(TypeError):
             get_data_points()
@@ -17,7 +16,7 @@ class TestDataPoints(object):
         assert "weight" in data[1]
 
     def test_all_data_points_pandas(self):
-        data = get_data_points("AAPL", output_format='pandas')
+        data = get_data_points("AAPL", output_format="pandas")
         assert isinstance(data, pd.DataFrame)
         assert "ZIP" in data.columns
 
@@ -27,5 +26,5 @@ class TestDataPoints(object):
 
     def test_get_one_data_point_pandas(self):
         # pandas should also be str
-        data = get_data_points("AAPL", "ZIP", output_format='pandas')
+        data = get_data_points("AAPL", "ZIP", output_format="pandas")
         assert isinstance(data, str)

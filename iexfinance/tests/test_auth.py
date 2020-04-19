@@ -2,11 +2,10 @@ import pytest
 
 from iexfinance.base import _IEXBase
 from iexfinance.stocks import Stock
-from iexfinance.utils.exceptions import (IEXAuthenticationError)
+from iexfinance.utils.exceptions import IEXAuthenticationError
 
 
 class TestAuth(object):
-
     def test_cloud_fails_no_token(self, block_keys):
         with pytest.raises(IEXAuthenticationError):
             _IEXBase()

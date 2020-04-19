@@ -2,8 +2,7 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas
-from iexfinance.utils.exceptions import (IEXSymbolError,
-                                         ImmediateDeprecationError)
+from iexfinance.utils.exceptions import IEXSymbolError, ImmediateDeprecationError
 
 
 class Stock(_IEXBase):
@@ -20,14 +19,16 @@ class Stock(_IEXBase):
     token: str, optional
         Authentication token (required for use with IEX Cloud)
     """
+
     def __init__(self, symbols=None, **kwargs):
         if isinstance(symbols, str) and symbols:
             self.symbols = [symbols]
         elif isinstance(symbols, list) and 0 < len(symbols) <= 100:
             self.symbols = symbols
         elif isinstance(symbols, list) and 100 < len(symbols):
-            raise ValueError("Please input a symbols list containing between" 
-                                       " 0 and 100 symbols")
+            raise ValueError(
+                "Please input a symbols list containing between" " 0 and 100 symbols"
+            )
         else:
             raise ValueError("Please input a symbol or list of symbols")
         self.symbols = list(map(lambda x: x.upper(), _handle_lists(symbols)))
@@ -36,14 +37,11 @@ class Stock(_IEXBase):
 
     @property
     def url(self):
-        return 'stock/market/batch'
+        return "stock/market/batch"
 
     @property
     def params(self):
-        temp = {
-            "symbols": ','.join(self.symbols),
-            "types": ','.join(self.endpoints)
-        }
+        temp = {"symbols": ",".join(self.symbols), "types": ",".join(self.endpoints)}
         temp.update(self.optional_params)
         if "filter_" in temp:
             if isinstance(temp["filter_"], list):
@@ -52,12 +50,13 @@ class Stock(_IEXBase):
                 temp["filter"] = temp.pop("filter_")
         if "range_" in temp:
             temp["range"] = temp.pop("range_")
-        params = {k: str(v).lower() if v is True or v is False else str(v)
-                  for k, v in temp.items()}
+        params = {
+            k: str(v).lower() if v is True or v is False else str(v)
+            for k, v in temp.items()
+        }
         return params
 
-    def _get_endpoint(self, endpoint, params=(), fmt_p=None,
-                      fmt_j=None, filter_=None):
+    def _get_endpoint(self, endpoint, params=(), fmt_p=None, fmt_j=None, filter_=None):
         result = {}
         if filter_:
             params.update({"filter": filter_})
@@ -80,7 +79,7 @@ class Stock(_IEXBase):
 
     def _get_field(self, endpoint, field):
         data = getattr(self, "get_%s" % endpoint)(filter_=field)
-        if self.output_format == 'json':
+        if self.output_format == "json":
             if len(self.symbols) == 1:
                 data = data[field]
             else:
@@ -89,7 +88,7 @@ class Stock(_IEXBase):
 
     def _output_format_one(self, out, fmt_p=None, fmt_j=None):
         data = super(Stock, self)._output_format(out, fmt_p=fmt_p)
-        if len(self.symbols) == 1 and self.output_format == 'json':
+        if len(self.symbols) == 1 and self.output_format == "json":
             return data[self.symbols[0]]
         return data
 
@@ -118,9 +117,13 @@ class Stock(_IEXBase):
             Allows you to specify annual or quarterly balance sheet.
             Value should be `annual` or `quarter`.
         """
+
         def fmt_p(out):
-            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
-                    for sheet in out[symbol]["balancesheet"]}
+            data = {
+                (symbol, sheet["reportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]["balancesheet"]
+            }
             return pd.DataFrame(data)
 
         return self._get_endpoint("balance-sheet", fmt_p=fmt_p, params=kwargs)
@@ -163,10 +166,15 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Stocks Cash Flow endpoint data
         """
+
         def fmt_p(out):
-            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
-                    for sheet in out[symbol]["cashflow"]}
+            data = {
+                (symbol, sheet["reportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]["cashflow"]
+            }
             return pd.DataFrame(data)
+
         return self._get_endpoint("cash-flow", fmt_p=fmt_p, params=kwargs)
 
     def get_chart(self, **kwargs):
@@ -224,10 +232,15 @@ class Stock(_IEXBase):
         list of dict or pandas.DataFrame
             Stocks Dividends endpoint data
         """
+
         def fmt_p(out):
-            data = {(symbol, sheet["exDate"]): sheet for symbol in out
-                    for sheet in out[symbol]}
+            data = {
+                (symbol, sheet["exDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]
+            }
             return pd.DataFrame(data)
+
         return self._get_endpoint("dividends", fmt_p=fmt_p, params=kwargs)
 
     def get_earnings(self, **kwargs):
@@ -251,15 +264,19 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Earnings endpoint data
         """
+
         def fmt(out):
             return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
 
         def fmt_p(out):
-            data = {(symbol, sheet["EPSReportDate"]): sheet for symbol in out
-                    for sheet in out[symbol]["earnings"]}
+            data = {
+                (symbol, sheet["EPSReportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]["earnings"]
+            }
             return pd.DataFrame(data)
-        return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p,
-                                  params=kwargs)
+
+        return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
 
     def get_estimates(self):
         """Estimates
@@ -277,9 +294,13 @@ class Stock(_IEXBase):
         -------
         dict or pandas.DataFrame
         """
+
         def fmt_p(out):
-            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
-                    for sheet in out[symbol]["estimates"]}
+            data = {
+                (symbol, sheet["reportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]["estimates"]
+            }
             return pd.DataFrame(data)
 
         return self._get_endpoint("estimates", fmt_p=fmt_p)
@@ -307,18 +328,18 @@ class Stock(_IEXBase):
         #     return {symbol: out[symbol].get("financials", [])
         #             for symbol in self.symbols}
         def fmt(out):
-            return {symbol: out[symbol]["financials"]
-                    for symbol in self.symbols}
+            return {symbol: out[symbol]["financials"] for symbol in self.symbols}
 
         def fmt_p(out):
-            out = {symbol: out[symbol].get("financials", [])
-                   for symbol in self.symbols}
-            data = {(symbol, sheet["reportDate"]): sheet
-                    for symbol in out
-                    for sheet in out[symbol]}
+            out = {symbol: out[symbol].get("financials", []) for symbol in self.symbols}
+            data = {
+                (symbol, sheet["reportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]
+            }
             return pd.DataFrame(data)
-        return self._get_endpoint("financials", fmt_j=fmt,
-                                  fmt_p=fmt_p, params=kwargs)
+
+        return self._get_endpoint("financials", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
 
     def get_fund_ownership(self):
         """Fund Ownership
@@ -337,10 +358,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Fund Ownership endpoint data
         """
+
         def fmt_p(out):
-            out = {(symbol, owner["entityProperName"]): owner
-                   for symbol in out
-                   for owner in out[symbol]}
+            out = {
+                (symbol, owner["entityProperName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
             return pd.DataFrame(out)
 
         return self._get_endpoint("fund-ownership", fmt_p=fmt_p)
@@ -389,6 +413,7 @@ class Stock(_IEXBase):
         list or pandas DataFrame
             Stocks Historical Prices endpoint data
         """
+
         def fmt_p(out):
             result = {}
             for symbol in self.symbols:
@@ -427,17 +452,19 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Income Statement endpoint data
         """
+
         def fmt(out):
-            return {symbol: out[symbol]["income"]
-                    for symbol in self.symbols}
+            return {symbol: out[symbol]["income"] for symbol in self.symbols}
 
         def fmt_p(out):
-            data = {(symbol, sheet["reportDate"]): sheet for symbol in out
-                    for sheet in out[symbol]["income"]}
+            data = {
+                (symbol, sheet["reportDate"]): sheet
+                for symbol in out
+                for sheet in out[symbol]["income"]
+            }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p,
-                                  params=kwargs)
+        return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
 
     def get_insider_roster(self):
         """Insider Roster
@@ -453,10 +480,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Insider Roster Endpoint data
         """
+
         def fmt_p(out):
-            out = {(symbol, owner["entityName"]): owner
-                   for symbol in out
-                   for owner in out[symbol]}
+            out = {
+                (symbol, owner["entityName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
             return pd.DataFrame(out)
 
         return self._get_endpoint("insider-roster", fmt_p=fmt_p)
@@ -475,10 +505,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Insider Summary Endpoint data
         """
+
         def fmt_p(out):
-            out = {(symbol, owner["fullName"]): owner
-                   for symbol in out
-                   for owner in out[symbol]}
+            out = {
+                (symbol, owner["fullName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
             return pd.DataFrame(out)
 
         return self._get_endpoint("insider-summary", fmt_p=fmt_p)
@@ -497,10 +530,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Insider Transactions Endpoint data
         """
+
         def fmt_p(out):
-            out = {(symbol, owner["fullName"]): owner
-                   for symbol in out
-                   for owner in out[symbol]}
+            out = {
+                (symbol, owner["fullName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
             return pd.DataFrame(out)
 
         return self._get_endpoint("insider-transactions", fmt_p=fmt_p)
@@ -520,10 +556,13 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Institutional Ownership endpoint data
         """
+
         def fmt_p(out):
-            out = {(symbol, owner["entityProperName"]): owner
-                   for symbol in out
-                   for owner in out[symbol]}
+            out = {
+                (symbol, owner["entityProperName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
             return pd.DataFrame(out)
 
         return self._get_endpoint("institutional-ownership", fmt_p=fmt_p)
@@ -721,6 +760,7 @@ class Stock(_IEXBase):
         float or pandas.DataFrame
             Stocks Price endpoint data
         """
+
         def fmt_p(out):
             return pd.DataFrame(out, index=self.symbols)
 
@@ -744,12 +784,13 @@ class Stock(_IEXBase):
         dict or pandas.DataFrame
             Latest average, high, and low price targets for a symbol
         """
+
         def fmt_p(out):
             if len(self.symbols) == 1:
                 return pd.DataFrame(out, index=self.symbols[0])
             return pd.DataFrame(out)
 
-        return self._get_endpoint('price-target')
+        return self._get_endpoint("price-target")
 
     def get_quote(self, **kwargs):
         """Quote
@@ -831,13 +872,16 @@ class Stock(_IEXBase):
         list or pandas.DataFrame
             Stocks Volume by Venue endpoint data
         """
+
         def fmt_p(out):
-            data = {(symbol, sheet["venueName"]): sheet for symbol in out
-                    for sheet in out[symbol]}
+            data = {
+                (symbol, sheet["venueName"]): sheet
+                for symbol in out
+                for sheet in out[symbol]
+            }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("volume-by-venue",
-                                  fmt_p=fmt_p)
+        return self._get_endpoint("volume-by-venue", fmt_p=fmt_p)
 
     # field methods
     def get_company_name(self):

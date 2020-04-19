@@ -1,6 +1,14 @@
-from iexfinance.iexdata.base import (TOPS, Last, DEEP, Book, IntradayReader,
-                                     RecentReader, RecordsReader,
-                                     DailySummaryReader, MonthlySummaryReader)
+from iexfinance.iexdata.base import (
+    TOPS,
+    Last,
+    DEEP,
+    Book,
+    IntradayReader,
+    RecentReader,
+    RecordsReader,
+    DailySummaryReader,
+    MonthlySummaryReader,
+)
 
 
 def get_tops(symbols=None, **kwargs):
@@ -177,8 +185,7 @@ def get_stats_daily(start=None, end=None, last=None, **kwargs):
     kwargs:
         Additional Request Parameters (see base class)
     """
-    return DailySummaryReader(start=start, end=end, last=last,
-                              **kwargs).fetch()
+    return DailySummaryReader(start=start, end=end, last=last, **kwargs).fetch()
 
 
 def get_stats_summary(start=None, end=None, **kwargs):

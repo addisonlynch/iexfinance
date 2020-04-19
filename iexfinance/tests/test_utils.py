@@ -5,34 +5,25 @@ import pandas as pd
 from iexfinance.utils import _handle_lists, _sanitize_dates
 
 
-@pytest.fixture(params=[
-    1,
-    "test"
-], ids=[
-    "int",
-    "string"
-])
+@pytest.fixture(params=[1, "test"], ids=["int", "string"])
 def single(request):
     return request.param
 
 
-@pytest.fixture(params=[
-    [1, 2, 3],
-    (1, 2, 3),
-    pd.DataFrame([], index=[1, 2, 3]),
-    pd.Series([1, 2, 3]),
-], ids=[
-    "list",
-    "tuple",
-    "DataFrame",
-    "Series"
-])
+@pytest.fixture(
+    params=[
+        [1, 2, 3],
+        (1, 2, 3),
+        pd.DataFrame([], index=[1, 2, 3]),
+        pd.Series([1, 2, 3]),
+    ],
+    ids=["list", "tuple", "DataFrame", "Series"],
+)
 def mult(request):
     return request.param
 
 
 class TestUtils(object):
-
     def test_handle_lists_sing(self, single):
         assert _handle_lists(single, mult=False) == single
         assert _handle_lists(single) == [single]
@@ -65,8 +56,7 @@ class TestUtils(object):
         end_int = 2019
         expected_start = pd.to_datetime(dt.datetime(start_int, 1, 1))
         expected_end = pd.to_datetime(dt.datetime(end_int, 1, 1))
-        assert _sanitize_dates(start_int, end_int) == (expected_start,
-                                                       expected_end)
+        assert _sanitize_dates(start_int, end_int) == (expected_start, expected_end)
 
     def test_sanitize_invalid_dates(self):
         with pytest.raises(ValueError):

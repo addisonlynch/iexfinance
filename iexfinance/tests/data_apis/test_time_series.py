@@ -5,7 +5,6 @@ from iexfinance.data_apis import get_time_series
 
 
 class TestTimeSeries(object):
-
     @pytest.mark.xfail(reason="Endpoint not working in sandbox environment")
     def test_all_series(self):
         data = get_time_series()
@@ -14,7 +13,7 @@ class TestTimeSeries(object):
 
     @pytest.mark.xfail(reason="Endpoint not working in sandbox environment")
     def test_all_series_pandas(self):
-        data = get_time_series(output_format='pandas')
+        data = get_time_series(output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
 
@@ -39,8 +38,9 @@ class TestTimeSeries(object):
         assert isinstance(data, list) and len(data) == 1
 
     def test_pandas_params(self):
-        data = get_time_series("REPORTED_FINANCIALS", "AAPL", last=1,
-                               output_format='pandas')
+        data = get_time_series(
+            "REPORTED_FINANCIALS", "AAPL", last=1, output_format="pandas"
+        )
 
         assert isinstance(data, pd.DataFrame)
         assert isinstance(data.columns, pd.DatetimeIndex)

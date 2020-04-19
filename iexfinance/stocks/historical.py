@@ -13,6 +13,7 @@ class HistoricalReader(Stock):
 
     Reference: https://iextrading.com/developer/docs/#chart
     """
+
     def __init__(self, symbols, start, end=None, close_only=False, **kwargs):
         self.start, self.end = _sanitize_dates(start, end)
         self.single_day = True if self.end is None else False
@@ -43,8 +44,7 @@ class HistoricalReader(Stock):
         elif 1826 <= delta_days < 5478:
             return "max"
         else:
-            raise ValueError("Invalid date specified. "
-                             "Must be within past 15 years.")
+            raise ValueError("Invalid date specified. " "Must be within past 15 years.")
 
     @property
     def params(self):
@@ -54,7 +54,7 @@ class HistoricalReader(Stock):
             "types": "chart",
             "range": self.chart_range,
             "chartByDay": self.single_day,
-            "chartCloseOnly": self.close_only
+            "chartCloseOnly": self.close_only,
         }
         if self.single_day:
             try:
@@ -72,7 +72,7 @@ class HistoricalReader(Stock):
                 raise IEXSymbolError(symbol)
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
-            if self.output_format == 'pandas':
+            if self.output_format == "pandas":
                 df["date"] = pd.DatetimeIndex(df["date"])
             df = df.set_index(df["date"])
             values = ["close", "volume"]
@@ -80,8 +80,8 @@ class HistoricalReader(Stock):
                 values = ["open", "high", "low"] + values
             df = df[values]
             if self.single_day is False:
-                sstart = self.start.strftime('%Y-%m-%d')
-                send = self.end.strftime('%Y-%m-%d')
+                sstart = self.start.strftime("%Y-%m-%d")
+                send = self.end.strftime("%Y-%m-%d")
                 df = df.loc[sstart:send]
             result.update({symbol: df})
         if self.output_format == "pandas":
@@ -89,7 +89,7 @@ class HistoricalReader(Stock):
                 result = pd.concat(result.values(), keys=result.keys(), axis=1)
         else:
             for sym in list(result):
-                result[sym] = result[sym].to_dict('index')
+                result[sym] = result[sym].to_dict("index")
         return result[self.symbols[0]] if len(self.symbols) == 1 else result
 
 
@@ -97,6 +97,7 @@ class IntradayReader(_IEXBase):
     """
     Base class for intraday historical data
     """
+
     def __init__(self, symbol, date=None, **kwargs):
         try:
             self.date = date.strftime("%Y%m%d")
@@ -116,16 +117,15 @@ class IntradayReader(_IEXBase):
     @property
     def url(self):
         if self.date is None:
-            return 'stock/%s/chart/1d' % self.symbol
+            return "stock/%s/chart/1d" % self.symbol
         else:
-            return 'stock/%s/chart/date/%s' % (self.symbol, self.date)
+            return "stock/%s/chart/date/%s" % (self.symbol, self.date)
 
     def _convert_output(self, out):
         if out:
             df = pd.DataFrame(out).set_index("minute")
             df.index = df.date + " " + df.index
-            df.index = pd.DatetimeIndex([pd.to_datetime(x) for x in
-                                         df.index])
+            df.index = pd.DatetimeIndex([pd.to_datetime(x) for x in df.index])
             return df
         else:
             return pd.DataFrame()

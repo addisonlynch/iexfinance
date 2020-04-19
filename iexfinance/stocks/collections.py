@@ -11,6 +11,7 @@ class CollectionsReader(_IEXBase):
     """
     Class for retrieving data from the Collections endpoint
     """
+
     _COLLECTION_TYPES = ["tag", "sector", "list"]
 
     def __init__(self, collection_name, collection_type, **kwargs):
@@ -27,9 +28,7 @@ class CollectionsReader(_IEXBase):
 
     @property
     def params(self):
-        return {
-            "collectionName": self.collection_name
-        }
+        return {"collectionName": self.collection_name}
 
     def _convert_output(self, out):
         return pd.DataFrame(out).set_index("symbol").T

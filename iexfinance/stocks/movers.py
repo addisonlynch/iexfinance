@@ -12,8 +12,15 @@ class MoversReader(_IEXBase):
     mover: str
         Desired mover
     """
-    _AVAILABLE_MOVERS = ["mostactive", "gainers", "losers", "iexvolume",
-                         "iexpercent", "infocus"]
+
+    _AVAILABLE_MOVERS = [
+        "mostactive",
+        "gainers",
+        "losers",
+        "iexvolume",
+        "iexpercent",
+        "infocus",
+    ]
 
     def __init__(self, mover=None, **kwargs):
         super(MoversReader, self).__init__(**kwargs)
@@ -24,7 +31,7 @@ class MoversReader(_IEXBase):
 
     @property
     def url(self):
-        return 'stock/market/list/' + self.mover
+        return "stock/market/list/" + self.mover
 
     def _convert_output(self, out):
         return pd.DataFrame(out).set_index("symbol")
