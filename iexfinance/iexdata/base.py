@@ -31,8 +31,11 @@ class Market(_IEXBase):
         if symbols:
             self.symbols = _handle_lists(symbols)
             if len(self.symbols) > self.symbol_limit:
-                raise ValueError("At most " + str(self.symbol_limit) +
-                                 "symbols may be entered at once.")
+                raise ValueError(
+                    "At most "
+                    + str(self.symbol_limit)
+                    + "symbols may be entered at once."
+                )
         else:
             if self.symbol_required:
                 raise ValueError("Please input a symbol or list of symbols.")
@@ -69,6 +72,7 @@ class TOPS(Market):
     ---------
     https://iextrading.com/developer/docs/#TOPS
     """
+
     @property
     def url(self):
         return "tops"
@@ -88,6 +92,7 @@ class Last(Market):
     ---------
     https://iextrading.com/developer/docs/#Last
     """
+
     @property
     def url(self):
         return "tops/last"
@@ -112,6 +117,7 @@ class DEEP(Market):
     ---------
     https://iextrading.com/developer/docs/#DEEP
     """
+
     @property
     def url(self):
         return "deep"
@@ -165,6 +171,7 @@ class Stats(_IEXBase):
 
     Reference: https://iextrading.com/developer/docs/#iex-stats
     """
+
     @property
     def url(self):
         return "stats"
@@ -175,8 +182,11 @@ class Stats(_IEXBase):
         if isinstance(start, datetime):
             # Ensure start range is within 4 years
             if start.year < (now.year - 4) or start > now:
-                raise ValueError("start: retrieval period must begin from "
-                                 + str(now.year - 4) + " until now")
+                raise ValueError(
+                    "start: retrieval period must begin from "
+                    + str(now.year - 4)
+                    + " until now"
+                )
 
 
 class IntradayReader(Stats):
@@ -185,6 +195,7 @@ class IntradayReader(Stats):
 
     Reference: https://iextrading.com/developer/docs/#intraday
     """
+
     @property
     def url(self):
         return "stats/intraday"
@@ -256,19 +267,19 @@ class DailySummaryReader(Stats):
     def _validate_params(self):
         if self.last is not None:
             if not isinstance(self.last, int) or not (0 < self.last < 90):
-                raise ValueError("last: lease enter an integer value from 1 to"
-                                 " 90")
+                raise ValueError("last: lease enter an integer value from 1 to" " 90")
             return
         else:
             self._validate_dates(self.start, self.end)
             return
-        raise ValueError("Please enter a date range or number of days for "
-                         "retrieval period.")
+        raise ValueError(
+            "Please enter a date range or number of days for " "retrieval period."
+        )
 
     def _validate_response(self, response):
         return response.json(
-            parse_int=self.json_parse_int,
-            parse_float=self.json_parse_float)
+            parse_int=self.json_parse_int, parse_float=self.json_parse_float
+        )
 
     @property
     def url(self):
@@ -282,9 +293,9 @@ class DailySummaryReader(Stats):
     def params(self):
         p = {}
         if not self.islast:
-            p['date'] = self.curr_date.strftime('%Y%m%d')
+            p["date"] = self.curr_date.strftime("%Y%m%d")
         else:
-            p['last'] = self.last
+            p["last"] = self.last
         return p
 
     def fetch(self):
@@ -299,8 +310,8 @@ class DailySummaryReader(Stats):
             data = super(DailySummaryReader, self).fetch()
         else:
             data = self._fetch_dates()
-        if self.output_format == 'pandas':
-            data.set_index('date', inplace=True)
+        if self.output_format == "pandas":
+            data.set_index("date", inplace=True)
             return data
         else:
             return data
@@ -312,7 +323,7 @@ class DailySummaryReader(Stats):
             self.curr_date = date
             tdf = super(DailySummaryReader, self).fetch()
             dfs.append(tdf)
-        if self.output_format == 'pandas':
+        if self.output_format == "pandas":
             return pd.concat(dfs)
         else:
             return dfs
@@ -342,7 +353,7 @@ class MonthlySummaryReader(Stats):
 
     def __init__(self, start=None, end=None, **kwargs):
         self.curr_date = start
-        self.date_format = '%Y%m'
+        self.date_format = "%Y%m"
         self.start, self.end = _sanitize_dates(start, end)
         self._validate_dates(self.start, self.end)
         super(MonthlySummaryReader, self).__init__(**kwargs)
@@ -355,7 +366,7 @@ class MonthlySummaryReader(Stats):
     def params(self):
         p = {}
         if self.curr_date is not None:
-            p['date'] = self.curr_date.strftime(self.date_format)
+            p["date"] = self.curr_date.strftime(self.date_format)
         return p
 
     def fetch(self):
@@ -372,8 +383,7 @@ class MonthlySummaryReader(Stats):
         dfs = []
 
         # Build list of all dates within the given range
-        lrange = [x for x in (self.start + timedelta(n)
-                              for n in range(tlen.days))]
+        lrange = [x for x in (self.start + timedelta(n) for n in range(tlen.days))]
 
         mrange = []
         for dtd in lrange:
@@ -386,14 +396,14 @@ class MonthlySummaryReader(Stats):
             tdf = super(MonthlySummaryReader, self).fetch()
 
             # We may not return data if this was a weekend/holiday:
-            if self.output_format == 'pandas':
+            if self.output_format == "pandas":
                 if not tdf.empty:
-                    tdf['date'] = date.strftime(self.date_format)
+                    tdf["date"] = date.strftime(self.date_format)
             dfs.append(tdf)
 
         # We may not return any data if we failed to specify useful parameters:
-        if self.output_format == 'pandas':
+        if self.output_format == "pandas":
             result = pd.concat(dfs) if len(dfs) > 0 else pd.DataFrame()
-            return result.set_index('date')
+            return result.set_index("date")
         else:
             return dfs

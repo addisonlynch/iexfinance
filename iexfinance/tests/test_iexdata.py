@@ -3,17 +3,36 @@ from datetime import datetime
 import pytest
 from pandas import DataFrame
 
-from iexfinance.iexdata import (get_tops, get_last, get_deep, get_deep_book,
-                                get_stats_intraday, get_stats_recent,
-                                get_stats_records, get_stats_daily,
-                                get_stats_summary)
+from iexfinance.iexdata import (
+    get_tops,
+    get_last,
+    get_deep,
+    get_deep_book,
+    get_stats_intraday,
+    get_stats_recent,
+    get_stats_records,
+    get_stats_daily,
+    get_stats_summary,
+)
 
 
 class TestMarketData(object):
-
     def setup_class(self):
-        self.bad = ["AAPL", "TSLA", "MSFT", "F", "GOOGL", "STM", "DAL",
-                    "UVXY", "SPY", "DIA", "SVXY", "CMG", "LUV"]
+        self.bad = [
+            "AAPL",
+            "TSLA",
+            "MSFT",
+            "F",
+            "GOOGL",
+            "STM",
+            "DAL",
+            "UVXY",
+            "SPY",
+            "DIA",
+            "SVXY",
+            "CMG",
+            "LUV",
+        ]
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_json_default(self):
@@ -31,9 +50,9 @@ class TestMarketData(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_pandas(self):
-        df = get_last(output_format='pandas')
-        df2 = get_last("AAPL", output_format='pandas')
-        df3 = get_last(["AAPL", "TSLA"], output_format='pandas')
+        df = get_last(output_format="pandas")
+        df2 = get_last("AAPL", output_format="pandas")
+        df3 = get_last(["AAPL", "TSLA"], output_format="pandas")
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -63,8 +82,8 @@ class TestMarketData(object):
 
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_TOPS_pandas(self):
-        df = get_tops("AAPL", output_format='pandas')
-        df2 = get_tops(["AAPL", "TSLA"], output_format='pandas')
+        df = get_tops("AAPL", output_format="pandas")
+        df2 = get_tops(["AAPL", "TSLA"], output_format="pandas")
 
         assert isinstance(df, DataFrame)
         assert isinstance(df2, DataFrame)
@@ -83,7 +102,7 @@ class TestMarketData(object):
     @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_pandas(self):
         with pytest.raises(ValueError):
-            get_deep("AAPL", output_format='pandas')
+            get_deep("AAPL", output_format="pandas")
 
     def test_DEEP_too_many_syms(self):
         with pytest.raises(ValueError):
@@ -108,22 +127,21 @@ class TestMarketData(object):
 
 
 class TestStats(object):
-
     def test_intraday_json(self):
         js = get_stats_intraday()
         assert isinstance(js, dict)
 
     def test_intraday_pandas(self):
-        df = get_stats_intraday(output_format='pandas')
+        df = get_stats_intraday(output_format="pandas")
         assert isinstance(df, DataFrame)
 
-    @pytest.mark.xfail(reason='IEX recent API endpoint unstable.')
+    @pytest.mark.xfail(reason="IEX recent API endpoint unstable.")
     def test_recent_json(self):
         ls = get_stats_recent()
         assert isinstance(ls, list)
 
     def test_recent_pandas(self):
-        df = get_stats_recent(output_format='pandas')
+        df = get_stats_recent(output_format="pandas")
         assert isinstance(df, DataFrame)
 
     def test_records_json(self):
@@ -131,32 +149,31 @@ class TestStats(object):
         assert isinstance(js, dict)
 
     def test_records_pandas(self):
-        df = get_stats_records(output_format='pandas')
+        df = get_stats_records(output_format="pandas")
         assert isinstance(df, DataFrame)
 
 
 @pytest.mark.xfail(reason="Endpoint in development by provider.")
 class TestStatsDaily(object):
-
     def test_daily_last_json(self):
         ls = get_stats_daily(last=5)
         assert isinstance(ls, list)
         assert len(ls) == 5
 
     def test_daily_last_pandas(self):
-        df = get_stats_daily(last=5, output_format='pandas')
+        df = get_stats_daily(last=5, output_format="pandas")
         assert isinstance(df, DataFrame)
         assert len(df) == 5
 
     def test_daily_dates_json(self):
-        ls = get_stats_daily(start=datetime(2017, 1, 1),
-                             end=datetime(2017, 2, 1))
+        ls = get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2017, 2, 1))
         assert isinstance(ls, list)
         assert len(ls) == 31
 
     def test_daily_dates_pandas(self):
-        df = get_stats_daily(start=datetime(2017, 1, 1),
-                             end=datetime(2017, 2, 1), output_format='pandas')
+        df = get_stats_daily(
+            start=datetime(2017, 1, 1), end=datetime(2017, 2, 1), output_format="pandas"
+        )
         assert isinstance(df, DataFrame)
         assert len(df) == 20
 
@@ -173,27 +190,23 @@ class TestStatsDaily(object):
 
     def test_daily_invalid_end_date(self):
         with pytest.raises(ValueError):
-            get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2016, 1,
-                            1))
+            get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2016, 1, 1))
 
         with pytest.raises(ValueError):
-            get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2028, 1,
-                            1))
+            get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2028, 1, 1))
 
 
 class TestStatsSummary(object):
-
     def test_summary_json(self):
-        ls = get_stats_summary(start=datetime(2017, 1, 1),
-                               end=datetime(2017, 2, 1))
+        ls = get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2017, 2, 1))
         assert isinstance(ls, list)
         assert len(ls) == 1
 
     @pytest.mark.skip
     def test_summary_pandas(self):
-        df = get_stats_summary(start=datetime(2017, 1, 1),
-                               end=datetime(2017, 3, 1),
-                               output_format='pandas')
+        df = get_stats_summary(
+            start=datetime(2017, 1, 1), end=datetime(2017, 3, 1), output_format="pandas"
+        )
         assert isinstance(df, DataFrame)
         assert len(df) == 2
 
@@ -213,9 +226,7 @@ class TestStatsSummary(object):
 
     def test_summary_invalid_end_date(self):
         with pytest.raises(ValueError):
-            get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2016, 1,
-                              1))
+            get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2016, 1, 1))
 
         with pytest.raises(ValueError):
-            get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2028, 1,
-                              1))
+            get_stats_summary(start=datetime(2017, 1, 1), end=datetime(2028, 1, 1))

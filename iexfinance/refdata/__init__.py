@@ -24,8 +24,7 @@ def get_iex_symbols(**kwargs):
     return IEXSymbols(**kwargs).fetch()
 
 
-def get_us_trading_dates_holidays(type_, direction, last=1,
-                                  startDate=None, **kwargs):
+def get_us_trading_dates_holidays(type_, direction, last=1, startDate=None, **kwargs):
     """
     Function to obtain US trading dates or holidays from
     a given date
@@ -47,5 +46,6 @@ def get_us_trading_dates_holidays(type_, direction, last=1,
     startDate: str, datetime.datetime, default current date
         specify first/last day included in next/last, respectively
     """
-    return TradingDatesReader(type_, direction, last=last,
-                              startDate=startDate, **kwargs).fetch()
+    return TradingDatesReader(
+        type_, direction, last=last, startDate=startDate, **kwargs
+    ).fetch()

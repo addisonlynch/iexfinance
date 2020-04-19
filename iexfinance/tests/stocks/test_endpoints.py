@@ -6,15 +6,20 @@ import pandas as pd
 from decimal import Decimal
 
 from iexfinance.stocks.historical import HistoricalReader
-from iexfinance.stocks import (get_historical_data, get_sector_performance,
-                               get_collections, get_earnings_today,
-                               get_ipo_calendar, get_historical_intraday,
-                               Stock, get_eod_options)
+from iexfinance.stocks import (
+    get_historical_data,
+    get_sector_performance,
+    get_collections,
+    get_earnings_today,
+    get_ipo_calendar,
+    get_historical_intraday,
+    Stock,
+    get_eod_options,
+)
 from iexfinance.utils.exceptions import IEXSymbolError
 
 
 class TestBase(object):
-
     def test_wrong_iex_input_type(self):
         with pytest.raises(ValueError):
             Stock(34)
@@ -31,20 +36,17 @@ class TestBase(object):
 
 
 class TestShareDefault(object):
-
     def setup_class(self):
         self.cshare = Stock("AAPL")
-        self.cshare2 = Stock("AAPL", output_format='pandas')
+        self.cshare2 = Stock("AAPL", output_format="pandas")
         self.cshare3 = Stock("SVXY")
-        self.cshare4 = Stock("AAPL",
-                             json_parse_int=Decimal,
-                             json_parse_float=Decimal)
+        self.cshare4 = Stock("AAPL", json_parse_int=Decimal, json_parse_float=Decimal)
         self.cshare5 = Stock("GIG^")
 
     def test_get_chart_params(self):
         data = self.cshare.get_chart()
         # Test chart ranges
-        data2 = self.cshare.get_chart(range='1y')
+        data2 = self.cshare.get_chart(range="1y")
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -52,20 +54,21 @@ class TestShareDefault(object):
         data4 = self.cshare.get_chart(chartSimplify=True)[0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cshare.get_chart(range='1y', chartInterval=5)
+        data5 = self.cshare.get_chart(range="1y", chartInterval=5)
         assert 45 < len(data5) < 55
 
-    @pytest.mark.xfail(reason="This test only runs correctly between 00:00 and"
-                       "09:30 EST")
+    @pytest.mark.xfail(
+        reason="This test only runs correctly between 00:00 and" "09:30 EST"
+    )
     def test_get_chart_reset(self):
         # Test chartReset
-        data3 = self.cshare.get_chart(range='1d', chartReset=True)
+        data3 = self.cshare.get_chart(range="1d", chartReset=True)
         assert data3 == []
 
     def test_get_dividends_params(self):
         data = self.cshare.get_dividends()
-        data2 = self.cshare.get_dividends(range='2y')
-        data3 = self.cshare.get_dividends(range='5y')
+        data2 = self.cshare.get_dividends(range="2y")
+        data3 = self.cshare.get_dividends(range="5y")
         assert len(data) < len(data2) < len(data3)
 
     @pytest.mark.xfail(reason="Provider error. Awaiting patch.")
@@ -77,8 +80,7 @@ class TestShareDefault(object):
         data = self.cshare.get_quote()
         data2 = self.cshare.get_quote(displayPercent=True)
 
-        assert (abs(data2["ytdChange"]) >
-                abs(data["ytdChange"]))
+        assert abs(data2["ytdChange"]) > abs(data["ytdChange"])
 
     @pytest.mark.xfail(reason="May not have splits")
     def test_get_splits_params(self):
@@ -88,20 +90,19 @@ class TestShareDefault(object):
         assert len(data2) > len(data)
 
     def test_filter(self):
-        data = self.cshare.get_quote(filter_='ytdChange')
+        data = self.cshare.get_quote(filter_="ytdChange")
         assert isinstance(data, dict)
         assert isinstance(data["ytdChange"], (int, float))
 
-        data4 = self.cshare4.get_quote(filter_='ytdChange')
+        data4 = self.cshare4.get_quote(filter_="ytdChange")
         assert isinstance(data4, dict)
         assert isinstance(data4["ytdChange"], Decimal)
 
 
 class TestBatchDefault(object):
-
     def setup_class(self):
         self.cbatch = Stock(["aapl", "tsla"])
-        self.cbatch2 = Stock(["aapl", "tsla"], output_format='pandas')
+        self.cbatch2 = Stock(["aapl", "tsla"], output_format="pandas")
         self.cbatch3 = Stock(["uvxy", "svxy"])
 
     def test_invalid_symbol_or_symbols(self):
@@ -112,7 +113,7 @@ class TestBatchDefault(object):
     def test_get_chart_params(self):
         data = self.cbatch.get_chart()["AAPL"]
         # Test chart ranges
-        data2 = self.cbatch.get_chart(range='1y')["AAPL"]
+        data2 = self.cbatch.get_chart(range="1y")["AAPL"]
         assert 15 < len(data) < 35
         assert 240 < len(data2) < 260
 
@@ -120,30 +121,28 @@ class TestBatchDefault(object):
         data4 = self.cbatch.get_chart(chartSimplify=True)["AAPL"][0]
         assert "simplifyFactor" in list(data4)
 
-        data5 = self.cbatch.get_chart(range='1y', chartInterval=5)["AAPL"]
+        data5 = self.cbatch.get_chart(range="1y", chartInterval=5)["AAPL"]
         assert 45 < len(data5) < 55
 
     @pytest.mark.xfail(reason="This test only works overnight")
     def test_get_chart_reset(self):
         # Test chartReset
-        data = self.cbatch.get_chart(range='1d', chartReset=True)
+        data = self.cbatch.get_chart(range="1d", chartReset=True)
         assert data == []
 
     def test_get_dividends_params(self):
         data = self.cbatch.get_dividends()["AAPL"]
-        data2 = self.cbatch.get_dividends(range='2y')["AAPL"]
-        data3 = self.cbatch.get_dividends(range='5y')["AAPL"]
+        data2 = self.cbatch.get_dividends(range="2y")["AAPL"]
+        data3 = self.cbatch.get_dividends(range="5y")["AAPL"]
         assert len(data) < len(data2) < len(data3)
 
     def test_get_quote_format(self):
         data = self.cbatch.get_quote()
         data2 = self.cbatch.get_quote(displayPercent=True)
-        assert (abs(data2["AAPL"]["ytdChange"]) >
-                abs(data["AAPL"]["ytdChange"]))
+        assert abs(data2["AAPL"]["ytdChange"]) > abs(data["AAPL"]["ytdChange"])
 
 
 class TestHistorical(object):
-
     def setup_class(self):
         self.good_start = datetime(2017, 2, 9)
         self.good_end = datetime(2017, 5, 24)
@@ -164,8 +163,9 @@ class TestHistorical(object):
 
     def test_single_historical_pandas(self):
 
-        f = get_historical_data("AMZN", self.good_start, self.good_end,
-                                output_format="pandas")
+        f = get_historical_data(
+            "AMZN", self.good_start, self.good_end, output_format="pandas"
+        )
 
         assert isinstance(f, pd.DataFrame)
         assert isinstance(f.index, pd.DatetimeIndex)
@@ -181,8 +181,9 @@ class TestHistorical(object):
 
     def test_batch_historical_json(self):
 
-        f = get_historical_data(["AMZN", "TSLA"], self.good_start,
-                                self.good_end, output_format="json")
+        f = get_historical_data(
+            ["AMZN", "TSLA"], self.good_start, self.good_end, output_format="json"
+        )
 
         assert isinstance(f, dict)
         assert len(f) == 2
@@ -212,8 +213,9 @@ class TestHistorical(object):
 
     def test_batch_historical_pandas(self):
 
-        f = get_historical_data(["AMZN", "TSLA"], self.good_start,
-                                self.good_end, output_format="pandas")
+        f = get_historical_data(
+            ["AMZN", "TSLA"], self.good_start, self.good_end, output_format="pandas"
+        )
 
         assert isinstance(f, pd.DataFrame)
         assert len(f) == 73
@@ -263,14 +265,15 @@ class TestHistorical(object):
         start = "20190501"
         end = "20190601"
 
-        data = get_historical_data("AAPL", start, end, output_format='pandas')
+        data = get_historical_data("AAPL", start, end, output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
         assert len(data) == 22
 
     def test_close_only(self):
-        data = get_historical_data("AAPL", self.good_start, self.good_end,
-                                   close_only=True)
+        data = get_historical_data(
+            "AAPL", self.good_start, self.good_end, close_only=True
+        )
 
         assert "open" not in data["2017-02-09"]
         assert "high" not in data["2017-02-09"]
@@ -282,41 +285,65 @@ class TestHistorical(object):
 
         # source: pandas datareader
 
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=5),
-                                end=date.today()).chart_range == '5d'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=27),
-                                end=date.today()).chart_range == '1m'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=83),
-                                end=date.today()).chart_range == '3m'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=167),
-                                end=date.today()).chart_range == '6m'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=170),
-                                end=date.today()).chart_range == '1y'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=365),
-                                end=date.today()).chart_range == '2y'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=730),
-                                end=date.today()).chart_range == '5y'
-        assert HistoricalReader(symbols=syms,
-                                start=date.today() - timedelta(days=1826),
-                                end=date.today()).chart_range == 'max'
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=5), end=date.today()
+            ).chart_range
+            == "5d"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=27), end=date.today()
+            ).chart_range
+            == "1m"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=83), end=date.today()
+            ).chart_range
+            == "3m"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=167), end=date.today()
+            ).chart_range
+            == "6m"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=170), end=date.today()
+            ).chart_range
+            == "1y"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=365), end=date.today()
+            ).chart_range
+            == "2y"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms, start=date.today() - timedelta(days=730), end=date.today()
+            ).chart_range
+            == "5y"
+        )
+        assert (
+            HistoricalReader(
+                symbols=syms,
+                start=date.today() - timedelta(days=1826),
+                end=date.today(),
+            ).chart_range
+            == "max"
+        )
 
 
 class TestSectorPerformance(object):
-
     def test_list_sector_performance(self):
         li = get_sector_performance()
         assert len(li) == pytest.approx(10, 1)
 
 
 class TestCollections(object):
-
     def test_get_collections_no_collection(self):
         with pytest.raises(TypeError):
             get_collections()
@@ -332,7 +359,7 @@ class TestCollections(object):
         assert len(data) > 100
 
     def test_get_collections_pandas(self):
-        df = get_collections("Restaurants", output_format='pandas')
+        df = get_collections("Restaurants", output_format="pandas")
 
         assert isinstance(df, pd.DataFrame)
 
@@ -340,14 +367,12 @@ class TestCollections(object):
         assert "close" in df.index
 
     def test_get_collections_type(self):
-        df = get_collections("Industrial Services", "sector",
-                             output_format='pandas')
+        df = get_collections("Industrial Services", "sector", output_format="pandas")
         assert isinstance(df, pd.DataFrame)
         assert len(df.columns) > 500
 
 
 class TestEarningsToday(object):
-
     def test_get_earnings_today(self):
         data = get_earnings_today()
 
@@ -357,7 +382,6 @@ class TestEarningsToday(object):
 
 
 class TestIPOCalendar(object):
-
     def test_get_ipo_calendar_default(self):
         data = get_ipo_calendar()
 
@@ -380,7 +404,6 @@ class TestIPOCalendar(object):
 
 
 class TestHistoricalIntraday(object):
-
     def verify_timeframe(self, data):
         assert data.index[0].hour == 9
         assert data.index[0].minute == 30
@@ -395,7 +418,7 @@ class TestHistoricalIntraday(object):
         assert isinstance(data, list)
 
     def test_intraday_pandas(self):
-        data = get_historical_intraday("AAPL", output_format='pandas')
+        data = get_historical_intraday("AAPL", output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
         assert isinstance(data.index, pd.DatetimeIndex)
@@ -404,8 +427,7 @@ class TestHistoricalIntraday(object):
 
     def test_intraday_pandas_pass_datetime(self):
         u_date = "20190821"
-        data = get_historical_intraday("AAPL", date=u_date,
-                                       output_format='pandas')
+        data = get_historical_intraday("AAPL", date=u_date, output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
         assert data.index[0].strftime("%Y%m%d") == u_date
@@ -426,7 +448,6 @@ class TestHistoricalIntraday(object):
 
 
 class TestEODOptions(object):
-
     def test_eod_options_no_symbol(self):
         with pytest.raises(TypeError):
             get_eod_options()
@@ -437,8 +458,10 @@ class TestEODOptions(object):
         assert isinstance(data, list)
         assert len(data[1]) == 6
 
-    @pytest.mark.xfail(reason="Provider scrambles expiration dates but does "
-                              "not accept scrambled dates for calls")
+    @pytest.mark.xfail(
+        reason="Provider scrambles expiration dates but does "
+        "not accept scrambled dates for calls"
+    )
     def test_single_date(self):
         # obtain list of expiration dates (often changes)
         expiries = get_eod_options("AAPL")
@@ -450,5 +473,5 @@ class TestEODOptions(object):
         assert isinstance(data[0], dict)
         assert data[0]["symbol"] == "AAPL"
 
-        data2 = get_eod_options("AAPL", expiries[0], output_format='pandas')
+        data2 = get_eod_options("AAPL", expiries[0], output_format="pandas")
         assert isinstance(data2, pd.DataFrame)

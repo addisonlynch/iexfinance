@@ -4,7 +4,6 @@ from iexfinance.base import _IEXBase
 
 
 class OptionsReader(_IEXBase):
-
     def __init__(self, symbol, expiration=None, option_side=None, **kwargs):
         self.symbol = symbol
         self.expiration = expiration
@@ -17,8 +16,11 @@ class OptionsReader(_IEXBase):
             return "/stock/%s/options" % self.symbol
         if self.option_side is None:
             return "/stock/%s/options/%s" % (self.symbol, self.expiration)
-        return "/stock/%s/options/%s/%s" % (self.symbol, self.expiration,
-                                            self.option_side)
+        return "/stock/%s/options/%s/%s" % (
+            self.symbol,
+            self.expiration,
+            self.option_side,
+        )
 
     def _convert_output(self, out):
         if self.expiration is None:

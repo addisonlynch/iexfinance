@@ -5,7 +5,6 @@ from iexfinance.base import _IEXBase
 
 
 class APIReader(_IEXBase):
-
     @property
     def url(self):
         return "status"

@@ -24,6 +24,7 @@ env:
 
 install:
   - pip install -qq flake8
+  - pip install black
   - pip install flake8-rst
   - pip install codecov
   - if [[ $DOCBUILD ]]; then
@@ -34,6 +35,8 @@ install:
 
 script:
   - coverage run setup.py pytest
+  - black --version
+  - black --check iexfinance
   - flake8 --version
   - flake8 iexfinance
   - flake8-rst --version

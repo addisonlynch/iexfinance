@@ -4,7 +4,6 @@ from iexfinance.base import _IEXBase
 
 
 class CloudCrypto(_IEXBase):
-
     def __init__(self, symbol, **kwargs):
         if not isinstance(symbol, str):
             raise ValueError("Single symbol required.")
@@ -13,7 +12,7 @@ class CloudCrypto(_IEXBase):
 
     @property
     def url(self):
-        return 'crypto/%s/quote' % self.symbol
+        return "crypto/%s/quote" % self.symbol
 
     def fetch(self):
         return super(CloudCrypto, self).fetch()
@@ -24,10 +23,10 @@ class CloudCrypto(_IEXBase):
 
 class SocialSentiment(_IEXBase):
 
-    _VALID_TYPES = ('daily', 'minute')
+    _VALID_TYPES = ("daily", "minute")
 
     def __init__(self, symbol, period_type=None, date=None, **kwargs):
-        self.period_type = period_type or 'daily'
+        self.period_type = period_type or "daily"
         if self.period_type not in self._VALID_TYPES:
             raise ValueError("period_type %s is not valid." % period_type)
         self.symbol = symbol
@@ -40,17 +39,19 @@ class SocialSentiment(_IEXBase):
     @property
     def url(self):
         if self.date:
-            return '/stock/%s/sentiment/%s/%s' % (self.symbol,
-                                                  self.period_type, self.date)
+            return "/stock/%s/sentiment/%s/%s" % (
+                self.symbol,
+                self.period_type,
+                self.date,
+            )
         else:
-            return '/stock/%s/sentiment/%s' % (self.symbol, self.period_type)
+            return "/stock/%s/sentiment/%s" % (self.symbol, self.period_type)
 
     def fetch(self):
         return super(SocialSentiment, self).fetch()
 
 
 class CEOCompensation(_IEXBase):
-
     def __init__(self, symbol, **kwargs):
         self.symbol = symbol
         super(CEOCompensation, self).__init__(**kwargs)

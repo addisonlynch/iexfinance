@@ -1,5 +1,4 @@
-from iexfinance.altdata.base import (CloudCrypto, SocialSentiment,
-                                     CEOCompensation)
+from iexfinance.altdata.base import CloudCrypto, SocialSentiment, CEOCompensation
 
 
 def get_crypto_quote(symbol, **kwargs):
@@ -48,8 +47,8 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
         Date to retrieve
     """
     import warnings
-    warnings.warn("UNSTABLE ENDPOINT: Not yet fully implemented by the "
-                  "provider.")
+
+    warnings.warn("UNSTABLE ENDPOINT: Not yet fully implemented by the " "provider.")
     return SocialSentiment(symbol, period_type, date, **kwargs).fetch()
 
 

@@ -1,11 +1,15 @@
 import pytest
-from iexfinance.stocks import (get_market_losers, get_market_most_active,
-                               get_market_iex_volume, get_market_iex_percent,
-                               get_market_in_focus, get_market_gainers)
+from iexfinance.stocks import (
+    get_market_losers,
+    get_market_most_active,
+    get_market_iex_volume,
+    get_market_iex_percent,
+    get_market_in_focus,
+    get_market_gainers,
+)
 
 
 class TestMarketMovers(object):
-
     def test_market_gainers(self):
         li = get_market_gainers()
         assert len(li) == pytest.approx(21, 1)

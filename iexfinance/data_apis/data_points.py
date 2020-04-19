@@ -4,7 +4,6 @@ from iexfinance.base import _IEXBase
 
 
 class DataPoints(_IEXBase):
-
     def __init__(self, symbol, key=None, **kwargs):
         self.symbol = symbol
         self.key = key

@@ -18,8 +18,11 @@ class IEXQueryError(Exception):
     This error is thrown when an error occurs with the query to IEX, be it a
     network problem or an invalid query.
     """
-    _DEFAULT_MSG = "The query could not be completed. There was a " \
-                   "client-side error with your request."
+
+    _DEFAULT_MSG = (
+        "The query could not be completed. There was a "
+        "client-side error with your request."
+    )
 
     def __init__(self, status, response):
         self.response = response
@@ -27,7 +30,8 @@ class IEXQueryError(Exception):
 
     def __str__(self):
         return "An error occurred while making the query ({}): {}".format(
-                self.status, self.response)
+            self.status, self.response
+        )
 
 
 class IEXAuthenticationError(Exception):
@@ -44,7 +48,6 @@ class IEXAuthenticationError(Exception):
 
 
 class ImmediateDeprecationError(Exception):
-
     def __init__(self, endpoint):
         self.endpoint = endpoint
 

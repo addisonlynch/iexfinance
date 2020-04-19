@@ -1,4 +1,4 @@
-from iexfinance.stocks.base import Stock # noqa
+from iexfinance.stocks.base import Stock  # noqa
 from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.historical import HistoricalReader, IntradayReader
 from iexfinance.stocks.ipocalendar import IPOReader
@@ -7,6 +7,7 @@ from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
+
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
 # and conditions of use
@@ -40,8 +41,9 @@ def get_historical_data(symbols, start, end=None, close_only=False, **kwargs):
     list or DataFrame
         Historical stock prices over date range, start to end
     """
-    return HistoricalReader(symbols, start=start, end=end,
-                            close_only=close_only, **kwargs).fetch()
+    return HistoricalReader(
+        symbols, start=start, end=end, close_only=close_only, **kwargs
+    ).fetch()
 
 
 def get_historical_intraday(symbol, date=None, **kwargs):
@@ -84,7 +86,7 @@ def get_sector_performance(**kwargs):
     return SectorPerformanceReader(**kwargs).fetch()
 
 
-def get_collections(collection_name, collection_type='tag', **kwargs):
+def get_collections(collection_name, collection_type="tag", **kwargs):
     """Collections
 
     Returns an array of ``quote`` objects for a given collection type.
@@ -103,8 +105,7 @@ def get_collections(collection_name, collection_type='tag', **kwargs):
         kwargs:
         Additional Request Parameters (see base class)
     """
-    return CollectionsReader(collection_name,
-                             collection_type, **kwargs).fetch()
+    return CollectionsReader(collection_name, collection_type, **kwargs).fetch()
 
 
 def get_market_volume(**kwargs):
@@ -167,7 +168,7 @@ def get_market_gainers(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='gainers', **kwargs).fetch()
+    return MoversReader(mover="gainers", **kwargs).fetch()
 
 
 def get_market_losers(**kwargs):
@@ -181,7 +182,7 @@ def get_market_losers(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='losers', **kwargs).fetch()
+    return MoversReader(mover="losers", **kwargs).fetch()
 
 
 def get_market_most_active(**kwargs):
@@ -195,7 +196,7 @@ def get_market_most_active(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='mostactive', **kwargs).fetch()
+    return MoversReader(mover="mostactive", **kwargs).fetch()
 
 
 def get_market_iex_volume(**kwargs):
@@ -209,7 +210,7 @@ def get_market_iex_volume(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='iexvolume', **kwargs).fetch()
+    return MoversReader(mover="iexvolume", **kwargs).fetch()
 
 
 def get_market_iex_percent(**kwargs):
@@ -223,7 +224,7 @@ def get_market_iex_percent(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='iexpercent', **kwargs).fetch()
+    return MoversReader(mover="iexpercent", **kwargs).fetch()
 
 
 def get_market_in_focus(**kwargs):
@@ -237,7 +238,7 @@ def get_market_in_focus(**kwargs):
     Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
     list
     """
-    return MoversReader(mover='infocus', **kwargs).fetch()
+    return MoversReader(mover="infocus", **kwargs).fetch()
 
 
 def get_eod_options(symbol, expiration=None, option_side=None, **kwargs):
@@ -259,5 +260,6 @@ def get_eod_options(symbol, expiration=None, option_side=None, **kwargs):
         Option side - ``put`` or ``call`` will return only those types of
         contracts
     """
-    return OptionsReader(symbol, expiration=expiration,
-                         option_side=option_side, **kwargs).fetch()
+    return OptionsReader(
+        symbol, expiration=expiration, option_side=option_side, **kwargs
+    ).fetch()
