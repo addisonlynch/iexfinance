@@ -34,7 +34,7 @@ single request.
 
     from iexfinance.stocks import get_historical_data
 
-    get_historical_data("AAPL", output_format='pandas').head()
+    get_historical_data("AAPL", start="20190101", end="20200101", output_format='pandas').head()
 
 
 See :ref:`Additional Methods<stocks.additional_methods>` for more a list of
@@ -202,16 +202,8 @@ Company
 Cryptocurrencies
 ----------------
 
-.. warning:: As of the 5/18/2018 IEX Provider update, quotes are provided for
-             certain Cryptocurrencies. Access to these quotes is available by
-             creating a Stock object and using the ``get_quote`` method.
-
-To retrieve quotes for all available cryptocurrencies, use the
-``get_crypto_quotes`` function:
-
-
-.. autofunction:: iexfinance.stocks.get_crypto_quotes
-
+To retrieve quotes for all available cryptocurrencies, create a ``Stock`` object
+using a cryptocurrency ticker.
 
 The following tickers are supported:
 
@@ -242,9 +234,10 @@ Examples
 
 .. code-block:: python
 
-    from iexfinance.stocks import get_crypto_quotes
+    from iexfinance.stocks import Stock
 
-    get_crypto_quotes(output_format='pandas').head()
+    btc = Stock("BTCUSDT")
+    btc.get_quote()
 
 
 
@@ -720,4 +713,4 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
     from iexfinance.stocks import get_market_gainers
 
-    get_market_gainers()[0]
+    get_market_gainers()

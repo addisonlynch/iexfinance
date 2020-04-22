@@ -6,4 +6,7 @@ pytest>=4
 pytest-runner
 requests-cache
 six
+sphinx
+sphinxcontrib-napoleon
+sphinx_rtd_theme
 tox

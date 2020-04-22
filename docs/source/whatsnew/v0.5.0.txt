@@ -21,7 +21,7 @@ Enhancements
   ``int``, ``date``, ``datetime``, and ``pandas.Timestamp`` and use a rolling 15-year default start date for historical data (specifically ``get_historical_data``)
 - Adds endpoint for us trading days/holidays (thanks Bouldersky)
 
-.. _GH94:: https://github.com/addisonlynch/iexfinance/issues/94
+.. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 
 
 Bug Fixes
@@ -30,7 +30,7 @@ Bug Fixes
 - Modifies ``Stock.get_historical_prices`` and ``Stock.get_chart``
   (GH165_) to return all fields, including ``changePercent``
 
-  .. _GH165:: https://github.com/addisonlynch/iexfinance/issues/165
+  .. _GH165: https://github.com/addisonlynch/iexfinance/issues/165
 
 
 Backward Incompatible Changes
