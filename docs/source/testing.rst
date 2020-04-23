@@ -14,25 +14,31 @@ Unit and integration tests for iexfinance are handled by the
 Testing & Documentation Dependencies
 ------------------------------------
 
-All testing & documentation dependencies can be installed via ``pip install -r requirements-dev.txt``.
+.. note:: Running the test suite and linting the code & documentation require Python 3.6 or above.
+
+All testing dependencies can be installed via ``pip install -r requirements-dev.txt``.
 
 **Testing**
 
+-  black
+-  codecov
+-  flake8
+-  flake8-bugbear
 -  pytest
 -  pytest-runner
--  flake8
--  flake8-rst
--  requests-cache
--  six
+-  tox
+
+All documentation dependencies can be installed via ``pip install -r docs/requirements.txt``.
 
 **Docs**
 
+- flake8-rst
+- ipython
+- matplotlib
+- requests-cache
 - sphinx
 - sphinx_rtd_theme
 - sphinxcontrib-napoleon
-- matplotlib
-- ipython
-
 
 .. _testing.sandbox:
 
