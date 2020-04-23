@@ -55,8 +55,16 @@ class _IEXBase(object):
     }
 
     _VALID_FORMATS = ("json", "pandas")
-    _VALID_API_VERSIONS = ("v1", "stable", "latest", "beta", "sandbox", "iexcloud-beta",
-                           "iexcloud-v1", "iexcloud-sandbox")
+    _VALID_API_VERSIONS = (
+        "v1",
+        "stable",
+        "latest",
+        "beta",
+        "sandbox",
+        "iexcloud-beta",
+        "iexcloud-v1",
+        "iexcloud-sandbox",
+    )
 
     def __init__(self, **kwargs):
 
@@ -201,6 +209,7 @@ class _IEXBase(object):
 
     def _convert_output(self, out):
         import pandas as pd
+
         return pd.DataFrame(out)
 
     def _output_format(self, out, fmt_j=None, fmt_p=None):
