@@ -13,7 +13,8 @@ matrix:
       env: DOCBUILD=true
     - python: 3.7
       dist: xenial
-      sudo: true
+    - python: 3.8
+      dist: xenial
 
 env:
   global:
@@ -24,7 +25,10 @@ env:
 
 install:
   - pip install -qq flake8
-  - pip install black
+  - |
+    if (( $(echo "$TRAVIS_PYTHON_VERSION > 3.5" | bc -l))); then
+      pip install black
+    fi
   - pip install flake8-rst
   - pip install codecov
   - if [[ $DOCBUILD ]]; then
@@ -35,8 +39,10 @@ install:
 
 script:
   - coverage run setup.py pytest
-  - black --version
-  - black --check iexfinance
+  - |
+    if (( $(echo "$TRAVIS_PYTHON_VERSION > 3.5" | bc -l))); then
+    black --version; black --check iexfinance
+    fi
   - flake8 --version
   - flake8 iexfinance
   - flake8-rst --version

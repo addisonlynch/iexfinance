@@ -34,7 +34,8 @@ single request.
 
     from iexfinance.stocks import get_historical_data
 
-    get_historical_data("AAPL", start="20190101", end="20200101", output_format='pandas').head()
+    get_historical_data("AAPL", start="20190101", end="20200101", 
+                        output_format='pandas').head()
 
 
 See :ref:`Additional Methods<stocks.additional_methods>` for more a list of

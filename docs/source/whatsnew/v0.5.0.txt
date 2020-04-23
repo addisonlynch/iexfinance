@@ -20,6 +20,7 @@ Enhancements
 - Repairs date handling to accept multiple formats, including ``str``,
   ``int``, ``date``, ``datetime``, and ``pandas.Timestamp`` and use a rolling 15-year default start date for historical data (specifically ``get_historical_data``)
 - Adds endpoint for us trading days/holidays (thanks Bouldersky)
+- Adds official support for Python 3.8
 
 .. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 
