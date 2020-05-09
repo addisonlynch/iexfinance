@@ -69,7 +69,7 @@ class TestShareDefault(object):
         data = self.cshare.get_dividends()
         data2 = self.cshare.get_dividends(range="2y")
         data3 = self.cshare.get_dividends(range="5y")
-        assert len(data) < len(data2) < len(data3)
+        assert len(data) <= len(data2) <= len(data3)
 
     @pytest.mark.xfail(reason="Provider error. Awaiting patch.")
     def test_get_news_params(self):
@@ -134,7 +134,8 @@ class TestBatchDefault(object):
         data = self.cbatch.get_dividends()["AAPL"]
         data2 = self.cbatch.get_dividends(range="2y")["AAPL"]
         data3 = self.cbatch.get_dividends(range="5y")["AAPL"]
-        assert len(data) < len(data2) < len(data3)
+        print(data, data2, data3)
+        assert len(data) <= len(data2) <= len(data3)
 
     def test_get_quote_format(self):
         data = self.cbatch.get_quote()

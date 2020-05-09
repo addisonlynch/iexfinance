@@ -23,6 +23,7 @@ _ALL_METHODS = [
     ("get_insider_summary", list, 5),
     ("get_insider_transactions", list, 6),
     ("get_key_stats", dict, 30),
+    ("get_advanced_stats", dict, 53),
     ("get_largest_trades", list, 10),
     ("get_logo", dict, 1),
     #  ("get_news"),

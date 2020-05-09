@@ -487,6 +487,14 @@ Key Stats
 .. automethod:: iexfinance.stocks.base.Stock.get_key_stats
 
 
+.. _stocks.advanced_stats:
+
+Advanced Stats
+---------
+
+.. automethod:: iexfinance.stocks.base.Stock.get_advanced_stats
+
+
 .. _stocks.largest_trades:
 
 Largest Trades
