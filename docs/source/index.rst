@@ -3,16 +3,11 @@ Welcome to iexfinance's documentation!
 
 ``iexfinance``'s documentation is organized into the following sections:
 
-- :ref:`getting_started` - Installation instructions, basic usage information,
-  migrating to IEX Cloud
-- :ref:`endpoints` - 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
+- :ref:`getting_started` - Installation instructions and basic usage information
+- :ref:`endpoints` - (mostly) 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
 - :ref:`package_info` - additional package information, developer/testing documentation
 
 .. warning:: Support for Python 2 has ended as of ``iexfinance`` version 0.5.0.
-
-.. note:: **Support for the Legacy v1 Devleoper API ended on June
-             1st, 2019.** As of version 0.4.2, use of ``iexfinance`` requires
-             an IEX Cloud account_.
 
 .. _account: https://iexcloud.io/pricing/
 
@@ -26,7 +21,6 @@ Full Contents
    :caption: Getting Started
 
    whatsnew
-   migrating
    install
    configuration
    sandbox

@@ -45,13 +45,26 @@ class _IEXBase(object):
 
     _URLS = {
         "v1": "https://cloud.iexapis.com/v1/",
-        "iexcloud-beta": "https://cloud.iexapis.com/v1/",
+        "stable": "https://cloud.iexapis.com/stable/",
+        "latest": "https://cloud.iexapis.com/latest/",
+        "beta": "https://cloud.iexapis.com/beta/",
+        "sandbox": "https://sandbox.iexapis.com/v1/",
+        "iexcloud-beta": "https://cloud.iexapis.com/beta/",
         "iexcloud-v1": "https://cloud.iexapis.com/v1/",
         "iexcloud-sandbox": "https://sandbox.iexapis.com/v1/",
     }
 
     _VALID_FORMATS = ("json", "pandas")
-    _VALID_CLOUD_VERSIONS = ("iexcloud-beta", "iexcloud-v1", "v1", "iexcloud-sandbox")
+    _VALID_API_VERSIONS = (
+        "v1",
+        "stable",
+        "latest",
+        "beta",
+        "sandbox",
+        "iexcloud-beta",
+        "iexcloud-v1",
+        "iexcloud-sandbox",
+    )
 
     def __init__(self, **kwargs):
 
@@ -68,21 +81,19 @@ class _IEXBase(object):
                 "Please enter a valid output format ('json' " "or 'pandas')."
             )
         self.token = kwargs.get("token")
-
+        if self.token is None:
+            self.token = os.getenv("IEX_TOKEN")
+        if not self.token or not isinstance(self.token, str):
+            raise auth_error(
+                "The IEX Cloud API key must be provided "
+                "either through the token variable or "
+                "through the environmental variable "
+                "IEX_TOKEN."
+            )
         # Get desired API version from environment variables
         # Defaults to IEX Cloud
-        self.version = os.getenv("IEX_API_VERSION", "v1")
-        if self.version in self._VALID_CLOUD_VERSIONS:
-            if self.token is None:
-                self.token = os.getenv("IEX_TOKEN")
-            if not self.token or not isinstance(self.token, str):
-                raise auth_error(
-                    "The IEX Cloud API key must be provided "
-                    "either through the token variable or "
-                    "through the environmental variable "
-                    "IEX_TOKEN."
-                )
-        else:
+        self.version = os.getenv("IEX_API_VERSION", "latest")
+        if self.version not in self._VALID_API_VERSIONS:
             raise ValueError("Please select a valid API version.")
 
     @property

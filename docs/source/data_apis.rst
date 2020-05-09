@@ -48,7 +48,7 @@ data point ID to ``get_data_points``:
 
 .. ipython:: python
 
-    get_data_points("AAPL", "QUOTE-LATESTPRICE")
+    get_data_points("AAPL", "COMMONSTOCK")
 
 .. _data_apis.time_series:
 

@@ -1,0 +1,7 @@
+flake8-rst
+ipython
+matplotlib
+requests-cache
+sphinx
+sphinxcontrib-napoleon
+sphinx_rtd_theme

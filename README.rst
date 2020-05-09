@@ -395,6 +395,6 @@ Twitter: `alynchfc <https://www.twitter.com/alynchfc>`__
 License
 -------
 
-Copyright © 2019 Addison Lynch
+Copyright © 2020 Addison Lynch
 
 See LICENSE for details

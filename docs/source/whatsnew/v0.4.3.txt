@@ -2,7 +2,7 @@
 
 
 v0.4.3 (August 22, 2019)
-------------
+------------------------
 
 This is a minor patch release from 0.4.2 that repairs compatibility issues with
 pandas 0.25.0. We recommend that all users upgrade.
@@ -14,4 +14,4 @@ Bug Fixes
 - Removes uses of ``pandas.compat`` which was removed with pandas' end of
   python 2 support in 0.25.0 (GH163_)
 
-  .. _GH163:: https://github.com/addisonlynch/iexfinance/issues/163
+  .. _GH163: https://github.com/addisonlynch/iexfinance/issues/163

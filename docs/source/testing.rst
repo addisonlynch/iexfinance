@@ -4,34 +4,41 @@
 Testing
 =======
 
+.. warning:: Use of the :ref:`Sandbox Environment<testing.sandbox>` is **required** when running the test suite.
+
 Unit and integration tests for iexfinance are handled by the
 `pytest <https://docs.pytest.org/en/latest>`__ platform.
-
-.. warning:: Use of the :ref:`Sandbox Environment<testing.sandbox>` is **required** when running the test suite.
 
 .. _testing.dependencies:
 
 Testing & Documentation Dependencies
 ------------------------------------
 
+.. note:: Running the test suite and linting the code & documentation require Python 3.6 or above.
+
+All testing dependencies can be installed via ``pip install -r requirements-dev.txt``.
+
 **Testing**
 
+-  black
+-  codecov
+-  flake8
+-  flake8-bugbear
 -  pytest
 -  pytest-runner
--  flake8
--  flake8-rst
--  requests-cache
--  six
+-  tox
+
+All documentation dependencies can be installed via ``pip install -r docs/requirements.txt``.
 
 **Docs**
 
-- sphinx
-- sphinx-autobuild
-- sphinx-rtd-theme
-- sphinxcontrib-napoleon
-- matplotlib
+- flake8-rst
 - ipython
-
+- matplotlib
+- requests-cache
+- sphinx
+- sphinx_rtd_theme
+- sphinxcontrib-napoleon
 
 .. _testing.sandbox:
 

@@ -55,7 +55,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "iexfinance"
-copyright = "2019, Addison Lynch"
+copyright = "2020, Addison Lynch"
 author = "Addison Lynch"
 
 # The version info for the project you're documenting, acts as replacement for

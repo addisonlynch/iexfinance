@@ -1,9 +1,7 @@
+black; python_version > '3.5'
+codecov
 flake8
-flake8-bugbear
-flake8-rst
-ipython
+flake8-bugbear; python_version > '3.5'
 pytest>=4
 pytest-runner
-requests-cache
-six
 tox
