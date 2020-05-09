@@ -638,6 +638,24 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("stats", params=kwargs)
 
+    def get_advanced_stats(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#advanced-stats
+
+        Data Weighting: ``3,000`` per symbol + Key Stats weight
+
+        Notes
+        -------
+        Only included with paid subscription plans.
+
+        Returns
+        -------
+        dict or pandas.DataFrame
+            everything in key stats plus additional advanced stats
+            such as EBITDA, ratios, key financial data, and more.
+        """
+        return self._get_endpoint("advanced-stats", params=kwargs)
+
     def get_largest_trades(self):
         """
         Reference: https://iexcloud.io/docs/api/#largest-trades
