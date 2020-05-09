@@ -474,7 +474,7 @@ Examples
 
     from iexfinance.stocks import get_ipo_calendar
 
-    get_ipo_calendar()["rawData"][0]
+    get_ipo_calendar()
 
 
 
