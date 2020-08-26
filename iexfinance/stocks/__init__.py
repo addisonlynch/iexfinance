@@ -7,6 +7,7 @@ from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
+from iexfinance.stocks.upcomingearnings import UpcomingEarningsReader
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information
@@ -134,6 +135,10 @@ def get_earnings_today(**kwargs):
     Data Weighting: ``1051`` per symbol returned
     """
     return EarningsReader(**kwargs).fetch()
+
+
+def get_upcoming_earnings(**kwargs):
+    return UpcomingEarningsReader(**kwargs).fetch()
 
 
 def get_ipo_calendar(period="upcoming-ipos", **kwargs):

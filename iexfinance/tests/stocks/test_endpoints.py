@@ -11,6 +11,7 @@ from iexfinance.stocks import (
     get_sector_performance,
     get_collections,
     get_earnings_today,
+    get_upcoming_earnings,
     get_ipo_calendar,
     get_historical_intraday,
     Stock,
@@ -380,6 +381,17 @@ class TestEarningsToday(object):
         assert isinstance(data, dict)
         assert "bto" in data
         assert "amc" in data
+
+
+class TestUpcomingEarnings(object):
+    def test_get_upcoming_earnings(self):
+        data = get_upcoming_earnings()
+
+        assert isinstance(data, list)
+
+        data = get_upcoming_earnings(**{"output_format": "pandas"})
+
+        assert isinstance(data, pd.DataFrame)
 
 
 class TestIPOCalendar(object):

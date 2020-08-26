@@ -22,6 +22,7 @@ Enhancements
 - Adds endpoint for us trading days/holidays (thanks Bouldersky)
 - Adds official support for Python 3.8
 - Adds endpoint for advanced stats
+- Adds endpoint for upcoming-earnings
 
 .. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 
