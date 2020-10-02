@@ -92,7 +92,7 @@ class _IEXBase(object):
             )
         # Get desired API version from environment variables
         # Defaults to IEX Cloud
-        self.version = os.getenv("IEX_API_VERSION", "latest")
+        self.version = os.getenv("IEX_API_VERSION", "stable")
         if self.version not in self._VALID_API_VERSIONS:
             raise ValueError("Please select a valid API version.")
 
