@@ -55,3 +55,23 @@ class IEXSymbols(ReferenceData):
     @property
     def endpoint(self):
         return "iex/symbols"
+
+
+class IntlRegionSymbols(CloudRef):
+    def __init__(self, region, **kwargs):
+        self.region = region
+        super(CloudRef, self).__init__(**kwargs)
+
+    @property
+    def endpoint(self):
+        return "region/%s/symbols" % self.region
+
+
+class IntlExchangeSymbols(CloudRef):
+    def __init__(self, exchange, **kwargs):
+        self.exchange = exchange
+        super(CloudRef, self).__init__(**kwargs)
+
+    @property
+    def endpoint(self):
+        return "exchange/%s/symbols" % self.exchange
