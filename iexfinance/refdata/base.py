@@ -75,3 +75,10 @@ class IntlExchangeSymbols(ReferenceData):
     @property
     def endpoint(self):
         return "exchange/%s/symbols" % self.exchange
+
+
+class Sectors(ReferenceData):
+
+    @property
+    def endpoint(self):
+        return "sectors"

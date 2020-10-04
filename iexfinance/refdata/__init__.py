@@ -18,6 +18,17 @@ def get_symbols(**kwargs):
     return Symbols(**kwargs).fetch()
 
 
+def get_sectors(**kwargs):
+    """
+    Returns array of all sectors that IEX Cloud supports
+    for API calls
+
+    Reference: https://iexcloud.io/docs/api/#sectors
+    Data Weighting: ``1`` per call
+    """
+    return Sectors(**kwargs).fetch()
+
+
 def get_iex_symbols(**kwargs):
     """
     Returns array of all symbols the Investor's Exchange
