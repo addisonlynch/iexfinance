@@ -1,0 +1,7 @@
+.. _whatsnew_044:
+
+
+v0.4.4 (TBD)
+------------------------
+
+Added support for the Sectors endpoint
