@@ -108,9 +108,6 @@ class Stock(_IEXBase):
 
         Data Weighting: ``3000`` per symbol per period
 
-        .. warning:: This endpoint is only available using IEX Cloud. See
-                     :ref:`Migrating` for more information.
-
         Parameters
         ----------
         period: str, default 'quarter', optional
@@ -151,9 +148,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#cash-flow
 
         Data Weighting: ``1000`` per symbol per period
-
-        .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
 
         Parameters
         ----------
@@ -286,9 +280,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#estimates
 
         Data Weighting: ``10000`` per symbol per period
-
-        .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
 
         Returns
         -------
@@ -437,9 +428,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#income-statement
 
         Data Weighting: ``1000`` per symbol per period
-
-        .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
 
         Parameters
         ----------
@@ -793,9 +781,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#price-target
 
         Data Weighting: ``500`` per symbol
-
-        .. warning:: This endpoint is only available using IEX Cloud. See
-                 :ref:`Migrating` for more information.
 
         Returns
         -------

@@ -14,9 +14,6 @@ from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
 
 logger = logging.getLogger(__name__)
 
-# Docs URL for IEX Cloud migration
-MIGRATION_URL = "https://addisonlynch.github.io/iexfinance/stable/" "migrating.html"
-
 
 class _IEXBase(object):
     """
@@ -44,19 +41,17 @@ class _IEXBase(object):
     """
 
     _URLS = {
-        "v1": "https://cloud.iexapis.com/v1/",
         "stable": "https://cloud.iexapis.com/stable/",
         "latest": "https://cloud.iexapis.com/latest/",
         "beta": "https://cloud.iexapis.com/beta/",
-        "sandbox": "https://sandbox.iexapis.com/v1/",
+        "sandbox": "https://sandbox.iexapis.com/stable/",
         "iexcloud-beta": "https://cloud.iexapis.com/beta/",
         "iexcloud-v1": "https://cloud.iexapis.com/v1/",
-        "iexcloud-sandbox": "https://sandbox.iexapis.com/v1/",
+        "iexcloud-sandbox": "https://sandbox.iexapis.com/stable/",
     }
 
     _VALID_FORMATS = ("json", "pandas")
     _VALID_API_VERSIONS = (
-        "v1",
         "stable",
         "latest",
         "beta",
