@@ -51,3 +51,4 @@ Backward Incompatible Changes
 - All legacy IEX Developer API version 1.0 endpoints and references to such endpoints 
   have been removed
 - ``Stock.get_endpoints`` has been immediately deprecated
+- ``get_social_sentiment`` is now premium-only data and not tested by ``iexfinance``

@@ -8,11 +8,7 @@ from iexfinance.altdata import (
     get_ceo_compensation,
 )
 from iexfinance.altdata.base import SocialSentiment
-
-
-@pytest.fixture
-def valid_date():
-    return datetime.datetime.today()
+from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestAltData(object):
@@ -25,12 +21,15 @@ class TestAltData(object):
             get_crypto_quote(["BTCUSDT", "BAD"])
 
     def test_crypto_quote(self):
-        data = get_crypto_quote("BTCUSDT", output_format="pandas")
+        symbol = "BTCUSD"
+        data = get_crypto_quote(symbol)
 
         assert isinstance(data, pd.DataFrame)
-        assert len(data) == 15
+        assert len(data.columns) == 11
+        assert data.index[0] == symbol
 
 
+@pytest.mark.skip(reason="Social sentiment is a premium-only endpoint.")
 class TestSocialSentiment(object):
     """
     Partially-implemented tests for social sentiment. Unstable endpoint, will
@@ -64,7 +63,11 @@ class TestSocialSentiment(object):
 class TestCEOCompensation(object):
 
     def test_ceo_compensation(self):
-        data = get_ceo_compensation("AAPL", output_format="pandas")
+        data = get_ceo_compensation("AAPL")
 
         assert isinstance(data, pd.DataFrame)
-        assert "AAPL" in data
+        assert "AAPL" in data.index
+
+    def test_ceo_compensation_bad_symbol(self):
+        with pytest.raises(IEXQueryError):
+            get_ceo_compensation("BADSYMBOL")
