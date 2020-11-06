@@ -72,9 +72,7 @@ class _IEXBase(object):
             "output_format", os.getenv("IEX_OUTPUT_FORMAT")
         )
         if self.output_format not in self._VALID_FORMATS:
-            raise ValueError(
-                "Please enter a valid output format (json or pandas)."
-            )
+            raise ValueError("Please enter a valid output format (json or pandas).")
         self.token = kwargs.get("token")
         if self.token is None:
             self.token = os.getenv("IEX_TOKEN")
@@ -104,7 +102,7 @@ class _IEXBase(object):
         raise NotImplementedError
 
     def _validate_response(self, response):
-        """ Ensures response from IEX server is valid.
+        """Ensures response from IEX server is valid.
 
         Parameters
         ----------
@@ -145,7 +143,7 @@ class _IEXBase(object):
         return json_response
 
     def _execute_iex_query(self, url):
-        """ Executes HTTP Request
+        """Executes HTTP Request
         Given a URL, execute HTTP request from IEX server. If request is
         unsuccessful, attempt is made self.retry_count times with pause of
         self.pause in between.
@@ -183,7 +181,7 @@ class _IEXBase(object):
         raise IEXQueryError(response.status_code, response.text)
 
     def _prepare_query(self):
-        """ Prepares the query URL
+        """Prepares the query URL
 
         Returns
         -------
@@ -208,6 +206,7 @@ class _IEXBase(object):
 
     def _convert_output(self, out):
         import pandas as pd
+
         return pd.DataFrame(out)
 
     def _format_output(self, out, format=None):

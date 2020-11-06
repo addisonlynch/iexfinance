@@ -61,7 +61,7 @@ class Stock(_IEXBase):
         self.optional_params = params
         self.endpoints = [endpoint]
 
-        data = self.fetch(fmt_j=fmt_j, fmt_p=no_pandas)
+        data = self.fetch(format=no_pandas)
         # IEX Cloud returns multiple symbol requests as as a list of dicts
         # so convert to dict of dicts
         if isinstance(data, list):
@@ -73,7 +73,7 @@ class Stock(_IEXBase):
                 result[symbol] = []
             else:
                 result[symbol] = data[symbol][endpoint]
-        return self._output_format_one(result, fmt_p=fmt_p, fmt_j=fmt_j)
+        return self._output_format_one(result, format=format)
 
     def _get_field(self, endpoint, field):
         data = getattr(self, "get_%s" % endpoint)(filter_=field)
@@ -84,8 +84,8 @@ class Stock(_IEXBase):
                 data = {symbol: data[symbol][field] for symbol in self.symbols}
         return data
 
-    def _output_format_one(self, out, fmt_p=None, fmt_j=None):
-        data = super(Stock, self)._format_output(out, fmt_p=fmt_p)
+    def _output_format_one(self, out, format=None, fmt_j=None):
+        data = super(Stock, self)._format_output(out, format=format)
         if len(self.symbols) == 1 and self.output_format == "json":
             return data[self.symbols[0]]
         return data
@@ -99,7 +99,7 @@ class Stock(_IEXBase):
     def get_balance_sheet(self, **kwargs):
         """Balance Sheet
 
-        Pulls balance sheet data. Available quarterly (4 quarters) and annually
+        Pulls balance sheet data. Available quarterly (12 quarters) and annually
         (4 years)
 
         Reference: https://iexcloud.io/docs/api/#balance-sheet
@@ -111,17 +111,25 @@ class Stock(_IEXBase):
         period: str, default 'quarter', optional
             Allows you to specify annual or quarterly balance sheet.
             Value should be `annual` or `quarter`.
+        last: int, default 1, optional
+            Specify the number of quarters or years to return. You can specify
+            up to 12 quarters or 4 years.
         """
 
-        def fmt_p(out):
-            data = {
-                (symbol, sheet["reportDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]["balancesheet"]
-            }
-            return pd.DataFrame(data)
+        def format(out):
+            return out
+            results = {}
+            for symbol in out:
+                df = pd.DataFrame.from_dict(
+                    {d["reportDate"]: d for d in out[symbol]["balancesheet"]},
+                    orient="index",
+                )
+                results[symbol] = df
+            if len(self.symbols) == 1:
+                return results[self.symbols[0]]
+            return results
 
-        return self._get_endpoint("balance-sheet", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("balance-sheet", format=format, params=kwargs)
 
     def get_book(self):
         """Book
@@ -129,11 +137,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#book
 
         Data Weighting: ``1`` per quote returned
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Book endpoint data
         """
         return self._get_endpoint("book")
 
@@ -152,14 +155,9 @@ class Stock(_IEXBase):
         period: str, default 'quarterly', optional
             Allows you to specify annual or quarterly cash flows. Defaults to
             quarterly. Values should be annual or quarter.
-
-        Returns
-        ------
-        dict or pandas.DataFrame
-            Stocks Cash Flow endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["reportDate"]): sheet
                 for symbol in out
@@ -167,7 +165,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("cash-flow", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("cash-flow", format=format, params=kwargs)
 
     def get_chart(self, **kwargs):
         """Chart
@@ -184,11 +182,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#company
 
         Data Weighting: ``1``
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Company endpoint data
         """
         return self._get_endpoint("company", params=kwargs)
 
@@ -198,11 +191,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#delayed-quote
 
         Data Weighting: ``1`` per symbol per quote
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Delayed Quote endpoint data
         """
         return self._get_endpoint("delayed-quote")
 
@@ -218,14 +206,9 @@ class Stock(_IEXBase):
         range: str, default '1m', optional
             Time period of dividends to return
             Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`]
-
-        Returns
-        -------
-        list of dict or pandas.DataFrame
-            Stocks Dividends endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["exDate"]): sheet
                 for symbol in out
@@ -233,7 +216,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("dividends", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("dividends", format=format, params=kwargs)
 
     def get_earnings(self, **kwargs):
         """Earnings
@@ -250,17 +233,9 @@ class Stock(_IEXBase):
         ----------
         last: int, default 1, optional
             Number of quarters or years to return.
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Earnings endpoint data
         """
 
-        def fmt(out):
-            return {symbol: out[symbol]["earnings"] for symbol in self.symbols}
-
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["EPSReportDate"]): sheet
                 for symbol in out
@@ -268,7 +243,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("earnings", format=format, params=kwargs)
 
     def get_estimates(self, **kwargs):
         """Estimates
@@ -283,13 +258,9 @@ class Stock(_IEXBase):
         ----------
         last: int, default 1, optional
         period: str, default `quarter`, optional
-
-        Returns
-        -------
-        dict or pandas.DataFrame
         """
 
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["reportDate"]): sheet
                 for symbol in out
@@ -297,7 +268,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("estimates", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("estimates", format=format, params=kwargs)
 
     def get_financials(self, **kwargs):
         """Financials
@@ -312,19 +283,9 @@ class Stock(_IEXBase):
         Parameters
         ----------
         period: str, default 'quarter', choose between 'annual' and 'quarter'
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Financials endpoint data
         """
-        # def fmt(out):
-        #     return {symbol: out[symbol].get("financials", [])
-        #             for symbol in self.symbols}
-        def fmt(out):
-            return {symbol: out[symbol]["financials"] for symbol in self.symbols}
 
-        def fmt_p(out):
+        def format(out):
             out = {symbol: out[symbol].get("financials", []) for symbol in self.symbols}
             data = {
                 (symbol, sheet["reportDate"]): sheet
@@ -333,7 +294,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("financials", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("financials", format=format, params=kwargs)
 
     def get_fund_ownership(self):
         """Fund Ownership
@@ -346,14 +307,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#fund-ownership
 
         Data Weighting: ``10000`` per symbol per period
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Fund Ownership endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             out = {
                 (symbol, owner["entityProperName"]): owner
                 for symbol in out
@@ -361,7 +317,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(out)
 
-        return self._get_endpoint("fund-ownership", fmt_p=fmt_p)
+        return self._get_endpoint("fund-ownership", format=format)
 
     def get_historical_prices(self, **kwargs):
         """Historical Prices
@@ -401,14 +357,9 @@ class Stock(_IEXBase):
         chartIEXOnly: boolean, default False, optional
             Only for ``1d``. Limits the return of intraday prices to IEX only
             data
-
-        Returns
-        -------
-        list or pandas DataFrame
-            Stocks Historical Prices endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             result = {}
             for symbol in self.symbols:
                 d = out.pop(symbol)
@@ -420,7 +371,7 @@ class Stock(_IEXBase):
             else:
                 return pd.concat(result.values(), keys=result.keys(), axis=1)
 
-        return self._get_endpoint("chart", fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("chart", format=format, params=kwargs)
 
     def get_income_statement(self, **kwargs):
         """Income Statement
@@ -437,17 +388,9 @@ class Stock(_IEXBase):
         period: str, default 'quarterly', optional
              Allows you to specify annual or quarterly income statement.
              Defaults to quarterly. Values should be annual or quarter
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Income Statement endpoint data
         """
 
-        def fmt(out):
-            return {symbol: out[symbol]["income"] for symbol in self.symbols}
-
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["reportDate"]): sheet
                 for symbol in out
@@ -455,7 +398,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("income", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
+        return self._get_endpoint("income", format=format, params=kwargs)
 
     def get_insider_roster(self):
         """Insider Roster
@@ -465,14 +408,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#insider-roster
 
         Data Weighting: ``5000`` per symbol
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Insider Roster Endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             out = {
                 (symbol, owner["entityName"]): owner
                 for symbol in out
@@ -480,7 +418,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(out)
 
-        return self._get_endpoint("insider-roster", fmt_p=fmt_p)
+        return self._get_endpoint("insider-roster", format=format)
 
     def get_insider_summary(self):
         """Insider Summary
@@ -490,14 +428,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#insider-summary
 
         Data Weighting: ``5000`` per symbol
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Insider Summary Endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             out = {
                 (symbol, owner["fullName"]): owner
                 for symbol in out
@@ -505,7 +438,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(out)
 
-        return self._get_endpoint("insider-summary", fmt_p=fmt_p)
+        return self._get_endpoint("insider-summary", format=format)
 
     def get_insider_transactions(self):
         """Insider Transactions
@@ -515,14 +448,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#insider-transactions
 
         Data Weighting: ``50`` per transaction
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Insider Transactions Endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             out = {
                 (symbol, owner["fullName"]): owner
                 for symbol in out
@@ -530,7 +458,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(out)
 
-        return self._get_endpoint("insider-transactions", fmt_p=fmt_p)
+        return self._get_endpoint("insider-transactions", format=format)
 
     def get_institutional_ownership(self):
         """Institutional Ownership
@@ -541,14 +469,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#institutional-ownership
 
         Data Weighting: ``10000`` per symbol per period
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Institutional Ownership endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             out = {
                 (symbol, owner["entityProperName"]): owner
                 for symbol in out
@@ -556,7 +479,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(out)
 
-        return self._get_endpoint("institutional-ownership", fmt_p=fmt_p)
+        return self._get_endpoint("institutional-ownership", format=format)
 
     def get_intraday_prices(self, **kwargs):
         """Intraday Prices
@@ -603,11 +526,6 @@ class Stock(_IEXBase):
             meaning the most recent 15 objects will be null.
             If this parameter is passed as true, all market prefixed fields
             that are null will be populated with IEX data if available.
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Quote endpoint data
         """
         return self._get_endpoint("intraday-prices", params=kwargs)
 
@@ -621,11 +539,6 @@ class Stock(_IEXBase):
             Case sensitive string matching the name of a single key
             to return one value.Ex: If you only want the next earnings
             date, you would use `nextEarningsDate`.
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Key Stats endpoint data
         """
         return self._get_endpoint("stats", params=kwargs)
 
@@ -638,34 +551,18 @@ class Stock(_IEXBase):
         Notes
         -------
         Only included with paid subscription plans.
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            everything in key stats plus additional advanced stats
-            such as EBITDA, ratios, key financial data, and more.
         """
         return self._get_endpoint("advanced-stats", params=kwargs)
 
     def get_largest_trades(self):
         """
         Reference: https://iexcloud.io/docs/api/#largest-trades
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Largest Trades endpoint data
         """
         return self._get_endpoint("largest-trades")
 
     def get_logo(self):
         """
         Reference: https://iexcloud.io/docs/api/#logo
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Logo endpoint data
         """
         return self._get_endpoint("logo")
 
@@ -680,13 +577,8 @@ class Stock(_IEXBase):
         ----------
         last: int, default 10, optional
             Number of news listings to return.
-
-        Returns
-        -------
-        list or dict
-            Stocks News endpoint data
         """
-        return self._get_endpoint("news", fmt_p=no_pandas, params=kwargs)
+        return self._get_endpoint("news", format=no_pandas, params=kwargs)
 
     def get_ohlc(self):
         """OHLC
@@ -696,11 +588,6 @@ class Stock(_IEXBase):
         Reference:  https://iexcloud.io/docs/api/#ohlc
 
         Data Weighting: ``2`` per symbol
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks OHLC endpoint data
         """
         return self._get_endpoint("ohlc")
 
@@ -715,11 +602,6 @@ class Stock(_IEXBase):
         -----
         Open/Close Price is an alias for the OHLC endpoint, and will return the
         same
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Open/Close (OHLC) endpoint data
         """
         return self._get_endpoint("ohlc")
 
@@ -733,11 +615,6 @@ class Stock(_IEXBase):
         Notes
         -----
         Only allows JSON format (pandas not supported).
-
-        Returns
-        -------
-        list
-            Stocks Peers endpoint data
         """
         return self._get_endpoint("peers")
 
@@ -749,11 +626,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#previous
 
         Data Weighting: ``2`` per symbol
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Previous Day Prices endpoint data
         """
         return self._get_endpoint("previous")
 
@@ -763,17 +635,12 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#price
 
         ``1`` per symbol
-
-        Returns
-        -------
-        float or pandas.DataFrame
-            Stocks Price endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             return pd.DataFrame(out, index=self.symbols)
 
-        return self._get_endpoint("price", fmt_p=fmt_p)
+        return self._get_endpoint("price", format=format)
 
     def get_price_target(self):
         """Price Target
@@ -784,14 +651,9 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#price-target
 
         Data Weighting: ``500`` per symbol
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Latest average, high, and low price targets for a symbol
         """
 
-        def fmt_p(out):
+        def format(out):
             if len(self.symbols) == 1:
                 return pd.DataFrame(out, index=self.symbols[0])
             return pd.DataFrame(out)
@@ -810,11 +672,6 @@ class Stock(_IEXBase):
         displayPercent: bool, defaults to false, optional
             If set to true, all percentage values will be
             multiplied by a factor of 100.
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Quote endpoint data
         """
         return self._get_endpoint("quote", params=kwargs)
 
@@ -830,11 +687,6 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#relevant-stocks
 
         Data Weighting: ``500`` per call
-
-        Returns
-        -------
-        dict or pandas.DataFrame
-            Stocks Relevant Stocks endpoint data
         """
         return self._get_endpoint("relevant", params=kwargs)
 
@@ -849,13 +701,8 @@ class Stock(_IEXBase):
         range: str, default '1m', optional
             Time period of splits to return.
             Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`].
-
-        Returns
-        -------
-        list
-            Stocks Splits endpoint data
         """
-        return self._get_endpoint("splits", params=kwargs, fmt_p=no_pandas)
+        return self._get_endpoint("splits", params=kwargs, format=no_pandas)
 
     def get_time_series(self, **kwargs):
         """Time Series
@@ -872,14 +719,9 @@ class Stock(_IEXBase):
         Reference:  https://iexcloud.io/docs/api/#volume-by-venue
 
         Data Weighting: ``20`` per call
-
-        Returns
-        -------
-        list or pandas.DataFrame
-            Stocks Volume by Venue endpoint data
         """
 
-        def fmt_p(out):
+        def format(out):
             data = {
                 (symbol, sheet["venueName"]): sheet
                 for symbol in out
@@ -887,7 +729,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("volume-by-venue", fmt_p=fmt_p)
+        return self._get_endpoint("volume-by-venue", format=format)
 
     # field methods
     def get_company_name(self):
