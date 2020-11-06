@@ -115,9 +115,7 @@ def get_market_volume(**kwargs):
 
     Data Weighting: 1 per call
 
-    .. warning:: Data only available from 7:45am-5:15pm ET Mon-Fri. This
-        endpoint is only available using IEX Cloud. See
-        :ref:`Migrating` for more information.
+    .. warning:: Data only available from 7:45am-5:15pm ET Mon-Fri.
     """
     return MarketVolumeReader(**kwargs).fetch()
 

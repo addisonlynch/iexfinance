@@ -39,5 +39,6 @@ Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Ends support for Python 2
-- All legacy IEX Developer API version 1.0 endpoints have been removed
+- All legacy IEX Developer API version 1.0 endpoints and references to such endpoints 
+  have been removed
 - ``Stock.get_endpoints`` has been immediately deprecated
