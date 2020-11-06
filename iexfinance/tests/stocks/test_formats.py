@@ -6,18 +6,12 @@ NUMBER = [float, int]
 
 
 _ALL_METHODS = [
-    ("get_balance_sheet", dict, pd.DataFrame, 27),
     ("get_book", dict, 5),
-    ("get_cash_flow", dict, 16),
     ("get_company", dict, 12),
     ("get_delayed_quote", dict, 8),
-    ("get_dividends", list, "varies"),
-    ("get_earnings", list, "varies"),
     ("get_estimates", dict, 6),
-    ("get_financials", list, "varies"),
     ("get_fund_ownership", list, 6),
     ("get_historical_prices", list, "varies"),
-    ("get_income_statement", list, 16),
     ("get_institutional_ownership", list, 5),
     ("get_insider_roster", list, 3),
     ("get_insider_summary", list, 5),
@@ -35,7 +29,6 @@ _ALL_METHODS = [
     ("get_price_target", dict, 6),
     ("get_quote", dict, 38),
     ("get_relevant_stocks", dict, 2),
-    #  ("get_splits", list, 'varies') # no pandas for this
     #  ("get_time_series", list, 'varies') # duplicate of historical
     ("get_volume_by_venue", list, 14),
 ]

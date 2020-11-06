@@ -82,13 +82,6 @@ class TestShareDefault(object):
 
         assert abs(data2["ytdChange"]) > abs(data["ytdChange"])
 
-    @pytest.mark.xfail(reason="May not have splits")
-    def test_get_splits_params(self):
-        afl = Stock("AAPL")
-        data = afl.get_splits(range="1m")
-        data2 = afl.get_splits(range="5y")
-        assert len(data2) > len(data)
-
     def test_filter(self):
         data = self.cshare.get_quote(filter_="ytdChange")
         assert isinstance(data, dict)
@@ -128,14 +121,7 @@ class TestBatchDefault(object):
     def test_get_chart_reset(self):
         # Test chartReset
         data = self.cbatch.get_chart(range="1d", chartReset=True)
-        assert data == []
-
-    def test_get_dividends_params(self):
-        data = self.cbatch.get_dividends()["AAPL"]
-        data2 = self.cbatch.get_dividends(range="2y")["AAPL"]
-        data3 = self.cbatch.get_dividends(range="5y")["AAPL"]
-        print(data, data2, data3)
-        assert len(data) <= len(data2) <= len(data3)
+        assert data == []f
 
     def test_get_quote_format(self):
         data = self.cbatch.get_quote()
@@ -148,21 +134,7 @@ class TestHistorical(object):
         self.good_start = datetime(2017, 2, 9)
         self.good_end = datetime(2017, 5, 24)
 
-    def test_single_historical_json(self):
-
-        f = get_historical_data("AMZN", self.good_start, self.good_end)
-        assert isinstance(f, dict)
-        assert len(f) == 73
-
-        expected1 = f["2017-02-09"]
-        assert expected1["close"] == pytest.approx(821.36, 3)
-        assert expected1["high"] == pytest.approx(825.0, 3)
-
-        expected2 = f["2017-05-24"]
-        assert expected2["close"] == pytest.approx(980.35, 3)
-        assert expected2["high"] == pytest.approx(981.0, 3)
-
-    def test_single_historical_pandas(self):
+    def test_single_historical(self):
 
         f = get_historical_data(
             "AMZN", self.good_start, self.good_end, output_format="pandas"
@@ -180,39 +152,7 @@ class TestHistorical(object):
         assert expected2["close"] == pytest.approx(980.35, 3)
         assert expected2["high"] == pytest.approx(981.0, 3)
 
-    def test_batch_historical_json(self):
-
-        f = get_historical_data(
-            ["AMZN", "TSLA"], self.good_start, self.good_end, output_format="json"
-        )
-
-        assert isinstance(f, dict)
-        assert len(f) == 2
-        assert sorted(list(f)) == ["AMZN", "TSLA"]
-
-        a = f["AMZN"]
-        t = f["TSLA"]
-
-        assert len(a) == 73
-        assert len(t) == 73
-
-        expected1 = a["2017-02-09"]
-        assert expected1["close"] == pytest.approx(821.36, 3)
-        assert expected1["high"] == pytest.approx(825.0, 3)
-
-        expected2 = a["2017-05-24"]
-        assert expected2["close"] == pytest.approx(980.35, 3)
-        assert expected2["high"] == pytest.approx(981.0, 3)
-
-        expected1 = t["2017-02-09"]
-        assert expected1["close"] == pytest.approx(269.20, 3)
-        assert expected1["high"] == pytest.approx(271.18, 3)
-
-        expected2 = t["2017-05-24"]
-        assert expected2["close"] == pytest.approx(310.22, 3)
-        assert expected2["high"] == pytest.approx(311.0, 3)
-
-    def test_batch_historical_pandas(self):
+    def test_batch_historical(self):
 
         f = get_historical_data(
             ["AMZN", "TSLA"], self.good_start, self.good_end, output_format="pandas"
@@ -353,14 +293,7 @@ class TestCollections(object):
             get_collections("Computer Hardware", "badcollection")
 
     def test_get_collections(self):
-        # by tag
-        data = get_collections("Restaurants")
-
-        assert isinstance(data, list)
-        assert len(data) > 100
-
-    def test_get_collections_pandas(self):
-        df = get_collections("Restaurants", output_format="pandas")
+        df = get_collections("Restaurants")
 
         assert isinstance(df, pd.DataFrame)
 
@@ -368,7 +301,7 @@ class TestCollections(object):
         assert "close" in df.index
 
     def test_get_collections_type(self):
-        df = get_collections("Industrial Services", "sector", output_format="pandas")
+        df = get_collections("Industrial Services", "sector")
         assert isinstance(df, pd.DataFrame)
         assert len(df.columns) > 500
 
@@ -413,22 +346,17 @@ class TestHistoricalIntraday(object):
         with pytest.raises(TypeError):
             get_historical_intraday()
 
-    def test_intraday_default(self):
+    def test_intraday(self):
         data = get_historical_intraday("AAPL")
-
-        assert isinstance(data, list)
-
-    def test_intraday_pandas(self):
-        data = get_historical_intraday("AAPL", output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
         assert isinstance(data.index, pd.DatetimeIndex)
 
         self.verify_timeframe(data)
 
-    def test_intraday_pandas_pass_datetime(self):
+    def test_intraday_pass_datetime(self):
         u_date = "20190821"
-        data = get_historical_intraday("AAPL", date=u_date, output_format="pandas")
+        data = get_historical_intraday("AAPL", date=u_date)
 
         assert isinstance(data, pd.DataFrame)
         assert data.index[0].strftime("%Y%m%d") == u_date

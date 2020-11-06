@@ -33,6 +33,10 @@ class Stock(_IEXBase):
         self.endpoints = []
         super(Stock, self).__init__(**kwargs)
 
+    def __repr__(self):
+        return("{}(symbols={}, output_format={!r})".format(self.__class__.__name__, 
+        ','.join(self.symbols), self.output_format))
+
     @property
     def url(self):
         return "stock/market/batch"
@@ -96,6 +100,10 @@ class Stock(_IEXBase):
         """
         raise ImmediateDeprecationError("get_endpoints")
 
+    """
+    STOCK FUNDAMENTALS
+    """
+
     def get_balance_sheet(self, **kwargs):
         """Balance Sheet
 
@@ -117,28 +125,18 @@ class Stock(_IEXBase):
         """
 
         def format(out):
-            return out
             results = {}
             for symbol in out:
-                df = pd.DataFrame.from_dict(
-                    {d["reportDate"]: d for d in out[symbol]["balancesheet"]},
-                    orient="index",
-                )
-                results[symbol] = df
-            if len(self.symbols) == 1:
-                return results[self.symbols[0]]
-            return results
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["reportDate"]: d for d in out[symbol]["balancesheet"]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
 
         return self._get_endpoint("balance-sheet", format=format, params=kwargs)
-
-    def get_book(self):
-        """Book
-
-        Reference: https://iexcloud.io/docs/api/#book
-
-        Data Weighting: ``1`` per quote returned
-        """
-        return self._get_endpoint("book")
 
     def get_cash_flow(self, **kwargs):
         """Cash Flow
@@ -152,20 +150,186 @@ class Stock(_IEXBase):
 
         Parameters
         ----------
-        period: str, default 'quarterly', optional
-            Allows you to specify annual or quarterly cash flows. Defaults to
-            quarterly. Values should be annual or quarter.
+        period: str, default 'quarter', optional
+            Allows you to specify annual or quarterly cash flows.
+            Value should be `annual` or `quarter`.
+        last: int, default 1, optional
+            Specify the number of quarters or years to return. You can specify
+            up to 12 quarters or 4 years.
         """
 
         def format(out):
-            data = {
-                (symbol, sheet["reportDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]["cashflow"]
-            }
-            return pd.DataFrame(data)
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["reportDate"]: d for d in out[symbol]["cashflow"]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
 
         return self._get_endpoint("cash-flow", format=format, params=kwargs)
+
+    def get_dividends(self, **kwargs):
+        """Dividends
+
+        Reference: https://iexcloud.io/docs/api/#dividends
+
+        Data Weighting: ``10`` per symbol per period returned
+
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Time period of dividends to return
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`]
+        """
+
+        def format(out):
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["exDate"]: d for d in out[symbol]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("dividends", format=format, params=kwargs)
+
+    def get_earnings(self, **kwargs):
+        """Earnings
+
+        Earnings data for a given company including the actual EPS, consensus,
+        and fiscal period. Earnings are available quarterly (last 4 quarters)
+        and annually (last 4 years).
+
+        Reference: https://iexcloud.io/docs/api/#earnings
+
+        Data Weighting: ``1000`` per symbol per period
+
+        Parameters
+        ----------
+        period: str, default 'quarter', optional
+            Allows you to specify annual or quarterly earnings.
+            Value should be `annual` or `quarter`.
+        last: int, default 1, optional
+            Specify the number of quarters or years to return. You can specify
+            up to 4 quarters or 4 years.
+        """
+
+        def format(out):
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["EPSReportDate"]: d for d in out[symbol]["earnings"]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("earnings", format=format, params=kwargs)
+
+    def get_financials(self, **kwargs):
+        """Financials
+
+        Pulls income statement, balance sheet, and cash flow data from the
+        most recent reported quarter.
+
+        Reference: https://iexcloud.io/docs/api/#financials
+
+        Data Weighting: ``5000`` per symbol per period
+
+        Parameters
+        ----------
+        period: str, default 'quarter', optional
+            Allows you to specify annual or quarterly financials.
+            Value should be `annual` or `quarter`.
+        """
+
+        def format(out):
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["reportDate"]: d for d in out[symbol]["financials"]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("financials", format=format, params=kwargs)
+
+    def get_income_statement(self, **kwargs):
+        """Income Statement
+
+        Pulls income statement data. Available quarterly (4 quarters) or
+        annually (4 years).
+
+        Reference: https://iexcloud.io/docs/api/#income-statement
+
+        Data Weighting: ``1000`` per symbol per period
+
+        Parameters
+        ----------
+        period: str, default 'quarterly', optional
+             Allows you to specify annual or quarterly income statement.
+             Defaults to quarterly. Values should be annual or quarter
+        """
+        def format(out):
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["reportDate"]: d for d in out[symbol]["income"]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("income", format=format, params=kwargs)
+
+    def get_splits(self, **kwargs):
+        """Splits
+
+
+        Reference: https://iexcloud.io/docs/api/#splits
+
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Time period of splits to return.
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`].
+        """
+        def format(out):
+            results = {}
+            for symbol in out:
+                if out[symbol]:
+                    results[symbol] = pd.DataFrame.from_dict(
+                        {d["exDate"]: d for d in out[symbol]},
+                        orient="index"
+                    )
+                else:
+                    results[symbol] = pd.DataFrame()
+            return results if len(results) != 1 else results[self.symbols[0]]
+
+        return self._get_endpoint("splits", params=kwargs, format=format)
+
+    def get_book(self):
+        """Book
+
+        Reference: https://iexcloud.io/docs/api/#book
+
+        Data Weighting: ``1`` per quote returned
+        """
+        return self._get_endpoint("book")
 
     def get_chart(self, **kwargs):
         """Chart
@@ -194,57 +358,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("delayed-quote")
 
-    def get_dividends(self, **kwargs):
-        """Dividends
-
-        Reference: https://iexcloud.io/docs/api/#dividends
-
-        Data Weighting: ``10`` per symbol per period returned
-
-        Parameters
-        ----------
-        range: str, default '1m', optional
-            Time period of dividends to return
-            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`]
-        """
-
-        def format(out):
-            data = {
-                (symbol, sheet["exDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]
-            }
-            return pd.DataFrame(data)
-
-        return self._get_endpoint("dividends", format=format, params=kwargs)
-
-    def get_earnings(self, **kwargs):
-        """Earnings
-
-        Earnings data for a given company including the actual EPS, consensus,
-        and fiscal period. Earnings are available quarterly (last 4 quarters)
-        and annually (last 4 years).
-
-        Reference: https://iexcloud.io/docs/api/#earnings
-
-        Data Weighting: ``1000`` per symbol per period
-
-        Parameters
-        ----------
-        last: int, default 1, optional
-            Number of quarters or years to return.
-        """
-
-        def format(out):
-            data = {
-                (symbol, sheet["EPSReportDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]["earnings"]
-            }
-            return pd.DataFrame(data)
-
-        return self._get_endpoint("earnings", format=format, params=kwargs)
-
     def get_estimates(self, **kwargs):
         """Estimates
 
@@ -269,32 +382,6 @@ class Stock(_IEXBase):
             return pd.DataFrame(data)
 
         return self._get_endpoint("estimates", format=format, params=kwargs)
-
-    def get_financials(self, **kwargs):
-        """Financials
-
-        Pulls income statement, balance sheet, and cash flow data from the
-        most recent reported quarter.
-
-        Reference: https://iexcloud.io/docs/api/#financials
-
-        Data Weighting: ``5000`` per symbol per period
-
-        Parameters
-        ----------
-        period: str, default 'quarter', choose between 'annual' and 'quarter'
-        """
-
-        def format(out):
-            out = {symbol: out[symbol].get("financials", []) for symbol in self.symbols}
-            data = {
-                (symbol, sheet["reportDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]
-            }
-            return pd.DataFrame(data)
-
-        return self._get_endpoint("financials", format=format, params=kwargs)
 
     def get_fund_ownership(self):
         """Fund Ownership
@@ -372,33 +459,6 @@ class Stock(_IEXBase):
                 return pd.concat(result.values(), keys=result.keys(), axis=1)
 
         return self._get_endpoint("chart", format=format, params=kwargs)
-
-    def get_income_statement(self, **kwargs):
-        """Income Statement
-
-        Pulls income statement data. Available quarterly (4 quarters) or
-        annually (4 years).
-
-        Reference: https://iexcloud.io/docs/api/#income-statement
-
-        Data Weighting: ``1000`` per symbol per period
-
-        Parameters
-        ----------
-        period: str, default 'quarterly', optional
-             Allows you to specify annual or quarterly income statement.
-             Defaults to quarterly. Values should be annual or quarter
-        """
-
-        def format(out):
-            data = {
-                (symbol, sheet["reportDate"]): sheet
-                for symbol in out
-                for sheet in out[symbol]["income"]
-            }
-            return pd.DataFrame(data)
-
-        return self._get_endpoint("income", format=format, params=kwargs)
 
     def get_insider_roster(self):
         """Insider Roster
@@ -689,20 +749,6 @@ class Stock(_IEXBase):
         Data Weighting: ``500`` per call
         """
         return self._get_endpoint("relevant", params=kwargs)
-
-    def get_splits(self, **kwargs):
-        """Splits
-
-
-        Reference: https://iexcloud.io/docs/api/#splits
-
-        Parameters
-        ----------
-        range: str, default '1m', optional
-            Time period of splits to return.
-            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`].
-        """
-        return self._get_endpoint("splits", params=kwargs, format=no_pandas)
 
     def get_time_series(self, **kwargs):
         """Time Series
