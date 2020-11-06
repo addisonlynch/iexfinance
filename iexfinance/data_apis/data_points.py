@@ -18,4 +18,4 @@ class DataPoints(_IEXBase):
     def _convert_output(self, out):
         if self.key is not None:
             return out
-        return pd.DataFrame({item["key"]: item for item in out})
+        return pd.DataFrame(out)
