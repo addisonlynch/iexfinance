@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import pandas as pd
 
 from iexfinance.base import _IEXBase
@@ -13,4 +13,6 @@ class APIReader(_IEXBase):
         return super(APIReader, self).fetch()
 
     def _convert_output(self, out):
-        return pd.DataFrame({datetime.datetime.now(): out})
+        converted_date = datetime.fromtimestamp(out["time"]/1000)\
+                                 .strftime("%c")
+        return pd.DataFrame(out, index=[converted_date])
