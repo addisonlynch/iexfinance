@@ -23,7 +23,7 @@ class Market(_IEXBase):
         ----------
         symbols : string, array-like object (list, tuple, Series), or DataFrame
             Desired symbols for retrieval
-        output_format: str, default 'json', optional
+        output_format: str, default 'pandas', optional
             Desired output format (json or pandas)
         kwargs:
             Additional request options (see base class)
@@ -239,7 +239,7 @@ class DailySummaryReader(Stats):
         Ending date
     last: int
         Period between 1 and 90 days, overrides dates
-    output_format: str, default 'json', optional
+    output_format: str, default 'pandas', optional
         Desired output format (json or pandas)
     kwargs:
         Additional request parameters (see base class)
@@ -339,7 +339,7 @@ class MonthlySummaryReader(Stats):
         Desired start date
     end : str, int, date, datetime, Timestamp
         Desired end date
-    output_format: str, default 'json', optional
+    output_format: str, default 'pandas', optional
         Desired output format (json or pandas)
     kwargs:
         Additional request parameters (see base class)

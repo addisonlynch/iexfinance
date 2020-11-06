@@ -24,15 +24,7 @@ class TestAltData(object):
         with pytest.raises(ValueError):
             get_crypto_quote(["BTCUSDT", "BAD"])
 
-    def test_crypto_quote_json(self):
-        data = get_crypto_quote("BTCUSDT")
-
-        assert isinstance(data, dict)
-        assert len(data) == 15
-
-        assert data["symbol"] == "BTCUSDT"
-
-    def test_crypto_quote_pandas(self):
+    def test_crypto_quote(self):
         data = get_crypto_quote("BTCUSDT", output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)
@@ -70,13 +62,8 @@ class TestSocialSentiment(object):
 
 
 class TestCEOCompensation(object):
-    def test_ceo_compensation_json(self):
-        data = get_ceo_compensation("AAPL")
 
-        assert isinstance(data, dict)
-        assert data["symbol"] == "AAPL"
-
-    def test_ceo_compensation_pandas(self):
+    def test_ceo_compensation(self):
         data = get_ceo_compensation("AAPL", output_format="pandas")
 
         assert isinstance(data, pd.DataFrame)

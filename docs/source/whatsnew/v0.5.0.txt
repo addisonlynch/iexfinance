@@ -9,6 +9,13 @@ This is a major patch release from 0.4.3. We recommend that all users upgrade.
 Support for Python 2 has ended with this release.
 
 
+Highlights
+~~~~~~~~~~
+
+* ``iexfinance`` is now a ``pandas``-driven library. Default output formatting is now
+  ``pandas.DataFrame`` where available.
+
+
 Enhancements
 ~~~~~~~~~~~~
 

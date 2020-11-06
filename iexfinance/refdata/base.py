@@ -8,23 +8,6 @@ from iexfinance.base import _IEXBase
 # and conditions of use
 
 
-class ReferenceReader(_IEXBase):
-    """
-    Base class to retrieve data from the IEX Reference Data endpoints
-    """
-
-    def __init__(self, start=None, **kwargs):
-        self.start = start
-        super(ReferenceReader, self).__init__(**kwargs)
-
-    @property
-    def url(self):
-        if isinstance(self.start, datetime.datetime):
-            return "daily-list/%s/%s" % (self.endpoint, self.start.strftime("%Y%m%d"))
-        else:
-            return "daily-list/%s" % self.endpoint
-
-
 class CloudRef(_IEXBase):
     @property
     def url(self):
@@ -61,9 +44,9 @@ class TradingDatesReader(CloudRef):
             ret += "/%s" % self.startDate
         return ret
 
-    def _output_format(self, out, fmt_j=None, fmt_p=None):
+    def _output_format(self, out):
         out = [{k: pd.to_datetime(v) for k, v in day.items()} for day in out]
-        return super()._output_format(out, fmt_j=fmt_j, fmt_p=fmt_p)
+        return super(TradingDatesReader, self)._output_format(out)
 
 
 class Symbols(CloudRef):

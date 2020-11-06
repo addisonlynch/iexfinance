@@ -13,9 +13,7 @@ class Stock(_IEXBase):
     ----------
     symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)
         Symbol or list-like collection of symbols
-    output_format: str
-        Desired output format for requests (default is ``json``, also accepts
-        ``pandas`` for a ``pandas.DataFrame`` output format)
+    output_format: str, default 'pandas', optional
     token: str, optional
         Authentication token (required for use with IEX Cloud)
     """
@@ -56,7 +54,7 @@ class Stock(_IEXBase):
         }
         return params
 
-    def _get_endpoint(self, endpoint, params=(), fmt_p=None, fmt_j=None, filter_=None):
+    def _get_endpoint(self, endpoint, params=(), format=None, filter_=None):
         result = {}
         if filter_:
             params.update({"filter": filter_})

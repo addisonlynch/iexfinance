@@ -33,7 +33,7 @@ class _IEXBase(object):
         Desired integer parsing datatype
     json_parse_float: datatype, default float, optional
         Desired floating point parsing datatype
-    output_format: str, default "json", optional
+    output_format: str, default "pandas", optional
         Desired output format (json or pandas DataFrame). This can also be
         set using the environment variable ``IEX_OUTPUT_FORMAT``.
     token: str, optional
@@ -69,11 +69,11 @@ class _IEXBase(object):
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
         self.output_format = kwargs.get(
-            "output_format", os.getenv("IEX_OUTPUT_FORMAT", "json")
+            "output_format", os.getenv("IEX_OUTPUT_FORMAT", "pandas")
         )
         if self.output_format not in self._VALID_FORMATS:
             raise ValueError(
-                "Please enter a valid output format ('json' " "or 'pandas')."
+                "Please enter a valid output format (json or pandas)."
             )
         self.token = kwargs.get("token")
         if self.token is None:
@@ -188,7 +188,7 @@ class _IEXBase(object):
         """
         return "%s%s" % (self._URLS[self.version], self.url)
 
-    def fetch(self, fmt_p=None, fmt_j=None):
+    def fetch(self, format=None):
         """Fetches latest data
 
         Prepares the query URL based on self.params and executes the request
@@ -200,22 +200,23 @@ class _IEXBase(object):
         """
         url = self._prepare_query()
         data = self._execute_iex_query(url)
-        return self._output_format(data, fmt_j=fmt_j, fmt_p=fmt_p)
+        return self._output_format(data, format=format)
 
     def _convert_output(self, out):
         import pandas as pd
-
         return pd.DataFrame(out)
 
-    def _output_format(self, out, fmt_j=None, fmt_p=None):
+    def _output_format(self, out, format=None):
         """
         Output formatting handler
         """
-        if self.output_format == "pandas":
-            if fmt_p is not None:
-                return fmt_p(out)
-            else:
-                return self._convert_output(out)
-        if fmt_j:
-            return fmt_j(out)
-        return out
+
+        # If JSON output format, return exactly as received
+        if self.output_format == "json":
+            return out
+        # Use custom formatter if supplied
+        elif format is not None:
+            return format(out)
+        # Use default (or subclass) output conversion
+        else:
+            return self._convert_output(out)
