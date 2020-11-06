@@ -1,6 +1,8 @@
 import pandas as pd
+import pytest
 
 from iexfinance.stocks import Stock
+from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestStockFundamentals(object):
@@ -10,6 +12,27 @@ class TestStockFundamentals(object):
         self.b = Stock(["AAPL", "TSLA"])
         self.c = Stock("SVXY")
         self.d = Stock(["AAPL", "SVXY"])
+        self.e = Stock("BADSYMBOL", retry_count=0, pause=0)
+        self.f = Stock(["AAPL", "BADSYMBOL"])
+
+    def test_bad_symbols(self):
+        with pytest.raises(IEXQueryError):
+            self.e.get_balance_sheet()
+
+        with pytest.raises(IEXQueryError):
+            self.e.get_cash_flow()
+
+        with pytest.raises(IEXQueryError):
+            self.e.get_dividends()
+        
+        with pytest.raises(IEXQueryError):
+            self.e.get_earnings()
+
+        with pytest.raises(IEXQueryError):
+            self.e.get_income_statement()
+
+        with pytest.raises(IEXQueryError):
+            self.e.get_splits()
 
     def test_balance_sheet(self):
         data = self.d.get_balance_sheet()

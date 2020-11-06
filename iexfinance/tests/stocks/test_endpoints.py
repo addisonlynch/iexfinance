@@ -117,12 +117,6 @@ class TestBatchDefault(object):
         data5 = self.cbatch.get_chart(range="1y", chartInterval=5)["AAPL"]
         assert 45 < len(data5) < 55
 
-    @pytest.mark.xfail(reason="This test only works overnight")
-    def test_get_chart_reset(self):
-        # Test chartReset
-        data = self.cbatch.get_chart(range="1d", chartReset=True)
-        assert data == []f
-
     def test_get_quote_format(self):
         data = self.cbatch.get_quote()
         data2 = self.cbatch.get_quote(displayPercent=True)

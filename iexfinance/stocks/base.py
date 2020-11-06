@@ -72,7 +72,7 @@ class Stock(_IEXBase):
             data = data[0]
         for symbol in self.symbols:
             if symbol not in data:
-                raise IEXSymbolError(symbol)
+                continue
             if endpoint not in data[symbol]:
                 result[symbol] = []
             else:
@@ -88,8 +88,9 @@ class Stock(_IEXBase):
                 data = {symbol: data[symbol][field] for symbol in self.symbols}
         return data
 
-    def _output_format_one(self, out, format=None, fmt_j=None):
-        data = super(Stock, self)._format_output(out, format=format)
+    def _output_format_one(self, out, format=None):
+        # transpose DF
+        data = super(Stock, self)._format_output(out, format=format).T
         if len(self.symbols) == 1 and self.output_format == "json":
             return data[self.symbols[0]]
         return data
@@ -99,6 +100,228 @@ class Stock(_IEXBase):
         DEPRECATED: This method has been deprecated as of 0.5.0
         """
         raise ImmediateDeprecationError("get_endpoints")
+
+    """
+    STOCK PRICES
+    """
+
+    def get_book(self):
+        """Book
+
+        Reference: https://iexcloud.io/docs/api/#book
+
+        .. note:: This endpoint does not support pandas ``DataFrame`` output
+                  formatting.
+
+        Data Weighting: ``1`` per quote returned
+        """
+        return self._get_endpoint("book", format=no_pandas)
+
+    def get_chart(self, **kwargs):
+        """Chart
+
+        .. seealso:: ``get_historical_prices``
+        """
+        return self.get_historical_prices(**kwargs)
+
+    def get_delayed_quote(self):
+        """Delayed Quote
+
+        Reference: https://iexcloud.io/docs/api/#delayed-quote
+
+        Data Weighting: ``1`` per symbol per quote
+        """
+        return self._get_endpoint("delayed-quote")
+
+    def get_historical_prices(self, **kwargs):
+        """Historical Prices
+
+        Reference: https://iexcloud.io/docs/api/#chart
+
+        Data Weighting: See IEX Cloud Docs
+
+        Parameters
+        ----------
+        range: str, default '1m', optional
+            Chart range to return. See docs.
+            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`,`1d`,`date`,
+            `dynamic`]
+            Choosing `date` will return  IEX-only data by minute for a
+            specified date in the format YYYYMMDD if available.
+            Currently supporting trailing 30 calendar days.
+            Choosing `dynamic` will return `1d` or `1m` data depending on
+            the day or week and time of day.
+            Intraday per minute data is only returned during market hours.
+        chartReset: boolean, default True, optional
+            If true, 1d chart will reset at midnight instead of the default
+            behavior of 9:30am EST.
+        chartSimplify: boolean, default True, optional
+            If true, runs polyline simplification using Douglas-Peucker
+            algorithm. Useful for plotting spotline charts
+        chartInterval: int, default None, optional
+            Chart data will return every nth element (where n is chartInterval)
+        changeFromClose: bool, default False, optional
+            If true, changeOverTime and marketChangeOverTime will be relative
+            to previous day close instead of the first value.
+        chartLast: int, optional
+            return the last N elements
+        chartCloseOnly: boolean, default False, optional
+            Specify to return adjusted data only with keys ``date``, ``close``,
+            and ``volume``.
+        chartIEXOnly: boolean, default False, optional
+            Only for ``1d``. Limits the return of intraday prices to IEX only
+            data
+        """
+
+        def format(out):
+            result = {}
+            for symbol in self.symbols:
+                d = out.pop(symbol)
+                df = pd.DataFrame(d)
+                df.set_index(pd.DatetimeIndex(df["date"]), inplace=True)
+                result.update({symbol: df})
+            if len(result) == 1:
+                return result[self.symbols[0]]
+            else:
+                return pd.concat(result.values(), keys=result.keys(), axis=1)
+
+        return self._get_endpoint("chart", format=format, params=kwargs)
+
+
+    def get_intraday_prices(self, **kwargs):
+        """Intraday Prices
+
+        Reference: https://iexcloud.io/docs/api/#intraday-prices
+
+        Data Weighting:
+        ``1`` per symbol per time interval up to a max use of 50 messages
+        Example: If you query for twtr 1d at 11:00am, it will return 90
+        minutes of data for a total of 50.
+
+        IEX Only intraday minute bar - Free
+        This will only return IEX data with keys minute, high, low, average,
+        volume, notional, and numberOfTrades.
+        Use the chartIEXOnly param
+
+        : boolean, optional
+
+        Parameters
+        ----------
+        last: int, default 10, optional
+            Number of news listings to return.
+        chartIEXOnly: boolean, optional
+            Limits the return of intraday prices to IEX only data.
+        chartReset: boolean, optional
+            If true, chart will reset at midnight instead of the default
+            behavior of 9:30am ET.
+        chartSimplify: boolean, optional
+            If true, runs a polyline simplification using the Douglas-Peucker
+            algorithm. This is useful if plotting sparkline charts.
+        chartInterval: number, optional
+            If passed, chart data will return every Nth element as defined by
+            chartInterval
+        changeFromClose: boolean, optional
+            If true, changeOverTime and marketChangeOverTime will be relative
+            to previous day close instead of the first value.
+        chartLast: number, optional
+            If passed, chart data will return the last N elements
+        exactDate: string, optional
+            Formatted as YYYYMMDD. This can be used for batch calls when range
+            is 1d or date.
+        chartIEXWhenNull: boolean, optional
+            By default, all market prefixed fields are 15 minute delayed,
+            meaning the most recent 15 objects will be null.
+            If this parameter is passed as true, all market prefixed fields
+            that are null will be populated with IEX data if available.
+        """
+        return self._get_endpoint("intraday-prices", params=kwargs)
+
+    def get_largest_trades(self):
+        """
+        Reference: https://iexcloud.io/docs/api/#largest-trades
+        """
+        return self._get_endpoint("largest-trades")
+
+    def get_open_close(self):
+        """Open/Close Price
+
+        Reference: https://iexcloud.io/docs/api/#open-close-price
+
+        Data Weighting: ``2`` per symbol
+
+        Notes
+        -----
+        Open/Close Price is an alias for the OHLC endpoint, and will return the
+        same
+        """
+        return self._get_endpoint("ohlc")
+
+    def get_ohlc(self):
+        """OHLC
+
+        Returns the official open and close for a give symbol.
+
+        Reference:  https://iexcloud.io/docs/api/#ohlc
+
+        Data Weighting: ``2`` per symbol
+        """
+        return self._get_endpoint("ohlc")
+
+    def get_previous_day_prices(self):
+        """Previous Day Prices
+
+        This returns previous day adjusted price data for one or more stocks
+
+        Reference: https://iexcloud.io/docs/api/#previous
+
+        Data Weighting: ``2`` per symbol
+        """
+        return self._get_endpoint("previous")
+
+    def get_price(self):
+        """Price
+
+        Reference: https://iexcloud.io/docs/api/#price
+
+        ``1`` per symbol
+        """
+        def format(out):
+            return pd.DataFrame.from_dict(out, orient='index', columns=['price'])
+
+        return self._get_endpoint("price", format=format)
+
+    def get_quote(self, **kwargs):
+        """Quote
+
+        Reference: https://iexcloud.io/docs/api/#quote
+
+        Data Weighting: ``1`` per quote
+
+        Parameters
+        ----------
+        displayPercent: bool, defaults to false, optional
+            If set to true, all percentage values will be
+            multiplied by a factor of 100.
+        """
+        return self._get_endpoint("quote", params=kwargs)
+
+    def get_volume_by_venue(self):
+        """Volume by Venue
+
+        Reference:  https://iexcloud.io/docs/api/#volume-by-venue
+
+        Data Weighting: ``20`` per call
+        """
+
+        def format(out):
+            data = {
+                (symbol, sheet["venueName"]): sheet
+                for symbol in out
+                for sheet in out[symbol]
+            }
+            return pd.DataFrame(data)
+
+        return self._get_endpoint("volume-by-venue", format=format)
 
     """
     STOCK FUNDAMENTALS
@@ -322,24 +545,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("splits", params=kwargs, format=format)
 
-    def get_book(self):
-        """Book
-
-        Reference: https://iexcloud.io/docs/api/#book
-
-        Data Weighting: ``1`` per quote returned
-        """
-        return self._get_endpoint("book")
-
-    def get_chart(self, **kwargs):
-        """Chart
-
-        MOVED in IEX Cloud
-
-        .. seealso:: ``get_historical_prices``
-        """
-        return self.get_historical_prices(**kwargs)
-
     def get_company(self, **kwargs):
         """Company
 
@@ -348,15 +553,6 @@ class Stock(_IEXBase):
         Data Weighting: ``1``
         """
         return self._get_endpoint("company", params=kwargs)
-
-    def get_delayed_quote(self):
-        """Delayed Quote
-
-        Reference: https://iexcloud.io/docs/api/#delayed-quote
-
-        Data Weighting: ``1`` per symbol per quote
-        """
-        return self._get_endpoint("delayed-quote")
 
     def get_estimates(self, **kwargs):
         """Estimates
@@ -406,59 +602,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("fund-ownership", format=format)
 
-    def get_historical_prices(self, **kwargs):
-        """Historical Prices
-
-        Reference: https://iexcloud.io/docs/api/#chart
-
-        Data Weighting: See IEX Cloud Docs
-
-        Parameters
-        ----------
-        range: str, default '1m', optional
-            Chart range to return. See docs.
-            Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`,`1d`,`date`,
-            `dynamic`]
-            Choosing `date` will return  IEX-only data by minute for a
-            specified date in the format YYYYMMDD if available.
-            Currently supporting trailing 30 calendar days.
-            Choosing `dynamic` will return `1d` or `1m` data depending on
-            the day or week and time of day.
-            Intraday per minute data is only returned during market hours.
-        chartReset: boolean, default True, optional
-            If true, 1d chart will reset at midnight instead of the default
-            behavior of 9:30am EST.
-        chartSimplify: boolean, default True, optional
-            If true, runs polyline simplification using Douglas-Peucker
-            algorithm. Useful for plotting spotline charts
-        chartInterval: int, default None, optional
-            Chart data will return every nth element (where n is chartInterval)
-        changeFromClose: bool, default False, optional
-            If true, changeOverTime and marketChangeOverTime will be relative
-            to previous day close instead of the first value.
-        chartLast: int, optional
-            return the last N elements
-        chartCloseOnly: boolean, default False, optional
-            Specify to return adjusted data only with keys ``date``, ``close``,
-            and ``volume``.
-        chartIEXOnly: boolean, default False, optional
-            Only for ``1d``. Limits the return of intraday prices to IEX only
-            data
-        """
-
-        def format(out):
-            result = {}
-            for symbol in self.symbols:
-                d = out.pop(symbol)
-                df = pd.DataFrame(d)
-                df.set_index(pd.DatetimeIndex(df["date"]), inplace=True)
-                result.update({symbol: df})
-            if len(result) == 1:
-                return result[self.symbols[0]]
-            else:
-                return pd.concat(result.values(), keys=result.keys(), axis=1)
-
-        return self._get_endpoint("chart", format=format, params=kwargs)
 
     def get_insider_roster(self):
         """Insider Roster
@@ -541,54 +684,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("institutional-ownership", format=format)
 
-    def get_intraday_prices(self, **kwargs):
-        """Intraday Prices
-
-        Reference: https://iexcloud.io/docs/api/#intraday-prices
-
-        Data Weighting:
-        ``1`` per symbol per time interval up to a max use of 50 messages
-        Example: If you query for twtr 1d at 11:00am, it will return 90
-        minutes of data for a total of 50.
-
-        IEX Only intraday minute bar - Free
-        This will only return IEX data with keys minute, high, low, average,
-        volume, notional, and numberOfTrades.
-        Use the chartIEXOnly param
-
-        : boolean, optional
-
-        Parameters
-        ----------
-        last: int, default 10, optional
-            Number of news listings to return.
-        chartIEXOnly: boolean, optional
-            Limits the return of intraday prices to IEX only data.
-        chartReset: boolean, optional
-            If true, chart will reset at midnight instead of the default
-            behavior of 9:30am ET.
-        chartSimplify: boolean, optional
-            If true, runs a polyline simplification using the Douglas-Peucker
-            algorithm. This is useful if plotting sparkline charts.
-        chartInterval: number, optional
-            If passed, chart data will return every Nth element as defined by
-            chartInterval
-        changeFromClose: boolean, optional
-            If true, changeOverTime and marketChangeOverTime will be relative
-            to previous day close instead of the first value.
-        chartLast: number, optional
-            If passed, chart data will return the last N elements
-        exactDate: string, optional
-            Formatted as YYYYMMDD. This can be used for batch calls when range
-            is 1d or date.
-        chartIEXWhenNull: boolean, optional
-            By default, all market prefixed fields are 15 minute delayed,
-            meaning the most recent 15 objects will be null.
-            If this parameter is passed as true, all market prefixed fields
-            that are null will be populated with IEX data if available.
-        """
-        return self._get_endpoint("intraday-prices", params=kwargs)
-
     def get_key_stats(self, **kwargs):
         """
         Reference: https://iexcloud.io/docs/api/#key-stats
@@ -614,12 +709,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("advanced-stats", params=kwargs)
 
-    def get_largest_trades(self):
-        """
-        Reference: https://iexcloud.io/docs/api/#largest-trades
-        """
-        return self._get_endpoint("largest-trades")
-
     def get_logo(self):
         """
         Reference: https://iexcloud.io/docs/api/#logo
@@ -640,31 +729,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("news", format=no_pandas, params=kwargs)
 
-    def get_ohlc(self):
-        """OHLC
-
-        Returns the official open and close for a give symbol.
-
-        Reference:  https://iexcloud.io/docs/api/#ohlc
-
-        Data Weighting: ``2`` per symbol
-        """
-        return self._get_endpoint("ohlc")
-
-    def get_open_close(self):
-        """Open/Close Price
-
-        Reference: https://iexcloud.io/docs/api/#open-close-price
-
-        Data Weighting: ``2`` per symbol
-
-        Notes
-        -----
-        Open/Close Price is an alias for the OHLC endpoint, and will return the
-        same
-        """
-        return self._get_endpoint("ohlc")
-
     def get_peers(self):
         """Peers
 
@@ -677,30 +741,6 @@ class Stock(_IEXBase):
         Only allows JSON format (pandas not supported).
         """
         return self._get_endpoint("peers")
-
-    def get_previous_day_prices(self):
-        """Previous Day Prices
-
-        This returns previous day adjusted price data for one or more stocks
-
-        Reference: https://iexcloud.io/docs/api/#previous
-
-        Data Weighting: ``2`` per symbol
-        """
-        return self._get_endpoint("previous")
-
-    def get_price(self):
-        """Price
-
-        Reference: https://iexcloud.io/docs/api/#price
-
-        ``1`` per symbol
-        """
-
-        def format(out):
-            return pd.DataFrame(out, index=self.symbols)
-
-        return self._get_endpoint("price", format=format)
 
     def get_price_target(self):
         """Price Target
@@ -719,21 +759,6 @@ class Stock(_IEXBase):
             return pd.DataFrame(out)
 
         return self._get_endpoint("price-target")
-
-    def get_quote(self, **kwargs):
-        """Quote
-
-        Reference: https://iexcloud.io/docs/api/#quote
-
-        Data Weighting: ``1`` per quote
-
-        Parameters
-        ----------
-        displayPercent: bool, defaults to false, optional
-            If set to true, all percentage values will be
-            multiplied by a factor of 100.
-        """
-        return self._get_endpoint("quote", params=kwargs)
 
     def get_relevant_stocks(self, **kwargs):
         """Relevant Stocks
@@ -758,24 +783,6 @@ class Stock(_IEXBase):
         .. seealso:: ``get_historical_prices``
         """
         return self._get_endpoint("chart", params=kwargs)
-
-    def get_volume_by_venue(self):
-        """Volume by Venue
-
-        Reference:  https://iexcloud.io/docs/api/#volume-by-venue
-
-        Data Weighting: ``20`` per call
-        """
-
-        def format(out):
-            data = {
-                (symbol, sheet["venueName"]): sheet
-                for symbol in out
-                for sheet in out[symbol]
-            }
-            return pd.DataFrame(data)
-
-        return self._get_endpoint("volume-by-venue", format=format)
 
     # field methods
     def get_company_name(self):
