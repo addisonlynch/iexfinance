@@ -85,7 +85,7 @@ class Stock(_IEXBase):
         return data
 
     def _output_format_one(self, out, fmt_p=None, fmt_j=None):
-        data = super(Stock, self)._output_format(out, fmt_p=fmt_p)
+        data = super(Stock, self)._format_output(out, fmt_p=fmt_p)
         if len(self.symbols) == 1 and self.output_format == "json":
             return data[self.symbols[0]]
         return data

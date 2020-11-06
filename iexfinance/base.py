@@ -68,8 +68,8 @@ class _IEXBase(object):
         self.session = _init_session(kwargs.get("session"))
         self.json_parse_int = kwargs.get("json_parse_int")
         self.json_parse_float = kwargs.get("json_parse_float")
-        self.output_format = kwargs.get(
-            "output_format", os.getenv("IEX_OUTPUT_FORMAT", "pandas")
+        self._output_format = kwargs.get(
+            "output_format", os.getenv("IEX_OUTPUT_FORMAT")
         )
         if self.output_format not in self._VALID_FORMATS:
             raise ValueError(
@@ -90,6 +90,10 @@ class _IEXBase(object):
         self.version = os.getenv("IEX_API_VERSION", "stable")
         if self.version not in self._VALID_API_VERSIONS:
             raise ValueError("Please select a valid API version.")
+
+    @property
+    def output_format(self):
+        return self._output_format or "pandas"
 
     @property
     def params(self):
@@ -200,13 +204,13 @@ class _IEXBase(object):
         """
         url = self._prepare_query()
         data = self._execute_iex_query(url)
-        return self._output_format(data, format=format)
+        return self._format_output(data, format=format)
 
     def _convert_output(self, out):
         import pandas as pd
         return pd.DataFrame(out)
 
-    def _output_format(self, out, format=None):
+    def _format_output(self, out, format=None):
         """
         Output formatting handler
         """

@@ -52,3 +52,5 @@ Backward Incompatible Changes
   have been removed
 - ``Stock.get_endpoints`` has been immediately deprecated
 - ``get_social_sentiment`` is now premium-only data and not tested by ``iexfinance``
+- All endpoints in ``iexdata`` are now JSON-only (pandas output formatting no
+  is longer supported)

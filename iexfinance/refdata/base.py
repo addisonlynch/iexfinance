@@ -44,9 +44,9 @@ class TradingDatesReader(CloudRef):
             ret += "/%s" % self.startDate
         return ret
 
-    def _output_format(self, out):
+    def _format_output(self, out):
         out = [{k: pd.to_datetime(v) for k, v in day.items()} for day in out]
-        return super(TradingDatesReader, self)._output_format(out)
+        return super(TradingDatesReader, self)._format_output(out)
 
 
 class Symbols(CloudRef):

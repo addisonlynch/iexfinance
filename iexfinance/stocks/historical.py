@@ -63,7 +63,7 @@ class HistoricalReader(Stock):
                 params["exactDate"] = self.start
         return params
 
-    def _output_format(self, out, fmt_j=None, fmt_p=None):
+    def _format_output(self, out, fmt_j=None, fmt_p=None):
         result = {}
         if len(self.symbols) == 1 and not out[self.symbols[0]]["chart"]:
             return pd.DataFrame(out)
