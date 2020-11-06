@@ -4,6 +4,8 @@
 Investor's Exchange Data
 ========================
 
+.. note:: These endpoints do not support pandas DataFrame output formatting.
+
 
 The following endpoints are available under Investor's Exchange Data:
 
