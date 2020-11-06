@@ -272,7 +272,7 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("earnings", fmt_j=fmt, fmt_p=fmt_p, params=kwargs)
 
-    def get_estimates(self):
+    def get_estimates(self, **kwargs):
         """Estimates
 
         Provides the latest consensus estimate for the next fiscal period
@@ -280,6 +280,11 @@ class Stock(_IEXBase):
         Reference: https://iexcloud.io/docs/api/#estimates
 
         Data Weighting: ``10000`` per symbol per period
+
+        Parameters
+        ----------
+        last: int, default 1, optional
+        period: str, default `quarter`, optional
 
         Returns
         -------
@@ -294,7 +299,7 @@ class Stock(_IEXBase):
             }
             return pd.DataFrame(data)
 
-        return self._get_endpoint("estimates", fmt_p=fmt_p)
+        return self._get_endpoint("estimates", fmt_p=fmt_p, params=kwargs)
 
     def get_financials(self, **kwargs):
         """Financials
