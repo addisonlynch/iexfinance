@@ -242,7 +242,7 @@ Usage
     from iexfinance.iexdata import get_stats_summary
     from datetime import datetime
 
-    get_stats_summary(start=datetime(2019, 1, 1), end=datetime(2020, 1, 1)).head()
+    get_stats_summary(start=datetime(2019, 1, 1), end=datetime(2020, 1, 1))
 
 
 
@@ -291,7 +291,7 @@ Usage
 
     from iexfinance.iexdata import get_stats_recent
 
-    get_stats_recent().head()
+    get_stats_recent()
 
 
 .. _iexdata.stats_records:
