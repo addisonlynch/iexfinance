@@ -364,6 +364,46 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("insider-roster", format=format)
 
+    def get_insider_summary(self):
+        """Insider Summary
+
+        Returns aggregated insiders summary data for the last 6 months.
+
+        Reference: https://iexcloud.io/docs/api/#insider-summary
+
+        Data Weighting: ``5000`` per symbol
+        """
+
+        def format(out):
+            out = {
+                (symbol, owner["fullName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-summary", format=format)
+
+    def get_insider_transactions(self):
+        """Insider Transactions
+
+        Returns insider transactions.
+
+        Reference: https://iexcloud.io/docs/api/#insider-transactions
+
+        Data Weighting: ``50`` per transaction
+        """
+
+        def format(out):
+            out = {
+                (symbol, owner["fullName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-transactions", format=format)
+
     def get_logo(self):
         """
         Reference: https://iexcloud.io/docs/api/#logo
@@ -652,46 +692,6 @@ class Stock(_IEXBase):
             return pd.DataFrame(out)
 
         return self._get_endpoint("fund-ownership", format=format)
-
-    def get_insider_summary(self):
-        """Insider Summary
-
-        Returns aggregated insiders summary data for the last 6 months.
-
-        Reference: https://iexcloud.io/docs/api/#insider-summary
-
-        Data Weighting: ``5000`` per symbol
-        """
-
-        def format(out):
-            out = {
-                (symbol, owner["fullName"]): owner
-                for symbol in out
-                for owner in out[symbol]
-            }
-            return pd.DataFrame(out)
-
-        return self._get_endpoint("insider-summary", format=format)
-
-    def get_insider_transactions(self):
-        """Insider Transactions
-
-        Returns insider transactions.
-
-        Reference: https://iexcloud.io/docs/api/#insider-transactions
-
-        Data Weighting: ``50`` per transaction
-        """
-
-        def format(out):
-            out = {
-                (symbol, owner["fullName"]): owner
-                for symbol in out
-                for owner in out[symbol]
-            }
-            return pd.DataFrame(out)
-
-        return self._get_endpoint("insider-transactions", format=format)
 
     def get_institutional_ownership(self):
         """Institutional Ownership
