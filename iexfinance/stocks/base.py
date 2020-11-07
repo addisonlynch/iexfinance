@@ -332,6 +332,58 @@ class Stock(_IEXBase):
         return self._get_endpoint("volume-by-venue", format=format)
 
     """
+    STOCK PROFILES
+    """
+
+    def get_company(self, **kwargs):
+        """Company
+
+        Reference: https://iexcloud.io/docs/api/#company
+
+        Data Weighting: ``1``
+        """
+        return self._get_endpoint("company", params=kwargs)
+
+    def get_insider_roster(self):
+        """Insider Roster
+
+        Returns the top 10 insiders, with the most recent information.
+
+        Reference: https://iexcloud.io/docs/api/#insider-roster
+
+        Data Weighting: ``5000`` per symbol
+        """
+
+        def format(out):
+            out = {
+                (symbol, owner["entityName"]): owner
+                for symbol in out
+                for owner in out[symbol]
+            }
+            return pd.DataFrame(out)
+
+        return self._get_endpoint("insider-roster", format=format)
+
+    def get_logo(self):
+        """
+        Reference: https://iexcloud.io/docs/api/#logo
+        """
+        return self._get_endpoint("logo")
+
+    def get_peers(self):
+        """Peers
+
+        Reference:https://iexcloud.io/docs/api/#peers
+
+        Data Weighting: ``500`` per call
+
+        Notes
+        -----
+        Only allows JSON format (pandas not supported).
+        """
+        return self._get_endpoint("peers")
+
+    """
     STOCK FUNDAMENTALS
     """
 
@@ -553,15 +605,6 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("splits", params=kwargs, format=format)
 
-    def get_company(self, **kwargs):
-        """Company
-
-        Reference: https://iexcloud.io/docs/api/#company
-
-        Data Weighting: ``1``
-        """
-        return self._get_endpoint("company", params=kwargs)
-
     def get_estimates(self, **kwargs):
         """Estimates
 
@@ -609,27 +652,6 @@ class Stock(_IEXBase):
             return pd.DataFrame(out)
 
         return self._get_endpoint("fund-ownership", format=format)
-
-
-    def get_insider_roster(self):
-        """Insider Roster
-
-        Returns the top 10 insiders, with the most recent information.
-
-        Reference: https://iexcloud.io/docs/api/#insider-roster
-
-        Data Weighting: ``5000`` per symbol
-        """
-
-        def format(out):
-            out = {
-                (symbol, owner["entityName"]): owner
-                for symbol in out
-                for owner in out[symbol]
-            }
-            return pd.DataFrame(out)
-
-        return self._get_endpoint("insider-roster", format=format)
 
     def get_insider_summary(self):
         """Insider Summary
@@ -717,12 +739,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("advanced-stats", params=kwargs)
 
-    def get_logo(self):
-        """
-        Reference: https://iexcloud.io/docs/api/#logo
-        """
-        return self._get_endpoint("logo")
-
     def get_news(self, **kwargs):
         """News
 
@@ -737,18 +753,6 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("news", format=no_pandas, params=kwargs)
 
-    def get_peers(self):
-        """Peers
-
-        Reference:https://iexcloud.io/docs/api/#peers
-
-        Data Weighting: ``500`` per call
-
-        Notes
-        -----
-        Only allows JSON format (pandas not supported).
-        """
-        return self._get_endpoint("peers")
 
     def get_price_target(self):
         """Price Target
