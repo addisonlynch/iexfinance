@@ -645,6 +645,22 @@ class Stock(_IEXBase):
 
         return self._get_endpoint("splits", params=kwargs, format=format)
 
+    """
+    STOCK RESEARCH
+    """
+
+    def get_advanced_stats(self, **kwargs):
+        """
+        Reference: https://iexcloud.io/docs/api/#advanced-stats
+
+        Data Weighting: ``3,000`` per symbol + Key Stats weight
+
+        Notes
+        -------
+        Only included with paid subscription plans.
+        """
+        return self._get_endpoint("advanced-stats", params=kwargs)
+
     def get_estimates(self, **kwargs):
         """Estimates
 
@@ -727,17 +743,21 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("stats", params=kwargs)
 
-    def get_advanced_stats(self, **kwargs):
-        """
-        Reference: https://iexcloud.io/docs/api/#advanced-stats
+    def get_price_target(self):
+        """Price Target
 
-        Data Weighting: ``3,000`` per symbol + Key Stats weight
+        Provides the latest avg, high, and low analyst price target for a
+        symbol.
 
-        Notes
-        -------
-        Only included with paid subscription plans.
+        Reference: https://iexcloud.io/docs/api/#price-target
+
+        Data Weighting: ``500`` per symbol
         """
-        return self._get_endpoint("advanced-stats", params=kwargs)
+        def format(out):
+            if self.symbols[0] in out:
+                pass
+
+        return self._get_endpoint("price-target", format=format)
 
     def get_news(self, **kwargs):
         """News
@@ -752,25 +772,6 @@ class Stock(_IEXBase):
             Number of news listings to return.
         """
         return self._get_endpoint("news", format=no_pandas, params=kwargs)
-
-
-    def get_price_target(self):
-        """Price Target
-
-        Provides the latest avg, high, and low analyst price target for a
-        symbol.
-
-        Reference: https://iexcloud.io/docs/api/#price-target
-
-        Data Weighting: ``500`` per symbol
-        """
-
-        def format(out):
-            if len(self.symbols) == 1:
-                return pd.DataFrame(out, index=self.symbols[0])
-            return pd.DataFrame(out)
-
-        return self._get_endpoint("price-target")
 
     def get_relevant_stocks(self, **kwargs):
         """Relevant Stocks
@@ -789,8 +790,6 @@ class Stock(_IEXBase):
 
     def get_time_series(self, **kwargs):
         """Time Series
-
-        MOVED in IEX Cloud
 
         .. seealso:: ``get_historical_prices``
         """
