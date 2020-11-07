@@ -89,8 +89,12 @@ class Stock(_IEXBase):
         return data
 
     def _output_format_one(self, out, format=None):
+        data = super(Stock, self)._format_output(out, format=format)
         # transpose DF
-        data = super(Stock, self)._format_output(out, format=format).T
+        try:
+            data = data.T if self.output_format == 'pandas' else data
+        except:
+            pass
         if len(self.symbols) == 1 and self.output_format == "json":
             return data[self.symbols[0]]
         return data
@@ -138,7 +142,7 @@ class Stock(_IEXBase):
 
         Reference: https://iexcloud.io/docs/api/#chart
 
-        Data Weighting: See IEX Cloud Docs
+        Data Weighting: See IEX Cloud documentation
 
         Parameters
         ----------
@@ -174,16 +178,12 @@ class Stock(_IEXBase):
         """
 
         def format(out):
-            result = {}
-            for symbol in self.symbols:
-                d = out.pop(symbol)
-                df = pd.DataFrame(d)
-                df.set_index(pd.DatetimeIndex(df["date"]), inplace=True)
-                result.update({symbol: df})
-            if len(result) == 1:
-                return result[self.symbols[0]]
+            if len(self.symbols) > 1:
+                out = {(symbol, day["date"]): day for symbol in out for day in out[symbol]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
             else:
-                return pd.concat(result.values(), keys=result.keys(), axis=1)
+                out = {entr["date"]: entr for entr in out[self.symbols[0]]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
 
         return self._get_endpoint("chart", format=format, params=kwargs)
 
@@ -234,7 +234,15 @@ class Stock(_IEXBase):
             If this parameter is passed as true, all market prefixed fields
             that are null will be populated with IEX data if available.
         """
-        return self._get_endpoint("intraday-prices", params=kwargs)
+        def format(out):
+            if len(self.symbols) > 1:
+                out = {(symbol, "{} {}".format(day["date"], day["label"])): day for symbol in out for day in out[symbol]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
+            else:
+                out = {"{} {}".format(entr["date"], entr["label"]): entr for entr in out[self.symbols[0]]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
+            
+        return self._get_endpoint("intraday-prices", format=format, params=kwargs)
 
     def get_largest_trades(self):
         """
