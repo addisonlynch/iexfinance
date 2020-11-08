@@ -14,11 +14,15 @@ class HistoricalReader(Stock):
     Reference: https://iextrading.com/developer/docs/#chart
     """
 
-    def __init__(self, symbols, start, end=None, close_only=False, **kwargs):
+    def __init__(self, symbols, start=None, end=None, close_only=False, **kwargs):
+        start = start or datetime.datetime.today() - datetime.timedelta(days=365)
         self.start, self.end = _sanitize_dates(start, end)
-        self.single_day = True if self.end is None else False
         self.close_only = close_only
         super(HistoricalReader, self).__init__(symbols, **kwargs)
+
+    @property
+    def single_day(self):
+        return True if self.end is None else False
 
     @property
     def chart_range(self):
@@ -63,13 +67,14 @@ class HistoricalReader(Stock):
                 params["exactDate"] = self.start
         return params
 
-    def _format_output(self, out, fmt_j=None, fmt_p=None):
+    def _format_output(self, out, format=None):
         result = {}
         if len(self.symbols) == 1 and not out[self.symbols[0]]["chart"]:
             return pd.DataFrame(out)
         for symbol in self.symbols:
             if symbol not in out:
-                raise IEXSymbolError(symbol)
+                result[symbol] = pd.DataFrame()
+                continue
             d = out.pop(symbol)["chart"]
             df = pd.DataFrame(d)
             if self.output_format == "pandas":
@@ -86,7 +91,7 @@ class HistoricalReader(Stock):
             result.update({symbol: df})
         if self.output_format == "pandas":
             if len(result) > 1:
-                result = pd.concat(result.values(), keys=result.keys(), axis=1)
+                result = pd.concat(result.values(), keys=result.keys(), axis=0)
         else:
             for sym in list(result):
                 result[sym] = result[sym].to_dict("index")

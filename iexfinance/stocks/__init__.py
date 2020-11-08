@@ -8,12 +8,8 @@ from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
 
-# Data provided for free by IEX
-# See https://iextrading.com/api-exhibit-a/ for additional information
-# and conditions of use
 
-
-def get_historical_data(symbols, start, end=None, close_only=False, **kwargs):
+def get_historical_data(symbols, start=None, end=None, close_only=False, **kwargs):
     """
     Function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
@@ -27,7 +23,7 @@ def get_historical_data(symbols, start, end=None, close_only=False, **kwargs):
     start : string, int, date, datetime, Timestamp
         Starting date. Parses many different kind of date
         representations (e.g., 'JAN-01-2010', '1/1/10', 'Jan, 1, 1980').
-        Defaults to 15 years before current date.
+        Defaults to 1 year before current date.
     end : string, int, date, datetime, Timestamp
         Ending date
     close_only: bool, default False
