@@ -806,7 +806,7 @@ class Stock(_IEXBase):
 
         Data Weighting: ``500`` per call
         """
-        return self._get_endpoint("relevant", params=kwargs)
+        raise ImmediateDeprecationError("get_relevant_stocks")
 
     # field methods
     def get_company_name(self):
