@@ -15,7 +15,7 @@ class TestStockFundamentals(object):
         self.e = Stock("BADSYMBOL", retry_count=0, pause=0)
         self.f = Stock(["AAPL", "BADSYMBOL"])
 
-    def test_bad_symbols(self):
+    def test_single_bad_symbol(self):
         with pytest.raises(IEXQueryError):
             self.e.get_balance_sheet()
 
@@ -33,6 +33,13 @@ class TestStockFundamentals(object):
 
         with pytest.raises(IEXQueryError):
             self.e.get_splits()
+
+    def test_bad_symbols(self):
+        data = self.f.get_balance_sheet()
+
+        assert len(data) ==1
+        assert "AAPL" in data
+        assert "BADSYMBOL" not in data
 
     def test_balance_sheet(self):
         data = self.d.get_balance_sheet()

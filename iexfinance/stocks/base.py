@@ -38,6 +38,10 @@ class Stock(_IEXBase):
         ','.join(self.symbols), self.output_format))
 
     @property
+    def single_symbol(self):
+        return True if len(self.symbols) == 1 else False
+
+    @property
     def url(self):
         return "stock/market/batch"
 
@@ -87,12 +91,12 @@ class Stock(_IEXBase):
         if field not in data:
             raise KeyError("Field %s not found in %s." % (field, endpoint))
         if self.output_format == "json":
-            if len(self.symbols) == 1:
+            if self.single_symbol:
                 data = data[field]
             else:
                 data = {symbol: data[symbol][field] for symbol in self.symbols}
         else:
-            if len(self.symbols) == 1:
+            if self.single_symbol:
                 return data[field][0]
         return data
 
@@ -103,7 +107,7 @@ class Stock(_IEXBase):
             data = data.T if self.output_format == 'pandas' else data
         except:
             pass
-        if len(self.symbols) == 1 and self.output_format == "json":
+        if self.single_symbol and self.output_format == "json":
             return data[self.symbols[0]]
         return data
 
@@ -472,7 +476,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("balance-sheet", format=format, params=kwargs)
 
@@ -506,7 +510,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("cash-flow", format=format, params=kwargs)
 
@@ -534,7 +538,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("dividends", format=format, params=kwargs)
 
@@ -569,7 +573,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("earnings", format=format, params=kwargs)
 
@@ -600,7 +604,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("financials", format=format, params=kwargs)
 
@@ -630,7 +634,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("income", format=format, params=kwargs)
 
@@ -656,7 +660,7 @@ class Stock(_IEXBase):
                     )
                 else:
                     results[symbol] = pd.DataFrame()
-            return results if len(results) != 1 else results[self.symbols[0]]
+            return results[self.symbols[0]].T if self.single_symbol else results
 
         return self._get_endpoint("splits", params=kwargs, format=format)
 
