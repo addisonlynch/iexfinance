@@ -313,6 +313,13 @@ class Stock(_IEXBase):
         """
         return self._get_endpoint("quote", params=kwargs)
 
+    def get_time_series(self, **kwargs):
+        """Time Series
+
+        .. seealso:: ``get_historical_prices``
+        """
+        return self.get_historical_prices(**kwargs)
+
     def get_volume_by_venue(self):
         """Volume by Venue
 
@@ -757,21 +764,34 @@ class Stock(_IEXBase):
             if self.symbols[0] in out:
                 pass
 
-        return self._get_endpoint("price-target", format=format)
+        return self._get_endpoint("price-target")
+
+    """
+    NEWS
+    """
 
     def get_news(self, **kwargs):
         """News
 
         Reference: https://iexcloud.io/docs/api/#news
 
-        Data Weighting: ``10`` per symbol per news item returned
+        Data Weighting: ``1`` per symbol per news item returned
 
         Parameters
         ----------
         last: int, default 10, optional
-            Number of news listings to return.
+            Number of news listings to return. Value must be between
+            1 and 50.
         """
-        return self._get_endpoint("news", format=no_pandas, params=kwargs)
+        def format(out):
+            if len(self.symbols) > 1:
+                out = {(symbol, day["datetime"]): day for symbol in out for day in out[symbol]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("datetime")
+            else:
+                out = {entr["datetime"]: entr for entr in out[self.symbols[0]]}
+                return pd.DataFrame.from_dict(out, orient='columns').drop("datetime")
+
+        return self._get_endpoint("news", format=format, params=kwargs)
 
     def get_relevant_stocks(self, **kwargs):
         """Relevant Stocks
@@ -787,13 +807,6 @@ class Stock(_IEXBase):
         Data Weighting: ``500`` per call
         """
         return self._get_endpoint("relevant", params=kwargs)
-
-    def get_time_series(self, **kwargs):
-        """Time Series
-
-        .. seealso:: ``get_historical_prices``
-        """
-        return self._get_endpoint("chart", params=kwargs)
 
     # field methods
     def get_company_name(self):
