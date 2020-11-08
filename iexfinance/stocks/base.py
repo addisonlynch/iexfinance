@@ -2,7 +2,7 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas
-from iexfinance.utils.exceptions import IEXSymbolError, ImmediateDeprecationError
+from iexfinance.utils.exceptions import IEXQueryError, ImmediateDeprecationError
 
 
 class Stock(_IEXBase):
@@ -80,12 +80,20 @@ class Stock(_IEXBase):
         return self._output_format_one(result, format=format)
 
     def _get_field(self, endpoint, field):
-        data = getattr(self, "get_%s" % endpoint)(filter_=field)
+        try:
+            data = getattr(self, "get_%s" % endpoint)(filter_=field)
+        except AttributeError:
+            raise NotImplementedError("Endpoint %s not implemented." % endpoint)
+        if field not in data:
+            raise KeyError("Field %s not found in %s." % (field, endpoint))
         if self.output_format == "json":
             if len(self.symbols) == 1:
                 data = data[field]
             else:
                 data = {symbol: data[symbol][field] for symbol in self.symbols}
+        else:
+            if len(self.symbols) == 1:
+                return data[field][0]
         return data
 
     def _output_format_one(self, out, format=None):
@@ -843,13 +851,13 @@ class Stock(_IEXBase):
         return self._get_field("key_stats", "beta")
 
     def get_short_interest(self):
-        return self._get_field("key_stats", "shortInterest")
+        raise ImmediateDeprecationError("get_short_interest")
 
     def get_short_ratio(self):
-        return self._get_field("key_stats", "shortRatio")
+        raise ImmediateDeprecationError("get_short_ratio")
 
     def get_latest_eps(self):
-        return self._get_field("key_stats", "latestEPS")
+        raise ImmediateDeprecationError("get_latest_eps")
 
     def get_shares_outstanding(self):
         return self._get_field("key_stats", "sharesOutstanding")
@@ -858,4 +866,4 @@ class Stock(_IEXBase):
         return self._get_field("key_stats", "float")
 
     def get_eps_consensus(self):
-        return self._get_field("key_stats", "consensusEPS")
+        raise ImmediateDeprecationError("get_eps_conesnsus")
