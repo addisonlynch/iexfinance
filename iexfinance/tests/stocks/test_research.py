@@ -63,6 +63,5 @@ class TestStockResearch(object):
         data2 = self.b.get_price_target()
         
         assert isinstance(data2, pd.DataFrame)
-        assert isinstance(data2.index, pd.MultiIndex)
         assert "AAPL" in data2.index
         assert "TSLA" in data2.index
