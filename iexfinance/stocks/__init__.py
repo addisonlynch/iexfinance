@@ -8,6 +8,8 @@ from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
 
+from iexfinance.utils.exceptions import ImmediateDeprecationError
+
 
 def get_historical_data(symbols, start=None, end=None, close_only=False, **kwargs):
     """
@@ -88,6 +90,9 @@ def get_collections(collection_name, collection_type="tag", **kwargs):
     Returns an array of ``quote`` objects for a given collection type.
     Currently supported collection types are ``sector``, ``tag``, and ``list``
 
+    .. note:: Proper capitalization must be used with sector names. For instance,
+              "Technology" must be capitalized or no results will be returned.
+
     Reference: https://iexcloud.io/docs/api/#collections
 
     Data Weighting: Weight of ``/stock/quote`` per method
@@ -109,7 +114,7 @@ def get_market_volume(**kwargs):
 
     This endpoint returns real time traded volume on U.S. markets.
 
-    Data Weighting: 1 per call
+    Data Weighting: ``1`` per call
 
     .. warning:: Data only available from 7:45am-5:15pm ET Mon-Fri.
     """
@@ -123,6 +128,8 @@ def get_earnings_today(**kwargs):
     ``bto`` and after market close ``amc``. Each array contains an object with
     all keys from ``earnings``, a ``quote`` object, and a ``headline`` key.
 
+    .. note:: Pandas output formatting is not available for this endpoint.
+
     Reference: https://iexcloud.io/docs/api/#earnings-today
 
     Data Weighting: ``1051`` per symbol returned
@@ -130,13 +137,15 @@ def get_earnings_today(**kwargs):
     return EarningsReader(**kwargs).fetch()
 
 
-def get_ipo_calendar(period="upcoming-ipos", **kwargs):
+def get_ipo_calendar(period=None, **kwargs):
     """IPO Calendar
 
     This returns a list of upcoming or today IPOs scheduled for the current and
     next month. The response is split into two structures: ``rawData`` and
     ``viewData``. ``rawData`` represents all available data for an IPO.
     ``viewData`` represents data structured for display to a user.
+
+    .. note:: Pandas output formatting is not available for this endpoint.
 
     Reference: https://iexcloud.io/docs/api/#ipo-calendar
 
@@ -223,16 +232,9 @@ def get_market_iex_percent(**kwargs):
 
 def get_market_in_focus(**kwargs):
     """Market in Focus
-
-    Function for obtaining top 10 in focus symbols from the
-    Stocks list endpoint
-
-    Reference: https://iexcloud.io/docs/api/#list
-
-    Data Weighting: Weight of ``/stock/quote`` for each quote returned in the
-    list
+    DEPRECATED
     """
-    return MoversReader(mover="infocus", **kwargs).fetch()
+    raise ImmediateDeprecationError("get_market_in_focus")
 
 
 def get_eod_options(symbol, expiration=None, option_side=None, **kwargs):

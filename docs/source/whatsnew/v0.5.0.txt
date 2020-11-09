@@ -56,3 +56,4 @@ Backward Incompatible Changes
 - ``get_social_sentiment`` is now premium-only data and not tested by ``iexfinance``
 - All endpoints in ``iexdata`` are now JSON-only (pandas output formatting no
   is longer supported)
+- ``iexfinance.stocks.get_market_in_focus`` has been immediately deprecated.

@@ -29,6 +29,3 @@ class CollectionsReader(_IEXBase):
     @property
     def params(self):
         return {"collectionName": self.collection_name}
-
-    def _convert_output(self, out):
-        return pd.DataFrame(out).set_index("symbol").T

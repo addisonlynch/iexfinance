@@ -5,7 +5,8 @@ class IPOReader(_IEXBase):
 
     _PERIODS = ["today-ipos", "upcoming-ipos"]
 
-    def __init__(self, period="upcoming-ipos", **kwargs):
+    def __init__(self, period=None, **kwargs):
+        period = period or "upcoming-ipos"
         if period not in self._PERIODS:
             raise ValueError("Please enter a valid period.")
         self.period = period
