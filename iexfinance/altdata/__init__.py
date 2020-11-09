@@ -26,15 +26,15 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     """
     Social Sentiment
 
-    .. warning:: Unstable endpoint. May return unexpected results.
+    .. warning:: This premium-only endpoint is not tested by
+                 ``iexfinance`` and may be unstable.
 
     Social sentiment data from StockTwits. Data can be
     viewed as a daily value, or by minute for a given date.
 
     Reference: https://iexcloud.io/docs/api/#social-sentiment
 
-    Data Weighting: ``100`` per date for ``daily``, ``200`` per symbol for
-    ``minute``
+    Data Weighting: ``30,000`` per symbol per sentiment record
 
     Parameters
     ----------
@@ -48,7 +48,10 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     """
     import warnings
 
-    warnings.warn("UNSTABLE ENDPOINT: Not yet fully implemented by the " "provider.")
+    warnings.warn(
+        "UNSTABLE ENDPOINT: This premium-only endpoint is not "
+        "tested by iexfinance and may be unstable."
+    )
     return SocialSentiment(symbol, period_type, date, **kwargs).fetch()
 
 

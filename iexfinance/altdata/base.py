@@ -18,17 +18,17 @@ class CloudCrypto(_IEXBase):
         return super(CloudCrypto, self).fetch()
 
     def _convert_output(self, out):
-        return pd.DataFrame({out["symbol"]: out})
+        return pd.DataFrame(out, index=[out["symbol"]])
 
 
 class SocialSentiment(_IEXBase):
 
-    _VALID_TYPES = ("daily", "minute")
+    _VALID_PERIOD_TYPES = ("daily", "minute")
 
     def __init__(self, symbol, period_type=None, date=None, **kwargs):
         self.period_type = period_type or "daily"
-        if self.period_type not in self._VALID_TYPES:
-            raise ValueError("period_type %s is not valid." % period_type)
+        if self.period_type not in self._VALID_PERIOD_TYPES:
+            raise ValueError("Period_type %s is not valid." % period_type)
         self.symbol = symbol
         try:
             self.date = date.strftime("%Y%M%d")
@@ -64,6 +64,4 @@ class CEOCompensation(_IEXBase):
         return super(CEOCompensation, self).fetch()
 
     def _convert_output(self, out):
-        if "symbol" in out:
-            return pd.DataFrame({out["symbol"]: out})
-        return pd.DataFrame()
+        return pd.DataFrame(out, index=[out["symbol"]])
