@@ -4,7 +4,6 @@ from iexfinance.stocks import Stock
 
 
 class TestStockResearch(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
@@ -18,9 +17,9 @@ class TestStockResearch(object):
         data = self.a.get_estimates()
 
         assert isinstance(data, pd.DataFrame)
-        
+
         data2 = self.b.get_estimates()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
         assert "AAPL" in data2.index
@@ -30,9 +29,9 @@ class TestStockResearch(object):
         data = self.a.get_fund_ownership()
 
         assert isinstance(data, pd.DataFrame)
-        
+
         data2 = self.b.get_fund_ownership()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
         assert "AAPL" in data2.index
@@ -42,9 +41,9 @@ class TestStockResearch(object):
         data = self.a.get_institutional_ownership()
 
         assert isinstance(data, pd.DataFrame)
-        
+
         data2 = self.b.get_institutional_ownership()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
         assert "AAPL" in data2.index
@@ -59,9 +58,9 @@ class TestStockResearch(object):
         data = self.a.get_price_target()
 
         assert isinstance(data, pd.DataFrame)
-        
+
         data2 = self.b.get_price_target()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert "AAPL" in data2.index
         assert "TSLA" in data2.index

@@ -26,7 +26,7 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     """
     Social Sentiment
 
-    .. warning:: This premium-only endpoint is not tested by 
+    .. warning:: This premium-only endpoint is not tested by
                  ``iexfinance`` and may be unstable.
 
     Social sentiment data from StockTwits. Data can be
@@ -48,8 +48,10 @@ def get_social_sentiment(symbol, period_type=None, date=None, **kwargs):
     """
     import warnings
 
-    warnings.warn("UNSTABLE ENDPOINT: This premium-only endpoint is not "
-                  "tested by iexfinance and may be unstable.")
+    warnings.warn(
+        "UNSTABLE ENDPOINT: This premium-only endpoint is not "
+        "tested by iexfinance and may be unstable."
+    )
     return SocialSentiment(symbol, period_type, date, **kwargs).fetch()
 
 

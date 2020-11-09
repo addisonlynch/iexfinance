@@ -20,15 +20,18 @@ from iexfinance.utils.exceptions import IEXSymbolError
 
 
 class TestBase(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.aj = Stock("AAPL", output_format="json")
         self.b = Stock(["AAPL", "TSLA"])
-        self.bj = Stock(["AAPL", "TSLA"], output_format='json')
+        self.bj = Stock(["AAPL", "TSLA"], output_format="json")
         self.c = Stock("SVXY")
-        self.dj = Stock("AAPL", json_parse_int=Decimal, json_parse_float=Decimal,
-                       output_format='json')
+        self.dj = Stock(
+            "AAPL",
+            json_parse_int=Decimal,
+            json_parse_float=Decimal,
+            output_format="json",
+        )
         self.e = Stock("GIG^")
 
     def test_wrong_iex_input_type(self):
@@ -47,10 +50,10 @@ class TestBase(object):
 
     def test_filter(self):
         data = self.a.get_quote(filter_="ytdChange")
-        
+
         assert isinstance(data, pd.DataFrame)
         assert len(data.columns) == 1
-        assert 'ytdChange' in data.columns
+        assert "ytdChange" in data.columns
 
         data2 = self.aj.get_quote(filter_="ytdChange")
         assert isinstance(data2, dict)

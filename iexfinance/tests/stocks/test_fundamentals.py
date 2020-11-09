@@ -6,7 +6,6 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestStockFundamentals(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
@@ -24,7 +23,7 @@ class TestStockFundamentals(object):
 
         with pytest.raises(IEXQueryError):
             self.e.get_dividends()
-        
+
         with pytest.raises(IEXQueryError):
             self.e.get_earnings()
 
@@ -37,7 +36,7 @@ class TestStockFundamentals(object):
     def test_bad_symbols(self):
         data = self.f.get_balance_sheet()
 
-        assert len(data) ==1
+        assert len(data) == 1
         assert "AAPL" in data
         assert "BADSYMBOL" not in data
 
@@ -62,7 +61,7 @@ class TestStockFundamentals(object):
         assert len(data.index) == 4
 
     def test_dividends(self):
-        data = self.d.get_dividends(range='5y')
+        data = self.d.get_dividends(range="5y")
 
         assert isinstance(data, dict)
         assert isinstance(data["AAPL"], pd.DataFrame) and not data["AAPL"].empty
@@ -99,7 +98,7 @@ class TestStockFundamentals(object):
         assert len(data.index) == 4
 
     def test_splits(self):
-        data = self.d.get_splits(range='5y')
+        data = self.d.get_splits(range="5y")
 
         assert isinstance(data, dict)
         assert isinstance(data["AAPL"], pd.DataFrame) and not data["AAPL"].empty

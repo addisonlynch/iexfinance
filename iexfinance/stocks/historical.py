@@ -26,8 +26,7 @@ class HistoricalReader(Stock):
 
     @property
     def chart_range(self):
-        """ Calculates the chart range from start and end
-        """
+        """Calculates the chart range from start and end"""
         # TODO: rewrite to account for leap years
 
         delta_days = (datetime.datetime.now() - self.start).days

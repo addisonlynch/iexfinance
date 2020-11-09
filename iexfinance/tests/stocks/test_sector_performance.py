@@ -4,7 +4,6 @@ from iexfinance.stocks import get_sector_performance
 
 
 class TestSectorPerformance(object):
-
     def test_sector_performance(self):
         data = get_sector_performance()
 

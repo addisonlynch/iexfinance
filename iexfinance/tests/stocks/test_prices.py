@@ -6,7 +6,6 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestStockPrices(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
@@ -18,12 +17,11 @@ class TestStockPrices(object):
         with pytest.raises(IEXQueryError):
             self.e.get_book()
 
-
     def test_book(self):
         data = self.a.get_book()
-        
+
         assert isinstance(data, dict)
-    
+
     def test_chart(self):
         data = self.a.get_chart()
 
@@ -36,7 +34,7 @@ class TestStockPrices(object):
         assert "AAPL" in data.index
 
     def test_historical_prices(self):
-        data = self.a.get_historical_prices() 
+        data = self.a.get_historical_prices()
 
         assert isinstance(data, pd.DataFrame)
 

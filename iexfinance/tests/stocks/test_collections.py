@@ -6,7 +6,6 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestCollections(object):
-
     def test_collections(self):
         data = get_collections("Technology", "sector")
 
@@ -22,5 +21,5 @@ class TestCollections(object):
 
     def test_collections_empty_name(self):
         data = get_collections("BADNAME", "sector")
-        
+
         assert data.empty

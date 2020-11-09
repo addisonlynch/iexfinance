@@ -5,7 +5,6 @@ from iexfinance.stocks import Stock
 
 
 class TestStockProfiles(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
@@ -21,7 +20,7 @@ class TestStockProfiles(object):
         assert isinstance(data, pd.DataFrame)
 
         data2 = self.b.get_insider_roster()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
 
@@ -31,7 +30,7 @@ class TestStockProfiles(object):
         assert isinstance(data, pd.DataFrame)
 
         data2 = self.b.get_insider_summary()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
 
@@ -41,7 +40,7 @@ class TestStockProfiles(object):
         assert isinstance(data, pd.DataFrame)
 
         data2 = self.b.get_insider_transactions()
-        
+
         assert isinstance(data2, pd.DataFrame)
         assert isinstance(data2.index, pd.MultiIndex)
 
@@ -54,4 +53,3 @@ class TestStockProfiles(object):
         data = self.a.get_peers()
 
         assert isinstance(data, pd.DataFrame)
-

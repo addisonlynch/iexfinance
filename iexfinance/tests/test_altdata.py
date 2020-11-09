@@ -61,7 +61,6 @@ class TestSocialSentiment(object):
 
 
 class TestCEOCompensation(object):
-
     def test_ceo_compensation(self):
         data = get_ceo_compensation("AAPL")
 

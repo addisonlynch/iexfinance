@@ -34,8 +34,9 @@ class Stock(_IEXBase):
         super(Stock, self).__init__(**kwargs)
 
     def __repr__(self):
-        return("{}(symbols={}, output_format={!r})".format(self.__class__.__name__, 
-        ','.join(self.symbols), self.output_format))
+        return "{}(symbols={}, output_format={!r})".format(
+            self.__class__.__name__, ",".join(self.symbols), self.output_format
+        )
 
     @property
     def single_symbol(self):
@@ -104,7 +105,7 @@ class Stock(_IEXBase):
         data = super(Stock, self)._format_output(out, format=format)
         # transpose DF
         try:
-            data = data.T if self.output_format == 'pandas' else data
+            data = data.T if self.output_format == "pandas" else data
         except:
             pass
         if self.single_symbol and self.output_format == "json":
@@ -191,14 +192,15 @@ class Stock(_IEXBase):
 
         def format(out):
             if len(self.symbols) > 1:
-                out = {(symbol, day["date"]): day for symbol in out for day in out[symbol]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
+                out = {
+                    (symbol, day["date"]): day for symbol in out for day in out[symbol]
+                }
+                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
             else:
                 out = {entr["date"]: entr for entr in out[self.symbols[0]]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
+                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
 
         return self._get_endpoint("chart", format=format, params=kwargs)
-
 
     def get_intraday_prices(self, **kwargs):
         """Intraday Prices
@@ -246,14 +248,22 @@ class Stock(_IEXBase):
             If this parameter is passed as true, all market prefixed fields
             that are null will be populated with IEX data if available.
         """
+
         def format(out):
             if len(self.symbols) > 1:
-                out = {(symbol, "{} {}".format(day["date"], day["label"])): day for symbol in out for day in out[symbol]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
+                out = {
+                    (symbol, "{} {}".format(day["date"], day["label"])): day
+                    for symbol in out
+                    for day in out[symbol]
+                }
+                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
             else:
-                out = {"{} {}".format(entr["date"], entr["label"]): entr for entr in out[self.symbols[0]]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("date")
-            
+                out = {
+                    "{} {}".format(entr["date"], entr["label"]): entr
+                    for entr in out[self.symbols[0]]
+                }
+                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
+
         return self._get_endpoint("intraday-prices", format=format, params=kwargs)
 
     def get_largest_trades(self):
@@ -305,8 +315,9 @@ class Stock(_IEXBase):
 
         ``1`` per symbol
         """
+
         def format(out):
-            return pd.DataFrame.from_dict(out, orient='index', columns=['price'])
+            return pd.DataFrame.from_dict(out, orient="index", columns=["price"])
 
         return self._get_endpoint("price", format=format)
 
@@ -472,7 +483,7 @@ class Stock(_IEXBase):
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
                         {d["reportDate"]: d for d in out[symbol]["balancesheet"]},
-                        orient="index"
+                        orient="index",
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -506,7 +517,7 @@ class Stock(_IEXBase):
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
                         {d["reportDate"]: d for d in out[symbol]["cashflow"]},
-                        orient="index"
+                        orient="index",
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -533,8 +544,7 @@ class Stock(_IEXBase):
             for symbol in out:
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
-                        {d["exDate"]: d for d in out[symbol]},
-                        orient="index"
+                        {d["exDate"]: d for d in out[symbol]}, orient="index"
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -569,7 +579,7 @@ class Stock(_IEXBase):
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
                         {d["EPSReportDate"]: d for d in out[symbol]["earnings"]},
-                        orient="index"
+                        orient="index",
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -600,7 +610,7 @@ class Stock(_IEXBase):
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
                         {d["reportDate"]: d for d in out[symbol]["financials"]},
-                        orient="index"
+                        orient="index",
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -624,13 +634,14 @@ class Stock(_IEXBase):
              Allows you to specify annual or quarterly income statement.
              Defaults to quarterly. Values should be annual or quarter
         """
+
         def format(out):
             results = {}
             for symbol in out:
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
                         {d["reportDate"]: d for d in out[symbol]["income"]},
-                        orient="index"
+                        orient="index",
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -650,13 +661,13 @@ class Stock(_IEXBase):
             Time period of splits to return.
             Choose from [`5y`,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, `next`].
         """
+
         def format(out):
             results = {}
             for symbol in out:
                 if out[symbol]:
                     results[symbol] = pd.DataFrame.from_dict(
-                        {d["exDate"]: d for d in out[symbol]},
-                        orient="index"
+                        {d["exDate"]: d for d in out[symbol]}, orient="index"
                     )
                 else:
                     results[symbol] = pd.DataFrame()
@@ -772,6 +783,7 @@ class Stock(_IEXBase):
 
         Data Weighting: ``500`` per symbol
         """
+
         def format(out):
             if self.symbols[0] in out:
                 pass
@@ -795,13 +807,18 @@ class Stock(_IEXBase):
             Number of news listings to return. Value must be between
             1 and 50.
         """
+
         def format(out):
             if len(self.symbols) > 1:
-                out = {(symbol, day["datetime"]): day for symbol in out for day in out[symbol]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("datetime")
+                out = {
+                    (symbol, day["datetime"]): day
+                    for symbol in out
+                    for day in out[symbol]
+                }
+                return pd.DataFrame.from_dict(out, orient="columns").drop("datetime")
             else:
                 out = {entr["datetime"]: entr for entr in out[self.symbols[0]]}
-                return pd.DataFrame.from_dict(out, orient='columns').drop("datetime")
+                return pd.DataFrame.from_dict(out, orient="columns").drop("datetime")
 
         return self._get_endpoint("news", format=format, params=kwargs)
 

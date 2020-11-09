@@ -14,9 +14,7 @@ class TestHistorical(object):
 
     def test_single_historical(self):
 
-        f = get_historical_data(
-            "AMZN", self.good_start, self.good_end
-        )
+        f = get_historical_data("AMZN", self.good_start, self.good_end)
 
         assert isinstance(f, pd.DataFrame)
         assert isinstance(f.index, pd.DatetimeIndex)
@@ -32,9 +30,7 @@ class TestHistorical(object):
 
     def test_batch_historical(self):
 
-        f = get_historical_data(
-            ["AMZN", "TSLA"], self.good_start, self.good_end
-        )
+        f = get_historical_data(["AMZN", "TSLA"], self.good_start, self.good_end)
 
         assert isinstance(f, pd.DataFrame)
         assert len(f) == 146

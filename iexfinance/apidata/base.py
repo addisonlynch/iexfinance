@@ -13,6 +13,5 @@ class APIReader(_IEXBase):
         return super(APIReader, self).fetch()
 
     def _convert_output(self, out):
-        converted_date = datetime.fromtimestamp(out["time"]/1000)\
-                                 .strftime("%c")
+        converted_date = datetime.fromtimestamp(out["time"] / 1000).strftime("%c")
         return pd.DataFrame(out, index=[converted_date])

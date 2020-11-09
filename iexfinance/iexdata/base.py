@@ -36,7 +36,7 @@ class Market(_IEXBase):
 
     @property
     def output_format(self):
-        return 'json'
+        return "json"
 
     @property
     def params(self):
@@ -58,7 +58,7 @@ class Market(_IEXBase):
 
 
 class TOPS(Market):
-    """ Class to retrieve IEX TOPS data
+    """Class to retrieve IEX TOPS data
 
     Near-real time aggregated bid and offer positions. IEX's aggregated best
     quoted bid and offer position for all securities on IEX's displayed limit
@@ -79,7 +79,7 @@ class TOPS(Market):
 
 
 class Last(Market):
-    """ Class to retrieve Last quote data
+    """Class to retrieve Last quote data
 
     Last provides trade data for executions on IEX. Provides last sale price,
     size and time.
@@ -99,7 +99,7 @@ class Last(Market):
 
 
 class DEEP(Market):
-    """ Class to retrieve DEEP order book data
+    """Class to retrieve DEEP order book data
 
 
     Real-time depth of book quotations direct from IEX. Returns aggregated
@@ -131,7 +131,7 @@ class DEEP(Market):
 
 
 class Book(Market):
-    """ Class to retrieve IEX DEEP Book data
+    """Class to retrieve IEX DEEP Book data
 
     Retrieve IEX's bids and asks for given symbols
 
@@ -183,10 +183,10 @@ class Stats(_IEXBase):
                     + str(now.year - 4)
                     + " until now"
                 )
-    
+
     @property
     def output_format(self):
-        return 'json'
+        return "json"
 
 
 class IntradayReader(Stats):

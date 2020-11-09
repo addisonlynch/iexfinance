@@ -31,9 +31,12 @@ class TestRef(object):
 
     def test_get_us_trading_dates_holidays(self):
         assert isinstance(get_us_trading_dates_holidays("trade", "last"), pd.DataFrame)
-        assert isinstance(get_us_trading_dates_holidays("trade", "last", last=5), pd.DataFrame)
         assert isinstance(
-            get_us_trading_dates_holidays("trade", "last", startDate="20200502"), pd.DataFrame
+            get_us_trading_dates_holidays("trade", "last", last=5), pd.DataFrame
+        )
+        assert isinstance(
+            get_us_trading_dates_holidays("trade", "last", startDate="20200502"),
+            pd.DataFrame,
         )
         assert isinstance(
             get_us_trading_dates_holidays(
@@ -41,4 +44,6 @@ class TestRef(object):
             ),
             pd.DataFrame,
         )
-        assert isinstance(get_us_trading_dates_holidays("holiday", "next"), pd.DataFrame)
+        assert isinstance(
+            get_us_trading_dates_holidays("holiday", "next"), pd.DataFrame
+        )

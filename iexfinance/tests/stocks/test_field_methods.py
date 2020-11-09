@@ -7,13 +7,12 @@ from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestFieldMethod(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
         self.c = Stock("BADSYMBOL")
         self.d = Stock(["AAPL", "BADSYMBOL"])
-        self.aj = Stock("AAPL", output_format='json')
+        self.aj = Stock("AAPL", output_format="json")
 
     def test_get_field_single_bad_symbol(self):
         with pytest.raises(IEXQueryError):
@@ -36,7 +35,7 @@ class TestFieldMethod(object):
 
         with pytest.raises(KeyError):
             self.aj._get_field("company", "BADFIELD")
-        
+
     def test_get_bad_endpoint(self):
         with pytest.raises(NotImplementedError):
             self.a._get_field("BADFIELD", "NULL")
@@ -49,7 +48,6 @@ class TestFieldMethod(object):
 
 
 class TestFieldMethods(object):
-
     def setup_class(self):
         self.a = Stock("AAPL")
         self.b = Stock(["AAPL", "TSLA"])
