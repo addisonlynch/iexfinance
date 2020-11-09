@@ -2,7 +2,6 @@ import pandas as pd
 import pytest
 
 from iexfinance.stocks import get_collections
-from iexfinance.utils.exceptions import IEXQueryError
 
 
 class TestCollections(object):

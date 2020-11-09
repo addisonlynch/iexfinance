@@ -4,7 +4,6 @@ import pandas as pd
 from iexfinance.base import _IEXBase
 from iexfinance.stocks.base import Stock
 from iexfinance.utils import _sanitize_dates
-from iexfinance.utils.exceptions import IEXSymbolError
 
 
 class HistoricalReader(Stock):

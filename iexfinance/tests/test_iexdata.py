@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import pytest
-from pandas import DataFrame
 
 from iexfinance.iexdata import (
     get_tops,

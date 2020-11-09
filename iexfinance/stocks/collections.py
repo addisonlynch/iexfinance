@@ -1,5 +1,3 @@
-import pandas as pd
-
 from iexfinance.base import _IEXBase
 
 # Data provided for free by IEX

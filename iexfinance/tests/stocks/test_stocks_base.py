@@ -1,22 +1,9 @@
-from datetime import datetime
-
 import pytest
 import pandas as pd
 
 from decimal import Decimal
 
-from iexfinance.stocks.historical import HistoricalReader
-from iexfinance.stocks import (
-    get_historical_data,
-    get_sector_performance,
-    get_collections,
-    get_earnings_today,
-    get_ipo_calendar,
-    get_historical_intraday,
-    Stock,
-    get_eod_options,
-)
-from iexfinance.utils.exceptions import IEXSymbolError
+from iexfinance.stocks import Stock
 
 
 class TestBase(object):

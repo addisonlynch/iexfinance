@@ -2,7 +2,7 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 from iexfinance.utils import _handle_lists, no_pandas
-from iexfinance.utils.exceptions import IEXQueryError, ImmediateDeprecationError
+from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 
 class Stock(_IEXBase):
@@ -106,7 +106,7 @@ class Stock(_IEXBase):
         # transpose DF
         try:
             data = data.T if self.output_format == "pandas" else data
-        except:
+        except Exception:
             pass
         if self.single_symbol and self.output_format == "json":
             return data[self.symbols[0]]

@@ -18,6 +18,6 @@ class TestDataPoints(object):
         data = get_data_points("AAPL", "ZIP")
         assert isinstance(data, str)
 
-    def test_get_one_data_point(self):
+    def test_get_one_data_point2(self):
         data = get_data_points("AAPL", "ZIP", output_format="pandas")
         assert isinstance(data, str)

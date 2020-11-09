@@ -5,7 +5,6 @@ from iexfinance.stocks import (
     get_market_most_active,
     get_market_iex_volume,
     get_market_iex_percent,
-    get_market_in_focus,
     get_market_gainers,
 )
 
