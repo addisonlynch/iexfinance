@@ -165,6 +165,7 @@ class _IEXBase(object):
         """
         params = self.params
         params["token"] = self.token
+        headers = {"project": "iexfinance/stable (Language=Python)"}
         for _ in range(self.retry_count + 1):
             response = self.session.get(url=url, params=params)
             logger.debug("REQUEST: %s" % response.request.url)
