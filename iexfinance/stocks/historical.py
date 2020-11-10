@@ -66,34 +66,28 @@ class HistoricalReader(Stock):
         return params
 
     def _format_output(self, out, format=None):
-        result = {}
-        if len(self.symbols) == 1 and not out[self.symbols[0]]["chart"]:
-            return pd.DataFrame(out)
-        for symbol in self.symbols:
-            if symbol not in out:
-                result[symbol] = pd.DataFrame()
-                continue
-            d = out.pop(symbol)["chart"]
-            df = pd.DataFrame(d)
-            if self.output_format == "pandas":
-                df["date"] = pd.DatetimeIndex(df["date"])
-            df = df.set_index(df["date"])
-            values = ["close", "volume"]
-            if self.close_only is False:
-                values = ["open", "high", "low"] + values
-            df = df[values]
-            if self.single_day is False:
-                sstart = self.start.strftime("%Y-%m-%d")
-                send = self.end.strftime("%Y-%m-%d")
-                df = df.loc[sstart:send]
-            result.update({symbol: df})
-        if self.output_format == "pandas":
-            if len(result) > 1:
-                result = pd.concat(result.values(), keys=result.keys(), axis=0)
+        if self.output_format == "json":
+            return out
+        if len(self.symbols) > 1:
+            out = {
+                (symbol, day["date"]): day
+                for symbol in out
+                for day in out[symbol]["chart"]
+            }
+            result = pd.DataFrame.from_dict(out, orient="columns").drop("date").T
+            result.index = result.index.set_levels(
+                [result.index.levels[0], pd.to_datetime(result.index.levels[1])]
+            )
+            idx = pd.IndexSlice
+            result = result.loc[idx[:, self.start : self.end], :]
         else:
-            for sym in list(result):
-                result[sym] = result[sym].to_dict("index")
-        return result[self.symbols[0]] if len(self.symbols) == 1 else result
+            out = {entr["date"]: entr for entr in out[self.symbols[0]]["chart"]}
+            result = pd.DataFrame.from_dict(out, orient="columns").drop("date").T
+            result.index = pd.to_datetime(result.index)
+            result = result.loc[self.start : self.end, :]
+        if self.close_only is True:
+            result = result.loc[:, ["close", "volume"]]
+        return result
 
 
 class IntradayReader(_IEXBase):

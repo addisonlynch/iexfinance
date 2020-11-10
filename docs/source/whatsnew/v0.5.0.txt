@@ -40,8 +40,10 @@ Bug Fixes
 
 - Modifies ``Stock.get_historical_prices`` and ``Stock.get_chart``
   (GH165_) to return all fields, including ``changePercent``
+- Repairs ``stocks.get_historical_data`` bug which errored on symbols without historical data (GH223_)
 
   .. _GH165: https://github.com/addisonlynch/iexfinance/issues/165
+  .. _GH223: https://github.com/addisonlynch/iexfinance/issues/223
 
 
 Backward Incompatible Changes
