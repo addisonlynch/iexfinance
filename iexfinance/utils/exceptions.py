@@ -1,18 +1,6 @@
 DEP_ERROR_MSG = "%s has been immediately deprecated."
 
 
-class IEXSymbolError(Exception):
-    """
-    This error is thrown when an invalid symbol is given.
-    """
-
-    def __init__(self, symbol):
-        self.symbol = symbol
-
-    def __str__(self):
-        return "Symbol " + self.symbol + " not found."
-
-
 class IEXQueryError(Exception):
     """
     This error is thrown when an error occurs with the query to IEX, be it a
