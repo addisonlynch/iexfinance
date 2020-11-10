@@ -34,4 +34,7 @@ class MoversReader(_IEXBase):
         return "stock/market/list/" + self.mover
 
     def _convert_output(self, out):
-        return pd.DataFrame(out).set_index("symbol")
+        if out:
+            return pd.DataFrame(out).set_index("symbol")
+        else:
+            return pd.DataFrame()

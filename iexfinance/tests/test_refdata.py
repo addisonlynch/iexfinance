@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import pandas as pd
+
 from iexfinance.refdata import (
     get_symbols,
     get_iex_symbols,
@@ -20,25 +22,28 @@ class TestRef(object):
 
     def test_get_symbols(self):
         d = get_symbols()
-        assert isinstance(d, list)
-        assert isinstance(d[0], dict)
+        assert isinstance(d, pd.DataFrame)
 
     def test_get_iex_symbols(self):
         d = get_iex_symbols()
 
-        assert isinstance(d, list)
-        assert isinstance(d[0], dict)
+        assert isinstance(d, pd.DataFrame)
 
     def test_get_us_trading_dates_holidays(self):
-        assert isinstance(get_us_trading_dates_holidays("trade", "last"), list)
-        assert isinstance(get_us_trading_dates_holidays("trade", "last", last=5), list)
+        assert isinstance(get_us_trading_dates_holidays("trade", "last"), pd.DataFrame)
         assert isinstance(
-            get_us_trading_dates_holidays("trade", "last", startDate="20200502"), list
+            get_us_trading_dates_holidays("trade", "last", last=5), pd.DataFrame
+        )
+        assert isinstance(
+            get_us_trading_dates_holidays("trade", "last", startDate="20200502"),
+            pd.DataFrame,
         )
         assert isinstance(
             get_us_trading_dates_holidays(
                 "trade", "last", last=2, startDate="20191201"
             ),
-            list,
+            pd.DataFrame,
         )
-        assert isinstance(get_us_trading_dates_holidays("holiday", "next"), list)
+        assert isinstance(
+            get_us_trading_dates_holidays("holiday", "next"), pd.DataFrame
+        )

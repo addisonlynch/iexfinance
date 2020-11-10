@@ -142,17 +142,19 @@ Configuration
 Selecting an API Version
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-``iexfinance`` now defaults to IEX Cloud for all calls. The use of
-``v1`` as ``IEX_API_VERSION`` now calls IEX Cloud version 1 (v1).
-
 The desired IEX API version can be specified using the ``IEX_API_VERSION``
 environment variable. The following versions are currently supported:
 
-* ``v1`` - **default** (now same as ``iexcloud-v1``)
-* ``iexcloud-beta``
-* ``iexcloud-v1``
-* ``iexcloud-sandbox`` - for use with the `sandbox environment`_ (test token
+* ``stable`` - **default**
+* ``beta`` 
+* ``v1`` 
+* ``latest``
+* ``sandbox`` - for use with the `sandbox environment`_ (test token
   must be used)
+
+For more information on API versioning, see the IEX Cloud documentation_.
+
+.. _documentation: https://iexcloud.io/docs/api/#versioning
 
 .. _`sandbox environment`: https://iexcloud.io/docs/api/#sandbox
 

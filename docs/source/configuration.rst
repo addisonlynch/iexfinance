@@ -20,11 +20,11 @@ API Version
 The desired IEX API version can be specified using the ``IEX_API_VERSION``
 environment variable. The following versions are currently supported:
 
-* ``beta`` (or ``iexcloud-beta``)
-* ``v1`` (or ``iexcloud-v1``)
 * ``stable`` - **default**
+* ``beta`` 
+* ``v1`` 
 * ``latest``
-* ``sandbox`` (or ``iexcloud-sandbox``) for testing purposes
+* ``sandbox`` for testing purposes
  
 
 .. seealso:: For more information on API versioning, see the IEX Cloud

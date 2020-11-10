@@ -3,29 +3,8 @@ import pandas as pd
 
 from iexfinance.base import _IEXBase
 
-# Data provided for free by IEX
-# See https://iextrading.com/api-exhibit-a/ for additional information
-# and conditions of use
 
-
-class ReferenceReader(_IEXBase):
-    """
-    Base class to retrieve data from the IEX Reference Data endpoints
-    """
-
-    def __init__(self, start=None, **kwargs):
-        self.start = start
-        super(ReferenceReader, self).__init__(**kwargs)
-
-    @property
-    def url(self):
-        if isinstance(self.start, datetime.datetime):
-            return "daily-list/%s/%s" % (self.endpoint, self.start.strftime("%Y%m%d"))
-        else:
-            return "daily-list/%s" % self.endpoint
-
-
-class CloudRef(_IEXBase):
+class ReferenceData(_IEXBase):
     @property
     def url(self):
         return "ref-data/%s" % self.endpoint
@@ -35,7 +14,7 @@ class CloudRef(_IEXBase):
         raise NotImplementedError
 
 
-class TradingDatesReader(CloudRef):
+class TradingDatesReader(ReferenceData):
     """
     Base class to retrieve trading holiday information
     """
@@ -61,21 +40,18 @@ class TradingDatesReader(CloudRef):
             ret += "/%s" % self.startDate
         return ret
 
-    def _output_format(self, out, fmt_j=None, fmt_p=None):
+    def _format_output(self, out, format=None):
         out = [{k: pd.to_datetime(v) for k, v in day.items()} for day in out]
-        return super()._output_format(out, fmt_j=fmt_j, fmt_p=fmt_p)
+        return super(TradingDatesReader, self)._format_output(out)
 
 
-class Symbols(CloudRef):
+class Symbols(ReferenceData):
     @property
     def endpoint(self):
         return "symbols"
 
 
-class IEXSymbols(CloudRef):
-    def fetch(self):
-        return super(CloudRef, self).fetch()
-
+class IEXSymbols(ReferenceData):
     @property
     def endpoint(self):
         return "iex/symbols"

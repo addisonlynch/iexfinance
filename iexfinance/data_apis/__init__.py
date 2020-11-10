@@ -4,7 +4,7 @@ from iexfinance.data_apis.time_series import TimeSeries
 
 def get_data_points(symbol, key=None, **kwargs):
     """
-    List of datapoints for a symbol (if no additional parameters
+    DataFrame of datapoints for a symbol (if no additional parameters
     passed) or single data point for a given symbol and data point key
 
     Reference: https://iexcloud.io/docs/api/#data-apis
