@@ -34,7 +34,7 @@ Full Contents
 
    account
    stocks
-   stock-prices
+   stocks/stock-prices
    data_apis
    altdata
    refdata

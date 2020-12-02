@@ -6,11 +6,10 @@ Configuration
 
 There are four core components of ``iexfinance``'s configuration:
 
-* :ref:`config.api_version` - specifying version of IEX Cloud to use
 * :ref:`config.auth` - setting your IEX Cloud Authentication Token
 * :ref:`config.formatting` - configuring desired output format (mirror IEX output or Pandas DataFrame)
+* :ref:`config.api_version` - specifying version of IEX Cloud to use
 * :ref:`config.debugging` - cached sessions, request retries, and more
-
 
 .. _config.api_version:
 
@@ -24,12 +23,10 @@ environment variable. The following versions are currently supported:
 * ``beta`` 
 * ``v1`` 
 * ``latest``
-* ``sandbox`` for testing purposes
- 
+* ``sandbox`` *for testing purposes*
 
 .. seealso:: For more information on API versioning, see the IEX Cloud
              documentation_.
-
 
 .. _documentation: https://iexcloud.io/docs/api/#versioning
 
@@ -39,9 +36,12 @@ environment variable. The following versions are currently supported:
 Authentication
 --------------
 
-An IEX Cloud account is required to acecss the IEX Cloud API.
+An IEX Cloud account and authentication token are required to acecss the IEX Cloud API.
 
-Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` :ref:`object <stocks.stock_object>` It can also be stored in the ``IEX_TOKEN`` environment variable.
+Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` :ref:`object <stocks.stock_object>`.
+It can also be stored in the ``IEX_TOKEN`` environment variable.
+
+The IEX Cloud token is accessible via the IEX Cloud Console.
 
 .. _config.auth.argument:
 
@@ -55,7 +55,7 @@ The authentication token can also be passed to any function call:
 
     from iexfinance.refdata import get_symbols
 
-    get_symbols(output_format='pandas', token="<YOUR AUTH TOKEN>")
+    get_symbols(output_format='pandas', token="<YOUR-TOKEN>")
 
 or at the instantiation of a ``Stock`` object:
 
@@ -63,10 +63,8 @@ or at the instantiation of a ``Stock`` object:
 
     from iexfinance.stocks import Stock
 
-    a = Stock("AAPL", token="<YOUR AUTH TOKEN>")
+    a = Stock("AAPL", token="<YOUR-TOKEN>")
     a.get_quote()
-
-
 
 .. _config.auth.env:
 
@@ -86,26 +84,24 @@ Type the following command into your terminal:
 
 .. code-block:: bash
 
-    $ export IEX_TOKEN=<YOUR AUTH TOKEN>
+    $ export IEX_TOKEN=<YOUR-TOKEN>
 
 .. _config.auth.env.windows:
 
 Windows
 ^^^^^^^
 
-See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__
-
-
+See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__ for instructions on setting environment variables in Windows operating systems.
 
 .. _config.formatting:
 
 Output Formatting
 -----------------
 
-By default, ``iexfinance`` returns data formatted *exactly* as received from
-the IEX Endpoint. `pandas <https://pandas.pydata.org/>`__ ``DataFrame`` output
-formatting is available for most endpoints. Configuring ``iexfinance``'s
-output format can be done in two ways:
+By default, ``iexfinance`` returns data for most endpoints in a `pandas <https://pandas.pydata.org/>`__ ``DataFrame``.
+
+Selecting ``json`` as the output format returns data formatted *exactly* as received from
+the IEX Endpoint. Configuring ``iexfinance``'s output format can be done in two ways:
 
 ``output_format`` Argument
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,8 +142,7 @@ Type the following command into your terminal:
 Windows
 ^^^^^^^
 
-See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__
-
+See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__ for instructions on setting environment variables in Windows operating systems.
 
 .. _config.debugging:
 

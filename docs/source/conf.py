@@ -35,6 +35,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.githubpages",
+    "sphinx.ext.extlinks",
     "IPython.sphinxext.ipython_console_highlighting",
     "IPython.sphinxext.ipython_directive",
     "sphinxcontrib.napoleon",
@@ -177,3 +178,8 @@ texinfo_documents = [
         "Miscellaneous",
     )
 ]
+
+# extlinks
+extlinks = {
+    'issue': ('https://github.com/addisonlynch/iexfinance/issues/%s', 'GH')
+}
