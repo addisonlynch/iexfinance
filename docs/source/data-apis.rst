@@ -1,13 +1,13 @@
-.. _data_apis:
+.. _data-apis:
 
 Data APIs
 =========
 
 IEX Cloud data can be organized into three generic data APIs:
-:ref:`time-series<data_apis.time_series>`, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.
+:ref:`time-series<data_apis.time-series>`, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.
 
 
-.. _data_apis.data_points:
+.. _data-apis.data-points:
 
 Data Points
 -----------
@@ -22,7 +22,7 @@ Full access to the Data Points endpoints is available through the
 
 .. autofunction:: iexfinance.data_apis.get_data_points
 
-.. _data_apis.data_points.available:
+.. _data-apis.data-points.available:
 
 Available Data Points For a Symbol
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +36,7 @@ To obtain all available data points for a symbol, simply pass the symbol to
 
     get_data_points("AAPL", output_format='pandas').head()
 
-.. _data_apis.data_points.individual:
+.. _data-apis.data-points.individual:
 
 Individual Data Points For a Symbol
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ data point ID to ``get_data_points``:
 
     get_data_points("AAPL", "COMMONSTOCK")
 
-.. _data_apis.time_series:
+.. _data-apis.time-series:
 
 Time Series
 -----------
@@ -65,7 +65,7 @@ Full access to the Time Series endpoints is available through the
 
 .. autofunction:: iexfinance.data_apis.get_time_series
 
-.. _data_apis.time_series.all_time_series:
+.. _data-apis.time-series.all-time-series:
 
 All Available Time Series
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,7 +79,7 @@ with no parameters:
 
     get_time_series()
 
-.. _data_apis.time_series.individual:
+.. _data-apis.time-series.individual:
 
 Individual Time Series
 ~~~~~~~~~~~~~~~~~~~~~~

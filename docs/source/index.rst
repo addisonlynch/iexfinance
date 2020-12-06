@@ -30,16 +30,25 @@ Full Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Endpoints
+   :caption: Core Data
+
+   stocks
+   market-info
+   news
+   crypto
+   options
+   refdata
+   iexdata
+   altdata
+   data-apis
+
+.. _utility:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Utility endpoints
 
    account
-   stocks
-   stocks/stock-prices
-   data_apis
-   altdata
-   refdata
-   options
-   iexdata
    apidata
 
 .. _package_info:
