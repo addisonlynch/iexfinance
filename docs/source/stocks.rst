@@ -3,8 +3,8 @@
 
 .. currentmodule:: iexfinance
 
-Stocks
-======
+Stocks / Equities
+=================
 
 .. _stocks.overview:
 
@@ -50,18 +50,15 @@ All endpoints not available as methods of the ``Stock`` object are noted below.
 
 Endpoints which are supported by top-level functions are noted.
 
-
+- :ref:`Advanced Stats<stocks.advanced_stats>`
 - :ref:`Balance Sheet<stocks.balance_sheet>`
 - :ref:`Book<stocks.book>`
 - :ref:`Cash Flow<stocks.cash_flow>`
-- :ref:`Chart<stocks.chart>`
-- :ref:`Collections<stocks.collections>` - ``get_collections``
+- :ref:`Charts<stocks.charts>`
 - :ref:`Company<stocks.company>`
-- :ref:`Crypto<stocks.crypto>` - ``get_crypto_quotes``
 - :ref:`Delayed Quote<stocks.delayed_quote>`
-- :ref:`Dividends<stocks.dividends>`
+- :ref:`Dividends (Basic)<stocks.dividends>`
 - :ref:`Earnings<stocks.earnings>`
-- :ref:`Earnings Today<stocks.earnings_today>` - ``get_earnings_today``
 - :ref:`Estimates<stocks.estimates>`
 - :ref:`Financials<stocks.financials>`
 - :ref:`Fund Ownership<stocks.fund_ownership>`
@@ -71,24 +68,18 @@ Endpoints which are supported by top-level functions are noted.
 - :ref:`Insider Summary<stocks.insider_summary>`
 - :ref:`Insider Transactions<stocks.insider_transactions>`
 - :ref:`Institutional Ownership<stocks.institutional_ownership>`
-- :ref:`IPO Calendar<stocks.ipo_calendar>`
 - :ref:`Key Stats<stocks.key_stats>`
 - :ref:`Largest Trades<stocks.largest_trades>`
-- :ref:`List<stocks.list>`
 - :ref:`Logo<stocks.logo>`
-- :ref:`Market Volume<stocks.market_volume>` - ``get_market_volume``
-- :ref:`News<stocks.news>`
 - :ref:`OHLC<stocks.ohlc>`
 - :ref:`Open/Close<stocks.open_close>`
-- :ref:`End of Day Options<stocks.eod_options>` - ``get_eod_options``
-- :ref:`Peers<stocks.peers>`
+- :ref:`Peers Groups<stocks.peers>`
 - :ref:`Previous Day Prices<stocks.previous_day_prices>`
-- :ref:`Price<stocks.price>`
+- :ref:`Price<stocks.price-only>`
 - :ref:`Price Target<stocks.price_target>`
 - :ref:`Quote<stocks.quote>`
 - :ref:`Relevant Stocks<stocks.relevant_stocks>`
-- :ref:`Sector Performance<stocks.sector>` - ``get_sector_performance``
-- :ref:`Splits<stocks.splits>`
+- :ref:`Splits (Basic)<stocks.splits>`
 - :ref:`Time Series<stocks.time_series>`
 - :ref:`Volume by Venue<stocks.volume_by_venue>`
 
@@ -119,6 +110,13 @@ Basic Usage Example
     aapl = Stock("aapl")
     aapl.get_price()
 
+.. _stocks.advanced_stats:
+
+Advanced Stats
+--------------
+
+.. automethod:: iexfinance.stocks.base.Stock.get_advanced_stats
+
 
 .. _stocks.balance_sheet:
 
@@ -141,54 +139,11 @@ Cash Flow
 
 .. automethod:: iexfinance.stocks.base.Stock.get_cash_flow
 
-.. _stocks.chart:
+.. _stocks.charts:
 
-Chart
------
+Charts
+------
 .. automethod:: iexfinance.stocks.base.Stock.get_chart
-
-
-.. _stocks.collections:
-
-Collections
------------
-
-The `Collections <https://iextrading.com/developer/docs/#collections>`__
-endpoint of Stocks allows retrieval of certain groups of companies, organized
-by:
-
-- sector
-- tag
-- list (see the :ref:`list endpoint <stocks.list>`)
-
-Use ``get_collections`` to access.
-
-
-.. autofunction:: iexfinance.stocks.get_collections
-
-
-.. _stocks.collections.examples:
-
-Examples
-~~~~~~~~
-
-.. NOTE: These were converted to code-block as they are currently returning
-         errors
-
-**Tag**
-
-.. code-block:: python
-
-    from iexfinance.stocks import get_collections
-
-    get_collections("Computer Hardware", output_format='pandas').head()
-
-**Sector**
-
-.. code-block:: python
-
-    get_collections("Industrials", output_format='pandas').head()
-
 
 
 .. _stocks.company:
@@ -198,50 +153,6 @@ Company
 
 .. automethod:: iexfinance.stocks.base.Stock.get_company
 
-.. _stocks.crypto:
-
-Cryptocurrencies
-----------------
-
-To retrieve quotes for all available cryptocurrencies, create a ``Stock`` object
-using a cryptocurrency ticker.
-
-The following tickers are supported:
-
-- Bitcoin USD (BTCUSDT)
-- EOS USD (EOSUSDT)
-- Ethereum USD (ETHUSDT)
-- Binance Coin USD (BNBUSDT)
-- Ontology USD (ONTUSDT)
-- Bitcoin Cash USD (BCCUSDT)
-- Cardano USD (ADAUSDT)
-- Ripple USD (XRPUSDT)
-- TrueUSD (TUSDUSDT)
-- TRON USD (TRXUSDT)
-- Litecoin USD (LTCUSDT)
-- Ethereum Classic USD (ETCUSDT)
-- MIOTA USD (IOTAUSDT)
-- ICON USD (ICXUSDT)
-- NEO USD (NEOUSDT)
-- VeChain USD (VENUSDT)
-- Stellar Lumens USD (XLMUSDT)
-- Qtum USD (QTUMUSDT)
-
-
-.. _stocks.crypto.examples:
-
-Examples
-~~~~~~~~
-
-.. code-block:: python
-
-    from iexfinance.stocks import Stock
-
-    btc = Stock("BTCUSDT")
-    btc.get_quote()
-
-
-
 .. _stocks.delayed_quote:
 
 Delayed Quote
@@ -249,12 +160,10 @@ Delayed Quote
 
 .. automethod:: iexfinance.stocks.base.Stock.get_delayed_quote
 
-
-
 .. _stocks.dividends:
 
-Dividends
----------
+Dividends (Basic)
+-----------------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_dividends
 
@@ -266,45 +175,6 @@ Earnings
 --------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_earnings
-
-.. _stocks.earnings_today:
-
-Earnings Today
---------------
-
-.. warning:: ``get_todays_earnings`` has been deprecated and renamed
-            ``get_earnings_today``.
-
-Earnings Today was added to the Stocks endpoints in 2018. Access is provided
-through the  ``get_earnings_today`` function.
-
-
-.. autofunction:: iexfinance.stocks.get_earnings_today
-
-
-.. note:: ``get_earnings_today`` supports JSON output formatting only.
-
-
-.. _stocks.earnings.examples:
-
-Examples
-~~~~~~~~
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_earnings_today
-
-    get_earnings_today()["bto"]
-
-
-.. _stocks.eod_options:
-
-End of Day Options
-------------------
-
-End of day options prices are available through the top-level function ``get_eod_options``.
-
-.. autofunction:: iexfinance.stocks.get_eod_options
 
 .. _stocks.estimates:
 
@@ -413,6 +283,7 @@ To retrieve closing prices only, use ``get_historical_data`` and set
     get_historical_data("AAPL", "20190617", close_only=True)
 
 
+
 .. _stocks.income_statement:
 
 Income Statement
@@ -452,47 +323,12 @@ Institutional Ownership
 .. automethod:: iexfinance.stocks.base.Stock.get_institutional_ownership
 
 
-.. _stocks.ipo_calendar:
-
-IPO Calendar
-------------
-
-IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
-through the  ``get_ipo_calendar`` function.
-
-.. autofunction:: iexfinance.stocks.get_ipo_calendar
-
-There are two possible values for the ``period`` parameter, of which
-``upcoming-ipos`` is the default. ``today-ipos`` is also available.
-
-..  _stocks.ipo_calendar.examples:
-
-Examples
-~~~~~~~~
-
-.. ipython:: python
-
-    from iexfinance.stocks import get_ipo_calendar
-
-    get_ipo_calendar()
-
-
-
-
 .. _stocks.key_stats:
 
 Key Stats
 ---------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_key_stats
-
-
-.. _stocks.advanced_stats:
-
-Advanced Stats
----------
-
-.. automethod:: iexfinance.stocks.base.Stock.get_advanced_stats
 
 
 .. _stocks.largest_trades:
@@ -502,49 +338,12 @@ Largest Trades
 .. automethod:: iexfinance.stocks.base.Stock.get_largest_trades
 
 
-.. _stocks.list:
-
-List
-----
-.. seealso:: :ref:`Market Movers<stocks.movers>`
-
-
 .. _stocks.logo:
 
 Logo
 ----
 
 .. automethod:: iexfinance.stocks.base.Stock.get_logo
-
-.. _stocks.market_volume:
-
-Market Volume (U.S)
--------------------
-
-Market Volume returns real-time traded volume on U.S. Markets. Access is
-provided through the ``get_market_volume`` function.
-
-
-.. autofunction:: iexfinance.stocks.get_market_volume
-
-
-.. _stocks.market_volume.examples:
-
-Examples
-~~~~~~~~
-
-.. code-block:: python
-
-    from iexfinance.stocks import get_market_volume
-
-    get_market_volume()
-
-.. _stocks.news:
-
-News
-----
-.. automethod:: iexfinance.stocks.base.Stock.get_news
-
 
 .. _stocks.ohlc:
 
@@ -563,17 +362,19 @@ Open/Close Price
 .. automethod:: iexfinance.stocks.base.Stock.get_open_close
 
 
+
+
 .. _stocks.peers:
 
-Peers
------
+Peer Groups
+-----------
 .. automethod:: iexfinance.stocks.base.Stock.get_peers
 
 
 .. _stocks.previous_day_prices:
 
-Previous Day Prices
--------------------
+Previous Day Price
+------------------
 
 .. warning:: ``get_previous`` has been deprecated and renamed
             ``get_previous_day_prices``.
@@ -581,10 +382,11 @@ Previous Day Prices
 .. automethod:: iexfinance.stocks.base.Stock.get_previous_day_prices
 
 
-.. _stocks.price:
 
-Price
------
+.. _stocks.price-only:
+
+Price Only
+----------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_price
 
@@ -611,16 +413,6 @@ Relevant Stocks
 
 .. automethod:: iexfinance.stocks.base.Stock.get_relevant_stocks
 
-.. _stocks.sector:
-
-Sector Performance
-------------------
-
-Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
-
-.. autofunction:: iexfinance.stocks.get_sector_performance
-
-
 .. _stocks.sector.examples:
 
 Examples
@@ -636,8 +428,8 @@ Examples
 
 .. _stocks.splits:
 
-Splits
-------
+Splits (Basic)
+--------------
 
 .. automethod:: iexfinance.stocks.base.Stock.get_splits
 

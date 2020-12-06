@@ -29,7 +29,8 @@ Enhancements
 - Adds endpoint for us trading days/holidays (thanks Bouldersky)
 - Adds official support for Python 3.8
 - Adds endpoint for advanced stats
-- Add ``last`` and ``period`` parameters to ``Stock.get_estimates`` (GH213_)
+- Add ``last`` and ``period`` parameters to ``Stock.get_estimates`` :issue:`213`
+- Test github issue :issue:`818`
 
 .. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 .. _GH213: https://github.com/addisonlynch/iexfinance/issues/213
@@ -50,7 +51,7 @@ Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Ends support for Python 2
-- All legacy IEX Developer API version 1.0 endpoints and references to such endpoints 
+- All legacy IEX Developer API version 1.0 endpoints and references to such endpoints
   have been removed
 - ``Stock.get_endpoints``, ``Stock.get_short_interest``, 
   ``Stock.get_short_ratio``, ``Stock.get_latest_eps``, ``Stock.get_eps_consensus``,
