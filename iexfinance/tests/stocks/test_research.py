@@ -1,4 +1,5 @@
 import pandas as pd
+import pytest
 
 from iexfinance.stocks import Stock
 
@@ -54,6 +55,7 @@ class TestStockResearch(object):
 
         assert isinstance(data, pd.DataFrame)
 
+    @pytest.mark.xfail(reason="Requires special permission to access.")
     def test_price_target(self):
         data = self.a.get_price_target()
 
