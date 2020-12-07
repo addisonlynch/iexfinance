@@ -167,7 +167,7 @@ class _IEXBase(object):
         params["token"] = self.token
         headers = {"project": "iexfinance/stable (Language=Python)"}
         for _ in range(self.retry_count + 1):
-            response = self.session.get(url=url, params=params)
+            response = self.session.get(url=url, params=params, headers=headers)
             logger.debug("REQUEST: %s" % response.request.url)
             logger.debug("RESPONSE: %s" % response.status_code)
             if response.status_code == requests.codes.ok:
