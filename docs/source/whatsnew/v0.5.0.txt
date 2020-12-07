@@ -31,6 +31,7 @@ Enhancements
 - Adds endpoint for advanced stats
 - Adds ``last`` and ``period`` parameters to ``Stock.get_estimates`` :issue:`213`
 - Adds endpoints for international symbol reference data (thanks :user:`anthonyvd`)
+- Adds endpoint for Sectors reference data (thanks :user:`YairMZ`)
 
 .. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 .. _GH213: https://github.com/addisonlynch/iexfinance/issues/213

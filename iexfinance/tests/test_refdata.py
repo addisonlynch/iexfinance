@@ -4,6 +4,7 @@ import pandas as pd
 
 from iexfinance.refdata import (
     get_symbols,
+    get_sectors,
     get_iex_symbols,
     get_us_trading_dates_holidays,
     get_region_symbols,
@@ -24,6 +25,10 @@ class TestRef(object):
 
     def test_get_symbols(self):
         d = get_symbols()
+        assert isinstance(d, pd.DataFrame)
+
+    def test_get_sectors(self):
+        d = get_sectors()
         assert isinstance(d, pd.DataFrame)
 
     def test_get_iex_symbols(self):
