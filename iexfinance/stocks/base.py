@@ -191,7 +191,6 @@ class Stock(_IEXBase):
         """
 
         def format(out):
-            return out
             if len(self.symbols) > 1:
                 out = {
                     (symbol, day["date"]): day for symbol in out for day in out[symbol]

@@ -25,6 +25,7 @@ def _sanitize_dates(start, end):
         Desired end date
     """
     today = dt.date.today()
+    today = to_datetime(today)
 
     if is_number(start):
         # regard int as year

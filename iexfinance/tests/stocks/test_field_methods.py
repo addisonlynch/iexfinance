@@ -56,19 +56,19 @@ class TestFieldMethods(object):
         data = self.a.get_company_name()
 
         assert isinstance(data, str)
-        assert data == "Apple, Inc."
+        assert data == "Apple Inc"
 
     def test_primary_exchange(self):
         data = self.a.get_primary_exchange()
 
         assert isinstance(data, str)
-        assert len(data) == 6
+        assert len(data) == 33
 
     def test_sector(self):
         data = self.a.get_sector()
 
         assert isinstance(data, str)
-        assert len(data) == 21
+        assert len(data) == 13
 
     def test_open(self):
         data = self.a.get_open()
