@@ -1,4 +1,5 @@
 from iexfinance.refdata.base import (
+    Sectors,
     Symbols,
     IEXSymbols,
     TradingDatesReader,

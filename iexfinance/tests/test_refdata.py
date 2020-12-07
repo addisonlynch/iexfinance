@@ -29,8 +29,7 @@ class TestRef(object):
 
     def test_get_sectors(self):
         d = get_sectors()
-        assert isinstance(d, list)
-        assert isinstance(d[0], dict)
+        assert isinstance(d, pd.DataFrame)
 
     def test_get_iex_symbols(self):
         d = get_iex_symbols()

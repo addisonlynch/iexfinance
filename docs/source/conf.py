@@ -180,4 +180,7 @@ texinfo_documents = [
 ]
 
 # extlinks
-extlinks = {"issue": ("https://github.com/addisonlynch/iexfinance/issues/%s", "GH")}
+extlinks = {
+    "issue": ("https://github.com/addisonlynch/iexfinance/issues/%s", "GH"),
+    "user": ("https://github.com/%s", ""),
+}

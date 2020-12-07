@@ -78,7 +78,6 @@ class IntlExchangeSymbols(ReferenceData):
 
 
 class Sectors(ReferenceData):
-
     @property
     def endpoint(self):
         return "sectors"
