@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Testing &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Testing &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Tutorial" href="tutorial.html"/>
-        <link rel="prev" title="Caching Queries" href="caching.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Caching Queries" href="caching.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -95,21 +90,26 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -121,11 +121,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#testing-documentation-dependencies">Testing &amp; Documentation Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sandbox-environment">Sandbox Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#local-testing">Local Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test-weighting">Test Weighting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-iexfinance.utils.exceptions">Exceptions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -133,13 +131,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -147,9 +146,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -170,7 +170,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Testing</li>
     
@@ -193,107 +193,86 @@
             
   <div class="section" id="testing">
 <span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Use of the <a class="reference internal" href="#testing-sandbox"><span class="std std-ref">Sandbox Environment</span></a> is <strong>required</strong> when running the test suite.</p>
+</div>
 <p>Unit and integration tests for iexfinance are handled by the
 <a class="reference external" href="https://docs.pytest.org/en/latest">pytest</a> platform.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Use of the <a class="reference internal" href="#testing-sandbox"><span class="std std-ref">Sandbox Environment</span></a> is <strong>required</strong> when running the test suite.</p>
-</div>
 <div class="section" id="testing-documentation-dependencies">
 <span id="testing-dependencies"></span><h2>Testing &amp; Documentation Dependencies<a class="headerlink" href="#testing-documentation-dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the test suite and linting the code &amp; documentation require Python 3.6 or above.</p>
+</div>
+<p>All testing dependencies can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-dev.txt</span></code>.</p>
 <p><strong>Testing</strong></p>
 <ul class="simple">
-<li>pytest</li>
-<li>pytest-runner</li>
-<li>flake8</li>
-<li>flake8-rst</li>
-<li>requests-cache</li>
-<li>six</li>
+<li><p>black</p></li>
+<li><p>codecov</p></li>
+<li><p>flake8</p></li>
+<li><p>flake8-bugbear</p></li>
+<li><p>pytest</p></li>
+<li><p>pytest-runner</p></li>
+<li><p>tox</p></li>
 </ul>
+<p>All documentation dependencies can be installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">docs/requirements.txt</span></code>.</p>
 <p><strong>Docs</strong></p>
 <ul class="simple">
-<li>sphinx</li>
-<li>sphinx-autobuild</li>
-<li>sphinx-rtd-theme</li>
-<li>sphinxcontrib-napoleon</li>
-<li>matplotlib</li>
-<li>ipython</li>
+<li><p>flake8-rst</p></li>
+<li><p>ipython</p></li>
+<li><p>matplotlib</p></li>
+<li><p>requests-cache</p></li>
+<li><p>sphinx</p></li>
+<li><p>sphinx-rtd-theme</p></li>
+<li><p>sphinxcontrib-napoleon</p></li>
+<li><p>sphinx-autobuild (optional)</p></li>
 </ul>
 </div>
 <div class="section" id="sandbox-environment">
 <span id="testing-sandbox"></span><h2>Sandbox Environment<a class="headerlink" href="#sandbox-environment" title="Permalink to this headline">¶</a></h2>
-<p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">iexcloud-sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
+<p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the “Viewing test data” toggler on the left side of the IEX Cloud console.</p>
+<p class="admonition-title">Note</p>
+<p>Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the <strong>Viewing test data</strong> toggler on the left side of the IEX Cloud console.</p>
 </div>
 </div>
 <div class="section" id="local-testing">
 <span id="testing-local-testing"></span><h2>Local Testing<a class="headerlink" href="#local-testing" title="Permalink to this headline">¶</a></h2>
-<p>We’ve provided the BASH script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> which is included in the
+<p>A BASH script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.</p>
-<p>Docs can be tested with <a class="reference external" href="https://www.sphinx-doc.org/en/stable">Sphinx</a> (with extensions napoleon and sphinx_rtd_theme)
+<p>The <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> documentation can be tested with <a class="reference external" href="https://www.sphinx-doc.org/en/stable">Sphinx</a> (with extensions napoleon and sphinx_rtd_theme)
 using the Makefile. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">livehtml</span></code> will serve the dev documentation site locally
 on 127.0.0.1:8000.</p>
 </div>
-<div class="section" id="test-weighting">
-<span id="testing-test-weighting"></span><h2>Test Weighting<a class="headerlink" href="#test-weighting" title="Permalink to this headline">¶</a></h2>
-<p>Many tests which have a data weighting of over <code class="docutils literal notranslate"><span class="pre">1000</span></code> total are marked
-<code class="docutils literal notranslate"><span class="pre">highweight</span></code>.</p>
-</div>
 <div class="section" id="module-iexfinance.utils.exceptions">
 <span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-iexfinance.utils.exceptions" title="Permalink to this headline">¶</a></h2>
-<dl class="exception">
+<dl class="py exception">
 <dt id="iexfinance.utils.exceptions.IEXAuthenticationError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXAuthenticationError</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXAuthenticationError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">iexfinance.utils.exceptions.</code><code class="sig-name descname">IEXAuthenticationError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXAuthenticationError" title="Permalink to this definition">¶</a></dt>
 <dd><p>This error is thrown when there is an authentication issue with an IEX
 cloud request.</p>
 </dd></dl>
 
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXEndpointError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXEndpointError</code><span class="sig-paren">(</span><em>endpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXEndpointError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid endpoint is specified in the custom
-endpoint lookup method</p>
-</dd></dl>
-
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXFieldError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXFieldError</code><span class="sig-paren">(</span><em>endpoint</em>, <em>field</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXFieldError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid field is specified in the custom
-endpoint lookup method</p>
-</dd></dl>
-
-<dl class="exception">
+<dl class="py exception">
 <dt id="iexfinance.utils.exceptions.IEXQueryError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXQueryError</code><a class="headerlink" href="#iexfinance.utils.exceptions.IEXQueryError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">iexfinance.utils.exceptions.</code><code class="sig-name descname">IEXQueryError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status</span></em>, <em class="sig-param"><span class="n">response</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXQueryError" title="Permalink to this definition">¶</a></dt>
 <dd><p>This error is thrown when an error occurs with the query to IEX, be it a
 network problem or an invalid query.</p>
 </dd></dl>
 
-<dl class="exception">
-<dt id="iexfinance.utils.exceptions.IEXSymbolError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">IEXSymbolError</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.IEXSymbolError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This error is thrown when an invalid symbol is given.</p>
-</dd></dl>
-
-<dl class="exception">
+<dl class="py exception">
 <dt id="iexfinance.utils.exceptions.ImmediateDeprecationError">
-<em class="property">exception </em><code class="descclassname">iexfinance.utils.exceptions.</code><code class="descname">ImmediateDeprecationError</code><a class="headerlink" href="#iexfinance.utils.exceptions.ImmediateDeprecationError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">iexfinance.utils.exceptions.</code><code class="sig-name descname">ImmediateDeprecationError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">endpoint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.utils.exceptions.ImmediateDeprecationError" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 </div>
-<div class="section" id="release-procedure">
-<span id="testing-releases"></span><h1>Release Procedure<a class="headerlink" href="#release-procedure" title="Permalink to this headline">¶</a></h1>
-</div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -302,7 +281,7 @@ network problem or an invalid query.</p>
         <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="caching.html" class="btn btn-neutral" title="Caching Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="caching.html" class="btn btn-neutral float-left" title="Caching Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -311,11 +290,19 @@ network problem or an invalid query.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -327,37 +314,15 @@ network problem or an invalid query.</p>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

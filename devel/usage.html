@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Common Usage Examples &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Common Usage Examples &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Account" href="account.html"/>
-        <link rel="prev" title="Sandbox Environment" href="sandbox.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stocks / Equities" href="stocks.html" />
+    <link rel="prev" title="Sandbox Environment" href="sandbox.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -95,7 +90,6 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
@@ -118,15 +112,21 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -135,7 +135,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -143,13 +142,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -157,9 +157,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -180,7 +181,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Common Usage Examples</li>
     
@@ -211,26 +212,26 @@ including quotes, historical prices, dividends, and much more.</p>
 <p>The iexfinance codebase and documentation are structured in a way that emulates much of the <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud Documentation</a> for readability and ease of use.</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#usage-account"><span class="std std-ref">Account</span></a></li>
-<li><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></li>
-<li><a class="reference internal" href="#usage-refdata"><span class="std std-ref">Reference Data</span></a></li>
-<li><a class="reference internal" href="#usage-iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></li>
-<li><a class="reference internal" href="#usage-apistatus"><span class="std std-ref">API System Metadata</span></a></li>
+<li><p><a class="reference internal" href="#usage-account"><span class="std std-ref">Account</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-stocks"><span class="std std-ref">Stocks</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-refdata"><span class="std std-ref">Reference Data</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p></li>
+<li><p><a class="reference internal" href="#usage-apistatus"><span class="std std-ref">API System Metadata</span></a></p></li>
 </ul>
 </div></blockquote>
 <p>These modules provide classes and functions to execute queries to IEX Cloud.</p>
 <div class="section" id="account">
 <span id="usage-account"></span><h2>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="account.html#account"><span class="std std-ref">Account</span></a></p>
 </div>
 </div>
 <div class="section" id="stocks">
 <span id="usage-stocks"></span><h2>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">For more information, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks</span></a>.</p>
+<p class="admonition-title">See also</p>
+<p>For more information, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks</span></a>.</p>
 </div>
 </div>
 <div class="section" id="real-time-quotes">
@@ -243,8 +244,8 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">        TSLA</span>
-<span class="go">TSLA  228.25</span>
+<span class="go">         TSLA</span>
+<span class="go">price  615.35</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -253,9 +254,8 @@ etc.):</p>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">        AAPL    TSLA</span>
-<span class="go">TSLA  201.29  233.07</span>
-<span class="go">AAPL  201.29  233.07</span>
+<span class="go">         TSLA    AAPL</span>
+<span class="go">price  600.86  126.83</span>
 </pre></div>
 </div>
 </div>
@@ -298,320 +298,18 @@ current day (default is current date):</p>
 
 <span class="gp">In [15]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
 <span class="gh">Out[15]: </span><span class="go"></span>
-<span class="go">                     average  changeOverTime    close        date     high  \</span>
-<span class="go">2019-05-10 09:30:00  205.239        0.000000  205.343  2019-05-10  202.908   </span>
-<span class="go">2019-05-10 09:31:00  201.268        0.002565  203.000  2019-05-10  204.570   </span>
-<span class="go">2019-05-10 09:32:00  202.198        0.001320  198.630  2019-05-10  203.810   </span>
-<span class="go">2019-05-10 09:33:00  204.935        0.003448  200.150  2019-05-10  202.960   </span>
-<span class="go">2019-05-10 09:34:00  205.314        0.002427  198.880  2019-05-10  204.050   </span>
-<span class="go">2019-05-10 09:35:00  204.880       -0.000874  200.613  2019-05-10  200.840   </span>
-<span class="go">2019-05-10 09:36:00  198.489       -0.000265  202.080  2019-05-10  198.110   </span>
-<span class="go">2019-05-10 09:37:00  205.023        0.000224  207.210  2019-05-10  204.980   </span>
-<span class="go">2019-05-10 09:38:00  200.070        0.001804  201.700  2019-05-10  205.200   </span>
-<span class="go">2019-05-10 09:39:00  204.638        0.003332  202.220  2019-05-10  203.990   </span>
-<span class="go">2019-05-10 09:40:00  203.600        0.004336  206.300  2019-05-10  206.140   </span>
-<span class="go">2019-05-10 09:41:00  199.272        0.004635  198.990  2019-05-10  200.400   </span>
-<span class="go">2019-05-10 09:42:00  204.453        0.004492  202.700  2019-05-10  203.230   </span>
-<span class="go">2019-05-10 09:43:00  204.603        0.003769  207.200  2019-05-10  202.120   </span>
-<span class="go">2019-05-10 09:44:00  201.092        0.002057  202.230  2019-05-10  204.250   </span>
-<span class="go">2019-05-10 09:45:00  207.567        0.002658  206.400  2019-05-10  201.000   </span>
-<span class="go">2019-05-10 09:46:00  203.415        0.003392  202.010  2019-05-10  208.260   </span>
-<span class="go">2019-05-10 09:47:00  203.120        0.003347  205.900  2019-05-10  200.103   </span>
-<span class="go">2019-05-10 09:48:00  206.538        0.003373  202.600  2019-05-10  200.300   </span>
-<span class="go">2019-05-10 09:49:00  201.742        0.002569  201.260  2019-05-10  207.050   </span>
-<span class="go">2019-05-10 09:50:00  206.671        0.000663  203.600  2019-05-10  204.870   </span>
-<span class="go">2019-05-10 09:51:00  206.084       -0.000876  202.540  2019-05-10  201.400   </span>
-<span class="go">2019-05-10 09:52:00  204.077       -0.001077  201.570  2019-05-10  206.890   </span>
-<span class="go">2019-05-10 09:53:00  199.233       -0.001110  199.110  2019-05-10  204.760   </span>
-<span class="go">2019-05-10 09:54:00  198.540       -0.001974  201.800  2019-05-10  203.530   </span>
-<span class="go">2019-05-10 09:55:00  205.614       -0.002022  199.610  2019-05-10  198.259   </span>
-<span class="go">2019-05-10 09:56:00  204.729       -0.002272  198.890  2019-05-10  200.270   </span>
-<span class="go">2019-05-10 09:57:00  207.074       -0.001352  197.810  2019-05-10  201.900   </span>
-<span class="go">2019-05-10 09:58:00  206.463       -0.000940  206.605  2019-05-10  198.463   </span>
-<span class="go">2019-05-10 09:59:00  205.417       -0.001342  202.860  2019-05-10  201.997   </span>
-<span class="go">...                      ...             ...      ...         ...      ...   </span>
-<span class="go">2019-05-10 15:30:00  205.875        0.000948  201.870  2019-05-10  201.850   </span>
-<span class="go">2019-05-10 15:31:00  206.845        0.000487  202.800  2019-05-10  201.490   </span>
-<span class="go">2019-05-10 15:32:00  201.249        0.000730  200.900  2019-05-10  201.510   </span>
-<span class="go">2019-05-10 15:33:00  201.318        0.000510  204.570  2019-05-10  205.300   </span>
-<span class="go">2019-05-10 15:34:00  198.612       -0.000858  201.090  2019-05-10  202.900   </span>
-<span class="go">2019-05-10 15:35:00  200.923       -0.002972  206.880  2019-05-10  205.740   </span>
-<span class="go">2019-05-10 15:36:00  199.323       -0.003365  198.030  2019-05-10  199.590   </span>
-<span class="go">2019-05-10 15:37:00  198.273       -0.003830  203.800  2019-05-10  200.020   </span>
-<span class="go">2019-05-10 15:38:00  198.237       -0.003631  206.840  2019-05-10  200.180   </span>
-<span class="go">2019-05-10 15:39:00  198.778       -0.004597  198.220  2019-05-10  204.010   </span>
-<span class="go">2019-05-10 15:40:00  198.117       -0.005868  206.220  2019-05-10  206.150   </span>
-<span class="go">2019-05-10 15:41:00  205.246       -0.006152  202.200  2019-05-10  196.900   </span>
-<span class="go">2019-05-10 15:42:00  202.419       -0.005575  204.950  2019-05-10  202.240   </span>
-<span class="go">2019-05-10 15:43:00  201.636       -0.006447  200.590  2019-05-10  201.400   </span>
-<span class="go">2019-05-10 15:44:00  202.766       -0.005658  197.450  2019-05-10  198.160   </span>
-<span class="go">2019-05-10 15:45:00  206.192       -0.004745  199.740  2019-05-10  205.960   </span>
-<span class="go">2019-05-10 15:46:00  198.292       -0.004163  199.450  2019-05-10  201.190   </span>
-<span class="go">2019-05-10 15:47:00  201.706       -0.003875  205.730  2019-05-10  201.280   </span>
-<span class="go">2019-05-10 15:48:00  200.818       -0.005662  201.270  2019-05-10  205.030   </span>
-<span class="go">2019-05-10 15:49:00  198.298       -0.006690  203.760  2019-05-10  198.880   </span>
-<span class="go">2019-05-10 15:50:00  205.852       -0.005963  205.070  2019-05-10  198.100   </span>
-<span class="go">2019-05-10 15:51:00  205.592       -0.006518  204.200  2019-05-10  201.970   </span>
-<span class="go">2019-05-10 15:52:00  198.718       -0.006521  198.200  2019-05-10  200.630   </span>
-<span class="go">2019-05-10 15:53:00  205.725       -0.006009  203.690  2019-05-10  199.310   </span>
-<span class="go">2019-05-10 15:54:00  198.699       -0.006285  199.900  2019-05-10  199.870   </span>
-<span class="go">2019-05-10 15:55:00  197.100       -0.005309  205.280  2019-05-10  198.266   </span>
-<span class="go">2019-05-10 15:56:00  199.258       -0.005066  206.480  2019-05-10  199.000   </span>
-<span class="go">2019-05-10 15:57:00  199.621       -0.005616  202.790  2019-05-10  198.670   </span>
-<span class="go">2019-05-10 15:58:00  206.580       -0.005596  201.000  2019-05-10  199.300   </span>
-<span class="go">2019-05-10 15:59:00  202.175       -0.003757  199.000  2019-05-10  200.880   </span>
-
-<span class="go">                        label      low  marketAverage  marketChangeOverTime  \</span>
-<span class="go">2019-05-10 09:30:00  09:30 AM  200.190        204.549              0.000000   </span>
-<span class="go">2019-05-10 09:31:00  09:31 AM  200.860        202.510              0.002975   </span>
-<span class="go">2019-05-10 09:32:00  09:32 AM  207.200        202.058              0.002232   </span>
-<span class="go">2019-05-10 09:33:00  09:33 AM  200.050        203.457              0.004449   </span>
-<span class="go">2019-05-10 09:34:00  09:34 AM  205.750        203.227              0.003704   </span>
-<span class="go">2019-05-10 09:35:00  09:35 AM  198.600        205.187              0.000611   </span>
-<span class="go">2019-05-10 09:36:00  09:36 AM  205.500        203.998              0.000695   </span>
-<span class="go">2019-05-10 09:37:00  09:37 AM  201.380        199.905              0.001418   </span>
-<span class="go">2019-05-10 09:38:00  09:38 AM  202.050        198.444              0.003402   </span>
-<span class="go">2019-05-10 09:39:00  09:39 AM  207.689        200.794              0.004296   </span>
-<span class="go">2019-05-10 09:40:00  09:40 AM  205.750        200.653              0.005577   </span>
-<span class="go">2019-05-10 09:41:00  09:41 AM  207.660        202.753              0.005716   </span>
-<span class="go">2019-05-10 09:42:00  09:42 AM  203.610        202.552              0.005627   </span>
-<span class="go">2019-05-10 09:43:00  09:43 AM  207.280        206.543              0.005055   </span>
-<span class="go">2019-05-10 09:44:00  09:44 AM  202.160        206.391              0.003333   </span>
-<span class="go">2019-05-10 09:45:00  09:45 AM  199.600        206.564              0.003806   </span>
-<span class="go">2019-05-10 09:46:00  09:46 AM  203.940        200.602              0.004576   </span>
-<span class="go">2019-05-10 09:47:00  09:47 AM  202.320        205.810              0.004309   </span>
-<span class="go">2019-05-10 09:48:00  09:48 AM  207.170        203.902              0.004429   </span>
-<span class="go">2019-05-10 09:49:00  09:49 AM  198.820        208.033              0.003446   </span>
-<span class="go">2019-05-10 09:50:00  09:50 AM  205.000        207.131              0.001811   </span>
-<span class="go">2019-05-10 09:51:00  09:51 AM  203.570        201.860              0.000203   </span>
-<span class="go">2019-05-10 09:52:00  09:52 AM  204.813        206.942              0.000026   </span>
-<span class="go">2019-05-10 09:53:00  09:53 AM  201.840        198.317             -0.000260   </span>
-<span class="go">2019-05-10 09:54:00  09:54 AM  204.890        200.799             -0.001000   </span>
-<span class="go">2019-05-10 09:55:00  09:55 AM  202.542        199.661             -0.000786   </span>
-<span class="go">2019-05-10 09:56:00  09:56 AM  198.200        200.120             -0.001202   </span>
-<span class="go">2019-05-10 09:57:00  09:57 AM  202.580        204.097             -0.000342   </span>
-<span class="go">2019-05-10 09:58:00  09:58 AM  199.200        199.740             -0.000015   </span>
-<span class="go">2019-05-10 09:59:00  09:59 AM  206.880        204.549             -0.000147   </span>
-<span class="go">...                       ...      ...            ...                   ...   </span>
-<span class="go">2019-05-10 15:30:00   3:30 PM  203.270        207.089              0.002119   </span>
-<span class="go">2019-05-10 15:31:00   3:31 PM  205.600        207.032              0.001634   </span>
-<span class="go">2019-05-10 15:32:00   3:32 PM  205.000        206.342              0.001554   </span>
-<span class="go">2019-05-10 15:33:00   3:33 PM  203.340        205.506              0.001627   </span>
-<span class="go">2019-05-10 15:34:00   3:34 PM  203.900        200.768              0.000079   </span>
-<span class="go">2019-05-10 15:35:00   3:35 PM  197.460        199.341             -0.001963   </span>
-<span class="go">2019-05-10 15:36:00   3:36 PM  202.480        198.523             -0.002294   </span>
-<span class="go">2019-05-10 15:37:00   3:37 PM  198.200        203.595             -0.002805   </span>
-<span class="go">2019-05-10 15:38:00   3:38 PM  197.940        203.952             -0.002502   </span>
-<span class="go">2019-05-10 15:39:00   3:39 PM  201.460        206.760             -0.003351   </span>
-<span class="go">2019-05-10 15:40:00   3:40 PM  204.550        197.660             -0.004637   </span>
-<span class="go">2019-05-10 15:41:00   3:41 PM  198.310        204.066             -0.005030   </span>
-<span class="go">2019-05-10 15:42:00   3:42 PM  200.160        199.242             -0.004485   </span>
-<span class="go">2019-05-10 15:43:00   3:43 PM  196.860        206.076             -0.005445   </span>
-<span class="go">2019-05-10 15:44:00   3:44 PM  201.580        205.971             -0.004040   </span>
-<span class="go">2019-05-10 15:45:00   3:45 PM  205.330        201.388             -0.003676   </span>
-<span class="go">2019-05-10 15:46:00   3:46 PM  205.720        205.750             -0.003222   </span>
-<span class="go">2019-05-10 15:47:00   3:47 PM  200.360        201.950             -0.002529   </span>
-<span class="go">2019-05-10 15:48:00   3:48 PM  200.530        199.977             -0.004337   </span>
-<span class="go">2019-05-10 15:49:00   3:49 PM  202.700        205.072             -0.005508   </span>
-<span class="go">2019-05-10 15:50:00   3:50 PM  204.430        205.588             -0.004902   </span>
-<span class="go">2019-05-10 15:51:00   3:51 PM  205.760        204.695             -0.005560   </span>
-<span class="go">2019-05-10 15:52:00   3:52 PM  201.550        199.983             -0.005434   </span>
-<span class="go">2019-05-10 15:53:00   3:53 PM  205.230        200.548             -0.004944   </span>
-<span class="go">2019-05-10 15:54:00   3:54 PM  198.270        206.049             -0.005032   </span>
-<span class="go">2019-05-10 15:55:00   3:55 PM  204.480        203.976             -0.004300   </span>
-<span class="go">2019-05-10 15:56:00   3:56 PM  201.910        206.100             -0.003932   </span>
-<span class="go">2019-05-10 15:57:00   3:57 PM  198.030        199.477             -0.004448   </span>
-<span class="go">2019-05-10 15:58:00   3:58 PM  198.040        202.463             -0.004335   </span>
-<span class="go">2019-05-10 15:59:00   3:59 PM  200.970        199.978             -0.002639   </span>
-
-<span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
-<span class="go">2019-05-10 09:30:00      201.412     199.170    200.120    1.318723e+08   </span>
-<span class="go">2019-05-10 09:31:00      198.000     202.360    207.200    4.039109e+07   </span>
-<span class="go">2019-05-10 09:32:00      200.910     203.761    207.450    3.878891e+07   </span>
-<span class="go">2019-05-10 09:33:00      201.940     200.800    200.180    3.855812e+07   </span>
-<span class="go">2019-05-10 09:34:00      203.534     199.130    207.070    2.713843e+07   </span>
-<span class="go">2019-05-10 09:35:00      200.058     206.700    204.670    4.687891e+07   </span>
-<span class="go">2019-05-10 09:36:00      200.623     206.950    204.095    2.177548e+07   </span>
-<span class="go">2019-05-10 09:37:00      200.069     200.080    205.590    2.623677e+07   </span>
-<span class="go">2019-05-10 09:38:00      202.190     199.508    199.939    3.072288e+07   </span>
-<span class="go">2019-05-10 09:39:00      207.290     202.830    200.050    2.155480e+07   </span>
-<span class="go">2019-05-10 09:40:00      203.080     202.150    200.000    2.090204e+07   </span>
-<span class="go">2019-05-10 09:41:00      202.470     199.870    202.400    1.927954e+07   </span>
-<span class="go">2019-05-10 09:42:00      208.100     206.080    204.450    1.901843e+07   </span>
-<span class="go">2019-05-10 09:43:00      203.800     202.200    200.826    2.264884e+07   </span>
-<span class="go">2019-05-10 09:44:00      206.510     199.570    204.170    1.871288e+07   </span>
-<span class="go">2019-05-10 09:45:00      206.210     207.800    200.460    1.866965e+07   </span>
-<span class="go">2019-05-10 09:46:00      201.370     205.250    204.800    1.589890e+07   </span>
-<span class="go">2019-05-10 09:47:00      202.620     207.220    202.581    1.288411e+07   </span>
-<span class="go">2019-05-10 09:48:00      201.710     202.337    200.270    1.225313e+07   </span>
-<span class="go">2019-05-10 09:49:00      200.680     201.762    205.040    1.597337e+07   </span>
-<span class="go">2019-05-10 09:50:00      205.480     207.800    206.370    2.769234e+07   </span>
-<span class="go">2019-05-10 09:51:00      206.920     203.600    202.220    2.174955e+07   </span>
-<span class="go">2019-05-10 09:52:00      198.650     204.800    201.190    1.239951e+07   </span>
-<span class="go">2019-05-10 09:53:00      203.900     207.630    204.200    2.871896e+07   </span>
-<span class="go">2019-05-10 09:54:00      200.330     206.250    204.730    1.771830e+07   </span>
-<span class="go">2019-05-10 09:55:00      204.250     201.670    204.430    2.234796e+07   </span>
-<span class="go">2019-05-10 09:56:00      197.800     197.970    207.030    2.366918e+07   </span>
-<span class="go">2019-05-10 09:57:00      206.890     199.640    204.660    2.561592e+07   </span>
-<span class="go">2019-05-10 09:58:00      200.907     201.210    203.850    2.323213e+07   </span>
-<span class="go">2019-05-10 09:59:00      207.200     204.880    200.950    1.690132e+07   </span>
-<span class="go">...                          ...         ...        ...             ...   </span>
-<span class="go">2019-05-10 15:30:00      204.000     198.610    199.840    3.252642e+07   </span>
-<span class="go">2019-05-10 15:31:00      204.060     205.360    200.460    1.964017e+07   </span>
-<span class="go">2019-05-10 15:32:00      205.520     205.280    206.832    1.714839e+07   </span>
-<span class="go">2019-05-10 15:33:00      206.460     201.820    204.450    1.721577e+07   </span>
-<span class="go">2019-05-10 15:34:00      199.300     200.950    206.670    2.742127e+07   </span>
-<span class="go">2019-05-10 15:35:00      199.380     199.470    203.320    2.390232e+07   </span>
-<span class="go">2019-05-10 15:36:00      206.060     199.500    201.160    1.979215e+07   </span>
-<span class="go">2019-05-10 15:37:00      198.123     201.890    204.930    1.861976e+07   </span>
-<span class="go">2019-05-10 15:38:00      199.350     199.600    199.510    1.009904e+07   </span>
-<span class="go">2019-05-10 15:39:00      203.460     206.760    202.960    1.888501e+07   </span>
-<span class="go">2019-05-10 15:40:00      204.093     206.540    204.870    2.114221e+07   </span>
-<span class="go">2019-05-10 15:41:00      200.600     203.170    203.360    2.547636e+07   </span>
-<span class="go">2019-05-10 15:42:00      200.380     203.370    201.160    1.335028e+07   </span>
-<span class="go">2019-05-10 15:43:00      204.455     198.800    201.240    1.162194e+07   </span>
-<span class="go">2019-05-10 15:44:00      206.710     201.330    205.793    1.609622e+07   </span>
-<span class="go">2019-05-10 15:45:00      204.169     197.600    199.580    1.696449e+07   </span>
-<span class="go">2019-05-10 15:46:00      202.180     203.910    206.757    1.644303e+07   </span>
-<span class="go">2019-05-10 15:47:00      206.510     199.110    203.600    1.685901e+07   </span>
-<span class="go">2019-05-10 15:48:00      202.470     199.580    205.750    2.238961e+07   </span>
-<span class="go">2019-05-10 15:49:00      203.070     202.740    199.360    2.243540e+07   </span>
-<span class="go">2019-05-10 15:50:00      202.268     203.350    204.550    1.813275e+07   </span>
-<span class="go">2019-05-10 15:51:00      196.824     204.430    205.022    1.574421e+07   </span>
-<span class="go">2019-05-10 15:52:00      198.410     205.708    201.650    1.597782e+07   </span>
-<span class="go">2019-05-10 15:53:00      206.133     201.770    203.430    2.196822e+07   </span>
-<span class="go">2019-05-10 15:54:00      201.200     202.540    199.857    3.539445e+07   </span>
-<span class="go">2019-05-10 15:55:00      197.710     201.540    200.720    2.953320e+07   </span>
-<span class="go">2019-05-10 15:56:00      205.450     197.220    205.990    2.454914e+07   </span>
-<span class="go">2019-05-10 15:57:00      200.740     200.150    200.250    2.048456e+07   </span>
-<span class="go">2019-05-10 15:58:00      197.950     201.150    204.240    2.548295e+07   </span>
-<span class="go">2019-05-10 15:59:00      206.800     201.100    198.340    7.685399e+07   </span>
-
-<span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
-<span class="go">2019-05-10 09:30:00                  1568     203.701        668040   </span>
-<span class="go">2019-05-10 09:31:00                  1133     205.200        206543   </span>
-<span class="go">2019-05-10 09:32:00                  1043     205.478        191466   </span>
-<span class="go">2019-05-10 09:33:00                  1051     206.246        191261   </span>
-<span class="go">2019-05-10 09:34:00                   923     200.040        137697   </span>
-<span class="go">2019-05-10 09:35:00                  1286     207.800        229312   </span>
-<span class="go">2019-05-10 09:36:00                   555     202.601        111169   </span>
-<span class="go">2019-05-10 09:37:00                   691     198.910        134472   </span>
-<span class="go">2019-05-10 09:38:00                   762     207.080        156171   </span>
-<span class="go">2019-05-10 09:39:00                   727     204.690        104948   </span>
-<span class="go">2019-05-10 09:40:00                   649     206.670        106709   </span>
-<span class="go">2019-05-10 09:41:00                   516     206.610         97017   </span>
-<span class="go">2019-05-10 09:42:00                   489     202.050         97658   </span>
-<span class="go">2019-05-10 09:43:00                   643     203.200        117375   </span>
-<span class="go">2019-05-10 09:44:00                   628     204.080         98465   </span>
-<span class="go">2019-05-10 09:45:00                   598     199.540         96511   </span>
-<span class="go">2019-05-10 09:46:00                   470     201.510         81318   </span>
-<span class="go">2019-05-10 09:47:00                   408     207.900         63802   </span>
-<span class="go">2019-05-10 09:48:00                   412     206.190         61512   </span>
-<span class="go">2019-05-10 09:49:00                   461     207.050         80047   </span>
-<span class="go">2019-05-10 09:50:00                   777     206.190        139373   </span>
-<span class="go">2019-05-10 09:51:00                   637     202.182        108794   </span>
-<span class="go">2019-05-10 09:52:00                   391     205.509         62672   </span>
-<span class="go">2019-05-10 09:53:00                   679     201.020        141843   </span>
-<span class="go">2019-05-10 09:54:00                   523     205.800         92777   </span>
-<span class="go">2019-05-10 09:55:00                   648     202.240        115700   </span>
-<span class="go">2019-05-10 09:56:00                   663     199.300        121544   </span>
-<span class="go">2019-05-10 09:57:00                   780     197.600        131407   </span>
-<span class="go">2019-05-10 09:58:00                   588     205.050        115054   </span>
-<span class="go">2019-05-10 09:59:00                   507     202.810         87896   </span>
-<span class="go">...                                   ...         ...           ...   </span>
-<span class="go">2019-05-10 15:30:00                   959     204.320        164390   </span>
-<span class="go">2019-05-10 15:31:00                   629     200.690         99740   </span>
-<span class="go">2019-05-10 15:32:00                   512     199.873         84979   </span>
-<span class="go">2019-05-10 15:33:00                   529     207.960         85900   </span>
-<span class="go">2019-05-10 15:34:00                   758     204.630        136066   </span>
-<span class="go">2019-05-10 15:35:00                   620     204.820        121154   </span>
-<span class="go">2019-05-10 15:36:00                   590     202.740        101918   </span>
-<span class="go">2019-05-10 15:37:00                   596     202.450         94058   </span>
-<span class="go">2019-05-10 15:38:00                   351     201.550         51627   </span>
-<span class="go">2019-05-10 15:39:00                   462     199.820         92760   </span>
-<span class="go">2019-05-10 15:40:00                   696     204.620        107252   </span>
-<span class="go">2019-05-10 15:41:00                   493     199.000        129661   </span>
-<span class="go">2019-05-10 15:42:00                   399     205.844         65474   </span>
-<span class="go">2019-05-10 15:43:00                   378     202.390         61092   </span>
-<span class="go">2019-05-10 15:44:00                   453     197.950         81140   </span>
-<span class="go">2019-05-10 15:45:00                   412     200.420         88334   </span>
-<span class="go">2019-05-10 15:46:00                   348     206.369         80344   </span>
-<span class="go">2019-05-10 15:47:00                   453     204.319         86617   </span>
-<span class="go">2019-05-10 15:48:00                   742     206.080        114646   </span>
-<span class="go">2019-05-10 15:49:00                   680     200.050        113916   </span>
-<span class="go">2019-05-10 15:50:00                   534     200.280         95333   </span>
-<span class="go">2019-05-10 15:51:00                   483     203.900         77548   </span>
-<span class="go">2019-05-10 15:52:00                   554     200.330         84325   </span>
-<span class="go">2019-05-10 15:53:00                   691     200.540        107196   </span>
-<span class="go">2019-05-10 15:54:00                  1385     203.060        186366   </span>
-<span class="go">2019-05-10 15:55:00                   995     206.100        153961   </span>
-<span class="go">2019-05-10 15:56:00                   905     197.687        124558   </span>
-<span class="go">2019-05-10 15:57:00                   698     204.220        102719   </span>
-<span class="go">2019-05-10 15:58:00                   809     200.990        125054   </span>
-<span class="go">2019-05-10 15:59:00                  2371     204.843        391004   </span>
-
-<span class="go">                        notional  numberOfTrades     open  volume  </span>
-<span class="go">2019-05-10 09:30:00  5104524.696             144  202.302   26412  </span>
-<span class="go">2019-05-10 09:31:00  2013281.906              72  205.605   10176  </span>
-<span class="go">2019-05-10 09:32:00  2250170.614              61  200.280   11861  </span>
-<span class="go">2019-05-10 09:33:00  3517190.530             124  207.789   17639  </span>
-<span class="go">2019-05-10 09:34:00  2533609.090              83  202.080   12669  </span>
-<span class="go">2019-05-10 09:35:00  3007259.388             109  200.890   15148  </span>
-<span class="go">2019-05-10 09:36:00  1022947.380              34  207.320    5112  </span>
-<span class="go">2019-05-10 09:37:00  1242106.660              51  198.200    6056  </span>
-<span class="go">2019-05-10 09:38:00  1023009.020              37  201.620    5058  </span>
-<span class="go">2019-05-10 09:39:00   622764.828              40  200.680    3209  </span>
-<span class="go">2019-05-10 09:40:00   474805.581              30  206.180    2376  </span>
-<span class="go">2019-05-10 09:41:00   384651.970              22  206.530    1945  </span>
-<span class="go">2019-05-10 09:42:00   763777.260              41  200.610    3872  </span>
-<span class="go">2019-05-10 09:43:00   434229.222              24  206.000    2178  </span>
-<span class="go">2019-05-10 09:44:00   583137.030              39  198.480    2992  </span>
-<span class="go">2019-05-10 09:45:00   516049.450              24  199.679    2681  </span>
-<span class="go">2019-05-10 09:46:00   718461.790              38  206.776    3738  </span>
-<span class="go">2019-05-10 09:47:00   328193.350              21  199.230    1656  </span>
-<span class="go">2019-05-10 09:48:00   403332.198              24  202.120    2012  </span>
-<span class="go">2019-05-10 09:49:00   407767.160              24  206.640    2019  </span>
-<span class="go">2019-05-10 09:50:00  1394017.800              55  200.030    7102  </span>
-<span class="go">2019-05-10 09:51:00  1628546.000              57  204.560    8279  </span>
-<span class="go">2019-05-10 09:52:00   753665.040              33  198.550    3754  </span>
-<span class="go">2019-05-10 09:53:00  3055387.996              74  205.490   15470  </span>
-<span class="go">2019-05-10 09:54:00  2438514.760              55  204.410   12283  </span>
-<span class="go">2019-05-10 09:55:00  3093468.771              56  202.170   16007  </span>
-<span class="go">2019-05-10 09:56:00   643501.380              37  200.780    3213  </span>
-<span class="go">2019-05-10 09:57:00   551769.710              28  197.840    2736  </span>
-<span class="go">2019-05-10 09:58:00  1281990.856              41  206.250    6282  </span>
-<span class="go">2019-05-10 09:59:00   774133.610              36  200.920    3833  </span>
-<span class="go">...                          ...             ...      ...     ...  </span>
-<span class="go">2019-05-10 15:30:00   714094.080              47  205.220    3611  </span>
-<span class="go">2019-05-10 15:31:00   575148.250              32  205.600    2958  </span>
-<span class="go">2019-05-10 15:32:00   886393.470              49  199.330    4487  </span>
-<span class="go">2019-05-10 15:33:00   755012.470              45  200.200    3833  </span>
-<span class="go">2019-05-10 15:34:00  1037510.510              43  204.760    5236  </span>
-<span class="go">2019-05-10 15:35:00   597320.910              36  202.230    3021  </span>
-<span class="go">2019-05-10 15:36:00   598519.000              35  197.400    3064  </span>
-<span class="go">2019-05-10 15:37:00   789488.990              46  197.590    3936  </span>
-<span class="go">2019-05-10 15:38:00   858782.900              55  198.660    4320  </span>
-<span class="go">2019-05-10 15:39:00   499634.420              30  199.480    2526  </span>
-<span class="go">2019-05-10 15:40:00   983311.210              56  204.779    5144  </span>
-<span class="go">2019-05-10 15:41:00   531707.470              32  205.020    2784  </span>
-<span class="go">2019-05-10 15:42:00   655926.900              35  198.690    3326  </span>
-<span class="go">2019-05-10 15:43:00   647463.550              38  205.410    3276  </span>
-<span class="go">2019-05-10 15:44:00   610853.750              37  205.370    3194  </span>
-<span class="go">2019-05-10 15:45:00   505248.310              34  205.650    2643  </span>
-<span class="go">2019-05-10 15:46:00   422632.360              24  200.100    2119  </span>
-<span class="go">2019-05-10 15:47:00   714067.160              47  201.350    3743  </span>
-<span class="go">2019-05-10 15:48:00  1115881.510              51  206.040    5821  </span>
-<span class="go">2019-05-10 15:49:00   871335.830              46  200.520    4367  </span>
-<span class="go">2019-05-10 15:50:00   429144.120              28  205.740    2209  </span>
-<span class="go">2019-05-10 15:51:00   480801.189              29  199.430    2447  </span>
-<span class="go">2019-05-10 15:52:00   547808.710              29  201.130    2735  </span>
-<span class="go">2019-05-10 15:53:00   640935.467              41  202.710    3357  </span>
-<span class="go">2019-05-10 15:54:00  1346637.290              82  205.290    6950  </span>
-<span class="go">2019-05-10 15:55:00   586598.930              37  202.510    3038  </span>
-<span class="go">2019-05-10 15:56:00  1589261.618              85  198.230    7816  </span>
-<span class="go">2019-05-10 15:57:00   955727.700              47  201.350    4709  </span>
-<span class="go">2019-05-10 15:58:00  1313594.800              70  199.276    6711  </span>
-<span class="go">2019-05-10 15:59:00  3734232.550             176  197.500   18603  </span>
+<span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
+<span class="go">2019-05-10 09:30:00  2019-05-10  09:30 AM  ...        0.000000              0.000000</span>
+<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002552              0.002949</span>
+<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001303              0.002152</span>
+<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003475              0.004633</span>
+<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002364              0.003632</span>
+<span class="go">...                         ...       ...  ...             ...                   ...</span>
+<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005336             -0.004244</span>
+<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005011             -0.003924</span>
+<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005700             -0.004509</span>
+<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005554             -0.004503</span>
+<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003839             -0.002650</span>
 
 <span class="go">[390 rows x 20 columns]</span>
 </pre></div>
@@ -619,40 +317,14 @@ current day (default is current date):</p>
 <p>or for a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> indexed by each minute:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[16]: </span><span class="go"></span>
-<span class="go">                     average  changeOverTime   close        date     high  \</span>
-<span class="go">2019-06-19 09:30:00  205.786        0.000000  202.02  2019-06-19  199.882   </span>
-<span class="go">2019-06-19 09:31:00  207.078       -0.000363  204.27  2019-06-19  207.320   </span>
-<span class="go">2019-06-19 09:32:00  202.870       -0.001597  199.33  2019-06-19  204.220   </span>
-<span class="go">2019-06-19 09:33:00  207.700       -0.001036  201.58  2019-06-19  201.560   </span>
-<span class="go">2019-06-19 09:34:00  203.162       -0.002645  202.55  2019-06-19  200.060   </span>
+<span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
+<span class="go">2020-12-04 09:30:00  2020-12-04  09:30 AM  ...        0.000000              0.000000</span>
+<span class="go">2020-12-04 09:31:00  2020-12-04  09:31 AM  ...       -0.001479             -0.001023</span>
+<span class="go">2020-12-04 09:32:00  2020-12-04  09:32 AM  ...       -0.003563             -0.002949</span>
+<span class="go">2020-12-04 09:33:00  2020-12-04  09:33 AM  ...       -0.003599             -0.002821</span>
+<span class="go">2020-12-04 09:34:00  2020-12-04  09:34 AM  ...       -0.005226             -0.004768</span>
 
-<span class="go">                        label     low  marketAverage  marketChangeOverTime  \</span>
-<span class="go">2019-06-19 09:30:00  09:30 AM  200.94        204.961              0.000000   </span>
-<span class="go">2019-06-19 09:31:00  09:31 AM  208.79        203.802             -0.000810   </span>
-<span class="go">2019-06-19 09:32:00  09:32 AM  206.41        207.774             -0.002212   </span>
-<span class="go">2019-06-19 09:33:00  09:33 AM  201.08        202.070             -0.001860   </span>
-<span class="go">2019-06-19 09:34:00  09:34 AM  200.94        204.383             -0.002941   </span>
-
-<span class="go">                     marketClose  marketHigh  marketLow  marketNotional  \</span>
-<span class="go">2019-06-19 09:30:00      201.300     199.880     199.29    1.069649e+08   </span>
-<span class="go">2019-06-19 09:31:00      202.699     209.370     205.87    2.036946e+07   </span>
-<span class="go">2019-06-19 09:32:00      204.841     200.125     200.32    2.060970e+07   </span>
-<span class="go">2019-06-19 09:33:00      203.382     206.600     201.77    2.162062e+07   </span>
-<span class="go">2019-06-19 09:34:00      201.686     207.749     200.03    1.549091e+07   </span>
-
-<span class="go">                     marketNumberOfTrades  marketOpen  marketVolume  \</span>
-<span class="go">2019-06-19 09:30:00                  1363     207.890        551399   </span>
-<span class="go">2019-06-19 09:31:00                   465     209.374        106604   </span>
-<span class="go">2019-06-19 09:32:00                   551     205.304        103564   </span>
-<span class="go">2019-06-19 09:33:00                   475     205.930        106890   </span>
-<span class="go">2019-06-19 09:34:00                   380     201.400         78291   </span>
-
-<span class="go">                        notional  numberOfTrades     open  volume  </span>
-<span class="go">2019-06-19 09:30:00  1507602.390              62  208.933    7777  </span>
-<span class="go">2019-06-19 09:31:00   145198.000               6  204.060     723  </span>
-<span class="go">2019-06-19 09:32:00   287256.003              18  204.807    1491  </span>
-<span class="go">2019-06-19 09:33:00   334950.940              21  201.070    1674  </span>
-<span class="go">2019-06-19 09:34:00   158568.500               7  201.163     811  </span>
+<span class="go">[5 rows x 20 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -670,22 +342,10 @@ the endpoint requested.</p>
 
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
-<span class="go">                      AAPL</span>
-<span class="go">change                   0</span>
-<span class="go">changeOverTime           0</span>
-<span class="go">changePercent            0</span>
-<span class="go">close               199.97</span>
-<span class="go">date            2019-06-18</span>
-<span class="go">high                201.78</span>
-<span class="go">low                  202.9</span>
-<span class="go">open                203.64</span>
-<span class="go">symbol                AAPL</span>
-<span class="go">uClose              202.17</span>
-<span class="go">uHigh               202.54</span>
-<span class="go">uLow                 202.1</span>
-<span class="go">uOpen               203.28</span>
-<span class="go">uVolume           27167925</span>
-<span class="go">volume            27770023</span>
+<span class="go">     change changeOverTime changePercent  ...   uVolume        updated    volume</span>
+<span class="go">AAPL      0              0             0  ...  79637261  1607158513440  82108894</span>
+
+<span class="go">[1 rows x 26 columns]</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
@@ -699,14 +359,12 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[21]: </span><span class="go"></span>
-<span class="go">        AAPL</span>
-<span class="go">open  203.91</span>
+<span class="gh">Out[21]: </span><span class="go">127.29</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
-<span class="go">                                    Out[22]: </span>
-<span class="go">        AAPL</span>
-<span class="go">AAPL  202.98</span>
+<span class="gh">Out[22]: </span><span class="go"></span>
+<span class="go">         AAPL</span>
+<span class="go">price  127.75</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
@@ -714,8 +372,9 @@ the endpoint requested.</p>
 
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
-<span class="go">        AAPL    TSLA</span>
-<span class="go">open  205.82  227.49</span>
+<span class="go">        open</span>
+<span class="go">AAPL  122.55</span>
+<span class="go">TSLA  615.61</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -730,17 +389,13 @@ entirely optional.</p>
 <p>Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
 method as a keyword argument.</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
-
-<span class="gp">In [26]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
-<span class="gh">Out[26]: </span><span class="go"></span>
-<span class="go">AAPL    25.9646</span>
-<span class="go">Name: ytdChange, dtype: object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">(</span><span class="n">displayPercent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ytdChange&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
 call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
 change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
 through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
@@ -751,22 +406,22 @@ more information.</p>
 <div class="section" id="reference-data">
 <span id="usage-refdata"></span><h2>Reference Data<a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="refdata.html#refdata"><span class="std std-ref">Reference Data</span></a></p>
 </div>
 </div>
 <div class="section" id="investor-s-exchange-data">
 <span id="usage-iexdata"></span><h2>Investor’s Exchange Data<a class="headerlink" href="#investor-s-exchange-data" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="iexdata.html#iexdata"><span class="std std-ref">Investor’s Exchange Data</span></a></p>
 </div>
 </div>
 <div class="section" id="api-system-metadata">
 <span id="usage-apistatus"></span><h2>API System Metadata<a class="headerlink" href="#api-system-metadata" title="Permalink to this headline">¶</a></h2>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="apidata.html#apidata"><span class="std std-ref">API System Metadata</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="apidata.html#apidata"><span class="std std-ref">API System Metadata</span></a></p>
 </div>
 </div>
 <div class="section" id="caching">
@@ -774,26 +429,24 @@ more information.</p>
 <p>iexfinance supports the caching of HTTP requests to IEX using the
 <a class="reference external" href="https://pypi.python.org/pypi/requests-cache">requests-cache</a> package.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="caching.html#caching"><span class="std std-ref">Caching Queries</span></a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stocks.html" class="btn btn-neutral float-right" title="Stocks / Equities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sandbox.html" class="btn btn-neutral" title="Sandbox Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sandbox.html" class="btn btn-neutral float-left" title="Sandbox Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -802,11 +455,19 @@ more information.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -818,37 +479,15 @@ more information.</p>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

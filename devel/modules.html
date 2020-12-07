@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>iexfinance package &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>iexfinance package &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,47 +20,38 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="prev" title="Tutorial" href="tutorial.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -67,7 +61,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -84,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -94,21 +89,26 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -117,7 +117,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">iexfinance package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-iexfinance">Module contents</a></li>
@@ -128,13 +127,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -142,9 +142,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -165,7 +166,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>iexfinance package</li>
     
@@ -190,117 +191,117 @@
 <span id="modules"></span><h1>iexfinance package<a class="headerlink" href="#iexfinance-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-iexfinance">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-iexfinance" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_available_symbols">
-<code class="descclassname">iexfinance.</code><code class="descname">get_available_symbols</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_available_symbols" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_available_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_available_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.refdata.get_symbols</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_iex_corporate_actions">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_corporate_actions</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_corporate_actions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_iex_corporate_actions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_corporate_actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.refdata.get_iex_corporate_actions</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_iex_dividends">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_dividends</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_dividends" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_iex_dividends</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_dividends" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.refdata.get_iex_dividends</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_iex_listed_symbol_dir">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_listed_symbol_dir</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_listed_symbol_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_iex_listed_symbol_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_listed_symbol_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.refdata.get_listed_symbol_dir</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_iex_next_day_ex_date">
-<code class="descclassname">iexfinance.</code><code class="descname">get_iex_next_day_ex_date</code><span class="sig-paren">(</span><em>start=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_next_day_ex_date" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_iex_next_day_ex_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_iex_next_day_ex_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.refdata.get_iex_next_day_ex_date</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_book">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_book</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_book" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_deep_book</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_deep">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_deep</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_deep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_deep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_deep" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_deep</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_gainers">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_gainers</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_gainers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_gainers</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_gainers" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.stocks.get_market_gainers</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_iex_percent">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_iex_percent</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_iex_percent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_iex_percent</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_iex_percent" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.stocks.get_market_iex_percent</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_iex_volume">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_iex_volume</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_iex_volume" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_iex_volume</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_iex_volume" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.stocks.get_market_iex_volume</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_last">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_last</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_last" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_last</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_last" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_last</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_losers">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_losers</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_losers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_losers</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_losers" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.stocks.get_market_losers</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_most_active">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_most_active</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_most_active" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_most_active</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_most_active" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.stocks.get_market_most_active</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_market_tops">
-<code class="descclassname">iexfinance.</code><code class="descname">get_market_tops</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_tops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_market_tops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_market_tops" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_tops</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_stats_daily">
-<code class="descclassname">iexfinance.</code><code class="descname">get_stats_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>last=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_daily" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_stats_daily</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">last</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_daily" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_stats_daily</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_stats_intraday">
-<code class="descclassname">iexfinance.</code><code class="descname">get_stats_intraday</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_intraday" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_stats_intraday</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_intraday" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_stats_intraday</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_stats_monthly">
-<code class="descclassname">iexfinance.</code><code class="descname">get_stats_monthly</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_monthly" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_stats_monthly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_monthly" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_stats_summary</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_stats_recent">
-<code class="descclassname">iexfinance.</code><code class="descname">get_stats_recent</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_recent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_stats_recent</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_recent" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_stats_recent</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.get_stats_records">
-<code class="descclassname">iexfinance.</code><code class="descname">get_stats_records</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_records" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.</code><code class="sig-name descname">get_stats_records</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.get_stats_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>MOVED to iexfinance.iexdata.get_stats_records</p>
 </dd></dl>
 
@@ -309,16 +310,14 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="tutorial.html" class="btn btn-neutral" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -327,11 +326,19 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -343,37 +350,15 @@
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

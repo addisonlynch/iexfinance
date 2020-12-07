@@ -175,7 +175,7 @@ Certain endpoints (such as quote and chart), however, allow customizable
 parameters. To specify one of these parameters, merely pass it to an endpoint
 method as a keyword argument.
 
-.. ipython:: python
+.. code-block:: python
 
     aapl = Stock("AAPL", output_format='pandas')
     aapl.get_quote(displayPercent=True).loc["ytdChange"]

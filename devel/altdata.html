@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Alternative Data &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Alternative Data &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Reference Data" href="refdata.html"/>
-        <link rel="prev" title="Data APIs" href="data_apis.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data APIs" href="data-apis.html" />
+    <link rel="prev" title="Investor’s Exchange Data" href="iexdata.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -95,26 +90,31 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Alternative Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#crypto">Crypto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#social-sentiment">Social Sentiment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ceo-compensation">CEO Compensation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -123,7 +123,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -131,13 +130,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -145,9 +145,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -168,7 +169,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Alternative Data</li>
     
@@ -193,74 +194,65 @@
 <span id="altdata"></span><h1>Alternative Data<a class="headerlink" href="#alternative-data" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="crypto">
 <span id="altdata-crypto"></span><h2>Crypto<a class="headerlink" href="#crypto" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.altdata.get_crypto_quote">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_crypto_quote</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.altdata.</code><code class="sig-name descname">get_crypto_quote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crypto Quotes</p>
-<p>This will return a quote for Cryptocurrencies supported by IEX Cloud.
-Each element is a standard <code class="docutils literal notranslate"><span class="pre">quote</span></code>.</p>
+<p>Single quote for Cryptocurrency supported by IEX Cloud.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#crypto">https://iexcloud.io/docs/api/#crypto</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Each element contains Stocks <code class="docutils literal notranslate"><span class="pre">quote</span></code> fields.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="social-sentiment">
 <span id="altdata-social"></span><h2>Social Sentiment<a class="headerlink" href="#social-sentiment" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.altdata.get_social_sentiment">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_social_sentiment</code><span class="sig-paren">(</span><em>symbol</em>, <em>period_type=None</em>, <em>date=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_social_sentiment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.altdata.</code><code class="sig-name descname">get_social_sentiment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="n">period_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_social_sentiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Social Sentiment</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Unstable endpoint. May return unexpected results.</p>
+<p class="admonition-title">Warning</p>
+<p>This premium-only endpoint is not tested by
+<code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> and may be unstable.</p>
 </div>
-<p>This endpoint provides social sentiment data from StockTwits. Data can be
+<p>Social sentiment data from StockTwits. Data can be
 viewed as a daily value, or by minute for a given date.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#social-sentiment">https://iexcloud.io/docs/api/#social-sentiment</a></p>
-<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per date for <code class="docutils literal notranslate"><span class="pre">daily</span></code>, <code class="docutils literal notranslate"><span class="pre">200</span></code> per symbol for
-<code class="docutils literal notranslate"><span class="pre">minute</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</li>
-<li><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – Can only be <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to the “type” path
-parameter in the IEX Cloud documentation</li>
-<li><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Specify date to obtain sentiment data</li>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">30,000</span></code> per symbol per sentiment record</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>) – One valid symbol</p></li>
+<li><p><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter in IEX Cloud
+documentation</p></li>
+<li><p><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Date to retrieve</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 <div class="section" id="ceo-compensation">
 <span id="altdata-ceo"></span><h2>CEO Compensation<a class="headerlink" href="#ceo-compensation" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.altdata.get_ceo_compensation">
-<code class="descclassname">iexfinance.altdata.</code><code class="descname">get_ceo_compensation</code><span class="sig-paren">(</span><em>symbol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_ceo_compensation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.altdata.</code><code class="sig-name descname">get_ceo_compensation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_ceo_compensation" title="Permalink to this definition">¶</a></dt>
 <dd><p>CEO Compensation</p>
 <p>This endpoint provides CEO compensation for a company by symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ceo-compensation">https://iexcloud.io/docs/api/#ceo-compensation</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per symbol</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -268,18 +260,16 @@ parameter in the IEX Cloud documentation</li>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="refdata.html" class="btn btn-neutral float-right" title="Reference Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data-apis.html" class="btn btn-neutral float-right" title="Data APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_apis.html" class="btn btn-neutral" title="Data APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="iexdata.html" class="btn btn-neutral float-left" title="Investor’s Exchange Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -288,11 +278,19 @@ parameter in the IEX Cloud documentation</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -304,37 +302,15 @@ parameter in the IEX Cloud documentation</li>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
