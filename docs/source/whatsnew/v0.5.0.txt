@@ -50,7 +50,7 @@ Bug Fixes
 Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Ends support for Python 2
+- Ends support for Python 2 and Python 3.4
 - All legacy IEX Developer API version 1.0 endpoints and references to such endpoints
   have been removed
 - ``Stock.get_endpoints``, ``Stock.get_short_interest``, 

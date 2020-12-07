@@ -11,9 +11,6 @@ env:
 matrix:
   fast_finish: true
   include:
-    - python: 3.4
-      env: PANDAS=0.23 NUMPY=1.13
-      dist: trusty
     - python: 3.5
       env: PANDAS=0.23 NUMPY=1.13
       dist: trusty
