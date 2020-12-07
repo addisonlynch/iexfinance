@@ -52,6 +52,13 @@ By Region
 .. autofunction:: iexfinance.refdata.get_region_symbols
 
 
+.. _refdata:sectors:
+
+Sectors
+-------
+
+.. autofunction:: iexfinance.refdata.get_sectors
+
 
 .. _refdata.symbols:
 

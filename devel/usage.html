@@ -245,7 +245,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">         TSLA</span>
-<span class="go">price  624.57</span>
+<span class="go">price  610.33</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -255,7 +255,7 @@ etc.):</p>
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">         TSLA    AAPL</span>
-<span class="go">price  621.66  125.21</span>
+<span class="go">price  627.36  124.87</span>
 </pre></div>
 </div>
 </div>
@@ -300,16 +300,16 @@ current day (default is current date):</p>
 <span class="gh">Out[15]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
 <span class="go">2019-05-10 09:30:00  2019-05-10  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002520              0.002909</span>
-<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001356              0.002230</span>
-<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003365              0.004534</span>
-<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002404              0.003607</span>
+<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002569              0.002930</span>
+<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001310              0.002227</span>
+<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003447              0.004633</span>
+<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002362              0.003759</span>
 <span class="go">...                         ...       ...  ...             ...                   ...</span>
-<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005231             -0.004359</span>
-<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005022             -0.003789</span>
-<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005621             -0.004382</span>
-<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005675             -0.004348</span>
-<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003842             -0.002636</span>
+<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005297             -0.004377</span>
+<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005077             -0.003821</span>
+<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005555             -0.004389</span>
+<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005541             -0.004393</span>
+<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003796             -0.002591</span>
 
 <span class="go">[390 rows x 20 columns]</span>
 </pre></div>
@@ -319,10 +319,10 @@ current day (default is current date):</p>
 <span class="gh">Out[16]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
 <span class="go">2020-12-04 09:30:00  2020-12-04  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2020-12-04 09:31:00  2020-12-04  09:31 AM  ...       -0.001508             -0.001005</span>
-<span class="go">2020-12-04 09:32:00  2020-12-04  09:32 AM  ...       -0.003508             -0.003022</span>
-<span class="go">2020-12-04 09:33:00  2020-12-04  09:33 AM  ...       -0.003625             -0.002893</span>
-<span class="go">2020-12-04 09:34:00  2020-12-04  09:34 AM  ...       -0.005382             -0.004631</span>
+<span class="go">2020-12-04 09:31:00  2020-12-04  09:31 AM  ...       -0.001485             -0.000994</span>
+<span class="go">2020-12-04 09:32:00  2020-12-04  09:32 AM  ...       -0.003641             -0.002971</span>
+<span class="go">2020-12-04 09:33:00  2020-12-04  09:33 AM  ...       -0.003557             -0.002835</span>
+<span class="go">2020-12-04 09:34:00  2020-12-04  09:34 AM  ...       -0.005243             -0.004824</span>
 
 <span class="go">[5 rows x 20 columns]</span>
 </pre></div>
@@ -343,7 +343,7 @@ the endpoint requested.</p>
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">     change changeOverTime changePercent  ...   uVolume        updated    volume</span>
-<span class="go">AAPL      0              0             0  ...  80247867  1678633733567  79272050</span>
+<span class="go">AAPL      0              0             0  ...  80140603  1657008302016  79802264</span>
 
 <span class="go">[1 rows x 26 columns]</span>
 </pre></div>
@@ -359,12 +359,12 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[21]: </span><span class="go">128.59</span>
+<span class="gh">Out[21]: </span><span class="go">123.59</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  126.38</span>
+<span class="go">price  127.32</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
@@ -373,8 +373,8 @@ the endpoint requested.</p>
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
 <span class="go">        open</span>
-<span class="go">AAPL  127.01</span>
-<span class="go">TSLA  602.51</span>
+<span class="go">AAPL  126.10</span>
+<span class="go">TSLA  610.53</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
