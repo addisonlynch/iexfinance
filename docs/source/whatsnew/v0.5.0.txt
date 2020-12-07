@@ -22,31 +22,24 @@ Enhancements
 - Improves message weighting for historical data when calls are under
   1-year range
 - Adds support for historical data for the previous 15 years
-  (extended from 5 years) (GH94_)
+  (extended from 5 years) (:issue:`94`)
 - Adds ``flake8-bugbear`` for additional code quality checks
 - Repairs date handling to accept multiple formats, including ``str``,
   ``int``, ``date``, ``datetime``, and ``pandas.Timestamp`` and use a rolling 15-year default start date for historical data (specifically ``get_historical_data``)
-- Adds endpoint for us trading days/holidays (thanks Bouldersky)
+- Adds endpoint for us trading days/holidays (thanks :user:`Bouldersky`)
 - Adds official support for Python 3.8
-- Adds endpoint for advanced stats
-- Adds ``last`` and ``period`` parameters to ``Stock.get_estimates`` :issue:`213`
+- Adds endpoint for advanced stats (thanks :user:`SaymV`)
+- Adds ``last`` and ``period`` parameters to ``Stock.get_estimates`` (:issue:`213`)
 - Adds endpoints for international symbol reference data (thanks :user:`anthonyvd`)
 - Adds endpoint for Sectors reference data (thanks :user:`YairMZ`)
-
-.. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
-.. _GH213: https://github.com/addisonlynch/iexfinance/issues/213
 
 
 Bug Fixes
 ~~~~~~~~~
 
 - Modifies ``Stock.get_historical_prices`` and ``Stock.get_chart``
-  (GH165_) to return all fields, including ``changePercent``
-- Repairs ``stocks.get_historical_data`` bug which errored on symbols without historical data (GH223_)
-
-  .. _GH165: https://github.com/addisonlynch/iexfinance/issues/165
-  .. _GH223: https://github.com/addisonlynch/iexfinance/issues/223
-
+  (:issue:`165`) to return all fields, including ``changePercent``
+- Repairs ``stocks.get_historical_data`` bug which errored on symbols without historical data (:issue:`223`)
 
 Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,3 +54,6 @@ Backward Incompatible Changes
 - All endpoints in ``iexdata`` are now JSON-only (pandas output formatting no
   is longer supported)
 - ``iexfinance.stocks.get_market_in_focus`` has been immediately deprecated.
+- Certain endpoints (such as ``Stock.get_price_target``) now require additional entitlements.
+  See the IEX Cloud Help Center for more information. All endpoints which require additional
+  entitlements are noted in the ``iexfinance`` documentation.
