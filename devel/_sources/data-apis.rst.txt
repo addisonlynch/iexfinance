@@ -4,7 +4,7 @@ Data APIs
 =========
 
 IEX Cloud data can be organized into three generic data APIs:
-:ref:`time-series<data_apis.time-series>`, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.
+:ref:`time-series<data-apis.time-series>`, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.
 
 
 .. _data-apis.data-points:

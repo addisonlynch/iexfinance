@@ -103,12 +103,17 @@
 <li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#symbols">Symbols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iex-symbols">IEX Symbols</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#iex-symbols">IEX Symbols</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#refdata-iex-symbols-usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#international-symbols">International Symbols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#by-exchange">By Exchange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#by-region">By Region</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#symbols">Symbols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#refdata-symbols-usage">Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#u-s-holidays-trading-dates">U.S. Holidays &amp; Trading Dates</a></li>
@@ -203,41 +208,16 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#reference-data" id="id2">Reference Data</a></p>
 <ul>
-<li><p><a class="reference internal" href="#symbols" id="id3">Symbols</a></p></li>
-<li><p><a class="reference internal" href="#iex-symbols" id="id4">IEX Symbols</a></p></li>
-<li><p><a class="reference internal" href="#u-s-holidays-trading-dates" id="id5">U.S. Holidays &amp; Trading Dates</a></p></li>
+<li><p><a class="reference internal" href="#iex-symbols" id="id3">IEX Symbols</a></p></li>
+<li><p><a class="reference internal" href="#international-symbols" id="id4">International Symbols</a></p></li>
+<li><p><a class="reference internal" href="#symbols" id="id5">Symbols</a></p></li>
+<li><p><a class="reference internal" href="#u-s-holidays-trading-dates" id="id6">U.S. Holidays &amp; Trading Dates</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="symbols">
-<span id="refdata-symbols"></span><h2><a class="toc-backref" href="#id3">Symbols</a><a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="iexfinance.refdata.get_symbols">
-<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns array of all symbols that IEX Cloud supports
-for API calls</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#symbols">https://iexcloud.io/docs/api/#symbols</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
-</dd></dl>
-
-<div class="section" id="usage">
-<span id="refdata-symbols-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
-
-<span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
-<span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      YNS             NU  ...  0CDB26G3V0B0  1104437  7WX8YPIRX207GWAU9M2Q</span>
-<span class="go">1     AA      NSY             UN  ...  G300TB33BHBD  1731001  9W1TE41W52ZU02F6930P</span>
-
-<span class="go">[2 rows x 14 columns]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="iex-symbols">
-<span id="refdata-iex-symbols"></span><h2><a class="toc-backref" href="#id4">IEX Symbols</a><a class="headerlink" href="#iex-symbols" title="Permalink to this headline">¶</a></h2>
+<span id="refdata-iex-symbols"></span><h2><a class="toc-backref" href="#id3">IEX Symbols</a><a class="headerlink" href="#iex-symbols" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="iexfinance.refdata.get_iex_symbols">
 <code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_iex_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_iex_symbols" title="Permalink to this definition">¶</a></dt>
@@ -247,8 +227,8 @@ supports for trading</p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 </dd></dl>
 
-<div class="section" id="refdata-iex-symbols-usage">
-<span id="id1"></span><h3>Usage<a class="headerlink" href="#refdata-iex-symbols-usage" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="usage">
+<span id="refdata-iex-symbols-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_symbols</span>
 
 <span class="n">get_iex_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
@@ -256,8 +236,73 @@ supports for trading</p>
 </div>
 </div>
 </div>
+<div class="section" id="international-symbols">
+<span id="refdata-international-symbols"></span><h2><a class="toc-backref" href="#id4">International Symbols</a><a class="headerlink" href="#international-symbols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="by-exchange">
+<span id="refdata-international-symbols-exchange"></span><h3>By Exchange<a class="headerlink" href="#by-exchange" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_exchange_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_exchange_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exchange</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_exchange_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all international symbols in a given
+exchange that IEX Cloud supports for API calls</p>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exchange</strong> (<em>str</em>) – Case insensitive string of Exchange using IEX
+Supported Exchanges list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="by-region">
+<span id="refdata-international-symbols-region"></span><h3>By Region<a class="headerlink" href="#by-region" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_region_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_region_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">region</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_region_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all international symbols in a give
+region that IEX Cloud supports for API calls</p>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>region</strong> (<em>str</em>) – 2 letter case insensitive string of country codes
+using ISO 3166-1 alpha-2</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="symbols">
+<span id="refdata-symbols"></span><h2><a class="toc-backref" href="#id5">Symbols</a><a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all symbols that IEX Cloud supports
+for API calls</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#symbols">https://iexcloud.io/docs/api/#symbols</a>
+Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+</dd></dl>
+
+<div class="section" id="refdata-symbols-usage">
+<span id="id1"></span><h3>Usage<a class="headerlink" href="#refdata-symbols-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
+
+<span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
+<span class="go">0      A      NYS             NU  ...  DGVB62B000C3  1129330  Q7780XMP92GURW2WAYXI</span>
+<span class="go">1     AA      NYS             NU  ...  HBTBD330B0G3  1687444  F19P6Z04EU0921WTW235</span>
+
+<span class="go">[2 rows x 14 columns]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="u-s-holidays-trading-dates">
-<span id="refdata-holidays"></span><h2><a class="toc-backref" href="#id5">U.S. Holidays &amp; Trading Dates</a><a class="headerlink" href="#u-s-holidays-trading-dates" title="Permalink to this headline">¶</a></h2>
+<span id="refdata-holidays"></span><h2><a class="toc-backref" href="#id6">U.S. Holidays &amp; Trading Dates</a><a class="headerlink" href="#u-s-holidays-trading-dates" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="iexfinance.refdata.get_us_trading_dates_holidays">
 <code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_us_trading_dates_holidays</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_</span></em>, <em class="sig-param"><span class="n">direction</span></em>, <em class="sig-param"><span class="n">last</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">startDate</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_us_trading_dates_holidays" title="Permalink to this definition">¶</a></dt>
