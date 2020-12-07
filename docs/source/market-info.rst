@@ -1,5 +1,7 @@
 .. _market-info:
 
+.. currentmodule:: iexfinance
+
 Market Info
 ===========
 
@@ -35,7 +37,7 @@ by:
 Use ``get_collections`` to access.
 
 
-.. autofunction:: iexfinance.market-info.get_collections
+.. autofunction:: iexfinance.stocks.get_collections
 
 
 .. _market-info.collections.examples:
@@ -73,7 +75,7 @@ Earnings Today was added to the Stocks endpoints in 2018. Access is provided
 through the  ``get_earnings_today`` function.
 
 
-.. autofunction:: iexfinance.market-info.get_earnings_today
+.. autofunction:: iexfinance.stocks.get_earnings_today
 
 
 .. note:: ``get_earnings_today`` supports JSON output formatting only.
@@ -98,7 +100,7 @@ IPO Calendar
 IPO Calendar was added to the Stocks endpoints in 2018. Access is provided
 through the  ``get_ipo_calendar`` function.
 
-.. autofunction:: iexfinance.market-info.get_ipo_calendar
+.. autofunction:: iexfinance.stocks.get_ipo_calendar
 
 There are two possible values for the ``period`` parameter, of which
 ``upcoming-ipos`` is the default. ``today-ipos`` is also available.
@@ -118,7 +120,7 @@ Examples
 
 List
 ----
-.. seealso:: :ref:`Market Movers<market-info.movers>`
+.. seealso:: :ref:`Market Movers<stocks.movers>`
 
 .. _market-info.market_volume:
 
@@ -129,7 +131,7 @@ Market Volume returns real-time traded volume on U.S. Markets. Access is
 provided through the ``get_market_volume`` function.
 
 
-.. autofunction:: iexfinance.market-info.get_market_volume
+.. autofunction:: iexfinance.stocks.get_market_volume
 
 
 .. _market-info.market_volume.examples:
@@ -151,4 +153,4 @@ Sector Performance
 
 Sector Performance was added to the Stocks endpoints in 2018. Access to this endpoint is provided through the ``get_sector_performance`` function.
 
-.. autofunction:: iexfinance.market-info.get_sector_performance
+.. autofunction:: iexfinance.stocks.get_sector_performance

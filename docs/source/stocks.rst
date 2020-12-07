@@ -438,7 +438,7 @@ Splits (Basic)
 
 Time Series
 -----------
-.. seealso:: Time Series is an alias for the :ref:`Chart<stocks.chart>` endpoint
+.. seealso:: Time Series is an alias for the :ref:`Chart<stocks.charts>` endpoint
 
 .. automethod:: iexfinance.stocks.base.Stock.get_time_series
 
