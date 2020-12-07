@@ -279,10 +279,10 @@
 <li><p>Adds <code class="docutils literal notranslate"><span class="pre">flake8-bugbear</span></code> for additional code quality checks</p></li>
 <li><p>Repairs date handling to accept multiple formats, including <code class="docutils literal notranslate"><span class="pre">str</span></code>,
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas.Timestamp</span></code> and use a rolling 15-year default start date for historical data (specifically <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>)</p></li>
-<li><p>Adds endpoint for us trading days/holidays (thanks Bouldersky)</p></li>
+<li><p>Adds endpoint for us trading days/holidays (thanks <a class="reference external" href="https://github.com/Bouldersky">Bouldersky</a>)</p></li>
 <li><p>Adds official support for Python 3.8</p></li>
-<li><p>Adds endpoint for advanced stats</p></li>
-<li><p>Adds <code class="docutils literal notranslate"><span class="pre">last</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">Stock.get_estimates</span></code> <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/213">GH213</a></p></li>
+<li><p>Adds endpoint for advanced stats (thanks <a class="reference external" href="https://github.com/SaymV">SaymV</a>)</p></li>
+<li><p>Adds <code class="docutils literal notranslate"><span class="pre">last</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">Stock.get_estimates</span></code> (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/213">GH213</a>)</p></li>
 <li><p>Adds endpoints for international symbol reference data (thanks <a class="reference external" href="https://github.com/anthonyvd">anthonyvd</a>)</p></li>
 <li><p>Adds endpoint for Sectors reference data (thanks <a class="reference external" href="https://github.com/YairMZ">YairMZ</a>)</p></li>
 </ul>
@@ -292,8 +292,7 @@
 <ul class="simple">
 <li><p>Modifies <code class="docutils literal notranslate"><span class="pre">Stock.get_historical_prices</span></code> and <code class="docutils literal notranslate"><span class="pre">Stock.get_chart</span></code>
 (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/165">GH165</a>) to return all fields, including <code class="docutils literal notranslate"><span class="pre">changePercent</span></code></p></li>
-<li><p>Repairs <code class="docutils literal notranslate"><span class="pre">stocks.get_historical_data</span></code> bug which errored on symbols without historical data (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/223">GH223</a>)</p>
-</li>
+<li><p>Repairs <code class="docutils literal notranslate"><span class="pre">stocks.get_historical_data</span></code> bug which errored on symbols without historical data (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/223">GH223</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="backward-incompatible-changes">
@@ -309,6 +308,9 @@ and <code class="docutils literal notranslate"><span class="pre">Stock.get_relev
 <li><p>All endpoints in <code class="docutils literal notranslate"><span class="pre">iexdata</span></code> are now JSON-only (pandas output formatting no
 is longer supported)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_in_focus</span></code> has been immediately deprecated.</p></li>
+<li><p>Certain endpoints (such as <code class="docutils literal notranslate"><span class="pre">Stock.get_price_target</span></code>) now require additional entitlements.
+See the IEX Cloud Help Center for more information. All endpoints which require additional
+entitlements are noted in the <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> documentation.</p></li>
 </ul>
 </div>
 </div>

@@ -41,47 +41,13 @@ single request.
 See :ref:`Additional Methods<stocks.additional_methods>` for more a list of
 methods available.
 
-.. _stocks.endpoint_list:
+.. _stocks.contents:
 
-List of Endpoints
-~~~~~~~~~~~~~~~~~
+Endpoints
+---------
 
-All endpoints not available as methods of the ``Stock`` object are noted below.
-
-Endpoints which are supported by top-level functions are noted.
-
-- :ref:`Advanced Stats<stocks.advanced_stats>`
-- :ref:`Balance Sheet<stocks.balance_sheet>`
-- :ref:`Book<stocks.book>`
-- :ref:`Cash Flow<stocks.cash_flow>`
-- :ref:`Charts<stocks.charts>`
-- :ref:`Company<stocks.company>`
-- :ref:`Delayed Quote<stocks.delayed_quote>`
-- :ref:`Dividends (Basic)<stocks.dividends>`
-- :ref:`Earnings<stocks.earnings>`
-- :ref:`Estimates<stocks.estimates>`
-- :ref:`Financials<stocks.financials>`
-- :ref:`Fund Ownership<stocks.fund_ownership>`
-- :ref:`Historical Prices<stocks.historical>` - ``get_historical_data`` and ``get_historical_intraday``
-- :ref:`Income Statement<stocks.income_statement>`
-- :ref:`Insider Roster<stocks.insider_roster>`
-- :ref:`Insider Summary<stocks.insider_summary>`
-- :ref:`Insider Transactions<stocks.insider_transactions>`
-- :ref:`Institutional Ownership<stocks.institutional_ownership>`
-- :ref:`Key Stats<stocks.key_stats>`
-- :ref:`Largest Trades<stocks.largest_trades>`
-- :ref:`Logo<stocks.logo>`
-- :ref:`OHLC<stocks.ohlc>`
-- :ref:`Open/Close<stocks.open_close>`
-- :ref:`Peers Groups<stocks.peers>`
-- :ref:`Previous Day Prices<stocks.previous_day_prices>`
-- :ref:`Price<stocks.price-only>`
-- :ref:`Price Target<stocks.price_target>`
-- :ref:`Quote<stocks.quote>`
-- :ref:`Relevant Stocks<stocks.relevant_stocks>`
-- :ref:`Splits (Basic)<stocks.splits>`
-- :ref:`Time Series<stocks.time_series>`
-- :ref:`Volume by Venue<stocks.volume_by_venue>`
+.. contents::
+    :depth: 2
 
 
 .. _stocks.stock_object:
@@ -174,12 +140,22 @@ Dividends (Basic)
 Earnings
 --------
 
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
+             IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
+             for additional information.
+
 .. automethod:: iexfinance.stocks.base.Stock.get_earnings
 
 .. _stocks.estimates:
 
 Estimates
 ---------
+
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
+             IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
+             for additional information.
 
 .. automethod:: iexfinance.stocks.base.Stock.get_estimates
 
@@ -395,6 +371,11 @@ Price Only
 
 Price Target
 ------------
+
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
+             IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
+             for additional information.
 
 .. automethod:: iexfinance.stocks.base.Stock.get_price_target
 

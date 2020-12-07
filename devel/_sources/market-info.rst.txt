@@ -68,6 +68,11 @@ Examples
 Earnings Today
 --------------
 
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
+             IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
+             for additional information.
+
 .. warning:: ``get_todays_earnings`` has been deprecated and renamed
             ``get_earnings_today``.
 
