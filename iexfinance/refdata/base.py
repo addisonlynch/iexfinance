@@ -55,3 +55,23 @@ class IEXSymbols(ReferenceData):
     @property
     def endpoint(self):
         return "iex/symbols"
+
+
+class IntlRegionSymbols(ReferenceData):
+    def __init__(self, region, **kwargs):
+        self.region = region
+        super(IntlRegionSymbols, self).__init__(**kwargs)
+
+    @property
+    def endpoint(self):
+        return "region/%s/symbols" % self.region
+
+
+class IntlExchangeSymbols(ReferenceData):
+    def __init__(self, exchange, **kwargs):
+        self.exchange = exchange
+        super(IntlExchangeSymbols, self).__init__(**kwargs)
+
+    @property
+    def endpoint(self):
+        return "exchange/%s/symbols" % self.exchange

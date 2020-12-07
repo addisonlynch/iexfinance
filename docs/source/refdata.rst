@@ -9,6 +9,50 @@ Reference Data
     :depth: 2
 
 
+.. _refdata.iex_symbols:
+
+IEX Symbols
+-----------
+
+.. autofunction:: iexfinance.refdata.get_iex_symbols
+
+.. _refdata.iex_symbols_usage:
+
+Usage
+~~~~~
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_iex_symbols
+
+    get_iex_symbols()[:2]
+
+
+.. _refdata.international-symbols:
+
+International Symbols
+---------------------
+
+.. _refdata.international-symbols.exchange:
+
+
+By Exchange
+~~~~~~~~~~~
+
+
+.. autofunction:: iexfinance.refdata.get_exchange_symbols
+
+
+.. _refdata.international-symbols.region:
+
+By Region
+~~~~~~~~~
+
+
+.. autofunction:: iexfinance.refdata.get_region_symbols
+
+
+
 .. _refdata.symbols:
 
 Symbols
@@ -28,24 +72,6 @@ Usage
 
     get_symbols()[:2]
 
-
-.. _refdata.iex_symbols:
-
-IEX Symbols
------------
-
-.. autofunction:: iexfinance.refdata.get_iex_symbols
-
-.. _refdata.iex_symbols_usage:
-
-Usage
-~~~~~
-
-.. code-block:: python
-
-    from iexfinance.refdata import get_iex_symbols
-
-    get_iex_symbols()[:2]
 
 
 .. _refdata.holidays:

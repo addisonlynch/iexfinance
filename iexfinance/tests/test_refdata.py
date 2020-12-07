@@ -6,6 +6,8 @@ from iexfinance.refdata import (
     get_symbols,
     get_iex_symbols,
     get_us_trading_dates_holidays,
+    get_region_symbols,
+    get_exchange_symbols,
 )
 
 
@@ -27,6 +29,14 @@ class TestRef(object):
     def test_get_iex_symbols(self):
         d = get_iex_symbols()
 
+        assert isinstance(d, pd.DataFrame)
+
+    def test_get_region_symbols(self):
+        d = get_region_symbols("ca")
+        assert isinstance(d, pd.DataFrame)
+
+    def test_get_exchange_symbols(self):
+        d = get_exchange_symbols("tse")
         assert isinstance(d, pd.DataFrame)
 
     def test_get_us_trading_dates_holidays(self):
