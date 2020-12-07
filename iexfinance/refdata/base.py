@@ -57,20 +57,20 @@ class IEXSymbols(ReferenceData):
         return "iex/symbols"
 
 
-class IntlRegionSymbols(CloudRef):
+class IntlRegionSymbols(ReferenceData):
     def __init__(self, region, **kwargs):
         self.region = region
-        super(CloudRef, self).__init__(**kwargs)
+        super(IntlRegionSymbols, self).__init__(**kwargs)
 
     @property
     def endpoint(self):
         return "region/%s/symbols" % self.region
 
 
-class IntlExchangeSymbols(CloudRef):
+class IntlExchangeSymbols(ReferenceData):
     def __init__(self, exchange, **kwargs):
         self.exchange = exchange
-        super(CloudRef, self).__init__(**kwargs)
+        super(IntlExchangeSymbols, self).__init__(**kwargs)
 
     @property
     def endpoint(self):

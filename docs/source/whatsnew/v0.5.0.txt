@@ -29,8 +29,8 @@ Enhancements
 - Adds endpoint for us trading days/holidays (thanks Bouldersky)
 - Adds official support for Python 3.8
 - Adds endpoint for advanced stats
-- Add ``last`` and ``period`` parameters to ``Stock.get_estimates`` :issue:`213`
-- Adds endpoint for international symbol reference data (thanks :user:`anthonyvd`)
+- Adds ``last`` and ``period`` parameters to ``Stock.get_estimates`` :issue:`213`
+- Adds endpoints for international symbol reference data (thanks :user:`anthonyvd`)
 
 .. _GH94: https://github.com/addisonlynch/iexfinance/issues/94
 .. _GH213: https://github.com/addisonlynch/iexfinance/issues/213

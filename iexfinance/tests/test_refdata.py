@@ -33,13 +33,11 @@ class TestRef(object):
 
     def test_get_region_symbols(self):
         d = get_region_symbols("ca")
-        assert isinstance(d, list)
-        assert isinstance(d[0], dict)
+        assert isinstance(d, pd.DataFrame)
 
     def test_get_exchange_symbols(self):
         d = get_exchange_symbols("tse")
-        assert isinstance(d, list)
-        assert isinstance(d[0], dict)
+        assert isinstance(d, pd.DataFrame)
 
     def test_get_us_trading_dates_holidays(self):
         assert isinstance(get_us_trading_dates_holidays("trade", "last"), pd.DataFrame)
