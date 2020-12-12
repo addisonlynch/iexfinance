@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reference Data &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Reference Data &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Options" href="options.html"/>
-        <link rel="prev" title="Alternative Data" href="altdata.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Investor’s Exchange Data" href="iexdata.html" />
+    <link rel="prev" title="Options" href="options.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -94,32 +89,44 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#symbols">Symbols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iex-symbols">IEX Symbols</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#iex-symbols">IEX Symbols</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#refdata-iex-symbols-usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#international-symbols">International Symbols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#by-exchange">By Exchange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#by-region">By Region</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#sectors">Sectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symbols">Symbols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#refdata-symbols-usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#u-s-holidays-trading-dates">U.S. Holidays &amp; Trading Dates</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -128,7 +135,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -136,13 +142,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -150,9 +157,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -173,7 +181,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Reference Data</li>
     
@@ -196,64 +204,33 @@
             
   <div class="section" id="reference-data">
 <span id="refdata"></span><h1><a class="toc-backref" href="#id2">Reference Data</a><a class="headerlink" href="#reference-data" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal notranslate"><span class="pre">ref-data/symbols</span></code> endpoint has changed in IEX Cloud. In the v1
-(legacy) Developer API, this endpoint returned the list of symbols IEX
-supports for trading. In IEX cloud, it returns the list of symbols IEX
-supports for <em>api calls</em>.</p>
-</div>
 <div class="contents topic" id="endpoints">
-<p class="topic-title first">Endpoints</p>
+<p class="topic-title">Endpoints</p>
 <ul class="simple">
-<li><a class="reference internal" href="#reference-data" id="id2">Reference Data</a><ul>
-<li><a class="reference internal" href="#symbols" id="id3">Symbols</a></li>
-<li><a class="reference internal" href="#iex-symbols" id="id4">IEX Symbols</a></li>
+<li><p><a class="reference internal" href="#reference-data" id="id2">Reference Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#iex-symbols" id="id3">IEX Symbols</a></p></li>
+<li><p><a class="reference internal" href="#international-symbols" id="id4">International Symbols</a></p></li>
+<li><p><a class="reference internal" href="#sectors" id="id5">Sectors</a></p></li>
+<li><p><a class="reference internal" href="#symbols" id="id6">Symbols</a></p></li>
+<li><p><a class="reference internal" href="#u-s-holidays-trading-dates" id="id7">U.S. Holidays &amp; Trading Dates</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="symbols">
-<span id="refdata-symbols"></span><h2><a class="toc-backref" href="#id3">Symbols</a><a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="iexfinance.refdata.get_symbols">
-<code class="descclassname">iexfinance.refdata.</code><code class="descname">get_symbols</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns array of all symbols that IEX Cloud supports
-for API calls</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#symbols">https://iexcloud.io/docs/api/#symbols</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
-</dd></dl>
-
-<div class="section" id="usage">
-<span id="refdata-symbols-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
-
-<span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
-<span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">  currency        date exchange                 iexId  isEnabled  \</span>
-<span class="go">0      USD  2019-06-19      YNS  IEX_46574843354B2D52       True   </span>
-<span class="go">1      USD  2019-06-19      YNS  IEX_4238333734532D52       True   </span>
-
-<span class="go">                        name region symbol type  </span>
-<span class="go">0  otTeein  .csgIegcnlnAlhoi     US      A   cs  </span>
-<span class="go">1                rl o.CcapAo     US     AA   cs  </span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="iex-symbols">
-<span id="refdata-iex-symbols"></span><h2><a class="toc-backref" href="#id4">IEX Symbols</a><a class="headerlink" href="#iex-symbols" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<span id="refdata-iex-symbols"></span><h2><a class="toc-backref" href="#id3">IEX Symbols</a><a class="headerlink" href="#iex-symbols" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
 <dt id="iexfinance.refdata.get_iex_symbols">
-<code class="descclassname">iexfinance.refdata.</code><code class="descname">get_iex_symbols</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_iex_symbols" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_iex_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_iex_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all symbols the Investor’s Exchange
 supports for trading</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#iex-symbols">https://iexcloud.io/docs/api/#iex-symbols</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
 </dd></dl>
 
-<div class="section" id="refdata-iex-symbols-usage">
-<span id="id1"></span><h3>Usage<a class="headerlink" href="#refdata-iex-symbols-usage" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="usage">
+<span id="refdata-iex-symbols-usage"></span><h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_iex_symbols</span>
 
 <span class="n">get_iex_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
@@ -261,22 +238,121 @@ supports for trading</p>
 </div>
 </div>
 </div>
+<div class="section" id="international-symbols">
+<span id="refdata-international-symbols"></span><h2><a class="toc-backref" href="#id4">International Symbols</a><a class="headerlink" href="#international-symbols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="by-exchange">
+<span id="refdata-international-symbols-exchange"></span><h3>By Exchange<a class="headerlink" href="#by-exchange" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_exchange_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_exchange_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exchange</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_exchange_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all international symbols in a given
+exchange that IEX Cloud supports for API calls</p>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exchange</strong> (<em>str</em>) – Case insensitive string of Exchange using IEX
+Supported Exchanges list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="by-region">
+<span id="refdata-international-symbols-region"></span><h3>By Region<a class="headerlink" href="#by-region" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_region_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_region_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">region</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_region_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all international symbols in a give
+region that IEX Cloud supports for API calls</p>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>region</strong> (<em>str</em>) – 2 letter case insensitive string of country codes
+using ISO 3166-1 alpha-2</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="sectors">
+<span id="refdata-sectors"></span><h2><a class="toc-backref" href="#id5">Sectors</a><a class="headerlink" href="#sectors" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_sectors">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_sectors</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_sectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all sectors that IEX Cloud supports
+for API calls</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#sectors">https://iexcloud.io/docs/api/#sectors</a>
+Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per call</p>
+</dd></dl>
+
+</div>
+<div class="section" id="symbols">
+<span id="refdata-symbols"></span><h2><a class="toc-backref" href="#id6">Symbols</a><a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_symbols">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns array of all symbols that IEX Cloud supports
+for API calls</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#symbols">https://iexcloud.io/docs/api/#symbols</a>
+Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
+</dd></dl>
+
+<div class="section" id="refdata-symbols-usage">
+<span id="id1"></span><h3>Usage<a class="headerlink" href="#refdata-symbols-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.refdata</span> <span class="kn">import</span> <span class="n">get_symbols</span>
+
+<span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
+<span class="go">0      A      YNS             UN  ...  B263GV00DCB0  1105732  0QX9PRWUM7WY2AXG78I2</span>
+<span class="go">1     AA      NSY             UN  ...  D0HBG33B3TB0  1746417  53FZ01TU20E496WP912W</span>
+
+<span class="go">[2 rows x 14 columns]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="u-s-holidays-trading-dates">
+<span id="refdata-holidays"></span><h2><a class="toc-backref" href="#id7">U.S. Holidays &amp; Trading Dates</a><a class="headerlink" href="#u-s-holidays-trading-dates" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.refdata.get_us_trading_dates_holidays">
+<code class="sig-prename descclassname">iexfinance.refdata.</code><code class="sig-name descname">get_us_trading_dates_holidays</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_</span></em>, <em class="sig-param"><span class="n">direction</span></em>, <em class="sig-param"><span class="n">last</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">startDate</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_us_trading_dates_holidays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to obtain US trading dates or holidays from
+a given date</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates">https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per row returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – can be “trade” or “holiday”. Determines whether to return days where
+trading took place or holidays</p></li>
+<li><p><strong>direction</strong> (<em>str</em>) – can be “next” or “last”. Determines whether to return dates in the
+future or the past</p></li>
+<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default 1</em>) – number of days to go backward or forward</p></li>
+<li><p><strong>startDate</strong> (<em>str</em><em>, </em><em>datetime.datetime</em><em>, </em><em>default current date</em>) – specify first/last day included in next/last, respectively</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="options.html" class="btn btn-neutral float-right" title="Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="iexdata.html" class="btn btn-neutral float-right" title="Investor’s Exchange Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="altdata.html" class="btn btn-neutral" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="options.html" class="btn btn-neutral float-left" title="Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -285,11 +361,19 @@ supports for trading</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -301,37 +385,15 @@ supports for trading</p>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

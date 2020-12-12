@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What’s New &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>What’s New &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="Migrating to IEX Cloud" href="migrating.html"/>
-        <link rel="prev" title="Welcome to iexfinance’s documentation!" href="index.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Common Usage Examples" href="usage.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -94,81 +89,97 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">What’s New</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#v0-4-2-june-29-2019">v0.4.2 (June 29, 2019)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#new-endpoints">New Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-5-0-tbd">v0.5.0 (TBD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#highlights">Highlights</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enhancements">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#backwards-incompatible-changes">Backwards Incompatible Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backward-incompatible-changes">Backward Incompatible Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-4-3-august-22-2019">v0.4.3 (August 22, 2019)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Bug Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-4-2-june-19-2019">v0.4.2 (June 19, 2019)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-endpoints">New Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backwards-incompatible-changes">Backwards Incompatible Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-4-1-may-14-2019">v0.4.1 (May 14, 2019)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">New Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Backwards Incompatible Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">New Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Backwards Incompatible Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-4-0-february-21-2019">v0.4.0 (February 21, 2019)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">New Endpoints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Backwards Incompatible Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">New Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Backwards Incompatible Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-3-5-november-28-2018">v0.3.5 (November 28, 2018)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backward-compatability">Backward Compatability</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-3-4-july-12-2018">v0.3.4 (July 12, 2018)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-3-3-april-21-2018">v0.3.3 (April 21, 2018)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">Bug Fixes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-3-2-april-21-2018">v0.3.2 (April 21, 2018)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id17">Bug Fixes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-3-2-april-21-2018">v0.3.2 (April 21, 2018)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Bug Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-3-1-march-9-2018">v0.3.1 (March 9, 2018)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id18">Enhancements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-3-0-february-1-2018">v0.3.0 (February 1, 2018)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#whatsnew-030-new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#whatsnew-030-improvements">Enhancements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Bug Fixes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#backward-compability">Backward Compability</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -177,7 +188,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -185,13 +195,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -199,9 +210,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -222,7 +234,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>What’s New</li>
     
@@ -246,82 +258,148 @@
   <div class="section" id="what-s-new">
 <span id="whatsnew"></span><h1>What’s New<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h1>
 <p>New features, bug fixes, and improvements for each release.</p>
-<div class="section" id="v0-4-2-june-29-2019">
-<h2>v0.4.2 (June 29, 2019)<a class="headerlink" href="#v0-4-2-june-29-2019" title="Permalink to this headline">¶</a></h2>
-<p>This is a minor release from 0.4.1. We recommend that all users update to
-maintain compatibility with IEX Cloud and optimize message weighting in calls.</p>
-<p>Highlights:</p>
+<div class="section" id="v0-5-0-tbd">
+<span id="whatsnew-050"></span><h2>v0.5.0 (TBD)<a class="headerlink" href="#v0-5-0-tbd" title="Permalink to this headline">¶</a></h2>
+<p>This is a major patch release from 0.4.3. We recommend that all users upgrade.</p>
+<p>Support for Python 2 has ended with this release.</p>
+<div class="section" id="highlights">
+<h3>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Removes support for the legacy Version 1.0 IEX Developer API, which was
-retired in favor of IEX Cloud in June 2019</li>
-<li>Optimized retrieval of historical prices with <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to
-allow for close prices only and single day charts to reduce message counts</li>
-</ul>
-<div class="section" id="new-endpoints">
-<h3>New Endpoints<a class="headerlink" href="#new-endpoints" title="Permalink to this headline">¶</a></h3>
-<p><strong>Options</strong></p>
-<ul class="simple">
-<li>End of Day Options (<code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code>)</li>
-</ul>
-<p><strong>Data APIs</strong></p>
-<ul class="simple">
-<li>/time-series (<code class="docutils literal notranslate"><span class="pre">get_time_series</span></code>)</li>
-<li>/data-points (<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>)</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> is now a <code class="docutils literal notranslate"><span class="pre">pandas</span></code>-driven library. Default output formatting is now
+<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> where available.</p></li>
 </ul>
 </div>
 <div class="section" id="enhancements">
 <h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Adds logging for queries, including message count usage and debugging
-information. Logging level defaults to <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, but can be set to other
-levels through the <code class="docutils literal notranslate"><span class="pre">IEX_LOG_LEVEL</span></code> environment variable. The following
-levels provide various information:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">WARNING</span></code> - errors only</li>
-<li><code class="docutils literal notranslate"><span class="pre">INFO</span></code> - message count used</li>
-<li><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> - request information</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Add <code class="docutils literal notranslate"><span class="pre">close_only</span></code> keyword argument to <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to allow for
-retrieval of adjusted close only at reduced message cost (through
-<code class="docutils literal notranslate"><span class="pre">chartCloseOnly</span></code> query parameter)</p>
-</li>
-<li><p class="first">Optimize <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to use <code class="docutils literal notranslate"><span class="pre">chartByDay</span></code> if a single date is
-passed which reduces message count (thanks shlomikushchi)</p>
-</li>
-</ul>
-</div>
-<div class="section" id="backwards-incompatible-changes">
-<h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">When <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> is set to <code class="docutils literal notranslate"><span class="pre">v1</span></code>, IEX Cloud will now be used, and
-as such this has the same behavior as <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code></p>
-</li>
-<li><p class="first">The following legacy-only endpoints have been deprecated and will raise an
-<code class="docutils literal notranslate"><span class="pre">ImmediateDeprecationError</span></code> when called:</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_crypto_quotes</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_effective_spread</span></code></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">get_all</span></code> method of <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock</span></code> has been immediately
-deprecated</p>
-</li>
+<ul class="simple">
+<li><p>Improves message weighting for historical data when calls are under
+1-year range</p></li>
+<li><p>Adds support for historical data for the previous 15 years
+(extended from 5 years) (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/94">GH94</a>)</p></li>
+<li><p>Adds <code class="docutils literal notranslate"><span class="pre">flake8-bugbear</span></code> for additional code quality checks</p></li>
+<li><p>Repairs date handling to accept multiple formats, including <code class="docutils literal notranslate"><span class="pre">str</span></code>,
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas.Timestamp</span></code> and use a rolling 15-year default start date for historical data (specifically <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>)</p></li>
+<li><p>Adds endpoint for us trading days/holidays (thanks <a class="reference external" href="https://github.com/Bouldersky">Bouldersky</a>)</p></li>
+<li><p>Adds official support for Python 3.8</p></li>
+<li><p>Adds endpoint for advanced stats (thanks <a class="reference external" href="https://github.com/SaymV">SaymV</a>)</p></li>
+<li><p>Adds <code class="docutils literal notranslate"><span class="pre">last</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code> parameters to <code class="docutils literal notranslate"><span class="pre">Stock.get_estimates</span></code> (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/213">GH213</a>)</p></li>
+<li><p>Adds endpoints for international symbol reference data (thanks <a class="reference external" href="https://github.com/anthonyvd">anthonyvd</a>)</p></li>
+<li><p>Adds endpoint for Sectors reference data (thanks <a class="reference external" href="https://github.com/YairMZ">YairMZ</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Certain failed requests which erroneously-returened <code class="docutils literal notranslate"><span class="pre">IEXAuthorizationError</span></code>
-now return <code class="docutils literal notranslate"><span class="pre">IEXQueryError</span></code></li>
+<li><p>Modifies <code class="docutils literal notranslate"><span class="pre">Stock.get_historical_prices</span></code> and <code class="docutils literal notranslate"><span class="pre">Stock.get_chart</span></code>
+(<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/165">GH165</a>) to return all fields, including <code class="docutils literal notranslate"><span class="pre">changePercent</span></code></p></li>
+<li><p>Repairs <code class="docutils literal notranslate"><span class="pre">stocks.get_historical_data</span></code> bug which errored on symbols without historical data (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/223">GH223</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="backward-incompatible-changes">
+<h3>Backward Incompatible Changes<a class="headerlink" href="#backward-incompatible-changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Ends support for Python 2 and Python 3.4</p></li>
+<li><p>All legacy IEX Developer API version 1.0 endpoints and references to such endpoints
+have been removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stock.get_endpoints</span></code>, <code class="docutils literal notranslate"><span class="pre">Stock.get_short_interest</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Stock.get_short_ratio</span></code>, <code class="docutils literal notranslate"><span class="pre">Stock.get_latest_eps</span></code>, <code class="docutils literal notranslate"><span class="pre">Stock.get_eps_consensus</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">Stock.get_relevant_stocks</span></code> have been immediately deprecated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_social_sentiment</span></code> is now premium-only data and not tested by <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code></p></li>
+<li><p>All endpoints in <code class="docutils literal notranslate"><span class="pre">iexdata</span></code> are now JSON-only (pandas output formatting no
+is longer supported)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_in_focus</span></code> has been immediately deprecated.</p></li>
+<li><p>Certain endpoints (such as <code class="docutils literal notranslate"><span class="pre">Stock.get_price_target</span></code>) now require additional entitlements.
+See the IEX Cloud Help Center for more information. All endpoints which require additional
+entitlements are noted in the <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> documentation.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-4-3-august-22-2019">
+<span id="whatsnew-043"></span><h2>v0.4.3 (August 22, 2019)<a class="headerlink" href="#v0-4-3-august-22-2019" title="Permalink to this headline">¶</a></h2>
+<p>This is a minor patch release from 0.4.2 that repairs compatibility issues with
+pandas 0.25.0. We recommend that all users upgrade.</p>
+<div class="section" id="id1">
+<h3>Bug Fixes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Removes uses of <code class="docutils literal notranslate"><span class="pre">pandas.compat</span></code> which was removed with pandas’ end of
+python 2 support in 0.25.0 (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/163">GH163</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="v0-4-2-june-19-2019">
+<span id="whatsnew-042"></span><h2>v0.4.2 (June 19, 2019)<a class="headerlink" href="#v0-4-2-june-19-2019" title="Permalink to this headline">¶</a></h2>
+<p>This is a minor release from 0.4.1. We recommend that all users update to
+maintain compatibility with IEX Cloud and optimize message weighting in calls.</p>
+<p>Highlights:</p>
+<ul class="simple">
+<li><p>Removes support for the legacy Version 1.0 IEX Developer API, which was
+retired in favor of IEX Cloud in June 2019</p></li>
+<li><p>Optimized retrieval of historical prices with <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to
+allow for close prices only and single day charts to reduce message counts</p></li>
+<li><p>Add support for End of Day options prices</p></li>
+</ul>
+<div class="section" id="new-endpoints">
+<h3>New Endpoints<a class="headerlink" href="#new-endpoints" title="Permalink to this headline">¶</a></h3>
+<p><strong>Options</strong></p>
+<ul class="simple">
+<li><p>End of Day Options (<code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code>)</p></li>
+</ul>
+<p><strong>Data APIs</strong></p>
+<ul class="simple">
+<li><p>/time-series (<code class="docutils literal notranslate"><span class="pre">get_time_series</span></code>)</p></li>
+<li><p>/data-points (<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>)</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Enhancements<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Adds logging for queries, including message count usage and debugging
+information. Logging level defaults to <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, but can be set to other
+levels through the <code class="docutils literal notranslate"><span class="pre">IEX_LOG_LEVEL</span></code> environment variable. The following
+levels provide various information:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WARNING</span></code> - errors only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code> - message count used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> - request information</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">close_only</span></code> keyword argument to <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to allow for
+retrieval of adjusted close only at reduced message cost (through
+<code class="docutils literal notranslate"><span class="pre">chartCloseOnly</span></code> query parameter)</p></li>
+<li><p>Optimize <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> to use <code class="docutils literal notranslate"><span class="pre">chartByDay</span></code> if a single date is
+passed which reduces message count (thanks shlomikushchi)</p></li>
+</ul>
+</div>
+<div class="section" id="backwards-incompatible-changes">
+<h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> is set to <code class="docutils literal notranslate"><span class="pre">v1</span></code>, IEX Cloud will now be used, and
+as such this has the same behavior as <code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code></p></li>
+<li><p>The following legacy-only endpoints have been deprecated and will raise an
+<code class="docutils literal notranslate"><span class="pre">ImmediateDeprecationError</span></code> when called:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_crypto_quotes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_effective_spread</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">get_all</span></code> method of <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock</span></code> has been immediately
+deprecated</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>Bug Fixes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Certain failed requests which erroneously-returened <code class="docutils literal notranslate"><span class="pre">IEXAuthorizationError</span></code>
+now return <code class="docutils literal notranslate"><span class="pre">IEXQueryError</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -331,98 +409,96 @@ now return <code class="docutils literal notranslate"><span class="pre">IEXQuery
 maintain compatibility with IEX Cloud.</p>
 <p>Highlights:</p>
 <ul class="simple">
-<li>Defaults to IEX Cloud for all API calls</li>
-<li>Adds warnings to all legacy-only endpoints which will be deprecated
-on June 1, 2019, and warnings when <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> is <code class="docutils literal notranslate"><span class="pre">v1</span></code></li>
-<li>Testing support for all legacy Version 1.0 endpoints has ended</li>
-<li>Adds support for IEX Cloud sandbox environment (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/116">GH116</a>)</li>
+<li><p>Defaults to IEX Cloud for all API calls</p></li>
+<li><p>Adds warnings to all legacy-only endpoints which will be deprecated
+on June 1, 2019, and warnings when <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> is <code class="docutils literal notranslate"><span class="pre">v1</span></code></p></li>
+<li><p>Testing support for all legacy Version 1.0 endpoints has ended</p></li>
+<li><p>Adds support for IEX Cloud sandbox environment (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/116">GH116</a>)</p></li>
 </ul>
-<div class="section" id="id1">
-<h3>New Endpoints<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>New Endpoints<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p><strong>Stocks</strong></p>
 <ul class="simple">
-<li>/fund-ownership (<code class="docutils literal notranslate"><span class="pre">get_fund_ownership</span></code>)</li>
-<li>/institutional-ownership (<code class="docutils literal notranslate"><span class="pre">get_institutional_ownership</span></code>)</li>
-<li>/insider-roster (<code class="docutils literal notranslate"><span class="pre">get_insider_roster</span></code>)</li>
-<li>/insider-summary (<code class="docutils literal notranslate"><span class="pre">get_insider_summary</span></code>)</li>
-<li>/insider-transactions (<code class="docutils literal notranslate"><span class="pre">get_insider_transactions</span></code>)</li>
+<li><p>/fund-ownership (<code class="docutils literal notranslate"><span class="pre">get_fund_ownership</span></code>)</p></li>
+<li><p>/institutional-ownership (<code class="docutils literal notranslate"><span class="pre">get_institutional_ownership</span></code>)</p></li>
+<li><p>/insider-roster (<code class="docutils literal notranslate"><span class="pre">get_insider_roster</span></code>)</p></li>
+<li><p>/insider-summary (<code class="docutils literal notranslate"><span class="pre">get_insider_summary</span></code>)</p></li>
+<li><p>/insider-transactions (<code class="docutils literal notranslate"><span class="pre">get_insider_transactions</span></code>)</p></li>
 </ul>
 <p><strong>Alternative Data</strong></p>
 <ul class="simple">
-<li>/ceo-compensation (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_ceo_compensation</span></code>)</li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h3>Enhancements<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Adds support for the IEX Cloud sandbox environment. Specify  <code class="docutils literal notranslate"><span class="pre">iexcloud-sandbox</span></code> as <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> for use with test secret token (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/116">GH116</a>)</li>
-<li>Refactored test suite to reduce code bloat and consolidate output
-formatting</li>
-</ul>
-</div>
-<div class="section" id="id4">
-<h3>Backwards Incompatible Changes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code> is now the default <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code>, as <code class="docutils literal notranslate"><span class="pre">v1</span></code> support
-will end on 6/1/2019</p>
-</li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-additional-methods"><span class="std std-ref">Field/Additional methods</span></a> are no
-longer supported by the v1 Deveoper API. These methods are retained in IEX
-Cloud</p>
-</li>
-<li><p class="first">All legacy-only endpoints will now warn of impending deprecation on
-June 1, 2019</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_crypto_quotes</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Deprecations (functions moved or renamed):</p>
-<blockquote>
-<div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">get_market_gainers</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_gainers</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_market_losers</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_losers</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_market_most_active</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_most_active</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_market_iex_volume</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_iex_volume</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_market_iex_percent</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_iex_percent</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_symbols</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_symbols</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_iex_corporate_actions</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_iex_dividends</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_iex_next_day_ex_date</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_listed_symbol_dir</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_tops</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_tops</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_last</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_last</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_deep</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_deep</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_deep_book</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_deep_book</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_intraday</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_intraday</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_recent</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_recent</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_records</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_records</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_daily</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_daily</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_summary</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_summary</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">stocks.get_today_earnings</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.get_earnings_today</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_previous</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_previous_day_prices</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_relevant</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_relevant_stocks</span></code></li>
-</ul>
-</div></blockquote>
-</li>
+<li><p>/ceo-compensation (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_ceo_compensation</span></code>)</p></li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h3>Bug Fixes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>Enhancements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Repair <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> output formatting for a number of <code class="docutils literal notranslate"><span class="pre">Stock</span></code> methods (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/119">GH119</a>)</li>
-<li>Fix project description for PyPi</li>
+<li><p>Adds support for the IEX Cloud sandbox environment. Specify  <code class="docutils literal notranslate"><span class="pre">iexcloud-sandbox</span></code> as <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> for use with test secret token (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/116">GH116</a>)</p></li>
+<li><p>Refactored test suite to reduce code bloat and consolidate output
+formatting</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>Backwards Incompatible Changes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexcloud-v1</span></code> is now the default <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code>, as <code class="docutils literal notranslate"><span class="pre">v1</span></code> support
+will end on 6/1/2019</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stock</span></code> <a class="reference internal" href="stocks.html#stocks-additional-methods"><span class="std std-ref">Field/Additional methods</span></a> are no
+longer supported by the v1 Deveoper API. These methods are retained in IEX
+Cloud</p></li>
+<li><p>All legacy-only endpoints will now warn of impending deprecation on
+June 1, 2019</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_crypto_quotes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Deprecations (functions moved or renamed):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_gainers</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_gainers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_losers</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_losers</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_most_active</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_most_active</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_iex_volume</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_iex_volume</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_iex_percent</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_market_iex_percent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_symbols</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_symbols</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_iex_corporate_actions</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_corporate_actions</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_iex_dividends</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_dividends</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_iex_next_day_ex_date</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_iex_next_day_ex_date</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_listed_symbol_dir</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.refdata.get_listed_symbol_dir</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_tops</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_tops</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_last</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_last</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_deep</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_deep</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_deep_book</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_deep_book</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_intraday</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_intraday</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_recent</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_recent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_records</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_records</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_daily</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_daily</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_summary</span></code> → <code class="docutils literal notranslate"><span class="pre">iexfinance.iexdata.get_stats_summary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stocks.get_today_earnings</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.get_earnings_today</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_previous</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_previous_day_prices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_relevant</span></code> → <code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_relevant_stocks</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Bug Fixes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Repair <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> output formatting for a number of <code class="docutils literal notranslate"><span class="pre">Stock</span></code> methods (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/119">GH119</a>)</p></li>
+<li><p>Fix project description for PyPi</p></li>
 </ul>
 </div>
 <div class="section" id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Testing support all legacy Version 1 endpoints has ended. These endpoints will be deprecated in 0.4.2</li>
+<li><p>Testing support all legacy Version 1 endpoints has ended. These endpoints will be deprecated in 0.4.2</p></li>
 </ul>
 </div>
 </div>
@@ -432,99 +508,97 @@ June 1, 2019</p>
 update.</p>
 <p>Highlights</p>
 <ul class="simple">
-<li>Adds support for <a class="reference external" href="https://iexcloud.io">IEX Cloud</a></li>
+<li><p>Adds support for <a class="reference external" href="https://iexcloud.io">IEX Cloud</a></p></li>
 </ul>
-<div class="section" id="id6">
-<h3>New Endpoints<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>New Endpoints<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p><strong>Stock</strong></p>
 <ul class="simple">
-<li>/balance-sheet (<code class="docutils literal notranslate"><span class="pre">get_balance_sheet</span></code>)</li>
-<li>/cash-flow (<code class="docutils literal notranslate"><span class="pre">get_cash_flow</span></code>)</li>
-<li>/estimates (<code class="docutils literal notranslate"><span class="pre">get_estimates</span></code>)</li>
-<li>/historical (<code class="docutils literal notranslate"><span class="pre">get_historical_prices</span></code>) (same as <code class="docutils literal notranslate"><span class="pre">get_chart</span></code>)</li>
-<li>/income (<code class="docutils literal notranslate"><span class="pre">get_income_statement</span></code>)</li>
-<li>/price-target (<code class="docutils literal notranslate"><span class="pre">get_price_target</span></code>)</li>
+<li><p>/balance-sheet (<code class="docutils literal notranslate"><span class="pre">get_balance_sheet</span></code>)</p></li>
+<li><p>/cash-flow (<code class="docutils literal notranslate"><span class="pre">get_cash_flow</span></code>)</p></li>
+<li><p>/estimates (<code class="docutils literal notranslate"><span class="pre">get_estimates</span></code>)</p></li>
+<li><p>/historical (<code class="docutils literal notranslate"><span class="pre">get_historical_prices</span></code>) (same as <code class="docutils literal notranslate"><span class="pre">get_chart</span></code>)</p></li>
+<li><p>/income (<code class="docutils literal notranslate"><span class="pre">get_income_statement</span></code>)</p></li>
+<li><p>/price-target (<code class="docutils literal notranslate"><span class="pre">get_price_target</span></code>)</p></li>
 </ul>
 <p><strong>Account</strong></p>
 <ul class="simple">
-<li>/account/usage (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.get_usage</span></code>)</li>
-<li>/account/metadata (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.get_metadata</span></code>)</li>
-<li>/account/payasyougo (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.allow_pay_as_you_go</span></code>,
-<code class="docutils literal notranslate"><span class="pre">iexfinance.account.disallow_pay_as_you_go</span></code>)</li>
+<li><p>/account/usage (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.get_usage</span></code>)</p></li>
+<li><p>/account/metadata (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.get_metadata</span></code>)</p></li>
+<li><p>/account/payasyougo (<code class="docutils literal notranslate"><span class="pre">iexfinance.account.allow_pay_as_you_go</span></code>,
+<code class="docutils literal notranslate"><span class="pre">iexfinance.account.disallow_pay_as_you_go</span></code>)</p></li>
 </ul>
 <p><strong>Reference Data</strong></p>
 <ul class="simple">
-<li>/ref-data/symbols (<code class="docutils literal notranslate"><span class="pre">iexfinance.get_symbols</span></code>)</li>
-<li>/ref-data/iex-symbols (<code class="docutils literal notranslate"><span class="pre">iexfinance.get_iex_symbols</span></code>)</li>
+<li><p>/ref-data/symbols (<code class="docutils literal notranslate"><span class="pre">iexfinance.get_symbols</span></code>)</p></li>
+<li><p>/ref-data/iex-symbols (<code class="docutils literal notranslate"><span class="pre">iexfinance.get_iex_symbols</span></code>)</p></li>
 </ul>
 <p><strong>Alternative Data</strong></p>
 <ul class="simple">
-<li>/crypto/quote (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_crypto_quote</span></code>)</li>
-<li>/stock/sentiment (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_social_sentiment</span></code>)</li>
+<li><p>/crypto/quote (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_crypto_quote</span></code>)</p></li>
+<li><p>/stock/sentiment (<code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_social_sentiment</span></code>)</p></li>
 </ul>
 <p><strong>API System Metadata</strong></p>
 <ul class="simple">
-<li>/status (<code class="docutils literal notranslate"><span class="pre">iexfinance.apidata.get_api_status</span></code>)</li>
+<li><p>/status (<code class="docutils literal notranslate"><span class="pre">iexfinance.apidata.get_api_status</span></code>)</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h3>Enhancements<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Enhancements<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Adds support for setting persistent output format settings using
-the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code></li>
-<li>Select between IEX API versions using the IEX_API_VERSION environment variable</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> base class has been renamed <code class="docutils literal notranslate"><span class="pre">Stock</span></code> and the duplicate
-<code class="docutils literal notranslate"><span class="pre">Stock</span></code> function has been removed</li>
-<li>Loosened testing restrictions on return types to allow for <code class="docutils literal notranslate"><span class="pre">int</span></code> or
-<code class="docutils literal notranslate"><span class="pre">float</span></code> to eliminate periodic even number returns and CI failures</li>
-<li>Improved testing for <code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code> base class configuration (request
-parameters, output formatting)</li>
-<li>Adds tox for cross-version testing (thank you Jack Moody)</li>
-<li>Adds official Python 3.7 support and CI build (thank you Jack Moody)</li>
+<li><p>Adds support for setting persistent output format settings using
+the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code></p></li>
+<li><p>Select between IEX API versions using the IEX_API_VERSION environment variable</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> base class has been renamed <code class="docutils literal notranslate"><span class="pre">Stock</span></code> and the duplicate
+<code class="docutils literal notranslate"><span class="pre">Stock</span></code> function has been removed</p></li>
+<li><p>Loosened testing restrictions on return types to allow for <code class="docutils literal notranslate"><span class="pre">int</span></code> or
+<code class="docutils literal notranslate"><span class="pre">float</span></code> to eliminate periodic even number returns and CI failures</p></li>
+<li><p>Improved testing for <code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code> base class configuration (request
+parameters, output formatting)</p></li>
+<li><p>Adds tox for cross-version testing (thank you Jack Moody)</p></li>
+<li><p>Adds official Python 3.7 support and CI build (thank you Jack Moody)</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>Backwards Incompatible Changes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Backwards Incompatible Changes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Deprecated <code class="docutils literal notranslate"><span class="pre">iexfinance.Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">iexfinance.get_historical_data</span></code> have been removed. These are now available as <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_historical_data</span></code></li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">iexfinance.marketdata</span></code> has been moved to a new module <code class="docutils literal notranslate"><span class="pre">iexdata</span></code>.</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">get_market_tops</span></code>, <code class="docutils literal notranslate"><span class="pre">get_market_last</span></code>, <code class="docutils literal notranslate"><span class="pre">get_market_deep</span></code>,
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">iexfinance.Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">iexfinance.get_historical_data</span></code> have been removed. These are now available as <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_historical_data</span></code></p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">iexfinance.marketdata</span></code> has been moved to a new module <code class="docutils literal notranslate"><span class="pre">iexdata</span></code>.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_market_tops</span></code>, <code class="docutils literal notranslate"><span class="pre">get_market_last</span></code>, <code class="docutils literal notranslate"><span class="pre">get_market_deep</span></code>,
 <code class="docutils literal notranslate"><span class="pre">get_market_book</span></code> have been deprecated and renamed (respectively)
-<code class="docutils literal notranslate"><span class="pre">get_tops</span></code>, <code class="docutils literal notranslate"><span class="pre">get_last</span></code>, <code class="docutils literal notranslate"><span class="pre">get_deep</span></code>, <code class="docutils literal notranslate"><span class="pre">get_deep_book</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">get_tops</span></code>, <code class="docutils literal notranslate"><span class="pre">get_last</span></code>, <code class="docutils literal notranslate"><span class="pre">get_deep</span></code>, <code class="docutils literal notranslate"><span class="pre">get_deep_book</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">iexfinance.stats</span></code> moved to a new module <code class="docutils literal notranslate"><span class="pre">iexdata</span></code>.</dt>
-<dd><ul class="first last">
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_intraday</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_recent</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_records</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_daily</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_monthly</span></code>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">iexfinance.stats</span></code> moved to a new module <code class="docutils literal notranslate"><span class="pre">iexdata</span></code>.</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_intraday</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_recent</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_records</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_daily</span></code>, <code class="docutils literal notranslate"><span class="pre">get_stats_monthly</span></code>
 have been moved to <code class="docutils literal notranslate"><span class="pre">iexdata</span></code>. The top level functions <code class="docutils literal notranslate"><span class="pre">iexfinance.get_stats_intraday</span></code> etc. have
-been deprecated</li>
-<li><code class="docutils literal notranslate"><span class="pre">get_stats_monthly</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">get_stats_summary</span></code></li>
+been deprecated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stats_monthly</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">get_stats_summary</span></code></p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>The named parameter <code class="docutils literal notranslate"><span class="pre">range_</span></code> for <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_dividends</span></code>,
-<code class="docutils literal notranslate"><span class="pre">get_splits</span></code>, and <code class="docutils literal notranslate"><span class="pre">get_chart</span></code> is now the keyword argument <code class="docutils literal notranslate"><span class="pre">range</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_previous</span></code> deprecated and renamed
-<code class="docutils literal notranslate"><span class="pre">get_previous_day_prices</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_todays_earnings</span></code> deprecated and renamed <code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_relevant</span></code> deprecated and renamed
-<code class="docutils literal notranslate"><span class="pre">get_relevant_stocks</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_all</span></code> is now available for the Version 1.0 Developer
-API only.</li>
+<li><p>The named parameter <code class="docutils literal notranslate"><span class="pre">range_</span></code> for <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_dividends</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_splits</span></code>, and <code class="docutils literal notranslate"><span class="pre">get_chart</span></code> is now the keyword argument <code class="docutils literal notranslate"><span class="pre">range</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.Stock.get_previous</span></code> deprecated and renamed
+<code class="docutils literal notranslate"><span class="pre">get_previous_day_prices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_todays_earnings</span></code> deprecated and renamed <code class="docutils literal notranslate"><span class="pre">get_earnings_today</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_relevant</span></code> deprecated and renamed
+<code class="docutils literal notranslate"><span class="pre">get_relevant_stocks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.stocks.get_all</span></code> is now available for the Version 1.0 Developer
+API only.</p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Bug Fixes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Make pandas indexing consistent for <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>, using
-<code class="docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code> instead of <code class="docutils literal notranslate"><span class="pre">str</span></code> (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/95">GH95</a>)</li>
-<li><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_dividends</span></code> output fomatting returns one symbol only (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/110">GH110</a>)</li>
+<li><p>Make pandas indexing consistent for <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>, using
+<code class="docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code> instead of <code class="docutils literal notranslate"><span class="pre">str</span></code> (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/95">GH95</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stocks.Stock.get_dividends</span></code> output fomatting returns one symbol only (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/110">GH110</a>)</p></li>
 </ul>
 </div>
 </div>
@@ -533,48 +607,48 @@ API only.</li>
 <p>This is a minor release from 0.3.4.</p>
 <p>Highlights:</p>
 <ul class="simple">
-<li>Adds support for intraday historical prices</li>
-<li>Adds support for endpoint additions and updates from 8/8/2018 provider
-updates (including expanded cryptocurrency support)</li>
-<li>Various bug fixes and enhancements</li>
+<li><p>Adds support for intraday historical prices</p></li>
+<li><p>Adds support for endpoint additions and updates from 8/8/2018 provider
+updates (including expanded cryptocurrency support)</p></li>
+<li><p>Various bug fixes and enhancements</p></li>
 </ul>
-<div class="section" id="id10">
-<h3>Enhancements<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Enhancements<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Adds support for intraday historical data through <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>
-of <code class="docutils literal notranslate"><span class="pre">stocks</span></code>.</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#sector-performance">Sector Performance</a> endpoint of Stocks (thank you kafana).</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#list">List</a> infocus endpoint of Stocks (thank you kafana).</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#collections">Collections</a> endpoint of Stocks</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#crypto">Crypto</a> endpoint of Stocks</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#earnings-today">Earnings Today</a> endpoint of Stocks</li>
-<li>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#ipo-calendar">IPO Calendar</a> endpoint of Stocks</li>
-<li>Adds pandas DataFrame output formatting for <code class="docutils literal notranslate"><span class="pre">get_chart</span></code>, <code class="docutils literal notranslate"><span class="pre">get_dividends</span></code>,
-<code class="docutils literal notranslate"><span class="pre">get_earnings</span></code>, <code class="docutils literal notranslate"><span class="pre">get_financials</span></code>.</li>
-<li>Adds support for list-like data types for symbols (tuple, pandas.Series,
-numpy.ndarray, etc)</li>
-<li>Sets index of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> historical and time series data to
+<li><p>Adds support for intraday historical data through <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>
+of <code class="docutils literal notranslate"><span class="pre">stocks</span></code>.</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#sector-performance">Sector Performance</a> endpoint of Stocks (thank you kafana).</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#list">List</a> infocus endpoint of Stocks (thank you kafana).</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#collections">Collections</a> endpoint of Stocks</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#crypto">Crypto</a> endpoint of Stocks</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#earnings-today">Earnings Today</a> endpoint of Stocks</p></li>
+<li><p>Adds support for the <a class="reference external" href="https://iextrading.com/developer/docs/#ipo-calendar">IPO Calendar</a> endpoint of Stocks</p></li>
+<li><p>Adds pandas DataFrame output formatting for <code class="docutils literal notranslate"><span class="pre">get_chart</span></code>, <code class="docutils literal notranslate"><span class="pre">get_dividends</span></code>,
+<code class="docutils literal notranslate"><span class="pre">get_earnings</span></code>, <code class="docutils literal notranslate"><span class="pre">get_financials</span></code>.</p></li>
+<li><p>Adds support for list-like data types for symbols (tuple, pandas.Series,
+numpy.ndarray, etc)</p></li>
+<li><p>Sets index of <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> historical and time series data to
 <code class="docutils literal notranslate"><span class="pre">pandas.DatetimeIndex</span></code> for easier sorting and wrangling (thank you Brian
-Wylie) <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/83">GH83</a></li>
+Wylie) <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/83">GH83</a></p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>Bug Fixes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Bug Fixes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Some Stocks endpoints return incorrectly
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/34">GH34</a></li>
-<li><code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> returns incorrect range when passed <code class="docutils literal notranslate"><span class="pre">range_</span></code> parameter
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/84">GH84</a></li>
-<li>Repaired issue where get_historical_data for an invalid symbol does not
-raise an exception <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/82">GH82</a></li>
+<li><p>Some Stocks endpoints return incorrectly
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/34">GH34</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> returns incorrect range when passed <code class="docutils literal notranslate"><span class="pre">range_</span></code> parameter
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/84">GH84</a></p></li>
+<li><p>Repaired issue where get_historical_data for an invalid symbol does not
+raise an exception <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/82">GH82</a></p></li>
 </ul>
 </div>
 <div class="section" id="backward-compatability">
 <h3>Backward Compatability<a class="headerlink" href="#backward-compatability" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> have been moved to
+<li><p><code class="docutils literal notranslate"><span class="pre">Stock</span></code> and <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code> have been moved to
 <code class="docutils literal notranslate"><span class="pre">iexfinance.stocks</span></code>. The top-level functions remain with warnings but
-will be deprecated in v0.4.0.</li>
+will be deprecated in v0.4.0.</p></li>
 </ul>
 </div>
 </div>
@@ -586,22 +660,22 @@ will be deprecated in v0.4.0.</li>
 <div class="section" id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Added support for the Largest Trades endpoint through the <code class="docutils literal notranslate"><span class="pre">get_largest_trades</span></code> method of <code class="docutils literal notranslate"><span class="pre">Stock</span></code></li>
+<li><p>Added support for the Largest Trades endpoint through the <code class="docutils literal notranslate"><span class="pre">get_largest_trades</span></code> method of <code class="docutils literal notranslate"><span class="pre">Stock</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h3>Enhancements<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Enhancements<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Added tests and documentation for cryptocurrency support <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/66">GH66</a></li>
-<li>Added docstring for <code class="docutils literal notranslate"><span class="pre">get_chart</span></code> <code class="docutils literal notranslate"><span class="pre">changeFromClose</span></code> and <code class="docutils literal notranslate"><span class="pre">chartLast</span></code> parameters <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/65">GH65</a></li>
+<li><p>Added tests and documentation for cryptocurrency support <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/66">GH66</a></p></li>
+<li><p>Added docstring for <code class="docutils literal notranslate"><span class="pre">get_chart</span></code> <code class="docutils literal notranslate"><span class="pre">changeFromClose</span></code> and <code class="docutils literal notranslate"><span class="pre">chartLast</span></code> parameters <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/65">GH65</a></p></li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>Bug Fixes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Bug Fixes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Removes dividend-issuing tickers from historical price tests <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/61">GH61</a></li>
-<li>Fix KeyError exception when there is no earnings or financials data on a ticker. (Thank you reixd)
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/pull/60">GH60</a></li>
+<li><p>Removes dividend-issuing tickers from historical price tests <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/61">GH61</a></p></li>
+<li><p>Fix KeyError exception when there is no earnings or financials data on a ticker. (Thank you reixd)
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/pull/60">GH60</a></p></li>
 </ul>
 </div>
 </div>
@@ -609,12 +683,12 @@ will be deprecated in v0.4.0.</li>
 <h2>v0.3.3 (April 21, 2018)<a class="headerlink" href="#v0-3-3-april-21-2018" title="Permalink to this headline">¶</a></h2>
 <p>This is a minor release from 0.3.2 which repairs PyPi upload and installation issues.</p>
 <p>Please see the release notes for v0.3.2 for more information on the latest updates. This version simply repairs installation issues.</p>
-<div class="section" id="id14">
-<h3>Bug Fixes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Bug Fixes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>Repairs installation problems for Python 2 and 3 by adding MANIFEST.in</dt>
-<dd><a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/44">GH44</a></dd>
+<li><dl class="simple">
+<dt>Repairs installation problems for Python 2 and 3 by adding MANIFEST.in</dt><dd><p><a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/44">GH44</a></p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -623,32 +697,32 @@ will be deprecated in v0.4.0.</li>
 <div class="section" id="v0-3-2-april-21-2018">
 <span id="whatsnew-032"></span><h2>v0.3.2 (April 21, 2018)<a class="headerlink" href="#v0-3-2-april-21-2018" title="Permalink to this headline">¶</a></h2>
 <p>This is a minor release from 0.3.1, which repairs various bugs and adds minor enhancements.</p>
-<div class="section" id="id15">
-<h3>New Features<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>New Features<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Adds decimal parsing option (thank you reixd)</li>
-<li><dl class="first docutils">
-<dt>Adds support for market movers through the Stocks list endpoint</dt>
-<dd><a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/52">GH52</a></dd>
+<li><p>Adds decimal parsing option (thank you reixd)</p></li>
+<li><dl class="simple">
+<dt>Adds support for market movers through the Stocks list endpoint</dt><dd><p><a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/52">GH52</a></p>
+</dd>
 </dl>
 </li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>Enhancements<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Enhancements<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Adds default date paremeters (thank you stubs)</li>
-<li>Code refactoring for performance and simplicity</li>
+<li><p>Adds default date paremeters (thank you stubs)</p></li>
+<li><p>Code refactoring for performance and simplicity</p></li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>Bug Fixes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Bug Fixes<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Repaired 0.3.1 docs</li>
-<li>IEX Market Data functions not filtering when symbol passed
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/46">GH46</a></li>
-<li>Expected close test fails
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/45">GH45</a></li>
+<li><p>Repaired 0.3.1 docs</p></li>
+<li><p>IEX Market Data functions not filtering when symbol passed
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/46">GH46</a></p></li>
+<li><p>Expected close test fails
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/45">GH45</a></p></li>
 </ul>
 </div>
 </div>
@@ -656,22 +730,22 @@ will be deprecated in v0.4.0.</li>
 <span id="whatsnew-031"></span><h2>v0.3.1 (March 9, 2018)<a class="headerlink" href="#v0-3-1-march-9-2018" title="Permalink to this headline">¶</a></h2>
 <p>This is a minor release from 0.3.0, which repairs various bugs related to the
 Stocks endpoints.</p>
-<div class="section" id="id18">
-<h3>Enhancements<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Enhancements<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Significant cleanup and rebuild of iexfinance <cite>docs
-&lt;https://addisonlynch.github.io/iexfinance&gt;</cite>.</li>
+<li><p>Significant cleanup and rebuild of iexfinance <cite>docs
+&lt;https://addisonlynch.github.io/iexfinance&gt;</cite>.</p></li>
 </ul>
 </div>
-<div class="section" id="id19">
-<h3>Bug Fixes<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>Bug Fixes<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Symbols with non-alphanumeric characters fail
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/38">GH38</a></li>
-<li>Some Stocks endpoints return incorrectly
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/34">GH34</a></li>
-<li>Repaired CodeCov code coverage
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/14">GH14</a></li>
+<li><p>Symbols with non-alphanumeric characters fail
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/38">GH38</a></p></li>
+<li><p>Some Stocks endpoints return incorrectly
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/34">GH34</a></p></li>
+<li><p>Repaired CodeCov code coverage
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/14">GH14</a></p></li>
 </ul>
 </div>
 </div>
@@ -681,81 +755,81 @@ Stocks endpoints.</p>
 update.</p>
 <p>Highlights:</p>
 <ul class="simple">
-<li>Added most IEX API endpoints (from Stocks, Reference Data, IEX Market
-Data, and IEX Stats)</li>
-<li>Added <strong>get_historical_data</strong> for the retrieval of time-series data from
-the <a class="reference external" href="https://iextrading.com/developer/docs/#chart">chart</a> endpoint.</li>
-<li>Added support for <code class="docutils literal notranslate"><span class="pre">filter</span></code>, a parameter which allows the filtering of
-endpoint requests.</li>
-<li>Pandas DataFrame formatting support.</li>
+<li><p>Added most IEX API endpoints (from Stocks, Reference Data, IEX Market
+Data, and IEX Stats)</p></li>
+<li><p>Added <strong>get_historical_data</strong> for the retrieval of time-series data from
+the <a class="reference external" href="https://iextrading.com/developer/docs/#chart">chart</a> endpoint.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">filter</span></code>, a parameter which allows the filtering of
+endpoint requests.</p></li>
+<li><p>Pandas DataFrame formatting support.</p></li>
 </ul>
 <div class="contents local topic" id="what-s-new-in-v0-3-0">
-<p class="topic-title first">What’s new in v0.3.0</p>
+<p class="topic-title">What’s new in v0.3.0</p>
 <ul class="simple">
-<li><a class="reference internal" href="#whatsnew-030-new-features" id="id23">New Features</a></li>
-<li><a class="reference internal" href="#whatsnew-030-improvements" id="id24">Enhancements</a></li>
-<li><a class="reference internal" href="#changes" id="id25">Changes</a></li>
-<li><a class="reference internal" href="#id22" id="id26">Bug Fixes</a></li>
-<li><a class="reference internal" href="#backward-compability" id="id27">Backward Compability</a></li>
+<li><p><a class="reference internal" href="#whatsnew-030-new-features" id="id26">New Features</a></p></li>
+<li><p><a class="reference internal" href="#whatsnew-030-improvements" id="id27">Enhancements</a></p></li>
+<li><p><a class="reference internal" href="#changes" id="id28">Changes</a></p></li>
+<li><p><a class="reference internal" href="#id25" id="id29">Bug Fixes</a></p></li>
+<li><p><a class="reference internal" href="#backward-compability" id="id30">Backward Compability</a></p></li>
 </ul>
 </div>
 <div class="section" id="whatsnew-030-new-features">
-<span id="id20"></span><h3>New Features<a class="headerlink" href="#whatsnew-030-new-features" title="Permalink to this headline">¶</a></h3>
+<span id="id23"></span><h3>New Features<a class="headerlink" href="#whatsnew-030-new-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Added support for <a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market
-Data</a></li>
-<li>Added support for <a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX
-Stats</a></li>
-<li>Added support for Historical data through the Stocks
-<a class="reference external" href="https://iextrading.com/developer/docs/#chart">chart</a> endpoint</li>
-<li>Added <a class="reference external" href="https://pandas.pydata.org">Pandas</a> as an output format for
-most endpoints (excluding IEX Reference Data).</li>
-<li>Added support for requests caching using requests-cache</li>
+<li><p>Added support for <a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market
+Data</a></p></li>
+<li><p>Added support for <a class="reference external" href="https://iextrading.com/developer/docs/#iex-stats">IEX
+Stats</a></p></li>
+<li><p>Added support for Historical data through the Stocks
+<a class="reference external" href="https://iextrading.com/developer/docs/#chart">chart</a> endpoint</p></li>
+<li><p>Added <a class="reference external" href="https://pandas.pydata.org">Pandas</a> as an output format for
+most endpoints (excluding IEX Reference Data).</p></li>
+<li><p>Added support for requests caching using requests-cache</p></li>
 </ul>
 </div>
 <div class="section" id="whatsnew-030-improvements">
-<span id="id21"></span><h3>Enhancements<a class="headerlink" href="#whatsnew-030-improvements" title="Permalink to this headline">¶</a></h3>
+<span id="id24"></span><h3>Enhancements<a class="headerlink" href="#whatsnew-030-improvements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>PEP8 formatting
+<li><p>PEP8 formatting
 <a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/9">GH9</a>,
-managed by <a class="reference external" href="https://flake8.pycqa.org/en/latest">flake8</a></li>
-<li>Migrated to
+managed by <a class="reference external" href="https://flake8.pycqa.org/en/latest">flake8</a></p></li>
+<li><p>Migrated to
 <a class="reference external" href="https://docs.pytest.org/en/latest/#documentation">pytest</a> for
-testing</li>
-<li>Migrated to Sphinx and RST for documentation</li>
+testing</p></li>
+<li><p>Migrated to Sphinx and RST for documentation</p></li>
 </ul>
 </div>
 <div class="section" id="changes">
 <span id="whatsnew-030-bug-fixes"></span><h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Merged Share and Batch classes into StockReader class
-- Changed top-level IexFinance function to Stock()</li>
-<li>Removes simplejson, mock, and nose as dependencies.</li>
-<li>Splits requirements into install requirements (requirements.txt) and
-testing requirements (requirements-test.txt)</li>
-<li>Stocks now downloads endpoints on a per-request basis, not at instantiation</li>
-<li>Adds requirement that requests must be limited to 10 endpoints at once for
-Stocks endpoints</li>
+<li><p>Merged Share and Batch classes into StockReader class
+- Changed top-level IexFinance function to Stock()</p></li>
+<li><p>Removes simplejson, mock, and nose as dependencies.</p></li>
+<li><p>Splits requirements into install requirements (requirements.txt) and
+testing requirements (requirements-test.txt)</p></li>
+<li><p>Stocks now downloads endpoints on a per-request basis, not at instantiation</p></li>
+<li><p>Adds requirement that requests must be limited to 10 endpoints at once for
+Stocks endpoints</p></li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>Bug Fixes<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>Bug Fixes<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Incorrectly rejects lists of size 51-100
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/1">GH1</a></li>
-<li>Repaired and improved unit tests
-<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/6">GH6</a></li>
+<li><p>Incorrectly rejects lists of size 51-100
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/1">GH1</a></p></li>
+<li><p>Repaired and improved unit tests
+<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/6">GH6</a></p></li>
 </ul>
 </div>
 <div class="section" id="backward-compability">
 <h3>Backward Compability<a class="headerlink" href="#backward-compability" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The top-level <code class="docutils literal notranslate"><span class="pre">IexFinance</span></code> function is now <code class="docutils literal notranslate"><span class="pre">Stock</span></code></li>
-<li>Within the <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> class (to retrieve stocks endpoints):
+<li><p>The top-level <code class="docutils literal notranslate"><span class="pre">IexFinance</span></code> function is now <code class="docutils literal notranslate"><span class="pre">Stock</span></code></p></li>
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">StockReader</span></code> class (to retrieve stocks endpoints):
 - <code class="docutils literal notranslate"><span class="pre">refresh</span></code> has been removed. Simply conduct another endpoint request to
 download the most updated data
 - <code class="docutils literal notranslate"><span class="pre">get_select_datapoints</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">filter</span></code>.
-- <code class="docutils literal notranslate"><span class="pre">get_select_endpoints</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">get_endpoints</span></code></li>
+- <code class="docutils literal notranslate"><span class="pre">get_select_endpoints</span></code> has been replaced with <code class="docutils literal notranslate"><span class="pre">get_endpoints</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -763,18 +837,16 @@ download the most updated data
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migrating.html" class="btn btn-neutral float-right" title="Migrating to IEX Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Welcome to iexfinance’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Common Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -783,11 +855,19 @@ download the most updated data
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -799,37 +879,15 @@ download the most updated data
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

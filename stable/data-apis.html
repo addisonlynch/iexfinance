@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data APIs &mdash; iexfinance 0.5.0-dev documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Account" href="account.html" />
+    <link rel="prev" title="Alternative Data" href="altdata.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Data</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iexdata.html">Investor’s Exchange Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-points">Data Points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#available-data-points-for-a-symbol">Available Data Points For a Symbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#individual-data-points-for-a-symbol">Individual Data Points For a Symbol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#time-series">Time Series</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#all-available-time-series">All Available Time Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#individual-time-series">Individual Time Series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iexfinance</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Data APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/data-apis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-apis">
+<span id="id1"></span><h1>Data APIs<a class="headerlink" href="#data-apis" title="Permalink to this headline">¶</a></h1>
+<p>IEX Cloud data can be organized into three generic data APIs:
+<a class="reference internal" href="#data-apis-time-series"><span class="std std-ref">time-series</span></a>, data-tables, and data-points. Each API type is self describing and the docs can be accessed without an API token.</p>
+<div class="section" id="data-points">
+<span id="data-apis-data-points"></span><h2>Data Points<a class="headerlink" href="#data-points" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#data-points">Data points</a> are available per symbol and return individual plain text
+values. Retrieving individual data points is useful for Excel and Google Sheet users, and applications where a single, lightweight value is needed. We also provide update times for some endpoints which allow you to call an endpoint only once it has new data.</p>
+<p>Full access to the Data Points endpoints is available through the
+<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code> function.</p>
+<dl class="py function">
+<dt id="iexfinance.data_apis.get_data_points">
+<code class="sig-prename descclassname">iexfinance.data_apis.</code><code class="sig-name descname">get_data_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="n">key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_data_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>DataFrame of datapoints for a symbol (if no additional parameters
+passed) or single data point for a given symbol and data point key</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#data-apis">https://iexcloud.io/docs/api/#data-apis</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code> for list, varies for others</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>) – Valid symbol</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Datapoint key</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="available-data-points-for-a-symbol">
+<span id="data-apis-data-points-available"></span><h3>Available Data Points For a Symbol<a class="headerlink" href="#available-data-points-for-a-symbol" title="Permalink to this headline">¶</a></h3>
+<p>To obtain all available data points for a symbol, simply pass the symbol to
+<code class="docutils literal notranslate"><span class="pre">get_data_points</span></code> with no key:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.data_apis</span> <span class="kn">import</span> <span class="n">get_data_points</span>
+
+<span class="gp">In [2]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[2]: </span><span class="go"></span>
+<span class="go">                key  ...                lastUpdated</span>
+<span class="go">0  NEXTDIVIDENDDATE  ...  2020-11-05T20:23:03+00:00</span>
+<span class="go">1              BETA  ...  2020-12-12T04:09:25+00:00</span>
+<span class="go">2   ACCOUNTSPAYABLE  ...  2020-12-10T17:10:00+00:00</span>
+<span class="go">3    CAPITALSURPLUS  ...  2020-12-10T17:10:00+00:00</span>
+<span class="go">4       COMMONSTOCK  ...  2020-12-10T17:10:00+00:00</span>
+
+<span class="go">[5 rows x 4 columns]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="individual-data-points-for-a-symbol">
+<span id="data-apis-data-points-individual"></span><h3>Individual Data Points For a Symbol<a class="headerlink" href="#individual-data-points-for-a-symbol" title="Permalink to this headline">¶</a></h3>
+<p>To obtain an individual data point for a single symbol, pass the symbol and the
+data point ID to <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>:</p>
+<p><strong>Apple Inc. (AAPL) latest price</strong></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMONSTOCK&quot;</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go">656915903</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="time-series">
+<span id="data-apis-time-series"></span><h2>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#time-series">Time series</a> is the most common type of data available, and consists of a
+collection of data points over a period of time. Time series data is indexed by a single date field, and can be retrieved by any portion of time.</p>
+<p>Full access to the Time Series endpoints is available through the
+<code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> function.</p>
+<dl class="py function">
+<dt id="iexfinance.data_apis.get_time_series">
+<code class="sig-prename descclassname">iexfinance.data_apis.</code><code class="sig-name descname">get_time_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id_</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">subkey</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of time series available (if no parameters passed) or
+time series data for given id, key, and subkey.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#time-series">https://iexcloud.io/docs/api/#time-series</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code> for list, varies for others</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em><em>, </em><em>optional</em>) – Time Series dataset ID (function returns list of
+all available datasets if argument not passed)</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – Key used to identify data within a dataset (e.g. <code class="docutils literal notranslate"><span class="pre">AAPL</span></code>)</p></li>
+<li><p><strong>subkey</strong> (<em>str</em><em>, </em><em>optional</em>) – Key-based. Further refine data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="all-available-time-series">
+<span id="data-apis-time-series-all-time-series"></span><h3>All Available Time Series<a class="headerlink" href="#all-available-time-series" title="Permalink to this headline">¶</a></h3>
+<p>To obtain a list of all available time series, simply call <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code>
+with no parameters:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">iexfinance.data_apis</span> <span class="kn">import</span> <span class="n">get_time_series</span>
+
+<span class="gp">In [5]: </span><span class="n">get_time_series</span><span class="p">()</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">                                                            FX  ...                                         FSNAIINCLA</span>
+<span class="go">inv_pk                                                       8  ...                                               2047</span>
+<span class="go">id                                                          FX  ...                                         FSNAIINCLA</span>
+<span class="go">description          iPeps,xtre,t so5ltifh oc Sar a 2nra daori  ...                                         lincFinsaa</span>
+<span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: False, &#39;properties&#39;: ...</span>
+<span class="go">weight                                                  104189  ...                                               5078</span>
+<span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2020-12-11T15:14:48.000Z</span>
+<span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2020-12-11T15:14:48.000Z</span>
+<span class="go">version                                                      1  ...                                                  1</span>
+<span class="go">weightKey                                                   XF  ...                                         FAAILNCNSI</span>
+<span class="go">prepost                                                    NaN  ...                                                NaN</span>
+
+<span class="go">[10 rows x 98 columns]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="individual-time-series">
+<span id="data-apis-time-series-individual"></span><h3>Individual Time Series<a class="headerlink" href="#individual-time-series" title="Permalink to this headline">¶</a></h3>
+<p>Whereas calling <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> with no parameters returns a full inventory
+of time series endpoints, calling <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> with an individual series
+ID and (optional) keys and subkeys as parameters.</p>
+<p>For example, to obtain the <code class="docutils literal notranslate"><span class="pre">REPORTED_FINANCIALS</span></code> time series entry for Apple
+Inc. (<code class="docutils literal notranslate"><span class="pre">AAPL</span></code>):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[6]: </span><span class="go"></span>
+<span class="go">                                                   1970-01-01 00:27:43.780986578</span>
+<span class="go">AccountsPayableCurrent                                               33832880962</span>
+<span class="go">AccountsReceivableNetCurrent                                         16353442442</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28804693044</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   63616540858</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2840411729</span>
+</pre></div>
+</div>
+<p>Or with a subkey:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">                                                   1970-01-01 00:26:44.268260764</span>
+<span class="go">AccountsPayableCurrent                                               33671479254</span>
+<span class="go">AccountsReceivableNetCurrent                                         16054438035</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         29558075637</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   63887192174</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2866310462</span>
+</pre></div>
+</div>
+<p>Any and all series-specific parameters (such as <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>,
+etc. should be passed as <em>keyword arguments</em>)</p>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<p>Last Apple Inc. Form 10-K</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">                                                   1970-01-01 00:27:09.391937427</span>
+<span class="go">AccountsPayableCurrent                                               46467673701</span>
+<span class="go">AccountsReceivableNetCurrent                                         23137214528</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         30436834848</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   60460721337</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -609437775</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="altdata.html" class="btn btn-neutral float-left" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Addison Lynch
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

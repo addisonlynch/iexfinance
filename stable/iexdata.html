@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Investor’s Exchange Data &mdash; iexfinance 0.4.2-dev documentation</title>
+  <title>Investor’s Exchange Data &mdash; iexfinance 0.5.0-dev documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -17,48 +20,39 @@
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="author" title="About these documents"
-              href="about.html"/>
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="iexfinance 0.4.2-dev documentation" href="index.html"/>
-        <link rel="next" title="API System Metadata" href="apidata.html"/>
-        <link rel="prev" title="Options" href="options.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Alternative Data" href="altdata.html" />
+    <link rel="prev" title="Reference Data" href="refdata.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> iexfinance
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
           
 
           
@@ -68,7 +62,7 @@
             
             
               <div class="version">
-                0.4.2
+                0.5.0
               </div>
             
           
@@ -85,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -94,21 +89,20 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating to IEX Cloud</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Common Usage Examples</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Endpoints</span></p>
+<p class="caption"><span class="caption-text">Core Data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_apis.html">Data APIs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks / Equities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Cryptocurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refdata.html">Reference Data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Investor’s Exchange Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tops">TOPS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
@@ -156,6 +150,12 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="altdata.html">Alternative Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-apis.html">Data APIs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Utility endpoints</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidata.html">API System Metadata</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Package Information</span></p>
@@ -164,7 +164,6 @@
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caching.html">Caching Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="testing.html#release-procedure">Release Procedure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">iexfinance package</a></li>
 </ul>
@@ -172,13 +171,14 @@
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">iexfinance</a>
@@ -186,9 +186,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -209,7 +210,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Investor’s Exchange Data</li>
     
@@ -231,62 +232,64 @@
            <div itemprop="articleBody">
             
   <div class="section" id="investor-s-exchange-data">
-<span id="iexdata"></span><h1><a class="toc-backref" href="#id8">Investor’s Exchange Data</a><a class="headerlink" href="#investor-s-exchange-data" title="Permalink to this headline">¶</a></h1>
+<span id="iexdata"></span><h1><a class="toc-backref" href="#id20">Investor’s Exchange Data</a><a class="headerlink" href="#investor-s-exchange-data" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These endpoints do not support pandas DataFrame output formatting.</p>
+</div>
 <p>The following endpoints are available under Investor’s Exchange Data:</p>
 <div class="contents topic" id="endpoints">
-<p class="topic-title first">Endpoints</p>
+<p class="topic-title">Endpoints</p>
 <ul class="simple">
-<li><a class="reference internal" href="#investor-s-exchange-data" id="id8">Investor’s Exchange Data</a><ul>
-<li><a class="reference internal" href="#tops" id="id9">TOPS</a></li>
-<li><a class="reference internal" href="#last" id="id10">Last</a></li>
-<li><a class="reference internal" href="#deep" id="id11">DEEP</a></li>
-<li><a class="reference internal" href="#deep-auction" id="id12">DEEP Auction</a></li>
-<li><a class="reference internal" href="#deep-book" id="id13">DEEP Book</a></li>
-<li><a class="reference internal" href="#deep-operational-halt-status" id="id14">DEEP Operational Halt Status</a></li>
-<li><a class="reference internal" href="#deep-official-price" id="id15">DEEP Official Price</a></li>
-<li><a class="reference internal" href="#deep-security-event" id="id16">DEEP Security Event</a></li>
-<li><a class="reference internal" href="#deep-short-sale-price-test-status" id="id17">DEEP Short Sale Price Test Status</a></li>
-<li><a class="reference internal" href="#deep-system-event" id="id18">DEEP System Event</a></li>
-<li><a class="reference internal" href="#deep-trades" id="id19">DEEP Trades</a></li>
-<li><a class="reference internal" href="#deep-trade-break" id="id20">DEEP Trade Break</a></li>
-<li><a class="reference internal" href="#deep-trading-status" id="id21">DEEP Trading Status</a></li>
-<li><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id22">Listed Regulation SHO Threshold Securities List</a></li>
-<li><a class="reference internal" href="#listed-short-interest-list" id="id23">Listed Short Interest List</a></li>
-<li><a class="reference internal" href="#stats-historical-daily" id="id24">Stats Historical Daily</a></li>
-<li><a class="reference internal" href="#stats-historical-summary" id="id25">Stats Historical Summary</a></li>
-<li><a class="reference internal" href="#stats-intraday" id="id26">Stats Intraday</a></li>
-<li><a class="reference internal" href="#stats-recent" id="id27">Stats Recent</a></li>
-<li><a class="reference internal" href="#stats-records" id="id28">Stats Records</a></li>
+<li><p><a class="reference internal" href="#investor-s-exchange-data" id="id20">Investor’s Exchange Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tops" id="id21">TOPS</a></p></li>
+<li><p><a class="reference internal" href="#last" id="id22">Last</a></p></li>
+<li><p><a class="reference internal" href="#deep" id="id23">DEEP</a></p></li>
+<li><p><a class="reference internal" href="#deep-auction" id="id24">DEEP Auction</a></p></li>
+<li><p><a class="reference internal" href="#deep-book" id="id25">DEEP Book</a></p></li>
+<li><p><a class="reference internal" href="#deep-operational-halt-status" id="id26">DEEP Operational Halt Status</a></p></li>
+<li><p><a class="reference internal" href="#deep-official-price" id="id27">DEEP Official Price</a></p></li>
+<li><p><a class="reference internal" href="#deep-security-event" id="id28">DEEP Security Event</a></p></li>
+<li><p><a class="reference internal" href="#deep-short-sale-price-test-status" id="id29">DEEP Short Sale Price Test Status</a></p></li>
+<li><p><a class="reference internal" href="#deep-system-event" id="id30">DEEP System Event</a></p></li>
+<li><p><a class="reference internal" href="#deep-trades" id="id31">DEEP Trades</a></p></li>
+<li><p><a class="reference internal" href="#deep-trade-break" id="id32">DEEP Trade Break</a></p></li>
+<li><p><a class="reference internal" href="#deep-trading-status" id="id33">DEEP Trading Status</a></p></li>
+<li><p><a class="reference internal" href="#listed-regulation-sho-threshold-securities-list" id="id34">Listed Regulation SHO Threshold Securities List</a></p></li>
+<li><p><a class="reference internal" href="#listed-short-interest-list" id="id35">Listed Short Interest List</a></p></li>
+<li><p><a class="reference internal" href="#stats-historical-daily" id="id36">Stats Historical Daily</a></p></li>
+<li><p><a class="reference internal" href="#stats-historical-summary" id="id37">Stats Historical Summary</a></p></li>
+<li><p><a class="reference internal" href="#stats-intraday" id="id38">Stats Intraday</a></p></li>
+<li><p><a class="reference internal" href="#stats-recent" id="id39">Stats Recent</a></p></li>
+<li><p><a class="reference internal" href="#stats-records" id="id40">Stats Records</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="tops">
-<span id="iexdata-tops"></span><h2><a class="toc-backref" href="#id9">TOPS</a><a class="headerlink" href="#tops" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-tops"></span><h2><a class="toc-backref" href="#id21">TOPS</a><a class="headerlink" href="#tops" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#tops">TOPS</a> is IEX’s
 aggregated best quoted bid and offer position in near real time.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_tops()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_tops">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_tops</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_tops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_tops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_tops" title="Permalink to this definition">¶</a></dt>
 <dd><p>TOPS data for a symbol or list of symbols.</p>
 <p>TOPS provides IEX’s aggregated best quoted bid and offer position in near
 real time for all securities on IEX’s displayed limit order book. TOPS is
 ideal for developers needing both quote and trade data.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#tops">https://iexcloud.io/docs/api/#tops</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#tops">https://iexcloud.io/docs/api/#tops</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional
+Symbol or list-like collection of symbols</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="usage">
@@ -297,38 +300,34 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
+<p class="admonition-title">Note</p>
+<p>The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="last">
-<span id="iexdata-last"></span><h2><a class="toc-backref" href="#id10">Last</a><a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-last"></span><h2><a class="toc-backref" href="#id22">Last</a><a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#last">Last</a> is IEX
 real-time trade data from the IEX book. This endpoint allows retrieval
 of a real-time quote.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_last()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_last">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_last</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_last" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_last</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_last" title="Permalink to this definition">¶</a></dt>
 <dd><p>Last data for a symbol or list of symbols</p>
 <p>Last provides trade data for executions on IEX. It is a near real time,
 intraday API that provides IEX last sale price, size and time. Last is
 ideal for developers that need a lightweight stock quote.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#last">https://iexcloud.io/docs/api/#last</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#last">https://iexcloud.io/docs/api/#last</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="id1">
@@ -340,18 +339,18 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The /tops/last endpoint without any parameters will return all symbols.</p>
+<p class="admonition-title">Note</p>
+<p>The /tops/last endpoint without any parameters will return all symbols.</p>
 </div>
 </div>
 </div>
 <div class="section" id="deep">
-<span id="iexdata-deep"></span><h2><a class="toc-backref" href="#id11">DEEP</a><a class="headerlink" href="#deep" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-deep"></span><h2><a class="toc-backref" href="#id23">DEEP</a><a class="headerlink" href="#deep" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#DEEP">DEEP</a>  is IEX’s aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_deep()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_deep">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_deep</code><span class="sig-paren">(</span><em>symbols=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_deep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_deep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbols</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_deep" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEEP data for a symbol or list of symbols</p>
 <p>DEEP is used to receive real-time depth of book quotations direct from IEX.
 The depth of book quotations received via DEEP provide an aggregated size
@@ -362,27 +361,23 @@ DEEP.</p>
 <p>DEEP also provides last trade price and size information. Trades resulting
 from either displayed or non-displayed orders matching on IEX will be
 reported. Routed executions will not be reported.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#deep">https://iexcloud.io/docs/api/#deep</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>symbols</strong> (<em>str</em><em> or </em><em>list</em><em>, </em><em>default None</em>) – A symbol or list of symbols</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#deep">https://iexcloud.io/docs/api/#deep</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Pandas not supported as an output format for the DEEP endpoint.</p>
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Per IEX, DEEP only accepts one symbol at this time.</p>
+<p class="admonition-title">Note</p>
+<p>Per IEX, DEEP only accepts one symbol at this time.</p>
 </div>
 <div class="section" id="iexdata-deep-usage">
 <span id="id2"></span><h3>Usage<a class="headerlink" href="#iexdata-deep-usage" title="Permalink to this headline">¶</a></h3>
@@ -394,450 +389,926 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 </div>
 </div>
 <div class="section" id="deep-auction">
-<span id="iexdata-deep-auction"></span><h2><a class="toc-backref" href="#id12">DEEP Auction</a><a class="headerlink" href="#deep-auction" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-auction"></span><h2><a class="toc-backref" href="#id24">DEEP Auction</a><a class="headerlink" href="#deep-auction" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-book">
-<span id="iexdata-deep-book"></span><h2><a class="toc-backref" href="#id13">DEEP Book</a><a class="headerlink" href="#deep-book" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-book"></span><h2><a class="toc-backref" href="#id25">DEEP Book</a><a class="headerlink" href="#deep-book" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-operational-halt-status">
-<span id="iexdata-deep-halt-status"></span><h2><a class="toc-backref" href="#id14">DEEP Operational Halt Status</a><a class="headerlink" href="#deep-operational-halt-status" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-halt-status"></span><h2><a class="toc-backref" href="#id26">DEEP Operational Halt Status</a><a class="headerlink" href="#deep-operational-halt-status" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-official-price">
-<span id="iexdata-deep-official-price"></span><h2><a class="toc-backref" href="#id15">DEEP Official Price</a><a class="headerlink" href="#deep-official-price" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-3">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-official-price"></span><h2><a class="toc-backref" href="#id27">DEEP Official Price</a><a class="headerlink" href="#deep-official-price" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-security-event">
-<span id="iexdata-deep-security-event"></span><h2><a class="toc-backref" href="#id16">DEEP Security Event</a><a class="headerlink" href="#deep-security-event" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-4">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-security-event"></span><h2><a class="toc-backref" href="#id28">DEEP Security Event</a><a class="headerlink" href="#deep-security-event" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id7">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-short-sale-price-test-status">
-<span id="iexdata-deep-short-sale-status"></span><h2><a class="toc-backref" href="#id17">DEEP Short Sale Price Test Status</a><a class="headerlink" href="#deep-short-sale-price-test-status" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-5">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-short-sale-status"></span><h2><a class="toc-backref" href="#id29">DEEP Short Sale Price Test Status</a><a class="headerlink" href="#deep-short-sale-price-test-status" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id8">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-system-event">
-<span id="iexdata-deep-system-event"></span><h2><a class="toc-backref" href="#id18">DEEP System Event</a><a class="headerlink" href="#deep-system-event" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-6">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-system-event"></span><h2><a class="toc-backref" href="#id30">DEEP System Event</a><a class="headerlink" href="#deep-system-event" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id9">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trades">
-<span id="iexdata-deep-trades"></span><h2><a class="toc-backref" href="#id19">DEEP Trades</a><a class="headerlink" href="#deep-trades" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-7">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-trades"></span><h2><a class="toc-backref" href="#id31">DEEP Trades</a><a class="headerlink" href="#deep-trades" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id10">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trade-break">
-<span id="iexdata-deep-trade-break"></span><h2><a class="toc-backref" href="#id20">DEEP Trade Break</a><a class="headerlink" href="#deep-trade-break" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-8">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-trade-break"></span><h2><a class="toc-backref" href="#id32">DEEP Trade Break</a><a class="headerlink" href="#deep-trade-break" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id11">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="deep-trading-status">
-<span id="iexdata-deep-trading-status"></span><h2><a class="toc-backref" href="#id21">DEEP Trading Status</a><a class="headerlink" href="#deep-trading-status" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-9">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-deep-trading-status"></span><h2><a class="toc-backref" href="#id33">DEEP Trading Status</a><a class="headerlink" href="#deep-trading-status" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id12">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-regulation-sho-threshold-securities-list">
-<span id="iexdata-regulation-list"></span><h2><a class="toc-backref" href="#id22">Listed Regulation SHO Threshold Securities List</a><a class="headerlink" href="#listed-regulation-sho-threshold-securities-list" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-10">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-regulation-list"></span><h2><a class="toc-backref" href="#id34">Listed Regulation SHO Threshold Securities List</a><a class="headerlink" href="#listed-regulation-sho-threshold-securities-list" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id13">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="listed-short-interest-list">
-<span id="iexdata-short-interest-list"></span><h2><a class="toc-backref" href="#id23">Listed Short Interest List</a><a class="headerlink" href="#listed-short-interest-list" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-11">
-<p class="first admonition-title">Todo</p>
-<p class="last">Coming soon.</p>
+<span id="iexdata-short-interest-list"></span><h2><a class="toc-backref" href="#id35">Listed Short Interest List</a><a class="headerlink" href="#listed-short-interest-list" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id14">
+<p class="admonition-title">Todo</p>
+<p>Coming soon.</p>
 </div>
 </div>
 <div class="section" id="stats-historical-daily">
-<span id="iexdata-stats-daily"></span><h2><a class="toc-backref" href="#id24">Stats Historical Daily</a><a class="headerlink" href="#stats-historical-daily" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-stats-daily"></span><h2><a class="toc-backref" href="#id36">Stats Historical Daily</a><a class="headerlink" href="#stats-historical-daily" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint has been marked as <em>in-dev</em> by the provider.</p>
+<p class="admonition-title">Warning</p>
+<p>This endpoint has been marked as <em>in-dev</em> by the provider.</p>
 </div>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-daily">Historical Daily</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_daily()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_stats_daily">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_stats_daily</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>last=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_daily" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_stats_daily</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">last</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_daily" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stats Historical Daily</p>
 <p>This call will return daily stats for a given month or day.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This endpoint is marked as “in development” by the provider.</p>
+<p class="admonition-title">Warning</p>
+<p>This endpoint is marked as “in development” by the provider.</p>
 </div>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev">https://iexcloud.io/docs/api/#stats-historical-daily-in-dev</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
-<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
-<li><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
-(up to 90)</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev">https://iexcloud.io/docs/api/#stats-historical-daily-in-dev</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>string</em><em>, </em><em>int</em><em>, </em><em>date</em><em>, </em><em>datetime</em><em>, </em><em>Timestamp</em>) – Starting date. Parses many different kind of date
+representations (e.g., ‘JAN-01-2010’, ‘1/1/10’, ‘Jan, 1, 1980’).
+Defaults to 15 years before current date.</p></li>
+<li><p><strong>end</strong> (<em>string</em><em>, </em><em>int</em><em>, </em><em>date</em><em>, </em><em>datetime</em><em>, </em><em>Timestamp</em>) – Ending date</p></li>
+<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
+(up to 90)</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
 <div class="section" id="iexdata-stats-daily-usage">
-<span id="id3"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-daily-usage" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-daily-usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_daily</span>
 
 <span class="gp">In [2]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
-<span class="go">            isHalfday  litVolume  marketShare  routedVolume     volume</span>
-<span class="go">date                                                                  </span>
-<span class="go">2019-06-18          0   51689441     0.029820      33015007  210845106</span>
-<span class="go">2019-06-17          0   40680174     0.029390      23282516  170230846</span>
-<span class="go">2019-06-14          0   43046281     0.030630      27145458  177755875</span>
-<span class="go">2019-06-13          0   46164412     0.029920      30714723  183907783</span>
-<span class="go">2019-06-12          0   44671436     0.030570      28100207  189201059</span>
-<span class="go">2019-06-11          0   51891978     0.030300      34566723  206324558</span>
-<span class="go">2019-06-10          0   48343512     0.029130      30443039  186586677</span>
-<span class="go">2019-06-07          0   45791451     0.031574      30730583  201918936</span>
-<span class="go">2019-06-06          0   46568932     0.028910      31935989  195680125</span>
-<span class="go">2019-06-05          0   54866767     0.030280      31790983  222724747</span>
-<span class="go">2019-06-04          0   57327938     0.029980      37214701  225569577</span>
-<span class="go">2019-06-03          0   62882642     0.029324      30805011  243616956</span>
+<span class="go">[{&#39;date&#39;: &#39;2020-12-10&#39;,</span>
+<span class="go">  &#39;volume&#39;: 242731688,</span>
+<span class="go">  &#39;routedVolume&#39;: 31536537,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02252,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 54460802},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-09&#39;,</span>
+<span class="go">  &#39;volume&#39;: 273867594,</span>
+<span class="go">  &#39;routedVolume&#39;: 40736439,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02247,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 68659823},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-08&#39;,</span>
+<span class="go">  &#39;volume&#39;: 244443751,</span>
+<span class="go">  &#39;routedVolume&#39;: 39364405,</span>
+<span class="go">  &#39;marketShare&#39;: 0.022584562840475508,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 59699238},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-07&#39;,</span>
+<span class="go">  &#39;volume&#39;: 245095235,</span>
+<span class="go">  &#39;routedVolume&#39;: 36186977,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02271,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 59244298},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-04&#39;,</span>
+<span class="go">  &#39;volume&#39;: 258120962,</span>
+<span class="go">  &#39;routedVolume&#39;: 42532487,</span>
+<span class="go">  &#39;marketShare&#39;: 0.022220284585471355,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 61053999},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-03&#39;,</span>
+<span class="go">  &#39;volume&#39;: 270173234,</span>
+<span class="go">  &#39;routedVolume&#39;: 43442107,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02269,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 65965317},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-02&#39;,</span>
+<span class="go">  &#39;volume&#39;: 261794153,</span>
+<span class="go">  &#39;routedVolume&#39;: 44983645,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02139,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 68355003},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-01&#39;,</span>
+<span class="go">  &#39;volume&#39;: 280541501,</span>
+<span class="go">  &#39;routedVolume&#39;: 47869485,</span>
+<span class="go">  &#39;marketShare&#39;: 0.01949,</span>
+<span class="go">  &#39;isHalfday&#39;: 0,</span>
+<span class="go">  &#39;litVolume&#39;: 70658090}]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-historical-summary">
-<span id="iexdata-stats-monthly"></span><h2><a class="toc-backref" href="#id25">Stats Historical Summary</a><a class="headerlink" href="#stats-historical-summary" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-stats-monthly"></span><h2><a class="toc-backref" href="#id37">Stats Historical Summary</a><a class="headerlink" href="#stats-historical-summary" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-summary">Historical Summary</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_summary()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_stats_summary">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_stats_summary</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_summary" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_stats_summary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stats Historical Summary</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-summary">https://iexcloud.io/docs/api/#stats-historical-summary</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</li>
-<li><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</li>
-<li><strong>kwargs</strong> – Additional Request Parameters (see base class)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
+<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
+<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p>Data retrieval period must be between 1/2014 and today.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The Historical Summary accepts requests of one month per request.
+<p class="admonition-title">Warning</p>
+<p>The Historical Summary accepts requests of one month per request.
 if specifying a long date range, a query will be made for each
 month in the range, significantly impacting performance</p>
 </div>
 <div class="section" id="iexdata-stats-monthly-usage">
-<span id="id4"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-monthly-usage" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-monthly-usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_summary</span>
 
 <span class="gp">In [4]: </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="gp">In [5]: </span><span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2524</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;date&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-5-3f06c10dca00&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/iexdata/__init__.py</span> in <span class="ni">get_stats_summary</span><span class="nt">(start, end, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">190</span>         <span class="n">Additional</span> <span class="n">Request</span> <span class="n">Parameters</span> <span class="p">(</span><span class="n">see</span> <span class="n">base</span> <span class="n">class</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">192</span><span class="s2">     return MonthlySummaryReader(start=start, end=end, **kwargs).fetch()</span>
-
-<span class="nn">~/Documents/iex/iexfinance/iexfinance/iexdata/base.py</span> in <span class="ni">fetch</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span><span class="s2">         if self.output_format == &#39;pandas&#39;:</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span><span class="s2">             result = pd.concat(dfs) if len(dfs) &gt; 0 else pd.DataFrame()</span>
-<span class="ne">--&gt; </span><span class="mi">406</span><span class="s2">             return result.set_index(&#39;date&#39;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span><span class="s2">         else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span><span class="s2">             return dfs</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">set_index</span><span class="nt">(self, keys, drop, append, inplace, verify_integrity)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3144</span><span class="s2">                 names.append(None)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3145</span><span class="s2">             else:</span>
-<span class="ne">-&gt; </span><span class="mi">3146</span><span class="s2">                 level = frame[col]._values</span>
-<span class="g g-Whitespace">   </span><span class="mi">3147</span><span class="s2">                 names.append(col)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3148</span><span class="s2">                 if drop:</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2137</span><span class="s2">             return self._getitem_multilevel(key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2138</span><span class="s2">         else:</span>
-<span class="ne">-&gt; </span><span class="mi">2139</span><span class="s2">             return self._getitem_column(key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2140</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2141</span><span class="s2">     def _getitem_column(self, key):</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_column</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2144</span><span class="s2">         # get column</span>
-<span class="g g-Whitespace">   </span><span class="mi">2145</span><span class="s2">         if self.columns.is_unique:</span>
-<span class="ne">-&gt; </span><span class="mi">2146</span><span class="s2">             return self._get_item_cache(key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2147</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2148</span><span class="s2">         # duplicate columns &amp; possible reduce dimensionality</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1840</span><span class="s2">         res = cache.get(item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1841</span><span class="s2">         if res is None:</span>
-<span class="ne">-&gt; </span><span class="mi">1842</span><span class="s2">             values = self._data.get(item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1843</span><span class="s2">             res = self._box_item_values(item, values)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1844</span><span class="s2">             cache[item] = res</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/internals.py</span> in <span class="ni">get</span><span class="nt">(self, item, fastpath)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3841</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3842</span><span class="s2">             if not isna(item):</span>
-<span class="ne">-&gt; </span><span class="mi">3843</span><span class="s2">                 loc = self.items.get_loc(item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3844</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3845</span><span class="s2">                 indexer = np.arange(len(self.items))[isna(self.items)]</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2525</span><span class="s2">                 return self._engine.get_loc(key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2526</span><span class="s2">             except KeyError:</span>
-<span class="ne">-&gt; </span><span class="mi">2527</span><span class="s2">                 return self._engine.get_loc(self._maybe_cast_indexer(key))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2528</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2529</span><span class="s2">         indexer = self.get_indexer([key], method=method, tolerance=tolerance)</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;date&#39;
+<span class="gp">In [5]: </span><span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gh">Out[5]: </span><span class="go"></span>
+<span class="go">[[],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 208490944.6,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 55064384,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02704206055737224,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 475,</span>
+<span class="go">   &#39;averageFillSize&#39;: 193,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.7652,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.01898,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11349,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04347,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02464,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0381,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02191,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00156,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00084,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 6046,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1463,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 187,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8047,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.053,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04271,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.13632,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.43797,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.2777,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.16935,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16288,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05958,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03108,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0149,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06483,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.0024,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01962,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00351,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01972,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.22226,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.22679,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00859,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02812,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00812,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.01272,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.00455,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02078,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01528,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01238,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93898,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.77548,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.92946,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.03378,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.99305,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.99}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 201073571.3,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 59035442.78,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02707,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 484,</span>
+<span class="go">   &#39;averageFillSize&#39;: 190,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.7382,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.0209,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1161,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04601,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02474,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.04038,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02321,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00163,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00088,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4952,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1207,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 187,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 7866,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05312,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04234,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11217,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.45105,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.2899,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.17181,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.17176,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05575,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03294,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01836,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.0648,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00268,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.02074,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00194,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.02106,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23635,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.2325,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00771,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.99668,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0013,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.01547,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.01711,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01515,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.02842,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01115,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95959,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.81247,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94959,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.0364,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.02675,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98825}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 200012859.9,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 57676013.36,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02634,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 476,</span>
+<span class="go">   &#39;averageFillSize&#39;: 188,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.7497,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.01993,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11365,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.045,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02387,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0389,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02215,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00159,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00079,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5457,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1117,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 160,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8118,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05091,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04093,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11883,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.44636,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.26745,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.18777,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.17029,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0502,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02916,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01847,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06323,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00324,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.0185,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00214,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01843,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23687,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23995,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00863,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.99774,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 0.99607,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.0109,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.02673,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.00611,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.98631,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.02945,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95366,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.84982,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.9296,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.03667,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.01463,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.99582}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 181529183.1,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 49363398.3,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02737191896003125,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 478,</span>
+<span class="go">   &#39;averageFillSize&#39;: 185,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75336,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02083,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10682,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.0457,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02329,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0378,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02196,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00155,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00084,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4923,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1238,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 202,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8179,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05555,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.03993,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.10925,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.4662,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.26692,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.17615,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16361,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05323,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02996,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02448,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05678,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00303,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01673,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00156,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.02121,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24455,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23812,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00945,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00725,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01678,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.98855,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.9903,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.00862,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.0243,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.0114,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96322,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.82213,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.93025,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00574,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00259,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98761}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 206359717.7,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 51700851.66,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02881,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 463,</span>
+<span class="go">   &#39;averageFillSize&#39;: 183,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.76465,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02115,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10769,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04578,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02205,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.03747,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.0207,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00152,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00077,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5501,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1458,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 250,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8269,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05473,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04202,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.10878,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.43479,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27925,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.19747,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.17182,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05205,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02903,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02267,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05365,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00266,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01112,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0032,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01876,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23974,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24481,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.01002,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.98666,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00367,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99981,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.95643,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01138,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01825,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01887,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96155,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.79,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.97746,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99562,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.03179,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.97174}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 205406158,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 50722822.29,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.028,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 468,</span>
+<span class="go">   &#39;averageFillSize&#39;: 180,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.76058,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02267,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1059,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04589,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02239,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.038,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02152,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.0015,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00076,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4604,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1241,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 170,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8205,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05072,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04222,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11003,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.4244,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27142,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.22401,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16343,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.06118,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03035,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0247,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.0514,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.0027,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01074,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0025,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01859,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24564,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24332,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.01061,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02969,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 0.99858,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.03158,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.96045,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01195,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01097,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01885,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.94303,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.74793,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.95781,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.02154,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00001,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.00392}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 182431713.6,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 47427438.5,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02852,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 480,</span>
+<span class="go">   &#39;averageFillSize&#39;: 173,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.76316,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02299,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1081,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04617,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02181,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.03708,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02166,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00148,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00076,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4666,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1217,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 157,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8382,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05183,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04101,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.09857,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.43003,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27404,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.21545,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.13298,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0629,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02979,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02861,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06411,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00286,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.009,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0005,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01637,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.25538,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24038,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00911,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.0108,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01855,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.98506,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.00007,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 0.99792,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99177,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.98503,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96995,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.98335,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94868,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.03707,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00302,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.9711}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 219404817.4,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 49135288.7,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02961,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 468,</span>
+<span class="go">   &#39;averageFillSize&#39;: 173,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.76011,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02184,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10658,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04515,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.022,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.03823,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02119,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00141,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00074,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5647,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1730,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 291,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8178,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05312,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11576,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.4011,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.28398,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.2257,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.0773,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.17722,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03694,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01519,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07554,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.003,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.0045,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00061,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00347,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.293,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.1155,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00741,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.9753,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00087,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99709,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.98268,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.0006,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.00425,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.0042,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.94014,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.9462,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.89985,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99664,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.95848,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.00647}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 206848698.5,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 48449911.87,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02893,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 475,</span>
+<span class="go">   &#39;averageFillSize&#39;: 176,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.73882,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02599,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11022,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.0492,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02401,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0424,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02381,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00163,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00079,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5013,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1505,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 246,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8051,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0544,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04374,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.114,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.39104,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.28033,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.23982,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.08043,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.17173,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03823,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0186,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.0748,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00315,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00425,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0006,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00469,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.28595,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.12732,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00728,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00646,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0381,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.01473,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.99632,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.04068,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.02458,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.0116,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.97966,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.98955,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.91711,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.98849,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00953,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.9987}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 176565563.8,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 41278442.62,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02684,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 484,</span>
+<span class="go">   &#39;averageFillSize&#39;: 164,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.72255,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.03027,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11271,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04999,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02548,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0446,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02515,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00162,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.0008,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5085,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1399,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 176,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8368,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0528,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04486,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11105,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.41636,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27274,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.22459,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.08234,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.19327,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.0383,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01795,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07665,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00219,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00392,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00055,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00459,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.29173,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.13,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00692,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.98929,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01074,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.00432,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.98198,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 0.99399,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.9949,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.00138,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93463,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.968,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.91894,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99718,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.9878,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.9808}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 205906679.2,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 42670950.1,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02881,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 472,</span>
+<span class="go">   &#39;averageFillSize&#39;: 173,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.72433,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.032,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1133,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.05083,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02588,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0438,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02489,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00166,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00082,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4585,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1387,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 175,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8436,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.055,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.0478,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.09441,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.39759,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.28771,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.2415,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.09453,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.09622,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.01556,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01703,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07594,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00249,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00496,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00053,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00412,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.41663,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.11637,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0063,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00776,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.03115,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.9957,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.02051,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02619,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.00434,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.02725,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.945,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.99426,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.92339,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.9953,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.97146}]]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-intraday">
-<span id="iexdata-stats-intraday"></span><h2><a class="toc-backref" href="#id26">Stats Intraday</a><a class="headerlink" href="#stats-intraday" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-stats-intraday"></span><h2><a class="toc-backref" href="#id38">Stats Intraday</a><a class="headerlink" href="#stats-intraday" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#intraday">Intraday</a> is IEX’s
 aggregated best quoted bid and offer position in near real time.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_intraday()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_stats_intraday">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_stats_intraday</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_intraday" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stats intraday</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">https://iexcloud.io/docs/api/#stats-intraday</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_stats_intraday</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_intraday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stats Intraday</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">https://iexcloud.io/docs/api/#stats-intraday</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-intraday-usage">
-<span id="id5"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-intraday-usage" title="Permalink to this headline">¶</a></h3>
+<span id="id17"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-intraday-usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_intraday</span>
 
 <span class="gp">In [7]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">              marketShare       notional   routedVolume  symbolsTraded  \</span>
-<span class="go">lastUpdated  1.570359e+12  1632553854025  1601109190742  1633638318692   </span>
-<span class="go">value        2.872000e-02     9337041272       31774105           5987   </span>
-
-<span class="go">                    volume  </span>
-<span class="go">lastUpdated  1606453957734  </span>
-<span class="go">value            198278815  </span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 238070384, &#39;lastUpdated&#39;: 1678903853011},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 7497, &#39;lastUpdated&#39;: 1656284320843},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 29684495, &#39;lastUpdated&#39;: 1622656034390},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 14756987814, &#39;lastUpdated&#39;: 1638665175064},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.02349, &#39;lastUpdated&#39;: 1672603504739}}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-recent">
-<span id="iexdata-stats-recent"></span><h2><a class="toc-backref" href="#id27">Stats Recent</a><a class="headerlink" href="#stats-recent" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-stats-recent"></span><h2><a class="toc-backref" href="#id39">Stats Recent</a><a class="headerlink" href="#stats-recent" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#recent">Recent</a> is IEX’s
 trading statstics from the previous five trading days.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_recent()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_stats_recent">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_stats_recent</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_recent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_stats_recent</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_recent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stats Recent</p>
 <p>This call will return a minimum of the last five trading days up to all
 trading days of the current month.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">https://iexcloud.io/docs/api/#stats-recent</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">https://iexcloud.io/docs/api/#stats-recent</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-recent-usage">
-<span id="id6"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-recent-usage" title="Permalink to this headline">¶</a></h3>
+<span id="id18"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-recent-usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_recent</span>
 
-<span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2524</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: 0
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-9-a3f3c49f6e23&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_stats_recent</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2137</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2138</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2139</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_column</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2140</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2141</span>     <span class="k">def</span> <span class="nf">_getitem_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/frame.py</span> in <span class="ni">_getitem_column</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2144</span>         <span class="c1"># get column</span>
-<span class="g g-Whitespace">   </span><span class="mi">2145</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">is_unique</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2146</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item_cache</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2147</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2148</span>         <span class="c1"># duplicate columns &amp; possible reduce dimensionality</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/generic.py</span> in <span class="ni">_get_item_cache</span><span class="nt">(self, item)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1840</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1841</span>         <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1842</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1843</span>             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_box_item_values</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1844</span>             <span class="n">cache</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/internals.py</span> in <span class="ni">get</span><span class="nt">(self, item, fastpath)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3841</span> 
-<span class="g g-Whitespace">   </span><span class="mi">3842</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">isna</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">3843</span>                 <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3844</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3845</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">))[</span><span class="n">isna</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)]</span>
-
-<span class="nn">~/.virtualenvs/iexdocs/lib/python3.6/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2525</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2526</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2527</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_maybe_cast_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2528</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2529</span>         <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">([</span><span class="n">key</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: 0
+<span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()</span>
+<span class="gh">Out[9]: </span><span class="go"></span>
+<span class="go">[{&#39;date&#39;: &#39;2020-12-10&#39;,</span>
+<span class="go">  &#39;volume&#39;: 239796084,</span>
+<span class="go">  &#39;routedVolume&#39;: 31151633,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02316,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 54834803},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-09&#39;,</span>
+<span class="go">  &#39;volume&#39;: 276755341,</span>
+<span class="go">  &#39;routedVolume&#39;: 41072621,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02266,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 68309624},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-08&#39;,</span>
+<span class="go">  &#39;volume&#39;: 244847344,</span>
+<span class="go">  &#39;routedVolume&#39;: 38716415,</span>
+<span class="go">  &#39;marketShare&#39;: 0.022949711104511217,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 62317746},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-07&#39;,</span>
+<span class="go">  &#39;volume&#39;: 243035989,</span>
+<span class="go">  &#39;routedVolume&#39;: 36005742,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02197,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 58125094},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-04&#39;,</span>
+<span class="go">  &#39;volume&#39;: 254076746,</span>
+<span class="go">  &#39;routedVolume&#39;: 41579602,</span>
+<span class="go">  &#39;marketShare&#39;: 0.021983875934866774,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 63099101},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-03&#39;,</span>
+<span class="go">  &#39;volume&#39;: 266419110,</span>
+<span class="go">  &#39;routedVolume&#39;: 42567793,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02215,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 68600508},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-02&#39;,</span>
+<span class="go">  &#39;volume&#39;: 256797051,</span>
+<span class="go">  &#39;routedVolume&#39;: 43923401,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02146,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 66589960},</span>
+<span class="go"> {&#39;date&#39;: &#39;2020-12-01&#39;,</span>
+<span class="go">  &#39;volume&#39;: 273811533,</span>
+<span class="go">  &#39;routedVolume&#39;: 46268045,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02021,</span>
+<span class="go">  &#39;isHalfday&#39;: False,</span>
+<span class="go">  &#39;litVolume&#39;: 69923583}]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-records">
-<span id="iexdata-stats-records"></span><h2><a class="toc-backref" href="#id28">Stats Records</a><a class="headerlink" href="#stats-records" title="Permalink to this headline">¶</a></h2>
+<span id="iexdata-stats-records"></span><h2><a class="toc-backref" href="#id40">Stats Records</a><a class="headerlink" href="#stats-records" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://iextrading.com/developer/docs/#records">Records</a> is IEX’s
 trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_records()</span></code>:</p>
-<dl class="function">
+<dl class="py function">
 <dt id="iexfinance.iexdata.get_stats_records">
-<code class="descclassname">iexfinance.iexdata.</code><code class="descname">get_stats_records</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_records" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">iexfinance.iexdata.</code><code class="sig-name descname">get_stats_records</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.iexdata.get_stats_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stats Records</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">https://iexcloud.io/docs/api/#stats-records</a>
-Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> – Additional Request Parameters (see base class)</td>
-</tr>
-</tbody>
-</table>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">https://iexcloud.io/docs/api/#stats-records</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <div class="section" id="iexdata-stats-records-usage">
-<span id="id7"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-records-usage" title="Permalink to this headline">¶</a></h3>
+<span id="id19"></span><h3>Usage<a class="headerlink" href="#iexdata-stats-records-usage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="kn">from</span> <span class="nn">iexfinance.iexdata</span> <span class="kn">import</span> <span class="n">get_stats_records</span>
 
 <span class="gp">In [11]: </span><span class="n">get_stats_records</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">                     notional routedVolume symbolsTraded      volume</span>
-<span class="go">avg30Value        9.89669e+09     30946216          5956   200781508</span>
-<span class="go">previousDayValue  1.07395e+10     33437276          6183   213625824</span>
-<span class="go">recordDate         2018-02-07   2016-11-23    2018-12-30  2019-01-02</span>
-<span class="go">recordValue       1.75931e+10     76440640          6922   314341497</span>
+<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 602510746,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-06&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 237013366,</span>
+<span class="go">  &#39;avg30Value&#39;: 262976340.9},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 7495,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-12&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 7365,</span>
+<span class="go">  &#39;avg30Value&#39;: 7037},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 97399302,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-04&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 31154201,</span>
+<span class="go">  &#39;avg30Value&#39;: 38264375},</span>
+<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 32515682229.9612,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-10-27&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 15731592278.3771,</span>
+<span class="go">  &#39;avg30Value&#39;: 16411613325.0776}}</span>
 </pre></div>
 </div>
 </div>
@@ -846,18 +1317,16 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="apidata.html" class="btn btn-neutral float-right" title="API System Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="altdata.html" class="btn btn-neutral float-right" title="Alternative Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="options.html" class="btn btn-neutral" title="Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="refdata.html" class="btn btn-neutral float-left" title="Reference Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -866,11 +1335,19 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Addison Lynch.
+        
+        &copy; Copyright 2020, Addison Lynch
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -882,37 +1359,15 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">Fre
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.4.2-dev',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
