@@ -20,11 +20,11 @@ Full Contents
    :maxdepth: 1
    :caption: Getting Started
 
+   usage
    whatsnew
    install
    configuration
    sandbox
-   usage
 
 .. _endpoints:
 
