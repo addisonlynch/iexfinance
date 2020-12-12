@@ -34,7 +34,7 @@ Forex/Currencies, Options, Commodities, Bonds, and Cryptocurrencies:
 Example
 -------
 
-.. image:: https://addisonlynch.github.io/public/img/iexexample.gif
+.. image:: https://raw.githubusercontent.com/addisonlynch/iexfinance/master/docs/source/images/iexexample.gif
 
 
 Documentation
@@ -63,8 +63,8 @@ From development repository (dev version):
 
 
 
-Authentication
---------------
+What's Needed to Access IEX Cloud?
+----------------------------------
 
 An IEX Cloud account is required to acecss the IEX Cloud API. Various `plans <https://iexcloud.io/pricing/>`__
 are availalbe, free, paid, and pay-as-you-go.
@@ -82,7 +82,7 @@ The authentication token can also be passed to any function call:
 
     from iexfinance.refdata import get_symbols
 
-    get_symbols(output_format='pandas', token="<YOUR AUTH TOKEN>")
+    get_symbols(token="<YOUR-TOKEN>")
 
 or at the instantiation of a ``Stock`` object:
 
@@ -90,7 +90,7 @@ or at the instantiation of a ``Stock`` object:
 
     from iexfinance.stocks import Stock
 
-    a = Stock("AAPL", token="<YOUR AUTH TOKEN>")
+    a = Stock("AAPL", token="<YOUR-TOKEN>")
     a.get_quote()
 
 
@@ -135,40 +135,6 @@ group, obtain the `Social Sentiment <https://iexcloud.io/docs/api/#social-sentim
 
     get_social_sentiment("AAPL")
 
-
-Configuration
--------------
-
-Selecting an API Version
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The desired IEX API version can be specified using the ``IEX_API_VERSION``
-environment variable. The following versions are currently supported:
-
-* ``stable`` - **default**
-* ``beta`` 
-* ``v1`` 
-* ``latest``
-* ``sandbox`` - for use with the `sandbox environment`_ (test token
-  must be used)
-
-For more information on API versioning, see the IEX Cloud documentation_.
-
-.. _documentation: https://iexcloud.io/docs/api/#versioning
-
-.. _`sandbox environment`: https://iexcloud.io/docs/api/#sandbox
-
-Output Formatting
-~~~~~~~~~~~~~~~~~
-
-By default, ``iexfinance`` returns data formatted *exactly* as received from
-the IEX Endpoint. `pandas <https://pandas.pydata.org/>`__ ``DataFrame`` output
-formatting is available for most endpoints.
-
-pandas ``DataFrame`` output formatting can be selected by setting the
-``IEX_OUTPUT_FORMAT`` environment variable to ``pandas`` or by passing
-``output_format`` as an argument to any function call (or at the instantiation
-of a ``Stock`` object).
 
 Common Usage Examples
 ---------------------
@@ -386,6 +352,64 @@ API Status
     from iexfinance.account import get_api_status
 
     get_api_status()
+
+
+Configuration
+-------------
+.. _config.formatting:
+
+Output Formatting
+-----------------
+
+By default, ``iexfinance`` returns data for most endpoints in a `pandas <https://pandas.pydata.org/>`__ ``DataFrame``.
+
+Selecting ``json`` as the output format returns data formatted *exactly* as received from
+the IEX Endpoint. Configuring ``iexfinance``'s output format can be done in two ways:
+
+.. _config.formatting.env:
+
+Environment Variable (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For persistent configuration of a specified output format, use the environment
+variable ``IEX_OUTPUT_FORMAT``. This value will be overridden by the
+``output_format`` argument if it is passed.
+
+macOS/Linux
+^^^^^^^^^^^
+
+Type the following command into your terminal:
+
+.. code-block:: bash
+
+    $ export IEX_OUTPUT_FORMAT=pandas
+
+Windows
+^^^^^^^
+
+See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__ for instructions on setting environment variables in Windows operating systems.
+
+.. _config.formatting.arg:
+
+``output_format`` Argument
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pass ``output_format``  as an argument to any function call:
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_symbols
+
+    get_symbols(output_format='pandas').head()
+
+or at the instantiation of a ``Stock`` object:
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL", output_format='pandas')
+    aapl.get_quote().head()
 
 Contact
 -------

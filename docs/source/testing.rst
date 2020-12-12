@@ -24,6 +24,7 @@ All testing dependencies can be installed via ``pip install -r requirements-dev.
 -  codecov
 -  flake8
 -  flake8-bugbear
+-  flake8-rst
 -  pytest
 -  pytest-runner
 -  tox
@@ -32,7 +33,6 @@ All documentation dependencies can be installed via ``pip install -r docs/requir
 
 **Docs**
 
-- flake8-rst
 - ipython
 - matplotlib
 - requests-cache

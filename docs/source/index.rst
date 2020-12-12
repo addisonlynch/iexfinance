@@ -7,6 +7,8 @@ Welcome to iexfinance's documentation!
 - :ref:`endpoints` - (mostly) 1:1 mirror of the `IEX Cloud documentation <https://iexcloud.io/api/>`__
 - :ref:`package_info` - additional package information, developer/testing documentation
 
+.. note:: iexfinance is now a pandas-driven library. The default output format is now a pandas ``DataFrame``.
+
 .. warning:: Support for Python 2 has ended as of ``iexfinance`` version 0.5.0.
 
 .. _account: https://iexcloud.io/pricing/
@@ -20,11 +22,11 @@ Full Contents
    :maxdepth: 1
    :caption: Getting Started
 
+   usage
    whatsnew
    install
    configuration
    sandbox
-   usage
 
 .. _endpoints:
 
