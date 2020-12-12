@@ -101,13 +101,6 @@ How This Package is Structured
 following IEX Cloud endpoint groups are mapped to their respective
 ``iexfinance`` modules:
 
-- Account - ``account`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/account.html>`__ | `IEX Docs <https://iexcloud.io/docs/api/#account>`__)
-- Stocks - ``stocks`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/stocks.html>`__ | `IEX Docs <https://iexcloud.io/api/docs/#stocks>`__)
-- Alternative Data - ``altdata`` (`iexfinance docs <https://addisonlynch.github.io/iexfinance/stable/altdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#alternative-data>`__)
-- Reference Data - ``refdata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/refdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#reference-data>`__)
-- Investors Exchange Data - ``iexdata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/iexdata.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#investors-exchange-data>`__)
-- API System Metadata - ``apidata`` (`iexfinance docs <http://addisonlynch.github.io/iexfinance/stable/apistatus.html>`__ | `IEX Cloud Docs <https://iexcloud.io/docs/api/#api-system-metadata>`__)
-
 The most commonly-used
 endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
 endpoints, which allow access to various information regarding equities,

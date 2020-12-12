@@ -46,9 +46,6 @@ class TestStockFundamentals(object):
         assert isinstance(data["AAPL"], pd.DataFrame) and not data["AAPL"].empty
         assert isinstance(data["SVXY"], pd.DataFrame) and data["SVXY"].empty
 
-    @pytest.mark.xfail(
-        reason="Provider bug. Will not return more than 3 " "periods.", strict=True
-    )
     def test_balance_sheet_params(self):
         data = self.a.get_balance_sheet(last=4)
         assert len(data.index) == 4
@@ -59,9 +56,6 @@ class TestStockFundamentals(object):
         assert isinstance(data["AAPL"], pd.DataFrame) and not data["AAPL"].empty
         assert isinstance(data["SVXY"], pd.DataFrame) and data["SVXY"].empty
 
-    @pytest.mark.xfail(
-        reason="Provider bug. Will not return more than 3 " "periods.", strict=True
-    )
     def test_cash_flow_params(self):
         data = self.a.get_cash_flow(last=4)
         assert len(data.index) == 4
@@ -99,9 +93,6 @@ class TestStockFundamentals(object):
         assert isinstance(data["AAPL"], pd.DataFrame) and not data["AAPL"].empty
         assert isinstance(data["SVXY"], pd.DataFrame) and data["SVXY"].empty
 
-    @pytest.mark.xfail(
-        reason="Provider bug. Will not return more than 3 " "periods.", strict=True
-    )
     def test_income_statement_params(self):
         data = self.a.get_income_statement(last=4)
         assert len(data.index) == 4
