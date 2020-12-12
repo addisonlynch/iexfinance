@@ -37,8 +37,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Stocks / Equities" href="stocks.html" />
-    <link rel="prev" title="Sandbox Environment" href="sandbox.html" /> 
+    <link rel="next" title="What’s New" href="whatsnew.html" />
+    <link rel="prev" title="Welcome to iexfinance’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,10 +89,6 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Common Usage Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#account">Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stocks">Stocks</a></li>
@@ -111,6 +107,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What’s New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox Environment</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Core Data</span></p>
 <ul>
@@ -245,7 +245,7 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">         TSLA</span>
-<span class="go">price  608.66</span>
+<span class="go">price  618.22</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -254,8 +254,8 @@ etc.):</p>
 
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">        TSLA    AAPL</span>
-<span class="go">price  600.3  125.34</span>
+<span class="go">         TSLA    AAPL</span>
+<span class="go">price  613.63  123.88</span>
 </pre></div>
 </div>
 </div>
@@ -300,16 +300,16 @@ current day (default is current date):</p>
 <span class="gh">Out[15]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
 <span class="go">2019-05-10 09:30:00  2019-05-10  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002462              0.002994</span>
-<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001329              0.002165</span>
-<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003446              0.004535</span>
-<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002430              0.003738</span>
+<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002543              0.002888</span>
+<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001358              0.002139</span>
+<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003450              0.004632</span>
+<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002429              0.003670</span>
 <span class="go">...                         ...       ...  ...             ...                   ...</span>
-<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005261             -0.004309</span>
-<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005058             -0.003795</span>
-<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005593             -0.004333</span>
-<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005552             -0.004338</span>
-<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003816             -0.002542</span>
+<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005272             -0.004385</span>
+<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005129             -0.003895</span>
+<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005623             -0.004432</span>
+<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005712             -0.004455</span>
+<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003803             -0.002641</span>
 
 <span class="go">[390 rows x 20 columns]</span>
 </pre></div>
@@ -318,11 +318,11 @@ current day (default is current date):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">get_historical_intraday</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[16]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
-<span class="go">2020-12-04 09:30:00  2020-12-04  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2020-12-04 09:31:00  2020-12-04  09:31 AM  ...       -0.001523             -0.000992</span>
-<span class="go">2020-12-04 09:32:00  2020-12-04  09:32 AM  ...       -0.003647             -0.002986</span>
-<span class="go">2020-12-04 09:33:00  2020-12-04  09:33 AM  ...       -0.003575             -0.002829</span>
-<span class="go">2020-12-04 09:34:00  2020-12-04  09:34 AM  ...       -0.005291             -0.004717</span>
+<span class="go">2020-12-11 09:30:00  2020-12-11  09:30 AM  ...        0.000000              0.000000</span>
+<span class="go">2020-12-11 09:31:00  2020-12-11  09:31 AM  ...       -0.000258             -0.000374</span>
+<span class="go">2020-12-11 09:32:00  2020-12-11  09:32 AM  ...       -0.004170             -0.003467</span>
+<span class="go">2020-12-11 09:33:00  2020-12-11  09:33 AM  ...       -0.005626             -0.004749</span>
+<span class="go">2020-12-11 09:34:00  2020-12-11  09:34 AM  ...       -0.005127             -0.004423</span>
 
 <span class="go">[5 rows x 20 columns]</span>
 </pre></div>
@@ -343,7 +343,7 @@ the endpoint requested.</p>
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">     change changeOverTime changePercent  ...   uVolume        updated    volume</span>
-<span class="go">AAPL      0              0             0  ...  79484039  1634015872102  80166236</span>
+<span class="go">AAPL      0              0             0  ...  90382210  1681604974284  88499908</span>
 
 <span class="go">[1 rows x 26 columns]</span>
 </pre></div>
@@ -359,12 +359,12 @@ the endpoint requested.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[21]: </span><span class="go">124.38</span>
+<span class="gh">Out[21]: </span><span class="go">122.83</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  125.44</span>
+<span class="go">price  127.35</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
@@ -373,8 +373,8 @@ the endpoint requested.</p>
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
 <span class="go">        open</span>
-<span class="go">AAPL  128.41</span>
-<span class="go">TSLA  602.26</span>
+<span class="go">AAPL  127.05</span>
+<span class="go">TSLA  640.67</span>
 </pre></div>
 </div>
 <p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
@@ -443,10 +443,10 @@ more information.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="stocks.html" class="btn btn-neutral float-right" title="Stocks / Equities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="whatsnew.html" class="btn btn-neutral float-right" title="What’s New" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sandbox.html" class="btn btn-neutral float-left" title="Sandbox Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to iexfinance’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

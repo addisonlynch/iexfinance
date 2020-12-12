@@ -1,8 +1,8 @@
 .. _install:
 
 
-Install
-=======
+Installation
+============
 
 Dependencies
 ------------
