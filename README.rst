@@ -356,37 +356,60 @@ API Status
 
 Configuration
 -------------
-
-Selecting an API Version
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The desired IEX API version can be specified using the ``IEX_API_VERSION``
-environment variable. The following versions are currently supported:
-
-* ``stable`` - **default**
-* ``beta`` 
-* ``v1`` 
-* ``latest``
-* ``sandbox`` - for use with the `sandbox environment`_ (test token
-  must be used)
-
-For more information on API versioning, see the IEX Cloud documentation_.
-
-.. _documentation: https://iexcloud.io/docs/api/#versioning
-
-.. _`sandbox environment`: https://iexcloud.io/docs/api/#sandbox
+.. _config.formatting:
 
 Output Formatting
-~~~~~~~~~~~~~~~~~
+-----------------
 
-By default, ``iexfinance`` returns data formatted *exactly* as received from
-the IEX Endpoint. `pandas <https://pandas.pydata.org/>`__ ``DataFrame`` output
-formatting is available for most endpoints.
+By default, ``iexfinance`` returns data for most endpoints in a `pandas <https://pandas.pydata.org/>`__ ``DataFrame``.
 
-pandas ``DataFrame`` output formatting can be selected by setting the
-``IEX_OUTPUT_FORMAT`` environment variable to ``pandas`` or by passing
-``output_format`` as an argument to any function call (or at the instantiation
-of a ``Stock`` object).
+Selecting ``json`` as the output format returns data formatted *exactly* as received from
+the IEX Endpoint. Configuring ``iexfinance``'s output format can be done in two ways:
+
+.. _config.formatting.env:
+
+Environment Variable (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For persistent configuration of a specified output format, use the environment
+variable ``IEX_OUTPUT_FORMAT``. This value will be overridden by the
+``output_format`` argument if it is passed.
+
+macOS/Linux
+^^^^^^^^^^^
+
+Type the following command into your terminal:
+
+.. code-block:: bash
+
+    $ export IEX_OUTPUT_FORMAT=pandas
+
+Windows
+^^^^^^^
+
+See `here <https://superuser.com/questions/949560/how-do-i-set-system-environment-variables-in-windows-10>`__ for instructions on setting environment variables in Windows operating systems.
+
+.. _config.formatting.arg:
+
+``output_format`` Argument
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pass ``output_format``  as an argument to any function call:
+
+.. code-block:: python
+
+    from iexfinance.refdata import get_symbols
+
+    get_symbols(output_format='pandas').head()
+
+or at the instantiation of a ``Stock`` object:
+
+.. code-block:: python
+
+    from iexfinance.stocks import Stock
+
+    aapl = Stock("AAPL", output_format='pandas')
+    aapl.get_quote().head()
 
 Contact
 -------
