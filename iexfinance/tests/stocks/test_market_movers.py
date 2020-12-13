@@ -16,7 +16,6 @@ class TestMarketMovers(object):
         assert isinstance(li, pd.DataFrame)
         assert len(li) == pytest.approx(10, 1)
 
-    @pytest.mark.xfail(reason="Unstable endpoint.")
     def test_market_losers(self):
         li = get_market_losers()
 
