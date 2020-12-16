@@ -85,7 +85,7 @@ class _IEXBase(object):
             )
         if self.token.startswith(("Tsk", "Tpk")):
             logger.info("Using a sandboxed environment because a test key was detected")
-            os.environ["IEX_API_VERSION"] = "iexcloud-sandbox"
+            os.environ["IEX_API_VERSION"] = "sandbox"
         # Get desired API version from environment variables
         # Defaults to IEX Cloud
         self.version = os.getenv("IEX_API_VERSION", "stable")
