@@ -1,24 +1,17 @@
+import warnings
+
 from iexfinance.altdata.base import CloudCrypto, SocialSentiment, CEOCompensation
 
 
 def get_crypto_quote(symbol, **kwargs):
     """
-    Crypto Quotes
-
-    Single quote for Cryptocurrency supported by IEX Cloud.
-
-    Reference: https://iexcloud.io/docs/api/#cryptocurrency-quote
-    Data Weighting: ``1`` per symbol
-
-    Parameters
-    ----------
-    symbol: str
-        A cryptocurrency symbol for retrieval
-
-    Notes
-    -----
-    Each element contains Stocks ``quote`` fields.
+        .. warning:: This endpoint will be deprecated and moved to 
+        ``iexfinance.crypto.get_crypto_quote in version 0.5.2.
     """
+    warnings.warn(
+        "This endpoint will be deprecated and moved to "
+        "iexfinance.crypto.get_crypto_quote in version 0.5.2."
+    )
     return CloudCrypto(symbol, **kwargs).fetch()
 
 

@@ -9,7 +9,9 @@ This is a minor patch release from 0.5.0.
 Enhancements
 ~~~~~~~~~~~~
 
-- Re-added dropped ``date`` column in some calls
+- Re-added dropped ``date`` column in some calls (:issue:`238`)
+- Added support for `Crytpocurrency Book <https://iexcloud.io/docs/api/#cryptocurrency-book>`__ - ``iexfinance.crypto.get_crypto_book``
+- Added support for `Cryptocurrency Price <https://iexcloud.io/docs/api/#cryptocurrency-price>`__ - ``iexfinance.crypto.get_crypto_price``
 
 Bug Fixes
 ~~~~~~~~~
@@ -22,3 +24,5 @@ Backward Incompatible Changes
 
 - ``iexfinance.data_apis.get_data_points`` no longer appears in the IEX Cloud
   documentation and may be unstable
+- ``iexfinance.altdata.get_crypto_quote`` will be deprecated and moved to 
+  ``iexfinance.crypto.get_crypto_quote`` in version 0.5.2.

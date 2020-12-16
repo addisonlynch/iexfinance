@@ -1,31 +1,9 @@
 import pandas as pd
 import pytest
 
-from iexfinance.altdata import (
-    get_crypto_quote,
-    get_social_sentiment,
-    get_ceo_compensation,
-)
+from iexfinance.altdata import get_social_sentiment, get_ceo_compensation
 from iexfinance.altdata.base import SocialSentiment
 from iexfinance.utils.exceptions import IEXQueryError
-
-
-class TestAltData(object):
-    def test_crypto_quote_no_sym(self):
-        with pytest.raises(TypeError):
-            get_crypto_quote()
-
-    def test_crypto_quote_list(self):
-        with pytest.raises(ValueError):
-            get_crypto_quote(["BTCUSDT", "BAD"])
-
-    def test_crypto_quote(self):
-        symbol = "BTCUSD"
-        data = get_crypto_quote(symbol)
-
-        assert isinstance(data, pd.DataFrame)
-        assert len(data.columns) == 11
-        assert data.index[0] == symbol
 
 
 @pytest.mark.skip(reason="Social sentiment is a premium-only endpoint.")
