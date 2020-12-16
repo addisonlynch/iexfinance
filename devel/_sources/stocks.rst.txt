@@ -34,7 +34,7 @@ single request.
 
     from iexfinance.stocks import get_historical_data
 
-    get_historical_data("AAPL", start="20190101", end="20200101",
+    get_historical_data("AAPL", start="20190101", end="20200101", 
                         output_format='pandas').head()
 
 
@@ -140,8 +140,8 @@ Dividends (Basic)
 Earnings
 --------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require
-             additional entitlements. Full details can be found in the
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
@@ -152,8 +152,8 @@ Earnings
 Estimates
 ---------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require
-             additional entitlements. Full details can be found in the
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
@@ -372,8 +372,8 @@ Price Only
 Price Target
 ------------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require
-             additional entitlements. Full details can be found in the
+.. warning:: Beginning December 1, 2020, use of this endpoint will require 
+             additional entitlements. Full details can be found in the 
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
