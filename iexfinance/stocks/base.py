@@ -195,10 +195,10 @@ class Stock(_IEXBase):
                 out = {
                     (symbol, day["date"]): day for symbol in out for day in out[symbol]
                 }
-                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
+                return pd.DataFrame.from_dict(out, orient="columns")
             else:
                 out = {entr["date"]: entr for entr in out[self.symbols[0]]}
-                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
+                return pd.DataFrame.from_dict(out, orient="columns")
 
         return self._get_endpoint("chart", format=format, params=kwargs)
 
@@ -256,13 +256,13 @@ class Stock(_IEXBase):
                     for symbol in out
                     for day in out[symbol]
                 }
-                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
+                return pd.DataFrame.from_dict(out, orient="columns")
             else:
                 out = {
                     "{} {}".format(entr["date"], entr["label"]): entr
                     for entr in out[self.symbols[0]]
                 }
-                return pd.DataFrame.from_dict(out, orient="columns").drop("date")
+                return pd.DataFrame.from_dict(out, orient="columns")
 
         return self._get_endpoint("intraday-prices", format=format, params=kwargs)
 
@@ -815,10 +815,10 @@ class Stock(_IEXBase):
                     for symbol in out
                     for day in out[symbol]
                 }
-                return pd.DataFrame.from_dict(out, orient="columns").drop("datetime")
+                return pd.DataFrame.from_dict(out, orient="columns")
             else:
                 out = {entr["datetime"]: entr for entr in out[self.symbols[0]]}
-                return pd.DataFrame.from_dict(out, orient="columns").drop("datetime")
+                return pd.DataFrame.from_dict(out, orient="columns")
 
         return self._get_endpoint("news", format=format, params=kwargs)
 

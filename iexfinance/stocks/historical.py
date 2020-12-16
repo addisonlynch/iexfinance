@@ -74,7 +74,7 @@ class HistoricalReader(Stock):
                 for symbol in out
                 for day in out[symbol]["chart"]
             }
-            result = pd.DataFrame.from_dict(out, orient="columns").drop("date").T
+            result = pd.DataFrame.from_dict(out, orient="columns").T
             result.index = result.index.set_levels(
                 [result.index.levels[0], pd.to_datetime(result.index.levels[1])]
             )
@@ -82,7 +82,7 @@ class HistoricalReader(Stock):
             result = result.loc[idx[:, self.start : self.end], :]
         else:
             out = {entr["date"]: entr for entr in out[self.symbols[0]]["chart"]}
-            result = pd.DataFrame.from_dict(out, orient="columns").drop("date").T
+            result = pd.DataFrame.from_dict(out, orient="columns").T
             result.index = pd.to_datetime(result.index)
             result = result.loc[self.start : self.end, :]
         if self.close_only is True:
