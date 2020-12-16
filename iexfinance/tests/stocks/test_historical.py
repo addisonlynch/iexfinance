@@ -1,7 +1,7 @@
+from datetime import datetime
+
 import pandas as pd
 import pytest
-
-from datetime import datetime
 
 from iexfinance.stocks import get_historical_data
 from iexfinance.stocks.historical import HistoricalReader

@@ -7,7 +7,6 @@ from iexfinance.stocks.movers import MoversReader
 from iexfinance.stocks.options import OptionsReader
 from iexfinance.stocks.sectorperformance import SectorPerformanceReader
 from iexfinance.stocks.todayearnings import EarningsReader
-
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 

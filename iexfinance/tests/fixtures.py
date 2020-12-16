@@ -1,8 +1,8 @@
 import os
+
 import pytest
 
 from iexfinance.stocks import Stock
-
 
 __all__ = [
     "block_keys",

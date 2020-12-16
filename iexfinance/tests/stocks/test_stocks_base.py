@@ -1,7 +1,7 @@
-import pytest
-import pandas as pd
-
 from decimal import Decimal
+
+import pandas as pd
+import pytest
 
 from iexfinance.stocks import Stock
 

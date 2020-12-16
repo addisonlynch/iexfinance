@@ -1,11 +1,12 @@
 import pandas as pd
 import pytest
+
 from iexfinance.stocks import (
+    get_market_gainers,
+    get_market_iex_percent,
+    get_market_iex_volume,
     get_market_losers,
     get_market_most_active,
-    get_market_iex_volume,
-    get_market_iex_percent,
-    get_market_gainers,
 )
 
 

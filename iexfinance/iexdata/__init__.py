@@ -1,13 +1,13 @@
 from iexfinance.iexdata.base import (
-    TOPS,
-    Last,
     DEEP,
+    TOPS,
     Book,
+    DailySummaryReader,
     IntradayReader,
+    Last,
+    MonthlySummaryReader,
     RecentReader,
     RecordsReader,
-    DailySummaryReader,
-    MonthlySummaryReader,
 )
 
 

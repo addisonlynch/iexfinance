@@ -1,7 +1,7 @@
-import requests
-
 import datetime as dt
+
 import pandas as pd
+import requests
 from pandas import to_datetime
 from pandas.api.types import is_number
 

@@ -1,10 +1,10 @@
 from iexfinance.refdata.base import (
+    IEXSymbols,
+    IntlExchangeSymbols,
+    IntlRegionSymbols,
     Sectors,
     Symbols,
-    IEXSymbols,
     TradingDatesReader,
-    IntlRegionSymbols,
-    IntlExchangeSymbols,
 )
 
 

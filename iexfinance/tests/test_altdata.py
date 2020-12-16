@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from iexfinance.altdata import get_social_sentiment, get_ceo_compensation
+from iexfinance.altdata import get_ceo_compensation, get_social_sentiment
 from iexfinance.altdata.base import SocialSentiment
 from iexfinance.utils.exceptions import IEXQueryError
 
