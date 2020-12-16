@@ -61,6 +61,8 @@ A BASH script ``test.sh`` is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.
 
+Note that your environment needs to export a testing IEX_TOKEN to execute tests.
+
 The ``iexfinance`` documentation can be tested with `Sphinx <https://www.sphinx-doc.org/en/stable>`__ (with extensions napoleon and sphinx_rtd_theme)
 using the Makefile. ``make livehtml`` will serve the dev documentation site locally
 on 127.0.0.1:8000.

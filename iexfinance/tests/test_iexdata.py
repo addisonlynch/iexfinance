@@ -33,13 +33,11 @@ class TestMarketData(object):
             "LUV",
         ]
 
-    @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_json_default(self):
         ls = get_last()
 
         assert isinstance(ls, list) and len(ls) > 7500
 
-    @pytest.mark.xfail(reason="Market data only available during market open")
     def test_last_syms(self):
         ls = get_last("AAPL")
         ls2 = get_last(["AAPL", "TSLA"])
@@ -69,12 +67,10 @@ class TestMarketData(object):
         with pytest.raises(ValueError):
             get_tops(self.bad)
 
-    @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_default(self):
         with pytest.raises(ValueError):
             get_deep()
 
-    @pytest.mark.xfail(reason="Market data only available during market open")
     def test_DEEP_syms(self):
         js = get_deep("AAPL")
 
@@ -106,7 +102,6 @@ class TestStats(object):
         js = get_stats_intraday()
         assert isinstance(js, dict)
 
-    @pytest.mark.xfail(reason="IEX recent API endpoint unstable.")
     def test_recent(self):
         ls = get_stats_recent()
         assert isinstance(ls, list)
@@ -116,13 +111,14 @@ class TestStats(object):
         assert isinstance(js, dict)
 
 
-@pytest.mark.xfail(reason="Endpoint in development by provider.")
 class TestStatsDaily(object):
+    @pytest.mark.xfail(reason="Endpoint in development by provider.")
     def test_daily_last(self):
         ls = get_stats_daily(last=5)
         assert isinstance(ls, list)
         assert len(ls) == 5
 
+    @pytest.mark.xfail(reason="Endpoint in development by provider.")
     def test_daily_dates(self):
         ls = get_stats_daily(start=datetime(2017, 1, 1), end=datetime(2017, 2, 1))
         assert isinstance(ls, list)
