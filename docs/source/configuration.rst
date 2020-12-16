@@ -151,7 +151,7 @@ environment variable. The following versions are currently supported:
 .. seealso:: For more information on API versioning, see the IEX Cloud
              documentation_.
 
-.. _documentation: https://iexcloud.io/docs/api/#versioning
+.. _documentation: https://iexcloud.io/docs/api/#api-versioning
 
 
 .. _config.debugging:

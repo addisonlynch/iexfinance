@@ -33,7 +33,7 @@ top-level function you are using:
     f = Stock("AAPL", session=session)
     f.get_price()
 
-A `SQLite <https://www.sqlite.org/>`__ file named ``cache.sqlite`` will
+A `SQLite <https://www.sqlite.org/index.html>`__ file named ``cache.sqlite`` will
 be created in the working directory, storing the request until the
 expiry date.
 

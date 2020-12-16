@@ -26,7 +26,7 @@ List of Endpoints
 Collections
 -----------
 
-The `Collections <https://iextrading.com/developer/docs/#collections>`__
+The `Collections <https://iexcloud.io/docs/api/#historical-daily>`__
 endpoint of Stocks allows retrieval of certain groups of companies, organized
 by:
 
