@@ -270,7 +270,9 @@
 <div class="section" id="enhancements">
 <h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Re-added dropped <code class="docutils literal notranslate"><span class="pre">date</span></code> column in some calls</p></li>
+<li><p>Re-added dropped <code class="docutils literal notranslate"><span class="pre">date</span></code> column in some calls (<a class="reference external" href="https://github.com/addisonlynch/iexfinance/issues/238">GH238</a>)</p></li>
+<li><p>Added support for <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-book">Crytpocurrency Book</a> - <code class="docutils literal notranslate"><span class="pre">iexfinance.crypto.get_crypto_book</span></code></p></li>
+<li><p>Added support for <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-price">Cryptocurrency Price</a> - <code class="docutils literal notranslate"><span class="pre">iexfinance.crypto.get_crypto_price</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
@@ -284,6 +286,8 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.data_apis.get_data_points</span></code> no longer appears in the IEX Cloud
 documentation and may be unstable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iexfinance.altdata.get_crypto_quote</span></code> will be deprecated and moved to
+<code class="docutils literal notranslate"><span class="pre">iexfinance.crypto.get_crypto_quote</span></code> in version 0.5.2.</p></li>
 </ul>
 </div>
 </div>

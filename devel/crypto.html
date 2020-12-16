@@ -101,10 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="market-info.html">Market Info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cryptocurrency</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cryptocurrency-quote">Cryptocurrency Quote</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptocurrency-book">Cryptocurrency Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptocurrency-price">Cryptocurrency Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cryptocurrency-quote">Cryptocurrency Quote</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="options.html">Options</a></li>
@@ -192,41 +191,72 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cryptocurrency">
-<span id="crypto"></span><h1>Cryptocurrency<a class="headerlink" href="#cryptocurrency" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="cryptocurrency-quote">
-<span id="crypto-quote"></span><h2>Cryptocurrency Quote<a class="headerlink" href="#cryptocurrency-quote" title="Permalink to this headline">¶</a></h2>
-<p>To retrieve quotes for all available cryptocurrencies, create a <code class="docutils literal notranslate"><span class="pre">Stock</span></code> object
-using a cryptocurrency ticker.</p>
-<p>The following tickers are supported:</p>
+<span id="crypto"></span><h1><a class="toc-backref" href="#id1">Cryptocurrency</a><a class="headerlink" href="#cryptocurrency" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<span id="crypto-contents"></span><p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p>Bitcoin USD (BTCUSDT)</p></li>
-<li><p>EOS USD (EOSUSDT)</p></li>
-<li><p>Ethereum USD (ETHUSDT)</p></li>
-<li><p>Binance Coin USD (BNBUSDT)</p></li>
-<li><p>Ontology USD (ONTUSDT)</p></li>
-<li><p>Bitcoin Cash USD (BCCUSDT)</p></li>
-<li><p>Cardano USD (ADAUSDT)</p></li>
-<li><p>Ripple USD (XRPUSDT)</p></li>
-<li><p>TrueUSD (TUSDUSDT)</p></li>
-<li><p>TRON USD (TRXUSDT)</p></li>
-<li><p>Litecoin USD (LTCUSDT)</p></li>
-<li><p>Ethereum Classic USD (ETCUSDT)</p></li>
-<li><p>MIOTA USD (IOTAUSDT)</p></li>
-<li><p>ICON USD (ICXUSDT)</p></li>
-<li><p>NEO USD (NEOUSDT)</p></li>
-<li><p>VeChain USD (VENUSDT)</p></li>
-<li><p>Stellar Lumens USD (XLMUSDT)</p></li>
-<li><p>Qtum USD (QTUMUSDT)</p></li>
+<li><p><a class="reference internal" href="#cryptocurrency" id="id1">Cryptocurrency</a></p>
+<ul>
+<li><p><a class="reference internal" href="#cryptocurrency-book" id="id2">Cryptocurrency Book</a></p></li>
+<li><p><a class="reference internal" href="#cryptocurrency-price" id="id3">Cryptocurrency Price</a></p></li>
+<li><p><a class="reference internal" href="#cryptocurrency-quote" id="id4">Cryptocurrency Quote</a></p></li>
 </ul>
-<div class="section" id="examples">
-<span id="crypto-quote-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iexfinance.stocks</span> <span class="kn">import</span> <span class="n">Stock</span>
+</li>
+</ul>
+</div>
+<div class="section" id="cryptocurrency-book">
+<span id="crypto-book"></span><h2><a class="toc-backref" href="#id2">Cryptocurrency Book</a><a class="headerlink" href="#cryptocurrency-book" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.crypto.get_crypto_book">
+<code class="sig-prename descclassname">iexfinance.crypto.</code><code class="sig-name descname">get_crypto_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.crypto.get_crypto_book" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cryptocurrency Book</p>
+<p>This returns a current snapshot of the book for a specified cryptocurrency.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> output formatting is not supported for this
+endpoint.</p>
+</div>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-book">https://iexcloud.io/docs/api/#cryptocurrency-book</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per update</p>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A cryptocurrency symbol for retrieval</p>
+</dd>
+</dl>
+</dd></dl>
 
-<span class="n">btc</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;BTCUSDT&quot;</span><span class="p">)</span>
-<span class="n">btc</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span>
-</pre></div>
 </div>
+<div class="section" id="cryptocurrency-price">
+<span id="crypto-price"></span><h2><a class="toc-backref" href="#id3">Cryptocurrency Price</a><a class="headerlink" href="#cryptocurrency-price" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.crypto.get_crypto_price">
+<code class="sig-prename descclassname">iexfinance.crypto.</code><code class="sig-name descname">get_crypto_price</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.crypto.get_crypto_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cryptocurrency Price</p>
+<p>This returns the price for a specified cryptocurrency.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-price">https://iexcloud.io/docs/api/#cryptocurrency-price</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A cryptocurrency symbol for retrieval</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
+<div class="section" id="cryptocurrency-quote">
+<span id="crypto-quote"></span><h2><a class="toc-backref" href="#id4">Cryptocurrency Quote</a><a class="headerlink" href="#cryptocurrency-quote" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="iexfinance.crypto.get_crypto_quote">
+<code class="sig-prename descclassname">iexfinance.crypto.</code><code class="sig-name descname">get_crypto_quote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.crypto.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cryptocurrency Quote</p>
+<p>Single quote for Cryptocurrency supported by IEX Cloud.</p>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-quote">https://iexcloud.io/docs/api/#cryptocurrency-quote</a></p>
+<p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A cryptocurrency symbol for retrieval</p>
+</dd>
+</dl>
+<p>Each element contains Stocks <code class="docutils literal notranslate"><span class="pre">quote</span></code> fields.</p>
+</dd></dl>
+
 </div>
 </div>
 
