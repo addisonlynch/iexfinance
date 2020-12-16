@@ -302,7 +302,7 @@ class Stock(_IEXBase):
 
         This returns previous day adjusted price data for one or more stocks
 
-        Reference: https://iexcloud.io/docs/api/#previous
+        Reference: https://iexcloud.io/docs/api/#previous-day-price
 
         Data Weighting: ``2`` per symbol
         """
@@ -311,7 +311,7 @@ class Stock(_IEXBase):
     def get_price(self):
         """Price
 
-        Reference: https://iexcloud.io/docs/api/#price
+        Reference: https://iexcloud.io/docs/api/#price-only
 
         ``1`` per symbol
         """
@@ -823,17 +823,7 @@ class Stock(_IEXBase):
         return self._get_endpoint("news", format=format, params=kwargs)
 
     def get_relevant_stocks(self, **kwargs):
-        """Relevant Stocks
-
-        Similar to the peers endpoint, except this will return most active
-        market symbols when peers are not available. If the symbols
-        returned are not peers, the peers key will be false.
-        This is not intended to represent a definitive or accurate
-        list of peers, and is subject to change at any time.
-
-        Reference: https://iexcloud.io/docs/api/#relevant-stocks
-
-        Data Weighting: ``500`` per call
+        """DEPRECATED
         """
         raise ImmediateDeprecationError("get_relevant_stocks")
 

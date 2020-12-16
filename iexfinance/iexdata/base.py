@@ -66,7 +66,7 @@ class TOPS(Market):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#TOPS
+    https://iexcloud.io/docs/api/#TOPS
     """
 
     @property
@@ -86,7 +86,7 @@ class Last(Market):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#Last
+    https://iexcloud.io/docs/api/#Last
     """
 
     @property
@@ -111,7 +111,7 @@ class DEEP(Market):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#DEEP
+    https://iexcloud.io/docs/api/#DEEP
     """
 
     @property
@@ -137,7 +137,7 @@ class Book(Market):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#Book
+    https://iexcloud.io/docs/api/#Book
 
     Notes
     -----
@@ -165,7 +165,7 @@ class Stats(_IEXBase):
     Base class for obtaining date from the IEX Stats endpoints
     of IEX.
 
-    Reference: https://iextrading.com/developer/docs/#iex-stats
+    Reference: https://iexcloud.io/docs/api/#iex-stats
     """
 
     @property
@@ -193,7 +193,7 @@ class IntradayReader(Stats):
     """
     Class for obtaining data from the Intraday endpoint of IEX Stats
 
-    Reference: https://iextrading.com/developer/docs/#intraday
+    Reference: https://iexcloud.io/docs/api/#intraday
     """
 
     @property
@@ -205,7 +205,7 @@ class RecentReader(Stats):
     """
     Class for obtaining data from the Recent endpoint of IEX Stats
 
-    Reference: https://iextrading.com/developer/docs/#recent
+    Reference: https://iexcloud.io/docs/api/#recent
     """
 
     @property
@@ -217,7 +217,7 @@ class RecordsReader(Stats):
     """
     Class for obtaining data from the Records endpoint of IEX Stats
 
-    Reference: https://iextrading.com/developer/docs/#records
+    Reference: https://iexcloud.io/docs/api/#records
     """
 
     @property
@@ -245,7 +245,7 @@ class DailySummaryReader(Stats):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#historical-daily
+    https://iexcloud.io/docs/api/#historical-daily
 
     """
 
@@ -340,7 +340,7 @@ class MonthlySummaryReader(Stats):
 
     Reference
     ---------
-    https://iextrading.com/developer/docs/#historical-summary
+    https://iexcloud.io/docs/api/#historical-summary
 
     """
 

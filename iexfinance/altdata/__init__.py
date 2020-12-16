@@ -7,7 +7,7 @@ def get_crypto_quote(symbol, **kwargs):
 
     Single quote for Cryptocurrency supported by IEX Cloud.
 
-    Reference: https://iexcloud.io/docs/api/#crypto
+    Reference: https://iexcloud.io/docs/api/#cryptocurrency-quote
     Data Weighting: ``1`` per symbol
 
     Parameters

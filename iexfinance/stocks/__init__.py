@@ -16,7 +16,7 @@ def get_historical_data(symbols, start=None, end=None, close_only=False, **kwarg
     Function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
 
-    Reference: https://iextrading.com/developer/docs/#chart
+    Reference: https://iexcloud.io/docs/api/#historical-prices
 
     Parameters
     ----------

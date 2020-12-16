@@ -11,6 +11,11 @@ Enhancements
 
 - Re-added dropped ``date`` column in some calls
 
+Bug Fixes
+~~~~~~~~~
+
+- Repaired many broken links in documentation
+
 
 Backward Incompatible Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
