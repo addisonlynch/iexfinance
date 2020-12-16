@@ -237,7 +237,7 @@ passed) or single data point for a given symbol and data point key</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">                key  ...                lastUpdated</span>
 <span class="go">0  NEXTDIVIDENDDATE  ...  2020-11-05T20:23:03+00:00</span>
-<span class="go">1              BETA  ...  2020-12-15T09:07:43+00:00</span>
+<span class="go">1              BETA  ...  2020-12-16T05:11:01+00:00</span>
 <span class="go">2   ACCOUNTSPAYABLE  ...  2020-12-10T17:10:00+00:00</span>
 <span class="go">3    CAPITALSURPLUS  ...  2020-12-10T17:10:00+00:00</span>
 <span class="go">4       COMMONSTOCK  ...  2020-12-10T17:10:00+00:00</span>
@@ -252,7 +252,7 @@ passed) or single data point for a given symbol and data point key</p>
 data point ID to <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>:</p>
 <p><strong>Apple Inc. (AAPL) latest price</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMONSTOCK&quot;</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">638004230</span>
+<span class="gh">Out[3]: </span><span class="go">640869958</span>
 </pre></div>
 </div>
 </div>
@@ -290,16 +290,16 @@ with no parameters:</p>
 
 <span class="gp">In [5]: </span><span class="n">get_time_series</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">                                                            XF  ...                                         NIAFCSLIAN</span>
-<span class="go">inv_pk                                                       8  ...                                               2046</span>
-<span class="go">id                                                          XF  ...                                         NIAFCSLIAN</span>
-<span class="go">description          rnr 2i  td,iaiol,Pf5aeoah txocrsr aspet S  ...                                         lasninFcai</span>
+<span class="go">                                                            XF  ...                                         INIASLNCAF</span>
+<span class="go">inv_pk                                                       8  ...                                               2036</span>
+<span class="go">id                                                          XF  ...                                         INIASLNCAF</span>
+<span class="go">description          ci,Snrhos ,elxfa5 p  tosariiearPott  d2ar  ...                                         nicaslniaF</span>
 <span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: False, &#39;properties&#39;: ...</span>
-<span class="go">weight                                                  100355  ...                                               5209</span>
+<span class="go">weight                                                  103344  ...                                               5091</span>
 <span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2020-12-11T15:14:48.000Z</span>
 <span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2020-12-11T15:14:48.000Z</span>
 <span class="go">version                                                      1  ...                                                  1</span>
-<span class="go">weightKey                                                   FX  ...                                         LAIASINCNF</span>
+<span class="go">weightKey                                                   XF  ...                                         ISCANNIAFL</span>
 <span class="go">prepost                                                    NaN  ...                                                NaN</span>
 
 <span class="go">[10 rows x 98 columns]</span>
@@ -315,23 +315,23 @@ ID and (optional) keys and subkeys as parameters.</p>
 Inc. (<code class="docutils literal notranslate"><span class="pre">AAPL</span></code>):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:27:20.192366203</span>
-<span class="go">AccountsPayableCurrent                                               33110381780</span>
-<span class="go">AccountsReceivableNetCurrent                                         16064248276</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         28339349499</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   63505666338</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2841056321</span>
+<span class="go">                                                   1970-01-01 00:26:55.756177494</span>
+<span class="go">AccountsPayableCurrent                                               32806586709</span>
+<span class="go">AccountsReceivableNetCurrent                                         16238711962</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28270925385</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   64301550465</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2796042986</span>
 </pre></div>
 </div>
 <p>Or with a subkey:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:27:30.513673046</span>
-<span class="go">AccountsPayableCurrent                                               32627855357</span>
-<span class="go">AccountsReceivableNetCurrent                                         16223858371</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         28686857810</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   63855392028</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2889303259</span>
+<span class="go">                                                   1970-01-01 00:26:43.976425669</span>
+<span class="go">AccountsPayableCurrent                                               32551889573</span>
+<span class="go">AccountsReceivableNetCurrent                                         15733371597</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28547999211</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   65261836740</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2828766964</span>
 </pre></div>
 </div>
 <p>Any and all series-specific parameters (such as <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>,
@@ -341,12 +341,12 @@ etc. should be passed as <em>keyword arguments</em>)</p>
 <p>Last Apple Inc. Form 10-K</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:26:17.632702552</span>
-<span class="go">AccountsPayableCurrent                                               46899388124</span>
-<span class="go">AccountsReceivableNetCurrent                                         23071322827</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         29578648221</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   59911726956</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -605280112</span>
+<span class="go">                                                   1970-01-01 00:27:03.295119569</span>
+<span class="go">AccountsPayableCurrent                                               46866973450</span>
+<span class="go">AccountsReceivableNetCurrent                                         23154430194</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         30181548418</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   59524459962</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -606408105</span>
 </pre></div>
 </div>
 </div>
