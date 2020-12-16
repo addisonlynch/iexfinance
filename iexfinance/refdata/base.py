@@ -1,4 +1,5 @@
 import datetime
+
 import pandas as pd
 
 from iexfinance.base import _IEXBase

@@ -3,14 +3,13 @@ from datetime import datetime
 import pandas as pd
 
 from iexfinance.refdata import (
-    get_symbols,
-    get_sectors,
-    get_iex_symbols,
-    get_us_trading_dates_holidays,
-    get_region_symbols,
     get_exchange_symbols,
+    get_iex_symbols,
+    get_region_symbols,
+    get_sectors,
+    get_symbols,
+    get_us_trading_dates_holidays,
 )
-
 
 IEX_MSG = (
     "These functions return data for IEX listed symbols only. There is "

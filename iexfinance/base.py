@@ -5,8 +5,8 @@ import time
 import requests
 
 from iexfinance.utils import _init_session
-from iexfinance.utils.exceptions import IEXQueryError
 from iexfinance.utils.exceptions import IEXAuthenticationError as auth_error
+from iexfinance.utils.exceptions import IEXQueryError
 
 # Data provided for free by IEX
 # See https://iextrading.com/api-exhibit-a/ for additional information

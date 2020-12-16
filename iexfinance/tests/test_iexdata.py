@@ -3,15 +3,15 @@ from datetime import datetime
 import pytest
 
 from iexfinance.iexdata import (
-    get_tops,
-    get_last,
     get_deep,
     get_deep_book,
+    get_last,
+    get_stats_daily,
     get_stats_intraday,
     get_stats_recent,
     get_stats_records,
-    get_stats_daily,
     get_stats_summary,
+    get_tops,
 )
 
 

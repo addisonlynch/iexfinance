@@ -1,6 +1,6 @@
 import warnings
 
-from iexfinance.altdata.base import CloudCrypto, SocialSentiment, CEOCompensation
+from iexfinance.altdata.base import CEOCompensation, CloudCrypto, SocialSentiment
 
 
 def get_crypto_quote(symbol, **kwargs):

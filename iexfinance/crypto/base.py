@@ -1,6 +1,6 @@
-from iexfinance.base import _IEXBase
-
 import pandas as pd
+
+from iexfinance.base import _IEXBase
 
 
 class Crypto(_IEXBase):
