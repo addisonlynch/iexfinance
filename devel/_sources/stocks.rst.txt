@@ -12,7 +12,7 @@ Overview
 --------
 
 This documentation is organized as a 1:1 mirror of the
-IEX Cloud `Stocks Documentation <https://iexcloud.io/docs/api/#stocks>`__.
+IEX Cloud `Stocks/Equities Documentation <https://iexcloud.io/docs/api/#stocks-equities>`__.
 
 The ``Stock`` :ref:`object<stocks.stock_object>` is instantiated with one or
 more symbols (equities, ETFs, etc.) and allows access to most endpoints:
@@ -34,11 +34,11 @@ single request.
 
     from iexfinance.stocks import get_historical_data
 
-    get_historical_data("AAPL", start="20190101", end="20200101", 
+    get_historical_data("AAPL", start="20190101", end="20200101",
                         output_format='pandas').head()
 
 
-See :ref:`Additional Methods<stocks.additional_methods>` for more a list of
+See :ref:`Additional Methods<stocks.additional-methods>` for more a list of
 methods available.
 
 .. _stocks.contents:
@@ -57,8 +57,8 @@ The ``Stock`` object
 
 The ``Stock`` object allows retrieval of
 endpoints  (`Earnings
-<https://iextrading.com/developer/#earnings>`__,
-`Quote <https://iextrading.com/developer/#quote>`__, etc) for up to 100 symbols
+<https://iexcloud.io/docs/api/#earnings>`__,
+`Quote <https://iexcloud.io/docs/api/#quote>`__, etc) for up to 100 symbols
 at once.
 
 
@@ -140,8 +140,8 @@ Dividends (Basic)
 Earnings
 --------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require 
-             additional entitlements. Full details can be found in the 
+.. warning:: Beginning December 1, 2020, use of this endpoint will require
+             additional entitlements. Full details can be found in the
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
@@ -152,8 +152,8 @@ Earnings
 Estimates
 ---------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require 
-             additional entitlements. Full details can be found in the 
+.. warning:: Beginning December 1, 2020, use of this endpoint will require
+             additional entitlements. Full details can be found in the
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
@@ -372,8 +372,8 @@ Price Only
 Price Target
 ------------
 
-.. warning:: Beginning December 1, 2020, use of this endpoint will require 
-             additional entitlements. Full details can be found in the 
+.. warning:: Beginning December 1, 2020, use of this endpoint will require
+             additional entitlements. Full details can be found in the
              IEX Cloud Help Center. See `here <https://intercom.help/iexcloud/en/articles/4529082-iex-cloud-s-2020-data-upgrade>`_
              for additional information.
 
@@ -432,7 +432,7 @@ Volume by Venue
 .. automethod:: iexfinance.stocks.base.Stock.get_volume_by_venue
 
 
-.. _stocks.additional_methods:
+.. _stocks.additional-methods:
 
 Additional Methods
 ------------------
@@ -479,7 +479,7 @@ Quote
 Market Movers
 ~~~~~~~~~~~~~
 
-The `List <https://iextrading.com/developer/docs/#list>`__ endpoint of stocks
+The `List <hhttps://iexcloud.io/docs/api/#list>`__ endpoint of stocks
 provides information about market movers from a given trading day. iexfinance
 implements these market mover lists with the functions listed
 below. These functions return a list of quotes of the top-10 symbols in each list.

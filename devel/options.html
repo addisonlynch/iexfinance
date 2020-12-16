@@ -205,14 +205,13 @@
 <dd><p>End of Day Options</p>
 <p>Returns a list of option expiration dates for a given symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#end-of-day-options">https://iexcloud.io/docs/api/#end-of-day-options</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbol</strong> (<em>str</em>) – A valid symbol</p></li>
-<li><p><strong>expiration</strong> (<em>str</em><em>, </em><em>optional</em>) – A valid expiration date</p></li>
-<li><p><strong>option_side</strong> (<em>str</em><em>, </em><em>optional</em>) – Option side - <code class="docutils literal notranslate"><span class="pre">put</span></code> or <code class="docutils literal notranslate"><span class="pre">call</span></code> will return only those types of
-contracts</p></li>
-</ul>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A valid symbol</p>
+</dd>
+<dt>expiration: str, optional</dt><dd><p>A valid expiration date</p>
+</dd>
+<dt>option_side: str, optional</dt><dd><p>Option side - <code class="docutils literal notranslate"><span class="pre">put</span></code> or <code class="docutils literal notranslate"><span class="pre">call</span></code> will return only those types of
+contracts</p>
 </dd>
 </dl>
 </dd></dl>
@@ -225,11 +224,11 @@ contracts</p></li>
 <span class="gp">In [2]: </span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">          0</span>
-<span class="go">0  20201208</span>
-<span class="go">1  20201216</span>
-<span class="go">2  20201227</span>
-<span class="go">3  20210105</span>
-<span class="go">4  20210107</span>
+<span class="go">0  20201213</span>
+<span class="go">1  20201212</span>
+<span class="go">2  20201224</span>
+<span class="go">3  20210102</span>
+<span class="go">4  20210104</span>
 </pre></div>
 </div>
 </div>

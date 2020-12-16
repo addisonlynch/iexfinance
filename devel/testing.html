@@ -231,7 +231,7 @@
 </div>
 <div class="section" id="sandbox-environment">
 <span id="testing-sandbox"></span><h2>Sandbox Environment<a class="headerlink" href="#sandbox-environment" title="Permalink to this headline">¶</a></h2>
-<p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
+<p>IEX provides a <a class="reference external" href="https://iexcloud.io/docs/api/#testing-sandbox">sandbox</a> environment for IEX Cloud. This environment can be accessed by setting <code class="docutils literal notranslate"><span class="pre">IEX_API_VERSION</span></code> to <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>. This will set <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> up for use with the sandbox base URL.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Test keys (beginning with <code class="docutils literal notranslate"><span class="pre">Tsk</span></code> and <code class="docutils literal notranslate"><span class="pre">Tpk</span></code>) must be used with the sandbox environment. To obtain these keys, select the <strong>Viewing test data</strong> toggler on the left side of the IEX Cloud console.</p>
@@ -242,7 +242,8 @@
 <p>A BASH script <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is included in the
 top-level iexfinance directory. This script will emulate the tests
 needed for a TravisCI build to pass.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> documentation can be tested with <a class="reference external" href="https://www.sphinx-doc.org/en/stable">Sphinx</a> (with extensions napoleon and sphinx_rtd_theme)
+<p>Note that your environment needs to export a testing IEX_TOKEN to execute tests.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> documentation can be tested with <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> (with extensions napoleon and sphinx_rtd_theme)
 using the Makefile. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">livehtml</span></code> will serve the dev documentation site locally
 on 127.0.0.1:8000.</p>
 </div>

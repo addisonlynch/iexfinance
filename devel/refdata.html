@@ -249,9 +249,8 @@ supports for trading</p>
 exchange that IEX Cloud supports for API calls</p>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>exchange</strong> (<em>str</em>) – Case insensitive string of Exchange using IEX
+<dl class="simple">
+<dt>exchange: str</dt><dd><p>Case insensitive string of Exchange using IEX
 Supported Exchanges list</p>
 </dd>
 </dl>
@@ -267,9 +266,8 @@ Supported Exchanges list</p>
 region that IEX Cloud supports for API calls</p>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per call</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>region</strong> (<em>str</em>) – 2 letter case insensitive string of country codes
+<dl class="simple">
+<dt>region: str</dt><dd><p>2 letter case insensitive string of country codes
 using ISO 3166-1 alpha-2</p>
 </dd>
 </dl>
@@ -307,8 +305,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      NYS             NU  ...  0B0B3D62V0CG  1129379  0W29PMA8UG7Y7QWRX2IX</span>
-<span class="go">1     AA      SYN             NU  ...  B0BB3TH3GD30  1737662  P99E00W1524WTU2361FZ</span>
+<span class="go">0      A      YSN             NU  ...  0B0B2G0D36VC  1108201  8PIXR27WMX2WG0Q79UYA</span>
+<span class="go">1     AA      YNS             NU  ...  3DBHG00T33BB  1727597  WE493W9205602PZT1UF1</span>
 
 <span class="go">[2 rows x 14 columns]</span>
 </pre></div>
@@ -324,16 +322,16 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 a given date</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates">https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per row returned</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>type</strong> (<em>str</em>) – can be “trade” or “holiday”. Determines whether to return days where
-trading took place or holidays</p></li>
-<li><p><strong>direction</strong> (<em>str</em>) – can be “next” or “last”. Determines whether to return dates in the
-future or the past</p></li>
-<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default 1</em>) – number of days to go backward or forward</p></li>
-<li><p><strong>startDate</strong> (<em>str</em><em>, </em><em>datetime.datetime</em><em>, </em><em>default current date</em>) – specify first/last day included in next/last, respectively</p></li>
-</ul>
+<dl class="simple">
+<dt><a href="#id8"><span class="problematic" id="id9">type_</span></a>: str</dt><dd><p>can be “trade” or “holiday”. Determines whether to return days where
+trading took place or holidays</p>
+</dd>
+<dt>direction: str</dt><dd><p>can be “next” or “last”. Determines whether to return dates in the
+future or the past</p>
+</dd>
+<dt>last: int, default 1</dt><dd><p>number of days to go backward or forward</p>
+</dd>
+<dt>startDate: str, datetime.datetime, default current date</dt><dd><p>specify first/last day included in next/last, respectively</p>
 </dd>
 </dl>
 </dd></dl>

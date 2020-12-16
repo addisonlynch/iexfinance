@@ -206,7 +206,7 @@
 <span id="usage"></span><h1>Common Usage Examples<a class="headerlink" href="#common-usage-examples" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference external" href="https://github.com/addisonlynch/iex-examples">iex-examples</a> repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.</p>
 <p>Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the <a class="reference external" href="https://iexcloud.io/docs/api/#stocks">Stocks</a>
+endpoints are the <a class="reference external" href="https://iexcloud.io/docs/api/#stocks-equities">Stocks</a>
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.</p>
 <p>The iexfinance codebase and documentation are structured in a way that emulates much of the <a class="reference external" href="https://iexcloud.io/docs/api/">IEX Cloud Documentation</a> for readability and ease of use.</p>
@@ -244,8 +244,8 @@ method of the <code class="docutils literal notranslate"><span class="pre">Stock
 
 <span class="gp">In [3]: </span><span class="n">tsla</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">         TSLA</span>
-<span class="go">price  647.39</span>
+<span class="go">        TSLA</span>
+<span class="go">price  634.5</span>
 </pre></div>
 </div>
 <p>or for multiple symbols, use a list or list-like object (Tuple, Pandas Series,
@@ -255,7 +255,7 @@ etc.):</p>
 <span class="gp">In [5]: </span><span class="n">batch</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">         TSLA    AAPL</span>
-<span class="go">price  634.57  132.28</span>
+<span class="go">price  662.93  132.42</span>
 </pre></div>
 </div>
 </div>
@@ -300,16 +300,16 @@ current day (default is current date):</p>
 <span class="gh">Out[15]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
 <span class="go">2019-05-10 09:30:00  2019-05-10  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002572              0.002904</span>
-<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001350              0.002199</span>
-<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003439              0.004634</span>
-<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002370              0.003624</span>
+<span class="go">2019-05-10 09:31:00  2019-05-10  09:31 AM  ...        0.002492              0.002911</span>
+<span class="go">2019-05-10 09:32:00  2019-05-10  09:32 AM  ...        0.001342              0.002150</span>
+<span class="go">2019-05-10 09:33:00  2019-05-10  09:33 AM  ...        0.003497              0.004479</span>
+<span class="go">2019-05-10 09:34:00  2019-05-10  09:34 AM  ...        0.002419              0.003586</span>
 <span class="go">...                         ...       ...  ...             ...                   ...</span>
-<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005214             -0.004308</span>
-<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005131             -0.003894</span>
-<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005587             -0.004349</span>
-<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005634             -0.004361</span>
-<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003758             -0.002535</span>
+<span class="go">2019-05-10 15:55:00  2019-05-10   3:55 PM  ...       -0.005141             -0.004271</span>
+<span class="go">2019-05-10 15:56:00  2019-05-10   3:56 PM  ...       -0.005089             -0.003852</span>
+<span class="go">2019-05-10 15:57:00  2019-05-10   3:57 PM  ...       -0.005493             -0.004324</span>
+<span class="go">2019-05-10 15:58:00  2019-05-10   3:58 PM  ...       -0.005489             -0.004350</span>
+<span class="go">2019-05-10 15:59:00  2019-05-10   3:59 PM  ...       -0.003735             -0.002552</span>
 
 <span class="go">[390 rows x 20 columns]</span>
 </pre></div>
@@ -319,10 +319,10 @@ current day (default is current date):</p>
 <span class="gh">Out[16]: </span><span class="go"></span>
 <span class="go">                           date     label  ...  changeOverTime  marketChangeOverTime</span>
 <span class="go">2020-12-15 09:30:00  2020-12-15  09:30 AM  ...        0.000000              0.000000</span>
-<span class="go">2020-12-15 09:31:00  2020-12-15  09:31 AM  ...        0.002017              0.001610</span>
-<span class="go">2020-12-15 09:32:00  2020-12-15  09:32 AM  ...        0.004759              0.004245</span>
-<span class="go">2020-12-15 09:33:00  2020-12-15  09:33 AM  ...        0.007500              0.006544</span>
-<span class="go">2020-12-15 09:34:00  2020-12-15  09:34 AM  ...        0.007644              0.007188</span>
+<span class="go">2020-12-15 09:31:00  2020-12-15  09:31 AM  ...        0.002072              0.001537</span>
+<span class="go">2020-12-15 09:32:00  2020-12-15  09:32 AM  ...        0.004618              0.004209</span>
+<span class="go">2020-12-15 09:33:00  2020-12-15  09:33 AM  ...        0.007393              0.006791</span>
+<span class="go">2020-12-15 09:34:00  2020-12-15  09:34 AM  ...        0.007674              0.007047</span>
 
 <span class="go">[5 rows x 20 columns]</span>
 </pre></div>
@@ -343,28 +343,28 @@ the endpoint requested.</p>
 <span class="gp">In [19]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_previous_day_prices</span><span class="p">()</span>
 <span class="gh">Out[19]: </span><span class="go"></span>
 <span class="go">     change changeOverTime changePercent  ...    uVolume        updated     volume</span>
-<span class="go">AAPL      0              0             0  ...  163087514  1617471909480  160198734</span>
+<span class="go">AAPL      0              0             0  ...  163873686  1658225800826  159838571</span>
 
 <span class="go">[1 rows x 26 columns]</span>
 </pre></div>
 </div>
 <p>For a detailed list of the <em>endpoint methods</em>, see
-<a class="reference external" href="stocks.html#endpoints">here</a>.</p>
+<a class="reference internal" href="stocks.html#stocks-contents"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="fields">
 <h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
-<p>To obtain individual fields from an endpoint, select <a class="reference external" href="stocks.html#field-methods">Field Methods</a> are also provided.</p>
+<p>To obtain individual fields from an endpoint, select <a class="reference internal" href="stocks.html#stocks-additional-methods"><span class="std std-ref">Additional Methods</span></a> are also provided.</p>
 <p>Examples <code class="docutils literal notranslate"><span class="pre">get_open()</span></code>, <code class="docutils literal notranslate"><span class="pre">get_name()</span></code></p>
 <p><strong>Single Symbol</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">aapl</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 
 <span class="gp">In [21]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
-<span class="gh">Out[21]: </span><span class="go">125.19</span>
+<span class="gh">Out[21]: </span><span class="go">127.79</span>
 
 <span class="gp">In [22]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[22]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  130.06</span>
+<span class="go">price  130.63</span>
 </pre></div>
 </div>
 <p><strong>Multiple Symbols</strong></p>
@@ -373,11 +373,11 @@ the endpoint requested.</p>
 <span class="gp">In [24]: </span><span class="n">b</span><span class="o">.</span><span class="n">get_open</span><span class="p">()</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
 <span class="go">        open</span>
-<span class="go">AAPL  128.58</span>
-<span class="go">TSLA  653.76</span>
+<span class="go">AAPL  129.16</span>
+<span class="go">TSLA  648.38</span>
 </pre></div>
 </div>
-<p>For a detailed list of these functions, see <a class="reference external" href="stocks.html">here</a>.</p>
+<p>For a detailed list of these functions, see <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">here</span></a>.</p>
 </div>
 <div class="section" id="endpoint-specific-parameters">
 <h3>Endpoint-Specific Parameters<a class="headerlink" href="#endpoint-specific-parameters" title="Permalink to this headline">¶</a></h3>
@@ -398,7 +398,7 @@ method as a keyword argument.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">output_format</span></code> from the initial
 call to the <code class="docutils literal notranslate"><span class="pre">Stock</span></code> function will be used (if the output format has not been
 change through <code class="docutils literal notranslate"><span class="pre">change_output_format</span></code> since) and <strong>cannot be changed</strong>
-through calls to endpoint methods. See <a class="reference external" href="stocks.html">Stocks</a> for
+through calls to endpoint methods. See <a class="reference internal" href="stocks.html#stocks"><span class="std std-ref">Stocks/Equities</span></a> for
 more information.</p>
 </div>
 </div>

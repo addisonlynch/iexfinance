@@ -227,7 +227,7 @@
 </div>
 <div class="section" id="collections">
 <span id="market-info-collections"></span><h2>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://iextrading.com/developer/docs/#collections">Collections</a>
+<p>The <a class="reference external" href="https://iexcloud.io/docs/api/#historical-daily">Collections</a>
 endpoint of Stocks allows retrieval of certain groups of companies, organized
 by:</p>
 <ul class="simple">
@@ -249,14 +249,12 @@ Currently supported collection types are <code class="docutils literal notransla
 </div>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#collections">https://iexcloud.io/docs/api/#collections</a></p>
 <p>Data Weighting: Weight of <code class="docutils literal notranslate"><span class="pre">/stock/quote</span></code> per method</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>collection_name</strong> (<em>str</em>) – Desired collection name</p></li>
-<li><p><strong>collection_type</strong> (<em>str</em><em>, </em><em>default &quot;tag&quot;</em><em>, </em><em>optional</em>) – Desired collection type (sector, tag, or list)
+<dl class="simple">
+<dt>collection_name: str</dt><dd><p>Desired collection name</p>
+</dd>
+<dt>collection_type: str, default “tag”, optional</dt><dd><p>Desired collection type (sector, tag, or list)
 kwargs:
-Additional Request Parameters (see base class)</p></li>
-</ul>
+Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -339,9 +337,8 @@ next month. The response is split into two structures: <code class="docutils lit
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ipo-calendar">https://iexcloud.io/docs/api/#ipo-calendar</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">100</span></code> per IPO returned for <code class="docutils literal notranslate"><span class="pre">upcoming-ipos</span></code>, <code class="docutils literal notranslate"><span class="pre">500</span></code>
 returned for <code class="docutils literal notranslate"><span class="pre">today-ipos</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>period</strong> (<em>str</em><em>, </em><em>default &quot;upcoming-ipos&quot;</em><em>, </em><em>optional</em>) – Desired period (options are “upcoming-ipos” and “today-ipos”)</p>
+<dl class="simple">
+<dt>period: str, default “upcoming-ipos”, optional</dt><dd><p>Desired period (options are “upcoming-ipos” and “today-ipos”)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -400,12 +397,8 @@ provided through the <code class="docutils literal notranslate"><span class="pre
 trading day. Performance is based on each sector ETF.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#sector-performance">https://iexcloud.io/docs/api/#sector-performance</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per sector</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>data</strong> – List of dictionary sector performance items</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list</p>
+<dl class="simple">
+<dt>data: list</dt><dd><p>List of dictionary sector performance items</p>
 </dd>
 </dl>
 </dd></dl>

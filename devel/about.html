@@ -116,7 +116,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#iex-api-issues">IEX API Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#filling-a-void">Filling a Void</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging &amp; Message Counting</a></li>
@@ -192,33 +191,9 @@
   <div class="section" id="about">
 <span id="id1"></span><h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="iex-api-issues">
-<h2>IEX API Issues<a class="headerlink" href="#iex-api-issues" title="Permalink to this headline">¶</a></h2>
-<p>For issues the provider’s API endpoints, see the IEX Cloud <a class="reference external" href="https://github.com/iexg/IEX-API">Github</a>. Further, the <a class="reference external" href="https://twitter.com/iexstatus">IEX Status</a> twitter account provides
+<span id="about-api-issues"></span><h2>IEX API Issues<a class="headerlink" href="#iex-api-issues" title="Permalink to this headline">¶</a></h2>
+<p>For issues the provider’s API endpoints, email <a class="reference external" href="mailto:support&#37;&#52;&#48;iexcloud&#46;io">support<span>&#64;</span>iexcloud<span>&#46;</span>io</a>. Further, the <a class="reference external" href="https://twitter.com/iexstatus">IEX Status</a> twitter account provides
 updates about issues and service interruptions.</p>
-</div>
-<div class="section" id="filling-a-void">
-<h2>Filling a Void<a class="headerlink" href="#filling-a-void" title="Permalink to this headline">¶</a></h2>
-<p>It seemed for a number of years that the primary sources of free US
-equities data for Python developers were the Yahoo Finance and Google
-Finance APIs. Given that both of these services were
-<a class="reference external" href="https://forums.yahoo.net/t5/Yahoo-Finance-help/Is-Yahoo-Finance-API-broken/td-p/250503">discontinued</a>
-in 2017, analysts and developers have begun the search for
-their replacement. A strong contender for live equities data is the
-<a class="reference external" href="https://iextrading.com">Investors’ Exchange</a> <a class="reference external" href="https://iextrading.com/developer">Developer
-Platform</a>, a “reliable, enterprise
-API” that is “free for everyone.”</p>
-<p>For those with concerns that the service will not remain reliable and
-will not remain free, see below for further discussion. For now, we’ve
-benchmarked the API’s performance against that of the late Yahoo and
-Google services and found that, for daily and intraday information, the
-IEX service is actually quite comparable. And thus with a Python wrapper
-for IEX’s [Stocks] (<a class="reference external" href="https://iextrading.com/developer/docs/#stocks">https://iextrading.com/developer/docs/#stocks</a>) and
-<a class="reference external" href="https://iextrading.com/developer/docs/#iex-market-data">IEX Market Data</a>
-endpoints we can access this data in a similar way in the past.</p>
-<p>iexfinance, a wrapper for this service, is written in a similar fashion
-as both Lukasz Banasiak’s Yahoo Finance wrapper and Hongtao Cai’s Google
-Finance wrapper, allowing for lookup of both individual symbols as well
-as batch requests.</p>
 </div>
 </div>
 

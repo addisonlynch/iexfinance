@@ -281,13 +281,13 @@ real time for all securities on IEX’s displayed limit order book. TOPS is
 ideal for developers needing both quote and trade data.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#tops">https://iexcloud.io/docs/api/#tops</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional
-Symbol or list-like collection of symbols</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
-</ul>
+<dl>
+<dt>symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),</dt><dd><blockquote>
+<div><p>default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p>
+</div></blockquote>
+<p>Symbol or list-like collection of symbols</p>
+</dd>
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -301,7 +301,7 @@ Symbol or list-like collection of symbols</p></li>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iextrading.com/developer/docs/#tops">IEX docs</a></p>
+<p>The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per <a class="reference external" href="https://iexcloud.io/docs/api/#tops">IEX docs</a></p>
 </div>
 </div>
 </div>
@@ -320,12 +320,10 @@ intraday API that provides IEX last sale price, size and time. Last is
 ideal for developers that need a lightweight stock quote.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#last">https://iexcloud.io/docs/api/#last</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
-</ul>
+<dl class="simple">
+<dt>symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),</dt><dd><p>default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p>
+</dd>
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -346,7 +344,7 @@ ideal for developers that need a lightweight stock quote.</p>
 </div>
 <div class="section" id="deep">
 <span id="iexdata-deep"></span><h2><a class="toc-backref" href="#id23">DEEP</a><a class="headerlink" href="#deep" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://iexcloud.io/docs/api/#DEEP">DEEP</a>  is IEX’s aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.</p>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#deep">DEEP</a>  is IEX’s aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_deep()</span></code>:</p>
 <dl class="py function">
 <dt id="iexfinance.iexdata.get_deep">
@@ -363,15 +361,12 @@ from either displayed or non-displayed orders matching on IEX will be
 reported. Routed executions will not be reported.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#deep">https://iexcloud.io/docs/api/#deep</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbols</strong> (<em>str</em><em> or </em><em>list-like</em><em> (</em><em>list</em><em>, </em><em>tuple</em><em>, </em><em>pandas.Series</em><em>, </em><em>pandas.Index</em><em>)</em><em>,</em>) – default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
-</ul>
+<dl class="simple">
+<dt>symbols: str or list-like (list, tuple, pandas.Series, pandas.Index),</dt><dd><p>default <code class="docutils literal notranslate"><span class="pre">None</span></code>, optional</p>
+</dd>
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
 <p>Pandas not supported as an output format for the DEEP endpoint.</p>
 </dd></dl>
 
@@ -478,7 +473,7 @@ reported. Routed executions will not be reported.</p>
 <p class="admonition-title">Warning</p>
 <p>This endpoint has been marked as <em>in-dev</em> by the provider.</p>
 </div>
-<p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-daily">Historical Daily</a>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#historical-daily">Historical Daily</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_daily()</span></code>:</p>
 <dl class="py function">
@@ -492,17 +487,17 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 </div>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev">https://iexcloud.io/docs/api/#stats-historical-daily-in-dev</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<em>string</em><em>, </em><em>int</em><em>, </em><em>date</em><em>, </em><em>datetime</em><em>, </em><em>Timestamp</em>) – Starting date. Parses many different kind of date
+<dl class="simple">
+<dt>start<span class="classifier">string, int, date, datetime, Timestamp</span></dt><dd><p>Starting date. Parses many different kind of date
 representations (e.g., ‘JAN-01-2010’, ‘1/1/10’, ‘Jan, 1, 1980’).
-Defaults to 15 years before current date.</p></li>
-<li><p><strong>end</strong> (<em>string</em><em>, </em><em>int</em><em>, </em><em>date</em><em>, </em><em>datetime</em><em>, </em><em>Timestamp</em>) – Ending date</p></li>
-<li><p><strong>last</strong> (<em>int</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Used in place of date range to retrieve previous number of trading days
-(up to 90)</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
-</ul>
+Defaults to 15 years before current date.</p>
+</dd>
+<dt>end<span class="classifier">string, int, date, datetime, Timestamp</span></dt><dd><p>Ending date</p>
+</dd>
+<dt>last: int, default None, optional</dt><dd><p>Used in place of date range to retrieve previous number of trading days
+(up to 90)</p>
+</dd>
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -515,66 +510,66 @@ Defaults to 15 years before current date.</p></li>
 <span class="gp">In [2]: </span><span class="n">get_stats_daily</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">[{&#39;date&#39;: &#39;2020-12-11&#39;,</span>
-<span class="go">  &#39;volume&#39;: 230971002,</span>
-<span class="go">  &#39;routedVolume&#39;: 30097165,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02303,</span>
+<span class="go">  &#39;volume&#39;: 229019300,</span>
+<span class="go">  &#39;routedVolume&#39;: 30193954,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02297,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 52022592},</span>
+<span class="go">  &#39;litVolume&#39;: 50543231},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-10&#39;,</span>
-<span class="go">  &#39;volume&#39;: 240856165,</span>
-<span class="go">  &#39;routedVolume&#39;: 32083662,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02299,</span>
+<span class="go">  &#39;volume&#39;: 236836451,</span>
+<span class="go">  &#39;routedVolume&#39;: 31075488,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02221,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 55258711},</span>
+<span class="go">  &#39;litVolume&#39;: 52978045},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-09&#39;,</span>
-<span class="go">  &#39;volume&#39;: 279153446,</span>
-<span class="go">  &#39;routedVolume&#39;: 40306406,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02324,</span>
+<span class="go">  &#39;volume&#39;: 273718363,</span>
+<span class="go">  &#39;routedVolume&#39;: 40016503,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02272,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 66294243},</span>
+<span class="go">  &#39;litVolume&#39;: 67182325},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-08&#39;,</span>
-<span class="go">  &#39;volume&#39;: 248055999,</span>
-<span class="go">  &#39;routedVolume&#39;: 39151456,</span>
-<span class="go">  &#39;marketShare&#39;: 0.0236769480823243,</span>
+<span class="go">  &#39;volume&#39;: 248265513,</span>
+<span class="go">  &#39;routedVolume&#39;: 39275937,</span>
+<span class="go">  &#39;marketShare&#39;: 0.023578241652799526,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 60997305},</span>
+<span class="go">  &#39;litVolume&#39;: 61490072},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-07&#39;,</span>
-<span class="go">  &#39;volume&#39;: 249085846,</span>
-<span class="go">  &#39;routedVolume&#39;: 35932843,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02201,</span>
+<span class="go">  &#39;volume&#39;: 242862630,</span>
+<span class="go">  &#39;routedVolume&#39;: 34751306,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02266,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 59374437},</span>
+<span class="go">  &#39;litVolume&#39;: 57781987},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-04&#39;,</span>
-<span class="go">  &#39;volume&#39;: 250738930,</span>
-<span class="go">  &#39;routedVolume&#39;: 41525064,</span>
-<span class="go">  &#39;marketShare&#39;: 0.022199169683540642,</span>
+<span class="go">  &#39;volume&#39;: 257790584,</span>
+<span class="go">  &#39;routedVolume&#39;: 41657362,</span>
+<span class="go">  &#39;marketShare&#39;: 0.021812036987644258,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 63308635},</span>
+<span class="go">  &#39;litVolume&#39;: 62485557},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-03&#39;,</span>
-<span class="go">  &#39;volume&#39;: 269829223,</span>
-<span class="go">  &#39;routedVolume&#39;: 41880271,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02199,</span>
+<span class="go">  &#39;volume&#39;: 260089982,</span>
+<span class="go">  &#39;routedVolume&#39;: 42050401,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02239,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 66901748},</span>
+<span class="go">  &#39;litVolume&#39;: 67714909},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-02&#39;,</span>
-<span class="go">  &#39;volume&#39;: 254612821,</span>
-<span class="go">  &#39;routedVolume&#39;: 45091543,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02174,</span>
+<span class="go">  &#39;volume&#39;: 255499669,</span>
+<span class="go">  &#39;routedVolume&#39;: 43839087,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02162,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 66952068},</span>
+<span class="go">  &#39;litVolume&#39;: 67750957},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-01&#39;,</span>
-<span class="go">  &#39;volume&#39;: 274666066,</span>
-<span class="go">  &#39;routedVolume&#39;: 47434369,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02017,</span>
+<span class="go">  &#39;volume&#39;: 277498543,</span>
+<span class="go">  &#39;routedVolume&#39;: 46365012,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02004,</span>
 <span class="go">  &#39;isHalfday&#39;: 0,</span>
-<span class="go">  &#39;litVolume&#39;: 70272134}]</span>
+<span class="go">  &#39;litVolume&#39;: 70632855}]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-historical-summary">
 <span id="iexdata-stats-monthly"></span><h2><a class="toc-backref" href="#id37">Stats Historical Summary</a><a class="headerlink" href="#stats-historical-summary" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://iextrading.com/developer/docs/#historical-summary">Historical Summary</a>
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-summary">Historical Summary</a>
 is IEX’s trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_summary()</span></code>:</p>
 <dl class="py function">
@@ -583,13 +578,12 @@ is IEX’s trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Historical Summary</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-historical-summary">https://iexcloud.io/docs/api/#stats-historical-summary</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>start</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – Start of data retrieval period</p></li>
-<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>default None</em><em>, </em><em>optional</em>) – End of data retrieval period</p></li>
-<li><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p></li>
-</ul>
+<dl class="simple">
+<dt>start: datetime.datetime, default None, optional</dt><dd><p>Start of data retrieval period</p>
+</dd>
+<dt>end: datetime.datetime, default None, optional</dt><dd><p>End of data retrieval period</p>
+</dd>
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -610,563 +604,563 @@ month in the range, significantly impacting performance</p>
 <span class="gp">In [5]: </span><span class="n">get_stats_summary</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">[[],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 208866552.3,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 55574689.8,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02702069666372167,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 479,</span>
-<span class="go">   &#39;averageFillSize&#39;: 192,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.7657,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.01867,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11212,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04408,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02405,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.0391,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02186,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00155,</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 207606120.1,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 55724080.5,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.027092279561274864,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 461,</span>
+<span class="go">   &#39;averageFillSize&#39;: 191,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.7506,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.01906,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1139,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04292,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02406,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0392,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02159,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00157,</span>
 <span class="go">   &#39;bin10000Percent&#39;: 0.00085,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5988,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1420,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 185,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8101,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05297,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04323,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.13779,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.44795,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.27783,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.16708,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16572,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.06041,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03071,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0147,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06461,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 6092,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1400,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 183,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8085,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05483,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04335,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.13842,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.45327,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.2668,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.16282,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16503,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05992,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03047,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0154,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06697,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
 <span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.0025,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.02022,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00342,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01955,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.22191,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.22764,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00857,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.98767,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 0.98964,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.02036,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.01669,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.04033,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.98978,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.02646,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93811,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.74676,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94574,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00117,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.02268,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.00525}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 194257374.6,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 57959672.35,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02704,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 497,</span>
-<span class="go">   &#39;averageFillSize&#39;: 190,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.74704,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.0212,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11918,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.0446,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02465,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.04003,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02291,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00166,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00091,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 4815,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1219,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 188,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8122,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.053,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04196,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.11279,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.44097,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.29693,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.17092,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16892,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0571,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03176,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01851,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06613,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.02011,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00339,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01982,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.22902,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.22052,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00873,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00878,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01451,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.02938,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.97531,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 0.99401,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.02504,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99788,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95004,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.77247,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.93213,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99843,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.98127,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.97517}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 200478547.4,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 58097901.41,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02717,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 487,</span>
+<span class="go">   &#39;averageFillSize&#39;: 196,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.738,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.0215,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11672,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.0453,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.0239,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.04073,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02234,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00171,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00088,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4856,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1197,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 187,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8069,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0533,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04199,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11337,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.43838,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.29573,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.17328,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16569,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05773,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03263,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01863,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06507,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00266,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.021,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00204,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.0206,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23606,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.2342,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00782,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02663,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0247,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99227,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.02734,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.03451,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01101,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.98009,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.97724,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.80875,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.95136,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00091,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.02213,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98096}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 200409621.2,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 56333916.81,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02652,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 466,</span>
-<span class="go">   &#39;averageFillSize&#39;: 184,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.76012,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02027,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11556,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.0448,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02318,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.0391,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02173,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00161,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00078,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5268,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1117,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 158,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8000,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05012,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04102,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.12052,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.45273,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.26708,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.18784,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.17032,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.04969,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02816,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01809,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.063,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00261,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.02021,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00202,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.02123,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23291,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.2256,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00771,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00881,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0119,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.02315,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.98352,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.03392,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.0227,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99239,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96267,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.82595,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94979,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00151,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.01962,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.02056}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 198527908.9,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 55204568.62,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02612,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 473,</span>
+<span class="go">   &#39;averageFillSize&#39;: 187,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.74905,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02041,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11423,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.0445,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02388,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.039,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02241,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00158,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00081,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5315,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1118,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 161,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8256,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.04983,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04153,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11985,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.45617,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.26389,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.18688,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.173,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05072,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02821,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01792,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06353,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
 <span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00315,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.018,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00219,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01798,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23359,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23807,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00898,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02906,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.03808,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.03107,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.00571,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02309,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99088,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01317,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95016,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.84063,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.9395,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00629,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00263,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.00168}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 185730452,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 48539741.4,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.028251854055660705,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 496,</span>
-<span class="go">   &#39;averageFillSize&#39;: 180,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.76622,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02087,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11146,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04444,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02287,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.0379,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02148,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00157,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00081,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 4784,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1264,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 208,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 7959,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.0184,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00214,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01807,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24081,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24415,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00878,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.01738,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01183,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.02971,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.01999,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02733,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.00638,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.98922,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.94508,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.85458,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.9311,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99295,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.03253,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98917}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 189008585.5,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 48643790.4,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.028502973263681158,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 480,</span>
+<span class="go">   &#39;averageFillSize&#39;: 179,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75037,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02008,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10956,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04457,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02278,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.039,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02135,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00162,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00085,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4702,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1244,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 204,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 7988,</span>
 <span class="go">   &#39;blockPercent&#39;: 0.05784,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.0418,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.10813,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.4633,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.27336,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.17167,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16685,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05379,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02978,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02431,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05867,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04069,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.10817,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.4729,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.26948,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.17702,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16537,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0547,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03071,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02423,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05845,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
 <span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00298,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01684,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00153,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.02127,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23933,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24705,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0092,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02694,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00361,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99993,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.0165,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02175,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.9963,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01036,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96953,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.81682,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.97099,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99566,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.99431,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.97557}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 205637833.5,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 53832662.18,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02928,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 456,</span>
-<span class="go">   &#39;averageFillSize&#39;: 177,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.77297,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02137,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.10619,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04532,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02213,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.03694,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02103,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01641,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00155,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.02136,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24093,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23797,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00941,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00207,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.02721,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99936,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.01683,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.03875,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.0256,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.98759,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95343,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.81605,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94004,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.0124,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00617,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.01554}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 207436482.8,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 51839495.75,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02931,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 452,</span>
+<span class="go">   &#39;averageFillSize&#39;: 180,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75174,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02115,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10875,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04613,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02199,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.03642,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02109,</span>
 <span class="go">   &#39;bin5000Percent&#39;: 0.00151,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00076,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5524,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1479,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 252,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 7944,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05583,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04191,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.11053,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.42863,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.28383,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.20112,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.1733,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05442,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02974,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02309,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05226,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00077,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5497,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1453,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 257,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8268,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05427,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04237,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.10938,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.42673,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27798,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.19631,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.17324,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05399,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.02912,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02283,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05256,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00278,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01154,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00266,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.0113,</span>
 <span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0032,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01828,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24891,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24181,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00978,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.01927,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01599,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99076,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.95662,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02149,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01078,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99293,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96849,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.7901,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.94606,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99408,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.00142,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.99859}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 198500771,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 52059269.25,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.0276,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01861,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24545,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23651,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0099,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02748,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00098,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.02557,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.96176,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.03009,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.01642,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.9905,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.9569,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.795,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.96044,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00807,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.03023,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.00925}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 196987540,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 51808568.18,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.0281,</span>
 <span class="go">   &#39;averageOrderSize&#39;: 477,</span>
-<span class="go">   &#39;averageFillSize&#39;: 181,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.77052,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02335,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.1082,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04587,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02222,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.037,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02149,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.0016,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00074,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 4637,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1224,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 173,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8067,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.04976,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04171,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.1098,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.41899,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.28097,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.22266,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.16214,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05951,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03055,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0248,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05015,</span>
-<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00279,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01059,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00252,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01862,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24352,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24951,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0106,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.01163,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00923,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99943,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.95217,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01569,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99127,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99687,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.96566,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.74885,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.9467,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.0298,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.9935,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98787}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 181500085.1,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 45508254.77,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.0289,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 483,</span>
-<span class="go">   &#39;averageFillSize&#39;: 177,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.76004,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02329,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.10908,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04629,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02186,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.03797,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02086,</span>
+<span class="go">   &#39;averageFillSize&#39;: 176,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75456,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02253,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.1079,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04673,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.022,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.039,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02157,</span>
 <span class="go">   &#39;bin5000Percent&#39;: 0.0015,</span>
 <span class="go">   &#39;bin10000Percent&#39;: 0.00076,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 4819,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1193,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 160,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8376,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05145,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04201,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.09917,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.43014,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.27288,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.21654,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.13298,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0645,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03031,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02785,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06329,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4516,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1191,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 168,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8166,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.04975,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04213,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11052,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.42562,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.28109,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.22109,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.15643,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.05965,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03005,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02505,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.05126,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00275,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.01084,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00244,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01819,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.23963,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24146,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.01035,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02855,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01208,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99483,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.96773,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.04085,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99544,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.97934,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.97244,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.74047,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.92462,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00463,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.02256,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.01322}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 183570156.8,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 46525895.27,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.0293,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 479,</span>
+<span class="go">   &#39;averageFillSize&#39;: 180,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75321,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02283,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10622,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04561,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02179,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.03841,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02105,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00148,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00076,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4701,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1202,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 156,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8265,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05112,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04141,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.09948,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.42617,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27042,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.21958,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.13432,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.0631,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.0296,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.02801,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.06527,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
 <span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00298,</span>
 <span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.009,</span>
 <span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0005,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.016,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.25123,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.24022,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00943,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.02466,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.02026,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.9851,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.97549,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.02887,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.98994,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.97771,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93888,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.99479,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.955,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00588,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.01387,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.0082}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 220046413.4,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 49923929.8,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.03031,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 458,</span>
-<span class="go">   &#39;averageFillSize&#39;: 176,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.78612,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02169,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.10715,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.04504,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02217,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.03795,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02138,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.01615,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.24963,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.23974,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00928,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.03202,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 0.99459,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.00191,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.00335,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.0031,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.98672,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.9993,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93921,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 1.00631,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.96623,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00621,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.02563,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.9708}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 225555110.7,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 48049292.1,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02958,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 461,</span>
+<span class="go">   &#39;averageFillSize&#39;: 173,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.78079,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02245,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10399,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.0472,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02211,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0383,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02123,</span>
 <span class="go">   &#39;bin5000Percent&#39;: 0.00144,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.00075,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5860,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1715,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 285,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8223,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05145,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00074,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5694,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1726,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 292,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8183,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0509,</span>
 <span class="go">   &#39;selfCrossPercent&#39;: 0.04,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.11471,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.40615,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.28409,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.2279,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.07765,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.18002,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03789,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01563,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07598,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11692,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.40536,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.29389,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.22771,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.07662,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.17604,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03748,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01568,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07568,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
 <span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.003,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00431,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.0006,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00343,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.28405,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.119,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00738,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.9998,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01693,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99739,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.99578,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.0411,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99798,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.0186,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95798,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.953,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.88901,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.98163,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.98077,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98368}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 201660131.5,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 48016493.24,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02829,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 470,</span>
-<span class="go">   &#39;averageFillSize&#39;: 174,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.75736,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.02579,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.10858,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.05018,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00441,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00061,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00341,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.28907,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.11903,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0076,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.0068,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.01387,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.01413,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.99317,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.0119,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.0025,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.9899,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.97174,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.9578,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.90864,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.00842,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.98754,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.01154}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 206318911.4,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 47083909.27,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.0284,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 487,</span>
+<span class="go">   &#39;averageFillSize&#39;: 170,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.76599,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.02627,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.10965,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.04966,</span>
 <span class="go">   &#39;bin400Percent&#39;: 0.02418,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.0427,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.0238,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.04203,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02392,</span>
 <span class="go">   &#39;bin5000Percent&#39;: 0.00159,</span>
 <span class="go">   &#39;bin10000Percent&#39;: 0.00077,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5110,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1473,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 242,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8294,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.05486,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04248,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.11336,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.37901,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.28851,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.24177,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.07977,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.17616,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03894,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.019,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.0754,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5178,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1459,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 244,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8080,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.05454,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.04356,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.11389,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.38797,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.28003,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.23552,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.08064,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.17675,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03975,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.0185,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.0749,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00307,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00431,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00313,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00423,</span>
 <span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00061,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00487,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.28507,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.13006,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0072,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.01608,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0249,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.00756,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.98086,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01109,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.99221,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.01911,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.93526,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.98821,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.88713,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.99447,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.98934,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.0029}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 180536851.7,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 41272768.27,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.0271,</span>
-<span class="go">   &#39;averageOrderSize&#39;: 483,</span>
-<span class="go">   &#39;averageFillSize&#39;: 163,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.72448,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.03021,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11112,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.05097,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.0245,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.04354,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.0253,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00168,</span>
-<span class="go">   &#39;bin10000Percent&#39;: 0.0008,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 5027,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1437,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 177,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8117,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.0542,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.04396,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.1078,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.41762,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.2835,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.21772,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.08128,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.18736,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03807,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01805,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07609,</span>
-<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00225,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00401,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00055,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00449,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.30204,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.128,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0068,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 1.00049,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.02678,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.00626,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.99575,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01091,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.9885,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99843,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.90201,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.97113,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.90995,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 0.98469,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.0208,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.98853}],</span>
-<span class="go"> [{&#39;averageDailyVolume&#39;: 199113389.6,</span>
-<span class="go">   &#39;averageDailyRoutedVolume&#39;: 44141150.82,</span>
-<span class="go">   &#39;averageMarketShare&#39;: 0.02819,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00475,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.28388,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.133,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.00734,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.99884,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0355,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.00321,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.98822,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.03804,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.02302,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 0.99429,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.95766,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.96413,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.89764,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.01073,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.98697,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 1.0038}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 181160143.5,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 41333243.37,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02682,</span>
 <span class="go">   &#39;averageOrderSize&#39;: 485,</span>
-<span class="go">   &#39;averageFillSize&#39;: 178,</span>
-<span class="go">   &#39;bin100Percent&#39;: 0.74117,</span>
-<span class="go">   &#39;bin101Percent&#39;: 0.03066,</span>
-<span class="go">   &#39;bin200Percent&#39;: 0.11024,</span>
-<span class="go">   &#39;bin300Percent&#39;: 0.05183,</span>
-<span class="go">   &#39;bin400Percent&#39;: 0.02557,</span>
-<span class="go">   &#39;bin500Percent&#39;: 0.044,</span>
-<span class="go">   &#39;bin1000Percent&#39;: 0.02459,</span>
-<span class="go">   &#39;bin5000Percent&#39;: 0.00168,</span>
+<span class="go">   &#39;averageFillSize&#39;: 170,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.75329,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.03037,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11366,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.05011,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02507,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.04456,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.0253,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00161,</span>
 <span class="go">   &#39;bin10000Percent&#39;: 0.0008,</span>
-<span class="go">   &#39;bin10000Trades&#39;: 4668,</span>
-<span class="go">   &#39;bin20000Trades&#39;: 1392,</span>
-<span class="go">   &#39;bin50000Trades&#39;: 172,</span>
-<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8393,</span>
-<span class="go">   &#39;blockPercent&#39;: 0.0544,</span>
-<span class="go">   &#39;selfCrossPercent&#39;: 0.0487,</span>
-<span class="go">   &#39;etfPercent&#39;: 0.09792,</span>
-<span class="go">   &#39;largeCapPercent&#39;: 0.41281,</span>
-<span class="go">   &#39;midCapPercent&#39;: 0.27864,</span>
-<span class="go">   &#39;smallCapPercent&#39;: 0.2407,</span>
-<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.09181,</span>
-<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.09609,</span>
-<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.01528,</span>
-<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01685,</span>
-<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07643,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 5062,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1418,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 180,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8201,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0539,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.0442,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.10714,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.41043,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.2809,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.22182,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.08021,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.1882,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.03844,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01806,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07675,</span>
 <span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
-<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00248,</span>
-<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00489,</span>
-<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00053,</span>
-<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00416,</span>
-<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.40095,</span>
-<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.11648,</span>
-<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0063,</span>
-<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.99936,</span>
-<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00079,</span>
-<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.0268,</span>
-<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 0.97899,</span>
-<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01228,</span>
-<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.00396,</span>
-<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.02229,</span>
-<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.9586,</span>
-<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 1.00077,</span>
-<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.92892,</span>
-<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.02,</span>
-<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.9911,</span>
-<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.96857}]]</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00223,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00383,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00055,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.00444,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.29,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.13,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0068,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.97406,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.0279,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 0.99686,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.02254,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 0.99442,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 1.0044,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.00187,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.8935,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 1.00763,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.91979,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.02692,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 0.9755,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.959}],</span>
+<span class="go"> [{&#39;averageDailyVolume&#39;: 204025442.9,</span>
+<span class="go">   &#39;averageDailyRoutedVolume&#39;: 44382309.94,</span>
+<span class="go">   &#39;averageMarketShare&#39;: 0.02916,</span>
+<span class="go">   &#39;averageOrderSize&#39;: 476,</span>
+<span class="go">   &#39;averageFillSize&#39;: 177,</span>
+<span class="go">   &#39;bin100Percent&#39;: 0.73357,</span>
+<span class="go">   &#39;bin101Percent&#39;: 0.03196,</span>
+<span class="go">   &#39;bin200Percent&#39;: 0.11047,</span>
+<span class="go">   &#39;bin300Percent&#39;: 0.05235,</span>
+<span class="go">   &#39;bin400Percent&#39;: 0.02519,</span>
+<span class="go">   &#39;bin500Percent&#39;: 0.0445,</span>
+<span class="go">   &#39;bin1000Percent&#39;: 0.02501,</span>
+<span class="go">   &#39;bin5000Percent&#39;: 0.00162,</span>
+<span class="go">   &#39;bin10000Percent&#39;: 0.00082,</span>
+<span class="go">   &#39;bin10000Trades&#39;: 4652,</span>
+<span class="go">   &#39;bin20000Trades&#39;: 1433,</span>
+<span class="go">   &#39;bin50000Trades&#39;: 174,</span>
+<span class="go">   &#39;uniqueSymbolsTraded&#39;: 8395,</span>
+<span class="go">   &#39;blockPercent&#39;: 0.0528,</span>
+<span class="go">   &#39;selfCrossPercent&#39;: 0.0479,</span>
+<span class="go">   &#39;etfPercent&#39;: 0.09478,</span>
+<span class="go">   &#39;largeCapPercent&#39;: 0.40011,</span>
+<span class="go">   &#39;midCapPercent&#39;: 0.27616,</span>
+<span class="go">   &#39;smallCapPercent&#39;: 0.2405,</span>
+<span class="go">   &#39;venueARCXFirstWaveWeight&#39;: 0.09333,</span>
+<span class="go">   &#39;venueBATSFirstWaveWeight&#39;: 0.09753,</span>
+<span class="go">   &#39;venueBATYFirstWaveWeight&#39;: 0.01527,</span>
+<span class="go">   &#39;venueEDGAFirstWaveWeight&#39;: 0.01672,</span>
+<span class="go">   &#39;venueEDGXFirstWaveWeight&#39;: 0.07595,</span>
+<span class="go">   &#39;venueOverallFirstWaveWeight&#39;: 1,</span>
+<span class="go">   &#39;venueXASEFirstWaveWeight&#39;: 0.00245,</span>
+<span class="go">   &#39;venueXBOSFirstWaveWeight&#39;: 0.00486,</span>
+<span class="go">   &#39;venueXCHIFirstWaveWeight&#39;: 0.00052,</span>
+<span class="go">   &#39;venueXCISFirstWaveWeight&#39;: 0.0041,</span>
+<span class="go">   &#39;venueXNGSFirstWaveWeight&#39;: 0.40791,</span>
+<span class="go">   &#39;venueXNYSFirstWaveWeight&#39;: 0.11619,</span>
+<span class="go">   &#39;venueXPHLFirstWaveWeight&#39;: 0.0062,</span>
+<span class="go">   &#39;venueARCXFirstWaveRate&#39;: 0.99659,</span>
+<span class="go">   &#39;venueBATSFirstWaveRate&#39;: 1.00313,</span>
+<span class="go">   &#39;venueBATYFirstWaveRate&#39;: 1.0144,</span>
+<span class="go">   &#39;venueEDGAFirstWaveRate&#39;: 1.00178,</span>
+<span class="go">   &#39;venueEDGXFirstWaveRate&#39;: 1.01767,</span>
+<span class="go">   &#39;venueOverallFirstWaveRate&#39;: 0.98625,</span>
+<span class="go">   &#39;venueXASEFirstWaveRate&#39;: 1.00401,</span>
+<span class="go">   &#39;venueXBOSFirstWaveRate&#39;: 0.9624,</span>
+<span class="go">   &#39;venueXCHIFirstWaveRate&#39;: 0.96856,</span>
+<span class="go">   &#39;venueXCISFirstWaveRate&#39;: 0.91248,</span>
+<span class="go">   &#39;venueXNGSFirstWaveRate&#39;: 1.01,</span>
+<span class="go">   &#39;venueXNYSFirstWaveRate&#39;: 1.0283,</span>
+<span class="go">   &#39;venueXPHLFirstWaveRate&#39;: 0.93685}]]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-intraday">
 <span id="iexdata-stats-intraday"></span><h2><a class="toc-backref" href="#id38">Stats Intraday</a><a class="headerlink" href="#stats-intraday" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://iextrading.com/developer/docs/#intraday">Intraday</a> is IEX’s
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">Intraday</a> is IEX’s
 aggregated best quoted bid and offer position in near real time.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_intraday()</span></code>:</p>
 <dl class="py function">
@@ -1175,9 +1169,8 @@ aggregated best quoted bid and offer position in near real time.</p>
 <dd><p>Stats Intraday</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-intraday">https://iexcloud.io/docs/api/#stats-intraday</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+<dl class="simple">
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1188,18 +1181,18 @@ aggregated best quoted bid and offer position in near real time.</p>
 
 <span class="gp">In [7]: </span><span class="n">get_stats_intraday</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 240693006, &#39;lastUpdated&#39;: 1642170027436},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 7339, &#39;lastUpdated&#39;: 1618653655130},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 30536843, &#39;lastUpdated&#39;: 1625650824943},</span>
-<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 15845814896, &#39;lastUpdated&#39;: 1651742384953},</span>
-<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.0237, &#39;lastUpdated&#39;: 1688152107050}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;value&#39;: 239214400, &#39;lastUpdated&#39;: 1644449774679},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;value&#39;: 7350, &#39;lastUpdated&#39;: 1662763477537},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;value&#39;: 29749761, &#39;lastUpdated&#39;: 1626680218915},</span>
+<span class="go"> &#39;notional&#39;: {&#39;value&#39;: 16164134478, &#39;lastUpdated&#39;: 1676906641061},</span>
+<span class="go"> &#39;marketShare&#39;: {&#39;value&#39;: 0.0237, &#39;lastUpdated&#39;: 1614912926499}}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-recent">
 <span id="iexdata-stats-recent"></span><h2><a class="toc-backref" href="#id39">Stats Recent</a><a class="headerlink" href="#stats-recent" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://iextrading.com/developer/docs/#recent">Recent</a> is IEX’s
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">Recent</a> is IEX’s
 trading statstics from the previous five trading days.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_recent()</span></code>:</p>
 <dl class="py function">
@@ -1210,9 +1203,8 @@ trading statstics from the previous five trading days.</p>
 trading days of the current month.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-recent">https://iexcloud.io/docs/api/#stats-recent</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+<dl class="simple">
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1224,66 +1216,66 @@ trading days of the current month.</p>
 <span class="gp">In [9]: </span><span class="n">get_stats_recent</span><span class="p">()</span>
 <span class="gh">Out[9]: </span><span class="go"></span>
 <span class="go">[{&#39;date&#39;: &#39;2020-12-11&#39;,</span>
-<span class="go">  &#39;volume&#39;: 236404011,</span>
-<span class="go">  &#39;routedVolume&#39;: 30199964,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02322,</span>
+<span class="go">  &#39;volume&#39;: 231391803,</span>
+<span class="go">  &#39;routedVolume&#39;: 29177152,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02302,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 51156840},</span>
+<span class="go">  &#39;litVolume&#39;: 51121838},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-10&#39;,</span>
-<span class="go">  &#39;volume&#39;: 243540624,</span>
-<span class="go">  &#39;routedVolume&#39;: 32445851,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02223,</span>
+<span class="go">  &#39;volume&#39;: 236374960,</span>
+<span class="go">  &#39;routedVolume&#39;: 32526623,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02255,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 53200256},</span>
+<span class="go">  &#39;litVolume&#39;: 53038787},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-09&#39;,</span>
-<span class="go">  &#39;volume&#39;: 276642375,</span>
-<span class="go">  &#39;routedVolume&#39;: 40592119,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02288,</span>
+<span class="go">  &#39;volume&#39;: 277994031,</span>
+<span class="go">  &#39;routedVolume&#39;: 39641962,</span>
+<span class="go">  &#39;marketShare&#39;: 0.0232,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 68791225},</span>
+<span class="go">  &#39;litVolume&#39;: 65963716},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-08&#39;,</span>
-<span class="go">  &#39;volume&#39;: 244465932,</span>
-<span class="go">  &#39;routedVolume&#39;: 40232324,</span>
-<span class="go">  &#39;marketShare&#39;: 0.023074236418807972,</span>
+<span class="go">  &#39;volume&#39;: 253539199,</span>
+<span class="go">  &#39;routedVolume&#39;: 38663649,</span>
+<span class="go">  &#39;marketShare&#39;: 0.022633675701084124,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 59786092},</span>
+<span class="go">  &#39;litVolume&#39;: 60890148},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-07&#39;,</span>
-<span class="go">  &#39;volume&#39;: 245596021,</span>
-<span class="go">  &#39;routedVolume&#39;: 34835906,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02217,</span>
+<span class="go">  &#39;volume&#39;: 241470726,</span>
+<span class="go">  &#39;routedVolume&#39;: 35692963,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02183,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 60071704},</span>
+<span class="go">  &#39;litVolume&#39;: 57938050},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-04&#39;,</span>
-<span class="go">  &#39;volume&#39;: 258828869,</span>
-<span class="go">  &#39;routedVolume&#39;: 42980428,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02132133221990403,</span>
+<span class="go">  &#39;volume&#39;: 250455238,</span>
+<span class="go">  &#39;routedVolume&#39;: 41123217,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02136190587770024,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 61792222},</span>
+<span class="go">  &#39;litVolume&#39;: 61071889},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-03&#39;,</span>
-<span class="go">  &#39;volume&#39;: 259669891,</span>
-<span class="go">  &#39;routedVolume&#39;: 41396176,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02269,</span>
+<span class="go">  &#39;volume&#39;: 259975779,</span>
+<span class="go">  &#39;routedVolume&#39;: 43288725,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02273,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 68567050},</span>
+<span class="go">  &#39;litVolume&#39;: 67494999},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-02&#39;,</span>
-<span class="go">  &#39;volume&#39;: 261724414,</span>
-<span class="go">  &#39;routedVolume&#39;: 45003577,</span>
-<span class="go">  &#39;marketShare&#39;: 0.02196,</span>
+<span class="go">  &#39;volume&#39;: 254473963,</span>
+<span class="go">  &#39;routedVolume&#39;: 45111013,</span>
+<span class="go">  &#39;marketShare&#39;: 0.02233,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 69114606},</span>
+<span class="go">  &#39;litVolume&#39;: 67616707},</span>
 <span class="go"> {&#39;date&#39;: &#39;2020-12-01&#39;,</span>
-<span class="go">  &#39;volume&#39;: 281606324,</span>
-<span class="go">  &#39;routedVolume&#39;: 46719390,</span>
-<span class="go">  &#39;marketShare&#39;: 0.01979,</span>
+<span class="go">  &#39;volume&#39;: 281020031,</span>
+<span class="go">  &#39;routedVolume&#39;: 48173582,</span>
+<span class="go">  &#39;marketShare&#39;: 0.0202,</span>
 <span class="go">  &#39;isHalfday&#39;: False,</span>
-<span class="go">  &#39;litVolume&#39;: 68607775}]</span>
+<span class="go">  &#39;litVolume&#39;: 68727973}]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="stats-records">
 <span id="iexdata-stats-records"></span><h2><a class="toc-backref" href="#id40">Stats Records</a><a class="headerlink" href="#stats-records" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://iextrading.com/developer/docs/#records">Records</a> is IEX’s
+<p><a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">Records</a> is IEX’s
 trading statstics from the previous trading sessions.</p>
 <p>Access is available through the function <code class="docutils literal notranslate"><span class="pre">get_stats_records()</span></code>:</p>
 <dl class="py function">
@@ -1292,9 +1284,8 @@ trading statstics from the previous trading sessions.</p>
 <dd><p>Stats Records</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#stats-records">https://iexcloud.io/docs/api/#stats-records</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">Free</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kwargs</strong> – Additional Request Parameters (see base class)</p>
+<dl class="simple">
+<dt>kwargs:</dt><dd><p>Additional Request Parameters (see base class)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1305,22 +1296,22 @@ trading statstics from the previous trading sessions.</p>
 
 <span class="gp">In [11]: </span><span class="n">get_stats_records</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 602466959,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2020-03-15&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 234493449,</span>
-<span class="go">  &#39;avg30Value&#39;: 262229252},</span>
-<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 7706,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2020-03-09&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 7491,</span>
-<span class="go">  &#39;avg30Value&#39;: 7227},</span>
-<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 95696349,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2020-03-03&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 29923979,</span>
-<span class="go">  &#39;avg30Value&#39;: 39006088},</span>
-<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 32251245255.4794,</span>
-<span class="go">  &#39;recordDate&#39;: &#39;2020-11-03&#39;,</span>
-<span class="go">  &#39;previousDayValue&#39;: 14995905189.2908,</span>
-<span class="go">  &#39;avg30Value&#39;: 15719044289.28}}</span>
+<span class="go">{&#39;volume&#39;: {&#39;recordValue&#39;: 610069250,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-14&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 238652366,</span>
+<span class="go">  &#39;avg30Value&#39;: 265545311},</span>
+<span class="go"> &#39;symbolsTraded&#39;: {&#39;recordValue&#39;: 7515,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-06&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 7400,</span>
+<span class="go">  &#39;avg30Value&#39;: 7237},</span>
+<span class="go"> &#39;routedVolume&#39;: {&#39;recordValue&#39;: 97394755,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-03-08&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 29070272,</span>
+<span class="go">  &#39;avg30Value&#39;: 38527994},</span>
+<span class="go"> &#39;notional&#39;: {&#39;recordValue&#39;: 31260435646.3632,</span>
+<span class="go">  &#39;recordDate&#39;: &#39;2020-11-06&#39;,</span>
+<span class="go">  &#39;previousDayValue&#39;: 15139054478.8729,</span>
+<span class="go">  &#39;avg30Value&#39;: 15700975080.7368}}</span>
 </pre></div>
 </div>
 </div>

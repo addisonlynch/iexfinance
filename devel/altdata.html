@@ -199,14 +199,12 @@
 <code class="sig-prename descclassname">iexfinance.altdata.</code><code class="sig-name descname">get_crypto_quote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.altdata.get_crypto_quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crypto Quotes</p>
 <p>Single quote for Cryptocurrency supported by IEX Cloud.</p>
-<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#crypto">https://iexcloud.io/docs/api/#crypto</a>
+<p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#cryptocurrency-quote">https://iexcloud.io/docs/api/#cryptocurrency-quote</a>
 Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A cryptocurrency symbol for retrieval</p>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A cryptocurrency symbol for retrieval</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
 <p>Each element contains Stocks <code class="docutils literal notranslate"><span class="pre">quote</span></code> fields.</p>
 </dd></dl>
 
@@ -226,14 +224,13 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</
 viewed as a daily value, or by minute for a given date.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#social-sentiment">https://iexcloud.io/docs/api/#social-sentiment</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">30,000</span></code> per symbol per sentiment record</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>symbol</strong> (<em>str</em>) – One valid symbol</p></li>
-<li><p><strong>period_type</strong> (str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional) – <code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter in IEX Cloud
-documentation</p></li>
-<li><p><strong>date</strong> (<em>str</em><em> or </em><em>datetime.datetime</em>) – Date to retrieve</p></li>
-</ul>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>One valid symbol</p>
+</dd>
+<dt>period_type: str, default <code class="docutils literal notranslate"><span class="pre">daily</span></code>, optional</dt><dd><p><code class="docutils literal notranslate"><span class="pre">daily</span></code> or <code class="docutils literal notranslate"><span class="pre">minute</span></code>. Translates to <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter in IEX Cloud
+documentation</p>
+</dd>
+<dt>date: str or datetime.datetime</dt><dd><p>Date to retrieve</p>
 </dd>
 </dl>
 </dd></dl>
@@ -248,9 +245,8 @@ documentation</p></li>
 <p>This endpoint provides CEO compensation for a company by symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#ceo-compensation">https://iexcloud.io/docs/api/#ceo-compensation</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per symbol</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – A single symbol for retrieval</p>
+<dl class="simple">
+<dt>symbol: str</dt><dd><p>A single symbol for retrieval</p>
 </dd>
 </dl>
 </dd></dl>

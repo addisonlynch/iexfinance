@@ -69,4 +69,4 @@ Full Contents
 Modules
 -------
 
-* `Modules <modules.html>`__
+* :ref:`Modules <modules>`__

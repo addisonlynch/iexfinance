@@ -295,11 +295,11 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      SYN             NU  ...  G02B0VB36DC0  1140638  PWQUR208WGAX2I7YX9M7</span>
-<span class="go">1     AA      NYS             UN  ...  B3G0HBD33BT0  1690941  U049Z351WEW9F212TP06</span>
-<span class="go">2    AAA    UACPS             PU  ...  0XF4S5P0B8GB  1683680                  None</span>
-<span class="go">3   AAAU    SCUAP             UP  ...  0X02G8X7BPBL  1725397                  None</span>
-<span class="go">4   AACG      SNA              0  ...  20G0B6VS0P3B  1444540                  None</span>
+<span class="go">0      A      YSN             UN  ...  0C30G6BDB2V0  1114065  WXRY7QGU028XWP2M97AI</span>
+<span class="go">1     AA      NYS             NU  ...  30H3B3DB0BGT  1735048  EW06PF4W1T0U231Z9295</span>
+<span class="go">2    AAA    ASPCU             PU  ...  04B0PFX5SGB8  1735014                  None</span>
+<span class="go">3   AAAU    CPASU             PU  ...  8X7XGPBB00L2  1711111                  None</span>
+<span class="go">4   AACG      ASN              0  ...  0B26SG00V3PB  1452039                  None</span>
 
 <span class="go">[5 rows x 14 columns]</span>
 </pre></div>
@@ -312,7 +312,7 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">     avgTotalVolume calculationPrice change  ... week52High week52Low ytdChange</span>
-<span class="go">AAPL       97771735            close    6.3  ...     134.11     56.99  0.810535</span>
+<span class="go">AAPL       96719376            close    6.3  ...     133.99      56.6  0.841701</span>
 
 <span class="go">[1 rows x 55 columns]</span>
 </pre></div>
@@ -333,7 +333,7 @@ environment variable. The following versions are currently supported:</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>For more information on API versioning, see the IEX Cloud
-<a class="reference external" href="https://iexcloud.io/docs/api/#versioning">documentation</a>.</p>
+<a class="reference external" href="https://iexcloud.io/docs/api/#api-versioning">documentation</a>.</p>
 </div>
 </div>
 <div class="section" id="debugging">
@@ -347,84 +347,23 @@ environment variable. The following versions are currently supported:</p>
 <dd><p>Base class for retrieving equities information from IEX Cloud.
 Conducts query operations including preparing and executing queries from
 the API.</p>
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.retry_count">
-<code class="sig-name descname">retry_count</code><a class="headerlink" href="#iexfinance.base._IEXBase.retry_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired number of retries if a request fails</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int, default 3, optional</p>
+<dl class="simple">
+<dt>retry_count: int, default 3, optional</dt><dd><p>Desired number of retries if a request fails</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.pause">
-<code class="sig-name descname">pause</code><a class="headerlink" href="#iexfinance.base._IEXBase.pause" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pause time between retry attempts</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float default 0.5, optional</p>
+<dt>pause: float default 0.5, optional</dt><dd><p>Pause time between retry attempts</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.session">
-<code class="sig-name descname">session</code><a class="headerlink" href="#iexfinance.base._IEXBase.session" title="Permalink to this definition">¶</a></dt>
-<dd><p>A cached requests-cache session</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>requests_cache.session, default None, optional</p>
+<dt>session: requests_cache.session, default None, optional</dt><dd><p>A cached requests-cache session</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.json_parse_int">
-<code class="sig-name descname">json_parse_int</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_int" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired integer parsing datatype</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>datatype, default int, optional</p>
+<dt>json_parse_int: datatype, default int, optional</dt><dd><p>Desired integer parsing datatype</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.json_parse_float">
-<code class="sig-name descname">json_parse_float</code><a class="headerlink" href="#iexfinance.base._IEXBase.json_parse_float" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired floating point parsing datatype</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>datatype, default float, optional</p>
+<dt>json_parse_float: datatype, default float, optional</dt><dd><p>Desired floating point parsing datatype</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.output_format">
-<code class="sig-name descname">output_format</code><a class="headerlink" href="#iexfinance.base._IEXBase.output_format" title="Permalink to this definition">¶</a></dt>
-<dd><p>Desired output format (json or pandas DataFrame). This can also be
+<dt>output_format: str, default “pandas”, optional</dt><dd><p>Desired output format (json or pandas DataFrame). This can also be
 set using the environment variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT_FORMAT</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str, default “pandas”, optional</p>
+</dd>
+<dt>token: str, optional</dt><dd><p>Authentication token (required for use with IEX Cloud)</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="iexfinance.base._IEXBase.token">
-<code class="sig-name descname">token</code><a class="headerlink" href="#iexfinance.base._IEXBase.token" title="Permalink to this definition">¶</a></dt>
-<dd><p>Authentication token (required for use with IEX Cloud)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str, optional</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </div>
