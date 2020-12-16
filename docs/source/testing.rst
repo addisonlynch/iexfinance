@@ -50,7 +50,7 @@ IEX provides a sandbox_ environment for IEX Cloud. This environment can be acces
 
 .. note:: Test keys (beginning with ``Tsk`` and ``Tpk``) must be used with the sandbox environment. To obtain these keys, select the **Viewing test data** toggler on the left side of the IEX Cloud console.
 
-.. _sandbox: https://iexcloud.io/docs/api/#sandbox
+.. _sandbox: https://iexcloud.io/docs/api/#testing-sandbox
 
 .. _testing.local_testing:
 
@@ -63,7 +63,7 @@ needed for a TravisCI build to pass.
 
 Note that your environment needs to export a testing IEX_TOKEN to execute tests.
 
-The ``iexfinance`` documentation can be tested with `Sphinx <https://www.sphinx-doc.org/en/stable>`__ (with extensions napoleon and sphinx_rtd_theme)
+The ``iexfinance`` documentation can be tested with `Sphinx <https://www.sphinx-doc.org/en/master/>`__ (with extensions napoleon and sphinx_rtd_theme)
 using the Makefile. ``make livehtml`` will serve the dev documentation site locally
 on 127.0.0.1:8000.
 

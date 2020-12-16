@@ -37,7 +37,7 @@ Usage
 
     get_tops('AAPL')
 
-.. note:: The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per `IEX docs <https://iextrading.com/developer/docs/#tops>`__
+.. note:: The /tops endpoint without any parameters will return all symbols. TOPS data with all symbols is 1.78mb uncompressed (270kb compressed) and is throttled at one request per second, per `IEX docs <https://iexcloud.io/docs/api/#tops>`__
 
 
 .. _iexdata.Last:
@@ -72,7 +72,7 @@ Usage
 DEEP
 ----
 
-`DEEP <https://iexcloud.io/docs/api/#DEEP>`__  is IEX's aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.
+`DEEP <https://iexcloud.io/docs/api/#deep>`__  is IEX's aggregated real-time depth of book quotes. DEEP also provides last trade price and size information.
 
 Access is available through the function ``get_deep()``:
 
@@ -193,7 +193,7 @@ Stats Historical Daily
 
 .. warning:: This endpoint has been marked as *in-dev* by the provider.
 
-`Historical Daily <https://iextrading.com/developer/docs/#historical-daily>`__
+`Historical Daily <https://iexcloud.io/docs/api/#historical-daily>`__
 is IEX's trading statstics from the previous trading sessions.
 
 Access is available through the function ``get_stats_daily()``:
@@ -221,7 +221,7 @@ Usage
 Stats Historical Summary
 ------------------------
 
-`Historical Summary <https://iextrading.com/developer/docs/#historical-summary>`__
+`Historical Summary <https://iexcloud.io/docs/api/#stats-historical-summary>`__
 is IEX's trading statstics from the previous trading sessions.
 
 Access is available through the function ``get_stats_summary()``:
@@ -253,7 +253,7 @@ Usage
 Stats Intraday
 --------------
 
-`Intraday <https://iextrading.com/developer/docs/#intraday>`__ is IEX's
+`Intraday <https://iexcloud.io/docs/api/#stats-intraday>`__ is IEX's
 aggregated best quoted bid and offer position in near real time.
 
 Access is available through the function ``get_stats_intraday()``:
@@ -277,7 +277,7 @@ Usage
 Stats Recent
 ------------
 
-`Recent <https://iextrading.com/developer/docs/#recent>`__ is IEX's
+`Recent <https://iexcloud.io/docs/api/#stats-recent>`__ is IEX's
 trading statstics from the previous five trading days.
 
 Access is available through the function ``get_stats_recent()``:
@@ -301,7 +301,7 @@ Usage
 Stats Records
 -------------
 
-`Records <https://iextrading.com/developer/docs/#records>`__ is IEX's
+`Records <https://iexcloud.io/docs/api/#stats-records>`__ is IEX's
 trading statstics from the previous trading sessions.
 
 Access is available through the function ``get_stats_records()``:

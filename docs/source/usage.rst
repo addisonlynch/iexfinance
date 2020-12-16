@@ -8,7 +8,7 @@ Common Usage Examples
 The `iex-examples <https://github.com/addisonlynch/iex-examples>`__ repository provides a number of detailed examples of iexfinance usage. Basic examples are also provided below.
 
 Using iexfinance to access data from IEX is quite easy. The most commonly-used
-endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks>`__
+endpoints are the `Stocks <https://iexcloud.io/docs/api/#stocks-equities>`__
 endpoints, which allow access to various information regarding equities,
 including quotes, historical prices, dividends, and much more.
 
@@ -134,13 +134,13 @@ the endpoint requested.
 
 
 For a detailed list of the *endpoint methods*, see
-`here <stocks.html#endpoints>`__.
+:ref:`here <stocks.contents>`.
 
 Fields
 ~~~~~~
 
-To obtain individual fields from an endpoint, select `Field Methods
-<stocks.html#field-methods>`__ are also provided.
+To obtain individual fields from an endpoint, select :ref:`Additional Methods
+<stocks.additional-methods>` are also provided.
 
 Examples ``get_open()``, ``get_name()``
 
@@ -160,7 +160,7 @@ Examples ``get_open()``, ``get_name()``
     b.get_open()
 
 
-For a detailed list of these functions, see `here <stocks.html>`__.
+For a detailed list of these functions, see :ref:`here <stocks>`.
 
 Endpoint-Specific Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,7 +183,7 @@ method as a keyword argument.
 .. note:: The ``output_format`` from the initial
   call to the ``Stock`` function will be used (if the output format has not been
   change through ``change_output_format`` since) and **cannot be changed**
-  through calls to endpoint methods. See `Stocks <stocks.html>`__ for
+  through calls to endpoint methods. See :ref:`Stocks/Equities <stocks>` for
   more information.
 
 

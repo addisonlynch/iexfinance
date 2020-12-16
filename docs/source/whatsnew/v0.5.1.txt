@@ -10,3 +10,10 @@ Enhancements
 ~~~~~~~~~~~~
 
 - Re-added dropped ``date`` column in some calls
+
+
+Backward Incompatible Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- ``iexfinance.data_apis.get_data_points`` no longer appears in the IEX Cloud
+  documentation and may be unstable
