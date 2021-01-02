@@ -5,8 +5,8 @@ from iexfinance.altdata.base import CEOCompensation, CloudCrypto, SocialSentimen
 
 def get_crypto_quote(symbol, **kwargs):
     """
-        .. warning:: This endpoint will be deprecated and moved to 
-        ``iexfinance.crypto.get_crypto_quote in version 0.5.2.
+    .. warning:: This endpoint will be deprecated and moved to
+    ``iexfinance.crypto.get_crypto_quote in version 0.5.2.
     """
     warnings.warn(
         "This endpoint will be deprecated and moved to "

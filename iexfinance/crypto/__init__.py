@@ -11,7 +11,7 @@ def get_crypto_book(symbol, **kwargs):
               endpoint.
 
     Reference: https://iexcloud.io/docs/api/#cryptocurrency-book
-    
+
     Data Weighting: ``10`` per symbol per update
 
     Parameters
@@ -29,7 +29,7 @@ def get_crypto_price(symbol, **kwargs):
     This returns the price for a specified cryptocurrency.
 
     Reference: https://iexcloud.io/docs/api/#cryptocurrency-price
-    
+
     Data Weighting: ``1``
 
     Parameters
@@ -47,7 +47,7 @@ def get_crypto_quote(symbol, **kwargs):
     Single quote for Cryptocurrency supported by IEX Cloud.
 
     Reference: https://iexcloud.io/docs/api/#cryptocurrency-quote
-    
+
     Data Weighting: ``2`` per symbol
 
     Parameters

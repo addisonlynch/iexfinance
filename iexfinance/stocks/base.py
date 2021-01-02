@@ -823,8 +823,7 @@ class Stock(_IEXBase):
         return self._get_endpoint("news", format=format, params=kwargs)
 
     def get_relevant_stocks(self, **kwargs):
-        """DEPRECATED
-        """
+        """DEPRECATED"""
         raise ImmediateDeprecationError("get_relevant_stocks")
 
     # field methods
