@@ -8,17 +8,41 @@ from iexfinance.utils import _sanitize_dates
 
 
 class HistoricalReader(Stock):
+
+    _ADJUSTED_OPTIONS = (
+        "unadjusted",
+        "splits",
+        "full"
+    )
+
     """
     Base class to download historical data from the chart endpoint
 
-    Reference: https://iextrading.com/developer/docs/#chart
+    Reference: https://iexcloud.io/docs/api/#historical-prices
     """
 
-    def __init__(self, symbols, start=None, end=None, close_only=False, **kwargs):
+    def __init__(self, symbols, start=None, end=None, close_only=False, adjusted=None, **kwargs):
         start = start or datetime.datetime.today() - datetime.timedelta(days=365)
         self.start, self.end = _sanitize_dates(start, end)
         self.close_only = close_only
+        self.adjusted = adjusted or "full" 
+        if self.adjusted not in self._ADJUSTED_OPTIONS:
+            err_msg = "Please enter a valid adjustment option [unadjusted, splits, full]."
+            raise ValueError(err_msg)
         super(HistoricalReader, self).__init__(symbols, **kwargs)
+
+    @property
+    def adjustment_columns(self):
+        if self.adjusted == "unadjusted":
+            return ["uOpen", "uHigh", "uLow", "uClose", "uVolume"]
+        elif self.adjusted == "full":
+            return ["fOpen", "fHigh", "fLow", "fClose", "fVolume"]
+        else:
+            return ["open", "high", "low", "close", "volume"]
+
+    @property
+    def adjustment_close_columns(self):
+
 
     @property
     def single_day(self):

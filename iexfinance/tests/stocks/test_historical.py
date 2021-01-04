@@ -79,6 +79,10 @@ class TestHistorical(object):
         assert "TSLA" in data.index
         assert "BADSYMBOL" not in data.index
 
+    def test_invalid_adjustement(self):
+        with pytest.raises(ValueError):
+            get_historical_data("AAPL", adjustment="BADADJUSTMENT")
+
     def test_string_dates(self):
         start = "20190501"
         end = "20190601"
