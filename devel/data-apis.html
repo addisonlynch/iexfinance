@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Data APIs &mdash; iexfinance 0.5.0-dev documentation</title>
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -51,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
+            <a href="index.html" class="icon icon-home"> iexfinance
           
 
           
@@ -174,6 +177,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -185,7 +190,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/data-apis.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -238,10 +243,10 @@ passed) or single data point for a given symbol and data point key</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">                key  ...                lastUpdated</span>
 <span class="go">0  NEXTDIVIDENDDATE  ...  2020-11-05T20:23:03+00:00</span>
-<span class="go">1              BETA  ...  2021-01-02T09:07:25+00:00</span>
-<span class="go">2         EMPLOYEES  ...  2021-01-02T09:03:43+00:00</span>
-<span class="go">3   ACCOUNTSPAYABLE  ...  2020-12-18T22:22:45+00:00</span>
-<span class="go">4    CAPITALSURPLUS  ...  2020-12-18T22:22:45+00:00</span>
+<span class="go">1              BETA  ...  2021-02-02T09:09:59+00:00</span>
+<span class="go">2   ACCOUNTSPAYABLE  ...  2021-02-02T19:12:51+00:00</span>
+<span class="go">3    CAPITALSURPLUS  ...  2021-02-02T19:12:51+00:00</span>
+<span class="go">4       COMMONSTOCK  ...  2021-02-02T19:12:51+00:00</span>
 
 <span class="go">[5 rows x 4 columns]</span>
 </pre></div>
@@ -253,7 +258,7 @@ passed) or single data point for a given symbol and data point key</p>
 data point ID to <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>:</p>
 <p><strong>Apple Inc. (AAPL) latest price</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMONSTOCK&quot;</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">635296457</span>
+<span class="gh">Out[3]: </span><span class="go">14877934806</span>
 </pre></div>
 </div>
 </div>
@@ -290,19 +295,19 @@ with no parameters:</p>
 
 <span class="gp">In [5]: </span><span class="n">get_time_series</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">                                                            XF  ...                                         SACANIINLF</span>
-<span class="go">inv_pk                                                       8  ...                                               2109</span>
-<span class="go">id                                                          XF  ...                                         SACANIINLF</span>
-<span class="go">description           ,S it 2ro5dPr aetaps,xiinrhse  troaoaclf  ...                                         snaFinialc</span>
-<span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: False, &#39;properties&#39;: ...</span>
-<span class="go">weight                                                  103369  ...                                               5234</span>
-<span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2020-12-18T22:30:48.000Z</span>
-<span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2020-12-18T22:30:48.000Z</span>
+<span class="go">                                                            FX  ...            _Z_IEW_AHNUMIRERSENTPNAEEOMTTGALSRIDOLR</span>
+<span class="go">inv_pk                                                       8  ...                                               2087</span>
+<span class="go">id                                                          FX  ...            _Z_IEW_AHNUMIRERSENTPNAEEOMTTGALSRIDOLR</span>
+<span class="go">description           xa5 pf2lrhr,adPtanrro coteStei o i,sisa   ...                ganNE EtvaEt(nx srgDere)neistin n a</span>
+<span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...</span>
+<span class="go">weight                                                  100777  ...                                            1154245</span>
+<span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2021-01-26T08:00:03.000Z</span>
+<span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2021-01-26T08:00:03.000Z</span>
 <span class="go">version                                                      1  ...                                                  1</span>
-<span class="go">weightKey                                                   FX  ...                                         AINCLNIASF</span>
+<span class="go">weightKey                                                   FX  ...            GEIATRWMSERDAINEENONSRTPEZHI_LRTO_U_ALM</span>
 <span class="go">prepost                                                    NaN  ...                                                NaN</span>
 
-<span class="go">[10 rows x 107 columns]</span>
+<span class="go">[10 rows x 93 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -315,23 +320,23 @@ ID and (optional) keys and subkeys as parameters.</p>
 Inc. (<code class="docutils literal notranslate"><span class="pre">AAPL</span></code>):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:27:41.646850696</span>
-<span class="go">AccountsPayableCurrent                                               33730077275</span>
-<span class="go">AccountsReceivableNetCurrent                                         15839375439</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         28609052034</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   65466135729</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2841245803</span>
+<span class="go">                                                   1970-01-01 00:26:54.541924498</span>
+<span class="go">AccountsPayableCurrent                                               32744691019</span>
+<span class="go">AccountsReceivableNetCurrent                                         15851722957</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28310764839</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   65603370183</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2924682150</span>
 </pre></div>
 </div>
 <p>Or with a subkey:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:26:49.915930332</span>
-<span class="go">AccountsPayableCurrent                                               33372615042</span>
-<span class="go">AccountsReceivableNetCurrent                                         15854110041</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         29561400113</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   65486182016</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2908333102</span>
+<span class="go">                                                   1970-01-01 00:27:26.337528817</span>
+<span class="go">AccountsPayableCurrent                                               32479129584</span>
+<span class="go">AccountsReceivableNetCurrent                                         16176858655</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28896628681</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   63993750578</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                      -2821455947</span>
 </pre></div>
 </div>
 <p>Any and all series-specific parameters (such as <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>,
@@ -341,12 +346,12 @@ etc. should be passed as <em>keyword arguments</em>)</p>
 <p>Last Apple Inc. Form 10-K</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:27:07.954813701</span>
-<span class="go">AccountsPayableCurrent                                               48278016356</span>
-<span class="go">AccountsReceivableNetCurrent                                         23942073366</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         29612649738</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   60530860972</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -584971159</span>
+<span class="go">                                                   1970-01-01 00:27:04.966167981</span>
+<span class="go">AccountsPayableCurrent                                               48104153672</span>
+<span class="go">AccountsReceivableNetCurrent                                         23954608793</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         30163507507</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   59574153806</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -598443057</span>
 </pre></div>
 </div>
 </div>
@@ -359,37 +364,29 @@ etc. should be passed as <em>keyword arguments</em>)</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="altdata.html" class="btn btn-neutral float-left" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="account.html" class="btn btn-neutral float-right" title="Account" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="altdata.html" class="btn btn-neutral float-left" title="Alternative Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Addison Lynch
+        &#169; Copyright 2020, Addison Lynch.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

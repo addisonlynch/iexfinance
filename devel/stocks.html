@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Stocks / Equities &mdash; iexfinance 0.5.0-dev documentation</title>
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -51,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
+            <a href="index.html" class="icon icon-home"> iexfinance
           
 
           
@@ -218,6 +221,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -229,7 +234,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/stocks.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -257,8 +262,8 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">         AAPL</span>
-<span class="go">price  135.76</span>
+<span class="go">        AAPL</span>
+<span class="go">price  138.1</span>
 </pre></div>
 </div>
 <p>Certain endpoints such as <a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Data</span></a>,
@@ -273,11 +278,11 @@ single request.</p>
 <span class="gp">   ...: </span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">              close     high     low  ...      label    change changePercent</span>
-<span class="go">2019-01-02  41.2100  41.5092  39.455  ...  Jan 2, 19  0.045793        0.0011</span>
-<span class="go">2019-01-03  37.2897  37.7000  36.400  ...  Jan 3, 19 -4.033066       -0.1034</span>
-<span class="go">2019-01-04  37.3390  37.1841  36.440  ...  Jan 4, 19  1.575648        0.0429</span>
-<span class="go">2019-01-07  38.3122  37.7293  36.816  ...  Jan 7, 19 -0.084273       -0.0022</span>
-<span class="go">2019-01-08  38.6535  38.7390  38.120  ...  Jan 8, 19  0.734030        0.0193</span>
+<span class="go">2019-01-02    40.57  40.8163  38.921  ...  Jan 2, 19  0.046774        0.0011</span>
+<span class="go">2019-01-03  36.4612    36.66    36.8  ...  Jan 3, 19 -3.964329       -0.1025</span>
+<span class="go">2019-01-04   38.626  37.9906   36.54  ...  Jan 4, 19  1.542944        0.0442</span>
+<span class="go">2019-01-07  37.3503  37.9829  36.954  ...  Jan 7, 19 -0.085576       -0.0023</span>
+<span class="go">2019-01-08  38.7216   39.533   38.01  ...  Jan 8, 19  0.739029        0.0192</span>
 
 <span class="go">[5 rows x 26 columns]</span>
 </pre></div>
@@ -362,7 +367,7 @@ token: str, optional</p>
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  136.47</span>
+<span class="go">price  137.49</span>
 </pre></div>
 </div>
 </div>
@@ -588,29 +593,30 @@ other parameters.</p>
 
 <span class="gp">In [11]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">              close      high       low  ...       label    change changePercent</span>
-<span class="go">2020-12-03  127.790  129.8800  126.7000  ...   Dec 3, 20         0             0</span>
-<span class="go">2020-12-04  123.490  125.3755  125.0800  ...   Dec 4, 20 -0.701628       -0.0056</span>
-<span class="go">2020-12-07  127.890  125.4100  127.0200  ...   Dec 7, 20  1.500000        0.0123</span>
-<span class="go">2020-12-08  125.600  127.3800  127.8300  ...   Dec 8, 20  0.649467        0.0053</span>
-<span class="go">2020-12-09  125.250  126.6000       127  ...   Dec 9, 20 -2.664250       -0.0213</span>
-<span class="go">2020-12-10  123.380  126.3800  120.7500  ...  Dec 10, 20  1.510025        0.0120</span>
-<span class="go">2020-12-11  124.720  124.8100  122.5000  ...  Dec 11, 20 -0.866217       -0.0069</span>
-<span class="go">2020-12-14  126.200  127.2000  122.0300  ...  Dec 14, 20 -0.650150       -0.0052</span>
-<span class="go">2020-12-15  129.310  132.1000  126.1400  ...  Dec 15, 20  6.142292        0.0507</span>
-<span class="go">2020-12-16  128.970  133.9800  129.1900  ...  Dec 16, 20 -0.073334       -0.0005</span>
-<span class="go">2020-12-17  132.400  129.6800  133.8300  ...  Dec 17, 20  0.898037        0.0070</span>
-<span class="go">2020-12-18  128.722  132.7000  129.6000  ...  Dec 18, 20 -2.059982       -0.0160</span>
-<span class="go">2020-12-21  131.680  134.1200  129.4040  ...  Dec 21, 20  1.596162        0.0129</span>
-<span class="go">2020-12-22  135.640  136.5290  135.5100  ...  Dec 22, 20  3.719693        0.0291</span>
-<span class="go">2020-12-23  134.410  137.3500  131.5900  ...  Dec 23, 20 -0.945464       -0.0070</span>
-<span class="go">2020-12-24  137.070  138.4300  131.8000  ...  Dec 24, 20  1.050600        0.0080</span>
-<span class="go">2020-12-28  139.380  139.7100  134.0500  ...  Dec 28, 20  4.831727        0.0371</span>
-<span class="go">2020-12-29  138.600  144.4380  135.8394  ...  Dec 29, 20 -1.843115       -0.0139</span>
-<span class="go">2020-12-30  137.870  138.9700  137.9000  ...  Dec 30, 20 -1.180680       -0.0088</span>
-<span class="go">2020-12-31  136.290  138.2900  136.5200  ...  Dec 31, 20 -1.037663       -0.0080</span>
+<span class="go">             close      high      low  ...       label    change changePercent</span>
+<span class="go">2021-01-04  132.69  137.8995   128.98  ...   Jan 4, 21         0             0</span>
+<span class="go">2021-01-05     135    134.03   133.54  ...   Jan 5, 21  1.654056        0.0126</span>
+<span class="go">2021-01-06   131.1  137.2085  131.168  ...   Jan 6, 21 -4.536019       -0.0347</span>
+<span class="go">2021-01-07     132    132.32    130.3  ...   Jan 7, 21  4.340993        0.0346</span>
+<span class="go">2021-01-08  132.44    133.71   133.94  ...   Jan 8, 21   1.13938        0.0088</span>
+<span class="go">2021-01-11  134.56    131.99    133.6  ...  Jan 11, 21  -3.19335       -0.0241</span>
+<span class="go">2021-01-12   129.2     135.2   128.22  ...  Jan 12, 21 -0.183212       -0.0014</span>
+<span class="go">2021-01-13  134.24    134.41    133.6  ...  Jan 13, 21  2.111355        0.0166</span>
+<span class="go">2021-01-14  129.67       137   132.44  ...  Jan 14, 21 -1.986542       -0.0154</span>
+<span class="go">2021-01-15  132.74  131.0101      128  ...  Jan 15, 21 -1.853688       -0.0143</span>
+<span class="go">2021-01-19  128.36    134.12  129.058  ...  Jan 19, 21  0.692376        0.0055</span>
+<span class="go">2021-01-20   135.2    133.88   133.56  ...  Jan 20, 21  4.364024        0.0344</span>
+<span class="go">2021-01-21  138.02    145.72   137.54  ...  Jan 21, 21  4.895925        0.0379</span>
+<span class="go">2021-01-22  141.47    142.45   136.98  ...  Jan 22, 21   2.20454        0.0167</span>
+<span class="go">2021-01-25  148.59    151.03   139.23  ...  Jan 25, 21  3.888771        0.0287</span>
+<span class="go">2021-01-26  149.06     151.2   141.93  ...  Jan 26, 21  0.247222        0.0018</span>
+<span class="go">2021-01-27  149.16     150.4   142.75  ...  Jan 27, 21 -1.141416       -0.0079</span>
+<span class="go">2021-01-28  141.55    147.96    137.2  ...  Jan 28, 21 -5.034473        -0.036</span>
+<span class="go">2021-01-29  134.16    139.17   133.97  ...  Jan 29, 21 -5.292502       -0.0382</span>
+<span class="go">2021-02-01  140.66    137.17   134.72  ...   Feb 1, 21  2.248869        0.0168</span>
+<span class="go">2021-02-02  135.33    136.74   140.61  ...   Feb 2, 21  0.888697        0.0063</span>
 
-<span class="go">[20 rows x 26 columns]</span>
+<span class="go">[21 rows x 26 columns]</span>
 </pre></div>
 </div>
 <p>Historical time series data is also available through the <strong>optimized</strong>
@@ -663,32 +669,32 @@ Defaults to 1 year before current date.</p>
 
 <span class="gp">In [17]: </span><span class="n">f</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2017-02-09&quot;</span><span class="p">]</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
-<span class="go">close                           34.562000</span>
-<span class="go">high                            33.279900</span>
-<span class="go">low                             34.290000</span>
-<span class="go">open                            34.386500</span>
+<span class="go">close                              34.229</span>
+<span class="go">high                              33.2342</span>
+<span class="go">low                                 33.06</span>
+<span class="go">open                              33.8665</span>
 <span class="go">symbol                               AAPL</span>
-<span class="go">volume                          113763177</span>
-<span class="go">id                      ASELTSICCIH_PRROI</span>
-<span class="go">key                                  LPAA</span>
+<span class="go">volume                          117223932</span>
+<span class="go">id                      IRPSSOTIRI_CELCAH</span>
+<span class="go">key                                  LAAP</span>
 <span class="go">subkey                                  0</span>
 <span class="go">date                           2017-02-09</span>
-<span class="go">updated                     1627679868497</span>
-<span class="go">changeOverTime                   0.261706</span>
-<span class="go">marketChangeOverTime             0.268025</span>
-<span class="go">uOpen                          134.290000</span>
-<span class="go">uClose                         137.630000</span>
-<span class="go">uHigh                          137.752000</span>
-<span class="go">uLow                           135.170000</span>
-<span class="go">uVolume                          28484700</span>
-<span class="go">fOpen                           32.306300</span>
-<span class="go">fClose                          31.880100</span>
-<span class="go">fHigh                           31.566400</span>
-<span class="go">fLow                            32.040000</span>
-<span class="go">fVolume                         117148101</span>
+<span class="go">updated                     1640205291695</span>
+<span class="go">changeOverTime                   0.375892</span>
+<span class="go">marketChangeOverTime             0.385402</span>
+<span class="go">uOpen                               134.8</span>
+<span class="go">uClose                             137.06</span>
+<span class="go">uHigh                             134.372</span>
+<span class="go">uLow                               132.02</span>
+<span class="go">uVolume                          29499413</span>
+<span class="go">fOpen                             31.6329</span>
+<span class="go">fClose                            32.2196</span>
+<span class="go">fHigh                             32.6686</span>
+<span class="go">fLow                                32.36</span>
+<span class="go">fVolume                         118083352</span>
 <span class="go">label                           Feb 9, 17</span>
-<span class="go">change                           0.096607</span>
-<span class="go">changePercent                    0.002900</span>
+<span class="go">change                           0.097442</span>
+<span class="go">changePercent                      0.0029</span>
 <span class="go">Name: 2017-02-09 00:00:00, dtype: object</span>
 </pre></div>
 </div>
@@ -741,20 +747,20 @@ symbol on a given date (defaults to current date)</p>
 
 <span class="gp">In [24]: </span><span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;20190617&quot;</span><span class="p">,</span> <span class="n">close_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
-<span class="go">               close     volume</span>
-<span class="go">2019-06-17   50.6063   59001003</span>
-<span class="go">2019-06-18   52.0810  107294851</span>
-<span class="go">2019-06-19   50.5798   84697642</span>
-<span class="go">2019-06-20   51.1840   87570205</span>
-<span class="go">2019-06-21   51.4940  199534301</span>
-<span class="go">...              ...        ...</span>
-<span class="go">2020-12-24  137.4100   56086331</span>
-<span class="go">2020-12-28  143.0400  125973237</span>
-<span class="go">2020-12-29  140.0700  122431758</span>
-<span class="go">2020-12-30  140.0100   97358523</span>
-<span class="go">2020-12-31  138.7400  101701808</span>
+<span class="go">              close     volume</span>
+<span class="go">2019-06-17  48.9926   58839820</span>
+<span class="go">2019-06-18  51.5841  108224936</span>
+<span class="go">2019-06-19  50.3557   87176781</span>
+<span class="go">2019-06-20   50.053   89988703</span>
+<span class="go">2019-06-21    52.02  198987589</span>
+<span class="go">...             ...        ...</span>
+<span class="go">2021-01-27   148.83  146291438</span>
+<span class="go">2021-01-28   141.85  142943828</span>
+<span class="go">2021-01-29   132.32  180330528</span>
+<span class="go">2021-02-01   138.62  108358432</span>
+<span class="go">2021-02-02    136.6   85210889</span>
 
-<span class="go">[391 rows x 2 columns]</span>
+<span class="go">[412 rows x 2 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -980,17 +986,17 @@ multiplied by a factor of 100.</p>
 <span class="gp">In [26]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">                          type  ...    lastUpdated</span>
-<span class="go">iitltUsei               sector  ...  1667611851527</span>
-<span class="go">calsnFnaii              sector  ...  1635327744416</span>
-<span class="go">RstaeEt ael             sector  ...  1631500110586</span>
-<span class="go">h tHeaaeCrl             sector  ...  1648648239746</span>
-<span class="go">irumeioisCnenmotcS cva  sector  ...  1628018693292</span>
-<span class="go">sor nmteSsaCelup        sector  ...  1652612913944</span>
-<span class="go">drsutnIilas             sector  ...  1688429033363</span>
-<span class="go">esMratlia               sector  ...  1613104623183</span>
-<span class="go">oTgyolchen              sector  ...  1614285739211</span>
-<span class="go">CaniDyeimer uorcntorss  sector  ...  1627667484328</span>
-<span class="go">Eernyg                  sector  ...  1619078307329</span>
+<span class="go">lansainciF              sector  ...  1657201128916</span>
+<span class="go">tasduInlris             sector  ...  1617932452768</span>
+<span class="go">DsCr neuoeyrtimocnrsai  sector  ...  1664917471867</span>
+<span class="go">nnrmacStmcuioCs eieivo  sector  ...  1628140616289</span>
+<span class="go">Tnoecylhgo              sector  ...  1642733218587</span>
+<span class="go">Miesatral               sector  ...  1624324868349</span>
+<span class="go">Eergny                  sector  ...  1668134369348</span>
+<span class="go">etsUiliit               sector  ...  1621904287680</span>
+<span class="go">ntmp leruaesoSsC        sector  ...  1665243547393</span>
+<span class="go">el tstRaeEa             sector  ...  1645279217212</span>
+<span class="go">Hlree atahC             sector  ...  1665854218688</span>
 
 <span class="go">[11 rows x 4 columns]</span>
 </pre></div>
@@ -1151,9 +1157,19 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [28]: </span><span class="n">get_market_gainers</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
-<span class="go">Empty DataFrame</span>
-<span class="go">Columns: []</span>
-<span class="go">Index: []</span>
+<span class="go">                                companyName  ... isUSMarketOpen</span>
+<span class="go">symbol                                       ...               </span>
+<span class="go">SAVA                   Cassava Sciences Inc  ...          False</span>
+<span class="go">OCGN                             Ocugen Inc  ...          False</span>
+<span class="go">HOL                  Holicity Inc - Class A  ...          False</span>
+<span class="go">VXRT                             Vaxart Inc  ...          False</span>
+<span class="go">MBRX                  Moleculin Biotech Inc  ...          False</span>
+<span class="go">CRMD                           CorMedix Inc  ...          False</span>
+<span class="go">PRTA               Prothena Corporation plc  ...          False</span>
+<span class="go">KOPN                            Kopin Corp.  ...          False</span>
+<span class="go">CCIV    Churchill Capital Corp IV - Class A  ...          False</span>
+
+<span class="go">[9 rows x 54 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -1165,37 +1181,29 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="market-info.html" class="btn btn-neutral float-right" title="Market Info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="sandbox.html" class="btn btn-neutral float-left" title="Sandbox Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="market-info.html" class="btn btn-neutral float-right" title="Market Info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sandbox.html" class="btn btn-neutral float-left" title="Sandbox Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Addison Lynch
+        &#169; Copyright 2020, Addison Lynch.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

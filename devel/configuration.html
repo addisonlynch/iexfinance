@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Configuration &mdash; iexfinance 0.5.0-dev documentation</title>
   
@@ -16,7 +16,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -51,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> iexfinance
+            <a href="index.html" class="icon icon-home"> iexfinance
           
 
           
@@ -186,6 +189,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -197,7 +202,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/configuration.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -294,11 +299,11 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      SYN             NU  ...  3CB2DB6000VG  1117317  IUYXWPWAG72807XM9QR2</span>
-<span class="go">1     AA      SNY             NU  ...  GB0B0THB3D33  1758169  2F1W9531T6E40WUP029Z</span>
-<span class="go">2    AAA    ASUPC             PU  ...  F4SB8GBP0X05  1767406                  None</span>
-<span class="go">3   AAAU    CPAUS             PU  ...  2XXPBBL7800G  1737066                  None</span>
-<span class="go">4   AACG      NSA              0  ...  0S0BPG6B0V23  1471464                  None</span>
+<span class="go">0      A      YNS             UN  ...  0VDGB6B02C30  1117967  IQG729Y0RU7XPX2WM8AW</span>
+<span class="go">1     AA      SYN             NU  ...  HB03330BTDGB  1741428  FE0W34P16192Z9UT02W5</span>
+<span class="go">2    AAA    ACSPU             PU  ...  XF080BPSBG54  1703667                  None</span>
+<span class="go">3   AAAU    ASUCP             UP  ...  G2BXXP0B07L8  1788039                  None</span>
+<span class="go">4   AAC=      SNY             UN  ...  C6003YYBGX8B  1916747                  None</span>
 
 <span class="go">[5 rows x 14 columns]</span>
 </pre></div>
@@ -311,7 +316,7 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">     avgTotalVolume calculationPrice change  ... week52High week52Low ytdChange</span>
-<span class="go">AAPL      108449508            close  -1.05  ...      137.5     56.91    -0.008</span>
+<span class="go">AAPL      121584473            close   0.86  ...     146.67     55.97  0.017288</span>
 
 <span class="go">[1 rows x 55 columns]</span>
 </pre></div>
@@ -385,37 +390,29 @@ set using the environment variable <code class="docutils literal notranslate"><s
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Addison Lynch
+        &#169; Copyright 2020, Addison Lynch.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
