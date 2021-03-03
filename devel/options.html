@@ -205,7 +205,7 @@
 <code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code> for a single symbol.</p>
 <dl class="py function">
 <dt id="iexfinance.stocks.get_eod_options">
-<code class="sig-prename descclassname">iexfinance.stocks.</code><code class="sig-name descname">get_eod_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span></em>, <em class="sig-param"><span class="n">expiration</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">option_side</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></code><code class="sig-name descname"><span class="pre">get_eod_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expiration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>End of Day Options</p>
 <p>Returns a list of option expiration dates for a given symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#end-of-day-options">https://iexcloud.io/docs/api/#end-of-day-options</a></p>
@@ -228,11 +228,11 @@ contracts</p>
 <span class="gp">In [2]: </span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">          0</span>
-<span class="go">0  20210131</span>
-<span class="go">1  20210201</span>
-<span class="go">2  20210210</span>
-<span class="go">3  20210216</span>
-<span class="go">4  20210226</span>
+<span class="go">0  20210220</span>
+<span class="go">1  20210309</span>
+<span class="go">2  20210308</span>
+<span class="go">3  20210316</span>
+<span class="go">4  20210330</span>
 </pre></div>
 </div>
 </div>

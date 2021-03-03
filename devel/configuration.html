@@ -299,11 +299,11 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      YNS             UN  ...  0VDGB6B02C30  1117967  IQG729Y0RU7XPX2WM8AW</span>
-<span class="go">1     AA      SYN             NU  ...  HB03330BTDGB  1741428  FE0W34P16192Z9UT02W5</span>
-<span class="go">2    AAA    ACSPU             PU  ...  XF080BPSBG54  1703667                  None</span>
-<span class="go">3   AAAU    ASUCP             UP  ...  G2BXXP0B07L8  1788039                  None</span>
-<span class="go">4   AAC=      SNY             UN  ...  C6003YYBGX8B  1916747                  None</span>
+<span class="go">0      A      YSN             NU  ...  23B0D0C6B0GV  1121180  UMRW7XXIQ7GA2208Y9PW</span>
+<span class="go">1     AA      SYN             NU  ...  GBBH0T0B33D3  1751073  4UZ92E1W100W9F536PT2</span>
+<span class="go">2    AAA    ACSPU             PU  ...  GB8XB04P0FS5  1710396                  None</span>
+<span class="go">3   AAAU    AUSPC             UP  ...  P8LBB27G00XX  1773606                  None</span>
+<span class="go">4   AAC=      SNY             UN  ...  BYYG0X0B863C  1850639                  None</span>
 
 <span class="go">[5 rows x 14 columns]</span>
 </pre></div>
@@ -316,7 +316,7 @@ variable <code class="docutils literal notranslate"><span class="pre">IEX_OUTPUT
 <span class="gp">In [5]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_quote</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">     avgTotalVolume calculationPrice change  ... week52High week52Low ytdChange</span>
-<span class="go">AAPL      121584473            close   0.86  ...     146.67     55.97  0.017288</span>
+<span class="go">AAPL       97946600            close  -2.68  ...     148.35     54.42 -0.056941</span>
 
 <span class="go">[1 rows x 55 columns]</span>
 </pre></div>
@@ -347,7 +347,7 @@ environment variable. The following versions are currently supported:</p>
 <p>All <code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> requests are made using the base class <code class="docutils literal notranslate"><span class="pre">_IEXBase</span></code>.</p>
 <dl class="py class">
 <dt id="iexfinance.base._IEXBase">
-<em class="property">class </em><code class="sig-prename descclassname">iexfinance.base.</code><code class="sig-name descname">_IEXBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">iexfinance.base.</span></code><code class="sig-name descname"><span class="pre">_IEXBase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.base._IEXBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for retrieving equities information from IEX Cloud.
 Conducts query operations including preparing and executing queries from
 the API.</p>
