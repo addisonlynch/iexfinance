@@ -262,8 +262,8 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
 
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
-<span class="go">         AAPL</span>
-<span class="go">price  127.23</span>
+<span class="go">       AAPL</span>
+<span class="go">price   125</span>
 </pre></div>
 </div>
 <p>Certain endpoints such as <a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Data</span></a>,
@@ -278,11 +278,11 @@ single request.</p>
 <span class="gp">   ...: </span>
 <span class="gh">Out[5]: </span><span class="go"></span>
 <span class="go">              close     high      low  ...      label    change changePercent</span>
-<span class="go">2019-01-02    40.46  39.8041  40.0258  ...  Jan 2, 19  0.045926        0.0011</span>
-<span class="go">2019-01-03   37.201       38     35.8  ...  Jan 3, 19 -4.013483       -0.1008</span>
-<span class="go">2019-01-04   38.087   37.743    37.53  ...  Jan 4, 19  1.557963        0.0438</span>
-<span class="go">2019-01-07  38.6729  38.0735   36.802  ...  Jan 7, 19  -0.08661       -0.0022</span>
-<span class="go">2019-01-08  37.7351   38.963    38.73  ...  Jan 8, 19  0.728872        0.0199</span>
+<span class="go">2019-01-02    39.74  40.4575  39.3216  ...  Jan 2, 19  0.046704        0.0011</span>
+<span class="go">2019-01-03  36.9984    38.13     35.6  ...  Jan 3, 19 -3.994369       -0.1014</span>
+<span class="go">2019-01-04   37.502  37.8546    36.21  ...  Jan 4, 19  1.520612         0.044</span>
+<span class="go">2019-01-07  37.7918  37.8603   36.626  ...  Jan 7, 19 -0.082969       -0.0023</span>
+<span class="go">2019-01-08  38.0699   38.537    37.19  ...  Jan 8, 19  0.709633        0.0197</span>
 
 <span class="go">[5 rows x 26 columns]</span>
 </pre></div>
@@ -366,8 +366,8 @@ token: str, optional</p>
 
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
-<span class="go">         AAPL</span>
-<span class="go">price  127.05</span>
+<span class="go">       AAPL</span>
+<span class="go">price   124</span>
 </pre></div>
 </div>
 </div>
@@ -593,28 +593,31 @@ other parameters.</p>
 
 <span class="gp">In [11]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">             close      high       low  ...       label    change changePercent</span>
-<span class="go">2021-02-03  135.37    137.88     137.2  ...   Feb 3, 21         0             0</span>
-<span class="go">2021-02-04  139.78       138    137.04  ...   Feb 4, 21  3.616225        0.0268</span>
-<span class="go">2021-02-05  138.93    140.65    140.07  ...   Feb 5, 21 -0.650342       -0.0047</span>
-<span class="go">2021-02-08  140.83    142.74       136  ...   Feb 8, 21  0.155186        0.0011</span>
-<span class="go">2021-02-09  136.08   143.511    141.58  ...   Feb 9, 21 -0.921604       -0.0067</span>
-<span class="go">2021-02-10     137    141.26       139  ...  Feb 10, 21 -0.627618       -0.0047</span>
-<span class="go">2021-02-11   137.6    136.45    136.96  ...  Feb 11, 21 -0.269905        -0.002</span>
-<span class="go">2021-02-12  137.75    139.11  138.4065  ...  Feb 12, 21  0.248025        0.0019</span>
-<span class="go">2021-02-16  134.59    139.86    138.38  ...  Feb 16, 21 -2.227402       -0.0169</span>
-<span class="go">2021-02-17  131.05    138.14    131.82  ...  Feb 17, 21 -2.457827       -0.0179</span>
-<span class="go">2021-02-18  130.22   134.051    129.32  ...  Feb 18, 21  -1.18302       -0.0089</span>
-<span class="go">2021-02-19  131.29    134.16     134.8  ...  Feb 19, 21  0.166967        0.0013</span>
-<span class="go">2021-02-22     128    131.84     127.6  ...  Feb 22, 21 -3.896712       -0.0299</span>
-<span class="go">2021-02-23  131.79    131.32    121.78  ...  Feb 23, 21  -0.14199       -0.0011</span>
-<span class="go">2021-02-24  129.17    127.56    122.98  ...  Feb 24, 21  -0.53538       -0.0041</span>
-<span class="go">2021-02-25  126.64  128.4864     121.2  ...  Feb 25, 21 -4.576557        -0.035</span>
-<span class="go">2021-02-26  122.89    130.92     126.1  ...  Feb 26, 21  0.277548        0.0023</span>
-<span class="go">2021-03-01  128.09    128.43    126.72  ...   Mar 1, 21  6.614776        0.0555</span>
-<span class="go">2021-03-02  129.84    132.52    130.07  ...   Mar 2, 21 -2.716997       -0.0216</span>
+<span class="go">              close      high       low  ...       label    change changePercent</span>
+<span class="go">2021-03-03   124.98    131.13    126.87  ...   Mar 3, 21         0             0</span>
+<span class="go">2021-03-04   122.93     127.2    122.49  ...   Mar 4, 21 -1.963326       -0.0162</span>
+<span class="go">2021-03-05   126.79   122.897    119.74  ...   Mar 5, 21  1.325892        0.0111</span>
+<span class="go">2021-03-08   119.01       121    121.96  ...   Mar 8, 21 -5.221957       -0.0432</span>
+<span class="go">2021-03-09  124.431    127.72    119.89  ...   Mar 9, 21  4.725253        0.0424</span>
+<span class="go">2021-03-10    120.5    125.84    121.69  ...  Mar 10, 21 -1.130679       -0.0094</span>
+<span class="go">2021-03-11   122.42    124.81    123.15  ...  Mar 11, 21  2.005018        0.0166</span>
+<span class="go">2021-03-12   124.69    124.33    123.72  ...  Mar 12, 21 -0.931461        -0.008</span>
+<span class="go">2021-03-15    127.3       126       126  ...  Mar 15, 21  2.969604        0.0247</span>
+<span class="go">2021-03-16   129.07    128.77   127.206  ...  Mar 16, 21  1.593082        0.0127</span>
+<span class="go">2021-03-17   129.61  127.0154   128.207  ...  Mar 17, 21 -0.815379       -0.0068</span>
+<span class="go">2021-03-18   123.62    127.66    122.48  ...  Mar 18, 21 -4.271692       -0.0344</span>
+<span class="go">2021-03-19   122.56    123.69   124.664  ...  Mar 19, 21 -0.545142       -0.0046</span>
+<span class="go">2021-03-22   128.99    126.75    120.39  ...  Mar 22, 21  3.449354        0.0296</span>
+<span class="go">2021-03-23   128.37    124.82    124.11  ...  Mar 23, 21 -0.878113       -0.0071</span>
+<span class="go">2021-03-24   124.06     124.8   124.004  ...  Mar 24, 21 -2.462726         -0.02</span>
+<span class="go">2021-03-25   125.43    124.32       123  ...  Mar 25, 21       0.5        0.0042</span>
+<span class="go">2021-03-26   124.82     122.2    119.14  ...  Mar 26, 21  0.646188        0.0053</span>
+<span class="go">2021-03-29   124.85    125.51  126.6988  ...  Mar 29, 21   0.18229        0.0016</span>
+<span class="go">2021-03-30    121.1  120.9454    122.51  ...  Mar 30, 21 -1.550742       -0.0128</span>
+<span class="go">2021-03-31   126.54     126.6    126.01  ...  Mar 31, 21      2.31        0.0194</span>
+<span class="go">2021-04-01      125    126.33    127.16  ...   Apr 1, 21  0.891643         0.007</span>
 
-<span class="go">[19 rows x 26 columns]</span>
+<span class="go">[22 rows x 26 columns]</span>
 </pre></div>
 </div>
 <p>Historical time series data is also available through the <strong>optimized</strong>
@@ -667,31 +670,31 @@ Defaults to 1 year before current date.</p>
 
 <span class="gp">In [17]: </span><span class="n">f</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2017-02-09&quot;</span><span class="p">]</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
-<span class="go">close                              34.006</span>
-<span class="go">high                              34.1973</span>
-<span class="go">low                                 33.91</span>
-<span class="go">open                              34.2099</span>
+<span class="go">close                              33.848</span>
+<span class="go">high                               34.396</span>
+<span class="go">low                                 34.02</span>
+<span class="go">open                              34.1739</span>
 <span class="go">symbol                               AAPL</span>
-<span class="go">volume                          113987000</span>
-<span class="go">id                      OIRIS_CREPIHATLCS</span>
+<span class="go">volume                          114366024</span>
+<span class="go">id                      RSHITPI_ERSILCCOA</span>
 <span class="go">key                                  LAPA</span>
 <span class="go">subkey                                  0</span>
 <span class="go">date                           2017-02-09</span>
-<span class="go">updated                     1691091048446</span>
-<span class="go">changeOverTime                   0.307623</span>
-<span class="go">marketChangeOverTime             0.305585</span>
-<span class="go">uOpen                              136.46</span>
-<span class="go">uClose                             134.75</span>
-<span class="go">uHigh                             138.591</span>
-<span class="go">uLow                               137.55</span>
-<span class="go">uVolume                          28404603</span>
-<span class="go">fOpen                             32.4447</span>
-<span class="go">fClose                            31.5927</span>
-<span class="go">fHigh                             31.8332</span>
-<span class="go">fLow                              31.2301</span>
-<span class="go">fVolume                         113839574</span>
+<span class="go">updated                     1626051594804</span>
+<span class="go">changeOverTime                   0.200868</span>
+<span class="go">marketChangeOverTime             0.200836</span>
+<span class="go">uOpen                              131.73</span>
+<span class="go">uClose                             137.74</span>
+<span class="go">uHigh                             138.869</span>
+<span class="go">uLow                               135.66</span>
+<span class="go">uVolume                          29241200</span>
+<span class="go">fOpen                             31.5784</span>
+<span class="go">fClose                            32.4158</span>
+<span class="go">fHigh                             31.9955</span>
+<span class="go">fLow                              32.6088</span>
+<span class="go">fVolume                         118587625</span>
 <span class="go">label                           Feb 9, 17</span>
-<span class="go">change                            0.09841</span>
+<span class="go">change                           0.099401</span>
 <span class="go">changePercent                       0.003</span>
 <span class="go">Name: 2017-02-09 00:00:00, dtype: object</span>
 </pre></div>
@@ -746,19 +749,19 @@ symbol on a given date (defaults to current date)</p>
 <span class="gp">In [24]: </span><span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;20190617&quot;</span><span class="p">,</span> <span class="n">close_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
 <span class="go">              close     volume</span>
-<span class="go">2019-06-17  50.4158   59871108</span>
-<span class="go">2019-06-18  49.8677  107442599</span>
-<span class="go">2019-06-19  50.2081   85941990</span>
-<span class="go">2019-06-20    51.73   90037980</span>
-<span class="go">2019-06-21   50.574  193032278</span>
+<span class="go">2019-06-17  50.5656   60683821</span>
+<span class="go">2019-06-18  49.9425  109855546</span>
+<span class="go">2019-06-19   50.299   87682562</span>
+<span class="go">2019-06-20   51.175   86338683</span>
+<span class="go">2019-06-21   51.212  195687088</span>
 <span class="go">...             ...        ...</span>
-<span class="go">2021-02-24   130.41  114486451</span>
-<span class="go">2021-02-25   125.38  151825398</span>
-<span class="go">2021-02-26   124.24  168298518</span>
-<span class="go">2021-03-01    128.4  120081467</span>
-<span class="go">2021-03-02   125.24  104289727</span>
+<span class="go">2021-03-26    123.1   96158295</span>
+<span class="go">2021-03-29   126.46   81042005</span>
+<span class="go">2021-03-30    124.1   85782296</span>
+<span class="go">2021-03-31   123.38  120268229</span>
+<span class="go">2021-04-01      129   77668376</span>
 
-<span class="go">[431 rows x 2 columns]</span>
+<span class="go">[453 rows x 2 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -984,17 +987,17 @@ multiplied by a factor of 100.</p>
 <span class="gp">In [26]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">                          type  ...    lastUpdated</span>
-<span class="go">liraeMtsa               sector  ...  1623960221248</span>
-<span class="go"> pnlssmreeSuoCat        sector  ...  1662181779289</span>
-<span class="go"> CteahHarle             sector  ...  1686547734337</span>
-<span class="go">altnIsruids             sector  ...  1635555980805</span>
-<span class="go">tletsiUii               sector  ...  1679044486819</span>
-<span class="go">nliaFnsaci              sector  ...  1626817962423</span>
-<span class="go">gneEry                  sector  ...  1659800729524</span>
-<span class="go">lae aERttse             sector  ...  1669300787237</span>
-<span class="go">avmoimiCoetcciusS enrn  sector  ...  1657086801469</span>
-<span class="go">rnrs yCmeoeinscoirDatu  sector  ...  1636013018791</span>
-<span class="go">hgnooclTey              sector  ...  1674280538343</span>
+<span class="go">nEgery                  sector  ...  1671398581356</span>
+<span class="go">goTholycen              sector  ...  1637983528827</span>
+<span class="go">Cnmivocc aniotuiremesS  sector  ...  1664912328251</span>
+<span class="go">lee RatstaE             sector  ...  1635536154132</span>
+<span class="go">nlinsaaicF              sector  ...  1627540496598</span>
+<span class="go">aritaselM               sector  ...  1695885616802</span>
+<span class="go">ruoytmrincnsDeCoae rsi  sector  ...  1647878345096</span>
+<span class="go">urdsaiIstnl             sector  ...  1619431668287</span>
+<span class="go">Uitieislt               sector  ...  1689911495300</span>
+<span class="go">hee lraCtHa             sector  ...  1633117661412</span>
+<span class="go">us snpmoeetrCSal        sector  ...  1697925855120</span>
 
 <span class="go">[11 rows x 4 columns]</span>
 </pre></div>
@@ -1155,18 +1158,18 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [28]: </span><span class="n">get_market_gainers</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
-<span class="go">                                  companyName  ... isUSMarketOpen</span>
-<span class="go">symbol                                         ...               </span>
-<span class="go">RKT              Rocket Companies Inc Class A  ...          False</span>
-<span class="go">HOV     Hovnanian Enterprises, Inc. - Class A  ...          False</span>
-<span class="go">AMRS                               Amyris Inc  ...          False</span>
-<span class="go">FBIO                     Fortress Biotech Inc  ...          False</span>
-<span class="go">SLDB                    Solid Biosciences Inc  ...          False</span>
-<span class="go">DRTT        DIRTT Environmental Solutions Ltd  ...          False</span>
-<span class="go">UWMC       UWM Holdings Corporation - Class A  ...          False</span>
-<span class="go">UUUU                         Energy Fuels Inc  ...          False</span>
-<span class="go">PERI                      Perion Network Ltd.  ...          False</span>
-<span class="go">TIRX     Tian Ruixiang Holdings Ltd - Class A  ...          False</span>
+<span class="go">                                        companyName  ... isUSMarketOpen</span>
+<span class="go">symbol                                               ...               </span>
+<span class="go">LTRPB   Liberty TripAdvisor Holdings Inc - Series B  ...          False</span>
+<span class="go">DISCB                       Discovery Inc - Class B  ...          False</span>
+<span class="go">AMTI                Applied Molecular Transport Inc  ...          False</span>
+<span class="go">KELYB                Kelly Services, Inc. - Class B  ...          False</span>
+<span class="go">MVIS                               Microvision Inc.  ...          False</span>
+<span class="go">ESTE                Earthstone Energy Inc - Class A  ...          False</span>
+<span class="go">KOSS                                     Koss Corp.  ...          False</span>
+<span class="go">PUBM                         PubMatic Inc - Class A  ...          False</span>
+<span class="go">UAVS                    AgEagle Aerial Systems Inc.  ...          False</span>
+<span class="go">TTI                        Tetra Technologies, Inc.  ...          False</span>
 
 <span class="go">[10 rows x 54 columns]</span>
 </pre></div>
