@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -263,7 +266,7 @@ more symbols (equities, ETFs, etc.) and allows access to most endpoints:</p>
 <span class="gp">In [3]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[3]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  136.87</span>
+<span class="go">price  128.71</span>
 </pre></div>
 </div>
 <p>Certain endpoints such as <a class="reference internal" href="#stocks-historical"><span class="std std-ref">Historical Data</span></a>,
@@ -277,12 +280,12 @@ single request.</p>
 <span class="gp">   ...: </span>                    <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gp">   ...: </span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">              close     high      low  ...      label    change changePercent</span>
-<span class="go">2019-01-02    39.84  41.4696  39.5072  ...  Jan 2, 19  0.045082        0.0011</span>
-<span class="go">2019-01-03  35.8497    38.04     36.3  ...  Jan 3, 19 -3.959366       -0.1028</span>
-<span class="go">2019-01-04   38.724  37.2946    36.79  ...  Jan 4, 19  1.592301        0.0445</span>
-<span class="go">2019-01-07  38.4238  38.8409   36.489  ...  Jan 7, 19 -0.085591       -0.0022</span>
-<span class="go">2019-01-08  37.6943   38.968    37.64  ...  Jan 8, 19  0.730811        0.0198</span>
+<span class="go">              close     high     low  ...      label    change changePercent</span>
+<span class="go">2019-01-02    39.77  41.1086   39.77  ...  Jan 2, 19  0.046392        0.0011</span>
+<span class="go">2019-01-03  37.0146    37.51    35.7  ...  Jan 3, 19 -3.938462       -0.1038</span>
+<span class="go">2019-01-04   37.797  38.3638   36.35  ...  Jan 4, 19  1.533941         0.044</span>
+<span class="go">2019-01-07  38.3483  38.3596  36.563  ...  Jan 7, 19 -0.085323       -0.0022</span>
+<span class="go">2019-01-08  39.5379  39.5379   37.22  ...  Jan 8, 19  0.728955        0.0197</span>
 
 <span class="go">[5 rows x 26 columns]</span>
 </pre></div>
@@ -343,8 +346,8 @@ endpoints  (<a class="reference external" href="https://iexcloud.io/docs/api/#ea
 <a class="reference external" href="https://iexcloud.io/docs/api/#quote">Quote</a>, etc) for up to 100 symbols
 at once.</p>
 <dl class="py class">
-<dt id="iexfinance.stocks.base.Stock">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">iexfinance.stocks.base.</span></code><code class="sig-name descname"><span class="pre">Stock</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">iexfinance.stocks.base.</span></span><span class="sig-name descname"><span class="pre">Stock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for obtaining data from the Stock endpoints of IEX.</p>
 <dl class="simple">
 <dt>symbols: str or list-like (list, tuple, pandas.Series, pandas.Index)</dt><dd><p>Symbol or list-like collection of symbols</p>
@@ -367,7 +370,7 @@ token: str, optional</p>
 <span class="gp">In [8]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_price</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
 <span class="go">         AAPL</span>
-<span class="go">price  136.42</span>
+<span class="go">price  125.87</span>
 </pre></div>
 </div>
 </div>
@@ -375,8 +378,8 @@ token: str, optional</p>
 <div class="section" id="advanced-stats">
 <span id="stocks-advanced-stats"></span><h2><a class="toc-backref" href="#id8">Advanced Stats</a><a class="headerlink" href="#advanced-stats" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_advanced_stats">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_advanced_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_advanced_stats" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_advanced_stats">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_advanced_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_advanced_stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#advanced-stats">https://iexcloud.io/docs/api/#advanced-stats</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">3,000</span></code> per symbol + Key Stats weight</p>
 <p>Only included with paid subscription plans.</p>
@@ -386,8 +389,8 @@ token: str, optional</p>
 <div class="section" id="balance-sheet">
 <span id="stocks-balance-sheet"></span><h2><a class="toc-backref" href="#id9">Balance Sheet</a><a class="headerlink" href="#balance-sheet" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_balance_sheet">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_balance_sheet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_balance_sheet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_balance_sheet">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_balance_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_balance_sheet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Balance Sheet</p>
 <p>Pulls balance sheet data. Available quarterly (12 quarters) and annually
 (4 years)</p>
@@ -407,8 +410,8 @@ up to 12 quarters or 4 years.</p>
 <div class="section" id="book">
 <span id="stocks-book"></span><h2><a class="toc-backref" href="#id10">Book</a><a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_book">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_book</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_book" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_book">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_book</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Book</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#book">https://iexcloud.io/docs/api/#book</a></p>
 <div class="admonition note">
@@ -423,8 +426,8 @@ formatting.</p>
 <div class="section" id="cash-flow">
 <span id="stocks-cash-flow"></span><h2><a class="toc-backref" href="#id11">Cash Flow</a><a class="headerlink" href="#cash-flow" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_cash_flow">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_cash_flow</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_cash_flow" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_cash_flow">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_cash_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_cash_flow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cash Flow</p>
 <p>Pulls cash flow data. Available quarterly (4 quarters) or annually
 (4 years).</p>
@@ -444,8 +447,8 @@ up to 12 quarters or 4 years.</p>
 <div class="section" id="charts">
 <span id="stocks-charts"></span><h2><a class="toc-backref" href="#id12">Charts</a><a class="headerlink" href="#charts" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_chart">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_chart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_chart" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_chart">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_chart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Chart</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -457,8 +460,8 @@ up to 12 quarters or 4 years.</p>
 <div class="section" id="company">
 <span id="stocks-company"></span><h2><a class="toc-backref" href="#id13">Company</a><a class="headerlink" href="#company" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_company">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_company</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_company">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_company</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company" title="Permalink to this definition">¶</a></dt>
 <dd><p>Company</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#company">https://iexcloud.io/docs/api/#company</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code></p>
@@ -468,8 +471,8 @@ up to 12 quarters or 4 years.</p>
 <div class="section" id="delayed-quote">
 <span id="stocks-delayed-quote"></span><h2><a class="toc-backref" href="#id14">Delayed Quote</a><a class="headerlink" href="#delayed-quote" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_delayed_quote">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_delayed_quote</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_delayed_quote">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_delayed_quote</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_delayed_quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delayed Quote</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#delayed-quote">https://iexcloud.io/docs/api/#delayed-quote</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol per quote</p>
@@ -479,8 +482,8 @@ up to 12 quarters or 4 years.</p>
 <div class="section" id="dividends-basic">
 <span id="stocks-dividends"></span><h2><a class="toc-backref" href="#id15">Dividends (Basic)</a><a class="headerlink" href="#dividends-basic" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_dividends">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_dividends</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_dividends" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_dividends">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_dividends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_dividends" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dividends</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#dividends">https://iexcloud.io/docs/api/#dividends</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">10</span></code> per symbol per period returned</p>
@@ -502,8 +505,8 @@ IEX Cloud Help Center. See <a class="reference external" href="https://intercom.
 for additional information.</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_earnings">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_earnings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_earnings" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_earnings">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_earnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_earnings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Earnings</p>
 <p>Earnings data for a given company including the actual EPS, consensus,
 and fiscal period. Earnings are available quarterly (last 4 quarters)
@@ -531,8 +534,8 @@ IEX Cloud Help Center. See <a class="reference external" href="https://intercom.
 for additional information.</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_estimates">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_estimates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_estimates" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_estimates">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_estimates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_estimates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates</p>
 <p>Provides the latest consensus estimate for the next fiscal period</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#estimates">https://iexcloud.io/docs/api/#estimates</a></p>
@@ -545,8 +548,8 @@ period: str, default <cite>quarter</cite>, optional</p>
 <div class="section" id="financials">
 <span id="stocks-financials"></span><h2><a class="toc-backref" href="#id18">Financials</a><a class="headerlink" href="#financials" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_financials">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_financials</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_financials" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_financials">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_financials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_financials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Financials</p>
 <p>Pulls income statement, balance sheet, and cash flow data from the
 most recent reported quarter.</p>
@@ -563,8 +566,8 @@ Value should be <cite>annual</cite> or <cite>quarter</cite>.</p>
 <div class="section" id="fund-ownership">
 <span id="stocks-fund-ownership"></span><h2><a class="toc-backref" href="#id19">Fund Ownership</a><a class="headerlink" href="#fund-ownership" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_fund_ownership">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_fund_ownership</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_fund_ownership">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_fund_ownership</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_fund_ownership" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fund Ownership</p>
 <p>Returns the top 10 fund holders, meaning any firm not defined as
 buy-side or sell-side such as mutual funds, pension funds, endowments,
@@ -593,29 +596,31 @@ other parameters.</p>
 
 <span class="gp">In [11]: </span><span class="n">aapl</span><span class="o">.</span><span class="n">get_historical_prices</span><span class="p">()</span>
 <span class="gh">Out[11]: </span><span class="go"></span>
-<span class="go">              close      high       low  ...       label    change changePercent</span>
-<span class="go">2021-04-05    127.4  126.2412    127.18  ...   Apr 5, 21         0             0</span>
-<span class="go">2021-04-06   127.06    128.39    131.57  ...   Apr 6, 21  0.314747        0.0025</span>
-<span class="go">2021-04-07    130.9    131.53    129.26  ...   Apr 7, 21  1.741824        0.0135</span>
-<span class="go">2021-04-08   132.44    134.07    129.48  ...   Apr 8, 21  2.550682        0.0199</span>
-<span class="go">2021-04-09  139.321    133.13    131.66  ...   Apr 9, 21  2.663492        0.0206</span>
-<span class="go">2021-04-12   137.02    133.78    135.21  ...  Apr 12, 21 -1.831238       -0.0138</span>
-<span class="go">2021-04-13   136.51    141.19    136.39  ...  Apr 13, 21  3.299331        0.0252</span>
-<span class="go">2021-04-14   133.89       139   132.998  ...  Apr 14, 21 -2.477099       -0.0187</span>
-<span class="go">2021-04-15    135.3       139    136.21  ...  Apr 15, 21  2.529322        0.0193</span>
-<span class="go">2021-04-16   139.04    134.94    138.49  ...  Apr 16, 21 -0.348181       -0.0026</span>
-<span class="go">2021-04-19   138.09    137.75    137.02  ...  Apr 19, 21  0.695521        0.0052</span>
-<span class="go">2021-04-20   133.34     141.8    132.12  ...  Apr 20, 21 -1.784713       -0.0133</span>
-<span class="go">2021-04-21    133.6    136.46  134.6739  ...  Apr 21, 21   0.39611         0.003</span>
-<span class="go">2021-04-22   135.11     135.9    132.76  ...  Apr 22, 21  -1.59937       -0.0118</span>
-<span class="go">2021-04-23    135.4    140.49    136.36  ...  Apr 23, 21  2.455741         0.018</span>
-<span class="go">2021-04-26   135.03    139.58    134.35  ...  Apr 26, 21  0.410484         0.003</span>
-<span class="go">2021-04-27   134.64    137.77    134.41  ...  Apr 27, 21 -0.339214       -0.0024</span>
-<span class="go">2021-04-28   138.06    138.67    133.66  ...  Apr 28, 21 -0.818751        -0.006</span>
-<span class="go">2021-04-29   134.73    142.35    135.61  ...  Apr 29, 21 -0.102466       -0.0007</span>
-<span class="go">2021-04-30   133.04    133.73   133.299  ...  Apr 30, 21 -2.104135       -0.0153</span>
+<span class="go">             close     high      low  ...       label    change changePercent</span>
+<span class="go">2021-05-03  133.98   135.99   132.11  ...   May 3, 21         0             0</span>
+<span class="go">2021-05-04  131.16    133.2    127.8  ...   May 4, 21 -4.917404       -0.0364</span>
+<span class="go">2021-05-05   134.3    134.9   129.29  ...   May 5, 21      0.25         0.002</span>
+<span class="go">2021-05-06  130.91   131.78   128.92  ...   May 6, 21  1.713041        0.0128</span>
+<span class="go">2021-05-07  135.05   136.32  130.781  ...   May 7, 21  0.479626        0.0037</span>
+<span class="go">2021-05-10  130.15   131.22   130.15  ...  May 10, 21 -3.507105       -0.0261</span>
+<span class="go">2021-05-11  130.16   130.16    124.2  ...  May 11, 21 -0.965399       -0.0076</span>
+<span class="go">2021-05-12  124.01    128.7   124.01  ...  May 12, 21  -3.26372       -0.0261</span>
+<span class="go">2021-05-13  129.89   129.89   128.12  ...  May 13, 21  2.235031        0.0186</span>
+<span class="go">2021-05-14  130.58    131.2   127.25  ...  May 14, 21  2.521045        0.0204</span>
+<span class="go">2021-05-17  127.19   130.85   127.19  ...  May 17, 21 -1.192821       -0.0096</span>
+<span class="go">2021-05-18   126.2   132.69   125.32  ...  May 18, 21 -1.452903       -0.0113</span>
+<span class="go">2021-05-19  127.41  129.613   122.98  ...  May 19, 21 -0.165777       -0.0013</span>
+<span class="go">2021-05-20  131.71   131.71   129.27  ...  May 20, 21  2.720626         0.021</span>
+<span class="go">2021-05-21  126.74   130.05   126.74  ...  May 21, 21 -1.967022       -0.0153</span>
+<span class="go">2021-05-24   128.4   131.43   126.06  ...  May 24, 21   1.68495        0.0136</span>
+<span class="go">2021-05-25   129.3   133.08    129.3  ...  May 25, 21 -0.201956       -0.0017</span>
+<span class="go">2021-05-26  131.35   132.11  128.846  ...  May 26, 21  -0.05247       -0.0004</span>
+<span class="go">2021-05-27  130.96   132.13   126.55  ...  May 27, 21 -1.606911       -0.0125</span>
+<span class="go">2021-05-28  126.91   130.87   126.91  ...  May 28, 21 -0.676525       -0.0055</span>
+<span class="go">2021-06-01   128.9    131.5   126.93  ...   Jun 1, 21 -0.332007       -0.0026</span>
+<span class="go">2021-06-02  125.47   127.32   125.47  ...   Jun 2, 21  0.798892        0.0066</span>
 
-<span class="go">[20 rows x 26 columns]</span>
+<span class="go">[22 rows x 26 columns]</span>
 </pre></div>
 </div>
 <p>Historical time series data is also available through the <strong>optimized</strong>
@@ -628,8 +633,8 @@ endpoint, and accept a date or date range for retrieval.</p>
 <h3>Daily<a class="headerlink" href="#daily" title="Permalink to this headline">¶</a></h3>
 <p>To obtain daily historical data, use <code class="docutils literal notranslate"><span class="pre">get_historical_data</span></code>.</p>
 <dl class="py function">
-<dt id="iexfinance.stocks.get_historical_data">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></code><code class="sig-name descname"><span class="pre">get_historical_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.get_historical_data">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></span><span class="sig-name descname"><span class="pre">get_historical_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to obtain historical date for a symbol or list of
 symbols. Return an instance of HistoricalReader</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#historical-prices">https://iexcloud.io/docs/api/#historical-prices</a></p>
@@ -668,32 +673,32 @@ Defaults to 1 year before current date.</p>
 
 <span class="gp">In [17]: </span><span class="n">f</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2017-02-09&quot;</span><span class="p">]</span>
 <span class="gh">Out[17]: </span><span class="go"></span>
-<span class="go">close                              34.652</span>
-<span class="go">high                               34.104</span>
-<span class="go">low                                  33.8</span>
-<span class="go">open                              33.5625</span>
+<span class="go">close                              33.307</span>
+<span class="go">high                              34.5024</span>
+<span class="go">low                                 33.11</span>
+<span class="go">open                              34.5024</span>
 <span class="go">symbol                               AAPL</span>
-<span class="go">volume                          115102931</span>
-<span class="go">id                      TISL_EIHCSCOIAPRR</span>
-<span class="go">key                                  PLAA</span>
-<span class="go">subkey                                  0</span>
+<span class="go">volume                          115187066</span>
+<span class="go">id                      HOCEIR_RSSCLITPAI</span>
+<span class="go">key                                  LAAP</span>
+<span class="go">subkey                                   </span>
 <span class="go">date                           2017-02-09</span>
-<span class="go">updated                     1685987651538</span>
-<span class="go">changeOverTime                   0.405148</span>
-<span class="go">marketChangeOverTime             0.393786</span>
-<span class="go">uOpen                              133.16</span>
-<span class="go">uClose                             136.56</span>
-<span class="go">uHigh                             134.437</span>
-<span class="go">uLow                               134.79</span>
-<span class="go">uVolume                          28489188</span>
-<span class="go">fOpen                             32.6238</span>
-<span class="go">fClose                            31.5609</span>
-<span class="go">fHigh                             32.9797</span>
-<span class="go">fLow                               31.329</span>
-<span class="go">fVolume                         116059270</span>
+<span class="go">updated                     1633810330221</span>
+<span class="go">changeOverTime                   0.362783</span>
+<span class="go">marketChangeOverTime             0.352541</span>
+<span class="go">uOpen                              136.55</span>
+<span class="go">uClose                             132.99</span>
+<span class="go">uHigh                             133.689</span>
+<span class="go">uLow                               133.75</span>
+<span class="go">uVolume                          28742004</span>
+<span class="go">fOpen                             32.5787</span>
+<span class="go">fClose                             32.039</span>
+<span class="go">fHigh                             31.5336</span>
+<span class="go">fLow                              31.7019</span>
+<span class="go">fVolume                         117789014</span>
 <span class="go">label                           Feb 9, 17</span>
-<span class="go">change                           0.096074</span>
-<span class="go">changePercent                      0.0029</span>
+<span class="go">change                           0.095136</span>
+<span class="go">changePercent                       0.003</span>
 <span class="go">Name: 2017-02-09 00:00:00, dtype: object</span>
 </pre></div>
 </div>
@@ -705,8 +710,8 @@ Defaults to 1 year before current date.</p>
 <code class="docutils literal notranslate"><span class="pre">get_historical_intraday</span></code>. <strong>Note: this endpoint has a maximum of one symbol
 and a single date.</strong></p>
 <dl class="py function">
-<dt id="iexfinance.stocks.get_historical_intraday">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></code><code class="sig-name descname"><span class="pre">get_historical_intraday</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_intraday" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.get_historical_intraday">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></span><span class="sig-name descname"><span class="pre">get_historical_intraday</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_historical_intraday" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to obtain intraday one-minute pricing data for one
 symbol on a given date (defaults to current date)</p>
 <dl class="simple">
@@ -747,19 +752,19 @@ symbol on a given date (defaults to current date)</p>
 <span class="gp">In [24]: </span><span class="n">get_historical_data</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;20190617&quot;</span><span class="p">,</span> <span class="n">close_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gh">Out[24]: </span><span class="go"></span>
 <span class="go">              close     volume</span>
-<span class="go">2019-06-17  50.1924   59914581</span>
-<span class="go">2019-06-18   50.694  107060235</span>
-<span class="go">2019-06-19  51.8997   85816163</span>
-<span class="go">2019-06-20   52.015   86062359</span>
-<span class="go">2019-06-21   49.757  199298357</span>
+<span class="go">2019-06-17  50.2019   61162475</span>
+<span class="go">2019-06-18  51.5319  110800965</span>
+<span class="go">2019-06-19  50.7203   86146848</span>
+<span class="go">2019-06-20   51.121   90286903</span>
+<span class="go">2019-06-21    51.95  192460432</span>
 <span class="go">...             ...        ...</span>
-<span class="go">2021-04-26   137.61   68151722</span>
-<span class="go">2021-04-27   135.72   67493869</span>
-<span class="go">2021-04-28   140.16  113100316</span>
-<span class="go">2021-04-29   139.64  155071391</span>
-<span class="go">2021-04-30   134.48  113826131</span>
+<span class="go">2021-05-26    132.8   57691211</span>
+<span class="go">2021-05-27      128   95999565</span>
+<span class="go">2021-05-28   126.18   73705807</span>
+<span class="go">2021-06-01   128.47   70698252</span>
+<span class="go">2021-06-02   130.54   60857550</span>
 
-<span class="go">[473 rows x 2 columns]</span>
+<span class="go">[495 rows x 2 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -768,8 +773,8 @@ symbol on a given date (defaults to current date)</p>
 <div class="section" id="income-statement">
 <span id="stocks-income-statement"></span><h2><a class="toc-backref" href="#id21">Income Statement</a><a class="headerlink" href="#income-statement" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_income_statement">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_income_statement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_income_statement" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_income_statement">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_income_statement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_income_statement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Income Statement</p>
 <p>Pulls income statement data. Available quarterly (4 quarters) or
 annually (4 years).</p>
@@ -786,8 +791,8 @@ Defaults to quarterly. Values should be annual or quarter</p>
 <div class="section" id="insider-roster">
 <span id="stocks-insider-roster"></span><h2><a class="toc-backref" href="#id22">Insider Roster</a><a class="headerlink" href="#insider-roster" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_insider_roster">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_insider_roster</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_roster" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_insider_roster">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_insider_roster</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_roster" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insider Roster</p>
 <p>Returns the top 10 insiders, with the most recent information.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-roster">https://iexcloud.io/docs/api/#insider-roster</a></p>
@@ -798,8 +803,8 @@ Defaults to quarterly. Values should be annual or quarter</p>
 <div class="section" id="insider-summary">
 <span id="stocks-insider-summary"></span><h2><a class="toc-backref" href="#id23">Insider Summary</a><a class="headerlink" href="#insider-summary" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_insider_summary">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_insider_summary</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_summary" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_insider_summary">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_insider_summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insider Summary</p>
 <p>Returns aggregated insiders summary data for the last 6 months.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-summary">https://iexcloud.io/docs/api/#insider-summary</a></p>
@@ -810,8 +815,8 @@ Defaults to quarterly. Values should be annual or quarter</p>
 <div class="section" id="insider-transactions">
 <span id="stocks-insider-transactions"></span><h2><a class="toc-backref" href="#id24">Insider Transactions</a><a class="headerlink" href="#insider-transactions" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_insider_transactions">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_insider_transactions</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_transactions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_insider_transactions">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_insider_transactions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_insider_transactions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insider Transactions</p>
 <p>Returns insider transactions.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#insider-transactions">https://iexcloud.io/docs/api/#insider-transactions</a></p>
@@ -822,8 +827,8 @@ Defaults to quarterly. Values should be annual or quarter</p>
 <div class="section" id="institutional-ownership">
 <span id="stocks-institutional-ownership"></span><h2><a class="toc-backref" href="#id25">Institutional Ownership</a><a class="headerlink" href="#institutional-ownership" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_institutional_ownership">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_institutional_ownership</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_institutional_ownership" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_institutional_ownership">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_institutional_ownership</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_institutional_ownership" title="Permalink to this definition">¶</a></dt>
 <dd><p>Institutional Ownership</p>
 <p>Returns the top 10 institutional holders, defined as buy-side or
 sell-side firms.</p>
@@ -835,8 +840,8 @@ sell-side firms.</p>
 <div class="section" id="key-stats">
 <span id="stocks-key-stats"></span><h2><a class="toc-backref" href="#id26">Key Stats</a><a class="headerlink" href="#key-stats" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_key_stats">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_key_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_key_stats" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_key_stats">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_key_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_key_stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#key-stats">https://iexcloud.io/docs/api/#key-stats</a></p>
 <dl class="simple">
 <dt>stat: str, optional</dt><dd><p>Case sensitive string matching the name of a single key
@@ -850,8 +855,8 @@ date, you would use <cite>nextEarningsDate</cite>.</p>
 <div class="section" id="largest-trades">
 <span id="stocks-largest-trades"></span><h2><a class="toc-backref" href="#id27">Largest Trades</a><a class="headerlink" href="#largest-trades" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_largest_trades">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_largest_trades</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_largest_trades" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_largest_trades">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_largest_trades</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_largest_trades" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#largest-trades">https://iexcloud.io/docs/api/#largest-trades</a></p>
 </dd></dl>
 
@@ -859,8 +864,8 @@ date, you would use <cite>nextEarningsDate</cite>.</p>
 <div class="section" id="logo">
 <span id="stocks-logo"></span><h2><a class="toc-backref" href="#id28">Logo</a><a class="headerlink" href="#logo" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_logo">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_logo</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_logo" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_logo">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_logo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_logo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#logo">https://iexcloud.io/docs/api/#logo</a></p>
 </dd></dl>
 
@@ -868,8 +873,8 @@ date, you would use <cite>nextEarningsDate</cite>.</p>
 <div class="section" id="ohlc">
 <span id="stocks-ohlc"></span><h2><a class="toc-backref" href="#id29">OHLC</a><a class="headerlink" href="#ohlc" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_ohlc">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_ohlc</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ohlc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_ohlc">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_ohlc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>OHLC</p>
 <p>Returns the official open and close for a give symbol.</p>
 <p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#ohlc">https://iexcloud.io/docs/api/#ohlc</a></p>
@@ -884,8 +889,8 @@ date, you would use <cite>nextEarningsDate</cite>.</p>
 <p>Time Series is an alias for the <a class="reference internal" href="#stocks-ohlc"><span class="std std-ref">OHLC</span></a> endpoint</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_open_close">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_open_close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open_close" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_open_close">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_open_close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open_close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open/Close Price</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#open-close-price">https://iexcloud.io/docs/api/#open-close-price</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">2</span></code> per symbol</p>
@@ -897,8 +902,8 @@ same</p>
 <div class="section" id="peer-groups">
 <span id="stocks-peers"></span><h2><a class="toc-backref" href="#id31">Peer Groups</a><a class="headerlink" href="#peer-groups" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_peers">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_peers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_peers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_peers">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_peers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_peers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Peers</p>
 <p>Reference:https://iexcloud.io/docs/api/#peers</p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">500</span></code> per call</p>
@@ -914,8 +919,8 @@ same</p>
 <code class="docutils literal notranslate"><span class="pre">get_previous_day_prices</span></code>.</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_previous_day_prices">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_previous_day_prices</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_previous_day_prices" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_previous_day_prices">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_previous_day_prices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_previous_day_prices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Previous Day Prices</p>
 <p>This returns previous day adjusted price data for one or more stocks</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#previous-day-price">https://iexcloud.io/docs/api/#previous-day-price</a></p>
@@ -926,8 +931,8 @@ same</p>
 <div class="section" id="price-only">
 <span id="stocks-price-only"></span><h2><a class="toc-backref" href="#id33">Price Only</a><a class="headerlink" href="#price-only" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_price">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_price</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_price">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Price</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#price-only">https://iexcloud.io/docs/api/#price-only</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">1</span></code> per symbol</p>
@@ -944,8 +949,8 @@ IEX Cloud Help Center. See <a class="reference external" href="https://intercom.
 for additional information.</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_price_target">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_price_target</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price_target" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_price_target">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_price_target</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_price_target" title="Permalink to this definition">¶</a></dt>
 <dd><p>Price Target</p>
 <p>Provides the latest avg, high, and low analyst price target for a
 symbol.</p>
@@ -957,8 +962,8 @@ symbol.</p>
 <div class="section" id="quote">
 <span id="stocks-quote"></span><h2><a class="toc-backref" href="#id35">Quote</a><a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_quote">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_quote</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_quote" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_quote">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_quote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_quote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quote</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#quote">https://iexcloud.io/docs/api/#quote</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</span></code> per quote</p>
@@ -973,8 +978,8 @@ multiplied by a factor of 100.</p>
 <div class="section" id="relevant-stocks">
 <span id="stocks-relevant-stocks"></span><h2><a class="toc-backref" href="#id36">Relevant Stocks</a><a class="headerlink" href="#relevant-stocks" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_relevant_stocks">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_relevant_stocks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_relevant_stocks" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_relevant_stocks">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_relevant_stocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_relevant_stocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>DEPRECATED</p>
 </dd></dl>
 
@@ -985,17 +990,17 @@ multiplied by a factor of 100.</p>
 <span class="gp">In [26]: </span><span class="n">get_sector_performance</span><span class="p">(</span><span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 <span class="gh">Out[26]: </span><span class="go"></span>
 <span class="go">                          type  ...    lastUpdated</span>
-<span class="go">ltisieiUt               sector  ...  1684414401515</span>
-<span class="go">l settaReEa             sector  ...  1651308334477</span>
-<span class="go">tcnreoaCseyrsDnmi ouri  sector  ...  1644040781490</span>
-<span class="go">CsolrneuetpmsSa         sector  ...  1689673224330</span>
-<span class="go">Chea lrteHa             sector  ...  1699217800590</span>
-<span class="go">srIdilasunt             sector  ...  1666294903411</span>
-<span class="go">aFicnisnla              sector  ...  1644731673054</span>
-<span class="go">liartseMa               sector  ...  1691564396133</span>
-<span class="go">yTnlhgoceo              sector  ...  1644373384258</span>
-<span class="go">emeu tvaroccnSsiCiionm  sector  ...  1671881383149</span>
-<span class="go">eryEgn                  sector  ...  1696437965933</span>
+<span class="go">rneyEg                  sector  ...  1649148088195</span>
+<span class="go">t EestlaeRa             sector  ...  1662623307037</span>
+<span class="go">Tlhcnyoego              sector  ...  1624684818127</span>
+<span class="go">iistlUtie               sector  ...  1654160321109</span>
+<span class="go">Cpsemr eSsnuaolt        sector  ...  1667114952565</span>
+<span class="go">aalsnFicin              sector  ...  1697539489702</span>
+<span class="go">Cat aherHle             sector  ...  1637010585600</span>
+<span class="go">siIludsratn             sector  ...  1629899227812</span>
+<span class="go">oatSirminvCmioecsuen c  sector  ...  1639799572191</span>
+<span class="go">rruiDa tnremscneoCyios  sector  ...  1654986367200</span>
+<span class="go">raislMeta               sector  ...  1675709198097</span>
 
 <span class="go">[11 rows x 4 columns]</span>
 </pre></div>
@@ -1005,8 +1010,8 @@ multiplied by a factor of 100.</p>
 <div class="section" id="splits-basic">
 <span id="stocks-splits"></span><h2><a class="toc-backref" href="#id37">Splits (Basic)</a><a class="headerlink" href="#splits-basic" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_splits">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_splits</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_splits" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_splits">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_splits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_splits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Splits</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#splits">https://iexcloud.io/docs/api/#splits</a></p>
 <dl class="simple">
@@ -1024,8 +1029,8 @@ Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>].
 <p>Time Series is an alias for the <a class="reference internal" href="#stocks-charts"><span class="std std-ref">Chart</span></a> endpoint</p>
 </div>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_time_series">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_time_series</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_time_series">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_time_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_time_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time Series</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1037,8 +1042,8 @@ Choose from [<cite>5y</cite>,`2y`,`1y`,`ytd`,`6m`,`3m`,`1m`, <cite>next</cite>].
 <div class="section" id="volume-by-venue">
 <span id="stocks-volume-by-venue"></span><h2><a class="toc-backref" href="#id39">Volume by Venue</a><a class="headerlink" href="#volume-by-venue" title="Permalink to this headline">¶</a></h2>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_volume_by_venue">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_volume_by_venue</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_volume_by_venue">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_volume_by_venue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume_by_venue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Volume by Venue</p>
 <p>Reference:  <a class="reference external" href="https://iexcloud.io/docs/api/#volume-by-venue">https://iexcloud.io/docs/api/#volume-by-venue</a></p>
 <p>Data Weighting: <code class="docutils literal notranslate"><span class="pre">20</span></code> per call</p>
@@ -1055,86 +1060,86 @@ and <a class="reference internal" href="#stocks-key-stats"><span class="std std-
 <div class="section" id="stocks-key-stats-field-methods">
 <span id="id3"></span><h3>Key Stats<a class="headerlink" href="#stocks-key-stats-field-methods" title="Permalink to this headline">¶</a></h3>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_beta">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_beta</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_beta" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_beta">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_beta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_beta" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_short_interest">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_short_interest</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_interest" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_short_interest">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_short_interest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_interest" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_short_ratio">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_short_ratio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_short_ratio">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_short_ratio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_short_ratio" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_latest_eps">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_latest_eps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_latest_eps" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_latest_eps">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_latest_eps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_latest_eps" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_shares_outstanding">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_shares_outstanding</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_shares_outstanding" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_shares_outstanding">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_shares_outstanding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_shares_outstanding" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_float">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_float</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_float" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_float">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_float</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_float" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_eps_consensus">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_eps_consensus</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_eps_consensus" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_eps_consensus">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_eps_consensus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_eps_consensus" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="section" id="stocks-quote-field-methods">
 <span id="id4"></span><h3>Quote<a class="headerlink" href="#stocks-quote-field-methods" title="Permalink to this headline">¶</a></h3>
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_company_name">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_company_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company_name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_company_name">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_company_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_company_name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_sector">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_sector</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_sector" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_sector">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_sector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_sector" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_open">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_open</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_open">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_close">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_close" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_close">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_years_high">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_years_high</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_high" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_years_high">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_years_high</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_high" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_years_low">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_years_low</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_low" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_years_low">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_years_low</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_years_low" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_ytd_change">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_ytd_change</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ytd_change" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_ytd_change">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_ytd_change</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_ytd_change" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_volume">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_volume">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_volume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_volume" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="iexfinance.stocks.base.Stock.get_market_cap">
-<code class="sig-prename descclassname"><span class="pre">Stock.</span></code><code class="sig-name descname"><span class="pre">get_market_cap</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_market_cap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.base.Stock.get_market_cap">
+<span class="sig-prename descclassname"><span class="pre">Stock.</span></span><span class="sig-name descname"><span class="pre">get_market_cap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.base.Stock.get_market_cap" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -1156,20 +1161,19 @@ below. These functions return a list of quotes of the top-10 symbols in each lis
 
 <span class="gp">In [28]: </span><span class="n">get_market_gainers</span><span class="p">()</span>
 <span class="gh">Out[28]: </span><span class="go"></span>
-<span class="go">                             companyName  ... isUSMarketOpen</span>
-<span class="go">symbol                                    ...               </span>
-<span class="go">CRY                       Cryolife, Inc.  ...          False</span>
-<span class="go">BELFB            Bel Fuse Inc. - Class B  ...          False</span>
-<span class="go">VXRT                          Vaxart Inc  ...          False</span>
-<span class="go">LAUR    Laureate Education Inc - Class A  ...          False</span>
-<span class="go">MARK                 Remark Holdings Inc  ...          False</span>
-<span class="go">AHT        Ashford Hospitality Trust Inc  ...          False</span>
-<span class="go">CERC                         Cerecor Inc  ...          False</span>
-<span class="go">NVEC                            NVE Corp  ...          False</span>
-<span class="go">AIRG                         Airgain Inc  ...          False</span>
-<span class="go">AUPH         Aurinia Pharmaceuticals Inc  ...          False</span>
+<span class="go">                                     companyName  ... isUSMarketOpen</span>
+<span class="go">symbol                                            ...               </span>
+<span class="go">AMC     AMC Entertainment Holdings Inc - Class A  ...          False</span>
+<span class="go">KOSS                                  Koss Corp.  ...          False</span>
+<span class="go">CNST           Constellation Pharmaceuticals Inc  ...          False</span>
+<span class="go">BBBY                     Bed, Bath &amp; Beyond Inc.  ...          False</span>
+<span class="go">PETS                        Petmed Express, Inc.  ...          False</span>
+<span class="go">EXPR                                Express Inc.  ...          False</span>
+<span class="go">UONE                     Urban One Inc - Class A  ...          False</span>
+<span class="go">BB                                BlackBerry Ltd  ...          False</span>
+<span class="go">SKLZ                        Skillz Inc - Class A  ...          False</span>
 
-<span class="go">[10 rows x 54 columns]</span>
+<span class="go">[9 rows x 54 columns]</span>
 </pre></div>
 </div>
 </div>

@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -225,8 +228,8 @@
 <div class="section" id="iex-symbols">
 <span id="refdata-iex-symbols"></span><h2><a class="toc-backref" href="#id3">IEX Symbols</a><a class="headerlink" href="#iex-symbols" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_iex_symbols">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_iex_symbols</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_iex_symbols" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_iex_symbols">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_iex_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_iex_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all symbols the Investor’s Exchange
 supports for trading</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#iex-symbols">https://iexcloud.io/docs/api/#iex-symbols</a></p>
@@ -247,8 +250,8 @@ supports for trading</p>
 <div class="section" id="by-exchange">
 <span id="refdata-international-symbols-exchange"></span><h3>By Exchange<a class="headerlink" href="#by-exchange" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_exchange_symbols">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_exchange_symbols</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exchange</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_exchange_symbols" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_exchange_symbols">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_exchange_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exchange</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_exchange_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all international symbols in a given
 exchange that IEX Cloud supports for API calls</p>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
@@ -264,8 +267,8 @@ Supported Exchanges list</p>
 <div class="section" id="by-region">
 <span id="refdata-international-symbols-region"></span><h3>By Region<a class="headerlink" href="#by-region" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_region_symbols">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_region_symbols</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_region_symbols" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_region_symbols">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_region_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_region_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all international symbols in a give
 region that IEX Cloud supports for API calls</p>
 <p><a class="reference external" href="https://iexcloud.io/docs/api/#international-symbols">https://iexcloud.io/docs/api/#international-symbols</a></p>
@@ -282,8 +285,8 @@ using ISO 3166-1 alpha-2</p>
 <div class="section" id="sectors">
 <span id="refdata-sectors"></span><h2><a class="toc-backref" href="#id5">Sectors</a><a class="headerlink" href="#sectors" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_sectors">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_sectors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_sectors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_sectors">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_sectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_sectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all sectors that IEX Cloud supports
 for API calls</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#sectors">https://iexcloud.io/docs/api/#sectors</a>
@@ -294,8 +297,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">1</
 <div class="section" id="symbols">
 <span id="refdata-symbols"></span><h2><a class="toc-backref" href="#id6">Symbols</a><a class="headerlink" href="#symbols" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_symbols">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_symbols</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_symbols">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns array of all symbols that IEX Cloud supports
 for API calls</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#symbols">https://iexcloud.io/docs/api/#symbols</a>
@@ -309,8 +312,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 <span class="gp">In [2]: </span><span class="n">get_symbols</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">  symbol exchange exchangeSuffix  ...          figi      cik                   lei</span>
-<span class="go">0      A      NYS             NU  ...  BBDC6V2G0300  1104476  Q280XMYW7AWX72PIR9GU</span>
-<span class="go">1     AA      NYS             NU  ...  HG0T33DBB30B  1722837  911W60T4250EPW293FZU</span>
+<span class="go">0      A      NYS             NU  ...  062B03CDVB0G  1128963  MYUAIW0P7X982W7RX2QG</span>
+<span class="go">1     AA      NYS             NU  ...  B3DGB30B3TH0  1680873  050ZP296U21WTE9FW431</span>
 
 <span class="go">[2 rows x 14 columns]</span>
 </pre></div>
@@ -320,8 +323,8 @@ Data Weighting: <code class="docutils literal notranslate"><span class="pre">100
 <div class="section" id="u-s-holidays-trading-dates">
 <span id="refdata-holidays"></span><h2><a class="toc-backref" href="#id7">U.S. Holidays &amp; Trading Dates</a><a class="headerlink" href="#u-s-holidays-trading-dates" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.refdata.get_us_trading_dates_holidays">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></code><code class="sig-name descname"><span class="pre">get_us_trading_dates_holidays</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startDate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_us_trading_dates_holidays" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.refdata.get_us_trading_dates_holidays">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.refdata.</span></span><span class="sig-name descname"><span class="pre">get_us_trading_dates_holidays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startDate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.refdata.get_us_trading_dates_holidays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to obtain US trading dates or holidays from
 a given date</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates">https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates</a></p>

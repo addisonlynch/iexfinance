@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -215,8 +218,8 @@ values. Retrieving individual data points is useful for Excel and Google Sheet u
 <p>Full access to the Data Points endpoints is available through the
 <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code> function.</p>
 <dl class="py function">
-<dt id="iexfinance.data_apis.get_data_points">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.data_apis.</span></code><code class="sig-name descname"><span class="pre">get_data_points</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_data_points" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.data_apis.get_data_points">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.data_apis.</span></span><span class="sig-name descname"><span class="pre">get_data_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_data_points" title="Permalink to this definition">¶</a></dt>
 <dd><div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This endpoint no longer appears in the IEX Cloud
@@ -243,10 +246,10 @@ passed) or single data point for a given symbol and data point key</p>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">                key  ...                lastUpdated</span>
 <span class="go">0  NEXTDIVIDENDDATE  ...  2020-11-05T20:23:03+00:00</span>
-<span class="go">1              BETA  ...  2021-05-02T09:33:18+00:00</span>
-<span class="go">2   ACCOUNTSPAYABLE  ...  2021-05-02T15:31:59+00:00</span>
-<span class="go">3    CAPITALSURPLUS  ...  2021-05-02T15:31:59+00:00</span>
-<span class="go">4       COMMONSTOCK  ...  2021-05-02T15:31:59+00:00</span>
+<span class="go">1              BETA  ...  2021-06-02T09:37:30+00:00</span>
+<span class="go">2   ACCOUNTSPAYABLE  ...  2021-06-02T15:05:15+00:00</span>
+<span class="go">3    CAPITALSURPLUS  ...  2021-06-02T15:05:15+00:00</span>
+<span class="go">4       COMMONSTOCK  ...  2021-06-02T15:05:15+00:00</span>
 
 <span class="go">[5 rows x 4 columns]</span>
 </pre></div>
@@ -258,7 +261,7 @@ passed) or single data point for a given symbol and data point key</p>
 data point ID to <code class="docutils literal notranslate"><span class="pre">get_data_points</span></code>:</p>
 <p><strong>Apple Inc. (AAPL) latest price</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">get_data_points</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMONSTOCK&quot;</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">14929377410</span>
+<span class="gh">Out[3]: </span><span class="go">14947192327</span>
 </pre></div>
 </div>
 </div>
@@ -270,8 +273,8 @@ collection of data points over a period of time. Time series data is indexed by 
 <p>Full access to the Time Series endpoints is available through the
 <code class="docutils literal notranslate"><span class="pre">get_time_series</span></code> function.</p>
 <dl class="py function">
-<dt id="iexfinance.data_apis.get_time_series">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.data_apis.</span></code><code class="sig-name descname"><span class="pre">get_time_series</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.data_apis.get_time_series">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.data_apis.</span></span><span class="sig-name descname"><span class="pre">get_time_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.data_apis.get_time_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of time series available (if no parameters passed) or
 time series data for given id, key, and subkey.</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#time-series">https://iexcloud.io/docs/api/#time-series</a></p>
@@ -295,19 +298,19 @@ with no parameters:</p>
 
 <span class="gp">In [5]: </span><span class="n">get_time_series</span><span class="p">()</span>
 <span class="gh">Out[5]: </span><span class="go"></span>
-<span class="go">                                                            FX  ...                                         LANNFIISAC</span>
-<span class="go">inv_pk                                                       8  ...                                               2084</span>
-<span class="go">id                                                          FX  ...                                         LANNFIISAC</span>
-<span class="go">description          e hornxspat d , 25Pi  altesoa,ctriSroraif  ...                                         liaaFinsnc</span>
-<span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: False, &#39;properties&#39;: ...</span>
-<span class="go">weight                                                  102005  ...                                               5185</span>
-<span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2021-04-30T16:06:42.000Z</span>
-<span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2021-04-30T16:06:42.000Z</span>
+<span class="go">                                                            XF  ...                                     FRSCUTEP_ISUER</span>
+<span class="go">inv_pk                                                       8  ...                                               2080</span>
+<span class="go">id                                                          XF  ...                                     FRSCUTEP_ISUER</span>
+<span class="go">description          r  2ctoPos txiinfi alae do,5sSet rarraph,  ...                                 stu iuaFcirslHtero</span>
+<span class="go">schema       {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...  ...  {&#39;additionalProperties&#39;: True, &#39;properties&#39;: {...</span>
+<span class="go">weight                                                  100110  ...                                               1011</span>
+<span class="go">created                               2020-05-05T16:58:52.000Z  ...                           2021-05-25T14:22:26.000Z</span>
+<span class="go">updated                               2020-05-05T16:58:52.000Z  ...                           2021-05-25T14:22:26.000Z</span>
 <span class="go">version                                                      1  ...                                                  1</span>
-<span class="go">weightKey                                                   FX  ...                                         CALISNNAIF</span>
+<span class="go">weightKey                                                   XF  ...                                     ESPSECR_UFURIT</span>
 <span class="go">prepost                                                    NaN  ...                                                NaN</span>
 
-<span class="go">[10 rows x 93 columns]</span>
+<span class="go">[10 rows x 95 columns]</span>
 </pre></div>
 </div>
 </div>
@@ -320,23 +323,23 @@ ID and (optional) keys and subkeys as parameters.</p>
 Inc. (<code class="docutils literal notranslate"><span class="pre">AAPL</span></code>):</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[6]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:28:10.795148866</span>
-<span class="go">AccountsPayableCurrent                                               65938941237</span>
-<span class="go">AccountsReceivableNetCurrent                                         27536552080</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         29441256773</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   70467730310</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                        181505136</span>
+<span class="go">                                                   1970-01-01 00:27:21.322977241</span>
+<span class="go">AccountsPayableCurrent                                               63892823314</span>
+<span class="go">AccountsReceivableNetCurrent                                         27631785310</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         28889299926</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   70115891583</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                        183256955</span>
 </pre></div>
 </div>
 <p>Or with a subkey:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[7]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:27:03.468269303</span>
-<span class="go">AccountsPayableCurrent                                               64458638277</span>
-<span class="go">AccountsReceivableNetCurrent                                         27604284196</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         29153174049</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   69029210144</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                        182106824</span>
+<span class="go">                                                   1970-01-01 00:28:06.934032881</span>
+<span class="go">AccountsPayableCurrent                                               66098635888</span>
+<span class="go">AccountsReceivableNetCurrent                                         28263855957</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         29195135000</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   67565256855</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                        183896693</span>
 </pre></div>
 </div>
 <p>Any and all series-specific parameters (such as <code class="docutils literal notranslate"><span class="pre">last</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>,
@@ -346,12 +349,12 @@ etc. should be passed as <em>keyword arguments</em>)</p>
 <p>Last Apple Inc. Form 10-K</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">get_time_series</span><span class="p">(</span><span class="s2">&quot;REPORTED_FINANCIALS&quot;</span><span class="p">,</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="s2">&quot;10-K&quot;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[8]: </span><span class="go"></span>
-<span class="go">                                                   1970-01-01 00:28:01.433553977</span>
-<span class="go">AccountsPayableCurrent                                               42851209146</span>
-<span class="go">AccountsReceivableNetCurrent                                         16891081107</span>
-<span class="go">AccruedIncomeTaxesNoncurrent                                         28830767782</span>
-<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   68558415727</span>
-<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -425222058</span>
+<span class="go">                                                   1970-01-01 00:27:28.214800856</span>
+<span class="go">AccountsPayableCurrent                                               42774095989</span>
+<span class="go">AccountsReceivableNetCurrent                                         16894191335</span>
+<span class="go">AccruedIncomeTaxesNoncurrent                                         29478733466</span>
+<span class="go">AccumulatedDepreciationDepletionAndAmortization...                   69379220015</span>
+<span class="go">AccumulatedOtherComprehensiveIncomeLossNetOfTax                       -408405536</span>
 </pre></div>
 </div>
 </div>

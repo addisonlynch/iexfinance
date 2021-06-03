@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -204,8 +207,8 @@
 <p>End of day options prices are available through the top-level function
 <code class="docutils literal notranslate"><span class="pre">get_eod_options</span></code> for a single symbol.</p>
 <dl class="py function">
-<dt id="iexfinance.stocks.get_eod_options">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></code><code class="sig-name descname"><span class="pre">get_eod_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expiration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.stocks.get_eod_options">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.stocks.</span></span><span class="sig-name descname"><span class="pre">get_eod_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expiration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.stocks.get_eod_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>End of Day Options</p>
 <p>Returns a list of option expiration dates for a given symbol</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#end-of-day-options">https://iexcloud.io/docs/api/#end-of-day-options</a></p>
@@ -228,11 +231,11 @@ contracts</p>
 <span class="gp">In [2]: </span><span class="n">get_eod_options</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="gh">Out[2]: </span><span class="go"></span>
 <span class="go">          0</span>
-<span class="go">0  20210422</span>
-<span class="go">1  20210506</span>
-<span class="go">2  20210509</span>
-<span class="go">3  20210520</span>
-<span class="go">4  20210528</span>
+<span class="go">0  20210522</span>
+<span class="go">1  20210605</span>
+<span class="go">2  20210617</span>
+<span class="go">3  20210623</span>
+<span class="go">4  20210702</span>
 </pre></div>
 </div>
 </div>

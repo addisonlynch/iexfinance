@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -215,8 +218,8 @@
 <div class="section" id="metadata">
 <span id="account-metadata"></span><h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.account.get_metadata">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></code><code class="sig-name descname"><span class="pre">get_metadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.account.get_metadata">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></span><span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.get_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Metadata</p>
 <p>Account metadata</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#metadata">https://iexcloud.io/docs/api/#metadata</a></p>
@@ -235,8 +238,8 @@
 <div class="section" id="usage">
 <span id="account-usage"></span><h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="iexfinance.account.get_usage">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></code><code class="sig-name descname"><span class="pre">get_usage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quota_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.get_usage" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.account.get_usage">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></span><span class="sig-name descname"><span class="pre">get_usage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quota_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.get_usage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Usage</p>
 <p>Account details, including current tier, payment status,
 message quote usage</p>
@@ -263,8 +266,8 @@ message quote usage</p>
 <p><code class="docutils literal notranslate"><span class="pre">iexfinance</span></code> provides two methods, <code class="docutils literal notranslate"><span class="pre">allow_pay_as_you_go</span></code> and
 <code class="docutils literal notranslate"><span class="pre">disallow_pay_as_you_go</span></code> to toggle Pay-as-you-go for a given account.</p>
 <dl class="py function">
-<dt id="iexfinance.account.allow_pay_as_you_go">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></code><code class="sig-name descname"><span class="pre">allow_pay_as_you_go</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.allow_pay_as_you_go" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.account.allow_pay_as_you_go">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></span><span class="sig-name descname"><span class="pre">allow_pay_as_you_go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.allow_pay_as_you_go" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allow Pay As You Go</p>
 <p>Toggle ON pay-as-you-go messages</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#pay-as-you-go">https://iexcloud.io/docs/api/#pay-as-you-go</a></p>
@@ -272,8 +275,8 @@ message quote usage</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="iexfinance.account.disallow_pay_as_you_go">
-<code class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></code><code class="sig-name descname"><span class="pre">disallow_pay_as_you_go</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.disallow_pay_as_you_go" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="iexfinance.account.disallow_pay_as_you_go">
+<span class="sig-prename descclassname"><span class="pre">iexfinance.account.</span></span><span class="sig-name descname"><span class="pre">disallow_pay_as_you_go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iexfinance.account.disallow_pay_as_you_go" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disallow Pay As You Go</p>
 <p>Toggle OFF pay-as-you-go messages</p>
 <p>Reference: <a class="reference external" href="https://iexcloud.io/docs/api/#pay-as-you-go">https://iexcloud.io/docs/api/#pay-as-you-go</a></p>
