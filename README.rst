@@ -67,7 +67,7 @@ What's Needed to Access IEX Cloud?
 ----------------------------------
 
 An IEX Cloud account is required to acecss the IEX Cloud API. Various `plans <https://iexcloud.io/pricing/>`__
-are availalbe, free, paid, and pay-as-you-go.
+are available, free, paid, and pay-as-you-go.
 
 Your IEX Cloud (secret) authentication token can be passed to any function or at the instantiation of a ``Stock`` object.
 The easiest way to store a token is in the ``IEX_TOKEN`` environment variable.
