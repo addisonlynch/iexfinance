@@ -12,6 +12,7 @@ Enhancements
 - Re-added dropped ``date`` column in some calls (:issue:`238`)
 - Added support for `Crytpocurrency Book <https://iexcloud.io/docs/api/#cryptocurrency-book>`__ - ``iexfinance.crypto.get_crypto_book``
 - Added support for `Cryptocurrency Price <https://iexcloud.io/docs/api/#cryptocurrency-price>`__ - ``iexfinance.crypto.get_crypto_price``
+- Added `include_today` option for `HistoricalReader` and `get_historical_data`
 
 Bug Fixes
 ~~~~~~~~~
