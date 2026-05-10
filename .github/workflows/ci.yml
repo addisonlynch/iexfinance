@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  secure: "tuFMca56/oHg/ufxFih5aLpGxlZD7P9/yh+mZc95rcH9HCyTyxMkesgas4GyKSxxlpHL3WzkkvTKMMNZL17ZpCne6UzaR0UILgEmaCk2Numxg+fBDAvtPl0gWs6LkFvtUZYa9vn+A6ipxe/2kO6uGvU5wgsVEC5QOEZ22ZqSYE2rvsidAN4XiVVH00u5jDEYzSYWpS9fglKb/gaDbRQE8VyrSTERrRtAGEBdm0argIh90us9WU2meW9v50aTZysO1JduDw0B0di7UDg422Xw7pMS16lryHA8VMZtijYIokVM21zaf8Rc++L1pLZPbm2pdHcrHoazMxIoOS9FW69pluM7fcIWlqbT6T5GOJTzu6zg1nDBXuC5G+Pd1DuDahZ9CNCvnwuJszBhwMtXO5uU7kM5J2tg4YOkzG8TaXuPKd9x1mBSC6fk2XqnGv/zGPUfCDi4qcM56CeDsliD+uCFDujQYRCCr1BjWuK7fvNXOc0Z71tfqUjGExap/gBu9wm94Q+xt0JydlCGZpfHqHkSImHdgBPXmly6wfHGGu/Ps3lNHJUUD5GToXAhkydV4vt2EEXeZMiSh88ThI06ghFzLBTZ6aIbxty/KIOnxzbXD2TqB+NYm0UXSj0f+tGrrAtqk79cAga9GTuGdQGkGCneuGe2fGUc/e7RGR7MrLZwO2E="
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - python-version: "3.8"
+            PANDAS: "0.23"
+            NUMPY: "1.13"
+          - python-version: "3.6"
+            PANDAS: "MASTER"
+            NUMPY: "1.14"
+          - python-version: "3.7"
+            PANDAS: "MASTER"
+            NUMPY: "1.17"
+          - python-version: "3.8"
+            PANDAS: "MASTER"
+            DOCBUILD: "true"
+            NUMPY: "1.18"
+    env:
+      PANDAS: ${{ matrix.PANDAS }}
+      NUMPY: ${{ matrix.NUMPY }}
+      DOCBUILD: ${{ matrix.DOCBUILD }}
+      TRAVIS_PYTHON_VERSION: ${{ matrix.python-version }}
+      TRAVIS_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: source ci/pypi-install.sh
+      - run: pip list
+      - run: python setup.py install
+      - run: coverage run setup.py pytest
+      - run: |
+          if (( $(echo "$TRAVIS_PYTHON_VERSION > 3.5" | bc -l))); then
+          black --version; black --check iexfinance
+          fi
+      - run: flake8 --version
+      - run: flake8 iexfinance
+      - run: |
+          if [[ $DOCBUILD ]]; then
+            flake8-rst --version
+            flake8-rst --filename="*.rst"
+            set -e
+            cd docs
+            make html
+            cd ..
+            doctr deploy devel --build-tags
+            if [[ -z ${TRAVIS_TAG} ]]; then
+              echo "Not a tagged build."
+            else
+              doctr deploy stable --build-tags
+            fi
+          fi
+      - run: codecov --token='f4d1c94d-2af2-49c9-aebd-4e009c8a6266'
+        if: always()
