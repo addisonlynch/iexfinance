@@ -10,7 +10,9 @@ from iexfinance.stocks.todayearnings import EarningsReader
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 
-def get_historical_data(symbols, start=None, end=None, close_only=False, **kwargs):
+def get_historical_data(
+    symbols, start=None, end=None, close_only=False, include_today=False, **kwargs
+):
     """
     Function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
@@ -30,6 +32,8 @@ def get_historical_data(symbols, start=None, end=None, close_only=False, **kwarg
     close_only: bool, default False
         Returns adjusted data only with keys ``date``, ``close``, and
         ``volume``
+    include_today: bool, default False
+        Appends data from the current trading day
     kwargs:
         Additional Request Parameters (see base class)
 
@@ -39,7 +43,12 @@ def get_historical_data(symbols, start=None, end=None, close_only=False, **kwarg
         Historical stock prices over date range, start to end
     """
     return HistoricalReader(
-        symbols, start=start, end=end, close_only=close_only, **kwargs
+        symbols,
+        start=start,
+        end=end,
+        close_only=close_only,
+        include_today=include_today,
+        **kwargs
     ).fetch()
 
 
