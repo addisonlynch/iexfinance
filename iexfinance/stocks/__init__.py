@@ -1,6 +1,13 @@
+from datetime import date, datetime
+from typing import Union
+
+import pandas as pd
+
+import iexfinance.stocks.cache as cache
 from iexfinance.stocks.base import Stock  # noqa
 from iexfinance.stocks.collections import CollectionsReader
 from iexfinance.stocks.historical import HistoricalReader, IntradayReader
+from iexfinance.stocks.historical_cache import HistoricalReaderCache
 from iexfinance.stocks.ipocalendar import IPOReader
 from iexfinance.stocks.marketvolume import MarketVolumeReader
 from iexfinance.stocks.movers import MoversReader
@@ -10,7 +17,12 @@ from iexfinance.stocks.todayearnings import EarningsReader
 from iexfinance.utils.exceptions import ImmediateDeprecationError
 
 
-def get_historical_data(symbols, start=None, end=None, close_only=False, **kwargs):
+def get_historical_data(
+        symbols: Union[str, list],
+        start: Union[str, int, date, datetime, pd.Timestamp] = None,
+        end: Union[str, int, date, datetime, pd.Timestamp] = None,
+        close_only: bool = False,
+        **kwargs):
     """
     Function to obtain historical date for a symbol or list of
     symbols. Return an instance of HistoricalReader
@@ -38,6 +50,11 @@ def get_historical_data(symbols, start=None, end=None, close_only=False, **kwarg
     list or DataFrame
         Historical stock prices over date range, start to end
     """
+    if cache._IEXFINANCE_CACHE_ is not None:
+        return HistoricalReaderCache(
+            symbols, start=start, end=end, close_only=close_only, **kwargs
+        ).fetch()
+
     return HistoricalReader(
         symbols, start=start, end=end, close_only=close_only, **kwargs
     ).fetch()
